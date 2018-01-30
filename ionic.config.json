@@ -1,0 +1,8 @@
+{
+  "name": "hetzner-cloud-app",
+  "app_id": "359b3ec5",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
