@@ -18,9 +18,10 @@ import {ServersPage} from "../pages/servers/servers";
 import {RestProvider} from '../providers/rest/rest';
 import {Pro} from '@ionic/pro';
 import {ServerPage} from "../pages/server/server";
+import {addServerModal} from "../pages/servers/addServer/addServer";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.1"
+  appVersion: "0.0.4"
 });
 
 @Injectable()
@@ -90,7 +91,8 @@ export class FileSizePipe implements PipeTransform {
     addProjectModal,
     ServersPage,
     ServerPage,
-    FileSizePipe
+    FileSizePipe,
+    addServerModal
   ],
   imports: [
     BrowserModule,
@@ -109,7 +111,8 @@ export class FileSizePipe implements PipeTransform {
     ProjectsPage,
     addProjectModal,
     ServersPage,
-    ServerPage
+    ServerPage,
+    addServerModal
   ],
   providers: [
     StatusBar,
@@ -120,3 +123,4 @@ export class FileSizePipe implements PipeTransform {
 })
 export class AppModule {
 }
+

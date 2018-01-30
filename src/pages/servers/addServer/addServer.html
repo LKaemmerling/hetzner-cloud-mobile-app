@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Server hinzufügen
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Serverbezeichnung</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Server Type:</ion-label>
+      <ion-select [(ngModel)]="server_type">
+        <ion-option *ngFor="let _server_type of server_types" [value]="_server_type">{{ _server_type.description }} {{
+          _server_type.prices[0].price_monthly.gross | number:'1.2-2' }} € per Monat
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Standort:</ion-label>
+      <ion-select [(ngModel)]="location">
+        <ion-option *ngFor="let _location of locations" [value]="_location.id">{{ _location.description }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Image:</ion-label>
+      <ion-select [(ngModel)]="image">
+        <ion-option *ngFor="let _image of images" [value]="_image.id">{{ _image.description }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>SSH Keys:</ion-label>
+      <ion-select [(ngModel)]="ssh_key"  multiple="true">
+        <ion-option *ngFor="let _ssh_key of ssh_keys" [value]="_ssh_key.id">{{ _ssh_key.description }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label> Server nach Erstellung starten?</ion-label>
+      <ion-toggle [(ngModel)]="start_after_create"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <button ion-button color="primary" (click)="createServer()">Server kostenpflichtig erstellen</button>
+    </ion-item>
+    <ion-item
+      *ngIf="server_type != null"><strong>{{server_type.description}}</strong><br/>
+      Kerne: {{ server_type.cores }} <br/>RAM:
+      {{ server_type.memory * 1024}} MB<br/>Festplatte:
+      {{ server_type.disk }} GB<br/>
+      Speicher Typ: {{ server_type.storage_type }}
+    </ion-item>
+  </ion-list>
+</ion-content>

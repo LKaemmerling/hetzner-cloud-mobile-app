@@ -40,6 +40,25 @@ export class RestProvider {
     });
   }
 
+  createServer(name, server_type, location, start_after_create, image, ssh_keys) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/servers', {
+        name: name,
+        server_type: server_type,
+        location: location,
+        start_after_create: start_after_create,
+        image: image,
+        ssh_keys: ssh_keys
+      }, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
   powerOn(serverId) {
     return new Promise(resolve => {
       this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/poweron', {}, {
@@ -115,6 +134,74 @@ export class RestProvider {
   delete(serverId) {
     return new Promise(resolve => {
       this.http.delete(this.apiUrl + '/servers/' + serverId, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  /**
+   *
+   * Locations
+   */
+
+  getLocations(searchTerm = null) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/locations' + (searchTerm == null ? '' : '?name=' + searchTerm), {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  /**
+   *
+   * Images
+   */
+
+  getImages(searchTerm = null) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/images' + (searchTerm == null ? '' : '?name=' + searchTerm), {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  /**
+   *
+   * SSHKeys
+   */
+
+  getSSHKeys(searchTerm = null) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/ssh_keys' + (searchTerm == null ? '' : '?name=' + searchTerm), {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  /**
+   *
+   * SSHKeys
+   */
+
+  getServerTypes(searchTerm = null) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/server_types' + (searchTerm == null ? '' : '?name=' + searchTerm), {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);

@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {ModalController, NavController} from 'ionic-angular';
 import {ProjectsService} from "../../models/project/ProjectsService";
 import {RestProvider} from "../../providers/rest/rest";
 import {ServerPage} from "../server/server";
+import {addServerModal} from "./addServer/addServer";
 
 @Component({
   selector: 'page-servers',
@@ -13,7 +14,7 @@ export class ServersPage {
   public servers;
   public _search = false;
 
-  constructor(public navCtrl: NavController, public project: ProjectsService, public restProvider: RestProvider) {
+  constructor(public navCtrl: NavController, public project: ProjectsService, public restProvider: RestProvider, public modal: ModalController) {
     this.loadServers();
   }
 
@@ -47,4 +48,7 @@ export class ServersPage {
 
   }
 
+  openCreateServerModal() {
+    this.modal.create(addServerModal).present();
+  }
 }
