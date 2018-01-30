@@ -3,34 +3,39 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Meine Projekte
-      <button ion-button="" color="secondary" (click)="openProjectModal()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-title>
+    <ion-title>Meine Projekte</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding *ngFor="let _project of project.projects"
+    <ion-item-sliding *ngFor="let _project of _projects"
                       #slidingItem>
       <ion-item
         [color]="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name) ? 'primary':'none' ">
-        <h2>{{ _project.name }} <span *ngIf="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)"><em>AKTIV</em></span></h2>
+        <h2>{{ _project.name }} <span
+          *ngIf="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)"><em>AKTIV</em></span>
+        </h2>
       </ion-item>
       <ion-item-options side="left">
         <button ion-button color="primary" (click)="select(_project,slidingItem)">
           <ion-icon name="checkmark"></ion-icon>
-          Als aktives Projekt auswählen
         </button>
       </ion-item-options>
       <ion-item-options side="right">
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="delete(_project,slidingItem)">
           <ion-icon name="trash"></ion-icon>
-          Löschen
         </button>
       </ion-item-options>
     </ion-item-sliding>
+    <ion-item *ngIf="project.projects.length == 0">
+      Oh! Es sieht so aus als wäre hier noch kein Projekt hinterlegt.
+    </ion-item>
   </ion-list>
+  <ion-fab bottom right edge>
+    <button ion-fab color="secondary" (click)="openProjectModal()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

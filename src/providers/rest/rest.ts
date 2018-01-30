@@ -16,9 +16,9 @@ export class RestProvider {
     console.log('Hello RestProvider Provider');
   }
 
-  getServers() {
+  getServers(searchTerm = null) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/servers', {
+      this.http.get(this.apiUrl + '/servers' + (searchTerm == null ? '' : '?name=' + searchTerm), {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -112,7 +112,7 @@ export class RestProvider {
     });
   }
 
-  delete(serverId){
+  delete(serverId) {
     return new Promise(resolve => {
       this.http.delete(this.apiUrl + '/servers/' + serverId, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),

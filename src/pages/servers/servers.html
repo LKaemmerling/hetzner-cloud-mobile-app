@@ -8,9 +8,11 @@
 </ion-header>
 
 <ion-content padding>
+
   <ion-refresher (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
   <ion-list>
     <ion-item-sliding *ngFor="let server of servers"
                       #slidingItem>
@@ -41,4 +43,7 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+  <ion-fab bottom right >
+    <button ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>

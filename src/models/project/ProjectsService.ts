@@ -39,4 +39,19 @@ export class ProjectsService {
     }
     this.projects.push(project);
   }
+
+  public removeProject(project: project) {
+    var tmp = [];
+    if (this.actual_project.api_key == project.api_key) {
+      this.actual_project = null;
+    }
+    this.projects.forEach((_project, key) => {
+
+      if (project.name !== _project.name && _project.api_key !== project.api_key) {
+        tmp.push(_project);
+      }
+    });
+    this.projects = tmp;
+    this.saveProjects();
+  }
 }

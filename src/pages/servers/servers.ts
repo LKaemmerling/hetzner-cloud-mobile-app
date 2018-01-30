@@ -11,18 +11,20 @@ import {ServerPage} from "../server/server";
 export class ServersPage {
 
   public servers;
+  public _search = false;
 
   constructor(public navCtrl: NavController, public project: ProjectsService, public restProvider: RestProvider) {
     this.loadServers();
   }
 
-  public loadServers() {
-    this.restProvider.getServers().then((data) => {
+  public loadServers(searchTerm = null) {
+    this.restProvider.getServers(searchTerm).then((data) => {
       this.servers = data['servers'];
     });
   }
 
   public refresh(refresher) {
+
     this.loadServers();
     refresher.complete();
   }
@@ -35,6 +37,14 @@ export class ServersPage {
     if (confirm('Möchten Sie den Server ' + server.name + ' wirklich unwiederuflich löschen?')) {
       this.restProvider.delete(server.id).then((data) => this.loadServers());
     }
+  }
+
+  search(ev) {
+    this._search = true;
+    // Reset items back to all of the items
+
+    this.loadServers(ev.target.value);
+
   }
 
 }

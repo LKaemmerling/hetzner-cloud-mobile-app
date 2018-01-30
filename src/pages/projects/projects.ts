@@ -9,9 +9,10 @@ import {project} from "../../models/project/project";
   templateUrl: 'projects.html'
 })
 export class ProjectsPage {
+  public _projects = [];
 
   constructor(public project: ProjectsService, public modal: ModalController) {
-    //alert(this.project.)
+    this._projects = project.projects;
   }
 
   openProjectModal() {
@@ -20,6 +21,26 @@ export class ProjectsPage {
 
   select(project: project, slidingItem: ItemSliding) {
     this.project.selectProject(project);
+    slidingItem.close();
+  }
+
+  search(ev) {
+    // Reset items back to all of the items
+    this._projects = this.project.projects;
+
+    // set val to the value of the ev target
+    var val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this._projects = this._projects.filter((item) => {
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+
+  public delete(project: project, slidingItem: ItemSliding) {
+    this.project.removeProject(project);
     slidingItem.close();
   }
 }

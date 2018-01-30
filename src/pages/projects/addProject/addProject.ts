@@ -20,6 +20,10 @@ export class addProjectModal {
 
     this.project.addProject(new project(this.project_name, this.api_key));
     this.project.saveProjects();
+    if (this.project.projects.length == 1) {
+      this.project.selectProject(this.project.projects[0]);
+    }
+
     this.dismiss();
   }
 
