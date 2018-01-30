@@ -111,4 +111,16 @@ export class RestProvider {
       });
     });
   }
+
+  delete(serverId){
+    return new Promise(resolve => {
+      this.http.delete(this.apiUrl + '/servers/' + serverId, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 }

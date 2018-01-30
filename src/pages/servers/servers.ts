@@ -31,4 +31,10 @@ export class ServersPage {
     this.navCtrl.push(ServerPage, {server: server});
   }
 
+  public delete(server) {
+    if (confirm('Möchten Sie den Server ' + server.name + ' wirklich unwiederuflich löschen?')) {
+      this.restProvider.delete(server.id).then((data) => this.loadServers());
+    }
+  }
+
 }
