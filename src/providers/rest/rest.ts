@@ -27,4 +27,52 @@ export class RestProvider {
       });
     });
   }
+
+  getServer(serverId) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/servers/' + serverId, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  powerOn(serverId) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/poweron', {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  powerOff(serverId) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/poweroff', {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  reboot(serverId) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/reboot', {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 }

@@ -17,6 +17,7 @@ import {addProjectModal} from "../pages/projects/addProject/addProject";
 import {ServersPage} from "../pages/servers/servers";
 import {RestProvider} from '../providers/rest/rest';
 import {Pro} from '@ionic/pro';
+import {ServerPage} from "../pages/server/server";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.1"
@@ -52,7 +53,8 @@ export class MyErrorHandler implements ErrorHandler {
     TabsPage,
     ProjectsPage,
     addProjectModal,
-    ServersPage
+    ServersPage,
+    ServerPage
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ export class MyErrorHandler implements ErrorHandler {
     TabsPage,
     ProjectsPage,
     addProjectModal,
-    ServersPage
+    ServersPage,
+    ServerPage
   ],
   providers: [
     StatusBar,

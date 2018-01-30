@@ -1,8 +1,8 @@
 {
   "name": "hetzner-cloud-app",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Lukas Kämmerling",
+  "homepage": "https://lk-development.de/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

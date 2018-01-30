@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{server.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list inset>
+    <ion-list-header>
+      Status:
+    </ion-list-header>
+    <ion-item>
+    <div item-start="">
+      <ion-item>
+        <ion-label>Power On:</ion-label>
+        <ion-toggle [(ngModel)]="powerOn" (ionChange)="toggleStatus()"></ion-toggle>
+      </ion-item>
+    </div>
+      <div item-end="">
+         <svg class="server-status-indicator "
+              [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}"
+              height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+            <circle class="server-status-indicator__back ng-trigger ng-trigger-serverState-backCircle" cx="25" cy="25"
+                    r="25"></circle>
+            <circle class="server-status-indicator__front ng-trigger ng-trigger-serverState-frontCircle" cx="25" cy="25"
+                    r="25"></circle>
+         </svg>
+      </div>
+    </ion-item>
+    <ion-list-header>
+      Network:
+    </ion-list-header>
+    <ion-item>
+    <div item-start="">
+      IPv4:
+    </div>
+      <div item-end="">
+      {{ server.public_net.ipv4.ip}}
+      </div>
+    </ion-item>
+    <ion-item>
+    <div item-start="">
+      IPv6:
+    </div>
+      <div item-end="">
+      {{ server.public_net.ipv6.ip}}
+      </div>
+    </ion-item>
+    <ion-list-header>
+      Server Type:
+    </ion-list-header>
+    <ion-item>
+    <div item-start="">
+      Cores:
+    </div>
+      <div item-end="">
+      {{ server.server_type.cores}}
+      </div>
+    </ion-item>
+    <ion-item>
+    <div item-start="">
+      RAM:
+    </div>
+      <div item-end="">
+      {{ server.server_type.memory * 1024 }} MB
+      </div>
+    </ion-item>
+    <ion-item>
+    <div item-start="">
+      Disk:
+    </div>
+      <div item-end="">
+      {{ server.server_type.disk}} GB
+      </div>
+    </ion-item>
+    <ion-item>
+    <div item-start="">
+      Storage:
+    </div>
+      <div item-end="">
+      {{ server.server_type.storage_type}}
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
