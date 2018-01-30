@@ -10,10 +10,12 @@ import {RestProvider} from "../../providers/rest/rest";
 export class ServerPage {
   public server;
   public powerOn = true;
+  public rescueMode = false;
 
   constructor(public navCtrl: NavController, public project: ProjectsService, public restProvider: RestProvider, public navParams: NavParams) {
     this.server = navParams.get('server');
     this.powerOn = (this.server.status == 'running');
+    this.rescueMode = this.server.rescue_enabled;
   }
 
   public refresh(refresher) {
@@ -25,12 +27,20 @@ export class ServerPage {
   }
 
   public toggleStatus() {
-    if (this.powerOn) {
-      this.restProvider.powerOff(this.server.id);
+    if (!this.powerOn) {
+      this.restProvider.shutdown(this.server.id);
     } else {
       this.restProvider.powerOn(this.server.id);
     }
-    this.powerOn = !this.powerOn;
+    //this.powerOn = !this.powerOn;
   }
 
+  public toggleRescueMode() {
+    if (!this.rescueMode) {
+      this.restProvider.disable_rescue(this.server.id);
+    } else {
+      this.restProvider.enable_rescue(this.server.id);
+    }
+    //this.rescueMode = !this.rescueMode;
+  }
 }

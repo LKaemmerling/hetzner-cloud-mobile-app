@@ -42,7 +42,19 @@ export class RestProvider {
 
   powerOn(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/poweron', {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/poweron', {}, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  shutdown(serverId) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/shutdown', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -54,7 +66,31 @@ export class RestProvider {
 
   powerOff(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/poweroff', {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/poweroff', {}, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  enable_rescue(serverId) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/enable_rescue', {}, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  disable_rescue(serverId) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/disable_rescue', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -66,7 +102,7 @@ export class RestProvider {
 
   reboot(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/reboot', {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/reboot', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
