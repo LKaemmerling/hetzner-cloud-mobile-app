@@ -9,7 +9,7 @@
       <button ion-item="" (click)="openProjectsPage()" menuClose="">
         Projekte
       </button>
-      <button ion-item *ngIf="projects.actual_project != null" menuClose="">
+      <button ion-item *ngIf="projects.actual_project != null" (click)="openServersPage()"  menuClose="">
         Server
       </button>
       <button ion-item (click)="openAboutPage()" menuClose="" style="position: fixed; bottom:0; text-align: center;font-size:12px;">

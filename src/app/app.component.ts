@@ -8,6 +8,7 @@ import {ProjectsService} from "../models/project/ProjectsService";
 import {HomePage} from "../pages/home/home";
 import {ProjectsPage} from "../pages/projects/projects";
 import {AboutPage} from "../pages/about/about";
+import {ServersPage} from "../pages/servers/servers";
 
 @Component({
   templateUrl: 'app.html'
@@ -31,5 +32,8 @@ export class MyApp {
   }
   openAboutPage() {
     this.nav.setRoot(AboutPage);
+  }
+  openServersPage() {
+    this.nav.setRoot(ServersPage);
   }
 }

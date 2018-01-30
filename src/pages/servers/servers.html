@@ -1,18 +1,39 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
-    <ion-title>Servers</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Server des Projekts "{{project.actual_project.name}}"</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item-sliding *ngFor="let server of servers"
+                      #slidingItem>
+      <ion-item>
+        <h2>{{ server.name }}</h2>
+        <p>{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{ server.datacenter.name }} / {{ server.public_net.ipv4.ip }}</p>
+        <ion-thumbnail item-end>
+          <svg class="server-status-indicator " [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}" height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+            <circle class="server-status-indicator__back ng-trigger ng-trigger-serverState-backCircle" cx="25" cy="25" r="25"></circle>
+            <circle class="server-status-indicator__front ng-trigger ng-trigger-serverState-frontCircle" cx="25" cy="25" r="25"></circle>
+          </svg>
+        </ion-thumbnail>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
 import {project} from "../../../models/project/project";
 import {ViewController} from "ionic-angular";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'modal-addProject',
@@ -16,6 +17,7 @@ export class addProjectModal {
   }
 
   public saveProject() {
+
     this.project.addProject(new project(this.project_name, this.api_key));
     this.project.saveProjects();
     this.dismiss();
