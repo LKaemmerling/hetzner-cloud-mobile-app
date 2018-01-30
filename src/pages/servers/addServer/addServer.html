@@ -43,7 +43,7 @@
     <ion-item>
       <ion-label>SSH Keys:</ion-label>
       <ion-select [(ngModel)]="ssh_key"  multiple="true">
-        <ion-option *ngFor="let _ssh_key of ssh_keys" [value]="_ssh_key.id">{{ _ssh_key.description }}</ion-option>
+        <ion-option *ngFor="let _ssh_key of ssh_keys" [value]="_ssh_key.id">{{ _ssh_key.name }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
