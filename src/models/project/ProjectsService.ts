@@ -34,6 +34,9 @@ export class ProjectsService {
   }
 
   public addProject(project: project) {
+    if (this.projects.length == 0) {
+      this.projects = [];
+    }
     this.projects.push(project);
   }
 }
