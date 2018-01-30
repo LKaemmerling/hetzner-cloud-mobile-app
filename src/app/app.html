@@ -1,1 +1,23 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Hetzner Cloud App</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item="" (click)="openProjectsPage()" menuClose="">
+        Projekte
+      </button>
+      <button ion-item *ngIf="projects.actual_project != null" menuClose="">
+        Server
+      </button>
+      <button ion-item (click)="openAboutPage()" menuClose="" style="position: fixed; bottom:0; text-align: center;font-size:12px;">
+        Über diese App
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+
+

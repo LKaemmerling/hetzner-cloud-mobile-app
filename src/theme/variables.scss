@@ -40,7 +40,12 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222
 );
-
+.toolbar-background {
+  background-color: #E12C31 !important;
+}
+.toolbar-title, .bar-button-menutoggle{
+  color:#ffffff !important;
+}
 
 // App iOS Variables
 // --------------------------------------------------
@@ -86,3 +91,4 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+

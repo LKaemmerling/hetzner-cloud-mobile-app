@@ -1,15 +1,20 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import {NgModule, ErrorHandler} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {MyApp} from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import {AboutPage} from '../pages/about/about';
+import {ContactPage} from '../pages/contact/contact';
+import {HomePage} from '../pages/home/home';
+import {TabsPage} from '../pages/tabs/tabs';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {IonicStorageModule} from '@ionic/storage';
+import {ProjectModule} from "../models/project/project.module";
+import {ProjectsPage} from "../pages/projects/projects";
+import {addProjectModal} from "../pages/projects/addProject/addProject";
+
 
 @NgModule({
   declarations: [
@@ -17,11 +22,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ProjectsPage,
+    addProjectModal,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    ProjectModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +38,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ProjectsPage,
+    addProjectModal,
   ],
   providers: [
     StatusBar,
@@ -37,4 +48,5 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
-export class AppModule {}
+export class AppModule {
+}
