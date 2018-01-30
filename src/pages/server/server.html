@@ -16,71 +16,72 @@
       Information:
     </ion-list-header>
     <ion-item>
-      <div item-start="">
 
-        <ion-label>Power On:</ion-label>
-        <ion-toggle [(ngModel)]="powerOn" (ionChange)="toggleStatus()"></ion-toggle>
+      <ion-label>Power On:</ion-label>
+      <ion-toggle [(ngModel)]="powerOn" (ionChange)="toggleStatus()" [checked]="powerOn"></ion-toggle>
 
-      </div>
-      <div item-end="">
-        <svg class="server-status-indicator "
-             [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}"
-             height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
-          <circle class="server-status-indicator__back ng-trigger ng-trigger-serverState-backCircle" cx="25" cy="25"
-                  r="25"></circle>
-          <circle class="server-status-indicator__front ng-trigger ng-trigger-serverState-frontCircle" cx="25" cy="25"
-                  r="25"></circle>
-        </svg>
-      </div>
     </ion-item>
     <ion-item>
-      <div item-start="">
-        Image
+
+      <span item-left>Status:</span>
+
+      <svg class="server-status-indicator" item-right
+           [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}"
+           height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+        <circle class="server-status-indicator__back ng-trigger ng-trigger-serverState-backCircle" cx="25" cy="25"
+                r="25"></circle>
+        <circle class="server-status-indicator__front ng-trigger ng-trigger-serverState-frontCircle" cx="25" cy="25"
+                r="25"></circle>
+      </svg>
+
+    </ion-item>
+    <ion-item>
+      <div item-left="">
+        Image:
       </div>
-      <div item-end="">
+      <div item-right="">
         {{ server.image.name}}
       </div>
     </ion-item>
     <ion-item>
-      <div item-start="">
 
-        <ion-label>Rescue Mode:</ion-label>
-        <ion-toggle [(ngModel)]="rescueMode" (ionChange)="toggleRescueMode()"></ion-toggle>
+      <ion-label item-left>Rescue Mode:</ion-label>
+      <ion-toggle [(ngModel)]="rescueMode" (ionChange)="toggleRescueMode()" item-right=""
+                  [checked]="rescueMode"></ion-toggle>
 
-      </div>
     </ion-item>
     <ion-list-header>
       Network:
     </ion-list-header>
     <ion-item>
-      <div item-start="">
+      <div item-left="">
         IPv4:
       </div>
-      <div item-end="">
+      <div item-right="">
         {{ server.public_net.ipv4.ip}}
       </div>
     </ion-item>
     <ion-item>
-      <div item-start="">
+      <div item-left="">
         IPv6:
       </div>
-      <div item-end="">
+      <div item-right="">
         {{ server.public_net.ipv6.ip}}
       </div>
     </ion-item>
     <ion-item>
-      <div item-start="">
+      <div item-left="">
         Outgoing Traffic:
       </div>
-      <div item-end="">
+      <div item-right="">
         {{ server.outgoing_traffic | fileSize}}
       </div>
     </ion-item>
     <ion-item>
-      <div item-start="">
+      <div item-left="">
         Ingoing Traffic:
       </div>
-      <div item-end="">
+      <div item-right="">
         {{ server.ingoing_traffic | fileSize}}
       </div>
     </ion-item>
@@ -88,34 +89,34 @@
       Server Type:
     </ion-list-header>
     <ion-item>
-      <div item-start="">
+      <div item-left="">
         Cores:
       </div>
-      <div item-end="">
+      <div item-right="">
         {{ server.server_type.cores}}
       </div>
     </ion-item>
     <ion-item>
-      <div item-start="">
+      <div item-left="">
         RAM:
       </div>
-      <div item-end="">
+      <div item-right="">
         {{ server.server_type.memory * 1024 }} MB
       </div>
     </ion-item>
     <ion-item>
-      <div item-start="">
+      <div item-left="">
         Disk:
       </div>
-      <div item-end="">
+      <div item-right="">
         {{ server.server_type.disk}} GB
       </div>
     </ion-item>
     <ion-item>
-      <div item-start="">
+      <div item-left="">
         Storage:
       </div>
-      <div item-end="">
+      <div item-right="">
         {{ server.server_type.storage_type}}
       </div>
     </ion-item>

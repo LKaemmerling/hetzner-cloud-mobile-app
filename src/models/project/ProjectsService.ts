@@ -42,7 +42,7 @@ export class ProjectsService {
 
   public removeProject(project: project) {
     var tmp = [];
-    if (this.actual_project.api_key == project.api_key) {
+    if (this.actual_project == null || (this.actual_project.api_key == project.api_key)) {
       this.actual_project = null;
     }
     this.projects.forEach((_project, key) => {
