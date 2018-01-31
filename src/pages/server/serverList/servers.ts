@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {ModalController, NavController} from 'ionic-angular';
 import {ProjectsService} from "../../../models/project/ProjectsService";
-import {RestProvider} from "../../../providers/rest/rest";
 import {ServerPage} from "../server";
 import {addServerModal} from "../addServer/addServer";
+import {ServerApiProvider} from "../../../providers/server-api/server-api";
 
 @Component({
   selector: 'page-servers',
@@ -14,12 +14,12 @@ export class ServersPage {
   public servers;
   public _search = false;
 
-  constructor(public navCtrl: NavController, public project: ProjectsService, public restProvider: RestProvider, public modal: ModalController) {
+  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController) {
     this.loadServers();
   }
 
   public loadServers(searchTerm = null) {
-    this.restProvider.getServers(searchTerm).then((data) => {
+    this.serverApiProvider.getServers(searchTerm).then((data) => {
       this.servers = data['servers'];
     });
   }
@@ -36,7 +36,7 @@ export class ServersPage {
 
   public delete(server) {
     if (confirm('Möchten Sie den Server ' + server.name + ' wirklich unwiederuflich löschen?')) {
-      this.restProvider.delete(server.id).then((data) => this.loadServers());
+      this.serverApiProvider.delete(server.id).then((data) => this.loadServers());
     }
   }
 

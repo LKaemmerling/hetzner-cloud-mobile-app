@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
 import {App, NavController, NavParams, ViewController} from "ionic-angular";
-import {RestProvider} from "../../../providers/rest/rest";
+import {ServerApiProvider} from "../../../providers/server-api/server-api";
 
 
 @Component({
@@ -11,29 +11,29 @@ import {RestProvider} from "../../../providers/rest/rest";
 export class rescueModeModal {
   public server: any;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public rest: RestProvider, public navParams: NavParams, public navCtrl: NavController, public appCtrl: App) {
+  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public appCtrl: App) {
     this.server = navParams.get('server');
   }
 
 
   public rescueActivate() {
-    this.rest.enable_rescue(this.server.id);
+    this.serverApiProvider.enable_rescue(this.server.id);
     this.viewCtrl.dismiss();
   }
 
   public rescueActivateAndReset() {
-    this.rest.enable_rescue(this.server.id);
-    this.rest.reset(this.server.id);
+    this.serverApiProvider.enable_rescue(this.server.id);
+    this.serverApiProvider.reset(this.server.id);
     this.viewCtrl.dismiss();
   }
 
   public resetRootpassword() {
-    this.rest.resetPassword(this.server.id);
+    this.serverApiProvider.resetPassword(this.server.id);
     this.viewCtrl.dismiss();
   }
 
   public powerOff() {
-    this.rest.powerOff(this.server.id);
+    this.serverApiProvider.powerOff(this.server.id);
     this.viewCtrl.dismiss();
   }
 

@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
 import {App, NavController, NavParams, ViewController} from "ionic-angular";
-import {RestProvider} from "../../../providers/rest/rest";
+import {ServerApiProvider} from "../../../providers/server-api/server-api";
+import {ImageApiProvider} from "../../../providers/image-api/image-api";
 
 
 @Component({
@@ -14,44 +15,44 @@ export class backupSettingsModal {
   public images: Array<any>;
   public image: any = null;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public rest: RestProvider, public navParams: NavParams, public navCtrl: NavController, public appCtrl: App) {
+  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public imageApiProvider: ImageApiProvider) {
     this.server = navParams.get('server');
     this.backup_window = this.server.backup_window;
-    this.rest.getImages().then((data) => {
+    this.imageApiProvider.getImages().then((data) => {
       this.images = data['images'];
     })
   }
 
 
   public disable_backups() {
-    this.rest.disable_backups(this.server.id);
+    this.serverApiProvider.disable_backups(this.server.id);
     this.server.backup_window = null;
     this.viewCtrl.dismiss();
   }
 
   public enable_backups() {
     if (this.backup_window != null) {
-      this.rest.enable_backups(this.server.id, this.backup_window);
+      this.serverApiProvider.enable_backups(this.server.id, this.backup_window);
       this.server.backup_window = this.backup_window;
     }
     this.viewCtrl.dismiss();
   }
 
   public create_snapshot() {
-    this.rest.create_snapshot(this.server.id);
-    this.rest.getImages().then((data) => {
+    this.serverApiProvider.create_snapshot(this.server.id);
+    this.imageApiProvider.getImages().then((data) => {
       this.images = data['images'];
     });
   }
   public create_backup() {
-    this.rest.create_backup(this.server.id);
-    this.rest.getImages().then((data) => {
+    this.serverApiProvider.create_backup(this.server.id);
+    this.imageApiProvider.getImages().then((data) => {
       this.images = data['images'];
     });
   }
   public rebuild_from_image() {
     if (this.image != null) {
-      this.rest.rebuild(this.server.id, this.image.id);
+      this.serverApiProvider.rebuild(this.server.id, this.image.id);
     }
     this.viewCtrl.dismiss();
   }

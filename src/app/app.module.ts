@@ -1,6 +1,6 @@
-import {NgModule, ErrorHandler, Injectable, Injector, Pipe, PipeTransform} from '@angular/core';
+import {ErrorHandler, Injectable, Injector, NgModule, Pipe, PipeTransform} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AboutPage} from '../pages/about/about';
@@ -15,7 +15,7 @@ import {ProjectModule} from "../models/project/project.module";
 import {ProjectsPage} from "../pages/projects/projects";
 import {addProjectModal} from "../pages/projects/addProject/addProject";
 import {ServersPage} from "../pages/server/serverList/servers";
-import {RestProvider} from '../providers/rest/rest';
+// import {HetznerApiProvider}  from "../providers/hetzner-api/hetzner-api";
 import {Pro} from '@ionic/pro';
 import {ServerPage} from "../pages/server/server";
 import {addServerModal} from "../pages/server/addServer/addServer";
@@ -24,6 +24,14 @@ import {powerSettingsModal} from "../pages/server/powerSettings/powerSettings";
 import {rescueModeModal} from "../pages/server/rescueMode/rescueMode";
 import {resizeServerModal} from "../pages/server/resizeServer/resizeServer";
 import {backupSettingsModal} from "../pages/server/backupSettings/backupSettings";
+import {addFloatingIPModal} from "../pages/floatingIPs/addFloatingIp/addFloatingIP";
+import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
+import {ServerApiProvider} from '../providers/server-api/server-api';
+import {ServerTypeApiProvider} from '../providers/server-type-api/server-type-api';
+import {FloatingIpApiProvider} from '../providers/floating-ip-api/floating-ip-api';
+import { LocationApiProvider } from '../providers/location-api/location-api';
+import { ImageApiProvider } from '../providers/image-api/image-api';
+import { SshKeyApiProvider } from '../providers/ssh-key-api/ssh-key-api';
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.4"
@@ -102,7 +110,9 @@ export class FileSizePipe implements PipeTransform {
     powerSettingsModal,
     rescueModeModal,
     resizeServerModal,
-    backupSettingsModal
+    backupSettingsModal,
+    FloatingIPsPage,
+    addFloatingIPModal,
   ],
   imports: [
     BrowserModule,
@@ -127,13 +137,20 @@ export class FileSizePipe implements PipeTransform {
     powerSettingsModal,
     rescueModeModal,
     resizeServerModal,
-    backupSettingsModal
+    backupSettingsModal,
+    FloatingIPsPage,
+    addFloatingIPModal,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: MyErrorHandler},
-    RestProvider
+    ServerApiProvider,
+    ServerTypeApiProvider,
+    FloatingIpApiProvider,
+    LocationApiProvider,
+    ImageApiProvider,
+    SshKeyApiProvider
   ]
 })
 export class AppModule {

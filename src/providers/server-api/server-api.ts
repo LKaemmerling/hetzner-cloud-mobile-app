@@ -1,20 +1,16 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ProjectsService} from "../../models/project/ProjectsService";
+import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 
 /*
-  Generated class for the RestProvider provider.
+  Generated class for the ServerApiProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class RestProvider {
-  public apiUrl = 'https://api.hetzner.cloud/v1';
+export class ServerApiProvider extends HetznerApiProvider{
 
-  constructor(public http: HttpClient, public projectService: ProjectsService) {
-    console.log('Hello RestProvider Provider');
-  }
 
   getServers(searchTerm = null) {
     return new Promise(resolve => {
@@ -252,74 +248,6 @@ export class RestProvider {
   delete(serverId) {
     return new Promise(resolve => {
       this.http.delete(this.apiUrl + '/servers/' + serverId, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  /**
-   *
-   * Locations
-   */
-
-  getLocations(searchTerm = null) {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/locations' + (searchTerm == null ? '' : '?name=' + searchTerm), {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  /**
-   *
-   * Images
-   */
-
-  getImages(searchTerm = null) {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/images' + (searchTerm == null ? '' : '?name=' + searchTerm), {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  /**
-   *
-   * SSHKeys
-   */
-
-  getSSHKeys(searchTerm = null) {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/ssh_keys' + (searchTerm == null ? '' : '?name=' + searchTerm), {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  /**
-   *
-   * SSHKeys
-   */
-
-  getServerTypes(searchTerm = null) {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/server_types' + (searchTerm == null ? '' : '?name=' + searchTerm), {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);

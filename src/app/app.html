@@ -15,6 +15,9 @@
       <button ion-item *ngIf="projects.actual_project != null" (click)="openServersPage()"  menuClose="">
         Server
       </button>
+      <button ion-item *ngIf="projects.actual_project != null" (click)="openFloatingIPsPage()"  menuClose="">
+        Floating IPs
+      </button>
       <button ion-item (click)="openAboutPage()" menuClose="" style="position: fixed; bottom:0; text-align: center;font-size:12px;">
         Über diese App
       </button>
