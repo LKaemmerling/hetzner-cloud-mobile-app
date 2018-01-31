@@ -18,7 +18,7 @@ export class RestProvider {
 
   getServers(searchTerm = null) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/serverList' + (searchTerm == null ? '' : '?name=' + searchTerm), {
+      this.http.get(this.apiUrl + '/servers' + (searchTerm == null ? '' : '?name=' + searchTerm), {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -30,7 +30,7 @@ export class RestProvider {
 
   getServer(serverId) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/serverList/' + serverId, {
+      this.http.get(this.apiUrl + '/servers/' + serverId, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -42,7 +42,7 @@ export class RestProvider {
 
   createServer(name, server_type, location, start_after_create, image, ssh_keys) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList', {
+      this.http.post(this.apiUrl + '/servers', {
         name: name,
         server_type: server_type,
         location: location,
@@ -62,7 +62,7 @@ export class RestProvider {
   changeServerName(serverId, newName) {
 
     return new Promise(resolve => {
-      this.http.put(this.apiUrl + '/serverList/' + serverId, {
+      this.http.put(this.apiUrl + '/servers/' + serverId, {
         name: newName
       }, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
@@ -76,7 +76,7 @@ export class RestProvider {
 
   changeServerType(serverId, server_type, upgrade_disk) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/change_type', {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/change_type', {
         upgrade_disk: upgrade_disk,
         server_type: server_type,
       }, {
@@ -91,7 +91,7 @@ export class RestProvider {
 
   powerOn(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/poweron', {}, {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/poweron', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -103,7 +103,7 @@ export class RestProvider {
 
   shutdown(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/shutdown', {}, {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/shutdown', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -115,7 +115,7 @@ export class RestProvider {
 
   reset(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/reset', {}, {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/reset', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -127,7 +127,7 @@ export class RestProvider {
 
   resetPassword(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/reset_password', {}, {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/reset_password', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -139,7 +139,7 @@ export class RestProvider {
 
   powerOff(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/poweroff', {}, {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/poweroff', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -151,7 +151,7 @@ export class RestProvider {
 
   enable_rescue(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/enable_rescue', {}, {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/enable_rescue', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -163,7 +163,7 @@ export class RestProvider {
 
   disable_rescue(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/disable_rescue', {}, {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/disable_rescue', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -175,7 +175,7 @@ export class RestProvider {
 
   disable_backups(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/disable_backups', {}, {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/disable_backups', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -187,8 +187,46 @@ export class RestProvider {
 
   enable_backups(serverId, backup_window) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/enable_backups', {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/enable_backups', {
         backup_window: backup_window
+      }, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  create_snapshot(serverId) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/create_image', {}, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  create_backup(serverId) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/create_image', {type: 'backup'}, {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  rebuild(serverId, imageId) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/rebuild', {
+        image: imageId
       }, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
@@ -201,7 +239,7 @@ export class RestProvider {
 
   reboot(serverId) {
     return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/serverList/' + serverId + '/actions/reboot', {}, {
+      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/reboot', {}, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);
@@ -213,7 +251,7 @@ export class RestProvider {
 
   delete(serverId) {
     return new Promise(resolve => {
-      this.http.delete(this.apiUrl + '/serverList/' + serverId, {
+      this.http.delete(this.apiUrl + '/servers/' + serverId, {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
       }).subscribe(data => {
         resolve(data);

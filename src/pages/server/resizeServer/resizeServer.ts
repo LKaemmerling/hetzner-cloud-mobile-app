@@ -26,7 +26,9 @@ export class resizeServerModal {
 
 
   public resizeServer() {
-    this.rest.changeServerType(this.server.id, this.server_type.id, this.upgrade_disk);
+    if (this.server_type != null) {
+      this.rest.changeServerType(this.server.id, this.server_type.id, this.upgrade_disk);
+    }
     this.viewCtrl.dismiss();
   }
 

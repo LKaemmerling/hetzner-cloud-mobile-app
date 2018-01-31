@@ -30,6 +30,7 @@
 
         Durch das Aktivieren des Backups entstehen monatlich wiederkehrende Kosten von 20 % des Server-Tarifs.<br/>
       </p>
+      <button ion-button="" color="danger" (click)="create_backup()">Jetzt Backup kostenpflichtig erstellen</button>
       <button (click)="disable_backups()" ion-button color="danger" *ngIf="server.backup_window != null">Backups
         deaktivieren
       </button>
@@ -51,5 +52,54 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+  <ion-card>
+    <ion-card-header>
+      SNAPSHOT
+    </ion-card-header>
+    <ion-card-content>
+      <p>
 
+        Snapshots sind sofortige Kopien der Festplatten Ihres Servers.<br/>
+
+        Sie können neue Server aus Snapshots erstellen oder diese zwischen Projekten verschieben.<br/>
+
+        Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie einen Snapshot erstellen, um sicherzustellen dass die
+        Daten auf der Festplatte konsistent sind.<br/>
+
+        Snapshots erzeugen monatlich wiederkehrende Kosten von 0,0119 €/GB/Monat (inkl. 19 % USt.).<br/>
+      </p>
+      <ion-list>
+        <ion-item>
+          <button ion-button="" color="danger" (click)="create_snapshot()">Snapshot kostenpflichtig erstellen</button>
+
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      REBUILD
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Bei einem Rebuild wird Ihr Server ausgeschaltet und die Festplatte mit dem ausgewählten Image
+        überschrieben.<br/>
+
+        Alle bestehenden Daten auf der Festplatte werden überschrieben!
+      </p>
+      <ion-list>
+        <ion-item>
+          <ion-label>Image</ion-label>
+          <ion-select [(ngModel)]="image" required="">
+            <ion-option *ngFor="let _image of images" [value]="image">
+              {{ _image.description }} (Typ: {{ _image.type }})
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <button ion-button="" color="danger" (click)="rebuild_from_image()">REBUILD</button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
