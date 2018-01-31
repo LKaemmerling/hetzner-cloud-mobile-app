@@ -12,3 +12,10 @@ cd hetzner-cloud-mobile-app
 ionic serve
 ```
 Nun sollte sich der Standardbrowser öffnen und unter https://localhost:8100 erscheint die App nun.
+
+
+## Sicherheit
+Sollten Sie irgendwelche Sicherheitsfehler finden so wenden Sie sich doch bitte per E-Mail an apps@lk-development.de
+
+## Lizenz
+Die App wird als OpenSource unter der [MIT Lizenz](LICENSE.md) entwickelt.
