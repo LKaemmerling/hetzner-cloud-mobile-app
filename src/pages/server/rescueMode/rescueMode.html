@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Rescue Modus Einstellungen
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      RESCUE
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+
+        Wenn Sie das Rescue-System aktivieren, wird Ihr Server beim nächsten Neustart automatisch über das Netzwerk in
+        das Rescue-System booten. Sie können das Rescue-System anschließend solange verwenden wie Sie es benötigen.<br/>
+        <br/>
+
+        Der Auftrag für das Rescue-System bleibt 60 Minuten aktiviert. Wenn Sie danach Ihren Server neu starten, wird
+        wieder Ihr gewohntes System von der Festplatte gestartet.<br/><br/>
+      </p>
+      <button (click)="rescueActivate()" ion-button color="danger">RESCUE AKTIVIEREN</button>
+      <button (click)="rescueActivateAndReset()" ion-button color="danger">RESCUE AKTIVIEREN & RESET</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

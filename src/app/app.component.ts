@@ -7,7 +7,7 @@ import {ProjectsService} from "../models/project/ProjectsService";
 import {HomePage} from "../pages/home/home";
 import {ProjectsPage} from "../pages/projects/projects";
 import {AboutPage} from "../pages/about/about";
-import {ServersPage} from "../pages/servers/servers";
+import {ServersPage} from "../pages/server/serverList/servers";
 import {Storage} from "@ionic/storage";
 
 @Component({
@@ -29,6 +29,9 @@ export class MyApp {
       });
 
     });
+  }
+  openHomePage() {
+    this.nav.setRoot(HomePage);
   }
 
   openProjectsPage() {

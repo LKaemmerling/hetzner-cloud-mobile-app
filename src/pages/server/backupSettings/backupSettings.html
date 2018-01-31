@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Backup Einstellungen
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      BACKUPS
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+
+        Backups sind automatische Kopien der Festplatte Ihres Servers.<br/><br/>
+
+        Jeder Server erhält 7 Slots für Backups. Wenn alle Slots belegt sind und ein neues Backup gestartet wird, wird
+        automatisch das älteste Backup gelöscht.<br/><br/>
+
+        Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie ein manuelles Backup erstellen, um sicherzustellen,
+        dass die Daten auf der Festplatte konsistent sind.<br/><br/>
+
+        Durch das Aktivieren des Backups entstehen monatlich wiederkehrende Kosten von 20 % des Server-Tarifs.<br/>
+      </p>
+      <button (click)="disable_backups()" ion-button color="danger" *ngIf="server.backup_window != null">Backups
+        deaktivieren
+      </button>
+      <ion-list>
+        <ion-item>
+          <ion-label>Backups zwischen</ion-label>
+          <ion-select [(ngModel)]="backup_window" required="" *ngIf="server.backup_window == null">
+            <ion-option value="22-02">22 Uhr und 02 Uhr</ion-option>
+            <ion-option value="02-06">02 Uhr und 06 Uhr</ion-option>
+            <ion-option value="06-10">06 Uhr und 10 Uhr</ion-option>
+            <ion-option value="10-14">10 Uhr und 14 Uhr</ion-option>
+            <ion-option value="14-18">14 Uhr und 18 Uhr</ion-option>
+            <ion-option value="18-22">18 Uhr und 22 Uhr</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <button ion-button="" color="danger" (click)="enable_backups()">Kostenpflicht Backups konfigurieren</button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

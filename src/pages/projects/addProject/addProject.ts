@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
 import {project} from "../../../models/project/project";
 import {ViewController} from "ionic-angular";
-import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'modal-addProject',

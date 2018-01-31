@@ -14,11 +14,16 @@ import {IonicStorageModule} from '@ionic/storage';
 import {ProjectModule} from "../models/project/project.module";
 import {ProjectsPage} from "../pages/projects/projects";
 import {addProjectModal} from "../pages/projects/addProject/addProject";
-import {ServersPage} from "../pages/servers/servers";
+import {ServersPage} from "../pages/server/serverList/servers";
 import {RestProvider} from '../providers/rest/rest';
 import {Pro} from '@ionic/pro';
 import {ServerPage} from "../pages/server/server";
-import {addServerModal} from "../pages/servers/addServer/addServer";
+import {addServerModal} from "../pages/server/addServer/addServer";
+import {editServerModal} from "../pages/server/editServer/editServer";
+import {powerSettingsModal} from "../pages/server/powerSettings/powerSettings";
+import {rescueModeModal} from "../pages/server/rescueMode/rescueMode";
+import {resizeServerModal} from "../pages/server/resizeServer/resizeServer";
+import {backupSettingsModal} from "../pages/server/backupSettings/backupSettings";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.4"
@@ -92,7 +97,12 @@ export class FileSizePipe implements PipeTransform {
     ServersPage,
     ServerPage,
     FileSizePipe,
-    addServerModal
+    addServerModal,
+    editServerModal,
+    powerSettingsModal,
+    rescueModeModal,
+    resizeServerModal,
+    backupSettingsModal
   ],
   imports: [
     BrowserModule,
@@ -112,7 +122,12 @@ export class FileSizePipe implements PipeTransform {
     addProjectModal,
     ServersPage,
     ServerPage,
-    addServerModal
+    addServerModal,
+    editServerModal,
+    powerSettingsModal,
+    rescueModeModal,
+    resizeServerModal,
+    backupSettingsModal
   ],
   providers: [
     StatusBar,

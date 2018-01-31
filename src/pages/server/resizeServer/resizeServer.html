@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Server Upgrade
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      UPGRADE
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+
+        Sie benötigen mehr Performance? Upgraden Sie Ihren Server. Ein Upgrade vergrössert das Dateisystem und die Disk
+        Ihres Servers.
+
+        Es ist nicht möglich in einen Tarif mit kleinerer Disk zu wechseln.
+
+        Sie müssen Ihren Server ausschalten um ein Upgrade durchzuführen.
+
+        Ein Upgrade dauert typischerweise nur wenige Minuten.
+      </p>
+      <ion-list>
+        <ion-item>
+          <ion-label>Server Type:</ion-label>
+          <ion-select [(ngModel)]="server_type" required="">
+            <ion-option *ngFor="let _server_type of server_types" [value]="_server_type"
+                        disabled="{{(_server_type.name == server.server_type.name) || (_server_type.disk < server.server_type.disk )}}">
+              {{ _server_type.description }}
+              {{ _server_type.prices[0].price_monthly.gross | number:'1.2-2' }} € per Monat
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Festplatte vergrößern?</ion-label>
+          <ion-toggle [(ngModel)]="upgrade_disk"></ion-toggle>
+        </ion-item>
+        <ion-item *ngIf="server.status !== 'off'">
+          <p>Der Server muss ausgeschaltet sein, damit ein Upgrade durchgeführt werden kann.</p>
+        </ion-item>
+        <ion-item>
+          <button ion-button color="primary" (click)="resizeServer()" disabled="{{ server.status == 'off' }}">Kostenpflichtig Upgraden</button>
+        </ion-item>
+        <ion-item
+          *ngIf="server_type != null"><strong>{{server_type.description}}</strong><br/>
+          Kerne: {{ server_type.cores }} <br/>RAM:
+          {{ server_type.memory * 1024}} MB<br/>Festplatte:
+          {{ server_type.disk }} GB<br/>
+          Speicher Typ: {{ server_type.storage_type }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

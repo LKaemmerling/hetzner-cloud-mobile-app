@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Projekt hinzufügen
+      Server bearbeiten
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -16,16 +16,12 @@
   <ion-list>
 
     <ion-item>
-      <ion-label fixed>Projektname</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="project_name" required=""></ion-input>
+      <ion-label>Serverbezeichnung</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="server.name" required=""></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>API Token</ion-label>
-      <ion-input type="password" [(ngModel)]="api_key" required=""></ion-input>
-    </ion-item>
-    <ion-item>
-      <button ion-button color="primary" (click)="saveProject()">Projekt speichern</button>
+      <button ion-button color="primary" (click)="updateServer()">Server speichern</button>
     </ion-item>
   </ion-list>
 </ion-content>
