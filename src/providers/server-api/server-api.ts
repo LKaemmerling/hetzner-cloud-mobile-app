@@ -105,4 +105,8 @@ export class ServerApiProvider extends HetznerApiProvider {
   delete(serverId: number) {
     return this._delete('servers/' + serverId);
   }
+
+  changeReverseDNS(serverId: number, ip: string, dns_ptr: string = null) {
+    return this._post('servers/' + serverId + '/actions/change_dns_ptr', {ip: ip, dns_ptr: dns_ptr})
+  }
 }

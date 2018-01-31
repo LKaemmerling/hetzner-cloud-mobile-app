@@ -27,4 +27,15 @@ export class FloatingIpApiProvider extends HetznerApiProvider {
     return this._delete('floating_ips/' + floatingIpId)
   }
 
+  assignToServer(floatingIpId: number, serverId: number) {
+    return this._post('floating_ips/' + floatingIpId + '/actions/assign', {server: serverId})
+  }
+
+  unassign(floatingIpId: number) {
+    return this._post('floating_ips/' + floatingIpId + '/actions/unassign')
+  }
+
+  changeReverseDNS(floatingIpId: number, ip: string, dns_ptr: string = null) {
+    return this._post('floating_ips/' + floatingIpId + '/actions/change_dns_ptr', {ip: ip, dns_ptr: dns_ptr})
+  }
 }
