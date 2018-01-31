@@ -1,5 +1,4 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 
 /*
@@ -9,23 +8,15 @@ import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
   and Angular DI.
 */
 @Injectable()
-export class ImageApiProvider extends HetznerApiProvider{
+export class ImageApiProvider extends HetznerApiProvider {
 
   /**
    *
    * Images
    */
 
-  getImages(searchTerm = null) {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/images' + (searchTerm == null ? '' : '?name=' + searchTerm), {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  getImages(searchTerm: string = null) {
+    return this._get('images' + (searchTerm == null ? '' : '?name=' + searchTerm))
   }
 
 }

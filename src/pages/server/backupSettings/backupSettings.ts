@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
-import {App, NavController, NavParams, ViewController} from "ionic-angular";
+import {NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ImageApiProvider} from "../../../providers/image-api/image-api";
 

@@ -9,6 +9,7 @@ Zum lokalen Test & Entwickeln wird benötigt die NPM & die Ionic CLI.
 npm install -g ionic@latest
 git clone https://github.com/LKDevelopment/hetzner-cloud-mobile-app.git
 cd hetzner-cloud-mobile-app
+npm install
 ionic serve
 ```
 Nun sollte sich der Standardbrowser öffnen und unter https://localhost:8100 erscheint die App nun.

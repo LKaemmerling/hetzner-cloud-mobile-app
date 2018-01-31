@@ -26,13 +26,13 @@ export class addServerModal {
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public serverTypeApiProvider: ServerTypeApiProvider, public imageApiProvider:ImageApiProvider, public locationApiProvider: LocationApiProvider, public sshKeyApiProvider:SshKeyApiProvider) {
     locationApiProvider.getLocations().then((data) => {
       this.locations = data['locations'];
-    })
+    });
     imageApiProvider.getImages().then((data) => {
       this.images = data['images'];
-    })
+    });
     serverTypeApiProvider.getServerTypes().then((data) => {
       this.server_types = data['server_types'];
-    })
+    });
     sshKeyApiProvider.getSSHKeys().then((data) => {
       this.ssh_keys = data['ssh_keys'];
     })

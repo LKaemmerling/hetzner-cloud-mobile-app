@@ -29,12 +29,12 @@ import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
 import {ServerApiProvider} from '../providers/server-api/server-api';
 import {ServerTypeApiProvider} from '../providers/server-type-api/server-type-api';
 import {FloatingIpApiProvider} from '../providers/floating-ip-api/floating-ip-api';
-import { LocationApiProvider } from '../providers/location-api/location-api';
-import { ImageApiProvider } from '../providers/image-api/image-api';
-import { SshKeyApiProvider } from '../providers/ssh-key-api/ssh-key-api';
+import {LocationApiProvider} from '../providers/location-api/location-api';
+import {ImageApiProvider} from '../providers/image-api/image-api';
+import {SshKeyApiProvider} from '../providers/ssh-key-api/ssh-key-api';
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.4"
+  appVersion: "0.0.7"
 });
 
 @Injectable()

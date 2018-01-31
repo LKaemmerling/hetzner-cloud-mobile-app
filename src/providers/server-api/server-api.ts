@@ -1,4 +1,3 @@
-import {HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 
@@ -9,251 +8,101 @@ import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
   and Angular DI.
 */
 @Injectable()
-export class ServerApiProvider extends HetznerApiProvider{
+export class ServerApiProvider extends HetznerApiProvider {
 
 
-  getServers(searchTerm = null) {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/servers' + (searchTerm == null ? '' : '?name=' + searchTerm), {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  getServers(searchTerm: string = null) {
+    return this._get('servers' + (searchTerm == null ? '' : '?name=' + searchTerm))
   }
 
-  getServer(serverId) {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/servers/' + serverId, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  getServer(serverId: number) {
+    return this._get('servers/' + serverId)
   }
 
-  createServer(name, server_type, location, start_after_create, image, ssh_keys) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers', {
-        name: name,
-        server_type: server_type,
-        location: location,
-        start_after_create: start_after_create,
-        image: image,
-        ssh_keys: ssh_keys
-      }, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  createServer(name: string, server_type_id: number, location_id: number, start_after_create: boolean, image_id: number, ssh_keys: Array<number>) {
+    return this._post('servers', {
+      name: name,
+      server_type: server_type_id,
+      location: location_id,
+      start_after_create: start_after_create,
+      image: image_id,
+      ssh_keys: ssh_keys
+    })
   }
 
-  changeServerName(serverId, newName) {
+  changeServerName(serverId: number, newName: string) {
 
-    return new Promise(resolve => {
-      this.http.put(this.apiUrl + '/servers/' + serverId, {
-        name: newName
-      }, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+    return this._put('servers/' + serverId, {
+      name: newName
+    })
   }
 
-  changeServerType(serverId, server_type, upgrade_disk) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/change_type', {
-        upgrade_disk: upgrade_disk,
-        server_type: server_type,
-      }, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  changeServerType(serverId: number, server_type_id: number, upgrade_disk: boolean) {
+    return this._post('servers/' + serverId + '/actions/change_type', {
+      upgrade_disk: upgrade_disk,
+      server_type: server_type_id,
+    })
   }
 
-  powerOn(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/poweron', {}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  powerOn(serverId: number) {
+    return this._post('servers/' + serverId + '/actions/poweron');
   }
 
-  shutdown(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/shutdown', {}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  powerOff(serverId: number) {
+    return this._post('servers/' + serverId + '/actions/poweroff');
   }
 
-  reset(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/reset', {}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  shutdown(serverId: number) {
+    return this._post('servers/' + serverId + '/actions/shutdown');
   }
 
-  resetPassword(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/reset_password', {}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  powerOff(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/poweroff', {}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  enable_rescue(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/enable_rescue', {}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  disable_rescue(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/disable_rescue', {}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  disable_backups(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/disable_backups', {}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  enable_backups(serverId, backup_window) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/enable_backups', {
-        backup_window: backup_window
-      }, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  create_snapshot(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/create_image', {}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  create_backup(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/create_image', {type: 'backup'}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
-
-  rebuild(serverId, imageId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/rebuild', {
-        image: imageId
-      }, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  reset(serverId: number) {
+    return this._post('servers/' + serverId + '/actions/reset');
   }
 
   reboot(serverId) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/servers/' + serverId + '/actions/reboot', {}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
+    return this._post('servers/' + serverId + '/actions/reboot');
+  }
+
+  resetPassword(serverId: number) {
+    return this._post('servers/' + serverId + '/actions/reset_password');
+  }
+
+  enable_rescue(serverId: number) {
+    return this._post('servers/' + serverId + '/actions/enable_rescue');
+  }
+
+  disable_rescue(serverId: number) {
+    return this._post('servers/' + serverId + '/actions/disable_rescue');
+  }
+
+  disable_backups(serverId: number) {
+    return this._post('servers/' + serverId + '/actions/disable_backups');
+  }
+
+  enable_backups(serverId: number, backup_window: string) {
+    return this._post('servers/' + serverId + '/actions/enable_backups', {
+      backup_window: backup_window
     });
   }
 
-  delete(serverId) {
-    return new Promise(resolve => {
-      this.http.delete(this.apiUrl + '/servers/' + serverId, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  create_image(serverId: number, type: string = 'snapshot') {
+    return this._post('servers/' + serverId + '/actions/create_image', {type: type});
+  }
+
+  create_snapshot(serverId: number) {
+    return this.create_image(serverId);
+  }
+
+  create_backup(serverId: number) {
+    return this.create_image(serverId, 'backup')
+  }
+
+  rebuild(serverId: number, imageId: number) {
+    return this._post('servers/' + serverId + '/actions/rebuild', {image: imageId});
+  }
+
+  delete(serverId: number) {
+    return this._delete('servers/' + serverId);
   }
 }

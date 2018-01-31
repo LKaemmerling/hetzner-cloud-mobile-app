@@ -1,4 +1,3 @@
-import {HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 
@@ -9,7 +8,7 @@ import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
   and Angular DI.
 */
 @Injectable()
-export class FloatingIpApiProvider extends HetznerApiProvider{
+export class FloatingIpApiProvider extends HetznerApiProvider {
 
   /**
    *
@@ -17,39 +16,15 @@ export class FloatingIpApiProvider extends HetznerApiProvider{
    */
 
   getFloatingIps() {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/floating_ips', {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+    return this._get('floating_ips')
   }
 
-  createFloatingIp(type, description, server) {
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl + '/floating_ips', {type: type, server: server, description: description}, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  createFloatingIp(type: string, description: string, serverId: number) {
+    return this._post('floating_ips', {type: type, server: serverId, description: description})
   }
 
-  deleteFloatingIp(floatingIp) {
-    return new Promise(resolve => {
-      this.http.delete(this.apiUrl + '/floating_ips/' + floatingIp, {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json'),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
-        console.log(err);
-      });
-    });
+  deleteFloatingIp(floatingIpId: number) {
+    return this._delete('floating_ips/' + floatingIpId)
   }
 
 }
