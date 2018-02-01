@@ -39,3 +39,37 @@
 .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
   color: #ffffff;
 }
+
+.fab {
+  contain: initial;
+}
+
+ion-fab {
+  button {
+    box-shadow: 0 4px 10px #6b6b6b;
+  }
+
+  ion-fab-list button[ion-fab] {
+    text-align: center;
+    overflow: visible;
+
+    div.label {
+      position: absolute;
+      right: 48px;
+      background: rgba(248, 248, 248, 1);
+      height: 24px;
+      line-height: 16px;
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+      color: #000000;
+    }
+  }
+
+  .button-inner {
+    overflow: visible;
+  }
+}

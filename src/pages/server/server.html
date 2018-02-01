@@ -125,18 +125,23 @@
     </button>
     <ion-fab-list side="top">
       <button ion-fab (click)="openEditModal()" color="secondary">
+        <div class="label" color="secondary">Server Namen ändern</div>
         <i class="fas fa-pencil-alt"></i>
       </button>
       <button ion-fab color="secondary" (click)="resizeModal()">
+        <div class="label"  color="secondary">Server upgraden</div>
         <i class="fas fa-expand"></i>
       </button>
       <button ion-fab color="danger" (click)="powerSettingsModal()">
+        <div class="label" color="danger">Power Einstellungen</div>
         <i class="fas fa-power-off"></i>
       </button>
-      <button ion-fab color="light" (click)="backupSettingsModal()">
+      <button ion-fab color="light" (click)="backupSettingsModal()" w>
+        <div class="label" color="light">Backup Einstellungen</div>
         <i class="fas fa-hdd"></i>
       </button>
       <button ion-fab color="light" (click)="rescueModeModal()">
+        <div class="label" color="light">Rescue Modus Einstellungen</div>
         <ion-icon name="help-buoy"></ion-icon>
       </button>
     </ion-fab-list>

@@ -30,6 +30,8 @@ import {ImageApiProvider} from '../providers/image-api/image-api';
 import {SshKeyApiProvider} from '../providers/ssh-key-api/ssh-key-api';
 import {DeleteAllDataPage} from "../pages/delete-all-data/delete-all-data";
 import {PipesModule} from "../pipes/pipes.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {TooltipsModule} from "ionic-tooltips";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.7"
@@ -82,7 +84,9 @@ export class MyErrorHandler implements ErrorHandler {
     IonicStorageModule.forRoot(),
     ProjectModule,
     HttpClientModule,
-    PipesModule
+    PipesModule,
+    BrowserAnimationsModule,
+    TooltipsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
