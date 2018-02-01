@@ -35,10 +35,10 @@
       <button (click)="disable_backups()" ion-button color="danger" *ngIf="server.backup_window != null">Backups
         deaktivieren
       </button>
-      <ion-list>
+      <ion-list *ngIf="server.backup_window == null">
         <ion-item>
           <ion-label>Backups zwischen</ion-label>
-          <ion-select [(ngModel)]="backup_window" required="" *ngIf="server.backup_window == null">
+          <ion-select [(ngModel)]="backup_window" required="">
             <ion-option value="22-02">22 Uhr und 02 Uhr</ion-option>
             <ion-option value="02-06">02 Uhr und 06 Uhr</ion-option>
             <ion-option value="06-10">06 Uhr und 10 Uhr</ion-option>
@@ -70,11 +70,8 @@
         Snapshots erzeugen monatlich wiederkehrende Kosten von 0,0119 €/GB/Monat (inkl. 19 % USt.).<br/>
       </p>
       <p *ngIf="create_snapshot_done === true" class="message_box success">Der Snapshot wurde erfolgreich erstellt.</p>
-      <ion-list>
-        <ion-item>
+
           <button ion-button="" color="danger" (click)="create_snapshot()">Snapshot kostenpflichtig erstellen</button>
-        </ion-item>
-      </ion-list>
     </ion-card-content>
   </ion-card>
   <ion-card>
