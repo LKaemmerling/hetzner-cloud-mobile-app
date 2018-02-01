@@ -34,7 +34,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TooltipsModule} from "ionic-tooltips";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.7"
+  appVersion: "0.0.8"
 });
 
 @Injectable()
