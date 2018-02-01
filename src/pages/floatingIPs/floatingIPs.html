@@ -20,15 +20,15 @@
       </ion-item>
 
       <ion-item-options side="left">
-        <button ion-button color="danger" (click)="delete(_floating_ip,slidingItem)">
+        <button ion-button color="danger" (click)="delete(_floating_ip)">
          <i class="fas fa-trash"></i>
         </button>
       </ion-item-options>
-      <!--<ion-item-options side="right">
-        <button ion-button color="primary" (click)="select(_floating_ip,slidingItem)">
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="openFloatingIP(_floating_ip)">
           <i class="fas fa-info"></i>
         </button>
-      </ion-item-options>-->
+      </ion-item-options>
     </ion-item-sliding>
     <ion-item *ngIf="_floating_ips == null || _floating_ips.length == 0">
       Oh! Es sieht so aus als wäre hier noch keine Floating IPs hinterlegt.

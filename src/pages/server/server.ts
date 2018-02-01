@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ModalController, NavController, NavParams} from 'ionic-angular';
+import {LoadingController, ModalController, NavController, NavParams} from 'ionic-angular';
 import {ProjectsService} from "../../models/project/ProjectsService";
 import {editServerModal} from "./editServer/editServer";
 import {powerSettingsModal} from "./powerSettings/powerSettings";
@@ -7,6 +7,8 @@ import {rescueModeModal} from "./rescueMode/rescueMode";
 import {resizeServerModal} from "./resizeServer/resizeServer";
 import {backupSettingsModal} from "./backupSettings/backupSettings";
 import {ServerApiProvider} from "../../providers/server-api/server-api";
+import {changeIPv4ReverseDNSModal} from "./reverseDNS/ipv4/changeIPv4ReverseDNSModal";
+import {changeIPv6ReverseDNSModal} from "./reverseDNS/ipv6/changeIPv6ReverseDNS";
 
 @Component({
   selector: 'page-server',
@@ -17,7 +19,7 @@ export class ServerPage {
   public powerOn = true;
   public rescueMode = false;
 
-  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
     this.powerOn = (this.server.status == 'running');
     this.rescueMode = this.server.rescue_enabled;
@@ -67,5 +69,24 @@ export class ServerPage {
 
   public backupSettingsModal() {
     this.modalCtrl.create(backupSettingsModal, {server: this.server}).present();
+  }
+
+  public changeIPv4ReverseDNSModal() {
+    this.modalCtrl.create(changeIPv4ReverseDNSModal, {server: this.server}).present();
+  }
+
+  public changeIPv6ReverseDNSModal() {
+    this.modalCtrl.create(changeIPv6ReverseDNSModal, {server: this.server}).present();
+  }
+
+  public delete() {
+    if (confirm('Möchten Sie den Server ' + this.server.name + ' wirklich unwiederuflich löschen?')) {
+      var loader = this.loadingCtrl.create();
+      loader.present();
+      this.serverApiProvider.delete(this.server.id).then((data) => {
+        loader.dismiss();
+        this.navCtrl.setRoot(ServerPage);
+      });
+    }
   }
 }

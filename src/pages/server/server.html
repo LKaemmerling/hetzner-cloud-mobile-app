@@ -56,7 +56,8 @@
         IPv4:
       </div>
       <div item-right="">
-        {{ server.public_net.ipv4.ip}}
+        <span tooltip="{{ server.public_net.ipv4.dns_ptr}}" positionV="top" arrow>{{ server.public_net.ipv4.ip}}</span>
+        <i class="fas fa-pencil-alt" (click)="changeIPv4ReverseDNSModal()"></i>
       </div>
     </ion-item>
     <ion-item>
@@ -65,6 +66,7 @@
       </div>
       <div item-right="">
         {{ server.public_net.ipv6.ip}}
+        <i class="fas fa-pencil-alt" (click)="changeIPv6ReverseDNSModal()"></i>
       </div>
     </ion-item>
     <ion-item>
@@ -124,17 +126,21 @@
       <i class="fas fa-angle-up"></i>
     </button>
     <ion-fab-list side="top">
+      <button ion-fab color="danger">
+        <div class="label" (click)="delet()" color="danger">Server löschen</div>
+        <i class="fas fa-trash"></i>
+      </button>
+      <button ion-fab color="danger" (click)="powerSettingsModal()">
+        <div class="label" color="danger">Power Einstellungen</div>
+        <i class="fas fa-power-off"></i>
+      </button>
       <button ion-fab (click)="openEditModal()" color="secondary">
         <div class="label" color="secondary">Server Namen ändern</div>
         <i class="fas fa-pencil-alt"></i>
       </button>
       <button ion-fab color="secondary" (click)="resizeModal()">
-        <div class="label"  color="secondary">Server upgraden</div>
+        <div class="label" color="secondary">Server upgraden</div>
         <i class="fas fa-expand"></i>
-      </button>
-      <button ion-fab color="danger" (click)="powerSettingsModal()">
-        <div class="label" color="danger">Power Einstellungen</div>
-        <i class="fas fa-power-off"></i>
       </button>
       <button ion-fab color="light" (click)="backupSettingsModal()" w>
         <div class="label" color="light">Backup Einstellungen</div>

@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-title>{{floating_ip.description}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list inset>
+    <ion-list-header>
+      Information:
+    </ion-list-header>
+    <ion-item *ngIf="floating_ip.type == 'ipv4'">
+      <div item-left="">
+        IPv4:
+      </div>
+      <div item-right="">
+        {{ floating_ip.ip }}
+        <i class="fas fa-pencil-alt" (click)="changeIPv4ReverseDNSModal()"></i>
+      </div>
+    </ion-item>
+    <ion-item *ngIf="floating_ip.type == 'ipv6'">
+      <div item-left="">
+        IPv6:
+      </div>
+      <div item-right="">
+        {{ floating_ip.ip }}
+        <i class="fas fa-pencil-alt" (click)="changeIPv6ReverseDNSModal()"></i>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div item-left="">
+        Heimatstandort:
+      </div>
+      <div item-end>
+        {{ floating_ip.home_location.description}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <div item-left="">
+        Zugewiesen zu:
+      </div>
+      <div item-end>
+        <span *ngIf="floating_ip.server == null">-</span>
+        <span *ngIf="floating_ip.server != null && server != null"><a (click)="openServer(server)">{{ server.name }}</a></span>
+        <i class="fas fa-pencil-alt"></i>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary">
+      <i class="fas fa-angle-up"></i>
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab color="danger" (click)="delete()">
+        <div class="label" color="secondary">IP löschen</div>
+        <i class="fas fa-trash"></i>
+      </button>
+      <button ion-fab color="danger" *ngIf="floating_ip.server != null && server != null" (click)="unassign()">
+        <div class="label" color="secondary">Zuweisung löschen</div>
+        <i class="fas fa-cloud"></i>
+      </button>
+      <button ion-fab (click)="openEditFloatingIp()" color="secondary">
+        <div class="label" color="secondary">IP Beschreibung</div>
+        <i class="fas fa-pencil-alt"></i>
+      </button>
+      <!--<button ion-fab color="light">
+        <div class="label" color="light">Zuweisung ändern</div>
+        <i class="fas fa-cloud"></i>
+      </button>-->
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

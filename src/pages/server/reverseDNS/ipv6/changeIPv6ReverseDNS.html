@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      IPv6 Reverse DNS von Server {{ server.name }} bearbeiten
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <i class="fas fa-times" showWhen="android,windows"></i>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngFor="let ipv6 of server.public_net.ipv6.dns_ptr">
+    <ion-item>
+      <ion-label>IP:</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="ipv6.ip"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Reverse DNS:</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="ipv6.dns_ptr"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button="" color="light" (click)="addEntry()">
+    <i class="fas fa-plus"></i> Eintrag hinzufügen
+  </button>
+  <button ion-button color="primary" (click)="saveReverseDNS()">Reverse DNS speichern</button>
+
+</ion-content>

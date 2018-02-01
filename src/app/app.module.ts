@@ -32,6 +32,10 @@ import {DeleteAllDataPage} from "../pages/delete-all-data/delete-all-data";
 import {PipesModule} from "../pipes/pipes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TooltipsModule} from "ionic-tooltips";
+import {changeIPv4ReverseDNSModal} from "../pages/server/reverseDNS/ipv4/changeIPv4ReverseDNSModal";
+import {changeIPv6ReverseDNSModal} from "../pages/server/reverseDNS/ipv6/changeIPv6ReverseDNS";
+import {editFloatingIpModal} from "../pages/floatingIPs/editFloatingIp/editFloatingIp";
+import {FloatingIPPage} from "../pages/floatingIPs/floatingIp/floatingIP";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.8"
@@ -54,7 +58,7 @@ export class MyErrorHandler implements ErrorHandler {
     IonicPro.monitoring.handleNewError(err);
     // Remove this if you want to disable Ionic's auto exception handling
     // in development mode.
-    this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+    //this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
   }
 }
 
@@ -76,6 +80,10 @@ export class MyErrorHandler implements ErrorHandler {
     FloatingIPsPage,
     addFloatingIPModal,
     DeleteAllDataPage,
+    changeIPv4ReverseDNSModal,
+    changeIPv6ReverseDNSModal,
+    editFloatingIpModal,
+    FloatingIPPage
 
   ],
   imports: [
@@ -105,7 +113,11 @@ export class MyErrorHandler implements ErrorHandler {
     backupSettingsModal,
     FloatingIPsPage,
     addFloatingIPModal,
-    DeleteAllDataPage
+    DeleteAllDataPage,
+    changeIPv4ReverseDNSModal,
+    changeIPv6ReverseDNSModal,
+    editFloatingIpModal,
+    FloatingIPPage
   ],
   providers: [
     StatusBar,

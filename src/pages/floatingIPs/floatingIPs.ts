@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../models/project/ProjectsService";
-import {ItemSliding, ModalController} from "ionic-angular";
+import {ItemSliding, ModalController, NavController} from "ionic-angular";
 
 import {addFloatingIPModal} from "./addFloatingIp/addFloatingIP";
 import {FloatingIpApiProvider} from "../../providers/floating-ip-api/floating-ip-api";
+import {FloatingIPPage} from "./floatingIp/floatingIP";
 
 @Component({
   selector: 'page-floatingIPs',
@@ -12,7 +13,7 @@ import {FloatingIpApiProvider} from "../../providers/floating-ip-api/floating-ip
 export class FloatingIPsPage {
   public _floating_ips = [];
 
-  constructor(public project: ProjectsService, public modal: ModalController, public floatingIpApiProvider: FloatingIpApiProvider) {
+  constructor(public project: ProjectsService, public modal: ModalController, public floatingIpApiProvider: FloatingIpApiProvider, public navCtrl: NavController) {
     this.loadFloatingIPs();
   }
 
@@ -24,6 +25,10 @@ export class FloatingIPsPage {
 
   openAddFloatingIP() {
     this.modal.create(addFloatingIPModal).present();
+  }
+
+  openFloatingIP(floatingIp) {
+    this.navCtrl.push(FloatingIPPage, {floating_ip: floatingIp});
   }
 
   public refresh(refresher) {

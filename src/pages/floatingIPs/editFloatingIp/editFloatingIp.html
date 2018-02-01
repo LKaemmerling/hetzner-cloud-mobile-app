@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Floating IP bearbeiten
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <i class="fas fa-times" showWhen="android,windows"></i>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label>IP Beschreibung</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="floatingIp.description" required=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button color="primary" (click)="updateIP()">Floating IP speichern</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
