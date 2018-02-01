@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
-import {ViewController} from "ionic-angular";
+import {LoadingController, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ServerTypeApiProvider} from "../../../providers/server-type-api/server-type-api";
 import {ImageApiProvider} from "../../../providers/image-api/image-api";
@@ -23,7 +23,7 @@ export class addServerModal {
   public images: Array<any>;
   public start_after_create: boolean = true;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public serverTypeApiProvider: ServerTypeApiProvider, public imageApiProvider:ImageApiProvider, public locationApiProvider: LocationApiProvider, public sshKeyApiProvider:SshKeyApiProvider) {
+  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public serverTypeApiProvider: ServerTypeApiProvider, public imageApiProvider: ImageApiProvider, public locationApiProvider: LocationApiProvider, public sshKeyApiProvider: SshKeyApiProvider, public loadingCtrl: LoadingController) {
     locationApiProvider.getLocations().then((data) => {
       this.locations = data['locations'];
     });
@@ -40,9 +40,11 @@ export class addServerModal {
 
 
   public createServer() {
-
+    let loader = this.loadingCtrl.create();
+    loader.present();
     this.serverApiProvider.createServer(this.name, this.server_type.id, this.location, this.start_after_create, this.image, this.ssh_key).then(() => {
       this.dismiss();
+      loader.dismiss();
     });
   }
 
