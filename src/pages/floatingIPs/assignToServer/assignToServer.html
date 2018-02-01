@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Floating IP Server zuweisen
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <i class="fas fa-times" showWhen="android,windows"></i>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Server:</ion-label>
+      <ion-select [(ngModel)]="floatingIp.server" required="">
+        <ion-option *ngFor="let server of servers" [value]="server.id">
+          {{ server.name }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <button ion-button color="primary" (click)="assignToServer()">Zuweisung speichern</button>
+</ion-content>

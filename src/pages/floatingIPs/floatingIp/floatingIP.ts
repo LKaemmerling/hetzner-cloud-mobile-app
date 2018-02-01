@@ -8,6 +8,7 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ServerPage} from "../../server/server";
 import {FloatingIPsPage} from "../floatingIPs";
 import {changeIPv4ReverseDNSModal} from "../../server/reverseDNS/ipv4/changeIPv4ReverseDNSModal";
+import {assignToServerModal} from "../assignToServer/assignToServer";
 
 @Component({
   selector: 'page-floatingIP',
@@ -26,12 +27,25 @@ export class FloatingIPPage {
     }
   }
 
+  public refresh(refresher) {
+    if (this.floating_ip.server !== null) {
+      this.serverApiProvider.getServer(this.floating_ip.server).then((data) => {
+        this.server = data['server']
+        refresher.complete();
+      });
+    }
+  };
+
   public openServer(server) {
     this.navCtrl.push(ServerPage, {server: server});
   }
 
   public openEditFloatingIp() {
     this.modal.create(editFloatingIpModal, {floating_ip: this.floating_ip}).present();
+  }
+
+  public openAssignToServer() {
+    this.modal.create(assignToServerModal, {floating_ip: this.floating_ip}).present();
   }
 
   public changeIPv4ReverseDNSModal() {

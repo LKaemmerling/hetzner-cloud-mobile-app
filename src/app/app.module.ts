@@ -38,6 +38,7 @@ import {editFloatingIpModal} from "../pages/floatingIPs/editFloatingIp/editFloat
 import {FloatingIPPage} from "../pages/floatingIPs/floatingIp/floatingIP";
 import {ImagesPage} from "../pages/images/images";
 import {editImageModal} from "../pages/images/editImage/editImage";
+import {assignToServerModal} from "../pages/floatingIPs/assignToServer/assignToServer";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.8"
@@ -87,7 +88,8 @@ export class MyErrorHandler implements ErrorHandler {
     editFloatingIpModal,
     FloatingIPPage,
     ImagesPage,
-    editImageModal
+    editImageModal,
+    assignToServerModal
 
   ],
   imports: [
@@ -123,7 +125,8 @@ export class MyErrorHandler implements ErrorHandler {
     editFloatingIpModal,
     FloatingIPPage,
     ImagesPage,
-    editImageModal
+    editImageModal,
+    assignToServerModal
   ],
   providers: [
     StatusBar,

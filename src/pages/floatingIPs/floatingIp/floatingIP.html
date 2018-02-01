@@ -46,7 +46,7 @@
       <div item-end>
         <span *ngIf="floating_ip.server == null">-</span>
         <span *ngIf="floating_ip.server != null && server != null"><a (click)="openServer(server)">{{ server.name }}</a></span>
-        <i class="fas fa-pencil-alt"></i>
+        <i class="fas fa-pencil-alt" (click)="openAssignToServer()"></i>
       </div>
     </ion-item>
   </ion-list>
@@ -68,10 +68,10 @@
         <div class="label" color="secondary">IP Beschreibung</div>
         <i class="fas fa-pencil-alt"></i>
       </button>
-      <!--<button ion-fab color="light">
-        <div class="label" color="light">Zuweisung ändern</div>
+      <button ion-fab color="light">
+        <div class="label" color="light" (click)="openAssignToServer()">Zuweisung ändern</div>
         <i class="fas fa-cloud"></i>
-      </button>-->
+      </button>
     </ion-fab-list>
   </ion-fab>
 </ion-content>

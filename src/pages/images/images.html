@@ -27,7 +27,7 @@
           <i class="fas fa-trash"></i>
         </button>
       </ion-item-options>
-      <ion-item-options side="right" *ngIf="image.type != 'system'">
+      <ion-item-options side="right" *ngIf="image.type != 'system'" (click)="openEdit(image)">
         <button ion-button color="secondary">
           <i class="fas fa-pencil"></i>
         </button>
