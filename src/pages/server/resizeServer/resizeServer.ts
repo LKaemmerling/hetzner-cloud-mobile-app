@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
-import {NavController, NavParams, ViewController} from "ionic-angular";
+import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ServerTypeApiProvider} from "../../../providers/server-type-api/server-type-api";
 
@@ -14,7 +14,7 @@ export class resizeServerModal {
   public server_type: any;
   public upgrade_disk: false;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public serverTypeApiProvider: ServerTypeApiProvider) {
+  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public serverTypeApiProvider: ServerTypeApiProvider, public loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
     serverTypeApiProvider.getServerTypes().then((data) => {
       data['server_types'].forEach((type, key) => {
@@ -27,10 +27,15 @@ export class resizeServerModal {
 
 
   public resizeServer() {
+
     if (this.server_type != null) {
-      this.serverApiProvider.changeServerType(this.server.id, this.server_type.id, this.upgrade_disk);
+      var loader = this.loadingCtrl.create();
+      loader.present();
+      this.serverApiProvider.changeServerType(this.server.id, this.server_type.id, this.upgrade_disk).then((data) => {
+        loader.dismiss();
+      });
     }
-    this.viewCtrl.dismiss();
+    this.dismiss();
   }
 
   public dismiss() {

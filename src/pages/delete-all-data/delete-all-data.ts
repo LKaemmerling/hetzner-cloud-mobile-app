@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {LoadingController, NavController} from 'ionic-angular';
 import {Storage} from "@ionic/storage";
 import {ProjectsService} from "../../models/project/ProjectsService";
 import {HomePage} from "../home/home";
@@ -18,13 +18,16 @@ import {HomePage} from "../home/home";
 export class DeleteAllDataPage {
 
 
-  constructor(public navCtrl: NavController, public storage: Storage, public projects: ProjectsService) {
+  constructor(public navCtrl: NavController, public storage: Storage, public projects: ProjectsService, public loadingCtrl: LoadingController) {
   }
 
   deleteAll() {
+    let loader = this.loadingCtrl.create();
+    loader.present();
     this.storage.clear();
     this.projects.loadProjects();
     this.navCtrl.setRoot(HomePage);
+    loader.dismiss();
   }
 
 }
