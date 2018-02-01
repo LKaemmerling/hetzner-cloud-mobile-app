@@ -16,12 +16,12 @@ export class ServersPage {
 
   constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController) {
     this.loadServers();
-    this._search = this.servers;
   }
 
   public loadServers() {
     this.serverApiProvider.getServers().then((data) => {
       this.servers = data['servers'];
+      this._search = this.servers;
     });
   }
 
@@ -48,6 +48,7 @@ export class ServersPage {
 
   search(ev) {
     // Reset items back to all of the items
+    this._search = this.servers;
 // set val to the value of the ev target
     var val = ev.target.value;
 
