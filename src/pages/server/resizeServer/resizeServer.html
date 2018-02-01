@@ -6,7 +6,7 @@
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
         <span ion-text color="primary" showWhen="ios">Cancel</span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        <i class="fas fa-times" showWhen="android,windows"></i>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -48,7 +48,9 @@
           <p>Der Server muss ausgeschaltet sein, damit ein Upgrade durchgeführt werden kann.</p>
         </ion-item>
         <ion-item>
-          <button ion-button color="primary" (click)="resizeServer()" disabled="{{ server.status == 'off' }}">Kostenpflichtig Upgraden</button>
+          <button ion-button color="primary" (click)="resizeServer()" disabled="{{ server.status == 'off' }}">
+            Kostenpflichtig Upgraden
+          </button>
         </ion-item>
         <ion-item
           *ngIf="server_type != null"><strong>{{server_type.description}}</strong><br/>

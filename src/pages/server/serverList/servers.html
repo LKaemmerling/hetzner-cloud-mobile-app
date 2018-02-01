@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <i class="fas fa-bars fa-2x"></i>
     </button>
     <ion-title>Server des Projekts "{{project.actual_project.name}}"</ion-title>
   </ion-navbar>
@@ -33,17 +33,17 @@
       </ion-item>
       <ion-item-options side="left">
         <button ion-button color="danger" (click)="delete(server)">
-          <ion-icon name="trash"></ion-icon>
+          <i class="fas fa-trash"></i>
         </button>
       </ion-item-options>
       <ion-item-options side="right">
         <button ion-button color="primary" (click)="details(server)">
-          <ion-icon name="information-circle"></ion-icon>
+          <i class="fas fa-info"></i>
         </button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
   <ion-fab bottom right>
-    <button ion-fab (click)="openCreateServerModal()"><ion-icon name="add"></ion-icon></button>
+    <button ion-fab (click)="openCreateServerModal()"><i class="fas fa-plus"></i></button>
   </ion-fab>
 </ion-content>

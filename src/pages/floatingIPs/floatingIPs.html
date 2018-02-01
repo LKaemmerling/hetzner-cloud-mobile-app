@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <i class="fas fa-bars fa-2x"></i>
     </button>
     <ion-title>Floating IPs</ion-title>
   </ion-navbar>
@@ -21,12 +21,12 @@
 
       <ion-item-options side="left">
         <button ion-button color="danger" (click)="delete(_floating_ip,slidingItem)">
-          <ion-icon name="trash"></ion-icon>
+         <i class="fas fa-trash"></i>
         </button>
       </ion-item-options>
       <ion-item-options side="right">
         <button ion-button color="primary" (click)="select(_floating_ip,slidingItem)">
-          <ion-icon name="information-circle"></ion-icon>
+          <i class="fas fa-info"></i>
         </button>
       </ion-item-options>
     </ion-item-sliding>
@@ -35,8 +35,8 @@
     </ion-item>
   </ion-list>
   <ion-fab bottom right>
-    <button ion-fab color="secondary" (click)="openAddFloatingIP()">
-      <ion-icon name="add"></ion-icon>
+    <button ion-fab color="primary" (click)="openAddFloatingIP()">
+      <i class="fas fa-plus"></i>
     </button>
   </ion-fab>
 </ion-content>

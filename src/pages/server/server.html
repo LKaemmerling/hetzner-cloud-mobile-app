@@ -1,8 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+
     <ion-title>{{server.name}}</ion-title>
   </ion-navbar>
 </ion-header>
@@ -123,20 +121,20 @@
   </ion-list>
   <ion-fab right bottom>
     <button ion-fab color="primary">
-      <ion-icon name="arrow-dropup"></ion-icon>
+      <i class="fas fa-angle-up"></i>
     </button>
     <ion-fab-list side="top">
       <button ion-fab (click)="openEditModal()" color="secondary">
-        <ion-icon name="brush"></ion-icon>
+        <i class="fas fa-pencil-alt"></i>
       </button>
       <button ion-fab color="secondary" (click)="resizeModal()">
-        <ion-icon name="resize"></ion-icon>
+        <i class="fas fa-expand"></i>
       </button>
       <button ion-fab color="danger" (click)="powerSettingsModal()">
-        <ion-icon name="flash"></ion-icon>
+        <i class="fas fa-power-off"></i>
       </button>
       <button ion-fab color="light" (click)="backupSettingsModal()">
-        <ion-icon name="disc"></ion-icon>
+        <i class="fas fa-hdd"></i>
       </button>
       <button ion-fab color="light" (click)="rescueModeModal()">
         <ion-icon name="help-buoy"></ion-icon>

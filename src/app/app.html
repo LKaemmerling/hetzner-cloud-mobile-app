@@ -7,18 +7,19 @@
   <ion-content>
     <ion-list>
       <button ion-item="" (click)="openHomePage()" menuClose="">
-        Startseite
+        <i class="fas fa-fw fa-home"></i> Startseite
       </button>
       <button ion-item="" (click)="openProjectsPage()" menuClose="">
-        Projekte
+        <i class="fas fa-fw fa-lock"></i> Projekte
       </button>
-      <button ion-item *ngIf="projects.actual_project != null" (click)="openServersPage()"  menuClose="">
-        Server
+      <button ion-item *ngIf="projects.actual_project != null" (click)="openServersPage()" menuClose="">
+        <i class="fas fa-fw fa-server"></i> Server
       </button>
-      <button ion-item *ngIf="projects.actual_project != null" (click)="openFloatingIPsPage()"  menuClose="">
-        Floating IPs
+      <button ion-item *ngIf="projects.actual_project != null" (click)="openFloatingIPsPage()" menuClose="">
+        <i class="fas fa-fw fa-cloud"></i> Floating IPs
       </button>
-      <button ion-item (click)="openAboutPage()" menuClose="" style="position: fixed; bottom:0; text-align: center;font-size:12px;">
+      <button ion-item (click)="openAboutPage()" menuClose=""
+              style="position: fixed; bottom:0; text-align: center;font-size:12px;">
         Über diese App
       </button>
     </ion-list>
