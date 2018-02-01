@@ -14,7 +14,7 @@
   </ion-refresher>
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding *ngFor="let server of servers"
+    <ion-item-sliding *ngFor="let server of _search"
                       #slidingItem>
       <ion-item>
         <h2>{{ server.name }}</h2>

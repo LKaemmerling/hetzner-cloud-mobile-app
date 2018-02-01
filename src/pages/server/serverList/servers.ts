@@ -12,10 +12,11 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
 export class ServersPage {
 
   public servers;
-  public _search = false;
+  public _search;
 
   constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController) {
     this.loadServers();
+    this._search = this.servers;
   }
 
   public loadServers() {
@@ -48,13 +49,12 @@ export class ServersPage {
   search(ev) {
     this._search = true;
     // Reset items back to all of the items
-    this.loadServers();
 // set val to the value of the ev target
     var val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.servers = this.servers.filter((item) => {
+      this._search = this.servers.filter((item) => {
         if (item == null) {
           return false;
         }
