@@ -10,6 +10,7 @@ import {AboutPage} from "../pages/about/about";
 import {ServersPage} from "../pages/server/serverList/servers";
 import {Storage} from "@ionic/storage";
 import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
+import {ImagesPage} from "../pages/images/images";
 
 @Component({
   templateUrl: 'app.html'
@@ -50,5 +51,9 @@ export class MyApp {
 
   openFloatingIPsPage() {
     this.nav.setRoot(FloatingIPsPage);
+  }
+
+  openImagesPage() {
+    this.nav.setRoot(ImagesPage);
   }
 }

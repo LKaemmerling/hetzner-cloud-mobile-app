@@ -18,6 +18,9 @@
       <button ion-item *ngIf="projects.actual_project != null" (click)="openFloatingIPsPage()" menuClose="">
         <i class="fas fa-fw fa-cloud"></i> Floating IPs
       </button>
+      <button ion-item *ngIf="projects.actual_project != null" (click)="openImagesPage()" menuClose="">
+        <i class="fas fa-puzzle-piece fa-fw"></i> Images
+      </button>
       <button ion-item (click)="openAboutPage()" menuClose=""
               style="position: fixed; bottom:0; text-align: center;font-size:12px;">
         Über diese App

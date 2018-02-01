@@ -36,6 +36,8 @@ import {changeIPv4ReverseDNSModal} from "../pages/server/reverseDNS/ipv4/changeI
 import {changeIPv6ReverseDNSModal} from "../pages/server/reverseDNS/ipv6/changeIPv6ReverseDNS";
 import {editFloatingIpModal} from "../pages/floatingIPs/editFloatingIp/editFloatingIp";
 import {FloatingIPPage} from "../pages/floatingIPs/floatingIp/floatingIP";
+import {ImagesPage} from "../pages/images/images";
+import {editImageModal} from "../pages/images/editImage/editImage";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.8"
@@ -83,7 +85,9 @@ export class MyErrorHandler implements ErrorHandler {
     changeIPv4ReverseDNSModal,
     changeIPv6ReverseDNSModal,
     editFloatingIpModal,
-    FloatingIPPage
+    FloatingIPPage,
+    ImagesPage,
+    editImageModal
 
   ],
   imports: [
@@ -117,7 +121,9 @@ export class MyErrorHandler implements ErrorHandler {
     changeIPv4ReverseDNSModal,
     changeIPv6ReverseDNSModal,
     editFloatingIpModal,
-    FloatingIPPage
+    FloatingIPPage,
+    ImagesPage,
+    editImageModal
   ],
   providers: [
     StatusBar,

@@ -31,7 +31,7 @@
         Durch das Aktivieren des Backups entstehen monatlich wiederkehrende Kosten von 20 % des Server-Tarifs.<br/>
       </p>
       <p *ngIf="create_backup_done === true" class="message_box success">Das Backup wurde erfolgreich erstellt.</p>
-      <button ion-button="" color="danger" (click)="create_backup()">Jetzt Backup kostenpflichtig erstellen</button>
+      <button ion-button="" color="danger" (click)="create_backup()" *ngIf="server.backup_window != null">Jetzt Backup kostenpflichtig erstellen</button>
       <button (click)="disable_backups()" ion-button color="danger" *ngIf="server.backup_window != null">Backups
         deaktivieren
       </button>

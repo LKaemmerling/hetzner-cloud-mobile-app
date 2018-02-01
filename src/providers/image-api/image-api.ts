@@ -19,4 +19,12 @@ export class ImageApiProvider extends HetznerApiProvider {
     return this._get('images' + (searchTerm == null ? '' : '?name=' + searchTerm))
   }
 
+  public delete(imageId: number) {
+    return this._delete('images/' + imageId)
+  }
+
+  public update(imageId: number, description: string) {
+    return this._put('images/' + imageId, {description: description});
+  }
+
 }
