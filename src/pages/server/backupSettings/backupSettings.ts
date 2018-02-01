@@ -27,7 +27,7 @@ export class backupSettingsModal {
   public disable_backups() {
     this.serverApiProvider.disable_backups(this.server.id);
     this.server.backup_window = null;
-    this.viewCtrl.dismiss();
+    this.dismiss();
   }
 
   public enable_backups() {
@@ -35,7 +35,7 @@ export class backupSettingsModal {
       this.serverApiProvider.enable_backups(this.server.id, this.backup_window);
       this.server.backup_window = this.backup_window;
     }
-    this.viewCtrl.dismiss();
+    this.dismiss();
   }
 
   public create_snapshot() {
@@ -44,16 +44,22 @@ export class backupSettingsModal {
       this.images = data['images'];
     });
   }
+
   public create_backup() {
     this.serverApiProvider.create_backup(this.server.id);
     this.imageApiProvider.getImages().then((data) => {
       this.images = data['images'];
     });
   }
+
   public rebuild_from_image() {
     if (this.image != null) {
       this.serverApiProvider.rebuild(this.server.id, this.image.id);
     }
-    this.viewCtrl.dismiss();
+    this.dismiss();
+  }
+
+  public dismiss() {
+    return this.viewCtrl.dismiss();
   }
 }
