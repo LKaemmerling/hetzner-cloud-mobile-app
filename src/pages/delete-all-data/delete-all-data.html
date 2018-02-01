@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Alle Daten löschen</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>
+    Möchten Sie alle Daten der App löschen? Sie müssen, sofern Sie die App weiterhin benutzen möchten, alle Projekte neu
+    eingeben.
+  </p>
+  <button ion-button color="danger" (click)="deleteAll()">
+    Ja ich möchte alle Daten die diese App lokal gespeichert hat löschen.
+  </button>
+</ion-content>

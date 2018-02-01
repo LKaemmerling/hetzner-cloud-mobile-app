@@ -22,7 +22,6 @@ export class addProjectModal {
     if (this.project.projects != null && this.project.projects.length == 1) {
       this.project.selectProject(this.project.projects[0]);
     }
-
     this.dismiss();
   }
 

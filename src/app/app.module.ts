@@ -1,13 +1,10 @@
-import {ErrorHandler, Injectable, Injector, NgModule, Pipe, PipeTransform} from '@angular/core';
+import {ErrorHandler, Injectable, Injector, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AboutPage} from '../pages/about/about';
-import {ContactPage} from '../pages/contact/contact';
 import {HomePage} from '../pages/home/home';
-import {TabsPage} from '../pages/tabs/tabs';
-
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {IonicStorageModule} from '@ionic/storage';
@@ -15,7 +12,6 @@ import {ProjectModule} from "../models/project/project.module";
 import {ProjectsPage} from "../pages/projects/projects";
 import {addProjectModal} from "../pages/projects/addProject/addProject";
 import {ServersPage} from "../pages/server/serverList/servers";
-// import {HetznerApiProvider}  from "../providers/hetzner-api/hetzner-api";
 import {Pro} from '@ionic/pro';
 import {ServerPage} from "../pages/server/server";
 import {addServerModal} from "../pages/server/addServer/addServer";
@@ -32,6 +28,8 @@ import {FloatingIpApiProvider} from '../providers/floating-ip-api/floating-ip-ap
 import {LocationApiProvider} from '../providers/location-api/location-api';
 import {ImageApiProvider} from '../providers/image-api/image-api';
 import {SshKeyApiProvider} from '../providers/ssh-key-api/ssh-key-api';
+import {DeleteAllDataPage} from "../pages/delete-all-data/delete-all-data";
+import {PipesModule} from "../pipes/pipes.module";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.7"
@@ -58,53 +56,15 @@ export class MyErrorHandler implements ErrorHandler {
   }
 }
 
-/*
- * Convert bytes into largest possible unit.
- * Takes an precision argument that defaults to 2.
- * Usage:
- *   bytes | fileSize:precision
- * Example:
- *   {{ 1024 |  fileSize}}
- *   formats to: 1 KB
-*/
-@Pipe({name: 'fileSize'})
-export class FileSizePipe implements PipeTransform {
-
-  private units = [
-    'bytes',
-    'KB',
-    'MB',
-    'GB',
-    'TB',
-    'PB'
-  ];
-
-  transform(bytes: number = 0, precision: number = 2): string {
-    if (isNaN(parseFloat(String(bytes))) || !isFinite(bytes)) return '?';
-
-    let unit = 0;
-
-    while (bytes >= 1024) {
-      bytes /= 1024;
-      unit++;
-    }
-
-    return bytes.toFixed(+precision) + ' ' + this.units[unit];
-  }
-}
-
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
     HomePage,
-    TabsPage,
     ProjectsPage,
     addProjectModal,
     ServersPage,
     ServerPage,
-    FileSizePipe,
     addServerModal,
     editServerModal,
     powerSettingsModal,
@@ -113,21 +73,22 @@ export class FileSizePipe implements PipeTransform {
     backupSettingsModal,
     FloatingIPsPage,
     addFloatingIPModal,
+    DeleteAllDataPage,
+
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     ProjectModule,
-    HttpClientModule
+    HttpClientModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
     HomePage,
-    TabsPage,
     ProjectsPage,
     addProjectModal,
     ServersPage,
@@ -140,6 +101,7 @@ export class FileSizePipe implements PipeTransform {
     backupSettingsModal,
     FloatingIPsPage,
     addFloatingIPModal,
+    DeleteAllDataPage
   ],
   providers: [
     StatusBar,
