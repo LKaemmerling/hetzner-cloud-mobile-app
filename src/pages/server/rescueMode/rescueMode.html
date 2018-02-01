@@ -31,4 +31,20 @@
       <button (click)="rescueActivateAndReset()" ion-button color="danger">RESCUE AKTIVIEREN & RESET</button>
     </ion-card-content>
   </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      ROOT-PASSWORD
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Es wird ein neues Root-Passwort auf Ihrem Server gesetzt. Falls Sie den QEMU Guest Agent vom Server entfernt
+        haben, wird diese Aktion fehlschlagen.
+      </p>
+      <p *ngIf="root_password != null" class="message_box success">
+        Ihr neues Rootpasswort: {{ root_password }}
+      </p>
+      <button (click)="resetRootpassword()" ion-button color="danger">ROOT-PASSWORT ZURÜCKSETZEN</button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

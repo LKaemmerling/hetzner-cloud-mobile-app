@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +13,25 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.message_box {
+  margin: 10px 0px;
+  padding: 12px;
+
+  &.info {
+    color: #00529B;
+    background-color: #BDE5F8;
+  }
+  &.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+  }
+  &.warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+  }
+  &.error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+  }
+}

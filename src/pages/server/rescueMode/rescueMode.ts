@@ -10,6 +10,7 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
 })
 export class rescueModeModal {
   public server: any;
+  public root_password: string = null;
 
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public appCtrl: App) {
     this.server = navParams.get('server');
@@ -28,13 +29,8 @@ export class rescueModeModal {
   }
 
   public resetRootpassword() {
-    this.serverApiProvider.resetPassword(this.server.id);
-    this.viewCtrl.dismiss();
-  }
+    this.serverApiProvider.resetPassword(this.server.id).then((data) => this.root_password = data['action'].root_password);
 
-  public powerOff() {
-    this.serverApiProvider.powerOff(this.server.id);
-    this.viewCtrl.dismiss();
   }
 
   public dismiss() {
