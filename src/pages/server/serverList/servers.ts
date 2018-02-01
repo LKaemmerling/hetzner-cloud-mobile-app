@@ -48,7 +48,7 @@ export class ServersPage {
   search(ev) {
     this._search = true;
     // Reset items back to all of the items
-
+    this.loadServers();
 // set val to the value of the ev target
     var val = ev.target.value;
 
