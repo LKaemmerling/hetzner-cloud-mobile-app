@@ -11,29 +11,31 @@
   <ion-refresher (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-list>
-    <ion-item-sliding *ngFor="let _floating_ip of _floating_ips"
-                      #slidingItem>
-      <ion-item>
-        <h2>{{ _floating_ip.description }}</h2>
-        <p>{{ _floating_ip.ip }} - {{ _floating_ip.home_location.city }}</p>
-      </ion-item>
+  <ion-card>
+    <ion-list>
+      <ion-item-sliding *ngFor="let _floating_ip of _floating_ips"
+                        #slidingItem>
+        <ion-item>
+          <h2>{{ _floating_ip.description }}</h2>
+          <p>{{ _floating_ip.ip }} - {{ _floating_ip.home_location.city }}</p>
+        </ion-item>
 
-      <ion-item-options side="left">
-        <button ion-button color="danger" (click)="delete(_floating_ip)">
-         <i class="fas fa-trash"></i>
-        </button>
-      </ion-item-options>
-      <ion-item-options side="right">
-        <button ion-button color="primary" (click)="openFloatingIP(_floating_ip)">
-          <i class="fas fa-info"></i>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-    <ion-item *ngIf="_floating_ips == null || _floating_ips.length == 0">
-      Oh! Es sieht so aus als wäre hier noch keine Floating IPs hinterlegt.
-    </ion-item>
-  </ion-list>
+        <ion-item-options side="left">
+          <button ion-button color="danger" (click)="delete(_floating_ip)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </ion-item-options>
+        <ion-item-options side="right">
+          <button ion-button color="primary" (click)="openFloatingIP(_floating_ip)">
+            <i class="fas fa-info"></i>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+      <ion-item *ngIf="_floating_ips == null || _floating_ips.length == 0">
+        Oh! Es sieht so aus als wäre hier noch keine Floating IPs hinterlegt.
+      </ion-item>
+    </ion-list>
+  </ion-card>
   <ion-fab bottom right>
     <button ion-fab color="primary" (click)="openAddFloatingIP()">
       <i class="fas fa-plus"></i>

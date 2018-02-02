@@ -13,36 +13,41 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
-  <ion-list>
-    <ion-item-sliding *ngFor="let server of _search"
-                      #slidingItem>
-      <ion-item>
-        <h2>{{ server.name }}</h2>
-        <p>{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{ server.datacenter.name }} /
-          {{ server.public_net.ipv4.ip }}</p>
-        <ion-thumbnail item-end>
-          <svg class="server-status-indicator "
-               [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}"
-               height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
-            <circle class="server-status-indicator__back ng-trigger ng-trigger-serverState-backCircle" cx="25" cy="25"
-                    r="25"></circle>
-            <circle class="server-status-indicator__front ng-trigger ng-trigger-serverState-frontCircle" cx="25" cy="25"
-                    r="25"></circle>
-          </svg>
-        </ion-thumbnail>
-      </ion-item>
-      <ion-item-options side="left">
-        <button ion-button color="danger" (click)="delete(server)">
-          <i class="fas fa-trash"></i>
-        </button>
-      </ion-item-options>
-      <ion-item-options side="right">
-        <button ion-button color="primary" (click)="details(server)">
-          <i class="fas fa-info"></i>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+  <ion-card>
+    <ion-list>
+      <ion-item-sliding *ngFor="let server of _search"
+                        #slidingItem>
+        <ion-item>
+          <h2>{{ server.name }}</h2>
+          <p>{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{ server.datacenter.name }}
+            /
+            {{ server.public_net.ipv4.ip }}</p>
+          <ion-thumbnail item-end>
+            <svg class="server-status-indicator "
+                 [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}"
+                 height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+              <circle class="server-status-indicator__back ng-trigger ng-trigger-serverState-backCircle" cx="25" cy="25"
+                      r="25"></circle>
+              <circle class="server-status-indicator__front ng-trigger ng-trigger-serverState-frontCircle" cx="25"
+                      cy="25"
+                      r="25"></circle>
+            </svg>
+          </ion-thumbnail>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="danger" (click)="delete(server)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </ion-item-options>
+        <ion-item-options side="right">
+          <button ion-button color="primary" (click)="details(server)">
+            <i class="fas fa-info"></i>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-card>
+
   <ion-fab bottom right>
     <button ion-fab (click)="openCreateServerModal()"><i class="fas fa-plus"></i></button>
   </ion-fab>

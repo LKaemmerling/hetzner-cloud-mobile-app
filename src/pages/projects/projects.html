@@ -9,34 +9,37 @@
 
 <ion-content padding>
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
-  <ion-list>
-    <ion-item-sliding *ngFor="let _project of _projects"
-                      #slidingItem>
-      <ion-item
-        [color]="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name) ? 'primary':'none' ">
-        <h2>{{ _project.name }} <span
-          *ngIf="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)"><em>AKTIV</em></span>
-        </h2>
-      </ion-item>
+  <ion-card>
+    <ion-list>
+      <ion-item-sliding *ngFor="let _project of _projects"
+                        #slidingItem>
+        <ion-item
+          [color]="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name) ? 'primary':'none' ">
+          <h2>{{ _project.name }} <span
+            *ngIf="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)"><em>AKTIV</em></span>
+          </h2>
+        </ion-item>
 
-      <ion-item-options side="left">
-        <button ion-button color="danger" (click)="delete(_project,slidingItem)">
-          <i class="fas fa-trash"></i>
-        </button>
-      </ion-item-options>
-      <ion-item-options side="right">
-        <button ion-button color="primary" (click)="select(_project,slidingItem)">
-          <i class="fas fa-check"></i>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-    <ion-item *ngIf="project.projects == null || project.projects.length == 0">
-      Oh! Es sieht so aus als wäre hier noch kein Projekt hinterlegt.
-    </ion-item>
-  </ion-list>
+        <ion-item-options side="left">
+          <button ion-button color="danger" (click)="delete(_project,slidingItem)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </ion-item-options>
+        <ion-item-options side="right">
+          <button ion-button color="primary" (click)="select(_project,slidingItem)">
+            <i class="fas fa-check"></i>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+      <ion-item *ngIf="project.projects == null || project.projects.length == 0">
+        Oh! Es sieht so aus als wäre hier noch kein Projekt hinterlegt.
+      </ion-item>
+    </ion-list>
+  </ion-card>
   <ion-fab bottom right>
     <button ion-fab color="secondary" (click)="openProjectModal()">
       <i class="fas fa-plus"></i>
     </button>
   </ion-fab>
+
 </ion-content>

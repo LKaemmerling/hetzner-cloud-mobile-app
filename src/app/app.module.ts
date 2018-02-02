@@ -39,6 +39,8 @@ import {FloatingIPPage} from "../pages/floatingIPs/floatingIp/floatingIP";
 import {ImagesPage} from "../pages/images/images";
 import {editImageModal} from "../pages/images/editImage/editImage";
 import {assignToServerModal} from "../pages/floatingIPs/assignToServer/assignToServer";
+import {metricsModal} from "../pages/server/metrics/metrics";
+import {ChartistComponent, ChartistModule} from "ng-chartist";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.8"
@@ -89,7 +91,9 @@ export class MyErrorHandler implements ErrorHandler {
     FloatingIPPage,
     ImagesPage,
     editImageModal,
-    assignToServerModal
+    assignToServerModal,
+    metricsModal,
+    ChartistComponent
 
   ],
   imports: [
@@ -126,7 +130,8 @@ export class MyErrorHandler implements ErrorHandler {
     FloatingIPPage,
     ImagesPage,
     editImageModal,
-    assignToServerModal
+    assignToServerModal,
+    metricsModal
   ],
   providers: [
     StatusBar,
