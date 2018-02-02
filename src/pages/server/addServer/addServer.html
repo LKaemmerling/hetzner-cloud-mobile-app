@@ -50,9 +50,6 @@
       <ion-label> Server nach Erstellung starten?</ion-label>
       <ion-toggle [(ngModel)]="start_after_create"></ion-toggle>
     </ion-item>
-    <ion-item>
-      <button ion-button color="primary" (click)="createServer()">Server kostenpflichtig erstellen</button>
-    </ion-item>
     <ion-item
       *ngIf="server_type != null"><strong>{{server_type.description}}</strong><br/>
       Kerne: {{ server_type.cores }} <br/>RAM:
@@ -61,4 +58,5 @@
       Speicher Typ: {{ server_type.storage_type }}
     </ion-item>
   </ion-list>
+  <button ion-button color="primary" (click)="createServer()">Server kostenpflichtig erstellen</button>
 </ion-content>

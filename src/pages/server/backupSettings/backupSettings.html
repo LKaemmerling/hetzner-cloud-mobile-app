@@ -31,7 +31,9 @@
         Durch das Aktivieren des Backups entstehen monatlich wiederkehrende Kosten von 20 % des Server-Tarifs.<br/>
       </p>
       <p *ngIf="create_backup_done === true" class="message_box success">Das Backup wurde erfolgreich erstellt.</p>
-      <button ion-button="" color="danger" (click)="create_backup()" *ngIf="server.backup_window != null">Jetzt Backup kostenpflichtig erstellen</button>
+      <button ion-button="" color="danger" (click)="create_backup()" *ngIf="server.backup_window != null">Jetzt Backup
+        kostenpflichtig erstellen
+      </button>
       <button (click)="disable_backups()" ion-button color="danger" *ngIf="server.backup_window != null">Backups
         deaktivieren
       </button>
@@ -47,10 +49,9 @@
             <ion-option value="18-22">18 Uhr und 22 Uhr</ion-option>
           </ion-select>
         </ion-item>
-        <ion-item>
-          <button ion-button="" color="danger" (click)="enable_backups()">Kostenpflicht Backups konfigurieren</button>
-        </ion-item>
       </ion-list>
+      <button ion-button="" color="danger" (click)="enable_backups()">Kostenpflicht Backups konfigurieren</button>
+
     </ion-card-content>
   </ion-card>
   <ion-card>
@@ -71,7 +72,7 @@
       </p>
       <p *ngIf="create_snapshot_done === true" class="message_box success">Der Snapshot wurde erfolgreich erstellt.</p>
 
-          <button ion-button="" color="danger" (click)="create_snapshot()">Snapshot kostenpflichtig erstellen</button>
+      <button ion-button="" color="danger" (click)="create_snapshot()">Snapshot kostenpflichtig erstellen</button>
     </ion-card-content>
   </ion-card>
   <ion-card>
@@ -94,10 +95,9 @@
             </ion-option>
           </ion-select>
         </ion-item>
-        <ion-item>
-          <button ion-button="" color="danger" (click)="rebuild_from_image()">REBUILD</button>
-        </ion-item>
       </ion-list>
+      <button ion-button="" color="danger" (click)="rebuild_from_image()">REBUILD</button>
+
     </ion-card-content>
   </ion-card>
 </ion-content>

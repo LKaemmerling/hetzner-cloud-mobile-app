@@ -47,11 +47,6 @@
         <ion-item *ngIf="server.status !== 'off'">
           <p>Der Server muss ausgeschaltet sein, damit ein Upgrade durchgeführt werden kann.</p>
         </ion-item>
-        <ion-item>
-          <button ion-button color="primary" (click)="resizeServer()" disabled="{{ server.status == 'off' }}">
-            Kostenpflichtig Upgraden
-          </button>
-        </ion-item>
         <ion-item
           *ngIf="server_type != null"><strong>{{server_type.description}}</strong><br/>
           Kerne: {{ server_type.cores }} <br/>RAM:
@@ -60,6 +55,9 @@
           Speicher Typ: {{ server_type.storage_type }}
         </ion-item>
       </ion-list>
+      <button ion-button color="primary" (click)="resizeServer()" disabled="{{ server.status == 'off' }}">
+        Kostenpflichtig Upgraden
+      </button>
     </ion-card-content>
   </ion-card>
 </ion-content>
