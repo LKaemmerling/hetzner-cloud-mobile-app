@@ -24,12 +24,12 @@
             </div>
           </ion-item>
 
-          <ion-item-options side="left" *ngIf="image.type != 'system'">
+          <ion-item-options side="right" *ngIf="image.type != 'system'">
             <button ion-button color="danger" (click)="delete(image,slidingItem)">
               <i class="fas fa-trash"></i>
             </button>
           </ion-item-options>
-          <ion-item-options side="right" *ngIf="image.type != 'system'" (click)="openEdit(image)">
+          <ion-item-options side="left" *ngIf="image.type != 'system'" (click)="openEdit(image)">
             <button ion-button color="secondary">
               <i class="fas fa-pencil-alt"></i>
             </button>
