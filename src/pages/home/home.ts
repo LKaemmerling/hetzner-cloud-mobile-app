@@ -15,7 +15,11 @@ export class HomePage {
   }
 
   public openProjectsPage() {
-    this.navCtrl.setRoot(ProjectsPage);
-    this.modal.create(addProjectModal).present();
+
+    let modal = this.modal.create(addProjectModal);
+    modal.onDidDismiss(() => {
+      this.navCtrl.setRoot(ProjectsPage);
+    });
+    modal.present();
   }
 }

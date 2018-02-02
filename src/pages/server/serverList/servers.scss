@@ -1,13 +1,11 @@
 page-servers {
   .server-status-indicator {
-    display: -ms-flexbox;
-    display: flex;
+    display: inline-block;
     width: auto;
     height: auto;
     max-width: 8px;
     max-height: 8px;
     overflow: visible;
-    margin-top:20px;
   }
   .server-status-indicator__back {
     stroke-width: 30px;

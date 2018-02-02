@@ -5,11 +5,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-refresher (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-list inset>
+  <ion-list style="margin-bottom: 60px;">
     <ion-list-header>
       Information:
     </ion-list-header>
@@ -126,10 +126,10 @@
       <i class="fas fa-angle-up"></i>
     </button>
     <ion-fab-list side="top">
-      <button ion-fab color="danger">
-        <div class="label" (click)="delet()" color="danger">Server löschen</div>
+     <!-- <button ion-fab color="danger">
+        <div class="label" (click)="delete()" color="danger">Server löschen</div>
         <i class="fas fa-trash"></i>
-      </button>
+      </button>-->
       <button ion-fab color="danger" (click)="powerSettingsModal()">
         <div class="label" color="danger">Power Einstellungen</div>
         <i class="fas fa-power-off"></i>

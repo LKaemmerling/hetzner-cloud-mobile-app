@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-refresher (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -16,18 +16,15 @@
       <ion-item-sliding *ngFor="let _floating_ip of _floating_ips"
                         #slidingItem>
         <ion-item>
-          <h2>{{ _floating_ip.description }}</h2>
-          <p>{{ _floating_ip.ip }} - {{ _floating_ip.home_location.city }}</p>
+          <div (click)="openFloatingIP(_floating_ip)">
+            <h2>{{ _floating_ip.description }}</h2>
+            <p>{{ _floating_ip.ip }} - {{ _floating_ip.home_location.city }}</p>
+          </div>
         </ion-item>
 
         <ion-item-options side="left">
           <button ion-button color="danger" (click)="delete(_floating_ip)">
             <i class="fas fa-trash"></i>
-          </button>
-        </ion-item-options>
-        <ion-item-options side="right">
-          <button ion-button color="primary" (click)="openFloatingIP(_floating_ip)">
-            <i class="fas fa-info"></i>
           </button>
         </ion-item-options>
       </ion-item-sliding>

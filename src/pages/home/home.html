@@ -17,6 +17,6 @@
     Server.
   </p>
   <div *ngIf="project.projects == null || project.projects.length == 0">
-    <button ion-button="" block color="primary">Jetzt erstes Projekt hinzufügen!</button>
+    <button ion-button="" block color="primary" (click)="openProjectsPage()">Jetzt erstes Projekt hinzufügen!</button>
   </div>
 </ion-content>
