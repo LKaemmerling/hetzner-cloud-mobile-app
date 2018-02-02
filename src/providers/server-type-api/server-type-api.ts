@@ -8,9 +8,14 @@ import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
   and Angular DI.
 */
 @Injectable()
-export class ServerTypeApiProvider extends HetznerApiProvider{
-
-  getServerTypes(searchTerm = null) {
+export class ServerTypeApiProvider extends HetznerApiProvider {
+  /**
+   * Gets all server type objects
+   * @see https://docs.hetzner.cloud/#resources-server-types-get
+   * @param {string} searchTerm
+   * @returns {Promise<any>}
+   */
+  getServerTypes(searchTerm: string = null) {
     return this._get('server_types' + (searchTerm == null ? '' : '?name=' + searchTerm))
   }
 

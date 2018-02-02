@@ -24,7 +24,11 @@ export class FloatingIPsPage {
   }
 
   openAddFloatingIP() {
-    this.modal.create(addFloatingIPModal).present();
+    let modal = this.modal.create(addFloatingIPModal);
+    modal.onDidDismiss(() => {
+      this.loadFloatingIPs();
+    });
+    modal.present();
   }
 
   openFloatingIP(floatingIp) {

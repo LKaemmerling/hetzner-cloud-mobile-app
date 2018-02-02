@@ -16,7 +16,11 @@ export class ProjectsPage {
   }
 
   openProjectModal() {
-    this.modal.create(addProjectModal).present();
+    let modal = this.modal.create(addProjectModal);
+    modal.onDidDismiss(() => {
+      this._projects = this.project.projects;
+    });
+    modal.present();
   }
 
   select(project: project, slidingItem: ItemSliding) {

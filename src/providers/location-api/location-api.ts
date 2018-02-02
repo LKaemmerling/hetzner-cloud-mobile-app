@@ -10,10 +10,11 @@ import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 @Injectable()
 export class LocationApiProvider extends HetznerApiProvider {
   /**
-   *
-   * Locations
+   * Returns all location objects
+   * @see https://docs.hetzner.cloud/#resources-locations-get
+   * @param {string} searchTerm
+   * @returns {Promise<any>}
    */
-
   getLocations(searchTerm: string = null) {
     return this._get('locations' + (searchTerm == null ? '' : '?name=' + searchTerm))
   }

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
 import {project} from "../../../models/project/project";
 import {ViewController} from "ionic-angular";
+import {LocationApiProvider} from "../../../providers/location-api/location-api";
 
 @Component({
   selector: 'modal-addProject',
@@ -10,19 +11,32 @@ import {ViewController} from "ionic-angular";
 export class addProjectModal {
   public project_name: string;
   public api_key: string;
+  public error: string = null;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController) {
+  constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider) {
     //alert(this.project.)
   }
 
   public saveProject() {
+    var _new = new project(this.project_name, this.api_key);
+    this.project.addProject(_new);
 
-    this.project.addProject(new project(this.project_name, this.api_key));
-    this.project.saveProjects();
-    if (this.project.projects != null && this.project.projects.length == 1) {
-      this.project.selectProject(this.project.projects[0]);
+    var selected = null;
+    if (this.project.actual_project != null) {
+      selected = this.project.actual_project;
     }
-    this.dismiss();
+    this.project.selectProject(_new);
+    this.locationApiProvider.getLocations().then(() => {
+      if (selected != null) {
+        this.project.selectProject(selected);
+      }
+      this.project.saveProjects();
+      this.dismiss();
+    }, () => {
+      this.error = 'Error!';
+      this.project.removeProject(_new);
+    });
+
   }
 
   public dismiss() {

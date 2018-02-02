@@ -10,15 +10,37 @@ import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 @Injectable()
 export class ServerApiProvider extends HetznerApiProvider {
 
-
+  /**
+   * Returns all existing server objects
+   * @see https://docs.hetzner.cloud/#resources-servers-get
+   * @param {string} searchTerm
+   * @returns {Promise<any>}
+   */
   getServers(searchTerm: string = null) {
     return this._get('servers' + (searchTerm == null ? '' : '?name=' + searchTerm))
   }
 
+  /**
+   * Returns a specific server object. The server must exist inside the project
+   * @see https://docs.hetzner.cloud/#resources-servers-get-1
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   getServer(serverId: number) {
     return this._get('servers/' + serverId)
   }
 
+  /**
+   * Creates a new server. Returns preliminary information about the server as well as an action that covers progress of creation.
+   * @see https://docs.hetzner.cloud/#resources-servers-post
+   * @param {string} name
+   * @param {number} server_type_id
+   * @param {number} location_id
+   * @param {boolean} start_after_create
+   * @param {number} image_id
+   * @param {Array<number>} ssh_keys
+   * @returns {Promise<any>}
+   */
   createServer(name: string, server_type_id: number, location_id: number, start_after_create: boolean, image_id: number, ssh_keys: Array<number>) {
     return this._post('servers', {
       name: name,

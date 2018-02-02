@@ -15,54 +15,92 @@ export abstract class HetznerApiProvider {
   constructor(public http: HttpClient, public projectService: ProjectsService) {
   }
 
+  /**
+   * Build the needed HTTP Headers for the Hetzner API
+   * @returns {HttpHeaders}
+   */
   private getHeaders() {
     return new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json');
   }
 
-  _get(method) {
-    return new Promise(resolve => {
+  /**
+   * Performs a GET Request against the Hetzner API
+   * @param {string} method
+   * @returns {Promise<any>}
+   * @private
+   */
+  _get(method: string) {
+    return new Promise((resolve, reject = null) => {
       this.http.get(this.apiUrl + '/' + method, {
         headers: this.getHeaders(),
       }).subscribe(data => {
         resolve(data);
       }, err => {
-        console.log(err);
+        if (reject != null) {
+          reject(err);
+        }
       });
     });
   }
 
-  _post(method, body = {}) {
-    return new Promise(resolve => {
+  /**
+   * Performs a POST Request against the Hetzner API
+   * @param {string} method
+   * @param {object} body
+   * @returns {Promise<any>}
+   * @private
+   */
+  _post(method: string, body: object = {}) {
+    return new Promise((resolve, reject = null) => {
       this.http.post(this.apiUrl + '/' + method, body, {
         headers: this.getHeaders(),
       }).subscribe(data => {
         resolve(data);
       }, err => {
-        console.log(err);
+        if (reject != null) {
+          reject(err);
+        }
       });
     });
   }
 
-  _put(method, body) {
-    return new Promise(resolve => {
+  /**
+   * Performs a PUT Request against the Hetzner API
+   * @param {string} method
+   * @param {object} body
+   * @returns {Promise<any>}
+   * @private
+   */
+  _put(method: string, body: object) {
+    return new Promise((resolve, reject = null) => {
       this.http.put(this.apiUrl + '/' + method, body, {
         headers: this.getHeaders(),
       }).subscribe(data => {
         resolve(data);
       }, err => {
-        console.log(err);
+        if (reject != null) {
+          reject(err);
+        }
       });
     });
   }
 
-  _delete(method) {
-    return new Promise(resolve => {
+  /**
+   * Performs a DELETE Request against the Hetzner API
+   * @param {string} method
+   * @returns {Promise<any>}
+   * @private
+   */
+  _delete(method: string) {
+    return new Promise((resolve, reject = null) => {
       this.http.delete(this.apiUrl + '/' + method, {
         headers: this.getHeaders(),
       }).subscribe(data => {
         resolve(data);
       }, err => {
-        console.log(err);
+        if (reject != null) {
+          reject(err);
+        }
       });
     });
   }

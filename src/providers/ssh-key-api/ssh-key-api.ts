@@ -12,10 +12,11 @@ export class SshKeyApiProvider extends HetznerApiProvider {
 
 
   /**
-   *
-   * SSHKeys
+   * Returns all ssh key objects
+   * @see https://docs.hetzner.cloud/#resources-ssh-keys-get
+   * @param {string} searchTerm
+   * @returns {Promise<any>}
    */
-
   getSSHKeys(searchTerm: string = null) {
     return this._get('ssh_keys' + (searchTerm == null ? '' : '?name=' + searchTerm))
   }
