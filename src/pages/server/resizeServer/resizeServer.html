@@ -55,7 +55,7 @@
           Speicher Typ: {{ server_type.storage_type }}
         </ion-item>
       </ion-list>
-      <button ion-button color="primary" (click)="resizeServer()" disabled="{{ server.status != 'off' }}">
+      <button ion-button color="primary" (click)="resizeServer()" [disabled]="(server.status != 'off')">
         Kostenpflichtig Upgraden
       </button>
     </ion-card-content>

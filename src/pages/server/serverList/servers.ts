@@ -4,6 +4,7 @@ import {ProjectsService} from "../../../models/project/ProjectsService";
 import {ServerPage} from "../server";
 import {addServerModal} from "../addServer/addServer";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
+import {ServersService} from "../../../models/servers/ServersService";
 
 @Component({
   selector: 'page-servers',
@@ -14,13 +15,22 @@ export class ServersPage {
   public servers;
   public _search;
 
-  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController) {
-    this.loadServers();
+  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController, public serversService: ServersService) {
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    this.serversService.loadServers();
+    if (this.serversService.servers == null || this.serversService.servers.length == 0 || this.serversService.servers == undefined) {
+      this.loadServers();
+    } else {
+      this.servers = this._search = this.serversService.servers;
+    }
+    loader.dismiss();
   }
 
   public loadServers() {
     this.serverApiProvider.getServers().then((data) => {
-      this.servers = data['servers'];
+      this.servers = this.serversService.servers = data['servers'];
+      this.serversService.saveServers();
       this._search = this.servers;
     });
   }

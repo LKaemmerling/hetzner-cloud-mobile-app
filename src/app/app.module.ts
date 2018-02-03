@@ -41,9 +41,10 @@ import {editImageModal} from "../pages/images/editImage/editImage";
 import {assignToServerModal} from "../pages/floatingIPs/assignToServer/assignToServer";
 import {metricsModal} from "../pages/server/metrics/metrics";
 import {ChartistComponent} from "ng-chartist";
+import {ServersModule} from "../models/servers/Servers.module";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.9"
+  appVersion: "0.0.10"
 });
 
 @Injectable()
@@ -104,7 +105,8 @@ export class MyErrorHandler implements ErrorHandler {
     HttpClientModule,
     PipesModule,
     BrowserAnimationsModule,
-    TooltipsModule
+    TooltipsModule,
+    ServersModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

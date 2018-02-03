@@ -20,9 +20,11 @@
         <ion-item>
           <div (click)="details(server)">
             <h2>{{ server.name }}
-              <svg class="server-status-indicator "
-                   [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}"
-                   height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+              <span *ngIf="server.status == 'migrating'"><i class="fas fa-spin fa-spinner fa-pulse"></i></span>
+              <span *ngIf="server.status != 'migrating'">
+                 <svg class="server-status-indicator "
+                      [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}"
+                      height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
                 <circle class="server-status-indicator__back ng-trigger ng-trigger-serverState-backCircle" cx="25"
                         cy="25"
                         r="25"></circle>
@@ -30,8 +32,10 @@
                         cy="25"
                         r="25"></circle>
               </svg>
+              </span>
             </h2>
-            <p>{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{ server.datacenter.name }}
+            <p>{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{ server.datacenter.name
+              }}
               /
               {{ server.public_net.ipv4.ip }}</p>
           </div>

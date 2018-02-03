@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
-import {ChartistComponent} from "ng-chartist";
 
 @Component({
   selector: 'modal-metrics',

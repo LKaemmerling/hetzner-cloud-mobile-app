@@ -31,6 +31,9 @@ export class resizeServerModal {
     if (this.server_type != null) {
       var loader = this.loadingCtrl.create();
       loader.present();
+      if (this.upgrade_disk == null || this.upgrade_disk == undefined) {
+        this.upgrade_disk = false;
+      }
       this.serverApiProvider.changeServerType(this.server.id, this.server_type.id, this.upgrade_disk).then((data) => {
         loader.dismiss();
       });

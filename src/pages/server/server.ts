@@ -10,6 +10,7 @@ import {ServerApiProvider} from "../../providers/server-api/server-api";
 import {changeIPv4ReverseDNSModal} from "./reverseDNS/ipv4/changeIPv4ReverseDNSModal";
 import {changeIPv6ReverseDNSModal} from "./reverseDNS/ipv6/changeIPv6ReverseDNS";
 import {metricsModal} from "./metrics/metrics";
+import {ServersService} from "../../models/servers/ServersService";
 
 @Component({
   selector: 'page-server',
@@ -20,7 +21,7 @@ export class ServerPage {
   public powerOn = true;
   public rescueMode = false;
 
-  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public serverService: ServersService) {
     this.server = navParams.get('server');
     this.powerOn = (this.server.status == 'running');
     this.rescueMode = this.server.rescue_enabled;
@@ -31,7 +32,6 @@ export class ServerPage {
       this.server = data['server'];
       refresher.complete();
     });
-
   }
 
   public toggleStatus() {
@@ -53,32 +53,40 @@ export class ServerPage {
   }
 
   public openEditModal() {
-    this.modalCtrl.create(editServerModal, {server: this.server}).present();
+    let modal = this.modalCtrl.create(editServerModal, {server: this.server});
+    modal.present();
   }
 
   public powerSettingsModal() {
-    this.modalCtrl.create(powerSettingsModal, {server: this.server}).present();
+    let modal = this.modalCtrl.create(powerSettingsModal, {server: this.server});
+    modal.present();
   }
 
   public rescueModeModal() {
-    this.modalCtrl.create(rescueModeModal, {server: this.server}).present();
+    let modal = this.modalCtrl.create(rescueModeModal, {server: this.server});
+    modal.present();
   }
 
   public resizeModal() {
-    this.modalCtrl.create(resizeServerModal, {server: this.server}).present();
+    let modal = this.modalCtrl.create(resizeServerModal, {server: this.server});
+    modal.present();
   }
 
   public backupSettingsModal() {
-    this.modalCtrl.create(backupSettingsModal, {server: this.server}).present();
+    let modal = this.modalCtrl.create(backupSettingsModal, {server: this.server});
+    modal.present();
   }
 
   public changeIPv4ReverseDNSModal() {
-    this.modalCtrl.create(changeIPv4ReverseDNSModal, {server: this.server}).present();
+    let modal = this.modalCtrl.create(changeIPv4ReverseDNSModal, {server: this.server});
+    modal.present();
   }
 
   public changeIPv6ReverseDNSModal() {
-    this.modalCtrl.create(changeIPv6ReverseDNSModal, {server: this.server}).present();
+    let modal = this.modalCtrl.create(changeIPv6ReverseDNSModal, {server: this.server});
+    modal.present();
   }
+
   public metricsModal() {
     this.modalCtrl.create(metricsModal, {server: this.server}).present();
   }

@@ -1,13 +1,13 @@
 {
   "name": "hetzner-cloud-app",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "author": "Lukas Kämmerling",
   "homepage": "https://lk-development.de/",
   "license": "MIT",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
-    "build": "ionic-app-scripts build",
+    "build": "ionic-app-scripts build --prod",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"

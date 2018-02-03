@@ -11,6 +11,7 @@ import {ServersPage} from "../pages/server/serverList/servers";
 import {Storage} from "@ionic/storage";
 import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
 import {ImagesPage} from "../pages/images/images";
+import {ServersService} from "../models/servers/ServersService";
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +20,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public projects: ProjectsService, storage: Storage) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public projects: ProjectsService, storage: Storage, public servers:ServersService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -27,6 +28,7 @@ export class MyApp {
         statusBar.styleDefault();
 
         projects.loadProjects();
+        this.servers.loadServers();
         splashScreen.hide();
       });
 
