@@ -12,6 +12,8 @@ import {Storage} from "@ionic/storage";
 import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
 import {ImagesPage} from "../pages/images/images";
 import {ServersService} from "../models/servers/ServersService";
+import {OneSignal} from "@ionic-native/onesignal";
+import {HetznerStatusSettingPage} from "../pages/hetzner-status-setting/hetzner-status-setting";
 
 @Component({
   templateUrl: 'app.html'
@@ -20,13 +22,14 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public projects: ProjectsService, storage: Storage, public servers:ServersService) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public projects: ProjectsService, storage: Storage, public servers: ServersService, oneSignal: OneSignal) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       storage.ready().then(() => {
         statusBar.styleDefault();
-
+        oneSignal.startInit('e8714cee-7480-45da-bad0-19ba3c3e89c4', '1069973161280')
+        oneSignal.endInit();
         projects.loadProjects();
         this.servers.loadServers();
         splashScreen.hide();
@@ -57,5 +60,9 @@ export class MyApp {
 
   openImagesPage() {
     this.nav.setRoot(ImagesPage);
+  }
+
+  openHetznerStatusSetting() {
+    this.nav.setRoot(HetznerStatusSettingPage);
   }
 }

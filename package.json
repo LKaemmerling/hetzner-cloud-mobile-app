@@ -1,6 +1,6 @@
 {
   "name": "hetzner-cloud-app",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "author": "Lukas Kämmerling",
   "homepage": "https://lk-development.de/",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "@angular/platform-browser": "5.0.3",
     "@angular/platform-browser-dynamic": "5.0.3",
     "@ionic-native/core": "4.4.0",
+    "@ionic-native/onesignal": "^4.5.3",
     "@ionic-native/splash-screen": "4.4.0",
     "@ionic-native/status-bar": "4.4.0",
     "@ionic/pro": "^1.0.16",
@@ -40,6 +41,7 @@
     "ionic-tooltips": "^2.0.1",
     "ionicons": "3.0.0",
     "ng-chartist": "^1.1.1",
+    "onesignal-cordova-plugin": "^2.2.5",
     "pretty-bytes": "^4.0.2",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",

@@ -21,6 +21,9 @@
       <button ion-item *ngIf="projects.actual_project != null" (click)="openImagesPage()" menuClose="">
         <i class="fas fa-puzzle-piece fa-fw"></i> Images
       </button>
+      <button ion-item menuClose="" (click)="openHetznerStatusSetting()">
+        <i class="fas fa-bell fa-fw"></i> Hetzner Status
+      </button>
       <button ion-item (click)="openAboutPage()" menuClose=""
               style="position: fixed; bottom:0; text-align: center;font-size:12px;">
         Über diese App

@@ -40,9 +40,11 @@ import {ImagesPage} from "../pages/images/images";
 import {editImageModal} from "../pages/images/editImage/editImage";
 import {assignToServerModal} from "../pages/floatingIPs/assignToServer/assignToServer";
 import {ServersModule} from "../models/servers/Servers.module";
+import {HetznerStatusSettingPage} from "../pages/hetzner-status-setting/hetzner-status-setting";
+import {OneSignal} from "@ionic-native/onesignal";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.10"
+  appVersion: "0.0.11"
 });
 
 @Injectable()
@@ -91,6 +93,7 @@ export class MyErrorHandler implements ErrorHandler {
     ImagesPage,
     editImageModal,
     assignToServerModal,
+    HetznerStatusSettingPage
 
   ],
   imports: [
@@ -128,7 +131,8 @@ export class MyErrorHandler implements ErrorHandler {
     FloatingIPPage,
     ImagesPage,
     editImageModal,
-    assignToServerModal
+    assignToServerModal,
+    HetznerStatusSettingPage
   ],
   providers: [
     StatusBar,
@@ -139,7 +143,8 @@ export class MyErrorHandler implements ErrorHandler {
     FloatingIpApiProvider,
     LocationApiProvider,
     ImageApiProvider,
-    SshKeyApiProvider
+    SshKeyApiProvider,
+    OneSignal
   ]
 })
 export class AppModule {
