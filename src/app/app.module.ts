@@ -46,7 +46,7 @@ import {StatusApiProvider} from "../providers/status-api/status-api";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.13"
+  appVersion: "0.0.14"
 });
 
 @Injectable()
