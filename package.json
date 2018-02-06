@@ -1,6 +1,6 @@
 {
   "name": "hetzner-cloud-app",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "author": "Lukas Kämmerling",
   "homepage": "https://lk-development.de/",
   "license": "MIT",
@@ -30,7 +30,7 @@
     "@ionic/storage": "^2.1.3",
     "chartist": "^0.11.0",
     "cordova-android": "6.4.0",
-    "cordova-ios": "4.5.4",
+    "cordova-ios": "^4.5.4",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
@@ -60,7 +60,8 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "onesignal-cordova-plugin": {}
     },
     "platforms": [
       "android",

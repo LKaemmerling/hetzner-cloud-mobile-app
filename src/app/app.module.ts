@@ -42,9 +42,11 @@ import {assignToServerModal} from "../pages/floatingIPs/assignToServer/assignToS
 import {ServersModule} from "../models/servers/Servers.module";
 import {HetznerStatusSettingPage} from "../pages/hetzner-status-setting/hetzner-status-setting";
 import {OneSignal} from "@ionic-native/onesignal";
+import {StatusApiProvider} from "../providers/status-api/status-api";
+import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.12"
+  appVersion: "0.0.13"
 });
 
 @Injectable()
@@ -64,7 +66,7 @@ export class MyErrorHandler implements ErrorHandler {
     IonicPro.monitoring.handleNewError(err);
     // Remove this if you want to disable Ionic's auto exception handling
     // in development mode.
-    //this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+    this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
   }
 }
 
@@ -93,7 +95,8 @@ export class MyErrorHandler implements ErrorHandler {
     ImagesPage,
     editImageModal,
     assignToServerModal,
-    HetznerStatusSettingPage
+    HetznerStatusSettingPage,
+    HetznerStatusPage
 
   ],
   imports: [
@@ -132,7 +135,8 @@ export class MyErrorHandler implements ErrorHandler {
     ImagesPage,
     editImageModal,
     assignToServerModal,
-    HetznerStatusSettingPage
+    HetznerStatusSettingPage,
+    HetznerStatusPage
   ],
   providers: [
     StatusBar,
@@ -144,6 +148,7 @@ export class MyErrorHandler implements ErrorHandler {
     LocationApiProvider,
     ImageApiProvider,
     SshKeyApiProvider,
+    StatusApiProvider,
     OneSignal
   ]
 })

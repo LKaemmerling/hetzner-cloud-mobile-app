@@ -13,7 +13,7 @@ import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
 import {ImagesPage} from "../pages/images/images";
 import {ServersService} from "../models/servers/ServersService";
 import {OneSignal} from "@ionic-native/onesignal";
-import {HetznerStatusSettingPage} from "../pages/hetzner-status-setting/hetzner-status-setting";
+import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 
 @Component({
   templateUrl: 'app.html'
@@ -67,6 +67,6 @@ export class MyApp {
   }
 
   openHetznerStatusSetting() {
-    this.nav.setRoot(HetznerStatusSettingPage);
+    this.nav.setRoot(HetznerStatusPage);
   }
 }

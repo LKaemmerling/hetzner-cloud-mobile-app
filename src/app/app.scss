@@ -36,14 +36,16 @@
   }
 }
 
-.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
-  color: #ffffff;
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default, .back-button, .segment-button {
+  color: #ffffff !important;
 }
 
 .fab {
   contain: initial;
 }
-
+.text-white{
+  color:#ffffff !important;
+}
 ion-fab {
   button {
     box-shadow: 0 4px 10px #6b6b6b;

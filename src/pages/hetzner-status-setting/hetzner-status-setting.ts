@@ -71,7 +71,7 @@ export class HetznerStatusSettingPage {
     });
     this._send = true;
     if (prompt && this.platform.is('ios')) {
-      this.oneSignal.registerForPushNotifications();
+      this.oneSignal.promptForPushNotificationsWithUserResponse();
     }
     this.storage.set('hetzner_status_settings', this.categories);
   }

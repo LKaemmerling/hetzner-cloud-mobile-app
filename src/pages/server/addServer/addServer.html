@@ -5,7 +5,7 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text showWhen="ios">Cancel</span>
+        <span ion-text showWhen="ios" class="text-white">Cancel</span>
         <i class="fas fa-times" showWhen="android,windows"></i>
       </button>
     </ion-buttons>
@@ -42,7 +42,7 @@
     </ion-item>
     <ion-item>
       <ion-label>SSH Keys:</ion-label>
-      <ion-select [(ngModel)]="ssh_key"  multiple="true">
+      <ion-select [(ngModel)]="ssh_key" multiple="true">
         <ion-option *ngFor="let _ssh_key of ssh_keys" [value]="_ssh_key.id">{{ _ssh_key.name }}</ion-option>
       </ion-select>
     </ion-item>

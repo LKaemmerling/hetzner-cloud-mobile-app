@@ -16,14 +16,6 @@ export abstract class HetznerApiProvider {
   }
 
   /**
-   * Build the needed HTTP Headers for the Hetzner API
-   * @returns {HttpHeaders}
-   */
-  private getHeaders() {
-    return new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json');
-  }
-
-  /**
    * Performs a GET Request against the Hetzner API
    * @param {string} method
    * @returns {Promise<any>}
@@ -103,5 +95,13 @@ export abstract class HetznerApiProvider {
         }
       });
     });
+  }
+
+  /**
+   * Build the needed HTTP Headers for the Hetzner API
+   * @returns {HttpHeaders}
+   */
+  private getHeaders() {
+    return new HttpHeaders().set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key).set('Accept', 'application/json');
   }
 }
