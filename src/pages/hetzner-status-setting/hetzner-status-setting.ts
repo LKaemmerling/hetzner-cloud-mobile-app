@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, Platform} from 'ionic-angular';
 import {OneSignal} from "@ionic-native/onesignal";
 import {Storage} from "@ionic/storage";
 
@@ -52,7 +52,7 @@ export class HetznerStatusSettingPage {
   ];
   public _send: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, protected oneSignal: OneSignal, protected storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, protected oneSignal: OneSignal, protected storage: Storage, protected platform: Platform) {
     this.storage.get('hetzner_status_settings').then((data) => {
       if (data != undefined && data != null) {
         this.categories = data;
@@ -62,10 +62,17 @@ export class HetznerStatusSettingPage {
 
   save() {
     this._send = false;
+    let prompt = false;
     this.categories.forEach((value, key) => {
       this.oneSignal.sendTag(value.key, "" + value.value);
+      if (value.value == true) {
+        prompt = true;
+      }
     });
     this._send = true;
+    if (prompt && this.platform.is('ios')) {
+      this.oneSignal.registerForPushNotifications();
+    }
     this.storage.set('hetzner_status_settings', this.categories);
   }
 }

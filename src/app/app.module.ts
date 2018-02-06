@@ -44,7 +44,7 @@ import {HetznerStatusSettingPage} from "../pages/hetzner-status-setting/hetzner-
 import {OneSignal} from "@ionic-native/onesignal";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.11"
+  appVersion: "0.0.12"
 });
 
 @Injectable()

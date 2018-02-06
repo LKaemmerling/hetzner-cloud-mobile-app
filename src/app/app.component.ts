@@ -28,7 +28,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       storage.ready().then(() => {
         statusBar.styleDefault();
-        oneSignal.startInit('e8714cee-7480-45da-bad0-19ba3c3e89c4', '1069973161280')
+        oneSignal.startInit('e8714cee-7480-45da-bad0-19ba3c3e89c4', '1069973161280');
+        oneSignal.iOSSettings({
+          kOSSettingsKeyAutoPrompt: false,
+          kOSSettingsKeyInAppLaunchURL: false
+        });
         oneSignal.endInit();
         projects.loadProjects();
         this.servers.loadServers();
