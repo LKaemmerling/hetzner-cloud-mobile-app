@@ -58,6 +58,8 @@
       <button ion-button color="primary" (click)="resizeServer()" [disabled]="(server.status != 'off')">
         Kostenpflichtig Upgraden
       </button>
+
+      <p class="message_box error" *ngIf="error != null">{{ error }}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

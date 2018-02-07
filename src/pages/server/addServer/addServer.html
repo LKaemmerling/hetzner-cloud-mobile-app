@@ -17,13 +17,14 @@
 
     <ion-item>
       <ion-label>Serverbezeichnung</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="name"></ion-input>
+      <ion-input type="text" value="" [(ngModel)]="name" required=""></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Server Type:</ion-label>
       <ion-select [(ngModel)]="server_type">
-        <ion-option *ngFor="let _server_type of server_types" [value]="_server_type">{{ _server_type.description }} {{
+        <ion-option *ngFor="let _server_type of server_types" [value]="_server_type" required="">{{
+          _server_type.description }} {{
           _server_type.prices[0].price_monthly.gross | number:'1.2-2' }} € per Monat
         </ion-option>
       </ion-select>
@@ -31,13 +32,14 @@
     <ion-item>
       <ion-label>Standort:</ion-label>
       <ion-select [(ngModel)]="location">
-        <ion-option *ngFor="let _location of locations" [value]="_location.id">{{ _location.description }}</ion-option>
+        <ion-option *ngFor="let _location of locations" [value]="_location.id" required="">{{ _location.description }}
+        </ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Image:</ion-label>
       <ion-select [(ngModel)]="image">
-        <ion-option *ngFor="let _image of images" [value]="_image.id">{{ _image.description }}</ion-option>
+        <ion-option *ngFor="let _image of images" [value]="_image.id" required="">{{ _image.description }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -59,4 +61,5 @@
     </ion-item>
   </ion-list>
   <button ion-button color="primary" (click)="createServer()">Server kostenpflichtig erstellen</button>
+  <p class="message_box error" *ngIf="error != null">{{ error }}</p>
 </ion-content>

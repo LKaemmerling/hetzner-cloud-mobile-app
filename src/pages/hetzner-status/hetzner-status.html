@@ -20,10 +20,19 @@
   </ion-refresher>
   <ion-card *ngFor="let message of messages">
     <ion-card-header text-wrap>
-      {{ message.title }}
+      {{ message.title }} <ion-icon name="link" item-start (click)="openPage(message.permalink)"></ion-icon>
     </ion-card-header>
-    <ion-card-content [innerHTML]="message.text + '<br /><br /><strong>'+message.date_time+'</strong>'">
+    <ion-card-content>
 
+      <p [innerHTML]="message.text + '<br /><br /><strong>'+message.date_time+'</strong>'"></p>
+      <ion-list *ngIf="message.children.length > 0">
+
+        <ion-item-group *ngFor="let child of message.children">
+          <ion-item-divider color="light">{{ child.title }}  <ion-icon name="link" item-start (click)="openPage(child.permalink)"></ion-icon></ion-item-divider>
+          <ion-item>
+            <p [innerHTML]="child.text + '<br /><br /><strong>'+child.date_time+'</strong>'"></p></ion-item>
+        </ion-item-group>
+      </ion-list>
     </ion-card-content>
 
   </ion-card>

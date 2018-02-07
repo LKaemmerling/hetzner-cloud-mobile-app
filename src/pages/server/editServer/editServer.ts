@@ -11,12 +11,18 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
 export class editServerModal {
   public server: any;
 
+  public error: string = null;
+
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
   }
 
 
   public updateServer() {
+    if (this.server.name == null || this.server.name == '') {
+      this.error = 'Bitte geben Sie einen Server Namen an.';
+      return;
+    }
     let loader = this.loadingCtrl.create();
     loader.present();
     this.serverApiProvider.changeServerName(this.server.id, this.server.name).then(() => {

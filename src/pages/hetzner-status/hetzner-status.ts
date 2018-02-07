@@ -3,6 +3,7 @@ import {NavController, NavParams, Platform} from 'ionic-angular';
 import {Storage} from "@ionic/storage";
 import {HetznerStatusSettingPage} from "../hetzner-status-setting/hetzner-status-setting";
 import {StatusApiProvider} from "../../providers/status-api/status-api";
+import {InAppBrowser} from "@ionic-native/in-app-browser";
 
 /**
  * Generated class for the HetznerStatusPage page.
@@ -18,7 +19,7 @@ import {StatusApiProvider} from "../../providers/status-api/status-api";
 export class HetznerStatusPage {
   public messages;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, protected statusApi: StatusApiProvider, protected storage: Storage, protected platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, protected statusApi: StatusApiProvider, protected storage: Storage, protected platform: Platform, protected browser:InAppBrowser) {
     this.load();
   }
 
@@ -46,5 +47,9 @@ export class HetznerStatusPage {
           `body was: ${error.error}`);
       }
     });
+  }
+
+  public openPage(url:string){
+    this.browser.create(url).show();
   }
 }

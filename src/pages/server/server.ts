@@ -96,8 +96,14 @@ export class ServerPage {
       loader.present();
       this.serverApiProvider.delete(this.server.id).then((data) => {
         loader.dismiss();
+      });
+      this.server = null;
+      this.serverApiProvider.getServers().then((data) => {
+        this.serverService.servers = data['servers'];
+        this.serverService.saveServers();
         this.navCtrl.setRoot(ServerPage);
       });
+
     }
   }
 }

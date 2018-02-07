@@ -74,6 +74,11 @@ export class ServersPage {
   }
 
   openCreateServerModal() {
-    this.modal.create(addServerModal).present();
+    let modal = this.modal.create(addServerModal);
+    modal.onDidDismiss(() => {
+      this.loadServers();
+    })
+
+    modal.present();
   }
 }

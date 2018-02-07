@@ -14,6 +14,8 @@ export class resizeServerModal {
   public server_type: any;
   public upgrade_disk: false;
 
+  public error: string = null;
+
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public serverTypeApiProvider: ServerTypeApiProvider, public loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
     serverTypeApiProvider.getServerTypes().then((data) => {
@@ -28,16 +30,21 @@ export class resizeServerModal {
 
   public resizeServer() {
 
-    if (this.server_type != null) {
-      var loader = this.loadingCtrl.create();
-      loader.present();
-      if (this.upgrade_disk == null || this.upgrade_disk == undefined) {
-        this.upgrade_disk = false;
-      }
-      this.serverApiProvider.changeServerType(this.server.id, this.server_type.id, this.upgrade_disk).then((data) => {
-        loader.dismiss();
-      });
+    if (this.server_type == null) {
+      this.error = 'Bitte wählen Sie einen Server Typ aus';
+      return;
     }
+    var loader = this.loadingCtrl.create();
+    loader.present();
+    if (this.upgrade_disk == null || this.upgrade_disk == undefined) {
+      this.upgrade_disk = false;
+    }
+    this.serverApiProvider.changeServerType(this.server.id, this.server_type.id, this.upgrade_disk).then((data) => {
+      loader.dismiss();
+    }, (error) => {
+      this.error = 'Leider gab es einen Anfrage Fehler.';
+    });
+
     this.dismiss();
   }
 
