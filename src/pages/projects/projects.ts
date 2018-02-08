@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../models/project/ProjectsService";
-import {ItemSliding, ModalController} from "ionic-angular";
+import {ActionSheetController, ItemSliding, ModalController} from "ionic-angular";
 import {addProjectModal} from "./addProject/addProject";
 import {project} from "../../models/project/project";
 
@@ -11,7 +11,7 @@ import {project} from "../../models/project/project";
 export class ProjectsPage {
   public _projects = [];
 
-  constructor(public project: ProjectsService, public modal: ModalController) {
+  constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController) {
     this._projects = project.projects;
   }
 
@@ -46,8 +46,40 @@ export class ProjectsPage {
     }
   }
 
-  public delete(project: project, slidingItem: ItemSliding) {
+  public delete(project: project) {
     this.project.removeProject(project);
-    slidingItem.close();
+  }
+
+  public openActionSheets(project: project) {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Aktionen für das Projekt ' + project.name,
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+        {
+          text: 'Löschen',
+          role: 'destructive',
+          icon: 'trash',
+          handler: () => {
+            this.delete(project);
+          }
+        },
+        {
+          text: 'Aktivieren',
+          icon: 'checkmark',
+          handler: () => {
+            this.project.selectProject(project);
+          }
+        },
+        {
+          text: 'Abbrechen',
+          role: 'cancel', // will always sort to be on the bottom
+          icon: 'close',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 }
