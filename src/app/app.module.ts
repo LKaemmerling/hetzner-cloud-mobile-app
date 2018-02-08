@@ -45,7 +45,8 @@ import {OneSignal} from "@ionic-native/onesignal";
 import {StatusApiProvider} from "../providers/status-api/status-api";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
-
+import { ChartsModule } from 'ng2-charts';
+import {ServerMetricsPage} from "../pages/server/server-metrics/server-metrics";
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.15"
 });
@@ -68,6 +69,7 @@ export class MyErrorHandler implements ErrorHandler {
     // Remove this if you want to disable Ionic's auto exception handling
     // in development mode.
     this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+    console.log(err);
   }
 }
 
@@ -97,7 +99,8 @@ export class MyErrorHandler implements ErrorHandler {
     editImageModal,
     assignToServerModal,
     HetznerStatusSettingPage,
-    HetznerStatusPage
+    HetznerStatusPage,
+    ServerMetricsPage
 
   ],
   imports: [
@@ -109,7 +112,8 @@ export class MyErrorHandler implements ErrorHandler {
     PipesModule,
     BrowserAnimationsModule,
     TooltipsModule,
-    ServersModule
+    ServersModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -137,7 +141,8 @@ export class MyErrorHandler implements ErrorHandler {
     editImageModal,
     assignToServerModal,
     HetznerStatusSettingPage,
-    HetznerStatusPage
+    HetznerStatusPage,
+    ServerMetricsPage
   ],
   providers: [
     StatusBar,

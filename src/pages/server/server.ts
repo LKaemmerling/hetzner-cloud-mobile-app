@@ -11,6 +11,7 @@ import {changeIPv4ReverseDNSModal} from "./reverseDNS/ipv4/changeIPv4ReverseDNSM
 import {changeIPv6ReverseDNSModal} from "./reverseDNS/ipv6/changeIPv6ReverseDNS";
 import {ServersService} from "../../models/servers/ServersService";
 import {ServersPage} from "./serverList/servers";
+import {ServerMetricsPage} from "./server-metrics/server-metrics";
 
 @Component({
   selector: 'page-server',
@@ -87,9 +88,9 @@ export class ServerPage {
     modal.present();
   }
 
-  /**public metricsModal() {
-    this.modalCtrl.create(metricsModal, {server: this.server}).present();
-  } **/
+  public metricsPage() {
+    this.navCtrl.push(ServerMetricsPage, {server: this.server});
+  }
 
   public delete() {
     if (confirm('Möchten Sie den Server ' + this.server.name + ' wirklich unwiederuflich löschen?')) {
