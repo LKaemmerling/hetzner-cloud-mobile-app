@@ -18,6 +18,9 @@ export class addProjectModal {
   }
 
   public saveProject() {
+    if (this.project_name == null || this.project_name.length == 0) {
+      this.error = 'Bitte geben Sie einen Projekt Namen an.';
+    }
     var _new = new project(this.project_name, this.api_key);
     this.project.addProject(_new);
 
@@ -33,7 +36,8 @@ export class addProjectModal {
       this.project.saveProjects();
       this.dismiss();
     }, () => {
-      this.error = 'Error!';
+      this.error = 'Leider ist der API Key nicht korrekt. Bitte geben Sie einen neuen\n' +
+        '    API-Key ein.';
       this.project.removeProject(_new);
     });
 

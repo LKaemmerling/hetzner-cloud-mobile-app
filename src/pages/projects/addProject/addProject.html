@@ -13,8 +13,7 @@
 </ion-header>
 
 <ion-content>
-  <p *ngIf="error !== null" class="message_box error">Leider ist der API Key nicht korrekt. Bitte geben Sie einen neuen
-    API-Key ein.</p>
+  <p *ngIf="error !== null" class="message_box error">{{ error }}</p>
   <ion-list>
 
     <ion-item>

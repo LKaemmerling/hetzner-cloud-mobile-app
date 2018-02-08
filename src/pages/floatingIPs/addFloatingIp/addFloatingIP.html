@@ -40,4 +40,5 @@
     </ion-item>
   </ion-list>
   <button ion-button color="primary" (click)="createFloatingIP()">Kostenpflichtig bestellen</button>
+  <p class="message_box error" *ngIf="error != null">{{ error }}</p>
 </ion-content>

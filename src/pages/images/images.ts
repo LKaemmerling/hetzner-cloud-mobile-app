@@ -4,6 +4,7 @@ import {ActionSheetController, ModalController, NavController} from "ionic-angul
 import {ImageApiProvider} from "../../providers/image-api/image-api";
 import {editImageModal} from "./editImage/editImage";
 import {project} from "../../models/project/project";
+import {addServerModal} from "../server/addServer/addServer";
 
 
 @Component({
@@ -48,6 +49,13 @@ export class ImagesPage {
         cssClass: 'action-sheets-basic-page',
         buttons: [
           {
+            text: 'Neuen Server erstellen',
+            icon: 'add',
+            handler: () => {
+              this.modal.create(addServerModal, {selected_image: image.id}).present();
+            }
+          },
+          {
             text: 'Abbrechen',
             role: 'cancel', // will always sort to be on the bottom
             icon: 'close',
@@ -75,6 +83,13 @@ export class ImagesPage {
             icon: 'brush',
             handler: () => {
               this.openEdit(image);
+            }
+          },
+          {
+            text: 'Neuen Server erstellen',
+            icon: 'add',
+            handler: () => {
+              this.modal.create(addServerModal, {selected_image: image.id}).present();
             }
           },
           {

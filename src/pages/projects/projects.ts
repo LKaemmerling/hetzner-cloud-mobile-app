@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../models/project/ProjectsService";
-import {ActionSheetController, ItemSliding, ModalController} from "ionic-angular";
+import {ActionSheetController, ModalController} from "ionic-angular";
 import {addProjectModal} from "./addProject/addProject";
 import {project} from "../../models/project/project";
 
@@ -23,9 +23,8 @@ export class ProjectsPage {
     modal.present();
   }
 
-  select(project: project, slidingItem: ItemSliding) {
+  select(project: project) {
     this.project.selectProject(project);
-    slidingItem.close();
   }
 
   search(ev) {
