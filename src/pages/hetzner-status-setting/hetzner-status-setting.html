@@ -17,9 +17,7 @@
   <ion-list>
     <ion-item *ngFor="let category of categories">
       <ion-label>{{ category.key}}</ion-label>
-      <ion-toggle color="secondary" [(ngModel)]="category.value"></ion-toggle>
+      <ion-toggle color="secondary" [(ngModel)]="category.value" (change)="save()">
     </ion-item>
-  </ion-list>
-  <button (click)="save()" ion-button="" color="">Speichern</button>
-  <p class="message_box success" *ngIf="_send== true">Die Einstellungen wurden erfolgreich gespeichert.</p>
+  <p class="message_box success" *ngIf="_send == true">Die Einstellungen wurden erfolgreich gespeichert.</p>
 </ion-content>
