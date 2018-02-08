@@ -27,6 +27,12 @@
         Der Auftrag für das Rescue-System bleibt 60 Minuten aktiviert. Wenn Sie danach Ihren Server neu starten, wird
         wieder Ihr gewohntes System von der Festplatte gestartet.<br/><br/>
       </p>
+      <p *ngIf="root_password_reset != null" class="message_box success">
+        <strong>Zugangsdaten</strong><br/>
+        Benutzer: root<br/>
+        Passwort: {{root_password_reset}}
+
+      </p>
       <button (click)="rescueActivate()" ion-button color="danger">RESCUE AKTIVIEREN</button>
       <button (click)="rescueActivateAndReset()" ion-button color="danger">RESCUE AKTIVIEREN & RESET</button>
     </ion-card-content>

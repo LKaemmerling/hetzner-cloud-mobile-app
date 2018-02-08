@@ -14,27 +14,13 @@
   <ion-card>
     <ion-card-content>
       <ion-list>
-        <ion-item-sliding *ngFor="let image of images"
-                          #slidingItem>
-          <ion-item>
+          <ion-item *ngFor="let image of images" (click)="openActionSheets(image)">
             <h2>{{ image.description }}</h2>
             <p *ngIf="image.created_from != null">Erstellt von: {{ image.created_from.name }}</p>
             <div item-end>
               <span class="pill">{{ image.type }}</span>
             </div>
           </ion-item>
-
-          <ion-item-options side="right" *ngIf="image.type != 'system'">
-            <button ion-button color="danger" (click)="delete(image,slidingItem)">
-              <i class="fas fa-trash"></i>
-            </button>
-          </ion-item-options>
-          <ion-item-options side="left" *ngIf="image.type != 'system'" (click)="openEdit(image)">
-            <button ion-button color="secondary">
-              <i class="fas fa-pencil-alt"></i>
-            </button>
-          </ion-item-options>
-        </ion-item-sliding>
       </ion-list>
     </ion-card-content>
   </ion-card>

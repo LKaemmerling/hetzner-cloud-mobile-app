@@ -11,6 +11,7 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
 export class rescueModeModal {
   public server: any;
   public root_password: string = null;
+  public root_password_reset: string = null;
 
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
@@ -21,18 +22,20 @@ export class rescueModeModal {
     var loader = this.loadingCtrl.create();
     loader.present();
     this.serverApiProvider.enable_rescue(this.server.id).then((data) => {
+      this.root_password_reset = data['root_password'];
       loader.dismiss();
-      this.dismiss();
+     // this.dismiss();
     });
   }
 
   public rescueActivateAndReset() {
     var loader = this.loadingCtrl.create();
     loader.present();
-    this.serverApiProvider.enable_rescue(this.server.id).then(() => {
-      this.serverApiProvider.reset(this.server.id).then(() => {
+    this.serverApiProvider.enable_rescue(this.server.id).then((data) => {
+      this.serverApiProvider.reboot(this.server.id).then(() => {
+        this.root_password_reset = data['root_password'];
         loader.dismiss();
-        this.dismiss();
+        // this.dismiss();
       });
     });
 
