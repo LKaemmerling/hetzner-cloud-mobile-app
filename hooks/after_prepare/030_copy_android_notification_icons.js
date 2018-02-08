@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
 var filestocopy = [{
-  "resources/android/icon/drawable-hdpi-icon.png":
+  "resources/android/icon/drawable-xxxhdpi-icon.png":
     "platforms/android/res/drawable-hdpi/ic_stat_onesignal_default.png"
 }, {
-  "resources/android/icon/drawable-mdpi-icon.png":
+  "resources/android/icon/drawable-xxxhdpi-icon.png":
     "platforms/android/res/drawable-mdpi/ic_stat_onesignal_default.png"
 }, {
-  "resources/android/icon/drawable-xhdpi-icon.png":
+  "resources/android/icon/drawable-xxxhdpi-icon.png":
     "platforms/android/res/drawable-xhdpi/ic_stat_onesignal_default.png"
 }, {
-  "resources/android/icon/drawable-xxhdpi-icon.png":
+  "resources/android/icon/drawable-xxxhdpi-icon.png":
     "platforms/android/res/drawable-xxhdpi/ic_stat_onesignal_default.png"
 }, {
   "resources/android/icon/drawable-xxxhdpi-icon.png":
