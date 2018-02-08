@@ -41,7 +41,7 @@ export class FloatingIPsPage {
   }
 
   public delete(floatingIp) {
-    if (confirm('Möchten Sie diese Floating IP wirklich unwideruflich löschen?')) {
+    if (confirm('Möchten Sie diese Floating IP wirklich unwiderruflich löschen?')) {
       this.floatingIpApiProvider.deleteFloatingIp(floatingIp.id).then((data) => {
     this.loadFloatingIPs();
       });

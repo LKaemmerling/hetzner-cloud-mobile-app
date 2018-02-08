@@ -34,7 +34,7 @@ export class ImagesPage {
   }
 
   public delete(image) {
-    if (confirm('Möchten Sie diese Image wirklich unwideruflich löschen?')) {
+    if (confirm('Möchten Sie diese Image wirklich unwiderruflich löschen?')) {
       this.imageApiProvider.delete(image.id).then((data) => {
         this.loadImages();
       });

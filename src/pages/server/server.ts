@@ -93,7 +93,7 @@ export class ServerPage {
   }
 
   public delete() {
-    if (confirm('Möchten Sie den Server ' + this.server.name + ' wirklich unwiederuflich löschen?')) {
+    if (confirm('Möchten Sie den Server ' + this.server.name + ' wirklich unwiderruflich löschen?')) {
       var loader = this.loadingCtrl.create();
       loader.present();
       this.serverApiProvider.delete(this.server.id).then((data) => {
