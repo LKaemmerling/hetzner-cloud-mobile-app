@@ -48,7 +48,7 @@ import {InAppBrowser} from "@ionic-native/in-app-browser";
 import { ChartsModule } from 'ng2-charts';
 import {ServerMetricsPage} from "../pages/server/server-metrics/server-metrics";
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.15"
+  appVersion: "0.0.16"
 });
 
 @Injectable()

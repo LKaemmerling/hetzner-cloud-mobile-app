@@ -67,7 +67,7 @@ export class ImagesPage {
       }
     } else {
       actions = {
-        title: 'Aktionen für das Image ' + image.name,
+        title: 'Aktionen für das Image ' + image.description,
         cssClass: 'action-sheets-basic-page',
         buttons: [
           {
