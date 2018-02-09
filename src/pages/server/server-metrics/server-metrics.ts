@@ -26,7 +26,19 @@ export class ServerMetricsPage {
   public options = {
     responsive: true
   };
-
+  public mb_options = {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        ticks: {
+          // Include a dollar sign in the ticks
+          callback: (value, index, values) => {
+            return this.transform(value);
+          }
+        }
+      }]
+    }
+  };
   public disk_metrics = [];
   public disk_labels = [];
   public disk_bandwidth_metrics = [];
@@ -138,5 +150,36 @@ export class ServerMetricsPage {
     var sec = a.getSeconds();
     var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
     return time;
+  }
+
+
+  /*
+   * Convert bytes into largest possible unit.
+   * Takes an precision argument that defaults to 2.
+   * Usage:
+   *   bytes | fileSize:precision
+   * Example:
+   *   {{ 1024 |  fileSize}}
+   *   formats to: 1 KB
+  */
+  transform(bytes: number = 0, precision: number = 2): string {
+    if (isNaN(parseFloat(String(bytes))) || !isFinite(bytes)) return '?';
+    let units = [
+      'bytes',
+      'KB',
+      'MB',
+      'GB',
+      'TB',
+      'PB'
+    ];
+
+    let unit = 0;
+
+    while (bytes >= 1024) {
+      bytes /= 1024;
+      unit++;
+    }
+
+    return bytes.toFixed(+precision) + ' ' + units[unit];
   }
 }
