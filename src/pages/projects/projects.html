@@ -11,25 +11,19 @@
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
   <ion-card>
     <ion-list>
-      <ion-item-sliding *ngFor="let _project of _projects"
-                        #slidingItem>
-        <ion-item
-          [color]="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name) ? 'primary':'none' ">
 
-          <div (click)="select(_project,slidingItem)">
-            <h2>{{ _project.name }} <span
-              *ngIf="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)"><em>AKTIV</em></span>
-            </h2>
-          </div>
-        </ion-item>
+      <ion-item *ngFor="let _project of _projects"
+                [color]="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name) ? 'primary':'none' "
+                (click)="openActionSheets(_project)">
 
-        <ion-item-options side="right">
-          <button ion-button color="danger" (click)="delete(_project,slidingItem)">
-            <i class="fas fa-trash"></i>
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-      <ion-item *ngIf="project.projects == null || project.projects.length == 0">
+        <div (click)="select(_project,slidingItem)">
+          <h2>{{ _project.name }} <span
+            *ngIf="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)"><em>AKTIV</em></span>
+          </h2>
+        </div>
+      </ion-item>
+
+      <ion-item *ngIf="project.projects == null || project.projects.length == 0" class="message_box info" text-wrap="">
         Oh! Es sieht so aus als wäre hier noch kein Projekt hinterlegt.
       </ion-item>
     </ion-list>

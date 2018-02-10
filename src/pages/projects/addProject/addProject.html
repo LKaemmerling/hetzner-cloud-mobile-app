@@ -5,16 +5,15 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text showWhen="ios" class="text-white">Zurück</span>
-        <i class="fas fa-times" showWhen="android,windows"></i>
+        <span ion-text showWhen="ios" class="text-white">Cancel</span>
+       <i class="fas fa-times" showWhen="android,windows"></i>
       </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p *ngIf="error !== null" class="message_box error">Leider ist der API Key nicht korrekt. Bitte geben Sie einen neuen
-    API-Key ein.</p>
+  <p *ngIf="error !== null" class="message_box error">{{ error }}</p>
   <ion-list>
 
     <ion-item>

@@ -17,6 +17,7 @@ export class FileSizePipe implements PipeTransform {
     'TB',
     'PB'
   ];
+
   /*
    * Convert bytes into largest possible unit.
    * Takes an precision argument that defaults to 2.

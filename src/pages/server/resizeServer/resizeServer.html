@@ -5,7 +5,7 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text showWhen="ios" class="text-white">Zurück</span>
+        <span ion-text showWhen="ios" class="text-white">Cancel</span>
         <i class="fas fa-times" showWhen="android,windows"></i>
       </button>
     </ion-buttons>
@@ -58,6 +58,8 @@
       <button ion-button color="primary" (click)="resizeServer()" [disabled]="(server.status != 'off')">
         Kostenpflichtig Upgraden
       </button>
+
+      <p class="message_box error" *ngIf="error != null">{{ error }}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

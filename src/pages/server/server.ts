@@ -10,6 +10,8 @@ import {ServerApiProvider} from "../../providers/server-api/server-api";
 import {changeIPv4ReverseDNSModal} from "./reverseDNS/ipv4/changeIPv4ReverseDNSModal";
 import {changeIPv6ReverseDNSModal} from "./reverseDNS/ipv6/changeIPv6ReverseDNS";
 import {ServersService} from "../../models/servers/ServersService";
+import {ServersPage} from "./serverList/servers";
+import {ServerMetricsPage} from "./server-metrics/server-metrics";
 
 @Component({
   selector: 'page-server',
@@ -86,18 +88,23 @@ export class ServerPage {
     modal.present();
   }
 
-  /**public metricsModal() {
-    this.modalCtrl.create(metricsModal, {server: this.server}).present();
-  } **/
+  public metricsPage() {
+    this.navCtrl.push(ServerMetricsPage, {server: this.server});
+  }
 
   public delete() {
-    if (confirm('Möchten Sie den Server ' + this.server.name + ' wirklich unwiederuflich löschen?')) {
+    if (confirm('Möchten Sie den Server ' + this.server.name + ' wirklich unwiderruflich löschen?')) {
       var loader = this.loadingCtrl.create();
       loader.present();
       this.serverApiProvider.delete(this.server.id).then((data) => {
         loader.dismiss();
-        this.navCtrl.setRoot(ServerPage);
+        this.serverApiProvider.getServers().then((data) => {
+          this.serverService.servers = data['servers'];
+          this.serverService.saveServers();
+          this.navCtrl.setRoot(ServersPage);
+        });
       });
+
     }
   }
 }

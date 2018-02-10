@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <i class="fas fa-bars"></i>
+    </button>
+    <ion-title>
+      Hetzner Status Benachrichtigungen
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="openSettings()">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let message of messages">
+    <ion-card-header text-wrap>
+      {{ message.title }} <ion-icon name="link" item-start (click)="openPage(message.permalink)"></ion-icon>
+    </ion-card-header>
+    <ion-card-content>
+
+      <p [innerHTML]="message.text + '<br /><br /><strong>'+message.date_time+'</strong>'"></p>
+      <ion-list *ngIf="message.children.length > 0">
+
+        <ion-item-group *ngFor="let child of message.children">
+          <ion-item-divider color="light">{{ child.title }}  <ion-icon name="link" item-start (click)="openPage(child.permalink)"></ion-icon></ion-item-divider>
+          <ion-item>
+            <p [innerHTML]="child.text + '<br /><br /><strong>'+child.date_time+'</strong>'"></p></ion-item>
+        </ion-item-group>
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

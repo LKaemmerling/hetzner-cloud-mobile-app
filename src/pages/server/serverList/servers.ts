@@ -46,7 +46,7 @@ export class ServersPage {
   }
 
   public delete(server) {
-    if (confirm('Möchten Sie den Server ' + server.name + ' wirklich unwiederuflich löschen?')) {
+    if (confirm('Möchten Sie den Server ' + server.name + ' wirklich unwiderruflich löschen?')) {
       var loader = this.loadingCtrl.create();
       loader.present();
       this.serverApiProvider.delete(server.id).then((data) => {
@@ -74,6 +74,11 @@ export class ServersPage {
   }
 
   openCreateServerModal() {
-    this.modal.create(addServerModal).present();
+    let modal = this.modal.create(addServerModal);
+    modal.onDidDismiss(() => {
+      this.loadServers();
+    })
+
+    modal.present();
   }
 }

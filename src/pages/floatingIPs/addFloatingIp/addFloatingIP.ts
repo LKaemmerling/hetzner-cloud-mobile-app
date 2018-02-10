@@ -14,6 +14,8 @@ export class addFloatingIPModal {
   public description;
   public servers;
 
+  public error: string = null;
+
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public floatingIpApiProvider: FloatingIpApiProvider, public serverApiProvider: ServerApiProvider, public loadingCtrl: LoadingController) {
     this.serverApiProvider.getServers().then((data) => {
       this.servers = data['servers'];
@@ -21,6 +23,15 @@ export class addFloatingIPModal {
   }
 
   public createFloatingIP() {
+    this.error = null;
+    if (this.description == null || this.description.length == 0) {
+      this.error = 'Bitte geben Sie einen Namen ein.';
+      return;
+    }
+    if (this.server == null || this.server.id == 0) {
+      this.error = 'Bitte wählen Sie einen Server aus.';
+      return;
+    }
     let loader = this.loadingCtrl.create();
     loader.present();
     this.floatingIpApiProvider.createFloatingIp(this.type, this.description, this.server.id).then((data) => {

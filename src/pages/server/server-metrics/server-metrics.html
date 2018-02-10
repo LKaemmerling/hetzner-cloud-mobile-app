@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-title>{{server.name}} - Graphen</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list style="margin-bottom: 60px;">
+    <ion-list-header>
+      Zeitpunkte:
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Start:</ion-label>
+      <ion-datetime displayFormat="DD.MM.YYYY" [min]="min" [max]="max" [(ngModel)]="time_start"
+                    (ionChange)="load()"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ende:</ion-label>
+      <ion-datetime displayFormat="DD.MM.YYYY" [max]="max" [(ngModel)]="time_end" (ionChange)="load()"></ion-datetime>
+    </ion-item>
+    <ion-list-header>
+      CPU:
+    </ion-list-header>
+    <ion-item>
+      <div style="display: block;">
+        <canvas baseChart width="100" height="50"
+                [data]="cpu_metrics" chartType="line" [labels]="cpu_metrics_label" *ngIf="cpu_metrics.length > 0"
+                [options]="options" [legend]="false" >
+        </canvas>
+      </div>
+
+    </ion-item>
+    <ion-list-header>
+      Festplatten-IOPS:
+    </ion-list-header>
+    <ion-item>
+      <div style="display: block;">
+        <canvas baseChart width="100" height="50"
+                [datasets]="disk_metrics" chartType="line" [labels]="disk_labels" *ngIf="disk_metrics.length > 0"
+                [options]="options">
+        </canvas>
+      </div>
+
+    </ion-item>
+    <ion-list-header>
+      Festplatten-Durchsatz:
+    </ion-list-header>
+    <ion-item>
+      <div style="display: block;">
+        <canvas baseChart width="100" height="50"
+                [datasets]="disk_bandwidth_metrics" chartType="line" [labels]="disk_bandwidth_labels"
+                *ngIf="disk_bandwidth_metrics.length > 0"
+                [options]="mb_options">
+        </canvas>
+      </div>
+
+    </ion-item>
+    <ion-list-header>
+      Netzwerk-PPS:
+    </ion-list-header>
+    <ion-item>
+      <div style="display: block;">
+        <canvas baseChart width="100" height="50"
+                [datasets]="network_pps_metrics" chartType="line" [labels]="network_pps_labels"
+                *ngIf="network_pps_metrics.length > 0"
+                [options]="options">
+        </canvas>
+      </div>
+
+    </ion-item>
+    <ion-list-header>
+      Netzwerk-Traffic:
+    </ion-list-header>
+    <ion-item>
+      <div style="display: block;">
+        <canvas baseChart width="100" height="50"
+                [datasets]="network_bandwidth_metrics" chartType="line" [labels]="network_bandwidth_labels"
+                *ngIf="network_bandwidth_metrics.length > 0"
+                [options]="mb_options">
+        </canvas>
+      </div>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>

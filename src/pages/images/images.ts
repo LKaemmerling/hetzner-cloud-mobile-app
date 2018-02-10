@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../models/project/ProjectsService";
-import {ItemSliding, ModalController, NavController} from "ionic-angular";
+import {ActionSheetController, ModalController, NavController} from "ionic-angular";
 import {ImageApiProvider} from "../../providers/image-api/image-api";
 import {editImageModal} from "./editImage/editImage";
+import {project} from "../../models/project/project";
+import {addServerModal} from "../server/addServer/addServer";
 
 
 @Component({
@@ -12,7 +14,7 @@ import {editImageModal} from "./editImage/editImage";
 export class ImagesPage {
   public images = [];
 
-  constructor(public project: ProjectsService, public modal: ModalController, public imageApiProvider: ImageApiProvider, public navCtrl: NavController) {
+  constructor(public project: ProjectsService, public modal: ModalController, public imageApiProvider: ImageApiProvider, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
     this.loadImages();
   }
 
@@ -31,12 +33,77 @@ export class ImagesPage {
     this.modal.create(editImageModal, {image: image});
   }
 
-  public delete(image, slidingItem: ItemSliding) {
-    if (confirm('Möchten Sie diese Image wirklich unwideruflich löschen?')) {
+  public delete(image) {
+    if (confirm('Möchten Sie diese Image wirklich unwiderruflich löschen?')) {
       this.imageApiProvider.delete(image.id).then((data) => {
-        slidingItem.close();
         this.loadImages();
       });
     }
+  }
+
+  public openActionSheets(image) {
+    var actions;
+    if (image.type == 'system') {
+      actions = {
+        title: 'Aktionen für das Image ' + image.description,
+        cssClass: 'action-sheets-basic-page',
+        buttons: [
+          {
+            text: 'Neuen Server erstellen',
+            icon: 'add',
+            handler: () => {
+              this.modal.create(addServerModal, {selected_image: image.id}).present();
+            }
+          },
+          {
+            text: 'Abbrechen',
+            role: 'cancel', // will always sort to be on the bottom
+            icon: 'close',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          }
+        ]
+      }
+    } else {
+      actions = {
+        title: 'Aktionen für das Image ' + image.description,
+        cssClass: 'action-sheets-basic-page',
+        buttons: [
+          {
+            text: 'Löschen',
+            role: 'destructive',
+            icon: 'trash',
+            handler: () => {
+              this.delete(project);
+            }
+          },
+          {
+            text: 'Edit',
+            icon: 'brush',
+            handler: () => {
+              this.openEdit(image);
+            }
+          },
+          {
+            text: 'Neuen Server erstellen',
+            icon: 'add',
+            handler: () => {
+              this.modal.create(addServerModal, {selected_image: image.id}).present();
+            }
+          },
+          {
+            text: 'Abbrechen',
+            role: 'cancel', // will always sort to be on the bottom
+            icon: 'close',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          }
+        ]
+      }
+    }
+    let actionSheet = this.actionSheetCtrl.create(actions);
+    actionSheet.present();
   }
 }

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../models/project/ProjectsService";
-import {ItemSliding, ModalController, NavController} from "ionic-angular";
+import {ActionSheetController, ModalController, NavController} from "ionic-angular";
 
 import {addFloatingIPModal} from "./addFloatingIp/addFloatingIP";
 import {FloatingIpApiProvider} from "../../providers/floating-ip-api/floating-ip-api";
@@ -13,7 +13,7 @@ import {FloatingIPPage} from "./floatingIp/floatingIP";
 export class FloatingIPsPage {
   public _floating_ips = [];
 
-  constructor(public project: ProjectsService, public modal: ModalController, public floatingIpApiProvider: FloatingIpApiProvider, public navCtrl: NavController) {
+  constructor(public project: ProjectsService, public modal: ModalController, public floatingIpApiProvider: FloatingIpApiProvider, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
     this.loadFloatingIPs();
   }
 
@@ -40,11 +40,46 @@ export class FloatingIPsPage {
     refresher.complete();
   }
 
-  public delete(floatingIp, slidingItem: ItemSliding) {
-    if (confirm('Möchten Sie diese Floating IP wirklich unwideruflich löschen?')) {
+  public delete(floatingIp) {
+    if (confirm('Möchten Sie diese Floating IP wirklich unwiderruflich löschen?')) {
       this.floatingIpApiProvider.deleteFloatingIp(floatingIp.id).then((data) => {
-        slidingItem.close();
+    this.loadFloatingIPs();
       });
     }
+  }
+
+  public openActionSheets(floatingIp) {
+
+    var actions = {
+      title: 'Aktionen für die Floating IP ' + floatingIp.name,
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+        {
+          text: 'Löschen',
+          role: 'destructive',
+          icon: 'trash',
+          handler: () => {
+            this.delete(floatingIp);
+          }
+        },
+        {
+          text: 'Edit',
+          icon: 'brush',
+          handler: () => {
+            this.openFloatingIP(floatingIp);
+          }
+        },
+        {
+          text: 'Abbrechen',
+          role: 'cancel', // will always sort to be on the bottom
+          icon: 'close',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    }
+    let actionSheet = this.actionSheetCtrl.create(actions);
+    actionSheet.present();
   }
 }

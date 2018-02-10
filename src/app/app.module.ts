@@ -40,9 +40,15 @@ import {ImagesPage} from "../pages/images/images";
 import {editImageModal} from "../pages/images/editImage/editImage";
 import {assignToServerModal} from "../pages/floatingIPs/assignToServer/assignToServer";
 import {ServersModule} from "../models/servers/Servers.module";
-
+import {HetznerStatusSettingPage} from "../pages/hetzner-status-setting/hetzner-status-setting";
+import {OneSignal} from "@ionic-native/onesignal";
+import {StatusApiProvider} from "../providers/status-api/status-api";
+import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
+import {InAppBrowser} from "@ionic-native/in-app-browser";
+import { ChartsModule } from 'ng2-charts';
+import {ServerMetricsPage} from "../pages/server/server-metrics/server-metrics";
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.10"
+  appVersion: "0.0.16"
 });
 
 @Injectable()
@@ -62,7 +68,8 @@ export class MyErrorHandler implements ErrorHandler {
     IonicPro.monitoring.handleNewError(err);
     // Remove this if you want to disable Ionic's auto exception handling
     // in development mode.
-    //this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+    this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+    console.log(err);
   }
 }
 
@@ -91,6 +98,9 @@ export class MyErrorHandler implements ErrorHandler {
     ImagesPage,
     editImageModal,
     assignToServerModal,
+    HetznerStatusSettingPage,
+    HetznerStatusPage,
+    ServerMetricsPage
 
   ],
   imports: [
@@ -102,7 +112,8 @@ export class MyErrorHandler implements ErrorHandler {
     PipesModule,
     BrowserAnimationsModule,
     TooltipsModule,
-    ServersModule
+    ServersModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -128,7 +139,10 @@ export class MyErrorHandler implements ErrorHandler {
     FloatingIPPage,
     ImagesPage,
     editImageModal,
-    assignToServerModal
+    assignToServerModal,
+    HetznerStatusSettingPage,
+    HetznerStatusPage,
+    ServerMetricsPage
   ],
   providers: [
     StatusBar,
@@ -139,7 +153,10 @@ export class MyErrorHandler implements ErrorHandler {
     FloatingIpApiProvider,
     LocationApiProvider,
     ImageApiProvider,
-    SshKeyApiProvider
+    SshKeyApiProvider,
+    StatusApiProvider,
+    OneSignal,
+    InAppBrowser
   ]
 })
 export class AppModule {
