@@ -14,6 +14,7 @@ import {ImagesPage} from "../pages/images/images";
 import {ServersService} from "../models/servers/ServersService";
 import {OneSignal} from "@ionic-native/onesignal";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
+import {SettingsPage} from "../pages/settings/settings";
 
 @Component({
   templateUrl: 'app.html'
@@ -65,7 +66,11 @@ export class MyApp {
     this.nav.setRoot(ImagesPage);
   }
 
-  openHetznerStatusSetting() {
+  openHetznerStatusPage() {
     this.nav.setRoot(HetznerStatusPage);
+  }
+
+  openSettingsPage() {
+    this.nav.setRoot(SettingsPage);
   }
 }

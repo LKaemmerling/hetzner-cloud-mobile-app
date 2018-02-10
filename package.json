@@ -22,6 +22,7 @@
     "@angular/http": "5.0.3",
     "@angular/platform-browser": "5.0.3",
     "@angular/platform-browser-dynamic": "5.0.3",
+    "@ionic-native/app-version": "^4.5.3",
     "@ionic-native/core": "4.4.0",
     "@ionic-native/in-app-browser": "^4.5.3",
     "@ionic-native/onesignal": "^4.5.3",
@@ -33,6 +34,7 @@
     "chartist": "^0.11.0",
     "cordova-android": "6.4.0",
     "cordova-ios": "^4.5.4",
+    "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
@@ -66,7 +68,8 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "onesignal-cordova-plugin": {},
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-app-version": {}
     },
     "platforms": [
       "android",

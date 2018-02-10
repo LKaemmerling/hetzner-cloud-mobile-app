@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {DeleteAllDataPage} from "../delete-all-data/delete-all-data";
 
 @Component({
   selector: 'page-about',
@@ -12,7 +11,5 @@ export class AboutPage {
 
   }
 
-  openDeleteAllPage() {
-    this.navCtrl.push(DeleteAllDataPage);
-  }
+
 }

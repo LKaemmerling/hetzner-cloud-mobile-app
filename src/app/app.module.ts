@@ -45,8 +45,11 @@ import {OneSignal} from "@ionic-native/onesignal";
 import {StatusApiProvider} from "../providers/status-api/status-api";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
-import { ChartsModule } from 'ng2-charts';
+import {ChartsModule} from 'ng2-charts';
 import {ServerMetricsPage} from "../pages/server/server-metrics/server-metrics";
+import {SettingsPage} from "../pages/settings/settings";
+import {AppVersion} from "@ionic-native/app-version";
+
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.16"
 });
@@ -100,7 +103,8 @@ export class MyErrorHandler implements ErrorHandler {
     assignToServerModal,
     HetznerStatusSettingPage,
     HetznerStatusPage,
-    ServerMetricsPage
+    ServerMetricsPage,
+    SettingsPage
 
   ],
   imports: [
@@ -142,7 +146,8 @@ export class MyErrorHandler implements ErrorHandler {
     assignToServerModal,
     HetznerStatusSettingPage,
     HetznerStatusPage,
-    ServerMetricsPage
+    ServerMetricsPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
@@ -156,7 +161,8 @@ export class MyErrorHandler implements ErrorHandler {
     SshKeyApiProvider,
     StatusApiProvider,
     OneSignal,
-    InAppBrowser
+    InAppBrowser,
+    AppVersion
   ]
 })
 export class AppModule {

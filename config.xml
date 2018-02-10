@@ -87,4 +87,5 @@
     <engine name="ios" spec="~4.5.4" />
     <allow-navigation href="http://192.168.178.24:8100" />
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
+    <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
 </widget>

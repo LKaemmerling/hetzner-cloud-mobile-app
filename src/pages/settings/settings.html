@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <i class="fas fa-bars"></i>
+    </button>
+    <ion-title>
+     Einstellungen
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      App Informationen
+    </ion-list-header>
+    <ion-item>
+      {{ version }}
+    </ion-item>
+    <ion-list-header>
+     Sicherheit
+    </ion-list-header>
+  </ion-list>
+  <button ion-button="" color="danger" (click)="openDeleteAllPage()">
+    Alle Daten löschen
+  </button>
+</ion-content>

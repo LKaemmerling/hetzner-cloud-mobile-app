@@ -21,8 +21,11 @@
       <button ion-item *ngIf="projects.actual_project != null" (click)="openImagesPage()" menuClose="">
         <i class="fas fa-puzzle-piece fa-fw"></i> Images
       </button>
-      <button ion-item menuClose="" (click)="openHetznerStatusSetting()">
+      <button ion-item menuClose="" (click)="openHetznerStatusPage()">
         <i class="fas fa-bell fa-fw"></i> Hetzner Status
+      </button>
+      <button ion-item menuClose="" (click)="openSettingsPage()">
+        <i class="fas fa-cogs fa-fw"></i> Einstellungen
       </button>
       <button ion-item (click)="openAboutPage()" menuClose=""
               style="position: fixed; bottom:0; text-align: center;font-size:12px;">
