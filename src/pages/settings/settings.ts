@@ -33,9 +33,9 @@ export class SettingsPage {
     this.fingerprint.show({
       clientId: "Fingerprint-Demo"
     }).then(result => {
-      console.log(result);
+      alert(result);
     }).catch(err => {
-      console.log(err);
+      alert('Err' + err);
     });
   }
 
