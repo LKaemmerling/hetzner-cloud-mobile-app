@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {DeleteAllDataPage} from "../delete-all-data/delete-all-data";
 import {AppVersion} from "@ionic-native/app-version";
+import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 
 /**
  * Generated class for the SettingsPage page.
@@ -18,7 +19,7 @@ export class SettingsPage {
 
   public version: string = 'DEV-VERSION';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO) {
     appVersion.getVersionNumber().then((_version) => {
       this.version = _version;
     });
@@ -26,6 +27,16 @@ export class SettingsPage {
 
   openDeleteAllPage() {
     this.navCtrl.push(DeleteAllDataPage);
+  }
+
+  public openFingerprint() {
+    this.fingerprint.show({
+      clientId: "Fingerprint-Demo"
+    }).then(result => {
+      console.log(result);
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
 }

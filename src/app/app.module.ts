@@ -49,6 +49,7 @@ import {ChartsModule} from 'ng2-charts';
 import {ServerMetricsPage} from "../pages/server/server-metrics/server-metrics";
 import {SettingsPage} from "../pages/settings/settings";
 import {AppVersion} from "@ionic-native/app-version";
+import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.16"
@@ -162,7 +163,8 @@ export class MyErrorHandler implements ErrorHandler {
     StatusApiProvider,
     OneSignal,
     InAppBrowser,
-    AppVersion
+    AppVersion,
+    FingerprintAIO
   ]
 })
 export class AppModule {
