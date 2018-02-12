@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {DeleteAllDataPage} from "../delete-all-data/delete-all-data";
 import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the SettingsPage page.
@@ -18,10 +19,23 @@ import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 export class SettingsPage {
 
   public version: string = 'DEV-VERSION';
+  public finger_print: number = -1;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO, public storage: Storage) {
     appVersion.getVersionNumber().then((_version) => {
       this.version = _version;
+    });
+    this.fingerprint.isAvailable().then(resp => {
+      if (resp == 'OK') {
+        this.finger_print = 0;
+        storage.get('auth').then((value => {
+          if (value != undefined && value == 'enabled') {
+            this.finger_print = 1;
+          } else {
+            this.finger_print = 0;
+          }
+        }))
+      }
     });
   }
 
@@ -30,12 +44,21 @@ export class SettingsPage {
   }
 
   public openFingerprint() {
+    alert('This feature is experiential! ');
     this.fingerprint.show({
-      clientId: "Fingerprint-Demo"
+      clientId: 'Hetzner-Cloud-Mobile',
+      clientSecret: 'password', //Only necessary for Android
+      disableBackup: false,  //Only for Android(optional)
+      localizedFallbackTitle: 'Use Pin', //Only for iOS
+      localizedReason: 'Please authenticate' //Only for iOS
     }).then(result => {
-      alert(result);
+      var auth = 'disabled';
+      if (this.finger_print == 1) {
+        auth = 'enabled';
+      }
+      this.storage.set('auth', auth);
     }).catch(err => {
-      alert('Err' + err);
+      alert('Error: ' + err);
     });
   }
 

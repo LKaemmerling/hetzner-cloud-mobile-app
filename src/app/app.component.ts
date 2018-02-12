@@ -15,6 +15,7 @@ import {ServersService} from "../models/servers/ServersService";
 import {OneSignal} from "@ionic-native/onesignal";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 import {SettingsPage} from "../pages/settings/settings";
+import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 
 @Component({
   templateUrl: 'app.html'
@@ -23,7 +24,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public projects: ProjectsService, storage: Storage, public servers: ServersService, oneSignal: OneSignal) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public projects: ProjectsService, storage: Storage, public servers: ServersService, oneSignal: OneSignal, fingerPrint: FingerprintAIO) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -36,7 +37,31 @@ export class MyApp {
         oneSignal.endInit();
         projects.loadProjects();
         this.servers.loadServers();
-        splashScreen.hide();
+        fingerPrint.isAvailable().then(res => {
+          if(res == 'OK'){
+            storage.get('auth').then(val => {
+              if (val != undefined && val == 'enabled') {
+                fingerPrint.show({
+                  clientId: 'Hetzner-Cloud-Mobile',
+                  clientSecret: 'password', //Only necessary for Android
+                  disableBackup: false,  //Only for Android(optional)
+                  localizedFallbackTitle: 'Pin benutzen', //Only for iOS
+                  localizedReason: 'Bitte authentifizieren Sie sich.' //Only for iOS
+                }).then(result => {
+                  splashScreen.hide();
+                }).catch(err => {
+                  alert('Authentifizierung fehlgeschlagen. App wird beendet');
+                  platform.exitApp();
+                });
+              } else {
+
+              }
+            });
+          } else {
+            splashScreen.hide();
+          }
+        })
+
       });
 
     });

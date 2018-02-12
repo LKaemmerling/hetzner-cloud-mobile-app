@@ -4,7 +4,7 @@
       <i class="fas fa-bars"></i>
     </button>
     <ion-title>
-     Einstellungen
+      Einstellungen
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -14,13 +14,18 @@
     <ion-list-header>
       App Informationen
     </ion-list-header>
-    <ion-item>
-      {{ version }}
-    </ion-item>
+    <div ion-item="">
+      <span item-left>Version:</span>
+      <span item-right>{{ version }}</span>
+    </div>
     <ion-list-header>
-     Sicherheit
+      Sicherheit
     </ion-list-header>
-    <button ion-item (click)="openFingerprint()">Fingerprint</button>
+    <ion-item *ngIf="finger_print >= 0">
+    <ion-label>Authentifizierung</ion-label>
+    <ion-toggle [(ngModel)]="finger_print" (ionChange)="openFingerprint()"></ion-toggle>
+  </ion-item>
+    <p ion-item="" class="message_box info" *ngIf="finger_print == -1" text-wrap="">Leider ist keine sichere Authentifzierung auf Ihrem Gerät vorhanden.</p>
   </ion-list>
   <button ion-button="" color="danger" (click)="openDeleteAllPage()">
     Alle Daten löschen
