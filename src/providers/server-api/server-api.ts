@@ -99,11 +99,11 @@ export class ServerApiProvider extends HetznerApiProvider {
   }
 
   disable_backups(serverId: number) {
-    return this._post('servers/' + serverId + '/actions/disable_backups');
+    return this._post('servers/' + serverId + '/actions/disable_backup');
   }
 
   enable_backups(serverId: number, backup_window: string) {
-    return this._post('servers/' + serverId + '/actions/enable_backups', {
+    return this._post('servers/' + serverId + '/actions/enable_backup', {
       backup_window: backup_window
     });
   }

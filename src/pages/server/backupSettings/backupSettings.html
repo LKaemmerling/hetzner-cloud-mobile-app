@@ -50,7 +50,7 @@
           </ion-select>
         </ion-item>
       </ion-list>
-      <button ion-button="" color="danger" (click)="enable_backups()">Kostenpflicht Backups konfigurieren</button>
+      <button ion-button="" color="danger" (click)="enable_backups()" *ngIf="server.backup_window == null">Kostenpflicht Backups konfigurieren</button>
 
     </ion-card-content>
   </ion-card>
