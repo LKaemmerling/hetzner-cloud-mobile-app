@@ -50,6 +50,7 @@ import {ServerMetricsPage} from "../pages/server/server-metrics/server-metrics";
 import {SettingsPage} from "../pages/settings/settings";
 import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
+import {ActionsPage} from "../pages/actions/actions";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.16"
@@ -105,7 +106,8 @@ export class MyErrorHandler implements ErrorHandler {
     HetznerStatusSettingPage,
     HetznerStatusPage,
     ServerMetricsPage,
-    SettingsPage
+    SettingsPage,
+    ActionsPage
 
   ],
   imports: [
@@ -148,7 +150,8 @@ export class MyErrorHandler implements ErrorHandler {
     HetznerStatusSettingPage,
     HetznerStatusPage,
     ServerMetricsPage,
-    SettingsPage
+    SettingsPage,
+    ActionsPage
   ],
   providers: [
     StatusBar,
