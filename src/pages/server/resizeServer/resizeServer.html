@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Server Upgrade
+      {{ 'PAGE.SERVERS.MODAL.UPGRADE.TITLE' | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -14,52 +14,38 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header>
-      UPGRADE
-    </ion-card-header>
     <ion-card-content>
       <p>
-
-        Sie benötigen mehr Performance? Upgraden Sie Ihren Server. Ein Upgrade vergrössert das Dateisystem und die Disk
-        Ihres Servers.
-
-        Es ist nicht möglich in einen Tarif mit kleinerer Disk zu wechseln.
-
-        Sie müssen Ihren Server ausschalten um ein Upgrade durchzuführen.
-
-        Ein Upgrade dauert typischerweise nur wenige Minuten.
+        {{ 'PAGE.SERVERS.MODAL.UPGRADE.DESCRIPTION' | translate}}
       </p>
       <ion-list>
         <ion-item>
-          <ion-label>Server Type:</ion-label>
+          <ion-label>{{ 'PAGE.SERVERS.MODAL.UPGRADE.FROM.TYPE' | translate}}</ion-label>
           <ion-select [(ngModel)]="server_type" required="">
-            <ion-option *ngFor="let _server_type of server_types" [value]="_server_type"
-                        disabled="{{(_server_type.name == server.server_type.name) || (_server_type.disk < server.server_type.disk )}}">
-              {{ _server_type.description }}
-              {{ _server_type.prices[0].price_monthly.gross | number:'1.2-2' }} € per Monat
-            </ion-option>
+            <ion-option *ngFor="let _server_type of server_types" [value]="_server_type" required=""
+                        [translate]="'PAGE.SERVERS.MODAL.ADD.FORM.PRICING'"
+                        [translateParams]="{typeName:_server_type.description, typePrice:_server_type.prices[0].price_monthly.gross | number:'1.2-2'}"></ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label>Festplatte vergrößern?</ion-label>
+          <ion-label>{{ 'PAGE.SERVERS.MODAL.UPGRADE.FROM.RESIZE_DISK' | translate}}</ion-label>
           <ion-toggle [(ngModel)]="upgrade_disk"></ion-toggle>
         </ion-item>
-        <ion-item *ngIf="server.status !== 'off'">
-          <p>Der Server muss ausgeschaltet sein, damit ein Upgrade durchgeführt werden kann.</p>
-        </ion-item>
+        <p ion-item *ngIf="server.status !== 'off'" translate="">PAGE.SERVERS.MODAL.UPGRADE.ERRORS.REQUIRED_SHUTDOWN</p>
         <ion-item
           *ngIf="server_type != null"><strong>{{server_type.description}}</strong><br/>
-          Kerne: {{ server_type.cores }} <br/>RAM:
-          {{ server_type.memory * 1024}} MB<br/>Festplatte:
+          {{ 'PAGE.SERVERS.TYPE_DETAILS.CORES' | translate}} {{ server_type.cores }} <br/>{{
+          'PAGE.SERVERS.TYPE_DETAILS.MEMORY' | translate}}
+          {{ server_type.memory * 1024}} MB<br/>{{ 'PAGE.SERVERS.TYPE_DETAILS.DISK' | translate}}
           {{ server_type.disk }} GB<br/>
-          Speicher Typ: {{ server_type.storage_type }}
+          {{ 'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE' | translate}} {{ server_type.storage_type }}
         </ion-item>
       </ion-list>
       <button ion-button color="primary" (click)="resizeServer()" [disabled]="(server.status != 'off')">
-        Kostenpflichtig Upgraden
+        {{ 'ACTIONS.ORDER' | translate}}
       </button>
 
-      <p class="message_box error" *ngIf="error != null">{{ error }}</p>
+      <p class="message_box error" *ngIf="error != null">{{ error | translate }}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

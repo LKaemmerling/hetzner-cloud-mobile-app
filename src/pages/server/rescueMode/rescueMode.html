@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Rescue Modus Einstellungen
+      {{ 'PAGE.SERVERS.MODAL.RESCUE_MODUS.TITLE' | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -14,43 +14,26 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header>
-      RESCUE
-    </ion-card-header>
+
     <ion-card-content>
-      <p>
-
-        Wenn Sie das Rescue-System aktivieren, wird Ihr Server beim nächsten Neustart automatisch über das Netzwerk in
-        das Rescue-System booten. Sie können das Rescue-System anschließend solange verwenden wie Sie es benötigen.<br/>
-        <br/>
-
-        Der Auftrag für das Rescue-System bleibt 60 Minuten aktiviert. Wenn Sie danach Ihren Server neu starten, wird
-        wieder Ihr gewohntes System von der Festplatte gestartet.<br/><br/>
-      </p>
-      <p *ngIf="root_password_reset != null" class="message_box success">
-        <strong>Zugangsdaten</strong><br/>
-        Benutzer: root<br/>
-        Passwort: {{root_password_reset}}
-
-      </p>
-      <button (click)="rescueActivate()" ion-button color="danger">RESCUE AKTIVIEREN</button>
-      <button (click)="rescueActivateAndReset()" ion-button color="danger">RESCUE AKTIVIEREN & RESET</button>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.RESCUE_MODE'|translate"></p>
+      <p *ngIf="root_password_reset != null" class="message_box success" translate="" [translateParams]="{root_password_reset:root_password_reset}">PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.NEW_CREDENTIALS</p>
+      <button (click)="rescueActivate()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.RESCUE_MODUS.ACTIONS.ACTIVATE'
+        | translate}}
+      </button>
+      <button (click)="rescueActivateAndReset()" ion-button color="danger">{{
+        'PAGE.SERVERS.MODAL.RESCUE_MODUS.ACTIONS.ACTIVATE_RESET' | translate}}
+      </button>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
-    <ion-card-header>
-      ROOT-PASSWORD
-    </ion-card-header>
     <ion-card-content>
-      <p>
-        Es wird ein neues Root-Passwort auf Ihrem Server gesetzt. Falls Sie den QEMU Guest Agent vom Server entfernt
-        haben, wird diese Aktion fehlschlagen.
-      </p>
-      <p *ngIf="root_password != null" class="message_box success">
-        Ihr neues Rootpasswort: {{ root_password }}
-      </p>
-      <button (click)="resetRootpassword()" ion-button color="danger">ROOT-PASSWORT ZURÜCKSETZEN</button>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.RESET_ROOT_PASSWORD'|translate"></p>
+      <p *ngIf="root_password != null" class="message_box success" translate="" [translateParams]="{root_password_reset:root_password}">PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.NEW_CREDENTIALS</p>
+      <button (click)="resetRootpassword()" ion-button color="danger">{{
+        'PAGE.SERVERS.MODAL.RESCUE_MODUS.ACTIONS.RESET_ROOT_PASSWORD' | translate}}
+      </button>
     </ion-card-content>
   </ion-card>
 </ion-content>

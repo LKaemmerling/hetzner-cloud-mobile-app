@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {DeleteAllDataPage} from "../delete-all-data/delete-all-data";
 import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {Storage} from "@ionic/storage";
+import {TranslateService} from "@ngx-translate/core";
 
 /**
  * Generated class for the SettingsPage page.
@@ -21,9 +22,16 @@ export class SettingsPage {
   public version: string = 'DEV-VERSION';
   public finger_print: number = -1;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO, public storage: Storage) {
+  public language: string = 'de';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO, public storage: Storage, public loadingCtrl: LoadingController, public translate: TranslateService) {
     appVersion.getVersionNumber().then((_version) => {
       this.version = _version;
+    });
+    storage.get('lang').then(value => {
+      if (value != undefined) {
+        this.language = value;
+      }
     });
     this.fingerprint.isAvailable().then(resp => {
 
@@ -43,8 +51,15 @@ export class SettingsPage {
     this.navCtrl.push(DeleteAllDataPage);
   }
 
-  public openFingerprint() {
-    alert('This feature is experiential! ');
+  changeLanguage() {
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    this.storage.set('lang', this.language);
+    this.translate.use(this.language);
+    loader.dismiss();
+  }
+
+  openFingerprint() {
     this.fingerprint.show({
       clientId: 'Hetzner-Cloud-Mobile',
       clientSecret: 'password', //Only necessary for Android

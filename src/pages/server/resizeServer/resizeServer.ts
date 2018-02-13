@@ -31,7 +31,7 @@ export class resizeServerModal {
   public resizeServer() {
 
     if (this.server_type == null) {
-      this.error = 'Bitte wählen Sie einen Server Typ aus';
+      this.error = 'PAGE.SERVERS.MODAL.UPGRADE.ERRORS.REQUIRED_TYPE';
       return;
     }
     var loader = this.loadingCtrl.create();
@@ -42,7 +42,7 @@ export class resizeServerModal {
     this.serverApiProvider.changeServerType(this.server.id, this.server_type.id, this.upgrade_disk).then((data) => {
       loader.dismiss();
     }, (error) => {
-      this.error = 'Leider gab es einen Anfrage Fehler.';
+      this.error = 'PAGE.SERVERS.MODAL.UPGRADE.ERRORS.NETWORK_ERROR';
     });
 
     this.dismiss();

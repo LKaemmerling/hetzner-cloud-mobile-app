@@ -28,7 +28,8 @@
       "TITLE": "Einstellungen",
       "APP": {
         "TITLE": "App Informationen",
-        "VERSION": "Version:"
+        "VERSION": "Version:",
+        "LANGUAGE": "Sprache:"
       },
       "SECURITY": {
         "TITLE": "Sicherheit",
@@ -132,10 +133,10 @@
     },
     "SERVERS": {
       "TITLE": "Meine Server",
-      "TYPE_DETAILS":{
-        "TITLE":"Server Typ:",
-        "DISK":"Festplatte:",
-        "MEMORY":"Arbeitsspeicher:",
+      "TYPE_DETAILS": {
+        "TITLE": "Server Typ:",
+        "DISK": "Festplatte:",
+        "MEMORY": "Arbeitsspeicher:",
         "STORAGE_TYPE": "Speicher Typ:",
         "CORES": "Kerne:"
       },
@@ -177,7 +178,6 @@
             "START_AFTER_CREATION": "Server nach Erstellung starten?",
             "PRICING": "{{typeName}} {{typePrice}} pro Monat"
           },
-
           "ERRORS": {
             "REQUIRED_TYPE": "Bitte geben Sie einen Typen an.",
             "REQUIRED_LOCATION": "Bitte geben Sie einen Standort an.",
@@ -193,6 +193,46 @@
           },
           "ERRORS": {
             "REQUIRED_NAME": "Bitte geben Sie einen Namen an der länger als drei Zeichen ist."
+          }
+        },
+        "POWER_SETTINGS": {
+          "TITLE": "Power Einstellungen",
+          "DESCRIPTION": {
+            "POWER": "„Herunterfahren“ schickt ein ACPI signal an Ihren Server. In unserer Standardkonfiguration fährt Ihr Server geordnet herunter.<br/><br/>„Power off“ schaltet Ihren Server hart aus. Diese Aktion kann zu Datenverlust führen.<br/><br/>Bitte beachten Sie, dass ausgeschaltete Server weiterhin berechnet werden. In unserer FAQ finden Sie weitere Details hierzu.<br/><br/>",
+            "POWER_RESET": "„Power Reset“ löst einen harten Reset Ihres Servers aus. Diese Aktion kann zu Datenverlust führen."
+          },
+          "ACTIONS": {
+            "POWER_OFF": "Power Off",
+            "POWER_RESET": "Power Reset",
+            "SHUTDOWN": "Herunterfahren",
+            "SOFT_REBOOT": "Neustarten"
+          }
+        },
+        "RESCUE_MODE": {
+          "TITLE": "Rescue Modus Einstellungen",
+          "DESCRIPTION": {
+            "RESCUE_MODE": "„Wenn Sie das Rescue-System aktivieren, wird Ihr Server beim nächsten Neustart automatisch über das Netzwerk indas Rescue-System booten. Sie können das Rescue-System anschließend solange verwenden wie Sie es benötigen.<br/><br/>Der Auftrag für das Rescue-System bleibt 60 Minuten aktiviert. Wenn Sie danach Ihren Server neu starten, wird wieder Ihr gewohntes System von der Festplatte gestartet.<br/><br/>",
+            "RESET_ROOT_PASSWORD": "„Power Reset“ löst einen harten Reset Ihres Servers aus. Diese Aktion kann zu Datenverlust führen.",
+            "NEW_CREDENTIALS": "  <strong>Zugangsdaten</strong><br/>Benutzer: root<br/>Passwort: {{root_password_reset}}"
+          },
+          "ACTIONS": {
+            "ACTIVATE": "Rescue Modus aktivieren",
+            "ACTIVATE_RESET": "Rescue Modus aktivieren und neustarten",
+            "RESET_ROOT_PASSWORD": "Root-Passwort zurücksetzen"
+          }
+        },
+        "UPGRADE": {
+          "TITLE": "Server Upgrade",
+          "DESCRIPTION": "Sie benötigen mehr Performance? Upgraden Sie Ihren Server. Ein Upgrade vergrössert das Dateisystem und die Disk Ihres Servers.<br /><br />Es ist nicht möglich in einen Tarif mit kleinerer Disk zu wechseln.<br /><br />Sie müssen Ihren Server ausschalten um ein Upgrade durchzuführen.<br /><br />Ein Upgrade dauert typischerweise nur wenige Minuten.",
+          "FORM": {
+            "TYPE": "Typ:",
+            "RESIZE_DISK": "Festplatte vergrößern?",
+            "PRICING": "{{typeName}} {{typePrice}} pro Monat"
+          },
+          "ERRORS": {
+            "REQUIRED_TYPE": "Bitte geben Sie einen Typen an.",
+            "REQUIRED_SHUTDOWN": "Der Server muss ausgeschaltet sein, damit ein Upgrade durchgeführt werden kann.",
+            "NETWORK_ERROR": "Leider gab es bei der Anfrage einen Fehler. Probieren Sie es bitte erneut."
           }
         }
       }

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Power Einstellungen
+      {{ 'PAGE.SERVERS.MODAL.POWER_SETTINGS.TITLE' | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -14,31 +14,25 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header>
-      POWER
-    </ion-card-header>
     <ion-card-content>
-      <p>
-        „Herunterfahren“ schickt ein ACPI signal an Ihren Server. In unserer Standardkonfiguration fährt Ihr Server
-        geordnet herunter.<br/><br/>
-
-        „Power off“ schaltet Ihren Server hart aus. Diese Aktion kann zu Datenverlust führen.<br/><br/>
-
-        Bitte beachten Sie, dass ausgeschaltete Server weiterhin berechnet werden. In unserer FAQ finden Sie weitere
-        Details hierzu.<br/><br/>
-      </p>
-      <button (click)="powerOff()" ion-button color="danger">POWER OFF</button>
-      <button (click)="shutdown()" ion-button color="danger">HERUNTERFAHREN</button>
-      <button (click)="softReboot()" ion-button color="danger">NEUSTARTEN</button>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.POWER_SETTINGS.DESCRIPTION.POWER' | translate"></p>
+      <button (click)="powerOff()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.POWER_OFF' |
+        translate}}
+      </button>
+      <button (click)="shutdown()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.SHUTDOWN' |
+        translate}}
+      </button>
+      <button (click)="softReboot()" ion-button color="danger">{{
+        'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.SOFT_REBOOT' | translate}}
+      </button>
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-card-header>
-      POWER RESET
-    </ion-card-header>
     <ion-card-content>
-      <p>„Power Reset“ löst einen harten Reset Ihres Servers aus. Diese Aktion kann zu Datenverlust führen.</p>
-      <button (click)="reset()" ion-button color="danger">POWER RESET</button>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.POWER_SETTINGS.DESCRIPTION.POWER_RESET' | translate"></p>
+      <button (click)="reset()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.POWER_RESET' |
+        translate}}
+      </button>
     </ion-card-content>
   </ion-card>
 </ion-content>

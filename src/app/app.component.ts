@@ -30,8 +30,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       translate.setDefaultLang('de');
-      translate.use('de')
-
+      translate.use('de');
       storage.ready().then(() => {
         statusBar.styleDefault();
         oneSignal.startInit('e8714cee-7480-45da-bad0-19ba3c3e89c4', '1069973161280');
@@ -39,6 +38,9 @@ export class MyApp {
         oneSignal.endInit();
         projects.loadProjects();
         this.servers.loadServers();
+        storage.get('lang').then(lang => {
+          translate.use(lang);
+        });
         fingerPrint.isAvailable().then(res => {
           storage.get('auth').then(val => {
             if (val != undefined && val == 'enabled') {
