@@ -6,7 +6,8 @@
     "EDIT": "Editieren",
     "CREATE_SERVER": "Neuen Server erstellen",
     "CANCEL": "Abbrechen",
-    "SAVE": "Speichern"
+    "SAVE": "Speichern",
+    "ORDER": "Kostenpflichtig bestellen"
   },
   "PAGE": {
     "HOME": {
@@ -79,8 +80,53 @@
           "TITLE": "Image bearbeiten",
           "FORM": {
             "IMAGE_DESCRIPTION": "Image Beschreibung"
+          }
+        }
+      }
+    },
+    "FLOATING_IPS": {
+      "TITLE": "Floating IPs",
+      "NO_FLOATING_IPS": "Oh! Es sieht so aus als wäre hier noch keine Floating IPs hinterlegt.",
+      "MODAL": {
+        "DETAILS": {
+          "INFORMATION": {
+            "TITLE": "Informationen:",
+            "IPv4": "IPv4:",
+            "IPv6": "IPv6:",
+            "LOCATION": "Heimatstandort:",
+            "ASSIGNED_TO": "Zugeweisen zu:"
           },
-          ""
+          "ACTIONS": {
+            "DELETE_ASSIGNMENT": "Zuweisung löschen",
+            "EDIT_ASSIGNMENT": "Zuweisung bearbeiten",
+            "DELETE_ASSIGNMENT_CONFIRMATION":"Möchten Sie diese Floating IP wirklich keinem Server zuweisen? Der Server wird dadurch unter dieser IP nicht mehr erreichbar."
+          }
+        },
+        "ADD": {
+          "TITLE": "Floating IP hinzufügen",
+          "FORM": {
+            "DESCRIPTION": "Bezeichnung:",
+            "NETWORK_PROTOCOL": "Netzwerkprotokoll:",
+            "SERVER": "Server:",
+            "INFO": "Eine Floating IP kostet aktuell 1,19€ pro Monat."
+          },
+          "ERRORS": {
+            "REQUIRED_DESCRIPTION": "Bitte geben Sie eine Bezeichnung ein.",
+            "REQUIRED_NETWORK_PROTOCOL": "Bitte geben Sie ein Netzwerkprotokoll an.",
+            "REQUIRED_SERVER": "Bitte geben Sie einen Server an."
+          }
+        },
+        "ASSIGN_TO_SERVER": {
+          "TITLE": "Floating IP Server Zuweisung",
+          "FORM": {
+            "SERVER": "Server:"
+          }
+        },
+        "EDIT": {
+          "TITLE": "Floating IP bearbeiten",
+          "FORM": {
+            "DESCRIPTION": "Bezeichnung:"
+          }
         }
       }
     }

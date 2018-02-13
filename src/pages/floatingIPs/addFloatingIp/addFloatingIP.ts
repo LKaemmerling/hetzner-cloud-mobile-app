@@ -3,6 +3,7 @@ import {ProjectsService} from "../../../models/project/ProjectsService";
 import {LoadingController, ViewController} from "ionic-angular";
 import {FloatingIpApiProvider} from "../../../providers/floating-ip-api/floating-ip-api";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'modal-addFloatingIP',
@@ -16,7 +17,7 @@ export class addFloatingIPModal {
 
   public error: string = null;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public floatingIpApiProvider: FloatingIpApiProvider, public serverApiProvider: ServerApiProvider, public loadingCtrl: LoadingController) {
+  constructor(public project: ProjectsService, public viewCtrl: ViewController, public floatingIpApiProvider: FloatingIpApiProvider, public serverApiProvider: ServerApiProvider, public loadingCtrl: LoadingController, protected translate: TranslateService) {
     this.serverApiProvider.getServers().then((data) => {
       this.servers = data['servers'];
     });
@@ -25,11 +26,15 @@ export class addFloatingIPModal {
   public createFloatingIP() {
     this.error = null;
     if (this.description == null || this.description.length == 0) {
-      this.error = 'Bitte geben Sie einen Namen ein.';
+      this.error = 'PAGE.FLOATING_IPS.MODAL.ADD.ERRORS.REQUIRED_DESCRIPTION';
+      return;
+    }
+    if (this.type == null || this.type.length == 0) {
+      this.error = 'PAGE.FLOATING_IPS.MODAL.ADD.ERRORS.REQUIRED_NETWORK_PROTOCOL';
       return;
     }
     if (this.server == null || this.server.id == 0) {
-      this.error = 'Bitte wählen Sie einen Server aus.';
+      this.error = 'PAGE.FLOATING_IPS.MODAL.ADD.ERRORS.REQUIRED_SERVER';
       return;
     }
     let loader = this.loadingCtrl.create();

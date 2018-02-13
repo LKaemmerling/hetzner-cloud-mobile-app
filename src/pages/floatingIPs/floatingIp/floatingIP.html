@@ -10,11 +10,11 @@
   </ion-refresher>
   <ion-list inset>
     <ion-list-header>
-      Information:
+      {{ 'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.TITLE' | translate}}
     </ion-list-header>
     <ion-item *ngIf="floating_ip.type == 'ipv4'">
       <div item-left="">
-        IPv4:
+        {{ 'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.IPv4' | translate}}
       </div>
       <div item-right="">
         {{ floating_ip.ip }}
@@ -23,7 +23,7 @@
     </ion-item>
     <ion-item *ngIf="floating_ip.type == 'ipv6'">
       <div item-left="">
-        IPv6:
+        {{ 'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.ipv6' | translate}}
       </div>
       <div item-right="">
         {{ floating_ip.ip }}
@@ -32,7 +32,7 @@
     </ion-item>
     <ion-item>
       <div item-left="">
-        Heimatstandort:
+        {{ 'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
       </div>
       <div item-end>
         {{ floating_ip.home_location.description}}
@@ -40,7 +40,7 @@
     </ion-item>
     <ion-item>
       <div item-left="">
-        Zugewiesen zu:
+        {{ 'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.ASSIGNED_TO' | translate}}
       </div>
       <div item-end>
         <span *ngIf="floating_ip.server == null">-</span>
@@ -56,19 +56,19 @@
     </button>
     <ion-fab-list side="top">
       <button ion-fab color="danger" (click)="delete()">
-        <div class="label" color="secondary">IP löschen</div>
+        <div class="label" color="secondary">{{ 'ACTIONS.DELETE' | translate}}</div>
         <i class="fas fa-trash"></i>
       </button>
-      <button ion-fab color="danger" *ngIf="floating_ip.server != null && server != null" (click)="unassign()">
-        <div class="label" color="secondary">Zuweisung löschen</div>
-        <i class="fas fa-cloud"></i>
-      </button>
       <button ion-fab (click)="openEditFloatingIp()" color="secondary">
-        <div class="label" color="secondary">IP Beschreibung</div>
+        <div class="label" color="secondary">{{ 'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.EDIT' | translate}}</div>
         <i class="fas fa-pencil-alt"></i>
       </button>
+      <button ion-fab color="danger" *ngIf="floating_ip.server != null && server != null" (click)="unassign()">
+        <div class="label" color="secondary">{{ 'PAGE.FLOATING_IPS.MODAL.DETAILS.ACTIONS.DELETE_ASSIGNMENT' | translate}}</div>
+        <i class="fas fa-cloud"></i>
+      </button>
       <button ion-fab color="light">
-        <div class="label" color="light" (click)="openAssignToServer()">Zuweisung ändern</div>
+        <div class="label" color="light" (click)="openAssignToServer()">{{ 'PAGE.FLOATING_IPS.MODAL.DETAILS.ACTIONS.EDIT_ASSIGNMENT' | translate}}</div>
         <i class="fas fa-cloud"></i>
       </button>
     </ion-fab-list>

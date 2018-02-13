@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Floating IP hinzufügen
+      {{ 'PAGE.FLOATING_IPS.MODAL.ADD.TITLE' | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -14,31 +14,30 @@
 
 <ion-content>
   <ion-list>
-
     <ion-item>
-      <ion-label fixed>Name</ion-label>
+      <ion-label fixed>{{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.DESCRIPTION' | translate}}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="description" required=""></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Netzwerkprotokoll</ion-label>
+      <ion-label>{{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.NETWORK_PROTOCOL' | translate}}</ion-label>
       <ion-select [(ngModel)]="type" required="">
         <ion-option value="ipv4">IPv4</ion-option>
         <ion-option value="ipv6">IPv6</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>Server</ion-label>
+      <ion-label>{{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.SERVER' | translate}}</ion-label>
       <ion-select [(ngModel)]="server" required="">
         <ion-option *ngFor="let _server of servers" [value]="_server">
           {{ _server.name }}
         </ion-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      Eine Floating IP kostet aktuell 1,19€ pro Monat.
-    </ion-item>
+    <p ion-item="" text-wrap="" class="message_box info">
+      {{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.INFO' | translate}}
+    </p>
   </ion-list>
-  <button ion-button color="primary" (click)="createFloatingIP()">Kostenpflichtig bestellen</button>
-  <p class="message_box error" *ngIf="error != null">{{ error }}</p>
+  <button ion-button color="danger" (click)="createFloatingIP()">{{ 'ACTIONS.ORDER' | translate}}</button>
+  <p class="message_box error" *ngIf="error != null">{{ error | translate }}</p>
 </ion-content>

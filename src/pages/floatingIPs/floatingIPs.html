@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <i class="fas fa-bars fa-2x"></i>
     </button>
-    <ion-title>Floating IPs</ion-title>
+    <ion-title>{{ 'PAGE.FLOATING_IPS.TITLE' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -20,9 +20,9 @@
         </div>
       </ion-item>
 
-      <ion-item *ngIf="_floating_ips == null || _floating_ips.length == 0">
-        Oh! Es sieht so aus als wäre hier noch keine Floating IPs hinterlegt.
-      </ion-item>
+      <p ion-item *ngIf="_floating_ips == null || _floating_ips.length == 0" text-wrap="" class="message_box info">
+        {{ 'PAGE.FLOATING_IPS.NO_FLOATING_IPS' | translate}}
+      </p>
     </ion-list>
   </ion-card>
   <ion-fab bottom right>

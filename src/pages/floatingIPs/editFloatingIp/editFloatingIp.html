@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Floating IP bearbeiten
+      {{ 'PAGE.FLOATING_IPS.MODAL.EDIT.TITLE' | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -16,9 +16,9 @@
   <ion-list>
 
     <ion-item>
-      <ion-label>IP Beschreibung</ion-label>
+      <ion-label>{{ 'PAGE.FLOATING_IPS.MODAL.EDIT.FORM.DESCRIPTION' | translate}}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="floatingIp.description" required=""></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button color="primary" (click)="updateIP()">Floating IP speichern</button>
+  <button ion-button color="danger" (click)="updateIP()">{{ 'ACTIONS.SAVE' | translate}}</button>
 </ion-content>

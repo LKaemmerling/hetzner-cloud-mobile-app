@@ -9,6 +9,7 @@ import {ServerPage} from "../../server/server";
 import {FloatingIPsPage} from "../floatingIPs";
 import {changeIPv4ReverseDNSModal} from "../../server/reverseDNS/ipv4/changeIPv4ReverseDNSModal";
 import {assignToServerModal} from "../assignToServer/assignToServer";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'page-floatingIP',
@@ -18,7 +19,7 @@ export class FloatingIPPage {
   public floating_ip: any;
   public server: any = null;
 
-  constructor(public project: ProjectsService, public modal: ModalController, public floatingIpApiProvider: FloatingIpApiProvider, navParams: NavParams, public serverApiProvider: ServerApiProvider, public navCtrl: NavController, public loadingCtrl: LoadingController, public modalCtrl: ModalController) {
+  constructor(public project: ProjectsService, public modal: ModalController, public floatingIpApiProvider: FloatingIpApiProvider, navParams: NavParams, public serverApiProvider: ServerApiProvider, public navCtrl: NavController, public loadingCtrl: LoadingController, public modalCtrl: ModalController, protected translate: TranslateService) {
     this.floating_ip = navParams.get('floating_ip');
     if (this.floating_ip.server !== null) {
       this.serverApiProvider.getServer(this.floating_ip.server).then((data) => {
@@ -57,7 +58,11 @@ export class FloatingIPPage {
   }
 
   public delete() {
-    if (confirm('Möchten Sie diese Floating IP wirklich unwideruflich löschen?')) {
+    let _delete_confirmation: string = '';
+    this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
+      _delete_confirmation = text;
+    });
+    if (confirm(_delete_confirmation)) {
       let loader = this.loadingCtrl.create();
       loader.present();
       this.floatingIpApiProvider.deleteFloatingIp(this.floating_ip.id).then((data) => {
@@ -68,7 +73,11 @@ export class FloatingIPPage {
   }
 
   public unassign() {
-    if (confirm('Möchten Sie diese Floating IP wirklich keinem Server zuweisen? Der Server wird dadurch unter dieser IP nicht mehr erreichbar.')) {
+    let _delete_confirmation: string = '';
+    this.translate.get('PAGE.FLOATING_IPS.MODAL.DETAILS.ACTIONS.DELETE_ASSIGNMENT_CONFIRMATION').subscribe(text => {
+      _delete_confirmation = text;
+    });
+    if (confirm(_delete_confirmation)) {
       let loader = this.loadingCtrl.create();
       loader.present();
       this.floatingIpApiProvider.unassign(this.floating_ip.id).then((data) => {
