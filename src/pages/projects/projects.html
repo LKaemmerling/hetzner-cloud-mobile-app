@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <i class="fas fa-bars fa-2x"></i>
     </button>
-    <ion-title>Meine Projekte</ion-title>
+    <ion-title>{{ 'PAGE.PROJECTS.TITLE' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -18,14 +18,13 @@
 
         <div (click)="select(_project,slidingItem)">
           <h2>{{ _project.name }} <span
-            *ngIf="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)"><em>AKTIV</em></span>
+            *ngIf="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)" [innerHTML]="'PAGE.PROJECTS.ACTIVE_FLAG' | translate"></span>
           </h2>
         </div>
       </ion-item>
 
-      <ion-item *ngIf="project.projects == null || project.projects.length == 0" class="message_box info" text-wrap="">
-        Oh! Es sieht so aus als wäre hier noch kein Projekt hinterlegt.
-      </ion-item>
+      <p ion-item *ngIf="project.projects == null || project.projects.length == 0" class="message_box info" text-wrap=""  [innerHTML]="'PAGE.PROJECTS.NO_PROJECT' | translate">
+      </p>
     </ion-list>
   </ion-card>
   <ion-fab bottom right>

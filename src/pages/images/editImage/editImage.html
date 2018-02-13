@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Image bearbeiten
+      {{ 'PAGE.IMAGES.MODAL.EDIT.TITLE' | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text showWhen="ios" class="text-white">Cancel</span>
+        <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
         <i class="fas fa-times" showWhen="android,windows"></i>
       </button>
     </ion-buttons>
@@ -16,9 +16,9 @@
   <ion-list>
 
     <ion-item>
-      <ion-label>Image Beschreibung</ion-label>
+      <ion-label>{{ 'PAGE.IMAGES.MODAL.EDIT.FORM.IMAGE_DESCRIPTION' | translate}}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="image.description" required=""></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button color="primary" (click)="updateImage()">Image speichern</button>
+  <button ion-button color="primary" (click)="updateImage()">{{ 'ACTIONS.SAVE' | translate}}</button>
 </ion-content>

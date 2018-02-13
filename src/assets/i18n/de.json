@@ -1,4 +1,13 @@
 {
+  "ACTIONS": {
+    "DELETE": "Löschen",
+    "DELETE_CONFIRMATION": "Möchten Sie die Aktion 'löschen' unwiderruflich wirklich ausführen?",
+    "ACTIVATE": "Aktivieren",
+    "EDIT": "Editieren",
+    "CREATE_SERVER": "Neuen Server erstellen",
+    "CANCEL": "Abbrechen",
+    "SAVE": "Speichern"
+  },
   "PAGE": {
     "HOME": {
       "TITLE": "Startseite",
@@ -21,20 +30,57 @@
         "VERSION": "Version:"
       },
       "SECURITY": {
-        "TITLE":"Sicherheit",
-        "AUTH":{
-          "TITLE":"Authentifzierung",
-          "NOT_AVAILABLE":"Leider ist keine sichere Authentifzierung auf Ihrem Gerät vorhanden."
+        "TITLE": "Sicherheit",
+        "AUTH": {
+          "TITLE": "Authentifzierung",
+          "NOT_AVAILABLE": "Leider ist keine sichere Authentifzierung auf Ihrem Gerät vorhanden."
         }
       }
     },
-    "STATUS":{
-      "TITLE":"Hetzner Status",
-      "MODAL":{
-        "SETTINGS":{
+    "STATUS": {
+      "TITLE": "Hetzner Status",
+      "MODAL": {
+        "SETTINGS": {
           "TITLE": "Hetzner Status - Einstellungen",
           "TEXT": "Sie können über diese App auch Status Benachrichtigungen von der Hetzner-Status Seite erhalten. Bitte wählen Sie dazu die unten stehenden Kategorien aus, von denen Sie Push Nachrichten erhalten möchten. Auf der vorherigen Seite  werden immer alle Meldungen angezeigt.",
           "SAVE_SUCCESS": "Die Einstellungen wurden erfolgreich gespeichert."
+        }
+      }
+    },
+    "PROJECTS": {
+      "TITLE": "Meine Projekte",
+      "ACTIVE_FLAG": "<em>AKTIV</em>",
+      "NO_PROJECT": "Oh! Es sieht so aus als wäre hier noch kein Projekt hinterlegt.",
+      "ACTIONS": {
+        "TITLE": "Aktionen für das Projekt '{{projectName}}'"
+      },
+      "MODAL": {
+        "ADD": {
+          "TITLE": "Projekt hinzufügen",
+          "FORM": {
+            "PROJECT_NAME": "Bezeichnung:",
+            "API_TOKEN": "API-Token:"
+          },
+          "ERRORS": {
+            "INVALID_KEY": "Leider ist der eingegebene API-Token ungültig.",
+            "REQUIRED_NAME": "Bitte geben Sie eine Projektbezeichnung ein."
+          }
+        }
+      }
+    },
+    "IMAGES": {
+      "TITLE": "Images",
+      "CREATED_FROM": "Erstellt von {{imageName}}",
+      "ACTIONS": {
+        "TITLE": "Aktionen für das Image '{{imageDescription}}'"
+      },
+      "MODAL": {
+        "EDIT": {
+          "TITLE": "Image bearbeiten",
+          "FORM": {
+            "IMAGE_DESCRIPTION": "Image Beschreibung"
+          },
+          ""
         }
       }
     }

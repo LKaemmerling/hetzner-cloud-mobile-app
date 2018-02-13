@@ -3,6 +3,7 @@ import {ProjectsService} from "../../models/project/ProjectsService";
 import {ActionSheetController, ModalController} from "ionic-angular";
 import {addProjectModal} from "./addProject/addProject";
 import {project} from "../../models/project/project";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'page-projects',
@@ -11,7 +12,7 @@ import {project} from "../../models/project/project";
 export class ProjectsPage {
   public _projects = [];
 
-  constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController) {
+  constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService) {
     this._projects = project.projects;
   }
 
@@ -50,12 +51,28 @@ export class ProjectsPage {
   }
 
   public openActionSheets(project: project) {
+    let _title: string = '';
+    this.translate.get('PAGE.PROJECTS.ACTIONS.TITLE', {projectName: project.name}).subscribe((text) => {
+      _title = text;
+    });
+    let _delete: string = '';
+    this.translate.get('ACTIONS.DELETE').subscribe(text => {
+      _delete = text;
+    });
+    let _activate: string = '';
+    this.translate.get('ACTIONS.ACTIVATE').subscribe(text => {
+      _activate = text;
+    });
+    let _cancel: string = '';
+    this.translate.get('ACTIONS.DELETE').subscribe(text => {
+      _cancel = text;
+    });
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Aktionen für das Projekt ' + project.name,
+      title: _title,
       cssClass: 'action-sheets-basic-page',
       buttons: [
         {
-          text: 'Löschen',
+          text: _delete,
           role: 'destructive',
           icon: 'trash',
           handler: () => {
@@ -63,14 +80,14 @@ export class ProjectsPage {
           }
         },
         {
-          text: 'Aktivieren',
+          text: _activate,
           icon: 'checkmark',
           handler: () => {
             this.project.selectProject(project);
           }
         },
         {
-          text: 'Abbrechen',
+          text: _cancel,
           role: 'cancel', // will always sort to be on the bottom
           icon: 'close',
           handler: () => {

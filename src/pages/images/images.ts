@@ -5,6 +5,7 @@ import {ImageApiProvider} from "../../providers/image-api/image-api";
 import {editImageModal} from "./editImage/editImage";
 import {project} from "../../models/project/project";
 import {addServerModal} from "../server/addServer/addServer";
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -14,7 +15,7 @@ import {addServerModal} from "../server/addServer/addServer";
 export class ImagesPage {
   public images = [];
 
-  constructor(public project: ProjectsService, public modal: ModalController, public imageApiProvider: ImageApiProvider, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
+  constructor(public project: ProjectsService, public modal: ModalController, public imageApiProvider: ImageApiProvider, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, protected translate: TranslateService) {
     this.loadImages();
   }
 
@@ -34,7 +35,11 @@ export class ImagesPage {
   }
 
   public delete(image) {
-    if (confirm('Möchten Sie diese Image wirklich unwiderruflich löschen?')) {
+    let _delete_confirmation: string = '';
+    this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
+      _delete_confirmation = text;
+    });
+    if (confirm(_delete_confirmation)) {
       this.imageApiProvider.delete(image.id).then((data) => {
         this.loadImages();
       });
@@ -43,9 +48,29 @@ export class ImagesPage {
 
   public openActionSheets(image) {
     var actions;
+    let _title: string = '';
+    this.translate.get('PAGE.IMAGES.ACTIONS.TITLE', {imageDescription: image.description}).subscribe((text) => {
+      _title = text;
+    });
+    let _delete: string = '';
+    this.translate.get('ACTIONS.DELETE').subscribe(text => {
+      _delete = text;
+    });
+    let _edit: string = '';
+    this.translate.get('ACTIONS.EDIT').subscribe(text => {
+      _edit = text;
+    });
+    let _create_server: string = '';
+    this.translate.get('ACTIONS.CREATE_SERVER').subscribe(text => {
+      _create_server = text;
+    });
+    let _cancel: string = '';
+    this.translate.get('ACTIONS.DELETE').subscribe(text => {
+      _cancel = text;
+    });
     if (image.type == 'system') {
       actions = {
-        title: 'Aktionen für das Image ' + image.description,
+        title: _title,
         cssClass: 'action-sheets-basic-page',
         buttons: [
           {
@@ -56,7 +81,7 @@ export class ImagesPage {
             }
           },
           {
-            text: 'Abbrechen',
+            text: _cancel,
             role: 'cancel', // will always sort to be on the bottom
             icon: 'close',
             handler: () => {
@@ -67,33 +92,33 @@ export class ImagesPage {
       }
     } else {
       actions = {
-        title: 'Aktionen für das Image ' + image.description,
+        title: _title,
         cssClass: 'action-sheets-basic-page',
         buttons: [
           {
-            text: 'Löschen',
+            text: _delete,
             role: 'destructive',
             icon: 'trash',
             handler: () => {
-              this.delete(project);
+              this.delete(image);
             }
           },
           {
-            text: 'Edit',
+            text: _edit,
             icon: 'brush',
             handler: () => {
               this.openEdit(image);
             }
           },
           {
-            text: 'Neuen Server erstellen',
+            text: _create_server,
             icon: 'add',
             handler: () => {
               this.modal.create(addServerModal, {selected_image: image.id}).present();
             }
           },
           {
-            text: 'Abbrechen',
+            text: _cancel,
             role: 'cancel', // will always sort to be on the bottom
             icon: 'close',
             handler: () => {

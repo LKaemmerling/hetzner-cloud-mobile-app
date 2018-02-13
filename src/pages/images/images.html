@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <i class="fas fa-bars fa-2x"></i>
     </button>
-    <ion-title>Images</ion-title>
+    <ion-title>{{ 'PAGE.IMAGES.TITLE' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
       <ion-list>
           <ion-item *ngFor="let image of images" (click)="openActionSheets(image)">
             <h2>{{ image.description }}</h2>
-            <p *ngIf="image.created_from != null">Erstellt von: {{ image.created_from.name }}</p>
+            <p *ngIf="image.created_from != null" translate [translateParams]="{imageName: image.created_from.name}">PAGE.IMAGES.CREATED_FROM</p>
             <div item-end>
               <span class="pill">{{ image.type }}</span>
             </div>
