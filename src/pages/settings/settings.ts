@@ -26,17 +26,17 @@ export class SettingsPage {
       this.version = _version;
     });
     this.fingerprint.isAvailable().then(resp => {
-      if (resp == 'OK') {
-        this.finger_print = 0;
-        storage.get('auth').then((value => {
-          if (value != undefined && value == 'enabled') {
-            this.finger_print = 1;
-          } else {
-            this.finger_print = 0;
-          }
-        }))
-      }
-    });
+
+      this.finger_print = 0;
+      storage.get('auth').then((value => {
+        if (value != undefined && value == 'enabled') {
+          this.finger_print = 1;
+        } else {
+          this.finger_print = 0;
+        }
+      }))
+
+    }).then(() => this.finger_print = -1);
   }
 
   openDeleteAllPage() {

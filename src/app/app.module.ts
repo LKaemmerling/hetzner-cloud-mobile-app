@@ -53,7 +53,7 @@ import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {ActionsPage} from "../pages/actions/actions";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.16"
+  appVersion: "0.0.17"
 });
 
 @Injectable()

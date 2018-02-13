@@ -38,29 +38,27 @@ export class MyApp {
         projects.loadProjects();
         this.servers.loadServers();
         fingerPrint.isAvailable().then(res => {
-          if(res == 'OK'){
-            storage.get('auth').then(val => {
-              if (val != undefined && val == 'enabled') {
-                fingerPrint.show({
-                  clientId: 'Hetzner-Cloud-Mobile',
-                  clientSecret: 'password', //Only necessary for Android
-                  disableBackup: false,  //Only for Android(optional)
-                  localizedFallbackTitle: 'Pin benutzen', //Only for iOS
-                  localizedReason: 'Bitte authentifizieren Sie sich.' //Only for iOS
-                }).then(result => {
-                  splashScreen.hide();
-                }).catch(err => {
-                  alert('Authentifizierung fehlgeschlagen. App wird beendet');
-                  platform.exitApp();
-                });
-              } else {
-
-              }
-            });
-          } else {
-            splashScreen.hide();
-          }
-        })
+          storage.get('auth').then(val => {
+            if (val != undefined && val == 'enabled') {
+              fingerPrint.show({
+                clientId: 'Hetzner-Cloud-Mobile',
+                clientSecret: 'password', //Only necessary for Android
+                disableBackup: false,  //Only for Android(optional)
+                localizedFallbackTitle: 'Pin benutzen', //Only for iOS
+                localizedReason: 'Bitte authentifizieren Sie sich.' //Only for iOS
+              }).then(result => {
+                splashScreen.hide();
+              }).catch(err => {
+                alert('Authentifizierung fehlgeschlagen. App wird beendet');
+                platform.exitApp();
+              });
+            } else {
+              splashScreen.hide()
+            }
+          });
+        }, () => {
+          splashScreen.hide()
+        });
 
       });
 
