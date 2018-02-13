@@ -132,7 +132,7 @@ export class ServerApiProvider extends HetznerApiProvider {
     return this._post('servers/' + serverId + '/actions/change_dns_ptr', {ip: ip, dns_ptr: dns_ptr})
   }
 
-  getMetrics(serverId: number, type: string, start: string, end: string) {
-    return this._get('servers/' + serverId + '/metrics?type=' + type + '&start=' + start + '&end=' + end);
+  getMetrics(serverId: number, type: string, start: string, end: string, step:number = 86400) {
+    return this._get('servers/' + serverId + '/metrics?type=' + type + '&start=' + start + '&end=' + end+ '&step=' + step);
   }
 }

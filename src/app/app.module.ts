@@ -2,7 +2,7 @@ import {ErrorHandler, Injectable, Injector, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AboutPage} from '../pages/about/about';
 import {HomePage} from '../pages/home/home';
 import {StatusBar} from '@ionic-native/status-bar';
@@ -51,11 +51,16 @@ import {SettingsPage} from "../pages/settings/settings";
 import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {ActionsPage} from "../pages/actions/actions";
+import {Globalization} from "@ionic-native/globalization";
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.17"
+  appVersion: "0.0.18"
 });
-
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @Injectable()
 export class MyErrorHandler implements ErrorHandler {
   ionicErrorHandler: IonicErrorHandler;
@@ -120,7 +125,14 @@ export class MyErrorHandler implements ErrorHandler {
     BrowserAnimationsModule,
     TooltipsModule,
     ServersModule,
-    ChartsModule
+    ChartsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -167,7 +179,8 @@ export class MyErrorHandler implements ErrorHandler {
     OneSignal,
     InAppBrowser,
     AppVersion,
-    FingerprintAIO
+    FingerprintAIO,
+    Globalization
   ]
 })
 export class AppModule {

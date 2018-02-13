@@ -4,15 +4,13 @@
       <i class="fas fa-bars"></i>
     </button>
     <ion-title>
-      Hetzner Status Benachrichtigungen
+      {{ 'PAGE.STATUS.MODAL.SETTINGS.TITLE' | translate }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <p>Sie können über diese App auch Status Benachrichtigungen von der Hetzner-Status Seite erhalten. Bitte wählen Sie
-    dazu die unten stehenden Kategorien aus, von denen Sie Push Nachrichten erhalten möchten. Auf der vorherigen Seite
-    werden immer alle Meldungen angezeigt.
+  <p [innerHTML]="'PAGE.STATUS.MODAL.SETTINGS.TEXT' | translate" text-wrap="">
   </p>
   <ion-list>
     <ion-item *ngFor="let category of categories">
@@ -20,5 +18,5 @@
       <ion-toggle color="secondary" [(ngModel)]="category.value" (ionChange)="save()"></ion-toggle>
     </ion-item>
   </ion-list>
-  <p class="message_box success" *ngIf="_send == true">Die Einstellungen wurden erfolgreich gespeichert.</p>
+  <p class="message_box success" *ngIf="_send == true" text-wrap="" [innerHTML]="'PAGE.STATUS.MODAL.SETTINGS.SAVE_SUCCESS' | translate"></p>
 </ion-content>

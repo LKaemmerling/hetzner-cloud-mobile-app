@@ -65,14 +65,14 @@ export class ServerMetricsPage {
   }
 
   public getCpuMetrics() {
+    this.cpu_metrics = [];
+    this.cpu_metrics_label = [];
     this.serverApiProvider.getMetrics(this.server.id, 'cpu', this.time_start, this.time_end).then((data) => {
       data['metrics'].time_series.cpu.values.forEach((value) => {
         console.log(value[1], value[0]);
         this.cpu_metrics.push(value[1]);
         this.cpu_metrics_label.push(this.timeConverter(value[0]));
       });
-      console.log(data['metrics'].time_series.cpu.values);
-
     })
   }
 
@@ -179,7 +179,6 @@ export class ServerMetricsPage {
       bytes /= 1024;
       unit++;
     }
-
     return bytes.toFixed(+precision) + ' ' + units[unit];
   }
 }

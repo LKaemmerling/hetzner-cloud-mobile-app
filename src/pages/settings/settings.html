@@ -4,7 +4,7 @@
       <i class="fas fa-bars"></i>
     </button>
     <ion-title>
-      Einstellungen
+      {{ 'PAGE.SETTINGS.TITLE' | translate }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -12,22 +12,22 @@
 <ion-content padding>
   <ion-list>
     <ion-list-header>
-      App Informationen
+      {{ 'PAGE.SETTINGS.APP.TITLE' | translate }}
     </ion-list-header>
     <div ion-item="">
-      <span item-left>Version:</span>
+      <span item-left>{{ 'PAGE.SETTINGS.APP.VERSION' | translate }}</span>
       <span item-right>{{ version }}</span>
     </div>
     <ion-list-header>
-      Sicherheit
+      {{ 'PAGE.SETTINGS.SECURITY.TITLE' | translate }}
     </ion-list-header>
     <ion-item *ngIf="finger_print >= 0">
-    <ion-label>Authentifizierung</ion-label>
-    <ion-toggle [(ngModel)]="finger_print" (ionChange)="openFingerprint()"></ion-toggle>
-  </ion-item>
-    <p ion-item="" class="message_box info" *ngIf="finger_print == -1" text-wrap="">Leider ist keine sichere Authentifzierung auf Ihrem Gerät vorhanden.</p>
+      <ion-label>{{ 'PAGE.SETTINGS.SECURITY.AUTH.TITLE' | translate }}</ion-label>
+      <ion-toggle [(ngModel)]="finger_print" (ionChange)="openFingerprint()"></ion-toggle>
+    </ion-item>
+    <p ion-item="" class="message_box info" *ngIf="finger_print == -1" text-wrap="" [innerHTML]="'PAGE.SETTINGS.SECURITY.AUTH.NOT_AVAILABLE' | translate "></p>
   </ion-list>
   <button ion-button="" color="danger" (click)="openDeleteAllPage()">
-    Alle Daten löschen
+    {{ 'PAGE.DELETE_ALL.TITLE' | translate }}
   </button>
 </ion-content>

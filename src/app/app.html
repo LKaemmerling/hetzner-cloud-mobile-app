@@ -7,7 +7,7 @@
   <ion-content>
     <ion-list>
       <button ion-item="" (click)="openHomePage()" menuClose="">
-        <i class="fas fa-fw fa-home"></i> Startseite
+        <i class="fas fa-fw fa-home"></i> {{ 'PAGE.HOME.TITLE' | translate }}
       </button>
       <button ion-item="" (click)="openProjectsPage()" menuClose="">
         <i class="fas fa-fw fa-lock"></i> Projekte
@@ -22,14 +22,14 @@
         <i class="fas fa-puzzle-piece fa-fw"></i> Images
       </button>
       <button ion-item menuClose="" (click)="openHetznerStatusPage()">
-        <i class="fas fa-bell fa-fw"></i> Hetzner Status
+        <i class="fas fa-bell fa-fw"></i> {{ 'PAGE.STATUS.TITLE' | translate }}
       </button>
       <button ion-item menuClose="" (click)="openSettingsPage()">
-        <i class="fas fa-cogs fa-fw"></i> Einstellungen
+        <i class="fas fa-cogs fa-fw"></i> {{ 'PAGE.SETTINGS.TITLE' | translate }}
       </button>
       <button ion-item (click)="openAboutPage()" menuClose=""
               style="position: fixed; bottom:0; text-align: center;font-size:12px;">
-        Über diese App
+        {{ 'PAGE.ABOUT.TITLE' | translate }}
       </button>
     </ion-list>
   </ion-content>

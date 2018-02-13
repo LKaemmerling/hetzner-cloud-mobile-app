@@ -4,17 +4,12 @@
       <i class="fas fa-bars"></i>
     </button>
     <ion-title>
-      Über diese App
+      {{ 'PAGE.ABOUT.TITLE' | translate }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <p>Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es
-    wird
-    die von der Hetzner Online GmbH bereitgestellte Schnittstelle verwendet. Auf Ihrem Gerät werden nur die Projekte
-    gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese Lokal gelöscht.
-    <strong>Ihre API Tokens verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der Hetzner Cloud
-      API.</strong>
+  <p [innerHTML]="'PAGE.ABOUT.TEXT' | translate">
   </p>
 </ion-content>

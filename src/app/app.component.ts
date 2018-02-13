@@ -16,6 +16,7 @@ import {OneSignal} from "@ionic-native/onesignal";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 import {SettingsPage} from "../pages/settings/settings";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   templateUrl: 'app.html'
@@ -24,11 +25,12 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public projects: ProjectsService, storage: Storage, public servers: ServersService, oneSignal: OneSignal, fingerPrint: FingerprintAIO) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public projects: ProjectsService, storage: Storage, public servers: ServersService, oneSignal: OneSignal, fingerPrint: FingerprintAIO, translate: TranslateService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-
+      translate.setDefaultLang('de');
+      translate.use('de')
 
       storage.ready().then(() => {
         statusBar.styleDefault();
@@ -95,5 +97,10 @@ export class MyApp {
 
   openSettingsPage() {
     this.nav.setRoot(SettingsPage);
+  }
+
+  getSuitableLanguage(language) {
+    language = language.substring(0, 2).toLowerCase();
+    return availableLanguages.some(x => x.code == language) ? language : 'de';
   }
 }
