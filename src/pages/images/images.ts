@@ -3,7 +3,6 @@ import {ProjectsService} from "../../models/project/ProjectsService";
 import {ActionSheetController, ModalController, NavController} from "ionic-angular";
 import {ImageApiProvider} from "../../providers/image-api/image-api";
 import {editImageModal} from "./editImage/editImage";
-import {project} from "../../models/project/project";
 import {addServerModal} from "../server/addServer/addServer";
 import {TranslateService} from "@ngx-translate/core";
 

@@ -52,11 +52,11 @@ import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {ActionsPage} from "../pages/actions/actions";
 import {Globalization} from "@ionic-native/globalization";
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "0.0.18"
+  appVersion: "0.0.19"
 });
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
