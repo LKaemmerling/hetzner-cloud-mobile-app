@@ -100,9 +100,4 @@ export class MyApp {
   openSettingsPage() {
     this.nav.setRoot(SettingsPage);
   }
-
-  getSuitableLanguage(language) {
-    language = language.substring(0, 2).toLowerCase();
-    return availableLanguages.some(x => x.code == language) ? language : 'de';
-  }
 }
