@@ -1,41 +1,41 @@
 {
   "ACTIONS": {
-    "DELETE": "Löschen",
-    "DELETE_CONFIRMATION": "Möchten Sie die Aktion 'löschen' unwiderruflich wirklich ausführen?",
-    "ACTIVATE": "Aktivieren",
-    "EDIT": "Editieren",
-    "CREATE_SERVER": "Neuen Server erstellen",
-    "CANCEL": "Abbrechen",
-    "SAVE": "Speichern",
-    "ORDER": "Kostenpflichtig bestellen"
+    "DELETE": "Delete",
+    "DELETE_CONFIRMATION": "Are you sure, that you really want to 'delete'?",
+    "ACTIVATE": "Activate",
+    "EDIT": "Edit",
+    "CREATE_SERVER": "Create new server",
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "ORDER": "Buy now"
   },
   "PAGE": {
     "HOME": {
-      "TITLE": "Startseite",
-      "TEXT": "<h2>Willkommen auf der Hetzner Cloud Mobile App.</h2> <p>Diese App ist eine inoffizielle App für die Hetzner Cloud. Über diese App können Sie viele der aus der Hetzner Cloud Console bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p>",
-      "ADD_PROJECT_BUTTON": "Jetzt erstes Projekt hinzufügen!"
+      "TITLE": "Landingpage",
+      "TEXT": "<h2>Welcome to the Hetzner Cloud Mobile App</h2> <p>This is an inoffical app for the Hetzner Cloud. Using this app you can use alot features known of the Hetzner Cloud by your smartphone. You'll also get a overview for all your servers.</p>",
+      "ADD_PROJECT_BUTTON": "Add your first project now!"
     },
     "ABOUT": {
-      "TITLE": "Über diese App",
-      "TEXT": "Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es wird die von der Hetzner Online GmbH bereitgestellte Schnittstelle verwendet. Auf Ihrem Gerät werden nur die Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese Lokal gelöscht. <strong>Ihre API Tokens verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der Hetzner Cloud API.</strong>"
+      "TITLE": "About this App",
+      "TEXT": "The developer of this App is Lukas Kämmerling. This App is in no way connected to the company \"Hetzner Online GmbH\", so unofficial. It only uses a webservice offered by the mentioned company. Only project, which you create by yourself are saved on the device. Using the delete feature in here they will be only deleted locally. <strong>The API tokens are only used to communicate with the Hetzner Cloud API, in no any other way.</strong>"
     },
     "DELETE_ALL": {
-      "TITLE": "Alle Daten löschen",
-      "TEXT": "Möchten Sie alle Daten der App löschen? Sie müssen, sofern Sie die App weiterhin benutzen möchten, alle Projekte neu eingeben.",
-      "BUTTON": "Ja ich möchte alle Daten die diese App lokal gespeichert hat löschen."
+      "TITLE": "Delete all data",
+      "TEXT": "You are sure you want to delete all data? If you want to use that app in future, you have to recreate all your projects.",
+      "BUTTON": "Yes, I want to delete all local app data."
     },
     "SETTINGS": {
-      "TITLE": "Einstellungen",
+      "TITLE": "Settings",
       "APP": {
-        "TITLE": "App Informationen",
+        "TITLE": "App information",
         "VERSION": "Version:",
-        "LANGUAGE": "Sprache:"
+        "LANGUAGE": "Language:"
       },
       "SECURITY": {
-        "TITLE": "Sicherheit",
+        "TITLE": "Security",
         "AUTH": {
-          "TITLE": "Authentifzierung",
-          "NOT_AVAILABLE": "Leider ist keine sichere Authentifzierung auf Ihrem Gerät vorhanden."
+          "TITLE": "Authentication",
+          "NOT_AVAILABLE": "Unfortunately there was no security authentication found on your device."
         }
       }
     },
@@ -43,211 +43,211 @@
       "TITLE": "Hetzner Status",
       "MODAL": {
         "SETTINGS": {
-          "TITLE": "Hetzner Status - Einstellungen",
-          "TEXT": "Sie können über diese App auch Status Benachrichtigungen von der Hetzner-Status Seite erhalten. Bitte wählen Sie dazu die unten stehenden Kategorien aus, von denen Sie Push Nachrichten erhalten möchten. Auf der vorherigen Seite  werden immer alle Meldungen angezeigt.",
-          "SAVE_SUCCESS": "Die Einstellungen wurden erfolgreich gespeichert."
+          "TITLE": "Hetzner Status - Settings",
+          "TEXT": "This app is able to send push notifications from Hetzner Status. You can select the categories for that.",
+          "SAVE_SUCCESS": "Settings saved successfully"
         }
       }
     },
     "PROJECTS": {
-      "TITLE": "Meine Projekte",
-      "ACTIVE_FLAG": "<em>AKTIV</em>",
-      "NO_PROJECT": "Oh! Es sieht so aus als wäre hier noch kein Projekt hinterlegt.",
+      "TITLE": "My projects",
+      "ACTIVE_FLAG": "<em>ACTIVE</em>",
+      "NO_PROJECT": "Oh! Looks like there's no project setup for now.",
       "ACTIONS": {
-        "TITLE": "Aktionen für das Projekt '{{projectName}}'"
+        "TITLE": "Actions for project '{{projectName}}'"
       },
       "MODAL": {
         "ADD": {
-          "TITLE": "Projekt hinzufügen",
+          "TITLE": "Add project",
           "FORM": {
-            "PROJECT_NAME": "Bezeichnung:",
-            "API_TOKEN": "API-Token:"
+            "PROJECT_NAME": "Name:",
+            "API_TOKEN": "API token:"
           },
           "ERRORS": {
-            "INVALID_KEY": "Leider ist der eingegebene API-Token ungültig.",
-            "REQUIRED_NAME": "Bitte geben Sie eine Projektbezeichnung ein."
+            "INVALID_KEY": "Unfortunately the API token entered is incorrect.",
+            "REQUIRED_NAME": "Please enter a project name."
           }
         }
       }
     },
     "IMAGES": {
       "TITLE": "Images",
-      "CREATED_FROM": "Erstellt von {{imageName}}",
+      "CREATED_FROM": "Created by {{imageName}}",
       "ACTIONS": {
-        "TITLE": "Aktionen für das Image '{{imageDescription}}'"
+        "TITLE": "Actions for image '{{imageDescription}}'"
       },
       "MODAL": {
         "EDIT": {
-          "TITLE": "Image bearbeiten",
+          "TITLE": "Edit images",
           "FORM": {
-            "IMAGE_DESCRIPTION": "Image Beschreibung"
+            "IMAGE_DESCRIPTION": "Image name"
           }
         }
       }
     },
     "FLOATING_IPS": {
       "TITLE": "Floating IPs",
-      "NO_FLOATING_IPS": "Oh! Es sieht so aus als wäre hier noch keine Floating IPs hinterlegt.",
+      "NO_FLOATING_IPS": "Oh! Looks like no floating IPs are added.",
       "MODAL": {
         "DETAILS": {
           "INFORMATION": {
-            "TITLE": "Informationen:",
+            "TITLE": "Information:",
             "IPv4": "IPv4:",
             "IPv6": "IPv6:",
-            "LOCATION": "Heimatstandort:",
-            "ASSIGNED_TO": "Zugeweisen zu:"
+            "LOCATION": "Origin:",
+            "ASSIGNED_TO": "Assigned to:"
           },
           "ACTIONS": {
-            "DELETE_ASSIGNMENT": "Zuweisung löschen",
-            "EDIT_ASSIGNMENT": "Zuweisung bearbeiten",
-            "DELETE_ASSIGNMENT_CONFIRMATION": "Möchten Sie diese Floating IP wirklich keinem Server zuweisen? Der Server wird dadurch unter dieser IP nicht mehr erreichbar."
+            "DELETE_ASSIGNMENT": "Delete assignment",
+            "EDIT_ASSIGNMENT": "Edit assignment",
+            "DELETE_ASSIGNMENT_CONFIRMATION": "Are you sure you want to assign your floating IP to no server? It will be unreachable then."
           }
         },
         "ADD": {
-          "TITLE": "Floating IP hinzufügen",
+          "TITLE": "Add floating IP",
           "FORM": {
-            "DESCRIPTION": "Bezeichnung:",
-            "NETWORK_PROTOCOL": "Netzwerkprotokoll:",
+            "DESCRIPTION": "Name:",
+            "NETWORK_PROTOCOL": "Protocol:",
             "SERVER": "Server:",
-            "INFO": "Eine Floating IP kostet aktuell 1,19€ pro Monat."
+            "INFO": "A floating IP costs 1,19€ including german VAT currently."
           },
           "ERRORS": {
-            "REQUIRED_DESCRIPTION": "Bitte geben Sie eine Bezeichnung ein.",
-            "REQUIRED_NETWORK_PROTOCOL": "Bitte geben Sie ein Netzwerkprotokoll an.",
-            "REQUIRED_SERVER": "Bitte geben Sie einen Server an."
+            "REQUIRED_DESCRIPTION": "Please enter a name.",
+            "REQUIRED_NETWORK_PROTOCOL": "Please choose a protocol.",
+            "REQUIRED_SERVER": "Please choose a server."
           }
         },
         "ASSIGN_TO_SERVER": {
-          "TITLE": "Floating IP Server Zuweisung",
+          "TITLE": "Floating IP server assignment",
           "FORM": {
             "SERVER": "Server:"
           }
         },
         "EDIT": {
-          "TITLE": "Floating IP bearbeiten",
+          "TITLE": "Edit floating IP",
           "FORM": {
-            "DESCRIPTION": "Bezeichnung:"
+            "DESCRIPTION": "Name:"
           }
         }
       }
     },
     "SERVERS": {
-      "TITLE": "Meine Server",
+      "TITLE": "My servers",
       "TYPE_DETAILS": {
-        "TITLE": "Server Typ:",
-        "DISK": "Festplatte:",
-        "MEMORY": "Arbeitsspeicher:",
-        "STORAGE_TYPE": "Speicher Typ:",
-        "CORES": "Kerne:"
+        "TITLE": "Server type:",
+        "DISK": "Harddisk:",
+        "MEMORY": "Memory:",
+        "STORAGE_TYPE": "Storage type:",
+        "CORES": "Cores:"
       },
       "MODAL": {
         "DETAILS": {
           "INFORMATION": {
-            "TITLE": "Informationen:",
-            "LOCATION": "Standort:",
+            "TITLE": "Information:",
+            "LOCATION": "Location:",
             "STATUS": "Status:",
             "IMAGE": "Image:"
           },
           "NETWORK": {
-            "TITLE": "Netzwerk:",
+            "TITLE": "Network:",
             "IPv4": "IPv4:",
             "IPv6": "IPv6:",
             "TRAFFIC": {
-              "OUTGOING": "Ausgehender Verkehr:",
-              "INGOING": "Eingehender Verkehr:"
+              "OUTGOING": "Outgoing traffic:",
+              "INGOING": "Incoming traffic:"
             }
           },
           "ACTIONS": {
-            "DELETE": "Löschen",
-            "EDIT": "Bearbeiten",
-            "UPGRADE": "Upgraden",
-            "METRICS": "Graphen",
-            "RESCUE": "Rescue Modus Einstellungen",
-            "BACKUP": "Backup Einstellungen",
-            "POWER": "Power Einstellungen"
+            "DELETE": "Delete",
+            "EDIT": "Edit",
+            "UPGRADE": "Upgrade",
+            "METRICS": "Graphs",
+            "RESCUE": "Rescue mode settings",
+            "BACKUP": "Backup settings",
+            "POWER": "Power settings"
           }
         },
         "ADD": {
-          "TITLE": "Server hinzufügen",
+          "TITLE": "Add server",
           "FORM": {
-            "NAME": "Bezeichnung:",
-            "TYPE": "Typ:",
-            "LOCATION": "Standort:",
+            "NAME": "Name:",
+            "TYPE": "Type:",
+            "LOCATION": "Location:",
             "IMAGE": "Image:",
-            "SSH_KEYS": "SSH Schlüssel:",
-            "START_AFTER_CREATION": "Server nach Erstellung starten?",
-            "PRICING": "{{typeName}} {{typePrice}} pro Monat"
+            "SSH_KEYS": "SSH key:",
+            "START_AFTER_CREATION": "Boot server after creation?",
+            "PRICING": "{{typeName}} {{typePrice}} per month"
           },
           "ERRORS": {
-            "REQUIRED_TYPE": "Bitte geben Sie einen Typen an.",
-            "REQUIRED_LOCATION": "Bitte geben Sie einen Standort an.",
-            "REQUIRED_IMAGE": "Bitte geben Sie ein Image an.",
-            "REQUIRED_NAME": "Bitte geben Sie einen Namen an der länger als drei Zeichen ist.",
-            "NETWORK_ERROR": "Leider gab es bei der Anfrage einen Fehler. Probieren Sie es bitte erneut."
+            "REQUIRED_TYPE": "Please choose a server type.",
+            "REQUIRED_LOCATION": "Please choose a location.",
+            "REQUIRED_IMAGE": "Please choose a image.",
+            "REQUIRED_NAME": "Please enter a name longer than 3 characters.",
+            "NETWORK_ERROR": "There was an error executing your task. Please try again."
           }
         },
         "EDIT": {
-          "TITLE": "Server bearbeiten",
+          "TITLE": "Edit server",
           "FORM": {
-            "NAME": "Bezeichnung:"
+            "NAME": "Name:"
           },
           "ERRORS": {
-            "REQUIRED_NAME": "Bitte geben Sie einen Namen an der länger als drei Zeichen ist."
+            "REQUIRED_NAME": "Please enter a name longer than 3 characters."
           }
         },
         "POWER_SETTINGS": {
-          "TITLE": "Power Einstellungen",
+          "TITLE": "Power Settings",
           "DESCRIPTION": {
-            "POWER": "„Herunterfahren“ schickt ein ACPI signal an Ihren Server. In unserer Standardkonfiguration fährt Ihr Server geordnet herunter.<br/><br/>„Power off“ schaltet Ihren Server hart aus. Diese Aktion kann zu Datenverlust führen.<br/><br/>Bitte beachten Sie, dass ausgeschaltete Server weiterhin berechnet werden. In unserer FAQ finden Sie weitere Details hierzu.<br/><br/>",
-            "POWER_RESET": "„Power Reset“ löst einen harten Reset Ihres Servers aus. Diese Aktion kann zu Datenverlust führen."
+            "POWER": "„Shutdown“ sends a ACPI signal to the server. In our default setup your server will shut down gracefully.<br/><br/>„Power off“ powers your server off directly. This can cause data loss.<br/><br/>Please note, that server which are powered off are still billed. In our FAQ you can find more information about this.<br/><br/>",
+            "POWER_RESET": "„Power Reset“ resets your server ungraceful. This can cause data loss."
           },
           "ACTIONS": {
             "POWER_OFF": "Power Off",
             "POWER_RESET": "Power Reset",
-            "SHUTDOWN": "Herunterfahren",
-            "SOFT_REBOOT": "Neustarten"
+            "SHUTDOWN": "Shutdown",
+            "SOFT_REBOOT": "Reboot"
           }
         },
         "RESCUE_MODE": {
-          "TITLE": "Rescue Modus Einstellungen",
+          "TITLE": "Rescue Modus Settings",
           "DESCRIPTION": {
-            "RESCUE_MODE": "„Wenn Sie das Rescue-System aktivieren, wird Ihr Server beim nächsten Neustart automatisch über das Netzwerk indas Rescue-System booten. Sie können das Rescue-System anschließend solange verwenden wie Sie es benötigen.<br/><br/>Der Auftrag für das Rescue-System bleibt 60 Minuten aktiviert. Wenn Sie danach Ihren Server neu starten, wird wieder Ihr gewohntes System von der Festplatte gestartet.<br/><br/>",
-            "RESET_ROOT_PASSWORD": "„Power Reset“ löst einen harten Reset Ihres Servers aus. Diese Aktion kann zu Datenverlust führen.",
-            "NEW_CREDENTIALS": "  <strong>Zugangsdaten</strong><br/>Benutzer: root<br/>Passwort: {{root_password_reset}}"
+            "RESCUE_MODE": "„After activating the rescue system your server will start automatically to it by network doing a restart. You can use the rescue system as long as you want, the activation for it will work for 60 minutes. After a reboot your server will start into your installed system.<br/><br/>",
+            "RESET_ROOT_PASSWORD": "„Power Reset“ resets your server ungraceful. This can cause data loss..",
+            "NEW_CREDENTIALS": "  <strong>Credentials</strong><br/>User: root<br/>Password: {{root_password_reset}}"
           },
           "ACTIONS": {
-            "ACTIVATE": "Rescue Modus aktivieren",
-            "ACTIVATE_RESET": "Rescue Modus aktivieren und neustarten",
-            "RESET_ROOT_PASSWORD": "Root-Passwort zurücksetzen"
+            "ACTIVATE": "Activate rescue mode",
+            "ACTIVATE_RESET": "Activate rescue mode an reboot",
+            "RESET_ROOT_PASSWORD": "Reset root password"
           }
         },
         "BACKUPS": {
-          "TITLE": "Backup Einstellungen",
+          "TITLE": "Backup settings",
           "DESCRIPTION": {
-            "BACKUPS": "Backups sind automatische Kopien der Festplatte Ihres Servers.<br/><br/>Jeder Server erhält 7 Slots für Backups. Wenn alle Slots belegt sind und ein neues Backup gestartet wird, wirdautomatisch das älteste Backup gelöscht.<br/><br/>Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie ein manuelles Backup erstellen, um sicherzustellen, dass die Daten auf der Festplatte konsistent sind.<br/><br/>Durch das Aktivieren des Backups entstehen monatlich wiederkehrende Kosten von 20 % des Server-Tarifs.<br/>",
-            "SNAPSHOTS": "Snapshots sind sofortige Kopien der Festplatten Ihres Servers.<br/>Sie können neue Server aus Snapshots erstellen oder diese zwischen Projekten verschieben.<br/>Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie einen Snapshot erstellen, um sicherzustellen dass dieDaten auf der Festplatte konsistent sind.<br/>Snapshots erzeugen monatlich wiederkehrende Kosten von 0,0119 €/GB/Monat (inkl. 19 % USt.).<br/>"
-            "REBUILD": "Bei einem Rebuild wird Ihr Server ausgeschaltet und die Festplatte mit dem ausgewählten Image überschrieben.<br/>Alle bestehenden Daten auf der Festplatte werden überschrieben!"
+            "BACKUPS": "Backups are copies of your hard disk created automatically. Each server offers 7 slots for backups. If all slots are used, the oldest backup will be deleted. We suggest to shutdown the server if you're doing a manual backup, so that the data is completely consistent.<br/><br/>By activating backups a monthly fee of 20% of the server fee will be billed.<br/>",
+            "SNAPSHOTS": "Snapshots are direct copies of the hard disk of your server.<br/>You can create new server using this snapshot and you're able to move these snapshots to other projects.<br/>We suggest to shutdown the server before creating a snapshot, so that the data is completely consistent.<br/>Snapshots are billed 0.0119 €/GB/month (including german VAT of 19 %).<br/>"
+            "REBUILD": "Doing a rebuild the server will be completely reinstalled by the choosen image. <br />All data will be destroyed!"
           },
           "ACTIONS": {
-            "CREATE_BACKUP": "Jetzt Backup kostenpflichtig erstellen!",
-            "DISABLE_BACKUP": "Backup deaktivieren",
-            "CREATE_SNAPSHOT": "Jetzt Snapshot kostenpflichtig erstellen!",
+            "CREATE_BACKUP": "Order backups for the mentioned monthly fee!",
+            "DISABLE_BACKUP": "Deactivate backups",
+            "CREATE_SNAPSHOT": "Create snapshot for the mentioned monthly fee!",
             "REBUILD_FROM_IMAGE": "Rebuild"
           },
           "SUCCESS": {
-            "BACKUP": "Das Backup wurde erfolgreich erstellt!",
-            "SNAPSHOT": "Der Snapshot wurde erfolgreich erstellt!"
+            "BACKUP": "Backup has been created!",
+            "SNAPSHOT": "Snapshot has been created!"
           },
           "FORM": {
             "IMAGE": "Image",
             "BACKUP_TIME": {
-              "LABEL": "Backups zwischen",
-              "22_02": "22 Uhr und 02 Uhr",
-              "02_06": "02 Uhr und 06 Uhr",
-              "06_10": "06 Uhr und 10 Uhr",
-              "10_14": "10 Uhr und 14 Uhr",
-              "14_18": "14 Uhr und 18 Uhr",
-              "18_22": "18 Uhr und 22 Uhr"
+              "LABEL": "Backups between",
+              "22_02": "11 pm and 2 am",
+              "02_06": "2 am and 6 am",
+              "06_10": "6 am and 11 am",
+              "10_14": "10 am and 2 pm",
+              "14_18": "2 pm and 6 pm",
+              "18_22": "6 pm and 11 pm"
             }
           }
         },
