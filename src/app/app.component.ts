@@ -39,7 +39,10 @@ export class MyApp {
         projects.loadProjects();
         this.servers.loadServers();
         storage.get('lang').then(lang => {
-          translate.use(lang);
+          console.log(lang);
+          if (lang != undefined && lang != null && lang.length != 2 ) {
+            translate.use(lang);
+          }
         });
         fingerPrint.isAvailable().then(res => {
           storage.get('auth').then(val => {
