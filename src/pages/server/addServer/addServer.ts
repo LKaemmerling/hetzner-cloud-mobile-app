@@ -50,19 +50,19 @@ export class addServerModal {
   public createServer() {
     this.error = null;
     if (this.server_type == null) {
-      this.error = 'Bitte wählen Sie einen Server Typ aus.';
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_TYPE';
       return;
     }
     if (this.location == null) {
-      this.error = 'Bitte wählen Sie einen Standort aus.';
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_LOCATION';
       return;
     }
     if (this.image == null) {
-      this.error = 'Bitte wählen Sie einen Image aus.';
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_IMAGE';
       return;
     }
     if (this.name == null || this.name.length < 3) {
-      this.error = 'Bitte geben Sie eine Bezeichnung an.';
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_NAME';
       return;
     }
     let loader = this.loadingCtrl.create();
@@ -75,7 +75,7 @@ export class addServerModal {
         this.serverService.saveServers();
       });
     }, (error) => {
-      this.error = 'Leider gab es einen Anfrage Fehler.';
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.NETWORK_ERROR';
     });
   }
 

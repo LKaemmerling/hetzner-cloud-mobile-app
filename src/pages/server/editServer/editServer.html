@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Server bearbeiten
+      {{ 'PAGE.SERVERS.MODAL.EDIT.TITLE' | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -16,10 +16,10 @@
   <ion-list>
 
     <ion-item>
-      <ion-label>Serverbezeichnung</ion-label>
+      <ion-label> {{ 'PAGE.SERVERS.MODAL.EDIT.FROM.NAME' | translate}}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="server.name" required=""></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button color="primary" (click)="updateServer()">Server speichern</button>
-  <p class="message_box error" *ngIf="error != null">{{ error }}</p>
+  <button ion-button color="danger" (click)="updateServer()">{{ 'ACTIONS.SAVE' | translate}}</button>
+  <p class="message_box error" *ngIf="error != null">{{ error |translate }}</p>
 </ion-content>

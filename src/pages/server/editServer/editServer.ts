@@ -20,7 +20,7 @@ export class editServerModal {
 
   public updateServer() {
     if (this.server.name == null || this.server.name == '') {
-      this.error = 'Bitte geben Sie einen Server Namen an.';
+      this.error = 'PAGE.SERVERS.MODAL.EDIT.ERRORS.REQUIRED_NAME';
       return;
     }
     let loader = this.loadingCtrl.create();

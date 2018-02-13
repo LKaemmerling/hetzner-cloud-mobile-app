@@ -99,7 +99,7 @@
           "ACTIONS": {
             "DELETE_ASSIGNMENT": "Zuweisung löschen",
             "EDIT_ASSIGNMENT": "Zuweisung bearbeiten",
-            "DELETE_ASSIGNMENT_CONFIRMATION":"Möchten Sie diese Floating IP wirklich keinem Server zuweisen? Der Server wird dadurch unter dieser IP nicht mehr erreichbar."
+            "DELETE_ASSIGNMENT_CONFIRMATION": "Möchten Sie diese Floating IP wirklich keinem Server zuweisen? Der Server wird dadurch unter dieser IP nicht mehr erreichbar."
           }
         },
         "ADD": {
@@ -126,6 +126,73 @@
           "TITLE": "Floating IP bearbeiten",
           "FORM": {
             "DESCRIPTION": "Bezeichnung:"
+          }
+        }
+      }
+    },
+    "SERVERS": {
+      "TITLE": "Meine Server",
+      "TYPE_DETAILS":{
+        "TITLE":"Server Typ:",
+        "DISK":"Festplatte:",
+        "MEMORY":"Arbeitsspeicher:",
+        "STORAGE_TYPE": "Speicher Typ:",
+        "CORES": "Kerne:"
+      },
+      "MODAL": {
+        "DETAILS": {
+          "INFORMATION": {
+            "TITLE": "Informationen:",
+            "LOCATION": "Standort:",
+            "STATUS": "Status:",
+            "IMAGE": "Image:"
+          },
+          "NETWORK": {
+            "TITLE": "Netzwerk:",
+            "IPv4": "IPv4:",
+            "IPv6": "IPv6:",
+            "TRAFFIC": {
+              "OUTGOING": "Ausgehender Verkehr:",
+              "INGOING": "Eingehender Verkehr:"
+            }
+          },
+          "ACTIONS": {
+            "DELETE": "Löschen",
+            "EDIT": "Bearbeiten",
+            "UPGRADE": "Upgraden",
+            "METRICS": "Graphen",
+            "RESCUE": "Rescue Modus Einstellungen",
+            "BACKUP": "Backup Einstellungen",
+            "POWER": "Power Einstellungen"
+          }
+        },
+        "ADD": {
+          "TITLE": "Server hinzufügen",
+          "FORM": {
+            "NAME": "Bezeichnung:",
+            "TYPE": "Typ:",
+            "LOCATION": "Standort:",
+            "IMAGE": "Image:",
+            "SSH_KEYS": "SSH Schlüssel:",
+            "START_AFTER_CREATION": "Server nach Erstellung starten?",
+            "PRICING": "{{typeName}} {{typePrice}} pro Monat"
+          },
+
+          "ERRORS": {
+            "REQUIRED_TYPE": "Bitte geben Sie einen Typen an.",
+            "REQUIRED_LOCATION": "Bitte geben Sie einen Standort an.",
+            "REQUIRED_IMAGE": "Bitte geben Sie ein Image an.",
+            "REQUIRED_NAME": "Bitte geben Sie einen Namen an der länger als drei Zeichen ist.",
+            "NETWORK_ERROR": "Leider gab es bei der Anfrage einen Fehler. Probieren Sie es bitte erneut."
+          }
+        },
+        "EDIT": {
+          "TITLE": "Server bearbeiten",
+          "FORM": {
+            "NAME": "Bezeichnung:"
+          },
+          "ERRORS": {
+            "REQUIRED_NAME": "Bitte geben Sie einen Namen an der länger als drei Zeichen ist."
           }
         }
       }

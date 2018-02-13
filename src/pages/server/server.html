@@ -10,17 +10,11 @@
   </ion-refresher>
   <ion-list style="margin-bottom: 60px;">
     <ion-list-header>
-      Information:
+      {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
 
-      <ion-label>Power On:</ion-label>
-      <ion-toggle [(ngModel)]="powerOn" (ionChange)="toggleStatus()" [checked]="powerOn"></ion-toggle>
-
-    </ion-item>
-    <ion-item>
-
-      <span item-left>Status:</span>
+      <span item-left>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STATUS' | translate}}</span>
 
       <span *ngIf="server.status == 'migrating'" item-right=""><i class="fas fa-spin fa-spinner fa-pulse"></i></span>
       <span *ngIf="server.status != 'migrating'" item-right="">
@@ -39,18 +33,26 @@
     </ion-item>
     <ion-item>
       <div item-left="">
-        Image:
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+      </div>
+      <div item-right="">
+        {{ server.datacenter.description}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <div item-left="">
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.IMAGE' | translate}}
       </div>
       <div item-right="">
         {{ server.image.description}}
       </div>
     </ion-item>
     <ion-list-header>
-      Network:
+      {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
       <div item-left="">
-        IPv4:
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv4' | translate}}
       </div>
       <div item-right="">
         <span tooltip="{{ server.public_net.ipv4.dns_ptr}}" positionV="top" arrow>{{ server.public_net.ipv4.ip}}</span>
@@ -59,7 +61,7 @@
     </ion-item>
     <ion-item>
       <div item-left="">
-        IPv6:
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv6' | translate}}
       </div>
       <div item-right="">
         {{ server.public_net.ipv6.ip}}
@@ -68,7 +70,7 @@
     </ion-item>
     <ion-item>
       <div item-left="">
-        Outgoing Traffic:
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.OUTGOING' | translate}}
       </div>
       <div item-right="">
         {{ server.outgoing_traffic | fileSize}}
@@ -76,18 +78,18 @@
     </ion-item>
     <ion-item>
       <div item-left="">
-        Ingoing Traffic:
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.INGOING' | translate}}
       </div>
       <div item-right="">
         {{ server.ingoing_traffic | fileSize}}
       </div>
     </ion-item>
     <ion-list-header>
-      Server Type:
+      {{ 'PAGE.SERVERS.TYPE_DETAILS.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
       <div item-left="">
-        Cores:
+        {{ 'PAGE.SERVERS.TYPE_DETAILS.CORES' | translate}}
       </div>
       <div item-right="">
         {{ server.server_type.cores}}
@@ -95,7 +97,7 @@
     </ion-item>
     <ion-item>
       <div item-left="">
-        RAM:
+        {{ 'PAGE.SERVERS.TYPE_DETAILS.MEMORY' | translate}}
       </div>
       <div item-right="">
         {{ server.server_type.memory * 1024 }} MB
@@ -103,7 +105,7 @@
     </ion-item>
     <ion-item>
       <div item-left="">
-        Disk:
+        {{ 'PAGE.SERVERS.TYPE_DETAILS.DISK' | translate}}
       </div>
       <div item-right="">
         {{ server.server_type.disk}} GB
@@ -111,7 +113,7 @@
     </ion-item>
     <ion-item>
       <div item-left="">
-        Storage:
+        {{ 'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE' | translate}}
       </div>
       <div item-right="">
         {{ server.server_type.storage_type}}
@@ -124,31 +126,31 @@
     </button>
     <ion-fab-list side="top">
       <button ion-fab color="danger" (click)="delete()">
-        <div class="label" color="danger">Server löschen</div>
+        <div class="label" color="danger">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.DELETE' | translate}}</div>
         <i class="fas fa-trash"></i>
       </button>
       <button ion-fab color="danger" (click)="powerSettingsModal()">
-        <div class="label" color="danger">Power Einstellungen</div>
+        <div class="label" color="danger">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.POWER' | translate}}</div>
         <i class="fas fa-power-off"></i>
       </button>
       <button ion-fab (click)="openEditModal()" color="secondary">
-        <div class="label" color="secondary">Server Namen ändern</div>
+        <div class="label" color="secondary">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.EDIT' | translate}}</div>
         <i class="fas fa-pencil-alt"></i>
       </button>
       <button ion-fab color="secondary" (click)="resizeModal()">
-        <div class="label" color="secondary">Server upgraden</div>
+        <div class="label" color="secondary">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.UPGRADE' | translate}}</div>
         <i class="fas fa-expand"></i>
       </button>
-      <button ion-fab color="light" (click)="backupSettingsModal()" w>
-        <div class="label" color="light">Backup Einstellungen</div>
+      <button ion-fab color="light" (click)="backupSettingsModal()">
+        <div class="label" color="light">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.BACKUP' | translate}}</div>
         <i class="fas fa-hdd"></i>
       </button>
       <button ion-fab color="light" (click)="rescueModeModal()">
-        <div class="label" color="light">Rescue Modus Einstellungen</div>
+        <div class="label" color="light">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.RESCUE' | translate}}</div>
         <ion-icon name="help-buoy"></ion-icon>
       </button>
       <button ion-fab color="light" (click)="metricsPage()">
-        <div class="label" color="light">Graphen</div>
+        <div class="label" color="light">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.METRICS' | translate}}</div>
         <i class="fas fa-chart-area"></i>
       </button>
     </ion-fab-list>
