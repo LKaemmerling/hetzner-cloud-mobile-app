@@ -1,26 +1,26 @@
 <ion-header>
   <ion-navbar>
 
-    <ion-title>{{server.name}} - Graphen</ion-title>
+    <ion-title>{{server.name}} - {{ 'PAGE.SERVERS.MODAL.METRICS.TITLE' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list style="margin-bottom: 60px;">
     <ion-list-header>
-      Zeitpunkte:
+      {{ 'PAGE.SERVERS.MODAL.METRICS.POINTS.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
-      <ion-label>Start:</ion-label>
+      <ion-label>{{ 'PAGE.SERVERS.MODAL.METRICS.POINTS.START' | translate}}</ion-label>
       <ion-datetime displayFormat="DD.MM.YYYY" [min]="min" [max]="max" [(ngModel)]="time_start"
                     (ionChange)="load()"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Ende:</ion-label>
+      <ion-label>{{ 'PAGE.SERVERS.MODAL.METRICS.POINTS.END' | translate}}</ion-label>
       <ion-datetime displayFormat="DD.MM.YYYY" [max]="max" [(ngModel)]="time_end" (ionChange)="load()"></ion-datetime>
     </ion-item>
     <ion-list-header>
-      CPU:
+      {{ 'PAGE.SERVERS.MODAL.METRICS.GRAPHS.CPU' | translate}}
     </ion-list-header>
     <ion-item>
       <div style="display: block;">
@@ -32,7 +32,7 @@
 
     </ion-item>
     <ion-list-header>
-      Festplatten-IOPS:
+      {{ 'PAGE.SERVERS.MODAL.METRICS.GRAPHS.DISK_IOPS' | translate}}
     </ion-list-header>
     <ion-item>
       <div style="display: block;">
@@ -44,7 +44,7 @@
 
     </ion-item>
     <ion-list-header>
-      Festplatten-Durchsatz:
+      {{ 'PAGE.SERVERS.MODAL.METRICS.GRAPHS.DISK_BANDWIDTH' | translate}}
     </ion-list-header>
     <ion-item>
       <div style="display: block;">
@@ -57,7 +57,7 @@
 
     </ion-item>
     <ion-list-header>
-      Netzwerk-PPS:
+      {{ 'PAGE.SERVERS.MODAL.METRICS.GRAPHS.NETWORK_PPS' | translate}}
     </ion-list-header>
     <ion-item>
       <div style="display: block;">
@@ -70,7 +70,7 @@
 
     </ion-item>
     <ion-list-header>
-      Netzwerk-Traffic:
+      {{ 'PAGE.SERVERS.MODAL.METRICS.GRAPHS.NETWORK_BANDWIDTH' | translate}}
     </ion-list-header>
     <ion-item>
       <div style="display: block;">

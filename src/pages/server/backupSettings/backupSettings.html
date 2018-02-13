@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Backup Einstellungen
+      {{ 'PAGE.SERVERS.MODAL.BACKUPS.TITLE' | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -14,81 +14,44 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header>
-      BACKUPS
-    </ion-card-header>
     <ion-card-content>
-      <p>
-
-        Backups sind automatische Kopien der Festplatte Ihres Servers.<br/><br/>
-
-        Jeder Server erhält 7 Slots für Backups. Wenn alle Slots belegt sind und ein neues Backup gestartet wird, wird
-        automatisch das älteste Backup gelöscht.<br/><br/>
-
-        Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie ein manuelles Backup erstellen, um sicherzustellen,
-        dass die Daten auf der Festplatte konsistent sind.<br/><br/>
-
-        Durch das Aktivieren des Backups entstehen monatlich wiederkehrende Kosten von 20 % des Server-Tarifs.<br/>
-      </p>
-      <p *ngIf="create_backup_done === true" class="message_box success">Das Backup wurde erfolgreich erstellt.</p>
-      <button ion-button="" color="danger" (click)="create_backup()" *ngIf="server.backup_window != null">Jetzt Backup
-        kostenpflichtig erstellen
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.BACKUPS' | translate"></p>
+      <p *ngIf="create_backup_done === true" class="message_box success">{{ 'PAGE.SERVERS.MODAL.BACKUPS.SUCCESS.BACKUP' | translate}}</p>
+      <button ion-button="" color="danger" (click)="create_backup()" *ngIf="server.backup_window != null">{{ 'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.CREATE_BACKUP' | translate}}
       </button>
-      <button (click)="disable_backups()" ion-button color="danger" *ngIf="server.backup_window != null">Backups
-        deaktivieren
+      <button (click)="disable_backups()" ion-button color="danger" *ngIf="server.backup_window != null">{{ 'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.DISABLE_BACKUP' | translate}}
       </button>
       <ion-list *ngIf="server.backup_window == null">
         <ion-item>
-          <ion-label>Backups zwischen</ion-label>
+          <ion-label>{{ 'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.LABEL' | translate}}</ion-label>
           <ion-select [(ngModel)]="backup_window" required="">
-            <ion-option value="22-02">22 Uhr und 02 Uhr</ion-option>
-            <ion-option value="02-06">02 Uhr und 06 Uhr</ion-option>
-            <ion-option value="06-10">06 Uhr und 10 Uhr</ion-option>
-            <ion-option value="10-14">10 Uhr und 14 Uhr</ion-option>
-            <ion-option value="14-18">14 Uhr und 18 Uhr</ion-option>
-            <ion-option value="18-22">18 Uhr und 22 Uhr</ion-option>
+            <ion-option value="22-02">{{ 'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.22_02' | translate}}</ion-option>
+            <ion-option value="02-06">{{ 'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.02_06' | translate}}</ion-option>
+            <ion-option value="06-10">{{ 'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.06_10' | translate}}</ion-option>
+            <ion-option value="10-14">{{ 'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.10_14' | translate}}</ion-option>
+            <ion-option value="14-18">{{ 'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.14_18' | translate}}</ion-option>
+            <ion-option value="18-22">{{ 'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.18_22' | translate}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-list>
-      <button ion-button="" color="danger" (click)="enable_backups()" *ngIf="server.backup_window == null">Kostenpflicht Backups konfigurieren</button>
+      <button ion-button="" color="danger" (click)="enable_backups()" *ngIf="server.backup_window == null">{{ 'ACTIONS.ORDER' | translate}}</button>
 
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-card-header>
-      SNAPSHOT
-    </ion-card-header>
     <ion-card-content>
-      <p>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.SNAPSHOTS' | translate"></p>
+      <p *ngIf="create_snapshot_done === true" class="message_box success">{{ 'PAGE.SERVERS.MODAL.BACKUPS.SUCCESS.SNAPSHOT' | translate}}</p>
 
-        Snapshots sind sofortige Kopien der Festplatten Ihres Servers.<br/>
-
-        Sie können neue Server aus Snapshots erstellen oder diese zwischen Projekten verschieben.<br/>
-
-        Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie einen Snapshot erstellen, um sicherzustellen dass die
-        Daten auf der Festplatte konsistent sind.<br/>
-
-        Snapshots erzeugen monatlich wiederkehrende Kosten von 0,0119 €/GB/Monat (inkl. 19 % USt.).<br/>
-      </p>
-      <p *ngIf="create_snapshot_done === true" class="message_box success">Der Snapshot wurde erfolgreich erstellt.</p>
-
-      <button ion-button="" color="danger" (click)="create_snapshot()">Snapshot kostenpflichtig erstellen</button>
+      <button ion-button="" color="danger" (click)="create_snapshot()">{{ 'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.CREATE_SNAPSHOT' | translate}}</button>
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-card-header>
-      REBUILD
-    </ion-card-header>
     <ion-card-content>
-      <p>
-        Bei einem Rebuild wird Ihr Server ausgeschaltet und die Festplatte mit dem ausgewählten Image
-        überschrieben.<br/>
-
-        Alle bestehenden Daten auf der Festplatte werden überschrieben!
-      </p>
+      <p  [innerHTML]="'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.REBUILD' | translate"></p>
       <ion-list>
         <ion-item>
-          <ion-label>Image</ion-label>
+          <ion-label>{{ 'PAGE.SERVERS.MODAL.BACKUPS.FORM.IMAGE' | translate}}</ion-label>
           <ion-select [(ngModel)]="image" required="">
             <ion-option *ngFor="let _image of images" [value]="image">
               {{ _image.description }} (Typ: {{ _image.type }})
@@ -96,8 +59,7 @@
           </ion-select>
         </ion-item>
       </ion-list>
-      <button ion-button="" color="danger" (click)="rebuild_from_image()">REBUILD</button>
-
+      <button ion-button="" color="danger" (click)="rebuild_from_image()">{{ 'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.REBUILD_FROM_IMAGE' | translate}}</button>
     </ion-card-content>
   </ion-card>
 </ion-content>

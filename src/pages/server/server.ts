@@ -12,6 +12,7 @@ import {changeIPv6ReverseDNSModal} from "./reverseDNS/ipv6/changeIPv6ReverseDNS"
 import {ServersService} from "../../models/servers/ServersService";
 import {ServersPage} from "./serverList/servers";
 import {ServerMetricsPage} from "./server-metrics/server-metrics";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'page-server',
@@ -22,7 +23,7 @@ export class ServerPage {
   public powerOn = true;
   public rescueMode = false;
 
-  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public serverService: ServersService) {
+  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public serverService: ServersService, public translate:TranslateService) {
     this.server = navParams.get('server');
     this.powerOn = (this.server.status == 'running');
     this.rescueMode = this.server.rescue_enabled;
@@ -93,7 +94,11 @@ export class ServerPage {
   }
 
   public delete() {
-    if (confirm('Möchten Sie den Server ' + this.server.name + ' wirklich unwiderruflich löschen?')) {
+    let _delete: string = '';
+    this.translate.get('ACTIONS.DELETE').subscribe(text => {
+      _delete = text;
+    });
+    if (confirm(_delete)) {
       var loader = this.loadingCtrl.create();
       loader.present();
       this.serverApiProvider.delete(this.server.id).then((data) => {

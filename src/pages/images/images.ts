@@ -65,7 +65,7 @@ export class ImagesPage {
       _create_server = text;
     });
     let _cancel: string = '';
-    this.translate.get('ACTIONS.DELETE').subscribe(text => {
+    this.translate.get('ACTIONS.CANCEL').subscribe(text => {
       _cancel = text;
     });
     if (image.type == 'system') {

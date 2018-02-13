@@ -1,8 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      IPv4 Reverse DNS von Server {{ server.name }} bearbeiten
-    </ion-title>
+    <ion-title translate="" [translateParams]="{serverName:server.name}">PAGE.SERVERS.MODAL.REVERSE_DNS.IPv4.TITLE</ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
         <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
@@ -14,13 +12,12 @@
 
 <ion-content>
   <ion-list>
-
     <ion-item>
-      <ion-label>Reverse DNS für die IP {{server.public_net.ipv4.ip }}</ion-label>
+      <ion-label translate="" [translateParams]="{ip:server.public_net.ipv4.ip}">PAGE.SERVERS.MODAL.REVERSE_DNS.IPv4.FORM.IP</ion-label>
       <ion-input type="text" value="" [(ngModel)]="server.public_net.ipv4.dns_ptr"></ion-input>
     </ion-item>
   </ion-list>
 
-  <button ion-button color="primary" (click)="saveReverseDNS()">Reverse DNS speichern</button>
+  <button ion-button color="primary" (click)="saveReverseDNS()">{{ 'ACTIONS.SAVE' | translate}}</button>
 
 </ion-content>

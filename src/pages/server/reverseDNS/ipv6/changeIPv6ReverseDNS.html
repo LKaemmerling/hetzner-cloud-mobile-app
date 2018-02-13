@@ -1,8 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      IPv6 Reverse DNS von Server {{ server.name }} bearbeiten
-    </ion-title>
+    <ion-title translate="" [translateParams]="{serverName:server.name}">PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.TITLE</ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
         <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
@@ -16,18 +14,18 @@
 
   <ion-list *ngFor="let ipv6 of server.public_net.ipv6.dns_ptr">
     <ion-item>
-      <ion-label>IP:</ion-label>
+      <ion-label>{{ 'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.FORM.IP' | translate}}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="ipv6.ip"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Reverse DNS:</ion-label>
+      <ion-label>{{ 'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.FORM.REVERSE_DNS' | translate}}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="ipv6.dns_ptr"></ion-input>
     </ion-item>
   </ion-list>
 
   <button ion-button="" color="light" (click)="addEntry()">
-    <i class="fas fa-plus"></i> Eintrag hinzufügen
+    <i class="fas fa-plus"></i>{{ 'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.FORM.ADD' | translate}}
   </button>
-  <button ion-button color="primary" (click)="saveReverseDNS()">Reverse DNS speichern</button>
+  <button ion-button color="primary" (click)="saveReverseDNS()">{{ 'ACTIONS.SAVE' | translate}}</button>
 
 </ion-content>
