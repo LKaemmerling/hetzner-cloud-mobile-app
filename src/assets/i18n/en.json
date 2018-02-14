@@ -278,11 +278,6 @@
             "DISK_BANDWIDTH": "Disk-Throughput:",
             "NETWORK_PPS": "Network-PPS:",
             "NETWORK_BANDWIDTH": "Network-Bankwidth:"
-          },
-          "ERRORS": {
-            "REQUIRED_TYPE": "Please choose a server type.",
-            "REQUIRED_SHUTDOWN": "Der Server muss ausgeschaltet sein, damit ein Upgrade durchgeführt werden kann.",
-            "NETWORK_ERROR": "Leider gab es bei der Anfrage einen Fehler. Probieren Sie es bitte erneut."
           }
         },
         "REVERSE_DNS": {
@@ -296,8 +291,8 @@
             "TITLE": "Edit IPv6 Reverse DNS records for {{serverName}}",
             "FORM": {
               "IP": "IP:",
-              "REVERSE_DNS":"Reverse DNS:",
-              "ADD":"Add entry"
+              "REVERSE_DNS": "Reverse DNS:",
+              "ADD": "Add entry"
             }
           }
         }
