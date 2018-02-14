@@ -1,7 +1,7 @@
 {
   "ACTIONS": {
     "DELETE": "Delete",
-    "DELETE_CONFIRMATION": "Are you sure, that you really want to 'delete'?",
+    "DELETE_CONFIRMATION": "Are you sure that you want to delete?",
     "ACTIVATE": "Activate",
     "EDIT": "Edit",
     "CREATE_SERVER": "Create new server",
@@ -12,16 +12,16 @@
   "PAGE": {
     "HOME": {
       "TITLE": "Landingpage",
-      "TEXT": "<h2>Welcome to the Hetzner Cloud Mobile App</h2> <p>This is an inoffical app for the Hetzner Cloud. Using this app you can use alot features known of the Hetzner Cloud by your smartphone. You'll also get a overview for all your servers.</p>",
+      "TEXT": "<h2>Welcome to the Hetzner Cloud Mobile App</h2> <p>This is an inoffical app for the Hetzner Cloud. Using this app you can use many features available in the Hetzner cloud interface directly on your smartphone. You'll also get an overview of all your servers.</p>",
       "ADD_PROJECT_BUTTON": "Add your first project now!"
     },
     "ABOUT": {
       "TITLE": "About this App",
-      "TEXT": "The developer of this App is Lukas Kämmerling. This App is in no way connected to the company \"Hetzner Online GmbH\", so unofficial. It only uses a webservice offered by the mentioned company. Only project, which you create by yourself are saved on the device. Using the delete feature in here they will be only deleted locally. <strong>The API tokens are only used to communicate with the Hetzner Cloud API, in no any other way.</strong>"
+      "TEXT": "The developer of this App is Lukas Kämmerling. This App is in no way connected to the company \"Hetzner Online GmbH\", so unofficial. It only uses a webservice offered by the mentioned company. Only the configured projects are stored on this device. Deleting a configured project will only delete the local data. <strong>The API tokens are only used to communicate with the Hetzner Cloud API and not stored on any remote servers.</strong>"
     },
     "DELETE_ALL": {
       "TITLE": "Delete all data",
-      "TEXT": "You are sure you want to delete all data? If you want to use that app in future, you have to recreate all your projects.",
+      "TEXT": "Are you sure you want to delete all data? If you want to use this app in future, you have to set up all your projects again.",
       "BUTTON": "Yes, I want to delete all local app data."
     },
     "SETTINGS": {
@@ -35,7 +35,7 @@
         "TITLE": "Security",
         "AUTH": {
           "TITLE": "Authentication",
-          "NOT_AVAILABLE": "Unfortunately there was no security authentication found on your device."
+          "NOT_AVAILABLE": "Unfortunately there was no secure authentication found on your device."
         }
       }
     },
@@ -44,7 +44,7 @@
       "MODAL": {
         "SETTINGS": {
           "TITLE": "Hetzner Status - Settings",
-          "TEXT": "This app is able to send push notifications from Hetzner Status. You can select the categories for that.",
+          "TEXT": "This app is able to send push notifications from Hetzner Status. You can enable notification categories individually.",
           "SAVE_SUCCESS": "Settings saved successfully"
         }
       }
@@ -52,7 +52,7 @@
     "PROJECTS": {
       "TITLE": "My projects",
       "ACTIVE_FLAG": "<em>ACTIVE</em>",
-      "NO_PROJECT": "Oh! Looks like there's no project setup for now.",
+      "NO_PROJECT": "Oh! Looks like you don't have any projects.",
       "ACTIONS": {
         "TITLE": "Actions for project '{{projectName}}'"
       },
@@ -72,7 +72,7 @@
     },
     "IMAGES": {
       "TITLE": "Images",
-      "CREATED_FROM": "Created by {{imageName}}",
+      "CREATED_FROM": "Created from {{imageName}}",
       "ACTIONS": {
         "TITLE": "Actions for image '{{imageDescription}}'"
       },
@@ -87,7 +87,7 @@
     },
     "FLOATING_IPS": {
       "TITLE": "Floating IPs",
-      "NO_FLOATING_IPS": "Oh! Looks like no floating IPs are added.",
+      "NO_FLOATING_IPS": "Oh! Looks like you don't have any floating IPs.",
       "MODAL": {
         "DETAILS": {
           "INFORMATION": {
@@ -100,7 +100,7 @@
           "ACTIONS": {
             "DELETE_ASSIGNMENT": "Delete assignment",
             "EDIT_ASSIGNMENT": "Edit assignment",
-            "DELETE_ASSIGNMENT_CONFIRMATION": "Are you sure you want to assign your floating IP to no server? It will be unreachable then."
+            "DELETE_ASSIGNMENT_CONFIRMATION": "Are you sure you want to unassign this floating IP? It will not be reachable until you reassign it to one of your servers."
           }
         },
         "ADD": {
@@ -211,22 +211,22 @@
         "RESCUE_MODE": {
           "TITLE": "Rescue Modus Settings",
           "DESCRIPTION": {
-            "RESCUE_MODE": "After activating the rescue system your server will start automatically to it by network doing a restart. You can use the rescue system as long as you want, the activation for it will work for 60 minutes. After a reboot your server will start into your installed system.<br/><br/>",
+            "RESCUE_MODE": "You can switch to the rescue system by rebooting your server via network after activation. The rescue system will stay activated for 60 minutes. Rebooting your server while booted in rescue mode will switch back to your normal operating system.<br/><br/>",
             "RESET_ROOT_PASSWORD": "'Power Reset' resets your server ungraceful. This can cause data loss..",
             "NEW_CREDENTIALS": "  <strong>Credentials</strong><br/>User: root<br/>Password: {{root_password_reset}}"
           },
           "ACTIONS": {
             "ACTIVATE": "Activate rescue mode",
-            "ACTIVATE_RESET": "Activate rescue mode an reboot",
+            "ACTIVATE_RESET": "Activate rescue mode on reboot",
             "RESET_ROOT_PASSWORD": "Reset root password"
           }
         },
         "BACKUPS": {
           "TITLE": "Backup settings",
           "DESCRIPTION": {
-            "BACKUPS": "Backups are copies of your hard disk created automatically. Each server offers 7 slots for backups. If all slots are used, the oldest backup will be deleted. We suggest to shutdown the server if you're doing a manual backup, so that the data is completely consistent.<br/><br/>By activating backups a monthly fee of 20% of the server fee will be billed.<br/>",
-            "SNAPSHOTS": "Snapshots are direct copies of the hard disk of your server.<br/>You can create new server using this snapshot and you're able to move these snapshots to other projects.<br/>We suggest to shutdown the server before creating a snapshot, so that the data is completely consistent.<br/>Snapshots are billed 0.0119 €/GB/month (including german VAT of 19 %).<br/>",
-            "REBUILD": "Doing a rebuild the server will be completely reinstalled by the choosen image. <br />All data will be destroyed!"
+            "BACKUPS": "Backups are automatic copies of your hard disk. Each server contains 7 slots for backups. If all slots are used, the oldest backup will be deleted. We suggest to shutdown the server when creating a manual backup, so that the data is remains consistent.<br/><br/>By activating backups an additional monthly fee of 20% of the server fee will be billed.<br/>",
+            "SNAPSHOTS": "Snapshots are direct copies of the hard disk of your server.<br/>You can create new server using this snapshot and you're able to move these snapshots to other projects.<br/>We suggest to shutdown the server before creating a snapshot, so that the data is completely consistent.<br/>Snapshots are currently billed 0.0119 €/GB/month (including german VAT of 19%).<br/>",
+            "REBUILD": "By rebuilding your server, the hard disk will be completely deleted and replaced with the selected image.<br />All data will be destroyed!"
           },
           "ACTIONS": {
             "CREATE_BACKUP": "Order backups for the mentioned monthly fee!",
@@ -242,62 +242,62 @@
             "IMAGE": "Image",
             "BACKUP_TIME": {
               "LABEL": "Backups between",
-              "22_02": "11 pm and 2 am",
+              "22_02": "10 pm and 2 am",
               "02_06": "2 am and 6 am",
-              "06_10": "6 am and 11 am",
+              "06_10": "6 am and 10 am",
               "10_14": "10 am and 2 pm",
               "14_18": "2 pm and 6 pm",
-              "18_22": "6 pm and 11 pm"
+              "18_22": "6 pm and 10 pm"
             }
           }
         },
         "UPGRADE": {
           "TITLE": "Server Upgrade",
-          "DESCRIPTION": "Sie benötigen mehr Performance? Upgraden Sie Ihren Server. Ein Upgrade vergrössert das Dateisystem und die Disk Ihres Servers.<br /><br />Es ist nicht möglich in einen Tarif mit kleinerer Disk zu wechseln.<br /><br />Sie müssen Ihren Server ausschalten um ein Upgrade durchzuführen.<br /><br />Ein Upgrade dauert typischerweise nur wenige Minuten.",
+          "DESCRIPTION": "You need more performance? Upgrade your server. By upgrading, your disk and filesystem will automatically be resized.<br /><br />Currently it is not possible to downgrade your server to a smaller disk.<br /><br />Please shut down your server to perform an upgrade.<br /><br />Upgrading typically takes only some minutes to complete.",
           "FORM": {
             "TYPE": "Typ:",
-            "RESIZE_DISK": "Festplatte vergrößern?",
-            "PRICING": "{{typeName}} {{typePrice}} pro Monat"
+            "RESIZE_DISK": "Automatically resize disk?",
+            "PRICING": "{{typeName}} {{typePrice}} per month"
           },
           "ERRORS": {
-            "REQUIRED_TYPE": "Bitte geben Sie einen Typen an.",
-            "REQUIRED_SHUTDOWN": "Der Server muss ausgeschaltet sein, damit ein Upgrade durchgeführt werden kann.",
-            "NETWORK_ERROR": "Leider gab es bei der Anfrage einen Fehler. Probieren Sie es bitte erneut."
+            "REQUIRED_TYPE": "Please choose new server type.",
+            "REQUIRED_SHUTDOWN": "Please shut down the server before upgrading.",
+            "NETWORK_ERROR": "Error while processing the request. Please try again."
           }
         },
         "METRICS": {
-          "TITLE": "Graphen",
+          "TITLE": "Graphs",
           "POINTS": {
-            "TITLE": "Zeitpunkte:",
-            "START": "Start:",
-            "END": "Ende:"
+            "TITLE": "Time:",
+            "START": "From:",
+            "END": "To:"
           },
           "GRAPHS": {
             "CPU": "CPU:",
-            "DISK_IOPS": "Festplatten-IOPS:",
-            "DISK_BANDWIDTH": "Festplatten-Durchsatz:",
-            "NETWORK_PPS": "Netzwerk-PPS:",
-            "NETWORK_BANDWIDTH": "Netzwerkbandbreite:"
+            "DISK_IOPS": "Disk-IOPS:",
+            "DISK_BANDWIDTH": "Disk-Throughput:",
+            "NETWORK_PPS": "Network-PPS:",
+            "NETWORK_BANDWIDTH": "Network-Bankwidth:"
           },
           "ERRORS": {
-            "REQUIRED_TYPE": "Bitte geben Sie einen Typen an.",
+            "REQUIRED_TYPE": "Please choose a server type.",
             "REQUIRED_SHUTDOWN": "Der Server muss ausgeschaltet sein, damit ein Upgrade durchgeführt werden kann.",
             "NETWORK_ERROR": "Leider gab es bei der Anfrage einen Fehler. Probieren Sie es bitte erneut."
           }
         },
         "REVERSE_DNS": {
           "IPv4": {
-            "TITLE": "IPv4 Reverse DNS von Server {{serverName}} bearbeiten",
+            "TITLE": "Edit IPv4 Reverse DNS record for {{serverName}}",
             "FORM": {
-              "IP": "Reverse DNS für die IP {{ip}}:"
+              "IP": "Reverse DNS entry for {{ip}}:"
             }
           },
           "IPv6": {
-            "TITLE": "IPv6 Reverse DNS von Server {{serverName}} bearbeiten",
+            "TITLE": "Edit IPv6 Reverse DNS records for {{serverName}}",
             "FORM": {
               "IP": "IP:",
               "REVERSE_DNS":"Reverse DNS:",
-              "ADD":"Eintrag hinzufügen"
+              "ADD":"Add entry"
             }
           }
         }
