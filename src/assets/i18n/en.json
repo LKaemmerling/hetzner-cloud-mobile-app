@@ -198,8 +198,8 @@
         "POWER_SETTINGS": {
           "TITLE": "Power Settings",
           "DESCRIPTION": {
-            "POWER": "„Shutdown“ sends a ACPI signal to the server. In our default setup your server will shut down gracefully.<br/><br/>„Power off“ powers your server off directly. This can cause data loss.<br/><br/>Please note, that server which are powered off are still billed. In our FAQ you can find more information about this.<br/><br/>",
-            "POWER_RESET": "„Power Reset“ resets your server ungraceful. This can cause data loss."
+            "POWER": "'Shutdown' sends a ACPI signal to the server. In our default setup your server will shut down gracefully.<br/><br/>„Power off“ powers your server off directly. This can cause data loss.<br/><br/>Please note, that server which are powered off are still billed. In our FAQ you can find more information about this.<br/><br/>",
+            "POWER_RESET": "'Power Reset' resets your server ungraceful. This can cause data loss."
           },
           "ACTIONS": {
             "POWER_OFF": "Power Off",
@@ -211,8 +211,8 @@
         "RESCUE_MODE": {
           "TITLE": "Rescue Modus Settings",
           "DESCRIPTION": {
-            "RESCUE_MODE": "„After activating the rescue system your server will start automatically to it by network doing a restart. You can use the rescue system as long as you want, the activation for it will work for 60 minutes. After a reboot your server will start into your installed system.<br/><br/>",
-            "RESET_ROOT_PASSWORD": "„Power Reset“ resets your server ungraceful. This can cause data loss..",
+            "RESCUE_MODE": "After activating the rescue system your server will start automatically to it by network doing a restart. You can use the rescue system as long as you want, the activation for it will work for 60 minutes. After a reboot your server will start into your installed system.<br/><br/>",
+            "RESET_ROOT_PASSWORD": "'Power Reset' resets your server ungraceful. This can cause data loss..",
             "NEW_CREDENTIALS": "  <strong>Credentials</strong><br/>User: root<br/>Password: {{root_password_reset}}"
           },
           "ACTIONS": {
