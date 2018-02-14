@@ -18,6 +18,7 @@ export class ActionsApiProvider extends HetznerApiProvider {
    */
   getActions() {
     return this._get('actions?sort=id:desc')
+
   }
 
 }

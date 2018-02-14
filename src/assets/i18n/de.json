@@ -62,7 +62,8 @@
         "DETACH_ISO": "ISO für den Server {{subject}} ausgeworfen",
         "CHANGE_DNS_PTR": "Reverse DNS für den Server {{subject}} verändert",
         "ASSIGN_FLOATING_IP": "Floating IP dem Server {{subject}} zugewiesen",
-        "UNASSIGN_FLOATING_IP": "Floating IP {{subject}} Zuweisung aufgehoben"
+        "UNASSIGN_FLOATING_IP": "Floating IP {{subject}} Zuweisung aufgehoben",
+        "REQUEST_CONSOLE":"VNC Session für den Server {{subject}} erstellt"
       }
     },
     "STATUS": {

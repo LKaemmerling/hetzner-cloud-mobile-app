@@ -15,13 +15,15 @@
   <ion-card>
     <ion-list *ngFor="let action of actions">
       <ion-item>
-        <h3 [translate]="'PAGE.ACTIONS.COMMANDS.'+(action.command.toUpperCase())" [translateParams]="{subject:action.resources[0].id}"></h3>
+        <h3 [translate]="'PAGE.ACTIONS.COMMANDS.'+(action.command.toUpperCase())"
+            [translateParams]="{subject:action.resources[0].id}"></h3>
         <ion-note>{{ 'PAGE.ACTIONS.STATUS' |translate }}
-        <span *ngIf="action.status == 'running'" ion-text="" color="primary"><i class="fas fa-spin fa-spinner fa-pulse" ></i> {{ action.progress}}%</span>
-        <span *ngIf="action.status == 'success'" ion-text="" color="secondary"><i class="fas fa-check"></i></span>
-        <span *ngIf="action.status == 'error'" ion-text="" color="danger"><i class="fas fa-times"></i></span>
+          <span *ngIf="action.status == 'running'" ion-text="" color="primary"><i
+            class="fas fa-spin fa-spinner fa-pulse"></i> {{ action.progress}}%</span>
+          <span *ngIf="action.status == 'success'" ion-text="" color="secondary"><i class="fas fa-check"></i></span>
+          <span *ngIf="action.status == 'error'" ion-text="" color="danger"><i class="fas fa-times"></i></span>
         </ion-note>
-        <ion-note item-end><strong>{{ action.started }}</strong></ion-note>
+        <ion-note item-end><strong>{{ action.started|date:"d.M.y H:m" }}</strong></ion-note>
       </ion-item>
     </ion-list>
   </ion-card>

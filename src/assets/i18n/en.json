@@ -72,7 +72,8 @@
         "DETACH_ISO": "ISO for Server {{subject}} detached",
         "CHANGE_DNS_PTR": "Reverse DNS for Server {{subject}} changed",
         "ASSIGN_FLOATING_IP": "Floating IP to Server {{subject}} assigned",
-        "UNASSIGN_FLOATING_IP": "Floating IP {{subject}} unassigned"
+        "UNASSIGN_FLOATING_IP": "Floating IP {{subject}} unassigned",
+        "REQUEST_CONSOLE":"VNC Session for Server {{subject}} created"
       }
     },
     "PROJECTS": {
