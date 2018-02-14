@@ -22,7 +22,7 @@
     "DELETE_ALL": {
       "TITLE": "Alle Daten löschen",
       "TEXT": "Möchten Sie alle Daten der App löschen? Sie müssen, sofern Sie die App weiterhin benutzen möchten, alle Projekte neu eingeben.",
-      "BUTTON": "Ja ich möchte alle Daten die diese App lokal gespeichert hat löschen."
+      "BUTTON": "Ja ich möchte alle Daten, die diese App lokal gespeichert hat, löschen."
     },
     "SETTINGS": {
       "TITLE": "Einstellungen",
@@ -35,7 +35,7 @@
         "TITLE": "Sicherheit",
         "AUTH": {
           "TITLE": "Authentifzierung",
-          "NOT_AVAILABLE": "Leider ist keine sichere Authentifzierung auf Ihrem Gerät vorhanden."
+          "NOT_AVAILABLE": "Leider ist keine sichere Authentifizierung auf Ihrem Gerät vorhanden."
         }
       }
     },
@@ -87,7 +87,7 @@
     },
     "FLOATING_IPS": {
       "TITLE": "Floating IPs",
-      "NO_FLOATING_IPS": "Oh! Es sieht so aus als wäre hier noch keine Floating IPs hinterlegt.",
+      "NO_FLOATING_IPS": "Oh! Es sieht so aus als wären hier noch keine Floating IPs hinterlegt.",
       "MODAL": {
         "DETAILS": {
           "INFORMATION": {
@@ -198,8 +198,8 @@
         "POWER_SETTINGS": {
           "TITLE": "Power Einstellungen",
           "DESCRIPTION": {
-            "POWER": "„Herunterfahren“ schickt ein ACPI signal an Ihren Server. In unserer Standardkonfiguration fährt Ihr Server geordnet herunter.<br/><br/>„Power off“ schaltet Ihren Server hart aus. Diese Aktion kann zu Datenverlust führen.<br/><br/>Bitte beachten Sie, dass ausgeschaltete Server weiterhin berechnet werden. In unserer FAQ finden Sie weitere Details hierzu.<br/><br/>",
-            "POWER_RESET": "„Power Reset“ löst einen harten Reset Ihres Servers aus. Diese Aktion kann zu Datenverlust führen."
+            "POWER": "'Herunterfahren' schickt ein ACPI signal an Ihren Server. In unserer Standardkonfiguration fährt Ihr Server geordnet herunter.<br/><br/>„Power off“ schaltet Ihren Server hart aus. Diese Aktion kann zu Datenverlust führen.<br/><br/>Bitte beachten Sie, dass ausgeschaltete Server weiterhin berechnet werden. In unserer FAQ finden Sie weitere Details hierzu.<br/><br/>",
+            "POWER_RESET": "'Power Reset' löst einen harten Reset Ihres Servers aus. Diese Aktion kann zu Datenverlust führen."
           },
           "ACTIONS": {
             "POWER_OFF": "Power Off",
@@ -211,8 +211,8 @@
         "RESCUE_MODE": {
           "TITLE": "Rescue Modus Einstellungen",
           "DESCRIPTION": {
-            "RESCUE_MODE": "„Wenn Sie das Rescue-System aktivieren, wird Ihr Server beim nächsten Neustart automatisch über das Netzwerk indas Rescue-System booten. Sie können das Rescue-System anschließend solange verwenden wie Sie es benötigen.<br/><br/>Der Auftrag für das Rescue-System bleibt 60 Minuten aktiviert. Wenn Sie danach Ihren Server neu starten, wird wieder Ihr gewohntes System von der Festplatte gestartet.<br/><br/>",
-            "RESET_ROOT_PASSWORD": "„Power Reset“ löst einen harten Reset Ihres Servers aus. Diese Aktion kann zu Datenverlust führen.",
+            "RESCUE_MODE": "Wenn Sie das Rescue-System aktivieren, wird Ihr Server beim nächsten Neustart automatisch über das Netzwerk in das Rescue-System booten. Sie können das Rescue-System anschließend solange verwenden wie Sie es benötigen.<br/><br/>Der Auftrag für das Rescue-System bleibt 60 Minuten aktiviert. Wenn Sie danach Ihren Server neu starten, wird wieder Ihr gewohntes System von der Festplatte gestartet.<br/><br/>",
+            "RESET_ROOT_PASSWORD": "'Power Reset' löst einen harten Reset Ihres Servers aus. Diese Aktion kann zu Datenverlust führen.",
             "NEW_CREDENTIALS": "  <strong>Zugangsdaten</strong><br/>Benutzer: root<br/>Passwort: {{root_password_reset}}"
           },
           "ACTIONS": {
@@ -253,7 +253,7 @@
         },
         "UPGRADE": {
           "TITLE": "Server Upgrade",
-          "DESCRIPTION": "Sie benötigen mehr Performance? Upgraden Sie Ihren Server. Ein Upgrade vergrössert das Dateisystem und die Disk Ihres Servers.<br /><br />Es ist nicht möglich in einen Tarif mit kleinerer Disk zu wechseln.<br /><br />Sie müssen Ihren Server ausschalten um ein Upgrade durchzuführen.<br /><br />Ein Upgrade dauert typischerweise nur wenige Minuten.",
+          "DESCRIPTION": "Sie benötigen mehr Performance? Upgraden Sie Ihren Server. Ein Upgrade vergrößert das Dateisystem und die Disk Ihres Servers.<br /><br />Es ist nicht möglich in einen Tarif mit kleinerer Disk zu wechseln.<br /><br />Sie müssen Ihren Server ausschalten um ein Upgrade durchzuführen.<br /><br />Ein Upgrade dauert typischerweise nur wenige Minuten.",
           "FORM": {
             "TYPE": "Typ:",
             "RESIZE_DISK": "Festplatte vergrößern?",
