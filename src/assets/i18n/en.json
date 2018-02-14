@@ -49,6 +49,32 @@
         }
       }
     },
+    "ACTIONS": {
+      "TITLE": "Actions",
+      "STATUS": "status",
+      "COMMANDS": {
+        "CREATE_SERVER": "Server {{subject}} created",
+        "DELETE_SERVER": "Server {{subject}} deleted",
+        "START_SERVER": "Server {{subject}} started",
+        "REBOOT_SERVER": "Server {{subject}} restartet",
+        "RESET_Server": "Hardreset for Server {{subject}}",
+        "SHUTDOWN_SERVER": "Shutdown server {{subject}} ",
+        "STOP_SERVER": "Server {{subject}} stopped",
+        "RESET_PASSWORD": "Password for Server {{subject}} resetted",
+        "ENABLE_RESCUE": "Rescue Mode for Server {{subject}} enabled",
+        "DISABLE_RESCUE": "Rescue Mode for Server {{subject}} disabled",
+        "CREATE_IMAGE": "Image from Server {{subject}} created",
+        "REBUILD_SERVER": "Server {{subject}} rebuilded",
+        "CHANGE_SERVER_TYPE": "Serverupgrade for Server {{subject}} started",
+        "ENABLE_BACKUP": "Backup for Server {{subject}} enabled",
+        "DISABLE_BACKUP": "Backup for Server {{subject}} disabled",
+        "ATTACH_ISO": "ISO for Server {{subject}} attached",
+        "DETACH_ISO": "ISO for Server {{subject}} detached",
+        "CHANGE_DNS_PTR": "Reverse DNS for Server {{subject}} changed",
+        "ASSIGN_FLOATING_IP": "Floating IP to Server {{subject}} assigned",
+        "UNASSIGN_FLOATING_IP": "Floating IP {{subject}} unassigned"
+      }
+    },
     "PROJECTS": {
       "TITLE": "My projects",
       "ACTIVE_FLAG": "<em>ACTIVE</em>",

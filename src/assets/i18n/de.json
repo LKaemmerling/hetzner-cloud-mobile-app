@@ -39,6 +39,32 @@
         }
       }
     },
+    "ACTIONS": {
+      "TITLE": "Aktionen",
+      "STATUS": "Status:",
+      "COMMANDS": {
+        "CREATE_SERVER": "Server {{subject}} erstellt",
+        "DELETE_SERVER": "Server {{subject}} gelöscht",
+        "START_SERVER": "Server {{subject}} gestartet",
+        "REBOOT_SERVER": "Server {{subject}} neugestartet",
+        "RESET_Server": "Hardreset auf Server {{subject}} durchgeführt",
+        "SHUTDOWN_SERVER": "Server {{subject}}  heruntergefahren",
+        "STOP_SERVER": "Server {{subject}} ausgeschaltet",
+        "RESET_PASSWORD": "Passwort für den Server {{subject}} zurückgesetzt",
+        "ENABLE_RESCUE": "Rescue Modus für den Server {{subject}} aktiviert",
+        "DISABLE_RESCUE": "Rescue Modus für den Server {{subject}} deaktiviert",
+        "CREATE_IMAGE": "Image von dem Server {{subject}} erstellt",
+        "REBUILD_SERVER": "Server {{subject}} neuinstalliert",
+        "CHANGE_SERVER_TYPE": "Serverupgrade für den Server {{subject}}  durchgeführt",
+        "ENABLE_BACKUP": "Backup für den Server {{subject}} aktiviert",
+        "DISABLE_BACKUP": "Backup für den Server {{subject}} deaktiviert",
+        "ATTACH_ISO": "ISO für den Server {{subject}} eingebunden",
+        "DETACH_ISO": "ISO für den Server {{subject}} ausgeworfen",
+        "CHANGE_DNS_PTR": "Reverse DNS für den Server {{subject}} verändert",
+        "ASSIGN_FLOATING_IP": "Floating IP dem Server {{subject}} zugewiesen",
+        "UNASSIGN_FLOATING_IP": "Floating IP {{subject}} Zuweisung aufgehoben"
+      }
+    },
     "STATUS": {
       "TITLE": "Hetzner Status",
       "MODAL": {

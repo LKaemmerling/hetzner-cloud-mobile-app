@@ -17,6 +17,7 @@ import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 import {SettingsPage} from "../pages/settings/settings";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {TranslateService} from "@ngx-translate/core";
+import {ActionsPage} from "../pages/actions/actions";
 
 @Component({
   templateUrl: 'app.html'
@@ -40,7 +41,7 @@ export class MyApp {
         this.servers.loadServers();
         storage.get('lang').then(lang => {
           console.log(lang);
-          if (lang != undefined && lang != null && lang.length != 2 ) {
+          if (lang != undefined && lang != null && lang.length != 2) {
             translate.use(lang);
           }
         });
@@ -102,5 +103,9 @@ export class MyApp {
 
   openSettingsPage() {
     this.nav.setRoot(SettingsPage);
+  }
+
+  openActionsPage() {
+    this.nav.setRoot(ActionsPage);
   }
 }

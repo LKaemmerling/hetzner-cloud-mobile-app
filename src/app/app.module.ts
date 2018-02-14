@@ -54,6 +54,7 @@ import {ActionsPage} from "../pages/actions/actions";
 import {Globalization} from "@ionic-native/globalization";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {ActionsApiProvider} from "../providers/actions-api/actions-api";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "0.0.20"
@@ -173,6 +174,7 @@ export class MyErrorHandler implements ErrorHandler {
     ServerTypeApiProvider,
     FloatingIpApiProvider,
     LocationApiProvider,
+    ActionsApiProvider,
     ImageApiProvider,
     SshKeyApiProvider,
     StatusApiProvider,

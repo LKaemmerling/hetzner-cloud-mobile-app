@@ -13,7 +13,7 @@
         <i class="fas fa-fw fa-lock"></i> {{ 'PAGE.PROJECTS.TITLE' | translate }}
       </button>
       <button ion-item *ngIf="projects.actual_project != null" (click)="openServersPage()" menuClose="">
-        <i class="fas fa-fw fa-server"></i> Server
+        <i class="fas fa-fw fa-server"></i> {{ 'PAGE.SERVERS.TITLE' | translate }}
       </button>
       <button ion-item *ngIf="projects.actual_project != null" (click)="openFloatingIPsPage()" menuClose="">
         <i class="fas fa-fw fa-cloud"></i> {{ 'PAGE.FLOATING_IPS.TITLE' | translate }}
@@ -23,6 +23,9 @@
       </button>
       <button ion-item menuClose="" (click)="openHetznerStatusPage()">
         <i class="fas fa-bell fa-fw"></i> {{ 'PAGE.STATUS.TITLE' | translate }}
+      </button>
+      <button ion-item menuClose="" (click)="openActionsPage()">
+        <i class="fas fa-cog fa-fw"></i> {{ 'PAGE.ACTIONS.TITLE' | translate }}
       </button>
       <button ion-item menuClose="" (click)="openSettingsPage()">
         <i class="fas fa-cogs fa-fw"></i> {{ 'PAGE.SETTINGS.TITLE' | translate }}
