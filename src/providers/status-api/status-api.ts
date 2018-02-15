@@ -13,15 +13,15 @@ export class StatusApiProvider extends HetznerApiProvider {
    *
    * @type {string}
    */
-  public apiUrl: string = 'https://hetzner-status.lkdev.co/api' ;
+  public apiUrl: string = 'https://hetzner-status.lkdev.co/api';
 
   /**
    * Get all Status from the LK-Network Hetzner Status API
    * @see https://hetzner-status.lkdev.co/api/hetzner-status
    * @returns {Promise<any>}
    */
-  getStatus() {
-    return this._get('hetzner-status')
+  getStatus(lang: string = 'de') {
+    return this._get('hetzner-status/' + lang)
   }
 
   /**

@@ -25,26 +25,17 @@ import {ActionsPage} from "../pages/actions/actions";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = HomePage;
+  public lang: string = 'de';
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public projects: ProjectsService, storage: Storage, public servers: ServersService, oneSignal: OneSignal, fingerPrint: FingerprintAIO, translate: TranslateService) {
+  constructor(platform: Platform, statusBar: StatusBar, public splashScreen: SplashScreen, public projects: ProjectsService, public storage: Storage, public servers: ServersService, public oneSignal: OneSignal, public fingerPrint: FingerprintAIO, public translate: TranslateService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      translate.setDefaultLang('de');
-      translate.use('de');
       storage.ready().then(() => {
         statusBar.styleDefault();
         oneSignal.startInit('e8714cee-7480-45da-bad0-19ba3c3e89c4', '1069973161280');
-
         oneSignal.endInit();
-        projects.loadProjects();
-        this.servers.loadServers();
-        storage.get('lang').then(lang => {
-          console.log(lang);
-          if (lang != undefined && lang != null && lang.length != 2) {
-            translate.use(lang);
-          }
-        });
+        this.loadLocalization();
         fingerPrint.isAvailable().then(res => {
           storage.get('auth').then(val => {
             if (val != undefined && val == 'enabled') {
@@ -55,21 +46,33 @@ export class MyApp {
                 localizedFallbackTitle: 'Pin benutzen', //Only for iOS
                 localizedReason: 'Bitte authentifizieren Sie sich.' //Only for iOS
               }).then(result => {
-                splashScreen.hide();
               }).catch(err => {
                 alert('Authentifizierung fehlgeschlagen. App wird beendet');
                 platform.exitApp();
               });
-            } else {
-              splashScreen.hide()
             }
           });
-        }, () => {
-          splashScreen.hide()
         });
-
+        splashScreen.hide();
+        this.loadHetznerSpecificData();
       });
+    });
+  }
 
+  public loadHetznerSpecificData() {
+    this.projects.loadProjects();
+    this.servers.loadServers();
+  }
+
+  public loadLocalization() {
+    this.translate.setDefaultLang(this.lang);
+    this.translate.addLangs(['en', 'de']);
+    this.storage.get('lang').then(lang => {
+      if (lang != undefined && lang != null) {
+        this.translate.use(lang);
+      } else {
+        this.translate.use(this.lang);
+      }
     });
   }
 

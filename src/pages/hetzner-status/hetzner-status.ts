@@ -4,6 +4,7 @@ import {Storage} from "@ionic/storage";
 import {HetznerStatusSettingPage} from "../hetzner-status-setting/hetzner-status-setting";
 import {StatusApiProvider} from "../../providers/status-api/status-api";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
+import {TranslateService} from "@ngx-translate/core";
 
 /**
  * Generated class for the HetznerStatusPage page.
@@ -19,7 +20,7 @@ import {InAppBrowser} from "@ionic-native/in-app-browser";
 export class HetznerStatusPage {
   public messages;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, protected statusApi: StatusApiProvider, protected storage: Storage, protected platform: Platform, protected browser:InAppBrowser) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, protected statusApi: StatusApiProvider, protected storage: Storage, protected platform: Platform, protected browser: InAppBrowser, protected translate: TranslateService) {
     this.load();
   }
 
@@ -33,23 +34,29 @@ export class HetznerStatusPage {
   }
 
   public load() {
-    this.statusApi.getStatus().then((data) => {
-      this.messages = data;
-    }, (error) => {
-      if (error.error instanceof ErrorEvent) {
-        // A client-side or network error occurred. Handle it accordingly.
-        alert('An error occurred:'+ error.error.message);
-      } else {
-        // The backend returned an unsuccessful response code.
-        // The response body may contain clues as to what went wrong,
-        alert(
-          `Backend returned code ${error.status}, ` +
-          `body was: ${error.error}`);
+    this.storage.get('lang').then(value => {
+      let lang = 'de';
+      if (value != undefined) {
+        lang = value;
       }
+      this.statusApi.getStatus(lang).then((data) => {
+        this.messages = data;
+      }, (error) => {
+        if (error.error instanceof ErrorEvent) {
+          // A client-side or network error occurred. Handle it accordingly.
+          alert('An error occurred:' + error.error.message);
+        } else {
+          // The backend returned an unsuccessful response code.
+          // The response body may contain clues as to what went wrong,
+          alert(
+            `Backend returned code ${error.status}, ` +
+            `body was: ${error.error}`);
+        }
+      });
     });
   }
 
-  public openPage(url:string){
+  public openPage(url: string) {
     this.browser.create(url).show();
   }
 }
