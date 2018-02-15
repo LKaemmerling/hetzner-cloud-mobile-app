@@ -251,7 +251,7 @@
         "BACKUPS": {
           "TITLE": "Backup settings",
           "DESCRIPTION": {
-            "BACKUPS": "Backups are automatic copies of your hard disk. Each server contains 7 slots for backups. If all slots are used, the oldest backup will be deleted. We suggest to shutdown the server when creating a manual backup, so that the data is remains consistent.<br/><br/>By activating backups an additional monthly fee of 20% of the server fee will be billed.<br/>",
+            "BACKUPS": "Backups are automatic copies of your hard disk. Each server contains 7 slots for backups. If all slots are used, the oldest backup will be deleted. We suggest to shutdown the server when creating a manual backup, so that the data remains consistent.<br/><br/>By activating backups an additional monthly fee of 20% of the server fee will be billed.<br/>",
             "SNAPSHOTS": "Snapshots are direct copies of the hard disk of your server.<br/>You can create new server using this snapshot and you're able to move these snapshots to other projects.<br/>We suggest to shutdown the server before creating a snapshot, so that the data is completely consistent.<br/>Snapshots are currently billed 0.0119 €/GB/month (including german VAT of 19%).<br/>",
             "REBUILD": "By rebuilding your server, the hard disk will be completely deleted and replaced with the selected image.<br />All data will be destroyed!"
           },
