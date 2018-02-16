@@ -26,6 +26,7 @@ export class DeleteAllDataPage {
     loader.present();
     this.storage.clear();
     this.projects.loadProjects();
+    this.projects.actual_project = null;
     this.navCtrl.setRoot(HomePage);
     loader.dismiss();
   }

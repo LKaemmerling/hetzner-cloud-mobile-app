@@ -48,6 +48,10 @@ export class ProjectsPage {
 
   public delete(project: project) {
     this.project.removeProject(project);
+    this.project.loadProjects();
+    if(this.project.projects == null || this.project.projects.length == 0){
+      this.project.actual_project = null;
+    }
   }
 
   public openActionSheets(project: project) {
