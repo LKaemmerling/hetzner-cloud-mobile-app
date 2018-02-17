@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <i class="fas fa-bars"></i>
+      <i class="fas fa-bars fa-2x"></i>
     </button>
     <ion-title>
       {{ 'PAGE.STATUS.MODAL.SETTINGS.TITLE' | translate }}
@@ -14,8 +14,18 @@
   </p>
   <ion-list>
     <ion-item *ngFor="let category of categories">
-      <ion-label>{{ category.key}}</ion-label>
+      <ion-label>{{ category.lang | translate }}</ion-label>
       <ion-toggle color="secondary" [(ngModel)]="category.value" (ionChange)="save()"></ion-toggle>
+    </ion-item>
+
+  <ion-list-header>{{ 'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.TITLE' | translate}}</ion-list-header>
+    <ion-item>
+      <ion-label>{{ 'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.SOUND' | translate}}</ion-label>
+      <ion-toggle color="secondary" [(ngModel)]="sound" (ionChange)="save()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.VIBRATE' | translate}}</ion-label>
+      <ion-toggle color="secondary" [(ngModel)]="vibrate" (ionChange)="save()"></ion-toggle>
     </ion-item>
   </ion-list>
   <p class="message_box success" *ngIf="_send == true" text-wrap="" [innerHTML]="'PAGE.STATUS.MODAL.SETTINGS.SAVE_SUCCESS' | translate"></p>

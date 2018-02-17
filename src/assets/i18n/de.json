@@ -63,7 +63,7 @@
         "CHANGE_DNS_PTR": "Reverse DNS für den Server {{subject}} verändert",
         "ASSIGN_FLOATING_IP": "Floating IP dem Server {{subject}} zugewiesen",
         "UNASSIGN_FLOATING_IP": "Floating IP {{subject}} Zuweisung aufgehoben",
-        "REQUEST_CONSOLE":"VNC Session für den Server {{subject}} erstellt"
+        "REQUEST_CONSOLE": "VNC Session für den Server {{subject}} erstellt"
       }
     },
     "STATUS": {
@@ -72,7 +72,22 @@
         "SETTINGS": {
           "TITLE": "Hetzner Status - Einstellungen",
           "TEXT": "Sie können über diese App auch Status Benachrichtigungen von der Hetzner-Status Seite erhalten. Bitte wählen Sie dazu die unten stehenden Kategorien aus, von denen Sie Push Nachrichten erhalten möchten. Auf der vorherigen Seite  werden immer alle Meldungen angezeigt.",
-          "SAVE_SUCCESS": "Die Einstellungen wurden erfolgreich gespeichert."
+          "SAVE_SUCCESS": "Die Einstellungen wurden erfolgreich gespeichert.",
+          "NOTIFICATION_SETTINGS":{
+            "TITLE":"Benachrichtigungseinstellungen",
+            "SOUND":"Sound aktivieren",
+            "VIBRATE":"Vibration aktivieren"
+          },
+          "CATEGORY": {
+            "GENERAL": "Allgemein",
+            "BASIC_INFRASTRUCTURE": "Basis Infrastruktur",
+            "ADVANCED_INFRASTRUCTURE": "Erweiterte Infrastruktur",
+            "NETWORK": "Netzwerk",
+            "WEB_HOSTING_AND_MANAGED_SERVER": "Webhosting und Managed Server",
+            "DOMAIN_REGISTRATION_ROBOT": "Domain Registration Robot",
+            "V_SERVER": "vServer",
+            "CLOUD": "Cloud"
+          }
         }
       }
     },

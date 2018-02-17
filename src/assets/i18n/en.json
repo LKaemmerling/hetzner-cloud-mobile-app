@@ -45,7 +45,22 @@
         "SETTINGS": {
           "TITLE": "Hetzner Status - Settings",
           "TEXT": "This app is able to send push notifications from Hetzner Status. You can enable notification categories individually.",
-          "SAVE_SUCCESS": "Settings saved successfully"
+          "SAVE_SUCCESS": "Settings saved successfully",
+          "NOTIFICATION_SETTINGS":{
+            "TITLE":"Notification Settings",
+            "SOUND":"Activate Sound",
+            "VIBRATE":"Activate Vibration"
+          },
+          "CATEGORY": {
+            "GENERAL": "General",
+            "BASIC_INFRASTRUCTURE": "Basic Infrastructure",
+            "ADVANCED_INFRASTRUCTURE": "Advanced Infrastructure",
+            "NETWORK": "Network",
+            "WEB_HOSTING_AND_MANAGED_SERVER": "Web hosting and Managed Server",
+            "DOMAIN_REGISTRATION_ROBOT": "Domain Registration Robot",
+            "V_SERVER": "vServer",
+            "CLOUD": "Cloud"
+          }
         }
       }
     },
