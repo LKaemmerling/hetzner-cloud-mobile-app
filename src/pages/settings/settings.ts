@@ -5,6 +5,7 @@ import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {Storage} from "@ionic/storage";
 import {TranslateService} from "@ngx-translate/core";
+import {OneSignal} from "@ionic-native/onesignal";
 
 /**
  * Generated class for the SettingsPage page.
@@ -24,7 +25,7 @@ export class SettingsPage {
 
   public language: string = 'de';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO, public storage: Storage, public loadingCtrl: LoadingController, public translate: TranslateService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO, public storage: Storage, public loadingCtrl: LoadingController, public translate: TranslateService, public oneSignal: OneSignal) {
     appVersion.getVersionNumber().then((_version) => {
       this.version = _version;
     });
@@ -56,6 +57,11 @@ export class SettingsPage {
     loader.present();
     this.storage.set('lang', this.language);
     this.translate.use(this.language);
+    this.storage.get('hetzner_status_settings').then((data) => {
+      if (data != undefined && data != null) {
+        this.oneSignal.sendTag('lang', this.language);
+      }
+    });
     loader.dismiss();
   }
 
