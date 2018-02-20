@@ -91,6 +91,11 @@ export class HetznerStatusSettingPage {
         prompt = true;
       }
     });
+    this.storage.get('lang').then(value => {
+      if (value != undefined) {
+        this.oneSignal.sendTag('lang', "" + value);
+      }
+    });
     this._send = true;
     if (prompt && this.platform.is('ios')) {
       this.oneSignal.promptForPushNotificationsWithUserResponse();
