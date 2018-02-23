@@ -31,9 +31,10 @@
           <ion-label>{{ 'PAGE.SERVERS.MODAL.UPGRADE.FROM.RESIZE_DISK' | translate}}</ion-label>
           <ion-toggle [(ngModel)]="upgrade_disk"></ion-toggle>
         </ion-item>
-        <p ion-item *ngIf="server.status !== 'off'" translate="">PAGE.SERVERS.MODAL.UPGRADE.ERRORS.REQUIRED_SHUTDOWN</p>
+        <p ion-item *ngIf="server.status !== 'off'" text-wrap="">{{'PAGE.SERVERS.MODAL.UPGRADE.ERRORS.REQUIRED_SHUTDOWN'
+          |translate}}</p>
         <ion-item
-          *ngIf="server_type != null"><strong>{{server_type.description}}</strong><br/>
+          *ngIf="server_type != null" text-wrap=""><strong>{{server_type.description}}</strong><br/>
           {{ 'PAGE.SERVERS.TYPE_DETAILS.CORES' | translate}} {{ server_type.cores }} <br/>{{
           'PAGE.SERVERS.TYPE_DETAILS.MEMORY' | translate}}
           {{ server_type.memory * 1024}} MB<br/>{{ 'PAGE.SERVERS.TYPE_DETAILS.DISK' | translate}}
@@ -41,7 +42,7 @@
           {{ 'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE' | translate}} {{ server_type.storage_type }}
         </ion-item>
       </ion-list>
-      <button ion-button color="primary" (click)="resizeServer()" [disabled]="(server.status != 'off')">
+      <button ion-button color="danger" (click)="resizeServer()" [disabled]="(server.status != 'off')">
         {{ 'ACTIONS.ORDER' | translate}}
       </button>
 

@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title translate="" [translateParams]="{serverName:server.name}">PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.TITLE</ion-title>
+    <ion-title>
+      {{'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.TITLE'|translate:param}}
+    </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
         <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
@@ -26,6 +28,6 @@
   <button ion-button="" color="light" (click)="addEntry()">
     <i class="fas fa-plus"></i>{{ 'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.FORM.ADD' | translate}}
   </button>
-  <button ion-button color="primary" (click)="saveReverseDNS()">{{ 'ACTIONS.SAVE' | translate}}</button>
+  <button ion-button color="danger" (click)="saveReverseDNS()">{{ 'ACTIONS.SAVE' | translate}}</button>
 
 </ion-content>

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title translate="" [translateParams]="{serverName:server.name}">PAGE.SERVERS.MODAL.REVERSE_DNS.IPv4.TITLE</ion-title>
+    <ion-title>{{ 'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv4.TITLE' | translate:param }}</ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
         <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
@@ -13,11 +13,13 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label translate="" [translateParams]="{ip:server.public_net.ipv4.ip}">PAGE.SERVERS.MODAL.REVERSE_DNS.IPv4.FORM.IP</ion-label>
+      <ion-label translate="" [translateParams]="{ip:server.public_net.ipv4.ip}">{{
+        'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv4.FORM.IP' | translate:param }}
+      </ion-label>
       <ion-input type="text" value="" [(ngModel)]="server.public_net.ipv4.dns_ptr"></ion-input>
     </ion-item>
   </ion-list>
 
-  <button ion-button color="primary" (click)="saveReverseDNS()">{{ 'ACTIONS.SAVE' | translate}}</button>
+  <button ion-button color="danger" (click)="saveReverseDNS()">{{ 'ACTIONS.SAVE' | translate}}</button>
 
 </ion-content>

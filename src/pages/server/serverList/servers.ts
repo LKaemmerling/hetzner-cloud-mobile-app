@@ -16,21 +16,12 @@ export class ServersPage {
   public _search;
 
   constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController, public serversService: ServersService) {
-    let loader = this.loadingCtrl.create();
-    loader.present();
-    this.serversService.loadServers();
-    if (this.serversService.servers == null || this.serversService.servers.length == 0 || this.serversService.servers == undefined) {
-      this.loadServers();
-    } else {
-      this.servers = this._search = this.serversService.servers;
-    }
-    loader.dismiss();
+    this.servers = this._search = this.serversService.servers;
   }
 
   public loadServers() {
-    this.serverApiProvider.getServers().then((data) => {
-      this.servers = this.serversService.servers = data['servers'];
-      this.serversService.saveServers();
+    this.serversService.reloadServers().then(() => {
+      this.servers = this.serversService.servers;
       this._search = this.servers;
     });
   }
@@ -43,6 +34,12 @@ export class ServersPage {
 
   public details(server) {
     this.navCtrl.push(ServerPage, {server: server});
+  }
+
+  public ionViewWillEnter() {
+    this.serversService.reloadServers().then(() => {
+      this.servers = this._search = this.serversService.servers;
+    });
   }
 
   public delete(server) {

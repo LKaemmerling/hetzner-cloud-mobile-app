@@ -9,9 +9,11 @@ import {ServerApiProvider} from "../../../../providers/server-api/server-api";
 })
 export class changeIPv4ReverseDNSModal {
   public server: any;
+  public param: any;
 
   constructor(public viewCtrl: ViewController, public loadingCtrl: LoadingController, navParams: NavParams, public serverApiProvider: ServerApiProvider) {
     this.server = navParams.get('server');
+    this.param = {serverName: this.server.name,ip:this.server.public_net.ipv4.ip};
   }
 
   public saveReverseDNS() {

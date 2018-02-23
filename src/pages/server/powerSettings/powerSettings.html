@@ -15,7 +15,7 @@
 <ion-content>
   <ion-card>
     <ion-card-content>
-      <p [innerHTML]="'PAGE.SERVERS.MODAL.POWER_SETTINGS.DESCRIPTION.POWER' | translate"></p>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.POWER_SETTINGS.DESCRIPTION.POWER' | translate" text-wrap=""></p>
       <button (click)="powerOff()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.POWER_OFF' |
         translate}}
       </button>
@@ -29,7 +29,7 @@
   </ion-card>
   <ion-card>
     <ion-card-content>
-      <p [innerHTML]="'PAGE.SERVERS.MODAL.POWER_SETTINGS.DESCRIPTION.POWER_RESET' | translate"></p>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.POWER_SETTINGS.DESCRIPTION.POWER_RESET' | translate" text-wrap=""></p>
       <button (click)="reset()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.POWER_RESET' |
         translate}}
       </button>

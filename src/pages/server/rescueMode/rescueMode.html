@@ -16,7 +16,7 @@
   <ion-card>
 
     <ion-card-content>
-      <p [innerHTML]="'PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.RESCUE_MODE'|translate"></p>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.RESCUE_MODE'|translate" text-wrap=""></p>
       <p *ngIf="root_password_reset != null" class="message_box success" translate="" [translateParams]="{root_password_reset:root_password_reset}">PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.NEW_CREDENTIALS</p>
       <button (click)="rescueActivate()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.RESCUE_MODUS.ACTIONS.ACTIVATE'
         | translate}}

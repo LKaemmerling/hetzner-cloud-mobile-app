@@ -10,6 +10,26 @@
 <ion-content padding>
   <p [innerHTML]="'PAGE.HOME.TEXT' | translate"></p>
   <div *ngIf="project.projects == null || project.projects.length == 0">
-    <button ion-button="" block color="danger" (click)="openProjectsPage()">{{ 'PAGE.HOME.ADD_PROJECT_BUTTON' | translate}}</button>
+    <button ion-button="" block color="danger" (click)="openProjectsPage()">{{ 'PAGE.HOME.ADD_PROJECT_BUTTON' |
+      translate}}
+    </button>
   </div>
+  <ion-list>
+    <ion-item>
+      <ion-note>
+        Changelog
+        <ion-list>
+          <ion-item-group>
+            <ion-item-divider color="light">1.0.1 (23.02.2018)</ion-item-divider>
+            <ion-item>
+              <ul>
+                <li>iOS Release</li>
+                <li>Bugfixes and Design Improvements</li>
+              </ul>
+            </ion-item>
+          </ion-item-group>
+        </ion-list>
+      </ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>

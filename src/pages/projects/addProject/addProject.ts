@@ -15,7 +15,6 @@ export class addProjectModal {
   public error: string = null;
 
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider, protected translate:TranslateService) {
-    //alert(this.project.)
   }
 
   public saveProject() {

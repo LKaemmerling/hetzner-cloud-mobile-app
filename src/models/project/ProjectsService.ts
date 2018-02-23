@@ -42,10 +42,14 @@ export class ProjectsService {
   /**
    *
    * @param {project} project
+   * @returns {() => Promise<void>}
    */
   public selectProject(project: project) {
-    this.actual_project = project;
-    this.storage.set('actual_project', this.actual_project);
+    return new Promise((resolve) => {
+      this.actual_project = project;
+      this.storage.set('actual_project', this.actual_project);
+      resolve(project);
+    });
   }
 
   /**

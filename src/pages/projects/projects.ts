@@ -4,6 +4,7 @@ import {ActionSheetController, ModalController} from "ionic-angular";
 import {addProjectModal} from "./addProject/addProject";
 import {project} from "../../models/project/project";
 import {TranslateService} from "@ngx-translate/core";
+import {ServersService} from "../../models/servers/ServersService";
 
 @Component({
   selector: 'page-projects',
@@ -12,7 +13,7 @@ import {TranslateService} from "@ngx-translate/core";
 export class ProjectsPage {
   public _projects = [];
 
-  constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService) {
+  constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService, public serversService: ServersService) {
     this._projects = project.projects;
   }
 
@@ -24,8 +25,11 @@ export class ProjectsPage {
     modal.present();
   }
 
-  select(project: project) {
-    this.project.selectProject(project);
+  selectProject(project: project) {
+    this.project.selectProject(project).then(() => {
+      this.serversService.reloadServers();
+    });
+
   }
 
   search(ev) {
@@ -49,7 +53,7 @@ export class ProjectsPage {
   public delete(project: project) {
     this.project.removeProject(project);
     this.project.loadProjects();
-    if(this.project.projects == null || this.project.projects.length == 0){
+    if (this.project.projects == null || this.project.projects.length == 0) {
       this.project.actual_project = null;
     }
   }
@@ -87,7 +91,7 @@ export class ProjectsPage {
           text: _activate,
           icon: 'checkmark',
           handler: () => {
-            this.project.selectProject(project);
+            this.selectProject(project);
           }
         },
         {

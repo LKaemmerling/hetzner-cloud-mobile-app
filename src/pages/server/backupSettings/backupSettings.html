@@ -15,8 +15,8 @@
 <ion-content>
   <ion-card>
     <ion-card-content>
-      <p [innerHTML]="'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.BACKUPS' | translate"></p>
-      <p *ngIf="create_backup_done === true" class="message_box success">{{ 'PAGE.SERVERS.MODAL.BACKUPS.SUCCESS.BACKUP' | translate}}</p>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.BACKUPS' | translate" text-wrap=""></p>
+      <p *ngIf="create_backup_done === true" class="message_box success" text-wrap="">{{ 'PAGE.SERVERS.MODAL.BACKUPS.SUCCESS.BACKUP' | translate}}</p>
       <button ion-button="" color="danger" (click)="create_backup()" *ngIf="server.backup_window != null">{{ 'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.CREATE_BACKUP' | translate}}
       </button>
       <button (click)="disable_backups()" ion-button color="danger" *ngIf="server.backup_window != null">{{ 'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.DISABLE_BACKUP' | translate}}
@@ -40,15 +40,15 @@
   </ion-card>
   <ion-card>
     <ion-card-content>
-      <p [innerHTML]="'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.SNAPSHOTS' | translate"></p>
-      <p *ngIf="create_snapshot_done === true" class="message_box success">{{ 'PAGE.SERVERS.MODAL.BACKUPS.SUCCESS.SNAPSHOT' | translate}}</p>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.SNAPSHOTS' | translate" text-wrap=""></p>
+      <p *ngIf="create_snapshot_done === true" class="message_box success" text-wrap="">{{ 'PAGE.SERVERS.MODAL.BACKUPS.SUCCESS.SNAPSHOT' | translate}}</p>
 
       <button ion-button="" color="danger" (click)="create_snapshot()">{{ 'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.CREATE_SNAPSHOT' | translate}}</button>
     </ion-card-content>
   </ion-card>
   <ion-card>
     <ion-card-content>
-      <p  [innerHTML]="'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.REBUILD' | translate"></p>
+      <p  [innerHTML]="'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.REBUILD' | translate" text-wrap=""></p>
       <ion-list>
         <ion-item>
           <ion-label>{{ 'PAGE.SERVERS.MODAL.BACKUPS.FORM.IMAGE' | translate}}</ion-label>

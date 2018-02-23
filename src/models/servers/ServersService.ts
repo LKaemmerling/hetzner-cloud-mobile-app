@@ -1,5 +1,6 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
+import {ServerApiProvider} from "../../providers/server-api/server-api";
 
 @Injectable()
 export class ServersService {
@@ -13,7 +14,7 @@ export class ServersService {
    *
    * @param {Storage} storage
    */
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, private serverApiProvider: ServerApiProvider) {
     this.servers = [];
   }
 
@@ -21,7 +22,7 @@ export class ServersService {
    *
    */
   public loadServers() {
-    this.storage.get('servers').then((val) => {
+    return this.storage.get('servers').then((val) => {
       if (val !== undefined) {
         this.servers = val;
       }
@@ -32,7 +33,17 @@ export class ServersService {
    *
    */
   public saveServers() {
-    this.storage.set('servers', this.servers);
+    return this.storage.set('servers', this.servers);
   }
 
+  /**
+   *
+   * @returns {Promise<void>}
+   */
+  public reloadServers() {
+    return this.serverApiProvider.getServers().then((data) => {
+      this.servers = data['servers'];
+      this.saveServers();
+    });
+  }
 }
