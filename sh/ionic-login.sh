@@ -16,20 +16,7 @@ main() {
 	# Command
   cmd="login"
 
-  # Command arguments
-  args=
-
-	# email
-  if [ -n "$IONIC_LOGIN_EMAIL" ]; then
-    args="$args $IONIC_EMAIL"
-  fi
-
-	# password
-  if [ -n "$IONIC_LOGIN_PASSWORD" ]; then
-    args="$args $IONIC_PASSWORD"
-  fi
-
-  eval "$cli" "$cmd" "$args"
+  eval "$cli" "$cmd"
 }
 
 main;

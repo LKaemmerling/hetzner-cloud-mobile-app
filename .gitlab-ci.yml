@@ -47,6 +47,7 @@ build_android:
     - pipelines
   script:
     - ls
+    - ionic cordova platform rm android
     - ionic cordova platform add android
     - npm run android:release
     - ls ./platforms/android/build/outputs/apk/android*.apk
