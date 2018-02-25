@@ -20,11 +20,6 @@ build_web:
   stage: build
   script:
     - npm run build
-    - apt-get install zip unzip
-    - zip web.zip www
-  artifacts:
-      paths:
-        - www
 test:
   stage: test
   script:
