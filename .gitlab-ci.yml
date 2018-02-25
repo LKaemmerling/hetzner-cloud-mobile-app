@@ -1,6 +1,7 @@
 image: marcoturi/ionic:latest
 
 stages:
+  - build
   - test
   - deploy
 
@@ -16,16 +17,16 @@ cache:
     - .yarn
 
 build_web:
-  stage: test
-  only:
-      - master
+  stage: build
   script:
     - npm run build
+test:
+  stage: test
+  script:
+    - echo "Do Nothing"
 
 build_ios:
   stage: deploy
-  only:
-    - release
   script:
     - ./sh/ionic-login.sh
     - ls
@@ -34,8 +35,6 @@ build_ios:
 
 build_android:
   stage: deploy
-  only:
-    - release
   script:
     - ls
     - ionic cordova platform add android
