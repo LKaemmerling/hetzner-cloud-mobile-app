@@ -38,6 +38,7 @@ build_android:
     - release
   script:
     - ls
+    - ionic cordova platform add android
     - npm run android:release
     - ls ./platforms/android/build/outputs/apk/android*.apk
   artifacts:
