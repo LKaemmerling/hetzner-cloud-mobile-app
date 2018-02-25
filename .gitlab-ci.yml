@@ -7,7 +7,6 @@ stages:
 before_script:
   - yarn config set cache-folder .yarn
   - yarn
-  - npm run post-install
 
 cache:
   untracked: true
@@ -21,11 +20,7 @@ build_web:
   only:
       - master
   script:
-    - npm run lint
-    - npm run scss-lint
-    - npm run test
     - npm run build
-    - npm run e2e
 
 build_ios:
   stage: deploy
