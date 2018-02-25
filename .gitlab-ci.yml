@@ -27,7 +27,8 @@ test:
 
 build_ios:
   stage: deploy
-  only: web
+  only:
+    - web
   script:
     - ./sh/ionic-login.sh
     - ls
@@ -36,7 +37,8 @@ build_ios:
 
 build_android:
   stage: deploy
-  only: web
+  only:
+    - web
   script:
     - ls
     - ionic cordova platform add android
