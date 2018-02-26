@@ -39,8 +39,9 @@ test:karma:
 test:e2e:
   stage: test
   script:
-    - npm run build
     - node test-config/protractor.server.js
+  dependencies:
+    - build:web
 
 .build:ios:
 
