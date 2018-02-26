@@ -26,7 +26,7 @@ build_web:
   stage: build
   script:
     - npm run build
-    
+
 build_ios:
   stage: deploy
   script:
