@@ -2,7 +2,6 @@ image: lkdevelopment/ionic-docker:latest
 
 stages:
   - build
-  - test
   - deploy
 
 before_script:
