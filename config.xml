@@ -42,6 +42,8 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
+        <hook src="ios_hooks/update_pods.sh" type="before_platform_add" />
+        <hook src="ios_hooks/run_pods.sh" type="after_platform_add" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
