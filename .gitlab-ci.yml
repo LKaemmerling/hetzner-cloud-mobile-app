@@ -32,10 +32,11 @@ build_web:
 .build_ios:
   stage: deploy
   script:
+    - gem install cocoapods
+    - pods setup
     - ionic cordova platform rm ios
     - ionic cordova platform add ios
-    - npm run ios:release:ci
-    - ./sh/ionic-package-ios.sh
+    - npm run ios:release
 
 build_android:
   stage: deploy
