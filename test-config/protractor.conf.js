@@ -10,7 +10,10 @@ exports.config = {
     '../e2e/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome'
+    browserName: 'chrome',
+    chromeOptions: {
+      args: [ '--headless', '--disable-gpu', '--window-size=414,736',]
+    }
   },
   directConnect: true,
   baseUrl: 'http://localhost:8001/',
@@ -28,5 +31,6 @@ exports.config = {
   },
   onPrepare: function() {
     jasmine.getEnv().addReporter(new SpecReporter());
-  }
+  },
+  useAllAngular2AppRoots: true
 };
