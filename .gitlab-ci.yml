@@ -26,11 +26,7 @@ build_web:
   stage: build
   script:
     - npm run build
-test:
-  stage: test
-  script:
-    - echo "Do Nothing"
-
+    
 build_ios:
   stage: deploy
   script:
