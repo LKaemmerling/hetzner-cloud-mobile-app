@@ -94,7 +94,7 @@
       }
     },
     "android:release": {
-      "command": "ionic cordova build android --prod --release",
+      "command": "ionic cordova build android --release",
       "env": {
         "NODE_ENV": "production",
         "PLATFORM": "android"
