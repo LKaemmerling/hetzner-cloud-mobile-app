@@ -34,10 +34,9 @@ build_web:
 test_e2e:
   stage: test
   script:
-    - ionic serve
-    - npm run e2e-update
-    - npm run e2e
-    
+    - npm run build
+    - node test-config/protractor.server.js
+
 .build_ios:
 
   script:
