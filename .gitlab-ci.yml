@@ -41,8 +41,6 @@ test:e2e:
   script:
     - npm run build
     - node test-config/protractor.server.js
-  dependencies:
-   - test:karma
 
 .build:ios:
 
