@@ -26,18 +26,17 @@ build_web:
   stage: build
   script:
     - npm run build
-test:
-  stage: test
-  script:
-    - echo "Do Nothing"
+  artifacts:
+    paths:
+      - www/
+.build_ios:
 
-build_ios:
-  stage: deploy
   script:
+    - gem install cocoapods
+    - pods setup
     - ionic cordova platform rm ios
     - ionic cordova platform add ios
-    - npm run ios:release:ci
-    - ./sh/ionic-package-ios.sh
+    - npm run ios:release
 
 build_android:
   stage: deploy
