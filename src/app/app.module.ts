@@ -57,7 +57,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {ActionsApiProvider} from "../providers/actions-api/actions-api";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.0.1"
+  appVersion: "1.0.2"
 });
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
