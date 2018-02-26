@@ -54,17 +54,23 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
     customLaunchers: {
-      Chrome_travis_ci: {
+      ChromeHeadless: {
         base: 'Chrome',
-        flags: ['--no-sandbox']
+        flags: [
+          '--headless',
+          '--disable-gpu',
+          '--disable-translate',
+          '--disable-extensions',
+          // Without a remote debugging port, Google Chrome exits immediately.
+          '--remote-debugging-port=9222',
+        ],
       }
     },
+    browsers: [
+      'ChromeHeadless'
+    ],
     singleRun: false
   };
-  if(process.env.TRAVIS) {
-    _config.browsers = ['Chrome_travis_ci'];
-  }
   config.set(_config);
 };
