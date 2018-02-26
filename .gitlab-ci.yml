@@ -26,8 +26,10 @@ build_web:
   stage: build
   script:
     - npm run build
-
-build_ios:
+  artifacts:
+    paths:
+      - www/
+.build_ios:
   stage: deploy
   script:
     - ionic cordova platform rm ios
