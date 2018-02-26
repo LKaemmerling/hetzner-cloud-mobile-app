@@ -1,6 +1,6 @@
 'use strict';
 
-startWebServer('127.0.0.1', '../www', startTest);
+startWebServer('127.0.0.1', 'www', startTest);
 
 function startWebServer(host, root, cb) {
   // Serve up public/ftp folder
