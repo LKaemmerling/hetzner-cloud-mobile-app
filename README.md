@@ -1,7 +1,6 @@
 # Hetzner Cloud Mobile
-Diese App ist aktuell noch in Arbeit und daher nicht stabil.
 
-Google Play Store: [Open Beta](https://play.google.com/apps/testing/de.lkdevelopment.hetzner)
+[Google Play Store](https://play.google.com/store/apps/details?id=de.lkdevelopment.hetzner)
 
 ## Lokales Testen & Entwickeln
 Zum lokalen Test & Entwickeln wird benötigt die NPM & die Ionic CLI.
