@@ -81,7 +81,6 @@
         <config-file mode="add" parent="ITSAppUsesNonExemptEncryption" target="*-Info.plist">
             <false />
         </config-file>
-      <pod name="LatestPod" />
     </platform>
     <plugin name="cordova-sqlite-storage" spec="~2.2.0" />
     <plugin name="cordova-plugin-ignore-lint-translation" spec="~0.0.1"/>
@@ -90,7 +89,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <plugin name="cordova-plugin-cocoapod-support" spec="~1.3.0"/>
     <allow-navigation href="http://192.168.178.24:8100" />
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
