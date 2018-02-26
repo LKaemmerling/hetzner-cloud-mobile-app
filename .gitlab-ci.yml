@@ -1,6 +1,6 @@
 image: lkdevelopment/ionic-docker:latest
 
-stages:
+stages:cordova plugin add cordova-plugin-cocoapod-support --save
   - build
   - deploy
 
@@ -30,13 +30,14 @@ build_web:
 build_ios:
   stage: deploy
   script:
+    - ionic cordova platform rm ios
+    - ionic cordova platform add ios
     - npm run ios:release:ci
     - ./sh/ionic-package-ios.sh
 
 build_android:
   stage: deploy
   script:
-    - ls
     - ionic cordova platform rm android
     - ionic cordova platform add android
     - npm run android:release
