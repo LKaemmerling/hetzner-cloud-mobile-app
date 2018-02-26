@@ -23,7 +23,7 @@ cache:
     - node_modules/
     - .yarn
 
-build_web:
+build:web:
   stage: build
   script:
     - npm run build
@@ -31,19 +31,20 @@ build_web:
     paths:
       - www/
 
-test_karma:
+test:karma:
   stage: test
   script:
     - npm run build
 
-test_e2e:
+test:e2e:
   stage: test
   script:
     - npm run build
     - node test-config/protractor.server.js
   dependencies:
-  - test_karma
-.build_ios:
+   - test:karma
+
+.build:ios:
 
   script:
     - gem install cocoapods
@@ -52,7 +53,7 @@ test_e2e:
     - ionic cordova platform add ios
     - npm run ios:release
 
-build_android:
+.build:android:
   stage: deploy
   script:
     - ionic cordova platform rm android
