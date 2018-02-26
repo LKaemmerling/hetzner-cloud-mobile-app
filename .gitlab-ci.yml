@@ -27,18 +27,12 @@ test:
 
 build_ios:
   stage: deploy
-  only:
-    - web
-    - pipelines
   script:
     - npm run ios:release:ci
     - ./sh/ionic-package-ios.sh
 
 build_android:
   stage: deploy
-  only:
-    - web
-    - pipelines
   script:
     - ls
     - ionic cordova platform rm android
