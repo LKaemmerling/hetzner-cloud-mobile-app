@@ -1,6 +1,7 @@
 image: marcoturi/ionic:latest
 
 stages:
+  - build
   - test
   - deploy
 
@@ -16,16 +17,19 @@ cache:
     - .yarn
 
 build_web:
-  stage: test
-  only:
-      - master
+  stage: build
   script:
     - npm run build
+test:
+  stage: test
+  script:
+    - echo "Do Nothing"
 
 build_ios:
   stage: deploy
   only:
-    - release
+    - web
+    - pipelines
   script:
     - ./sh/ionic-login.sh
     - ls
@@ -35,9 +39,12 @@ build_ios:
 build_android:
   stage: deploy
   only:
-    - release
+    - web
+    - pipelines
   script:
     - ls
+    - ionic cordova platform rm android
+    - ionic cordova platform add android
     - npm run android:release
     - ls ./platforms/android/build/outputs/apk/android*.apk
   artifacts:
