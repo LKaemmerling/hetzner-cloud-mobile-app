@@ -1,4 +1,4 @@
-image: marcoturi/ionic:latest
+image: lkdevelopment/ionic-docker:latest
 
 stages:
   - build
