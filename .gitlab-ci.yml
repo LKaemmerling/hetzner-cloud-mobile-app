@@ -1,6 +1,6 @@
 image: lkdevelopment/ionic-docker:latest
 
-stages:cordova plugin add cordova-plugin-cocoapod-support --save
+stages:
   - build
   - deploy
 
