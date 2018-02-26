@@ -29,7 +29,7 @@ build_web:
   artifacts:
     paths:
       - www/
-.build_ios:
+build_ios:
   stage: deploy
   script:
     - gem install cocoapods
