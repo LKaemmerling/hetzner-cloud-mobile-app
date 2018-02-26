@@ -35,6 +35,7 @@ test:karma:
   stage: test
   script:
     - npm run build
+    - npm run test
 
 test:e2e:
   stage: test
