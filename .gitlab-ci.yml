@@ -31,12 +31,18 @@ build_web:
     paths:
       - www/
 
+test_karma:
+  stage: test
+  script:
+    - npm run build
+
 test_e2e:
   stage: test
   script:
     - npm run build
     - node test-config/protractor.server.js
-
+  dependencies:
+  - test_karma
 .build_ios:
 
   script:
