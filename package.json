@@ -11,8 +11,9 @@
     "build-dev": "bnr build-dev",
     "test": "bnr test",
     "test:watch": "bnr test-watch",
-    "e2e": "node config/protractor.server.js",
-    "e2e:interactive": "node config/protractor.server.js --elementExplorer",
+    "e2e": "npm run e2e-update && npm run e2e-test",
+    "e2e-test": "protractor ./test-config/protractor.conf.js",
+    "e2e-update": "webdriver-manager update --standalone false --gecko false",
     "ionic:serve": "ionic-app-scripts serve",
     "ionic:build": "ionic-app-scripts build",
     "ios:dev": "bnr ios:dev",
@@ -53,7 +54,7 @@
       }
     },
     "test": {
-      "command": "karma start",
+      "command": "karma start ./test-config/karma.conf.js --single-run",
       "env": {
         "NODE_ENV": "test"
       }
@@ -155,7 +156,26 @@
   "devDependencies": {
     "@ionic/app-scripts": "3.1.8",
     "@types/chartist": "^0.9.38",
-    "typescript": "2.4.2"
+    "typescript": "2.4.2",
+    "@types/node": "^9.4.6",
+    "angular2-template-loader": "^0.6.2",
+    "html-loader": "^0.5.5",
+    "ionic-mocks": "^1.2.1",
+    "istanbul-instrumenter-loader": "^3.0.0",
+    "jasmine": "2.99",
+    "jasmine-core": "2.99",
+    "jasmine-spec-reporter": "^4.2.1",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-reporter": "^1.4.1",
+    "karma-jasmine": "^1.1.1",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.9",
+    "null-loader": "^0.1.1",
+    "protractor": "^5.3.0",
+    "ts-loader": "^3.5.0",
+    "ts-node": "^5.0.0"
   },
   "description": "A mobile App for the Hetzner Cloud.",
   "cordova": {

@@ -2,6 +2,7 @@ image: lkdevelopment/ionic-docker:latest
 
 stages:
   - build
+  - test
   - deploy
 
 before_script:
@@ -29,6 +30,14 @@ build_web:
   artifacts:
     paths:
       - www/
+
+test_e2e:
+  stage: test
+  script:
+    - ionic serve
+    - npm run e2e-update
+    - npm run e2e
+    
 .build_ios:
 
   script:
