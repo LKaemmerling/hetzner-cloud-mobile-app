@@ -1,11 +1,17 @@
-image: marcoturi/ionic:latest
+image: lkdevelopment/ionic-docker:latest
 
 stages:
   - build
-  - test
   - deploy
 
 before_script:
+  - apt-get update >/dev/null
+  - apt-get install -y locales >/dev/null
+  - echo "en_US UTF-8" > /etc/locale.gen
+  - locale-gen en_US.UTF-8
+  - export LANG=en_US.UTF-8
+  - export LANGUAGE=en_US:en
+  - export LC_ALL=en_US.UTF-8
   - yarn config set cache-folder .yarn
   - yarn
 
@@ -27,22 +33,15 @@ test:
 
 build_ios:
   stage: deploy
-  only:
-    - web
-    - pipelines
   script:
-    - ./sh/ionic-login.sh
-    - ls
+    - ionic cordova platform rm ios
+    - ionic cordova platform add ios
     - npm run ios:release:ci
     - ./sh/ionic-package-ios.sh
 
 build_android:
   stage: deploy
-  only:
-    - web
-    - pipelines
   script:
-    - ls
     - ionic cordova platform rm android
     - ionic cordova platform add android
     - npm run android:release

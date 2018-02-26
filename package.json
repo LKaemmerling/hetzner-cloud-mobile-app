@@ -94,7 +94,7 @@
       }
     },
     "android:release": {
-      "command": "ionic cordova build android --prod --release",
+      "command": "ionic cordova build android --release",
       "env": {
         "NODE_ENV": "production",
         "PLATFORM": "android"
@@ -130,9 +130,11 @@
     "cordova-ios": "^4.5.4",
     "cordova-plugin-add-swift-support": "^1.7.1",
     "cordova-plugin-app-version": "^0.1.9",
+    "cordova-plugin-cocoapod-support": "^1.3.0",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-fingerprint-aio": "^1.3.4",
     "cordova-plugin-globalization": "^1.0.9",
+    "cordova-plugin-ignore-lint-translation": "0.0.1",
     "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
