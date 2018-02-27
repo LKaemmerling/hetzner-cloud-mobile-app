@@ -77,6 +77,10 @@ describe('Create Server', () => {
     element(by.id('delete_server')).click();
     browser.sleep(500);
     browser.switchTo().alert().accept();
+    console.log('wait 5 seconds');
+    browser.sleep(1000 * 5).then(() => {
+      console.log('done');
+    });
   });
 });
 

@@ -12,7 +12,7 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     chromeOptions: {
-      args: ['--no-sandbox']
+      args: ['--headless', '--no-sandbox']
     }
   },
   directConnect: true,
@@ -21,19 +21,20 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: function () {
+    }
   },
   useAllAngular2AppRoots: true,
-  beforeLaunch: function() {
+  beforeLaunch: function () {
     require('ts-node').register({
       project: 'e2e'
     });
   },
-  onPrepare: function() {
+  onPrepare: function () {
     jasmine.getEnv().addReporter(new SpecReporter());
   },
   params: {
-    global:{
+    global: {
       api_key: process.env.TEST_API_KEY
     }
   }
