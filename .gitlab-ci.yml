@@ -40,7 +40,6 @@ test:e2e:
   stage: test
 
   script:
-    - echo $TEST_API_KEY
     - TEST_API_KEY=$TEST_API_KEY node test-config/protractor.server.js
   dependencies:
     - build:web
