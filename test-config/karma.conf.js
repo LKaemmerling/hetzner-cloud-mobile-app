@@ -69,7 +69,7 @@ module.exports = function(config) {
       }
     },
     browsers: [
-      'chrome'
+      'ChromeHeadless'
     ],
     singleRun: false
   };
