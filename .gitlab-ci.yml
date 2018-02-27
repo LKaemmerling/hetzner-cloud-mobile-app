@@ -38,10 +38,12 @@ test:karma:
 
 test:e2e:
   stage: test
+
   script:
     - Xvfb :0 -ac -screen 0 1024x768x24 &
-    - export DISPLAY=:99 && \
-    - TEST_API_KEY=$TEST_API_KEY node test-config/protractor.server.js
+    - export DISPLAY=:99
+    - export TEST_API_KEY=$TEST_API_KEY
+    - node test-config/protractor.server.js
   dependencies:
     - build:web
 
