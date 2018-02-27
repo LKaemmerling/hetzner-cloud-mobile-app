@@ -39,7 +39,7 @@ test:karma:
 test:e2e:
   stage: test
   script:
-    - API_TEST_KEY="$API_TEST_KEY" node test-config/protractor.server.js
+    - TEST_API_KEY=$TEST_API_KEY node test-config/protractor.server.js
   dependencies:
     - build:web
 
