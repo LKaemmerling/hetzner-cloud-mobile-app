@@ -107,7 +107,8 @@
           },
           "ERRORS": {
             "INVALID_KEY": "Unfortunately the API token entered is incorrect.",
-            "REQUIRED_NAME": "Please enter a project name."
+            "REQUIRED_NAME": "Please enter a project name.",
+            "NAME_ALREADY_USED": "You already have a project with this name."
           }
         }
       }

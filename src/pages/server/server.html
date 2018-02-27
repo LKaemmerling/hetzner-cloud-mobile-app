@@ -121,11 +121,11 @@
     </ion-item>
   </ion-list>
   <ion-fab right bottom>
-    <button ion-fab color="primary">
+    <button ion-fab color="primary" id="server_actions">
       <i class="fas fa-angle-up"></i>
     </button>
     <ion-fab-list side="top">
-      <button ion-fab color="danger" (click)="delete()">
+      <button ion-fab color="danger" (click)="delete()" id="delete_server">
         <div class="label" color="danger">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.DELETE' | translate}}</div>
         <i class="fas fa-trash"></i>
       </button>

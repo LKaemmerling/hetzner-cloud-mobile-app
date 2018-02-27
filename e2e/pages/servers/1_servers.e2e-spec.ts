@@ -5,15 +5,23 @@ import {Page} from "../../app.po";
 describe('Servers List', () => {
   let page: Page;
 
-  beforeEach(() => {
+  beforeAll(() => {
     page = new Page();
     page.navigateTo('/');
     page.createProject();
+    browser.sleep(100);
+  });
+  afterAll(() => {
+    page.navigateTo('/');
+    page.deleteProject();
+  });
+  beforeEach(() => {
+    page.navigateTo('/');
+    browser.sleep(100);
     page.navigateToMenuPoint('Meine Server');
-    browser.sleep(500);
   });
 
-  it('first of all it should have any servers', () => {
+  it('first of all it should not have any servers', () => {
     expect(element(by.xpath('//*[@id="nav"]/page-servers[1]/ion-content[1]/div[2]/ion-card[1]/ion-list[1]/p[1]')).getText()).toEqual('Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden.');
   })
 });

@@ -14,7 +14,7 @@ export class addProjectModal {
   public api_key: string;
   public error: string = null;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider, protected translate:TranslateService) {
+  constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider, protected translate: TranslateService) {
   }
 
   public saveProject() {
@@ -22,6 +22,11 @@ export class addProjectModal {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.REQUIRED_NAME';
       return;
     }
+    if (this.project.projects != null && this.project.projects.filter(vendor => (vendor.name === this.project_name)).length > 0) {
+      this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.NAME_ALREADY_USED';
+      return;
+    }
+    ;
     var _new = new project(this.project_name, this.api_key);
     this.project.addProject(_new);
 
