@@ -12,7 +12,7 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     chromeOptions: {
-      args: ['--headless', '--no-sandbox']
+      args: ['--no-sandbox']
     }
   },
   directConnect: true,
@@ -31,5 +31,10 @@ exports.config = {
   },
   onPrepare: function() {
     jasmine.getEnv().addReporter(new SpecReporter());
+  },
+  params: {
+    global:{
+      api_key: process.env.TEST_API_KEY
+    }
   }
 };

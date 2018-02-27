@@ -175,6 +175,7 @@
     },
     "SERVERS": {
       "TITLE": "Meine Server",
+      "NO_SERVERS": "Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden.",
       "TYPE_DETAILS": {
         "TITLE": "Server Typ:",
         "DISK": "Festplatte:",

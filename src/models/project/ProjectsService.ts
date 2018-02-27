@@ -87,5 +87,6 @@ export class ProjectsService {
     });
     this.projects = tmp;
     this.saveProjects();
+    return this.projects;
   }
 }

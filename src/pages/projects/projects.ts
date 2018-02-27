@@ -51,11 +51,14 @@ export class ProjectsPage {
   }
 
   public delete(project: project) {
-    this.project.removeProject(project);
-    this.project.loadProjects();
+    this._projects = this.project.removeProject(project);
     if (this.project.projects == null || this.project.projects.length == 0) {
-      this.project.actual_project = null;
+      this.project.selectProject(null).then(() => {
+        this.serversService.servers = [];
+        this.serversService.saveServers();
+      });
     }
+    this._projects = this.project.projects;
   }
 
   public openActionSheets(project: project) {

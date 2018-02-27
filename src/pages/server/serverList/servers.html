@@ -47,6 +47,9 @@
         </ion-item-options>
 
       </ion-item-sliding>
+      <p ion-item *ngIf="_search == null || _search.length == 0" class="message_box info" text-wrap=""
+         [innerHTML]="'PAGE.SERVERS.NO_SERVERS' | translate">
+      </p>
     </ion-list>
   </ion-card>
 
