@@ -269,7 +269,7 @@
           "TITLE": "Backup Einstellungen",
           "DESCRIPTION": {
             "BACKUPS": "Backups sind automatische Kopien der Festplatte Ihres Servers.<br/><br/>Jeder Server erhält 7 Slots für Backups. Wenn alle Slots belegt sind und ein neues Backup gestartet wird, wirdautomatisch das älteste Backup gelöscht.<br/><br/>Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie ein manuelles Backup erstellen, um sicherzustellen, dass die Daten auf der Festplatte konsistent sind.<br/><br/>Durch das Aktivieren des Backups entstehen monatlich wiederkehrende Kosten von 20 % des Server-Tarifs.<br/>",
-            "SNAPSHOTS": "Snapshots sind sofortige Kopien der Festplatten Ihres Servers.<br/>Sie können neue Server aus Snapshots erstellen oder diese zwischen Projekten verschieben.<br/>Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie einen Snapshot erstellen, um sicherzustellen dass dieDaten auf der Festplatte konsistent sind.<br/>Snapshots erzeugen monatlich wiederkehrende Kosten von 0,0119 €/GB/Monat (inkl. 19 % USt.).<br/>",
+            "SNAPSHOTS": "Snapshots sind sofortige Kopien der Festplatten Ihres Servers.<br/>Sie können neue Server aus Snapshots erstellen oder diese zwischen Projekten verschieben.<br/>Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie einen Snapshot erstellen, um sicherzustellen, dass die Daten auf der Festplatte konsistent sind.<br/>Snapshots erzeugen monatlich wiederkehrende Kosten von 0,0119 €/GB/Monat (inkl. 19 % USt.).<br/>",
             "REBUILD": "Bei einem Rebuild wird Ihr Server ausgeschaltet und die Festplatte mit dem ausgewählten Image überschrieben.<br/>Alle bestehenden Daten auf der Festplatte werden überschrieben!"
           },
           "ACTIONS": {
