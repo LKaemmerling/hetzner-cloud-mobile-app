@@ -42,7 +42,7 @@
       }
     },
     "build": {
-      "command": "ionic-app-scripts build --prod --tsconfig ./src/tsconfig.json",
+      "command": "ionic-app-scripts build --prod --tsconfig ./tsconfig.json",
       "env": {
         "NODE_ENV": "production"
       }
