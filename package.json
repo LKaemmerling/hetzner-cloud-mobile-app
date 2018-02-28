@@ -28,7 +28,7 @@
     "post-install": "webdriver-manager update --standalone",
     "prepush": "npm test",
     "commitmsg": "validate-commit-msg",
-    "compodoc": "./node_modules/.bin/compodoc src/ -p tsconfig.json -n Hetzner-Cloud-Mobile",
+    "compodoc": "./node_modules/.bin/compodoc src/ -p tsconfig.json -n Hetzner-Cloud-Mobile"
   },
   "betterScripts": {
     "dev": {
