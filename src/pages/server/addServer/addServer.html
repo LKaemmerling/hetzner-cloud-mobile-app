@@ -42,7 +42,7 @@
     </ion-item>
     <ion-item>
       <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.SSH_KEYS' | translate}}</ion-label>
-      <ion-select [(ngModel)]="ssh_key" multiple="true">
+      <ion-select [(ngModel)]="ssh_key" multiple="true" id="ssh_keys">
         <ion-option *ngFor="let _ssh_key of ssh_keys" [value]="_ssh_key.id">{{ _ssh_key.name }}</ion-option>
       </ion-select>
     </ion-item>

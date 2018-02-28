@@ -1,0 +1,1375 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Hetzner-Cloud-Mobile</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Hetzner-Cloud-Mobile</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../index.html">Hetzner-Cloud-Mobile</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-fw fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                        <a href="../license.html"
+                                    >
+                                        <span class="fa fa-fw fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="../dependencies.html"
+                                        
+                                        >
+                                        <span class="fa fa-fw fa-list"></span>Dependencies
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-fw fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AppModule.html" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/PipesModule.html" >PipesModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/ProjectModule.html" >ProjectModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/ServersModule.html" >ServersModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-fw fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AboutPage.html" >AboutPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ActionsPage.html" >ActionsPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DeleteAllDataPage.html" >DeleteAllDataPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/FloatingIPPage.html" >FloatingIPPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/FloatingIPsPage.html" >FloatingIPsPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/HetznerStatusPage.html" >HetznerStatusPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/HetznerStatusSettingPage.html" >HetznerStatusSettingPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/HomePage.html" >HomePage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ImagesPage.html" >ImagesPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/MyApp.html" >MyApp</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ProjectsPage.html" >ProjectsPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ServerMetricsPage.html" >ServerMetricsPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ServerPage.html" >ServerPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ServersPage.html" >ServersPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SettingsPage.html" >SettingsPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/addFloatingIPModal.html" >addFloatingIPModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/addProjectModal.html" >addProjectModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/addServerModal.html" >addServerModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/assignToServerModal.html" >assignToServerModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/backupSettingsModal.html" >backupSettingsModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/changeIPv4ReverseDNSModal.html" >changeIPv4ReverseDNSModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/changeIPv6ReverseDNSModal.html" >changeIPv6ReverseDNSModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/editFloatingIpModal.html" >editFloatingIpModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/editImageModal.html" >editImageModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/editServerModal.html" >editServerModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/powerSettingsModal.html" >powerSettingsModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/rescueModeModal.html" >rescueModeModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/resizeServerModal.html" >resizeServerModal</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-fw fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/ActionsApiProvider.html" >ActionsApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/FloatingIpApiProvider.html"  data-type="entity-link" class="active" >FloatingIpApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ImageApiProvider.html" >ImageApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LocationApiProvider.html" >LocationApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/MyErrorHandler.html" >MyErrorHandler</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ProjectsService.html" >ProjectsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ServerApiProvider.html" >ServerApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ServerTypeApiProvider.html" >ServerTypeApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ServersService.html" >ServersService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SshKeyApiProvider.html" >SshKeyApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StatusApiProvider.html" >StatusApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/project.html" >project</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
+                            <span class="fa fa-fw fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/FileSizePipe.html" >FileSizePipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-fw fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src="../images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../index.html">Hetzner-Cloud-Mobile</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-fw fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                               <a href="../license.html"
+                                           >
+                                               <span class="fa fa-fw fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../dependencies.html"
+                                               
+                                               >
+                                               <span class="fa fa-fw fa-list"></span>Dependencies
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-fw fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/PipesModule.html" >PipesModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/ProjectModule.html" >ProjectModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/ServersModule.html" >ServersModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-fw fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AboutPage.html" >AboutPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ActionsPage.html" >ActionsPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DeleteAllDataPage.html" >DeleteAllDataPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FloatingIPPage.html" >FloatingIPPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FloatingIPsPage.html" >FloatingIPsPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/HetznerStatusPage.html" >HetznerStatusPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/HetznerStatusSettingPage.html" >HetznerStatusSettingPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/HomePage.html" >HomePage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ImagesPage.html" >ImagesPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/MyApp.html" >MyApp</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ProjectsPage.html" >ProjectsPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ServerMetricsPage.html" >ServerMetricsPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ServerPage.html" >ServerPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ServersPage.html" >ServersPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SettingsPage.html" >SettingsPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/addFloatingIPModal.html" >addFloatingIPModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/addProjectModal.html" >addProjectModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/addServerModal.html" >addServerModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/assignToServerModal.html" >assignToServerModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/backupSettingsModal.html" >backupSettingsModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/changeIPv4ReverseDNSModal.html" >changeIPv4ReverseDNSModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/changeIPv6ReverseDNSModal.html" >changeIPv6ReverseDNSModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/editFloatingIpModal.html" >editFloatingIpModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/editImageModal.html" >editImageModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/editServerModal.html" >editServerModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/powerSettingsModal.html" >powerSettingsModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/rescueModeModal.html" >rescueModeModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/resizeServerModal.html" >resizeServerModal</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-fw fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/ActionsApiProvider.html" >ActionsApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/FloatingIpApiProvider.html"  data-type="entity-link" class="active" >FloatingIpApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ImageApiProvider.html" >ImageApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LocationApiProvider.html" >LocationApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/MyErrorHandler.html" >MyErrorHandler</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ProjectsService.html" >ProjectsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ServerApiProvider.html" >ServerApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ServerTypeApiProvider.html" >ServerTypeApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ServersService.html" >ServersService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SshKeyApiProvider.html" >SshKeyApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StatusApiProvider.html" >StatusApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/project.html" >project</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
+                                   <span class="fa fa-fw fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/FileSizePipe.html" >FileSizePipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-fw fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src="../images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>FloatingIpApiProvider</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/providers/floating-ip-api/floating-ip-api.ts</code>
+        </p>
+
+
+
+            <section>
+                <h3 id="index">Index</h3>
+                <table class="table table-sm table-bordered index-table">
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Methods</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                        <a href="#assignToServer">assignToServer</a>
+                                    </li>
+                                    <li>
+                                        <a href="#changeDescription">changeDescription</a>
+                                    </li>
+                                    <li>
+                                        <a href="#changeReverseDNS">changeReverseDNS</a>
+                                    </li>
+                                    <li>
+                                        <a href="#createFloatingIp">createFloatingIp</a>
+                                    </li>
+                                    <li>
+                                        <a href="#deleteFloatingIp">deleteFloatingIp</a>
+                                    </li>
+                                    <li>
+                                        <a href="#getFloatingIps">getFloatingIps</a>
+                                    </li>
+                                    <li>
+                                        <a href="#unassign">unassign</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section>
+                
+                    <h3 id="methods">
+                        Methods
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="assignToServer"></a>
+                                    <span class="name">
+                                        <b>
+                                        assignToServer
+                                        </b>
+                                        <a href="#assignToServer"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>assignToServer(floatingIpId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, serverId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/providers/floating-ip-api/floating-ip-api.ts:62</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Assigns a Floating IP to a server</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>floatingIpId</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>serverId</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="changeDescription"></a>
+                                    <span class="name">
+                                        <b>
+                                        changeDescription
+                                        </b>
+                                        <a href="#changeDescription"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>changeDescription(serverId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, description: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/providers/floating-ip-api/floating-ip-api.ts:51</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Changes the description of a Floating IP</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>serverId</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>description</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="changeReverseDNS"></a>
+                                    <span class="name">
+                                        <b>
+                                        changeReverseDNS
+                                        </b>
+                                        <a href="#changeReverseDNS"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>changeReverseDNS(floatingIpId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, ip: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dns_ptr: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/providers/floating-ip-api/floating-ip-api.ts:84</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Changes the hostname that will appear when getting the hostname belonging to this Floating IP</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                                <td>Default value</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>floatingIpId</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                    </td>
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>ip</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                    </td>
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>dns_ptr</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                            <code>null</code>
+                                                                    </td>
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="createFloatingIp"></a>
+                                    <span class="name">
+                                        <b>
+                                        createFloatingIp
+                                        </b>
+                                        <a href="#createFloatingIp"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>createFloatingIp(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, description: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, serverId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/providers/floating-ip-api/floating-ip-api.ts:30</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Create a Floating IP</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>type</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>description</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>serverId</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="deleteFloatingIp"></a>
+                                    <span class="name">
+                                        <b>
+                                        deleteFloatingIp
+                                        </b>
+                                        <a href="#deleteFloatingIp"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>deleteFloatingIp(floatingIpId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/providers/floating-ip-api/floating-ip-api.ts:40</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Deletes a Floating IP</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>floatingIpId</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getFloatingIps"></a>
+                                    <span class="name">
+                                        <b>
+                                        getFloatingIps
+                                        </b>
+                                        <a href="#getFloatingIps"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>getFloatingIps()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/providers/floating-ip-api/floating-ip-api.ts:18</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Get all Floating from the Hetzner API</p>
+            </div>
+            
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="unassign"></a>
+                                    <span class="name">
+                                        <b>
+                                        unassign
+                                        </b>
+                                        <a href="#unassign"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>unassign(floatingIpId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/providers/floating-ip-api/floating-ip-api.ts:72</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Unassigns a Floating IP, resulting in it being unreachable</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>floatingIpId</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+
+
+    </div>
+
+
+    <div class="tab-pane fade tab-source-code" id="c-source">
+        <pre class="line-numbers"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
+import {HetznerApiProvider} from &quot;../hetzner-api/hetzner-api&quot;;
+
+/*
+  Generated class for the StatusApiProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+@Injectable()
+export class FloatingIpApiProvider extends HetznerApiProvider {
+
+  /**
+   * Get all Floating from the Hetzner API
+   * @see https://docs.hetzner.cloud/#resources-floating-ips-get
+   * @returns {Promise&lt;any&gt;}
+   */
+  getFloatingIps() {
+    return this._get(&#x27;floating_ips&#x27;)
+  }
+
+  /**
+   * Create a Floating IP
+   * @see https://docs.hetzner.cloud/#resources-floating-ips-post
+   * @param {string} type
+   * @param {string} description
+   * @param {number} serverId
+   * @returns {Promise&lt;any&gt;}
+   */
+  createFloatingIp(type: string, description: string, serverId: number) {
+    return this._post(&#x27;floating_ips&#x27;, {type: type, server: serverId, description: description})
+  }
+
+  /**
+   * Deletes a Floating IP
+   * @see https://docs.hetzner.cloud/#resources-floating-ips-delete
+   * @param {number} floatingIpId
+   * @returns {Promise&lt;any&gt;}
+   */
+  deleteFloatingIp(floatingIpId: number) {
+    return this._delete(&#x27;floating_ips/&#x27; + floatingIpId)
+  }
+
+  /**
+   * Changes the description of a Floating IP
+   * @see https://docs.hetzner.cloud/#resources-floating-ips-put
+   * @param {number} serverId
+   * @param {string} description
+   * @returns {Promise&lt;any&gt;}
+   */
+  changeDescription(serverId: number, description: string) {
+    return this._put(&#x27;floating_ips/&#x27; + serverId, {description: description})
+  }
+
+  /**
+   * Assigns a Floating IP to a server
+   * @see https://docs.hetzner.cloud/#resources-floating-ip-actions-post
+   * @param {number} floatingIpId
+   * @param {number} serverId
+   * @returns {Promise&lt;any&gt;}
+   */
+  assignToServer(floatingIpId: number, serverId: number) {
+    return this._post(&#x27;floating_ips/&#x27; + floatingIpId + &#x27;/actions/assign&#x27;, {server: serverId})
+  }
+
+  /**
+   * Unassigns a Floating IP, resulting in it being unreachable
+   * @see https://docs.hetzner.cloud/#resources-floating-ip-actions-post-1
+   * @param {number} floatingIpId
+   * @returns {Promise&lt;any&gt;}
+   */
+  unassign(floatingIpId: number) {
+    return this._post(&#x27;floating_ips/&#x27; + floatingIpId + &#x27;/actions/unassign&#x27;)
+  }
+
+  /**
+   * Changes the hostname that will appear when getting the hostname belonging to this Floating IP
+   * @see https://docs.hetzner.cloud/#resources-floating-ip-actions-post-2
+   * @param {number} floatingIpId
+   * @param {string} ip
+   * @param {string} dns_ptr
+   * @returns {Promise&lt;any&gt;}
+   */
+  changeReverseDNS(floatingIpId: number, ip: string, dns_ptr: string &#x3D; null) {
+    return this._post(&#x27;floating_ips/&#x27; + floatingIpId + &#x27;/actions/change_dns_ptr&#x27;, {ip: ip, dns_ptr: dns_ptr})
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+
+    </body>
+</html>

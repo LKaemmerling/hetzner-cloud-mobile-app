@@ -22,12 +22,6 @@ import {resizeServerModal} from "../pages/server/resizeServer/resizeServer";
 import {backupSettingsModal} from "../pages/server/backupSettings/backupSettings";
 import {addFloatingIPModal} from "../pages/floatingIPs/addFloatingIp/addFloatingIP";
 import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
-import {ServerApiProvider} from '../providers/server-api/server-api';
-import {ServerTypeApiProvider} from '../providers/server-type-api/server-type-api';
-import {FloatingIpApiProvider} from '../providers/floating-ip-api/floating-ip-api';
-import {LocationApiProvider} from '../providers/location-api/location-api';
-import {ImageApiProvider} from '../providers/image-api/image-api';
-import {SshKeyApiProvider} from '../providers/ssh-key-api/ssh-key-api';
 import {DeleteAllDataPage} from "../pages/delete-all-data/delete-all-data";
 import {PipesModule} from "../pipes/pipes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -42,7 +36,6 @@ import {assignToServerModal} from "../pages/floatingIPs/assignToServer/assignToS
 import {ServersModule} from "../models/servers/Servers.module";
 import {HetznerStatusSettingPage} from "../pages/hetzner-status-setting/hetzner-status-setting";
 import {OneSignal} from "@ionic-native/onesignal";
-import {StatusApiProvider} from "../providers/status-api/status-api";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
 import {ChartsModule} from 'ng2-charts';
@@ -51,17 +44,18 @@ import {SettingsPage} from "../pages/settings/settings";
 import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {ActionsPage} from "../pages/actions/actions";
-import {Globalization} from "@ionic-native/globalization";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {ActionsApiProvider} from "../providers/actions-api/actions-api";
+import {HetznerApiProviderModule} from "../providers/hetznerApiProvider.module";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.0.2"
 });
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
 @Injectable()
 export class MyErrorHandler implements ErrorHandler {
   ionicErrorHandler: IonicErrorHandler;
@@ -133,7 +127,8 @@ export class MyErrorHandler implements ErrorHandler {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    HetznerApiProviderModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -170,19 +165,10 @@ export class MyErrorHandler implements ErrorHandler {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: MyErrorHandler},
-    ServerApiProvider,
-    ServerTypeApiProvider,
-    FloatingIpApiProvider,
-    LocationApiProvider,
-    ActionsApiProvider,
-    ImageApiProvider,
-    SshKeyApiProvider,
-    StatusApiProvider,
     OneSignal,
     InAppBrowser,
     AppVersion,
-    FingerprintAIO,
-    Globalization
+    FingerprintAIO
   ]
 })
 export class AppModule {

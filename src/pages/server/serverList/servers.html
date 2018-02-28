@@ -15,13 +15,12 @@
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
   <ion-card>
     <ion-list>
-      <ion-item-sliding *ngFor="let server of _search"
-                        #slidingItem>
-        <ion-item>
-          <div (click)="details(server)">
-            <h2>{{ server.name }}
-              <span *ngIf="server.status == 'migrating'"><i class="fas fa-spin fa-spinner fa-pulse"></i></span>
-              <span *ngIf="server.status != 'migrating'">
+
+      <button ion-item *ngFor="let server of _search ; let i = index" (click)="details(server)" [id]="server.name">
+
+        <h2>{{ server.name }}
+          <span *ngIf="server.status == 'migrating'"><i class="fas fa-spin fa-spinner fa-pulse"></i></span>
+          <span *ngIf="server.status != 'migrating'">
                  <svg class="server-status-indicator "
                       [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}"
                       height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
@@ -33,20 +32,13 @@
                         r="25"></circle>
               </svg>
               </span>
-            </h2>
-            <p text-wrap="">{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{ server.datacenter.name
-              }}
-              /
-              {{ server.public_net.ipv4.ip }}</p>
-          </div>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="danger" (click)="delete(server)">
-            <i class="fas fa-trash"></i>
-          </button>
-        </ion-item-options>
-
-      </ion-item-sliding>
+        </h2>
+        <p text-wrap="">{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{
+          server.datacenter.name
+          }}
+          /
+          {{ server.public_net.ipv4.ip }}</p>
+      </button>
       <p ion-item *ngIf="_search == null || _search.length == 0" class="message_box info" text-wrap=""
          [innerHTML]="'PAGE.SERVERS.NO_SERVERS' | translate">
       </p>

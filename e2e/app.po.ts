@@ -13,6 +13,7 @@ export class Page {
 
   createProject(name: string = "Hetzner Cloud App E2E") {
     this.navigateToMenuPoint('Meine Projekte');
+    browser.sleep(500);
     element(by.xpath('//*[@id="nav"]/page-projects[1]/ion-content[1]/div[1]/ion-fab[1]/button[1]/ion-icon[1]')).click();
     browser.sleep(500);
     element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addproject[1]/ion-content[1]/div[2]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-input[1]/input[1]')).sendKeys(name);
@@ -20,7 +21,9 @@ export class Page {
     element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addproject[1]/ion-content[1]/div[2]/ion-list[1]/ion-item[2]/div[1]/div[1]/ion-input[1]/input[1]')).sendKeys(browser.params.global.api_key);
     browser.sleep(500);
     element(by.buttonText('Speichern')).click();
-    browser.sleep(1000);
+    browser.sleep(500);
+    this.navigateToMenuPoint('Meine Projekte');
+    browser.sleep(500);
   }
 
   deleteProject() {
@@ -28,11 +31,50 @@ export class Page {
     browser.sleep(500);
     element(by.xpath('//*[@id="nav"]/page-projects[1]/ion-content[1]/div[2]/ion-card[1]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-label[1]/div[1]/h2[1]')).click();
     browser.sleep(500);
-    element(by.buttonText('Löschen')).click();
+    element(by.className('delete_project')).click();
     browser.sleep(500);
   }
+  createServer(name: string = "E2E-Test-Server"){
+    this.navigateToMenuPoint('Meine Server');
+    browser.sleep(500);
+    element(by.className('fab')).click();
+    browser.sleep(500);
 
+    element(by.id('select_type')).click();
+    browser.sleep(500);
+    element(by.xpath('//*[@id="alert-input-0-0"]/span[1]/div[2]')).click();
+    browser.sleep(500);
+    element(by.buttonText('OK')).click();
+    browser.sleep(500);
+    element(by.id('location')).click();
+    browser.sleep(500);
+    element(by.xpath('//*[@id="alert-input-1-0"]/span[1]/div[2]')).click();
+    browser.sleep(500);
+    element(by.buttonText('OK')).click();
+    element(by.id('image')).click();
+    browser.sleep(500);
+    element(by.xpath('//*[@id="alert-input-2-0"]/span[1]/div[2]')).click();
+    browser.sleep(500);
+    element(by.buttonText('OK')).click();
+    browser.sleep(500);
+    element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addserver[1]/ion-content[1]/div[2]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-input[1]/input[1]')).sendKeys(name);
+    browser.sleep(500);
+    element(by.buttonText('Kostenpflichtig bestellen')).click();
+    console.debug('Sorry the Server Creation could take up to 15 seconds');
+    browser.sleep(1000 * 15).then(() => {
+      console.debug('wait 15 seconds again so the server could startup');
+      browser.sleep(1000 * 15).then(() => {
+        console.debug('Server is created. Sonst forget to delete it!');
+      });
+    });
+  }
   navigateToMenuPoint(entry) {
+    this.navigateTo('/');
+    browser.sleep(500);
+    if(element(by.className('show-menu')).isPresent()){
+      this.navigateTo('/');
+      browser.sleep(500);
+    }
     element(by.className('bar-button-menutoggle')).click();
     browser.sleep(500);
     element(by.buttonText(entry)).click();

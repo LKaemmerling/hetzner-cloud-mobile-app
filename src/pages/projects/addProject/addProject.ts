@@ -44,6 +44,9 @@ export class addProjectModal {
     }, () => {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.INVALID_KEY';
       this.project.removeProject(_new);
+      if (selected != null) {
+        this.project.selectProject(selected);
+      }
     });
 
   }

@@ -86,6 +86,7 @@ export class ProjectsPage {
           text: _delete,
           role: 'destructive',
           icon: 'trash',
+          cssClass: 'delete_project',
           handler: () => {
             this.delete(project);
           }
