@@ -34,7 +34,7 @@
       "SECURITY": {
         "TITLE": "Sicherheit",
         "AUTH": {
-          "TITLE": "Authentifzierung",
+          "TITLE": "Authentifizierung",
           "NOT_AVAILABLE": "Leider ist keine sichere Authentifizierung auf Ihrem Gerät vorhanden."
         }
       }
