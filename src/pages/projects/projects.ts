@@ -75,7 +75,7 @@ export class ProjectsPage {
       _activate = text;
     });
     let _cancel: string = '';
-    this.translate.get('ACTIONS.DELETE').subscribe(text => {
+    this.translate.get('ACTIONS.CANCEL').subscribe(text => {
       _cancel = text;
     });
     let actionSheet = this.actionSheetCtrl.create({
