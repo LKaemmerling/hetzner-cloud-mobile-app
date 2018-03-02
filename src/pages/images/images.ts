@@ -30,7 +30,7 @@ export class ImagesPage {
   }
 
   public openEdit(image) {
-    this.modal.create(editImageModal, {image: image});
+    this.modal.create(editImageModal, {image: image}).present();
   }
 
   public delete(image) {

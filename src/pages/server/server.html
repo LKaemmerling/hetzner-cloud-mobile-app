@@ -39,7 +39,7 @@
         {{ server.datacenter.description}}
       </div>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="server.image != null">
       <div item-left="">
         {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.IMAGE' | translate}}
       </div>
@@ -68,7 +68,7 @@
         <i class="fas fa-pencil-alt" (click)="changeIPv6ReverseDNSModal()"></i>
       </div>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="server.outgoing_traffic != null">
       <div item-left="">
         {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.OUTGOING' | translate}}
       </div>
@@ -76,7 +76,7 @@
         {{ server.outgoing_traffic | fileSize}}
       </div>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="server.ingoing_traffic != null">
       <div item-left="">
         {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.INGOING' | translate}}
       </div>

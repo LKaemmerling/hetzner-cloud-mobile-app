@@ -49,7 +49,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HetznerApiProviderModule} from "../providers/hetznerApiProvider.module";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.0.3"
+  appVersion: "1.0.4"
 });
 
 export function createTranslateLoader(http: HttpClient) {
