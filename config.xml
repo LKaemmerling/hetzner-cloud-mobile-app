@@ -1,5 +1,4 @@
 <?xml version='1.0' encoding='utf-8'?>
-
 <widget id="de.lkdevelopment.hetzner" version="1.0.4" xmlns="http://www.w3.org/ns/widgets">
     <name>Hetzner Cloud Mobile</name>
     <description>A mobile App for the Hetzner Cloud.</description>
@@ -96,5 +95,5 @@
     <plugin name="onesignal-cordova-plugin" spec="^2.3.1" />
     <allow-navigation href="http://192.168.178.24:8100" />
     <engine name="ios" spec="^4.5.4" />
-    <engine name="android" spec="^6.4.0" />
+    <engine name="android" spec="~6.4.0" />
 </widget>
