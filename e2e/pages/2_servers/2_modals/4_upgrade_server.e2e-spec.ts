@@ -41,12 +41,12 @@ describe('[2][2][3] Upgrade Server', () => {
     element(by.buttonText('OK')).click();
     browser.sleep(500);
     element(by.buttonText('Kostenpflichtig bestellen')).click();
-    browser.sleep(1000 * 10).then(() => {
+    browser.sleep(1000 * 20).then(() => {
       page.navigateToMenuPoint('Meine Server');
       browser.sleep(500);
       var spinn = true;
       //console.debug('Give the Server some time to upgrade');
-      browser.sleep(1000 * 60).then(() => {
+      browser.sleep(1000 * 90).then(() => {
           page.navigateToMenuPoint('Meine Server');
           browser.sleep(500);
           element(by.partialButtonText('E2E-Test-Server')).click();
