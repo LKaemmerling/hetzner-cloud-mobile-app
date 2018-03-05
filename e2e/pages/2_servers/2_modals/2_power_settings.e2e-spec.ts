@@ -36,12 +36,12 @@ describe('[2][2][2] Power Settings', () => {
     browser.sleep(500);
     expect(element(by.id('power_on')).isDisplayed()).toBeTruthy();
     element(by.id('power_on')).click();
-    browser.sleep(1000 * 15).then(() => {
+    browser.sleep(1000 * 20).then(() => {
       //console.debug('Give the Server some time to come up');
     });
   });
   it("[2] shutdown", () => {
-    browser.sleep(1000 * 10).then(() => {
+    browser.sleep(1000 * 20).then(() => {
       element(by.id('shutdown')).click();
       browser.sleep(1000 * 20).then(() => {
         //console.debug('Give the Server some time to shutdown');
