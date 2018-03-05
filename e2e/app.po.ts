@@ -35,7 +35,7 @@ export class Page {
     browser.sleep(500);
   }
 
-  createServer(name: string = "E2E-Test-Server", wait_on_startup: boolean = true) {
+  createServer(name: string = "E2E-Test-Server", wait_on_startup: boolean = true, start_up_on_creation = true) {
     this.navigateToMenuPoint('Meine Server');
     browser.sleep(500);
     element(by.className('fab')).click();
@@ -66,6 +66,10 @@ export class Page {
     browser.sleep(500);
     element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addserver[1]/ion-content[1]/div[2]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-input[1]/input[1]')).sendKeys('E2E-Test-Server');
     browser.sleep(500);
+    if(!start_up_on_creation){
+      element(by.id('toggle-40-0')).click();
+      browser.sleep(500);
+    }
     element(by.buttonText('Kostenpflichtig bestellen')).click();
 
     //console.debug('Sorry the Server Creation could take up to 15 seconds');

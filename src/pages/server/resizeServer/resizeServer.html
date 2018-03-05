@@ -24,14 +24,14 @@
           <ion-select [(ngModel)]="server_type" required="">
             <ion-option *ngFor="let _server_type of server_types" [value]="_server_type" required=""
                         [translate]="'PAGE.SERVERS.MODAL.UPGRADE.FORM.PRICING'"
-                        [translateParams]="{typeName:_server_type.description, typePrice:_server_type.prices[0].price_monthly.gross | number:'1.2-2'}"></ion-option>
+                        [translateParams]="{typeName:_server_type.description, typePrice:_server_type.prices[0].price_monthly.gross | number:'1.2-2'}"  [id]="'type'+_server_type.id" ></ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>{{ 'PAGE.SERVERS.MODAL.UPGRADE.FORM.RESIZE_DISK' | translate}}</ion-label>
           <ion-toggle [(ngModel)]="upgrade_disk"></ion-toggle>
         </ion-item>
-        <p ion-item *ngIf="server.status !== 'off'" text-wrap="">{{'PAGE.SERVERS.MODAL.UPGRADE.ERRORS.REQUIRED_SHUTDOWN'
+        <p ion-item *ngIf="server.status !== 'off'" text-wrap="" class="message_box error">{{'PAGE.SERVERS.MODAL.UPGRADE.ERRORS.REQUIRED_SHUTDOWN'
           |translate}}</p>
         <ion-item
           *ngIf="server_type != null" text-wrap=""><strong>{{server_type.description}}</strong><br/>

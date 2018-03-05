@@ -99,7 +99,7 @@
       <div item-left="">
         {{ 'PAGE.SERVERS.TYPE_DETAILS.MEMORY' | translate}}
       </div>
-      <div item-right="">
+      <div item-right="" id="server_type_memory">
         {{ server.server_type.memory * 1024 }} MB
       </div>
     </ion-item>
@@ -137,7 +137,7 @@
         <div class="label" color="secondary">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.EDIT' | translate}}</div>
         <i class="fas fa-pencil-alt"></i>
       </button>
-      <button ion-fab color="secondary" (click)="resizeModal()">
+      <button ion-fab color="secondary" (click)="resizeModal()" id="upgrade_server">
         <div class="label" color="secondary">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.UPGRADE' | translate}}</div>
         <i class="fas fa-expand"></i>
       </button>

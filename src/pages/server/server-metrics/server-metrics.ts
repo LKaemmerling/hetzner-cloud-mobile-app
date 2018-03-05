@@ -24,10 +24,12 @@ export class ServerMetricsPage {
   public cpu_metrics = [];
   public cpu_metrics_label = [];
   public options = {
-    responsive: true
+    responsive: true,
+    spanGaps: true,
   };
   public mb_options = {
     responsive: true,
+    spanGaps: true,
     scales: {
       yAxes: [{
         ticks: {
@@ -69,7 +71,6 @@ export class ServerMetricsPage {
     this.cpu_metrics_label = [];
     this.serverApiProvider.getMetrics(this.server.id, 'cpu', this.time_start, this.time_end).then((data) => {
       data['metrics'].time_series.cpu.values.forEach((value) => {
-        console.log(value[1], value[0]);
         this.cpu_metrics.push(value[1]);
         this.cpu_metrics_label.push(this.timeConverter(value[0]));
       });
@@ -86,6 +87,8 @@ export class ServerMetricsPage {
         {data: [], label: ''},
         {data: [], label: ''}
       ];
+      this.disk_labels = [];
+      this.disk_bandwidth_labels = [];
       data['metrics'].time_series['disk.0.iops.read'].values.forEach((value) => {
         this.disk_metrics[0].data.push(value[1]);
         this.disk_metrics[0].label = 'read';
@@ -117,6 +120,8 @@ export class ServerMetricsPage {
         {data: [], label: ''},
         {data: [], label: ''}
       ];
+      this.network_pps_labels = [];
+      this.network_bandwidth_labels = [];
       data['metrics'].time_series['network.0.pps.in'].values.forEach((value) => {
         this.network_pps_metrics[0].data.push(value[1]);
         this.network_pps_metrics[0].label = 'in';
@@ -140,6 +145,7 @@ export class ServerMetricsPage {
 
 
   public timeConverter(UNIX_timestamp) {
+    //var f = UNIX_timestamp.split('.');
     var a = new Date(UNIX_timestamp * 1000);
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var year = a.getFullYear();
