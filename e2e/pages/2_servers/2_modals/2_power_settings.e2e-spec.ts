@@ -36,31 +36,31 @@ describe('[2][2][2] Power Settings', () => {
     browser.sleep(500);
     expect(element(by.id('power_on')).isDisplayed()).toBeTruthy();
     element(by.id('power_on')).click();
-    browser.sleep(1000 * 10).then(() => {
+    browser.sleep(1000 * 15).then(() => {
       //console.debug('Give the Server some time to come up');
     });
   });
- /* it("[2] shutdown", () => {
-
-    element(by.id('shutdown')).click();
-    browser.sleep(1000 * 20).then(() => {
-      //console.debug('Give the Server some time to shutdown');
-      page.navigateToMenuPoint('Meine Server');
-      browser.sleep(500);
-      element(by.partialButtonText('E2E-Test-Server')).click();
-      browser.sleep(500);
-      element(by.id('server_actions')).click();
-      browser.sleep(500);
-      element(by.id('power_settings')).click();
-      browser.sleep(500);
-      expect(element(by.id('power_on')).isDisplayed()).toBeTruthy();
-      element(by.id('power_on')).click();
-      browser.sleep(1000 * 10).then(() => {
-        //console.debug('Give the Server some time to come up');
+  it("[2] shutdown", () => {
+    browser.sleep(1000 * 10).then(() => {
+      element(by.id('shutdown')).click();
+      browser.sleep(1000 * 20).then(() => {
+        //console.debug('Give the Server some time to shutdown');
+        page.navigateToMenuPoint('Meine Server');
+        browser.sleep(500);
+        element(by.partialButtonText('E2E-Test-Server')).click();
+        browser.sleep(500);
+        element(by.id('server_actions')).click();
+        browser.sleep(500);
+        element(by.id('power_settings')).click();
+        browser.sleep(500);
+        expect(element(by.id('power_on')).isDisplayed()).toBeTruthy();
+        element(by.id('power_on')).click();
+        browser.sleep(1000 * 10).then(() => {
+          //console.debug('Give the Server some time to come up');
+        });
       });
     });
-
-  });*/
+  });
   it("[3] reset", () => {
     element(by.id('reset')).click();
     browser.sleep(1000 * 15).then(() => {
