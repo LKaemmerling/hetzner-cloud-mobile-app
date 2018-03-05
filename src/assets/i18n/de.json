@@ -249,7 +249,8 @@
             "POWER_OFF": "Power Off",
             "POWER_RESET": "Power Reset",
             "SHUTDOWN": "Herunterfahren",
-            "SOFT_REBOOT": "Neustarten"
+            "SOFT_REBOOT": "Neustarten",
+            "POWER_ON": "Power On"
           }
         },
         "RESCUE_MODE": {

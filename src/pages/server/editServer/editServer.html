@@ -17,9 +17,9 @@
 
     <ion-item>
       <ion-label> {{ 'PAGE.SERVERS.MODAL.EDIT.FORM.NAME' | translate}}</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="server.name" required=""></ion-input>
+      <ion-input type="text" value="" [(ngModel)]="server.name" required="" id="server_name"></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button color="danger" (click)="updateServer()">{{ 'ACTIONS.SAVE' | translate}}</button>
+  <button ion-button color="danger" (click)="updateServer()" id="save">{{ 'ACTIONS.SAVE' | translate}}</button>
   <p class="message_box error" *ngIf="error != null">{{ error |translate }}</p>
 </ion-content>

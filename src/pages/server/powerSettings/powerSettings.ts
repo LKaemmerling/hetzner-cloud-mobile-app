@@ -53,9 +53,16 @@ export class powerSettingsModal {
       loader.dismiss();
       this.dismiss();
     });
-
   }
 
+  public powerOn() {
+    var loader = this.loadingCtrl.create();
+    loader.present();
+    this.serverApiProvider.powerOn(this.server.id).then(() => {
+      loader.dismiss();
+      this.dismiss();
+    });
+  }
   public dismiss() {
     this.viewCtrl.dismiss();
   }

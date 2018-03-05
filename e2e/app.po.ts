@@ -34,44 +34,71 @@ export class Page {
     element(by.className('delete_project')).click();
     browser.sleep(500);
   }
-  createServer(name: string = "E2E-Test-Server"){
+
+  createServer(name: string = "E2E-Test-Server", wait_on_startup: boolean = true) {
     this.navigateToMenuPoint('Meine Server');
     browser.sleep(500);
     element(by.className('fab')).click();
     browser.sleep(500);
-
     element(by.id('select_type')).click();
     browser.sleep(500);
     element(by.xpath('//*[@id="alert-input-0-0"]/span[1]/div[2]')).click();
     browser.sleep(500);
     element(by.buttonText('OK')).click();
     browser.sleep(500);
-    element(by.id('location')).click();
+    element(by.id('select_location')).click();
     browser.sleep(500);
     element(by.xpath('//*[@id="alert-input-1-0"]/span[1]/div[2]')).click();
     browser.sleep(500);
     element(by.buttonText('OK')).click();
-    element(by.id('image')).click();
+    browser.sleep(500);
+    element(by.id('select_image')).click();
     browser.sleep(500);
     element(by.xpath('//*[@id="alert-input-2-0"]/span[1]/div[2]')).click();
     browser.sleep(500);
     element(by.buttonText('OK')).click();
     browser.sleep(500);
-    element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addserver[1]/ion-content[1]/div[2]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-input[1]/input[1]')).sendKeys(name);
+    element(by.id('select_ssh_keys')).click();
+    browser.sleep(500);
+    element(by.xpath('//*[@id="alert-input-3-0"]/span[1]/div[2]')).click();
+    browser.sleep(500);
+    element(by.buttonText('OK')).click();
+    browser.sleep(500);
+    element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addserver[1]/ion-content[1]/div[2]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-input[1]/input[1]')).sendKeys('E2E-Test-Server');
     browser.sleep(500);
     element(by.buttonText('Kostenpflichtig bestellen')).click();
-    console.debug('Sorry the Server Creation could take up to 15 seconds');
+
+    //console.debug('Sorry the Server Creation could take up to 15 seconds');
     browser.sleep(1000 * 15).then(() => {
-      console.debug('wait 15 seconds again so the server could startup');
-      browser.sleep(1000 * 15).then(() => {
-        console.debug('Server is created. Sonst forget to delete it!');
-      });
+      if (wait_on_startup) {
+        //console.debug('wait 15 seconds again so the server could startup');
+        browser.sleep(1000 * 15).then(() => {
+          //console.debug('done');
+        });
+      }
     });
   }
+
+  deleteServer(name: string = "E2E-Test-Server") {
+    this.navigateToMenuPoint('Meine Server');
+    browser.sleep(500);
+    element(by.partialButtonText(name)).click();
+    browser.sleep(500);
+    element(by.id('server_actions')).click();
+    browser.sleep(500);
+    element(by.id('delete_server')).click();
+    browser.sleep(500);
+    browser.switchTo().alert().accept();
+    //console.log('wait 5 seconds');
+    browser.sleep(1000 * 5).then(() => {
+      //console.log('done');
+    });
+  }
+
   navigateToMenuPoint(entry) {
     this.navigateTo('/');
     browser.sleep(500);
-    if(element(by.className('show-menu')).isPresent()){
+    if (element(by.className('show-menu')).isPresent()) {
       this.navigateTo('/');
       browser.sleep(500);
     }

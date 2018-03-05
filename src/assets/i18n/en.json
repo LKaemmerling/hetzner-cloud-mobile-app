@@ -12,7 +12,7 @@
   "PAGE": {
     "HOME": {
       "TITLE": "Landingpage",
-      "TEXT": "<h2>Welcome to the Hetzner Cloud Mobile App</h2> <p>This is an inoffical app for the Hetzner Cloud. Using this app you can use many features available in the Hetzner cloud interface directly on your smartphone. You'll also get an overview of all your servers.</p>",
+      "TEXT": "<h2>Welcome to the Hetzner Cloud Mobile App</h2> <p>This is an unofficial app for the Hetzner Cloud. Using this app you can use many features available in the Hetzner cloud interface directly on your smartphone. You'll also get an overview of all your servers.</p>",
       "ADD_PROJECT_BUTTON": "Add your first project now!"
     },
     "ABOUT": {
@@ -249,7 +249,8 @@
             "POWER_OFF": "Power Off",
             "POWER_RESET": "Power Reset",
             "SHUTDOWN": "Shutdown",
-            "SOFT_REBOOT": "Reboot"
+            "SOFT_REBOOT": "Reboot",
+            "POWER_ON": "Power On"
           }
         },
         "RESCUE_MODE": {

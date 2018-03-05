@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{server.name}}</ion-title>
+    <ion-title id="server_detail_name">{{server.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -129,11 +129,11 @@
         <div class="label" color="danger">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.DELETE' | translate}}</div>
         <i class="fas fa-trash"></i>
       </button>
-      <button ion-fab color="danger" (click)="powerSettingsModal()">
+      <button ion-fab color="danger" (click)="powerSettingsModal()"  id="power_settings">
         <div class="label" color="danger">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.POWER' | translate}}</div>
         <i class="fas fa-power-off"></i>
       </button>
-      <button ion-fab (click)="openEditModal()" color="secondary">
+      <button ion-fab (click)="openEditModal()" color="secondary" id="rename_server">
         <div class="label" color="secondary">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.EDIT' | translate}}</div>
         <i class="fas fa-pencil-alt"></i>
       </button>

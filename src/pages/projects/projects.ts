@@ -57,6 +57,11 @@ export class ProjectsPage {
         this.serversService.servers = [];
         this.serversService.saveServers();
       });
+    } else {
+      this.project.selectProject(this.project.projects[0]).then(() => {
+        this.serversService.servers = [];
+        this.serversService.saveServers();
+      });
     }
     this._projects = this.project.projects;
   }
@@ -94,6 +99,7 @@ export class ProjectsPage {
         {
           text: _activate,
           icon: 'checkmark',
+          cssClass: 'activate_project',
           handler: () => {
             this.selectProject(project);
           }

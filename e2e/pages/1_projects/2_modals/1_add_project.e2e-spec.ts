@@ -2,7 +2,7 @@ import {Page} from "../../../app.po";
 import {browser, by, element} from "protractor";
 import {describe} from "selenium-webdriver/testing";
 
-describe('[1][2] Create Project', () => {
+describe('[1][2][1] Create Project', () => {
   let page: Page;
 
   beforeEach(() => {

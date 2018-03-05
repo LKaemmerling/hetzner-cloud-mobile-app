@@ -12,14 +12,13 @@
   <ion-card>
     <ion-list>
 
-      <ion-item *ngFor="let _project of _projects"
-                [color]="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name) ? 'danger':'none' "
-                (click)="openActionSheets(_project)">
+      <ion-item *ngFor="let _project of _projects; let i = index"
+                (click)="openActionSheets(_project)" class="project"
+                [ngClass]="{'active-project' : project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)}"
+                [id]="'project_'+i">
 
         <div>
-          <h2 ion-text
-              [color]="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name) ? 'light':'none' "
-          >{{ _project.name }}
+          <h2>{{ _project.name }}
           </h2>
         </div>
       </ion-item>

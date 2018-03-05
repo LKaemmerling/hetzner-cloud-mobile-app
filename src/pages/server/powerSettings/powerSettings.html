@@ -16,21 +16,24 @@
   <ion-card>
     <ion-card-content>
       <p [innerHTML]="'PAGE.SERVERS.MODAL.POWER_SETTINGS.DESCRIPTION.POWER' | translate" text-wrap=""></p>
-      <button (click)="powerOff()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.POWER_OFF' |
+      <button (click)="powerOff()" ion-button color="danger" *ngIf="server.status == 'running'" id="power_off">{{
+        'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.POWER_OFF' |
         translate}}
       </button>
-      <button (click)="shutdown()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.SHUTDOWN' |
+      <button (click)="shutdown()" ion-button color="danger" *ngIf="server.status == 'running'" id="shutdown">{{
+        'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.SHUTDOWN' |
         translate}}
       </button>
-      <button (click)="softReboot()" ion-button color="danger">{{
-        'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.SOFT_REBOOT' | translate}}
+      <button (click)="powerOn()" ion-button color="danger" *ngIf="server.status !== 'running'" id="power_on">
+        {{'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.POWER_ON' | translate}}
       </button>
     </ion-card-content>
   </ion-card>
   <ion-card>
     <ion-card-content>
       <p [innerHTML]="'PAGE.SERVERS.MODAL.POWER_SETTINGS.DESCRIPTION.POWER_RESET' | translate" text-wrap=""></p>
-      <button (click)="reset()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.POWER_RESET' |
+      <button (click)="reset()" ion-button color="danger" id="reset">{{
+        'PAGE.SERVERS.MODAL.POWER_SETTINGS.ACTIONS.POWER_RESET' |
         translate}}
       </button>
     </ion-card-content>

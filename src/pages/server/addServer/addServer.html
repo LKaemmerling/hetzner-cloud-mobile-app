@@ -17,7 +17,7 @@
 
     <ion-item>
       <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.NAME' | translate}}</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="name" required=""></ion-input>
+      <ion-input type="text" value="" [(ngModel)]="name" required="" ></ion-input>
     </ion-item>
 
     <ion-item>
@@ -29,20 +29,20 @@
     </ion-item>
     <ion-item>
       <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.LOCATION' | translate}}</ion-label>
-      <ion-select [(ngModel)]="location" id="location" required="">
+      <ion-select [(ngModel)]="location" id="select_location" required="">
         <ion-option *ngFor="let _location of locations" [value]="_location.id"  [id]="'location'+_location.id">{{ _location.description }}
         </ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.IMAGE' | translate}}</ion-label>
-      <ion-select [(ngModel)]="image" id="image">
+      <ion-select [(ngModel)]="image" id="select_image">
         <ion-option *ngFor="let _image of images" [value]="_image.id" required="">{{ _image.description }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.SSH_KEYS' | translate}}</ion-label>
-      <ion-select [(ngModel)]="ssh_key" multiple="true" id="ssh_keys">
+      <ion-select [(ngModel)]="ssh_key" multiple="true" id="select_ssh_keys">
         <ion-option *ngFor="let _ssh_key of ssh_keys" [value]="_ssh_key.id">{{ _ssh_key.name }}</ion-option>
       </ion-select>
     </ion-item>

@@ -28,6 +28,6 @@ function startTest(url) {
     .concat(process.argv.slice(2));     // forward args to protractor
 
   require('child_process')
-    .spawn('TEST_API_KEY="'+process.env.TEST_API_KEY+'" npm run e2e', argv, {stdio: 'inherit', shell: true})
+    .spawn('TEST_API_KEY="'+process.env.TEST_API_KEY+'" CI="'+process.env.CI+'" npm run e2e', argv, {stdio: 'inherit', shell: true})
     .once('close', code => process.exit(code));
 }

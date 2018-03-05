@@ -3,7 +3,15 @@
 
 /*global jasmine */
 var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
-
+if (process.env.CI != undefined && process.env.CI == true) {
+  var ChromeOptions = {
+    args: ['--no-sandbox', '--headless']
+  }
+} else {
+  var ChromeOptions = {
+    args: ['--no-sandbox']
+  }
+}
 exports.config = {
   allScriptsTimeout: 50000,
   specs: [
@@ -11,16 +19,14 @@ exports.config = {
   ],
   capabilities: {
     'browserName': 'chrome',
-    chromeOptions: {
-      args: ['--headless','--no-sandbox']
-    }
+    chromeOptions: ChromeOptions
   },
   directConnect: true,
   baseUrl: 'http://localhost:8001/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 50000,
+    defaultTimeoutInterval: 90000,
     print: function () {
     }
   },

@@ -2,7 +2,7 @@ import {Page} from "../../../app.po";
 import {browser, by, element} from "protractor";
 import {describe} from "selenium-webdriver/testing";
 
-describe('[2][2] Create Server', () => {
+describe('[2][2][1] Create Server', () => {
   let page: Page;
   beforeAll(() => {
     page = new Page();
@@ -32,7 +32,7 @@ describe('[2][2] Create Server', () => {
     element(by.buttonText('Kostenpflichtig bestellen')).click();
     browser.sleep(500);
     expect(element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addServer[1]/ion-content[1]/div[2]/p[1]')).getText()).toContain('Bitte geben Sie einen Standort an.');
-    element(by.id('location')).click();
+    element(by.id('select_location')).click();
     browser.sleep(500);
     element(by.xpath('//*[@id="alert-input-1-0"]/span[1]/div[2]')).click();
     browser.sleep(500);
@@ -41,13 +41,13 @@ describe('[2][2] Create Server', () => {
     element(by.buttonText('Kostenpflichtig bestellen')).click();
     browser.sleep(500);
     expect(element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addServer[1]/ion-content[1]/div[2]/p[1]')).getText()).toContain('Bitte geben Sie ein Image an.');
-    element(by.id('image')).click();
+    element(by.id('select_image')).click();
     browser.sleep(500);
     element(by.xpath('//*[@id="alert-input-2-0"]/span[1]/div[2]')).click();
     browser.sleep(500);
     element(by.buttonText('OK')).click();
     browser.sleep(500);
-    element(by.id('ssh_keys')).click();
+    element(by.id('select_ssh_keys')).click();
     browser.sleep(500);
     element(by.xpath('//*[@id="alert-input-3-0"]/span[1]/div[2]')).click();
     browser.sleep(500);
