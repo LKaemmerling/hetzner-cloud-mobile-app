@@ -1,7 +1,6 @@
 import {Page} from "../../../app.po";
 import {browser, by, element} from "protractor";
 import {describe} from "selenium-webdriver/testing";
-import {skip} from "rxjs/operator/skip";
 
 describe('[2][2][3] Upgrade Server', () => {
   let page: Page;
@@ -41,15 +40,15 @@ describe('[2][2][3] Upgrade Server', () => {
     element(by.buttonText('OK')).click();
     browser.sleep(500);
     element(by.buttonText('Kostenpflichtig bestellen')).click();
-    browser.sleep(1000 * 20).then(() => {
+    browser.sleep(1000 * 30).then(() => { // Wait 30 Seconds
       page.navigateToMenuPoint('Meine Server');
       browser.sleep(500);
-      var spinn = true;
       //console.debug('Give the Server some time to upgrade');
-      browser.sleep(1000 * 90).then(() => {
+      browser.sleep(1000 * 90).then(() => { // Wait 1 1/2 Minutes
           page.navigateToMenuPoint('Meine Server');
           browser.sleep(500);
           element(by.partialButtonText('E2E-Test-Server')).click();
+          browser.sleep(500);
           expect(element(by.id('server_type_memory')).getText()).toContain('4096 MB');
         }
       );

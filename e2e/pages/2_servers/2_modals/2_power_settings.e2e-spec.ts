@@ -1,7 +1,6 @@
 import {Page} from "../../../app.po";
 import {browser, by, element} from "protractor";
 import {describe} from "selenium-webdriver/testing";
-import {skip} from "rxjs/operator/skip";
 
 describe('[2][2][2] Power Settings', () => {
   let page: Page;
@@ -43,9 +42,11 @@ describe('[2][2][2] Power Settings', () => {
   /**
    * This test could fail, because of timing problems...
    */
-  xit("[2] shutdown", () => {
+  it("[2] shutdown", () => {
     browser.sleep(1000 * 30).then(() => {
+      browser.sleep(500);
       element(by.id('shutdown')).click();
+      browser.sleep(500);
       browser.sleep(1000 * 30).then(() => {
         //console.debug('Give the Server some time to shutdown');
         page.navigateToMenuPoint('Meine Server');
@@ -57,6 +58,7 @@ describe('[2][2][2] Power Settings', () => {
         element(by.id('power_settings')).click();
         browser.sleep(500);
         expect(element(by.id('power_on')).isDisplayed()).toBeTruthy();
+        browser.sleep(500);
         element(by.id('power_on')).click();
         browser.sleep(1000 * 10).then(() => {
           //console.debug('Give the Server some time to come up');
