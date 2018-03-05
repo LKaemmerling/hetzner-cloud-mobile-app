@@ -26,7 +26,7 @@ function startWebServer(host, root, cb) {
 function startTest(url) {
   const argv = []         // use the correct URL
     .concat(process.argv.slice(2));     // forward args to protractor
-
+  console.log(process.env.CI);
   require('child_process')
     .spawn('TEST_API_KEY="'+process.env.TEST_API_KEY+'" CI="'+process.env.CI+'" npm run e2e', argv, {stdio: 'inherit', shell: true})
     .once('close', code => process.exit(code));

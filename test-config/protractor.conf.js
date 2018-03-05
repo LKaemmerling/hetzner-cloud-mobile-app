@@ -3,7 +3,7 @@
 
 /*global jasmine */
 var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
-if (process.env.CI != undefined && process.env.CI == true) {
+if (process.env.CI != undefined && (""+process.env.CI) == "true") {
   var ChromeOptions = {
     args: ['--no-sandbox', '--headless']
   }
