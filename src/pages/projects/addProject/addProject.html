@@ -17,14 +17,18 @@
   <ion-list>
 
     <ion-item>
-      <ion-label fixed>{{ 'PAGE.PROJECTS.MODAL.ADD.FORM.PROJECT_NAME' | translate }}</ion-label>
+      <ion-label floating>{{ 'PAGE.PROJECTS.MODAL.ADD.FORM.PROJECT_NAME' | translate }}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="project_name" required=""></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>{{ 'PAGE.PROJECTS.MODAL.ADD.FORM.API_TOKEN' | translate }}</ion-label>
+      <ion-label floating>{{ 'PAGE.PROJECTS.MODAL.ADD.FORM.API_TOKEN' | translate }}</ion-label>
       <ion-input type="password" [(ngModel)]="api_key" required=""></ion-input>
     </ion-item>
   </ion-list>
   <button ion-button color="danger" (click)="saveProject()">{{ 'ACTIONS.SAVE' | translate }}</button>
+  <div class="message_box info">
+    {{'PAGE.PROJECTS.MODAL.ADD.FORM.TOOLTIP.PROJECT_NAME' | translate}} <br /><br />
+    {{'PAGE.PROJECTS.MODAL.ADD.FORM.TOOLTIP.API_TOKEN' | translate}}
+  </div>
 </ion-content>

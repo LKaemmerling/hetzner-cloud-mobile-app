@@ -103,7 +103,11 @@
           "TITLE": "Add project",
           "FORM": {
             "PROJECT_NAME": "Name:",
-            "API_TOKEN": "API token:"
+            "API_TOKEN": "API token:",
+            "TOOLTIP":{
+              "PROJECT_NAME":"You can freely choose the project name. It is recommended to use the project name of the project from the Hetzner Cloud Console.",
+              "API_TOKEN": "You can create the API token under the menu item 'Access' in the Hetzner Cloud Console."
+            }
           },
           "ERRORS": {
             "INVALID_KEY": "Unfortunately the API token entered is incorrect.",

@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {Component, QueryList, SimpleChanges, ViewChild, ViewChildren} from '@angular/core';
+import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
+import {BaseChartDirective} from "ng2-charts";
 
 /**
  * Generated class for the ServerMetricsPage page.
@@ -41,6 +42,7 @@ export class ServerMetricsPage {
       }]
     }
   };
+  @ViewChildren(BaseChartDirective) chart: QueryList<BaseChartDirective>;
   public disk_metrics = [];
   public disk_labels = [];
   public disk_bandwidth_metrics = [];
@@ -51,96 +53,118 @@ export class ServerMetricsPage {
   public network_bandwidth_metrics = [];
   public network_bandwidth_labels = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public serverApiProvider: ServerApiProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public serverApiProvider: ServerApiProvider,public loadingCtrl:LoadingController) {
     this.min = new Date(new Date().setDate(new Date().getDate() - 30)).toISOString();
     this.max = new Date().toISOString();
     this.time_start = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString();
     this.time_end = new Date().toISOString();
     this.server = navParams.get('server');
-    this.load();
+    this.load(false);
   }
 
-  public load() {
-    this.getCpuMetrics();
-    this.getDiskMetrics();
-    this.getNetworkMetrics();
+  public load(reload = true) {
+    var loader = this.loadingCtrl.create();
+    loader.present();
+    this.getCpuMetrics().then(() => {
+      this.getDiskMetrics().then(() => {
+        this.getNetworkMetrics().then(() => {
+          console.log(this.chart);
+          if (this.chart != undefined && reload == true) {
+            setTimeout(() => {
+              this.chart.forEach((_chart) => {
+                _chart.ngOnChanges({} as SimpleChanges)
+              });
+              loader.dismiss();
+            },1000);
+          } else {
+            loader.dismiss();
+          }
+
+        });
+      });
+    });
+
+
   }
 
   public getCpuMetrics() {
-    this.cpu_metrics = [];
-    this.cpu_metrics_label = [];
-    this.serverApiProvider.getMetrics(this.server.id, 'cpu', this.time_start, this.time_end).then((data) => {
-      data['metrics'].time_series.cpu.values.forEach((value) => {
-        this.cpu_metrics.push(value[1]);
-        this.cpu_metrics_label.push(this.timeConverter(value[0]));
+    return new Promise((resolve, reject = null) => {
+      this.cpu_metrics = [];
+      this.cpu_metrics_label = [];
+      this.serverApiProvider.getMetrics(this.server.id, 'cpu', this.time_start, this.time_end).then((data) => {
+        data['metrics'].time_series.cpu.values.forEach((value) => {
+          this.cpu_metrics.push(value[1]);
+          this.cpu_metrics_label.push(this.timeConverter(value[0]));
+        });
+        resolve();
+
       });
-    })
+    });
   }
 
   public getDiskMetrics() {
-    this.serverApiProvider.getMetrics(this.server.id, 'disk', this.time_start, this.time_end).then((data) => {
-      this.disk_metrics = [
-        {data: [], label: ''},
-        {data: [], label: ''}
-      ];
-      this.disk_bandwidth_metrics = [
-        {data: [], label: ''},
-        {data: [], label: ''}
-      ];
-      this.disk_labels = [];
-      this.disk_bandwidth_labels = [];
-      data['metrics'].time_series['disk.0.iops.read'].values.forEach((value) => {
-        this.disk_metrics[0].data.push(value[1]);
-        this.disk_metrics[0].label = 'read';
+    return new Promise((resolve, reject = null) => {
+      this.serverApiProvider.getMetrics(this.server.id, 'disk', this.time_start, this.time_end).then((data) => {
+        this.disk_metrics = [
+          {data: [], label: 'read'},
+          {data: [], label: 'write'}
+        ];
+        this.disk_bandwidth_metrics = [
+          {data: [], label: 'read'},
+          {data: [], label: 'write'}
+        ];
+        this.disk_labels = [];
+        this.disk_bandwidth_labels = [];
+
+        data['metrics'].time_series['disk.0.iops.read'].values.forEach((value) => {
+          this.disk_metrics[0].data.push(value[1]);
+        });
+        data['metrics'].time_series['disk.0.iops.write'].values.forEach((value) => {
+          this.disk_metrics[1].data.push(value[1]);
+          this.disk_labels.push(this.timeConverter(value[0]));
+        });
+        data['metrics'].time_series['disk.0.bandwidth.read'].values.forEach((value) => {
+          this.disk_bandwidth_metrics[0].data.push(this.transformWOUnit(value[1]));
+        });
+        data['metrics'].time_series['disk.0.bandwidth.write'].values.forEach((value) => {
+          this.disk_bandwidth_metrics[1].data.push(this.transformWOUnit(value[1]));
+          this.disk_bandwidth_labels.push(this.timeConverter(value[0]));
+        });
+        resolve();
       });
-      data['metrics'].time_series['disk.0.iops.write'].values.forEach((value) => {
-        this.disk_metrics[1].data.push(value[1]);
-        this.disk_metrics[1].label = 'write';
-        this.disk_labels.push(this.timeConverter(value[0]));
-      });
-      data['metrics'].time_series['disk.0.bandwidth.read'].values.forEach((value) => {
-        this.disk_bandwidth_metrics[0].data.push(value[1]);
-        this.disk_bandwidth_metrics[0].label = 'read';
-      });
-      data['metrics'].time_series['disk.0.bandwidth.write'].values.forEach((value) => {
-        this.disk_bandwidth_metrics[1].data.push(value[1]);
-        this.disk_bandwidth_metrics[1].label = 'write';
-        this.disk_bandwidth_labels.push(this.timeConverter(value[0]));
-      });
-    })
+    });
   }
 
   public getNetworkMetrics() {
-    this.serverApiProvider.getMetrics(this.server.id, 'network', this.time_start, this.time_end).then((data) => {
-      this.network_pps_metrics = [
-        {data: [], label: ''},
-        {data: [], label: ''}
-      ];
-      this.network_bandwidth_metrics = [
-        {data: [], label: ''},
-        {data: [], label: ''}
-      ];
-      this.network_pps_labels = [];
-      this.network_bandwidth_labels = [];
-      data['metrics'].time_series['network.0.pps.in'].values.forEach((value) => {
-        this.network_pps_metrics[0].data.push(value[1]);
-        this.network_pps_metrics[0].label = 'in';
+    return new Promise((resolve, reject = null) => {
+      this.serverApiProvider.getMetrics(this.server.id, 'network', this.time_start, this.time_end).then((data) => {
+        this.network_pps_metrics = [
+          {data: [], label: 'in'},
+          {data: [], label: 'out'}
+        ];
+        this.network_bandwidth_metrics = [
+          {data: [], label: 'in'},
+          {data: [], label: 'out'}
+        ];
+        this.network_pps_labels = [];
+        this.network_bandwidth_labels = [];
+        data['metrics'].time_series['network.0.pps.in'].values.forEach((value) => {
+          this.network_pps_metrics[0].data.push(value[1]);
+        });
+        data['metrics'].time_series['network.0.pps.out'].values.forEach((value) => {
+          this.network_pps_metrics[1].data.push(value[1]);
+          this.network_pps_labels.push(this.timeConverter(value[0]));
+        });
+        data['metrics'].time_series['network.0.bandwidth.in'].values.forEach((value) => {
+          this.network_bandwidth_metrics[0].data.push(this.transformWOUnit(value[1]));
+        });
+        data['metrics'].time_series['network.0.bandwidth.out'].values.forEach((value) => {
+          this.network_bandwidth_metrics[1].data.push(this.transformWOUnit(value[1]));
+          this.network_bandwidth_labels.push(this.timeConverter(value[0]));
+        });
+        resolve();
       });
-      data['metrics'].time_series['network.0.pps.out'].values.forEach((value) => {
-        this.network_pps_metrics[1].data.push(value[1]);
-        this.network_pps_metrics[1].label = 'out';
-        this.network_pps_labels.push(this.timeConverter(value[0]));
-      });
-      data['metrics'].time_series['network.0.bandwidth.in'].values.forEach((value) => {
-        this.network_bandwidth_metrics[0].data.push(value[1]);
-        this.network_bandwidth_metrics[0].label = 'in';
-      });
-      data['metrics'].time_series['network.0.bandwidth.out'].values.forEach((value) => {
-        this.network_bandwidth_metrics[1].data.push(value[1]);
-        this.network_bandwidth_metrics[1].label = 'out';
-        this.network_bandwidth_labels.push(this.timeConverter(value[0]));
-      });
-    })
+    });
   }
 
 
@@ -180,11 +204,36 @@ export class ServerMetricsPage {
     ];
 
     let unit = 0;
-
+bytes = parseFloat(String(bytes));
+if(bytes < 0){
+  bytes = bytes * -1;
+}
     while (bytes >= 1024) {
       bytes /= 1024;
       unit++;
     }
     return bytes.toFixed(+precision) + ' ' + units[unit];
+  }
+  transformWOUnit(bytes: number = 0, precision: number = 2): string {
+    if (isNaN(parseFloat(String(bytes))) || !isFinite(bytes)) return '?';
+    let units = [
+      'bytes',
+      'KB',
+      'MB',
+      'GB',
+      'TB',
+      'PB'
+    ];
+
+    let unit = 0;
+    bytes = parseFloat(String(bytes));
+    if(bytes < 0){
+      bytes = bytes * -1;
+    }
+    while (bytes >= 1024) {
+      bytes /= 1024;
+      unit++;
+    }
+    return bytes.toFixed(+precision);
   }
 }

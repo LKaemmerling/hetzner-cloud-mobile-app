@@ -1,6 +1,6 @@
 {
   "name": "hetzner-cloud-app",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Lukas Kämmerling",
   "homepage": "https://lk-development.de/",
   "license": "MIT",
@@ -125,7 +125,7 @@
     "@ngx-translate/core": "^9.1.1",
     "@ngx-translate/http-loader": "^2.0.1",
     "better-npm-run": "^0.1.0",
-    "chart.js": "^2.7.1",
+    "chart.js": "^2.7.2",
     "chartist": "^0.11.0",
     "cordova-android": "^6.4.0",
     "cordova-ios": "^4.5.4",
@@ -155,7 +155,7 @@
     "zone.js": "0.8.18"
   },
   "devDependencies": {
-    "@compodoc/compodoc": "^1.0.7",
+    "@compodoc/compodoc": "^1.0.8",
     "@ionic/app-scripts": "3.1.8",
     "@types/chartist": "^0.9.38",
     "@types/jasmine": "^2.8.6",
@@ -178,7 +178,7 @@
     "protractor": "^5.3.0",
     "serve-static": "1.13.1",
     "ts-loader": "^3.5.0",
-    "ts-node": "^5.0.0",
+    "ts-node": "^5.0.1",
     "typescript": "2.4.2"
   },
   "description": "A mobile App for the Hetzner Cloud.",
