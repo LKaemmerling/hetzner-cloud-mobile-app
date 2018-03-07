@@ -3,6 +3,8 @@ image: lkdevelopment/ionic-docker:latest
 stages:
   - build
   - test
+  - test_de
+  - test_en
   - deploy
 
 before_script:
@@ -37,7 +39,7 @@ test:karma:
     - npm run test
 
 test:e2e:de:
-  stage: test
+  stage: test_de
 
   script:
     - echo "Start Test for e2e Local 'DE'"
@@ -46,7 +48,7 @@ test:e2e:de:
     - build:web
 
 test:e2e:en:
-  stage: test
+  stage: test_en
 
   script:
     - echo "Start Test for e2e Local 'EN'"
