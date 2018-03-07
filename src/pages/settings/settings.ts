@@ -24,6 +24,7 @@ export class SettingsPage {
   public finger_print: number = -1;
 
   public language: string = 'de';
+  public new_projects_design: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO, public storage: Storage, public loadingCtrl: LoadingController, public translate: TranslateService, public oneSignal: OneSignal) {
     appVersion.getVersionNumber().then((_version) => {
@@ -32,6 +33,11 @@ export class SettingsPage {
     storage.get('lang').then(value => {
       if (value != undefined) {
         this.language = value;
+      }
+    });
+    storage.get('experimental_project_design').then(value => {
+      if (value != undefined) {
+        this.new_projects_design = value;
       }
     });
     this.fingerprint.isAvailable().then(resp => {
@@ -83,4 +89,11 @@ export class SettingsPage {
     });
   }
 
+  changeOpenProjectDesign() {
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    this.storage.set('experimental_project_design', this.new_projects_design);
+    this.translate.use(this.language);
+    loader.dismiss();
+  }
 }

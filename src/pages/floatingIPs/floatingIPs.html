@@ -4,13 +4,16 @@
       <i class="fas fa-bars fa-2x"></i>
     </button>
     <ion-title>{{ 'PAGE.FLOATING_IPS.TITLE' | translate}}</ion-title>
+    <ion-buttons end>
+      <button ion-button right="" (click)="loadFloatingIPs()">
+        <i class="fas fa-sync fa-1x" [ngClass]="{'fa-spin':loading}" *ngIf="loading_done == false"></i>
+        <i class="fas fa-check fa-1x" ion-text color="secondary" *ngIf="loading_done == true"></i>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-refresher (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
   <ion-card>
     <ion-list>
       <ion-item *ngFor="let _floating_ip of _floating_ips" (click)="openActionSheets(_floating_ip)">

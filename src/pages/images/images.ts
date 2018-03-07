@@ -13,20 +13,20 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class ImagesPage {
   public images = [];
-
+  public loading:boolean = false;
+  public loading_done:boolean = false;
   constructor(public project: ProjectsService, public modal: ModalController, public imageApiProvider: ImageApiProvider, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, protected translate: TranslateService) {
     this.loadImages();
   }
 
   public loadImages() {
+    this.loading = true;
     this.imageApiProvider.getImages().then((data) => {
       this.images = data['images'];
+      this.loading = false;
+      this.loading_done = true;
+      setTimeout(() => this.loading_done = false,3000);
     });
-  }
-
-  public refresh(refresher) {
-    this.loadImages();
-    refresher.complete();
   }
 
   public openEdit(image) {

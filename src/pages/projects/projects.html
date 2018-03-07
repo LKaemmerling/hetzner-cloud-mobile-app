@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="!experimental_project_design">
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
   <ion-card>
     <ion-list>
@@ -28,6 +28,59 @@
       </p>
     </ion-list>
   </ion-card>
+  <ion-fab bottom right>
+    <button ion-fab color="secondary" (click)="openProjectModal()">
+      <i class="fas fa-plus"></i>
+    </button>
+  </ion-fab>
+
+</ion-content>
+
+<ion-content *ngIf="experimental_project_design">
+  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  <ion-row class="row">
+    <ion-col col-12 col-sm-2 col-md-3 col-lg-4 col-xl-2 *ngFor="let _project of _projects; let i = index">
+      <ion-card class="project"
+                [ngClass]="{'active-project-v2' : project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)}"
+                [id]="'project_'+i">
+        <ion-row class="project_header" text-center="">
+          <ion-col offset-9 col-3 style="max-height:20px;">
+            <button ion-button="" style="float:right" clear="" color="light" style="max-height:20px;"
+                    (click)="openSubMenu('project_'+i+'_content')">
+              <i class="fas fa-ellipsis-h fa-2x"></i>
+            </button>
+          </ion-col>
+          <ion-col col-12 align-items-start>
+            <h2>{{ _project.name }}
+            </h2>
+          </ion-col>
+        </ion-row>
+        <ion-card-content [id]="'project_'+i+'_content'" *ngIf="visible['project_'+i+'_content'] == true">
+          <ion-row class="row">
+            <ion-col class="col" text-center="">
+              <button clear="" color="secondary" icon-start="" ion-button="" small="" (click)="selectProject(_project)"
+                      [disabled]="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)">
+                <i class="fas fa-fw fa-check"></i> {{ 'ACTIONS.ACTIVATE' | translate }}
+              </button>
+            </ion-col>
+            <ion-col class="col" text-center="">
+              <button clear="" color="danger" icon-start="" ion-button="" small="" (click)="delete(_project)">
+                <i class="fa fa-fw fa-trash"></i> {{ 'ACTIONS.DELETE' | translate }}
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+      <ion-card *ngIf="project.projects == null || project.projects.length == 0">
+        <ion-card-content>
+          <p class="message_box info" text-wrap=""
+             [innerHTML]="'PAGE.PROJECTS.NO_PROJECT' | translate"></p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
   <ion-fab bottom right>
     <button ion-fab color="secondary" (click)="openProjectModal()">
       <i class="fas fa-plus"></i>

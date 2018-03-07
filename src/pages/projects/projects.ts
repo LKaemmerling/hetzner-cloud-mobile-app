@@ -5,6 +5,7 @@ import {addProjectModal} from "./addProject/addProject";
 import {project} from "../../models/project/project";
 import {TranslateService} from "@ngx-translate/core";
 import {ServersService} from "../../models/servers/ServersService";
+import {Storage} from "@ionic/storage";
 
 @Component({
   selector: 'page-projects',
@@ -12,11 +13,21 @@ import {ServersService} from "../../models/servers/ServersService";
 })
 export class ProjectsPage {
   public _projects = [];
+  public visible = [];
+  public experimental_project_design: boolean = false;
 
-  constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService, public serversService: ServersService) {
+  constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService, public serversService: ServersService, public storage: Storage) {
     this._projects = project.projects;
+    storage.get('experimental_project_design').then((val) => {
+      if (val != undefined) {
+        this.experimental_project_design = val;
+      }
+    });
   }
-
+  openSubMenu(menuId){
+    this.visible = [];
+    this.visible[menuId] = true;
+  }
   openProjectModal() {
     let modal = this.modal.create(addProjectModal);
     modal.onDidDismiss(() => {

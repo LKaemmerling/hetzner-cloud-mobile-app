@@ -12,14 +12,19 @@ import {FloatingIPPage} from "./floatingIp/floatingIP";
 })
 export class FloatingIPsPage {
   public _floating_ips = [];
-
+  public loading:boolean = false;
+  public loading_done:boolean = false;
   constructor(public project: ProjectsService, public modal: ModalController, public floatingIpApiProvider: FloatingIpApiProvider, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
     this.loadFloatingIPs();
   }
 
   public loadFloatingIPs() {
+    this.loading = true;
     this.floatingIpApiProvider.getFloatingIps().then((data) => {
       this._floating_ips = data['floating_ips'];
+      this.loading = false;
+      this.loading_done = true;
+      setTimeout(() => this.loading_done = false,3000);
     });
   }
 

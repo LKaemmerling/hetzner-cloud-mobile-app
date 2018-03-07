@@ -4,14 +4,16 @@
       <i class="fas fa-bars fa-2x"></i>
     </button>
     <ion-title>{{ 'PAGE.SERVERS.TITLE' | translate}}</ion-title>
+    <ion-buttons end>
+      <button ion-button right="" (click)="refresh()">
+        <i class="fas fa-sync fa-1x" [ngClass]="{'fa-spin':loading}" *ngIf="loading_done == false"></i>
+        <i class="fas fa-check fa-1x" ion-text color="secondary" *ngIf="loading_done == true"></i>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-
-  <ion-refresher (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
   <ion-card>
     <ion-list>

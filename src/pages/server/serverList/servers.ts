@@ -14,22 +14,29 @@ export class ServersPage {
 
   public servers;
   public _search;
-
+  public loading:boolean = false;
+  public loading_done:boolean = false;
   constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController, public serversService: ServersService) {
     this.servers = this._search = this.serversService.servers;
   }
 
   public loadServers() {
+    this.loading = true;
     this.serversService.reloadServers().then(() => {
       this.servers = this.serversService.servers;
       this._search = this.servers;
+      this.loading = false;
+      this.loading_done = true;
+      setTimeout(() => this.loading_done = false,5000);
     });
   }
 
-  public refresh(refresher) {
+  public refresh(refresher = null) {
 
     this.loadServers();
-    refresher.complete();
+    if(refresher !== null){
+      refresher.complete();;
+    }
   }
 
   public details(server) {

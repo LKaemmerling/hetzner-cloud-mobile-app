@@ -16,14 +16,19 @@ import {ActionsApiProvider} from "../../providers/actions-api/actions-api";
 export class ActionsPage {
 
   public actions: Array<any>;
+  public loading:boolean = false;
+  public loading_done:boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionsApi: ActionsApiProvider) {
     this.loadActions();
   }
   loadActions() {
+    this.loading = true;
     this.actionsApi.getActions().then((data) => {
       this.actions = data['actions'];
-
+      this.loading = false;
+      this.loading_done = true;
+      setTimeout(() => this.loading_done = false,3000);
     })
   }
 

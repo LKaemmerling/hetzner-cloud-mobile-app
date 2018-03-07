@@ -34,6 +34,13 @@
     </ion-item>
     <p ion-item="" class="message_box info" *ngIf="finger_print == -1" text-wrap=""
        [innerHTML]="'PAGE.SETTINGS.SECURITY.AUTH.NOT_AVAILABLE' | translate "></p>
+    <ion-list-header>
+     Experimental Features
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Redesign of the Projects Page</ion-label>
+      <ion-toggle [(ngModel)]="new_projects_design" (ionChange)="changeOpenProjectDesign()"></ion-toggle>
+    </ion-item>
   </ion-list>
   <button ion-button="" color="danger" (click)="openDeleteAllPage()">
     {{ 'PAGE.DELETE_ALL.TITLE' | translate }}

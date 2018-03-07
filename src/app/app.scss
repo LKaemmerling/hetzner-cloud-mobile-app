@@ -36,16 +36,18 @@
   }
 }
 
-.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default, .back-button, .segment-button,.bar-button-default-ios {
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default, .back-button, .segment-button, .bar-button-default-ios {
   color: #ffffff !important;
 }
 
 .fab {
   contain: initial;
 }
-.text-white{
-  color:#ffffff !important;
+
+.text-white {
+  color: #ffffff !important;
 }
+
 ion-fab {
   button {
     box-shadow: 0 4px 10px #6b6b6b;
@@ -89,13 +91,39 @@ ion-fab {
 .text-white {
   color: #ffffff;
 }
+
 ion-header ion-icon.back-button-icon.icon {
   color: #ffffff;
 }
+
 .active-project {
   background-color: #f53d3d;
-  h2{
+  h2 {
     color: #f4f4f4 !important;
   }
 
+}
+
+.project {
+  .project_header {
+    height: 120px;
+    background: linear-gradient(180deg, #434a62 15%, #1f2433);
+    h2 {
+      color: $background-color;
+      font-size:20px;
+      margin-top: -10px;
+    }
+  }
+  .card-content{
+    padding:0 !important;
+  }
+}
+
+.active-project-v2 {
+  .project_header {
+    background: linear-gradient(180deg, #f53d3d 15%, #932424);
+    h2 {
+      color: $background-color;
+    }
+  }
 }
