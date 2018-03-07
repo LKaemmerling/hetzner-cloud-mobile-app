@@ -1,4 +1,4 @@
-import {Component, QueryList, SimpleChanges, ViewChild, ViewChildren} from '@angular/core';
+import {Component, QueryList, SimpleChanges, ViewChildren} from '@angular/core';
 import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {BaseChartDirective} from "ng2-charts";

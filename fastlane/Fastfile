@@ -1,0 +1,21 @@
+ios_project_path = "platforms/ios/Hetzner Cloud Mobile.xcodeproj"
+android_debug_path = "./platforms/android/build/outputs/apk/debug/android-debug.apk"
+android_debug_path = "./platforms/android/build/outputs/apk/release/android-release-unsigned.apk"
+done_incremented = false
+prepared_env = false
+new_version = nil
+lane :beta_android do
+  ionic(
+      platform: 'android',
+      release: true
+    )
+   supply(apk: ENV['CORDOVA_ANDROID_RELEASE_BUILD_PATH'])
+end
+lane :ios do
+   sh("cd .. &&  ionic cordova platform rm ios")
+   sh("cd .. &&  ionic cordova platform add ios --no-fetch")
+   sh("cd .. &&  ionic cordova build ios --release")
+   match(type: "appstore")
+   gym(project:ios_project_path)
+   deliver(ipa: ENV['CORDOVA_IOS_RELEASE_BUILD_PATH'])
+end

@@ -128,7 +128,7 @@
     "chart.js": "^2.7.2",
     "chartist": "^0.11.0",
     "cordova-android": "^6.4.0",
-    "cordova-ios": "^4.5.4",
+    "cordova-ios": "4.5.4",
     "cordova-plugin-add-swift-support": "^1.7.1",
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-device": "^1.1.7",
@@ -197,8 +197,8 @@
       "cordova-plugin-ignore-lint-translation": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   },
   "processEnv": [
