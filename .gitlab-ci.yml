@@ -53,7 +53,6 @@ test:e2e:en:
     - TEST_API_KEY=$TEST_API_KEY SCREENSHOTS=false LANG=en node test-config/protractor.server.js
   dependencies:
     - build:web
-    - test:e2e:de
 
 .build:ios:
 
