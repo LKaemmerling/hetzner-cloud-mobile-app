@@ -75,3 +75,10 @@ test:e2e:en:
   artifacts:
     paths:
       - platforms/android/build/outputs/apk/
+
+deploy:web:
+  stage: deploy
+  only:
+      - release
+  script:
+    - curl https://forge.laravel.com/servers/182322/sites/489606/deploy/http?token=RhWuYYdwL2zh9mh9fR47XDwe3SP41tc89GRO0PVP

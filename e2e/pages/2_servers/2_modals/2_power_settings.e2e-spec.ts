@@ -47,7 +47,7 @@ describe('[2][2][2] Power Settings', () => {
       browser.sleep(500);
       element(by.id('shutdown')).click();
       browser.sleep(500);
-      browser.sleep(1000 * 60).then(() => {
+      browser.sleep(1000 * 90).then(() => {
         //console.debug('Give the Server some time to shutdown');
         page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
         browser.sleep(500);
