@@ -17,7 +17,7 @@ describe('[1][2][1] Activate Project', () => {
   });
   beforeEach(() => {
     page = new Page();
-    page.navigateToMenuPoint('Meine Projekte');
+    page.navigateToMenuPoint(page.getLocal('PAGE.PROJECTS.TITLE'));
     browser.sleep(500);
   });
   it('[1] when i select the other project and push "activate" it should activate the other', () => {

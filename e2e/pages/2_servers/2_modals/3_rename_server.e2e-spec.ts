@@ -13,7 +13,7 @@ describe('[2][2][3] Rename Server', () => {
     browser.sleep(500);
   });
   beforeEach(() => {
-    page.navigateToMenuPoint('Meine Server');
+    page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
     element(by.partialButtonText('E2E-Test-Server')).click();
     browser.sleep(500);

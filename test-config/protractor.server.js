@@ -3,6 +3,7 @@
 startWebServer('127.0.0.1', 'www', startTest);
 
 function startWebServer(host, root, cb) {
+
   // Serve up public/ftp folder
   const serve = require('serve-static')(root);
 
@@ -18,9 +19,9 @@ function startWebServer(host, root, cb) {
     const port = server.address().port;
   console.log(`Started web server on ${host}:${port}`);
   process.on('exit', () => server.close());
-  cb(`http://${host}:${port}`);
 }
 );
+  cb('');
 }
 
 function startTest(url) {
@@ -28,6 +29,6 @@ function startTest(url) {
     .concat(process.argv.slice(2));     // forward args to protractor
   console.log(process.env.CI);
   require('child_process')
-    .spawn('TEST_API_KEY="'+process.env.TEST_API_KEY+'" CI="'+process.env.CI+'" npm run e2e', argv, {stdio: 'inherit', shell: true})
+    .spawn('TEST_API_KEY="'+process.env.TEST_API_KEY+'" CI="'+process.env.CI+'" SCREENSHOTS="'+process.env.SCREENSHOTS+'" npm run e2e', argv, {stdio: 'inherit', shell: true})
     .once('close', code => process.exit(code));
 }

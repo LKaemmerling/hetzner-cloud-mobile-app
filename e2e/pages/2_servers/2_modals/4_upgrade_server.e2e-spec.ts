@@ -10,7 +10,7 @@ describe('[2][2][3] Upgrade Server', () => {
     browser.sleep(100);
     page.createServer('E2E-Test-Server', true);
     browser.sleep(500);
-    page.navigateToMenuPoint('Meine Server');
+    page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
     element(by.partialButtonText('E2E-Test-Server')).click();
     browser.sleep(500);
@@ -22,7 +22,7 @@ describe('[2][2][3] Upgrade Server', () => {
     browser.sleep(1000);
   });
   beforeEach(() => {
-    page.navigateToMenuPoint('Meine Server');
+    page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
     element(by.partialButtonText('E2E-Test-Server')).click();
     browser.sleep(500);
@@ -39,13 +39,13 @@ describe('[2][2][3] Upgrade Server', () => {
     browser.sleep(500);
     element(by.buttonText('OK')).click();
     browser.sleep(500);
-    element(by.buttonText('Kostenpflichtig bestellen')).click();
+    element(by.buttonText(page.getLocal('ACTIONS.ORDER'))).click();
     browser.sleep(1000 * 30).then(() => { // Wait 30 Seconds
-      page.navigateToMenuPoint('Meine Server');
+      page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
       browser.sleep(500);
       //console.debug('Give the Server some time to upgrade');
       browser.sleep(1000 * 90).then(() => { // Wait 1 1/2 Minutes
-          page.navigateToMenuPoint('Meine Server');
+          page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
           browser.sleep(500);
           element(by.partialButtonText('E2E-Test-Server')).click();
           browser.sleep(500);

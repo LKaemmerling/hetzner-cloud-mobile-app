@@ -36,13 +36,24 @@ test:karma:
   script:
     - npm run test
 
-test:e2e:
+test:e2e:de:
   stage: test
 
   script:
-    - TEST_API_KEY=$TEST_API_KEY node test-config/protractor.server.js
+    - echo "Start Test for e2e Local 'DE'"
+    - TEST_API_KEY=$TEST_API_KEY SCREENSHOTS=false LANG=de node test-config/protractor.server.js
   dependencies:
     - build:web
+
+test:e2e:en:
+  stage: test
+
+  script:
+    - echo "Start Test for e2e Local 'EN'"
+    - TEST_API_KEY=$TEST_API_KEY SCREENSHOTS=false LANG=en node test-config/protractor.server.js
+  dependencies:
+    - build:web
+    - test:e2e:de
 
 .build:ios:
 

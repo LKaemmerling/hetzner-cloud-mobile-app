@@ -12,7 +12,7 @@ describe('[2][2][2] Power Settings', () => {
     browser.sleep(500);
   });
   beforeEach(() => {
-    page.navigateToMenuPoint('Meine Server');
+    page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
     element(by.partialButtonText('E2E-Test-Server')).click();
     browser.sleep(500);
@@ -25,7 +25,7 @@ describe('[2][2][2] Power Settings', () => {
   it("[1] power off", () => {
     element(by.id('power_off')).click();
     browser.sleep(1000);
-    page.navigateToMenuPoint('Meine Server');
+    page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
     element(by.partialButtonText('E2E-Test-Server')).click();
     browser.sleep(500);
@@ -49,7 +49,7 @@ describe('[2][2][2] Power Settings', () => {
       browser.sleep(500);
       browser.sleep(1000 * 60).then(() => {
         //console.debug('Give the Server some time to shutdown');
-        page.navigateToMenuPoint('Meine Server');
+        page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
         browser.sleep(500);
         element(by.partialButtonText('E2E-Test-Server')).click();
         browser.sleep(500);
@@ -71,7 +71,7 @@ describe('[2][2][2] Power Settings', () => {
     browser.sleep(1000 * 30).then(() => {
       //console.debug('Give the Server some time to reset');
     });
-    page.navigateToMenuPoint('Meine Server');
+    page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
     element(by.partialButtonText('E2E-Test-Server')).click();
     browser.sleep(500);

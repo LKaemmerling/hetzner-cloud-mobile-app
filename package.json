@@ -31,7 +31,8 @@
     "post-install": "webdriver-manager update --standalone",
     "prepush": "npm test",
     "commitmsg": "validate-commit-msg",
-    "compodoc": "./node_modules/.bin/compodoc src/ -p tsconfig.json -n Hetzner-Cloud-Mobile"
+    "compodoc": "./node_modules/.bin/compodoc src/ -p tsconfig.json -n Hetzner-Cloud-Mobile",
+    "e2e:loc":"LANG='de' node test-config/protractor.server.js && LANG='de' node test-config/protractor.server.js"
   },
   "betterScripts": {
     "dev": {
@@ -203,6 +204,8 @@
   },
   "processEnv": [
     "TEST_API_KEY",
-    "CI"
+    "CI",
+    "SCREENSHOTS",
+    "LANG"
   ]
 }
