@@ -2,6 +2,7 @@ image: lkdevelopment/ionic-docker:latest
 
 stages:
   - build
+  - test
   - e2e_de
   - e2e_en
   - deploy
@@ -32,7 +33,7 @@ build:web:
     paths:
       - www/
 
-test:karma:
+.est:karma:
   stage: test
   script:
     - npm run test
