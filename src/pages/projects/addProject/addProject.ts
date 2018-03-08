@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
 import {project} from "../../../models/project/project";
-import {LoadingController, ViewController} from "ionic-angular";
+import {ViewController} from "ionic-angular";
 import {LocationApiProvider} from "../../../providers/location-api/location-api";
 import {TranslateService} from "@ngx-translate/core";
-import {Camera} from "@ionic-native/camera";
 import {Storage} from "@ionic/storage";
+import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 
 @Component({
   selector: 'modal-addProject',
@@ -15,39 +15,24 @@ export class addProjectModal {
   public project_name: string;
   public api_key: string;
   public error: string = null;
-  public experimental_ocr_reading: boolean = false;
+  public experimental_shareable_projects: boolean = false;
   public image: string = '';
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider, protected translate: TranslateService, protected camera: Camera, public storage: Storage, public loadingCtrl: LoadingController) {
-    storage.get('experimental_ocr_reading').then(value => {
-      if (value != undefined) {
-        this.experimental_ocr_reading = value;
+  constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider, protected translate: TranslateService, protected storage: Storage, public barcodeScanner: BarcodeScanner) {
+    storage.get('experimental_shareable_projects').then((val) => {
+      if (val != undefined) {
+        this.experimental_shareable_projects = val;
       }
     });
   }
 
-  public scanApiKey() {
-    this.camera.getPicture({
-      quality: 100,
-      destinationType: 0, // DATA_URL
-      sourceType: 1,
-      allowEdit: true,
-      saveToPhotoAlbum: false,
-      correctOrientation: true
-    }).then((imageData) => {
-      this.image = `data:image/jpeg;base64,${imageData}`;
-      let loader = this.loadingCtrl.create({
-        'content':'This could need some time.'
-      });
-      loader.present();
-      setTimeout(() => {
-        (<any>window).OCRAD(document.getElementById('image'), text => {
-          loader.dismissAll();
-          this.api_key = text;
-        });
-      }, 1000);
+  public scanProject() {
+    this.barcodeScanner.scan().then((barcodeData) => {
+      this.project_name = barcodeData.text['project_name'];
+      this.api_key = barcodeData.text['api_key'];
     }, (err) => {
-      console.log(`ERROR -> ${JSON.stringify(err)}`);
+      this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.SCAN_ERROR';
+      return;
     });
   }
 

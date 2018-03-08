@@ -47,8 +47,9 @@ import {ActionsPage} from "../pages/actions/actions";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HetznerApiProviderModule} from "../providers/hetznerApiProvider.module";
-import {Camera} from "@ionic-native/camera";
-
+import {BarcodeScanner} from "@ionic-native/barcode-scanner";
+import { QRCodeModule } from 'angular2-qrcode';
+import {shareProjectModal} from "../pages/projects/shareProject/shareProject";
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.0.6"
 });
@@ -86,6 +87,7 @@ export class MyErrorHandler implements ErrorHandler {
     HomePage,
     ProjectsPage,
     addProjectModal,
+    shareProjectModal,
     ServersPage,
     ServerPage,
     addServerModal,
@@ -129,7 +131,8 @@ export class MyErrorHandler implements ErrorHandler {
         deps: [HttpClient]
       }
     }),
-    HetznerApiProviderModule
+    HetznerApiProviderModule,
+    QRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -138,6 +141,7 @@ export class MyErrorHandler implements ErrorHandler {
     HomePage,
     ProjectsPage,
     addProjectModal,
+    shareProjectModal,
     ServersPage,
     ServerPage,
     addServerModal,
@@ -170,7 +174,7 @@ export class MyErrorHandler implements ErrorHandler {
     InAppBrowser,
     AppVersion,
     FingerprintAIO,
-    Camera
+    BarcodeScanner
   ]
 })
 export class AppModule {

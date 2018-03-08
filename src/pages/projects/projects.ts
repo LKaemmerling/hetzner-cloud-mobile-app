@@ -6,6 +6,7 @@ import {project} from "../../models/project/project";
 import {TranslateService} from "@ngx-translate/core";
 import {ServersService} from "../../models/servers/ServersService";
 import {Storage} from "@ionic/storage";
+import {shareProjectModal} from "./shareProject/shareProject";
 
 @Component({
   selector: 'page-projects',
@@ -14,20 +15,22 @@ import {Storage} from "@ionic/storage";
 export class ProjectsPage {
   public _projects = [];
   public visible = [];
-  public experimental_project_design: boolean = false;
+  public experimental_shareable_projects: boolean = false;
 
   constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService, public serversService: ServersService, public storage: Storage) {
     this._projects = project.projects;
-    storage.get('experimental_project_design').then((val) => {
+    storage.get('experimental_shareable_projects').then((val) => {
       if (val != undefined) {
-        this.experimental_project_design = val;
+        this.experimental_shareable_projects = val;
       }
     });
   }
-  openSubMenu(menuId){
+
+  openSubMenu(menuId) {
     this.visible = [];
     this.visible[menuId] = true;
   }
+
   openProjectModal() {
     let modal = this.modal.create(addProjectModal);
     modal.onDidDismiss(() => {
@@ -75,6 +78,14 @@ export class ProjectsPage {
       });
     }
     this._projects = this.project.projects;
+  }
+
+  public openShareModal(project: project) {
+    let modal = this.modal.create(shareProjectModal, {project: project});
+    modal.onDidDismiss(() => {
+      this._projects = this.project.projects;
+    });
+    modal.present();
   }
 
   public openActionSheets(project: project) {

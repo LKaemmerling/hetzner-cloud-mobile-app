@@ -25,7 +25,7 @@ export class SettingsPage {
 
   public language: string = 'de';
   public new_projects_design: boolean = false;
-  public experimental_ocr_reading: boolean = false;
+  public experimental_shareable_projects: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO, public storage: Storage, public loadingCtrl: LoadingController, public translate: TranslateService, public oneSignal: OneSignal) {
     appVersion.getVersionNumber().then((_version) => {
@@ -41,9 +41,9 @@ export class SettingsPage {
         this.new_projects_design = value;
       }
     });
-    storage.get('experimental_ocr_reading').then(value => {
+    storage.get('experimental_shareable_projects').then(value => {
       if (value != undefined) {
-        this.experimental_ocr_reading = value;
+        this.experimental_shareable_projects = value;
       }
     });
     this.fingerprint.isAvailable().then(resp => {
@@ -102,10 +102,10 @@ export class SettingsPage {
     loader.dismiss();
   }
 
-  changeOCRReading() {
+  changeShareableProjects() {
     let loader = this.loadingCtrl.create();
     loader.present();
-    this.storage.set('experimental_ocr_reading', this.experimental_ocr_reading);
+    this.storage.set('experimental_shareable_projects', this.experimental_shareable_projects);
     loader.dismiss();
 
   }

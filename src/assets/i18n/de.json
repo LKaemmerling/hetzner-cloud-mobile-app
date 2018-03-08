@@ -73,10 +73,10 @@
           "TITLE": "Hetzner Status - Einstellungen",
           "TEXT": "Sie können über diese App auch Status Benachrichtigungen von der Hetzner-Status Seite erhalten. Bitte wählen Sie dazu die unten stehenden Kategorien aus, von denen Sie Push Nachrichten erhalten möchten. Auf der vorherigen Seite  werden immer alle Meldungen angezeigt.",
           "SAVE_SUCCESS": "Die Einstellungen wurden erfolgreich gespeichert.",
-          "NOTIFICATION_SETTINGS":{
-            "TITLE":"Benachrichtigungseinstellungen",
-            "SOUND":"Sound aktivieren",
-            "VIBRATE":"Vibration aktivieren"
+          "NOTIFICATION_SETTINGS": {
+            "TITLE": "Benachrichtigungseinstellungen",
+            "SOUND": "Sound aktivieren",
+            "VIBRATE": "Vibration aktivieren"
           },
           "CATEGORY": {
             "GENERAL": "Allgemein",
@@ -104,15 +104,16 @@
           "FORM": {
             "PROJECT_NAME": "Bezeichnung:",
             "API_TOKEN": "API-Token:",
-            "TOOLTIP":{
-              "PROJECT_NAME":"Die Projektbezeichnung können Sie frei wählen. Es empfiehlt sich die Projektbezeichnung des Projektes aus der Hetzner Cloud Console zu verwenden.",
+            "TOOLTIP": {
+              "PROJECT_NAME": "Die Projektbezeichnung können Sie frei wählen. Es empfiehlt sich die Projektbezeichnung des Projektes aus der Hetzner Cloud Console zu verwenden.",
               "API_TOKEN": "Den API Token können Sie unter dem Menüpunkt 'Zugänge' der Hetzner Cloud Console erstellen."
             }
           },
           "ERRORS": {
             "INVALID_KEY": "Leider ist der eingegebene API-Token ungültig.",
             "REQUIRED_NAME": "Bitte geben Sie eine Projektbezeichnung ein.",
-            "NAME_ALREADY_USED": "Sie haben bereits ein Projekt mit dieser Bezeichnung!"
+            "NAME_ALREADY_USED": "Sie haben bereits ein Projekt mit dieser Bezeichnung!",
+            "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
           }
         }
       }
