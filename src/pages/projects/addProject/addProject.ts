@@ -16,7 +16,7 @@ export class addProjectModal {
   public api_key: string;
   public error: string = null;
   public experimental_ocr_reading: boolean = false;
-  public image: string;
+  public image: string = '';
 
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider, protected translate: TranslateService, protected camera: Camera, public storage: Storage, public loadingCtrl: LoadingController) {
     storage.get('experimental_ocr_reading').then(value => {

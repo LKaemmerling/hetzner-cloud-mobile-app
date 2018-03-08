@@ -29,8 +29,9 @@
   <button ion-button color="danger" (click)="saveProject()">{{ 'ACTIONS.SAVE' | translate }}</button>
   <button ion-button color="secondary" (click)="scanApiKey()" *ngIf="experimental_ocr_reading">API Key Scannen</button>
   <div class="message_box info">
-    {{'PAGE.PROJECTS.MODAL.ADD.FORM.TOOLTIP.PROJECT_NAME' | translate}} <br /><br />
+    {{'PAGE.PROJECTS.MODAL.ADD.FORM.TOOLTIP.PROJECT_NAME' | translate}} <br/><br/>
     {{'PAGE.PROJECTS.MODAL.ADD.FORM.TOOLTIP.API_TOKEN' | translate}}
   </div>
-  <img [src]="image" *ngIf="experimental_ocr_reading" id="image">
+  <img [src]="image" *ngIf="experimental_ocr_reading && image.length > 0" id="image">
+  <span>{{api_key}}</span>
 </ion-content>
