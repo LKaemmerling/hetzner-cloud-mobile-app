@@ -38,6 +38,9 @@
         "AUTH": {
           "TITLE": "Authentifizierung",
           "NOT_AVAILABLE": "Leider ist keine sichere Authentifizierung auf Ihrem Gerät vorhanden."
+        },
+        "DESIGN":{
+          "COMPACT_SERVERS":"Kompaktes Server Design aktivieren?"
         }
       }
     },
@@ -118,6 +121,10 @@
             "NAME_ALREADY_USED": "Sie haben bereits ein Projekt mit dieser Bezeichnung!",
             "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
           }
+        },
+        "SHARE":{
+          "TITLE":"Projekt teilen",
+          "MESSAGE":"Mit dieser Funktion können Sie einfach Projekte zwischen Ihren Geräten teilen, ohne dauerhaft den API-Key der den Projektnamen eingeben zu müssen. Scannen Sie einfach diesen QR-Code bei Erstellung eines neuen Projektes."
         }
       }
     },

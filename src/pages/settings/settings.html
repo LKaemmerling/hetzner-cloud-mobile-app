@@ -38,7 +38,7 @@
     Design
     </ion-list-header>
     <ion-item>
-      <ion-label>Kompaktes Server Design aktivieren?</ion-label>
+      <ion-label>{{ 'PAGE.SETTINGS.DESIGN.COMPACT_SERVERS' | translate }}</ion-label>
       <ion-toggle [(ngModel)]="experimental_servers_design" (ionChange)="changeServersDesign()"></ion-toggle>
     </ion-item>
   </ion-list>

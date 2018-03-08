@@ -38,6 +38,9 @@
         "AUTH": {
           "TITLE": "Authentication",
           "NOT_AVAILABLE": "Unfortunately there was no secure authentication found on your device."
+        },
+        "DESIGN":{
+          "COMPACT_SERVERS":"Enable Compact Server Design?"
         }
       }
     },
@@ -118,6 +121,10 @@
             "NAME_ALREADY_USED": "You already have a project with this name.",
             "SCAN_ERROR": "There was a error while scanning the image."
           }
+        },
+        "SHARE":{
+          "TITLE":"Share Project",
+          "MESSAGE":"With this feature, you can easily share projects between your devices without having to permanently enter the API key of the project name. Just scan this QR-code when creating a new project."
         }
       }
     },
