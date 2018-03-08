@@ -5,6 +5,8 @@ import {ServerPage} from "../server";
 import {addServerModal} from "../addServer/addServer";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ServersService} from "../../../models/servers/ServersService";
+import {Storage} from "@ionic/storage";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'page-servers',
@@ -14,10 +16,28 @@ export class ServersPage {
 
   public servers;
   public _search;
-  public loading:boolean = false;
-  public loading_done:boolean = false;
-  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController, public serversService: ServersService) {
+  public loading: boolean = false;
+  public loading_done: boolean = false;
+  public visible: Array<boolean> = [];
+  public experimental_servers_design: boolean = false;
+
+  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController, public serversService: ServersService, public storage: Storage, public translate: TranslateService) {
     this.servers = this._search = this.serversService.servers;
+    storage.get('experimental_servers_design').then((val) => {
+      if (val != undefined) {
+        this.experimental_servers_design = val;
+      }
+    });
+  }
+
+  openSubMenu(menuId) {
+    if (this.visible[menuId] != undefined && this.visible[menuId] == true) {
+      this.visible = [];
+    } else {
+      this.visible = [];
+      this.visible[menuId] = true;
+    }
+
   }
 
   public loadServers() {
@@ -27,15 +47,16 @@ export class ServersPage {
       this._search = this.servers;
       this.loading = false;
       this.loading_done = true;
-      setTimeout(() => this.loading_done = false,5000);
+      setTimeout(() => this.loading_done = false, 5000);
     });
   }
 
   public refresh(refresher = null) {
 
     this.loadServers();
-    if(refresher !== null){
-      refresher.complete();;
+    if (refresher !== null) {
+      refresher.complete();
+      ;
     }
   }
 
@@ -50,6 +71,10 @@ export class ServersPage {
   }
 
   public delete(server) {
+    let _delete: string = '';
+    this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
+      _delete = text;
+    });
     if (confirm('Möchten Sie den Server ' + server.name + ' wirklich unwiderruflich löschen?')) {
       var loader = this.loadingCtrl.create();
       loader.present();

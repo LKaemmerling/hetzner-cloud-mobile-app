@@ -15,20 +15,20 @@ import {shareProjectModal} from "./shareProject/shareProject";
 export class ProjectsPage {
   public _projects = [];
   public visible = [];
-  public experimental_shareable_projects: boolean = false;
 
   constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService, public serversService: ServersService, public storage: Storage) {
     this._projects = project.projects;
-    storage.get('experimental_shareable_projects').then((val) => {
-      if (val != undefined) {
-        this.experimental_shareable_projects = val;
-      }
-    });
+
   }
 
   openSubMenu(menuId) {
-    this.visible = [];
-    this.visible[menuId] = true;
+    if (this.visible[menuId] != undefined && this.visible[menuId] == true) {
+      this.visible = [];
+    } else {
+      this.visible = [];
+      this.visible[menuId] = true;
+    }
+
   }
 
   openProjectModal() {

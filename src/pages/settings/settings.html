@@ -35,11 +35,11 @@
     <p ion-item="" class="message_box info" *ngIf="finger_print == -1" text-wrap=""
        [innerHTML]="'PAGE.SETTINGS.SECURITY.AUTH.NOT_AVAILABLE' | translate "></p>
     <ion-list-header>
-     Experimental Features
+    Design
     </ion-list-header>
     <ion-item>
-      <ion-label>Shareable Projects</ion-label>
-      <ion-toggle [(ngModel)]="experimental_shareable_projects" (ionChange)="changeShareableProjects()"></ion-toggle>
+      <ion-label>Kompaktes Server Design aktivieren?</ion-label>
+      <ion-toggle [(ngModel)]="experimental_servers_design" (ionChange)="changeServersDesign()"></ion-toggle>
     </ion-item>
   </ion-list>
   <button ion-button="" color="danger" (click)="openDeleteAllPage()">

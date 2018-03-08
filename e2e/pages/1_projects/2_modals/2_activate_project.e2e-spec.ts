@@ -20,11 +20,10 @@ describe('[1][2][1] Activate Project', () => {
     page.navigateToMenuPoint(page.getLocal('PAGE.PROJECTS.TITLE'));
     browser.sleep(500);
   });
-  it('[1] when i select the other project and push "activate" it should activate the other', () => {
-    let elements = element.all(by.className('project'));
-    first_active = element(by.className('active-project')).getAttribute('id');
-    first_in_active = elements.last();
-    next_in_active = elements.first().getAttribute('id');
+  xit('[1] when i select the other project and push "activate" it should deactivate the other', () => {
+    first_active = element(by.id('project_0')).getAttribute('id');
+    first_in_active = element(by.id('project_1'));
+    next_in_active = element(by.id('project_0')).getAttribute('id');
     browser.sleep(500);
     first_in_active.click();
     browser.sleep(500);

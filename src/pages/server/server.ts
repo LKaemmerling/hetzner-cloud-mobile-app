@@ -95,7 +95,7 @@ export class ServerPage {
 
   public delete() {
     let _delete: string = '';
-    this.translate.get('ACTIONS.DELETE').subscribe(text => {
+    this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
       _delete = text;
     });
     if (confirm(_delete)) {

@@ -1,4 +1,4 @@
-import {Component, QueryList, SimpleChanges, ViewChild, ViewChildren} from '@angular/core';
+import {Component, QueryList, SimpleChanges, ViewChildren} from '@angular/core';
 import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {BaseChartDirective} from "ng2-charts";
@@ -216,15 +216,6 @@ if(bytes < 0){
   }
   transformWOUnit(bytes: number = 0, precision: number = 2): string {
     if (isNaN(parseFloat(String(bytes))) || !isFinite(bytes)) return '?';
-    let units = [
-      'bytes',
-      'KB',
-      'MB',
-      'GB',
-      'TB',
-      'PB'
-    ];
-
     let unit = 0;
     bytes = parseFloat(String(bytes));
     if(bytes < 0){

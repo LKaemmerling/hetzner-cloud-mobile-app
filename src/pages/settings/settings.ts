@@ -24,8 +24,8 @@ export class SettingsPage {
   public finger_print: number = -1;
 
   public language: string = 'de';
-  public new_projects_design: boolean = false;
-  public experimental_shareable_projects: boolean = false;
+  public experimental_servers_design: boolean = false;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO, public storage: Storage, public loadingCtrl: LoadingController, public translate: TranslateService, public oneSignal: OneSignal) {
     appVersion.getVersionNumber().then((_version) => {
@@ -36,16 +36,12 @@ export class SettingsPage {
         this.language = value;
       }
     });
-    storage.get('experimental_project_design').then(value => {
+    storage.get('experimental_servers_design').then(value => {
       if (value != undefined) {
-        this.new_projects_design = value;
+        this.experimental_servers_design = value;
       }
     });
-    storage.get('experimental_shareable_projects').then(value => {
-      if (value != undefined) {
-        this.experimental_shareable_projects = value;
-      }
-    });
+
     this.fingerprint.isAvailable().then(resp => {
 
       this.finger_print = 0;
@@ -95,18 +91,11 @@ export class SettingsPage {
     });
   }
 
-  changeOpenProjectDesign() {
+  changeServersDesign() {
     let loader = this.loadingCtrl.create();
     loader.present();
-    this.storage.set('experimental_project_design', this.new_projects_design);
+    this.storage.set('experimental_servers_design', this.experimental_servers_design);
     loader.dismiss();
   }
 
-  changeShareableProjects() {
-    let loader = this.loadingCtrl.create();
-    loader.present();
-    this.storage.set('experimental_shareable_projects', this.experimental_shareable_projects);
-    loader.dismiss();
-
-  }
 }

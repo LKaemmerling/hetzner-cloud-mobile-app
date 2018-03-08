@@ -27,7 +27,7 @@ describe('[1][2][1] Create Project', () => {
     browser.sleep(500);
     element(by.buttonText(page.getLocal('ACTIONS.SAVE'))).click();
     browser.sleep(1000);
-    expect(element(by.xpath('//*[@id="nav"]/page-projects[1]/ion-content[1]/div[2]/ion-card[1]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-label[1]')).getText()).toContain('Hetzner Cloud App E2E');
+    expect(element(by.css('project_0 h2')).getText()).toContain('Hetzner Cloud App E2E');
     page.screenshot('projects');
     browser.sleep(500);
     page.navigateTo('/');

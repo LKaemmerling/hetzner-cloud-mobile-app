@@ -96,14 +96,6 @@ ion-header ion-icon.back-button-icon.icon {
   color: #ffffff;
 }
 
-.active-project {
-  background-color: #f53d3d;
-  h2 {
-    color: #f4f4f4 !important;
-  }
-
-}
-
 .project {
   .project_header {
     height: 120px;
@@ -113,13 +105,17 @@ ion-header ion-icon.back-button-icon.icon {
       font-size: 20px;
       margin-top: -10px;
     }
+    .project_menu {
+      max-height: 20px;
+      float: right
+    }
   }
   .card-content {
     padding: 0 !important;
   }
 }
 
-.active-project-v2 {
+.active-project {
   .project_header {
     background: linear-gradient(180deg, #f53d3d 15%, #932424);
     h2 {
@@ -132,3 +128,27 @@ ion-header ion-icon.back-button-icon.icon {
   margin: auto;
   display: block;
 }
+
+.server {
+  .server_header {
+    height: 120px;
+    background: linear-gradient(180deg, #434a62 15%, #1f2433);
+    h2 {
+      color: $background-color;
+      font-size: 20px;
+      margin-top: -10px;
+    }
+    .server_menu {
+      max-height: 20px;
+      float: right
+    }
+  }
+  .card-content {
+    padding: 0 !important;
+    p {
+      color: #929292;
+      text-align: center;
+    }
+  }
+}
+

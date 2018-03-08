@@ -58,12 +58,12 @@ export class Page {
     element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addproject[1]/ion-content[1]/div[2]/ion-list[1]/ion-item[2]/div[1]/div[1]/ion-input[1]/input[1]')).sendKeys(browser.params.global.api_key);
     browser.sleep(500);
     element(by.buttonText(this.getLocal('ACTIONS.SAVE'))).click();
-    browser.sleep(500);
+    browser.sleep(1000);
     this.navigateToMenuPoint(this.getLocal('PAGE.PROJECTS.TITLE'));
     browser.sleep(500);
   }
 
-  deleteProject() {
+  deleteProject(name: string = "Hetzner Cloud App E2E") {
     this.navigateToMenuPoint(this.getLocal('PAGE.PROJECTS.TITLE'));
     browser.sleep(500);
     element(by.xpath('//*[@id="nav"]/page-projects[1]/ion-content[1]/div[2]/ion-card[1]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-label[1]/div[1]/h2[1]')).click();
