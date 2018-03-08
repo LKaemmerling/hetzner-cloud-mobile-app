@@ -12,11 +12,11 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
   templateUrl: 'shareProject.html'
 })
 export class shareProjectModal {
-  public project: project;
+  public project: string;
 
 
   constructor(public viewCtrl: ViewController, public navparam: NavParams, protected translate: TranslateService, protected storage: Storage, public barcodeScanner: BarcodeScanner) {
-    this.project = navparam.get('project')
+    this.project = JSON.stringify(navparam.get('project'))
   }
 
   public dismiss() {

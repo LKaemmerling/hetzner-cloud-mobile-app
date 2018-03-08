@@ -110,12 +110,12 @@ ion-header ion-icon.back-button-icon.icon {
     background: linear-gradient(180deg, #434a62 15%, #1f2433);
     h2 {
       color: $background-color;
-      font-size:20px;
+      font-size: 20px;
       margin-top: -10px;
     }
   }
-  .card-content{
-    padding:0 !important;
+  .card-content {
+    padding: 0 !important;
   }
 }
 
@@ -126,4 +126,9 @@ ion-header ion-icon.back-button-icon.icon {
       color: $background-color;
     }
   }
+}
+
+.share-project {
+  margin: auto;
+  display: block;
 }

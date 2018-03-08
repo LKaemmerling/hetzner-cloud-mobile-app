@@ -14,5 +14,9 @@
 
 <ion-content>
   <p class="message_box info" text-wrap="">Attention</p>
-  <qr-code [value]="JSON.stringify(project)" [size]="150"></qr-code>
+  <ion-row>
+    <ion-col col-4 offset-4>
+      <qr-code [value]="project" [size]="200"></qr-code>
+    </ion-col>
+  </ion-row>
 </ion-content>
