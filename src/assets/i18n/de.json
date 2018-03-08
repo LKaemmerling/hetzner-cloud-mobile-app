@@ -7,7 +7,8 @@
     "CREATE_SERVER": "Neuen Server erstellen",
     "CANCEL": "Abbrechen",
     "SAVE": "Speichern",
-    "ORDER": "Kostenpflichtig bestellen"
+    "ORDER": "Kostenpflichtig bestellen",
+    "SHARE": "Teilen"
   },
   "PAGE": {
     "HOME": {
@@ -101,6 +102,7 @@
       "MODAL": {
         "ADD": {
           "TITLE": "Projekt hinzufügen",
+          "SCAN":"Projekt QR-Code scannen",
           "FORM": {
             "PROJECT_NAME": "Bezeichnung:",
             "API_TOKEN": "API-Token:",

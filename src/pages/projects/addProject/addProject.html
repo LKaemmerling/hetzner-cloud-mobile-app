@@ -27,7 +27,7 @@
     </ion-item>
   </ion-list>
   <button ion-button color="danger" (click)="saveProject()">{{ 'ACTIONS.SAVE' | translate }}</button>
-  <button ion-button color="secondary" (click)="scanProject()" *ngIf="experimental_shareable_projects">Import</button>
+  <button ion-button color="secondary" (click)="scanProject()">{{ 'PAGE.PROJECTS.MODAL.ADD.SCAN' | translate }}</button>
   <div class="message_box info">
     {{'PAGE.PROJECTS.MODAL.ADD.FORM.TOOLTIP.PROJECT_NAME' | translate}} <br/><br/>
     {{'PAGE.PROJECTS.MODAL.ADD.FORM.TOOLTIP.API_TOKEN' | translate}}

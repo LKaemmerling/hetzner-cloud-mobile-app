@@ -7,7 +7,8 @@
     "CREATE_SERVER": "Create new server",
     "CANCEL": "Cancel",
     "SAVE": "Save",
-    "ORDER": "Buy now"
+    "ORDER": "Buy now",
+    "SHARE": "Share"
   },
   "PAGE": {
     "HOME": {
@@ -101,6 +102,7 @@
       "MODAL": {
         "ADD": {
           "TITLE": "Add project",
+          "SCAN":"Scan Project QR-Code",
           "FORM": {
             "PROJECT_NAME": "Name:",
             "API_TOKEN": "API token:",
@@ -112,7 +114,8 @@
           "ERRORS": {
             "INVALID_KEY": "Unfortunately the API token entered is incorrect.",
             "REQUIRED_NAME": "Please enter a project name.",
-            "NAME_ALREADY_USED": "You already have a project with this name."
+            "NAME_ALREADY_USED": "You already have a project with this name.",
+            "SCAN_ERROR": "There was a error while scanning the image."
           }
         }
       }
