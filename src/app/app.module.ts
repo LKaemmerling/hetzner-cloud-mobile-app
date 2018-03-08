@@ -47,6 +47,7 @@ import {ActionsPage} from "../pages/actions/actions";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HetznerApiProviderModule} from "../providers/hetznerApiProvider.module";
+import {Camera} from "@ionic-native/camera";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.0.6"
@@ -168,7 +169,8 @@ export class MyErrorHandler implements ErrorHandler {
     OneSignal,
     InAppBrowser,
     AppVersion,
-    FingerprintAIO
+    FingerprintAIO,
+    Camera
   ]
 })
 export class AppModule {

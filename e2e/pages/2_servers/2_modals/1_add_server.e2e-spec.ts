@@ -68,6 +68,7 @@ describe('[2][2][1] Create Server', () => {
       page.screenshot('server_detail');
       browser.sleep(500);
       element(by.id('server_actions')).click();
+      browser.sleep(500);
       page.screenshot('server_actions');
       //console.debug('wait 15 seconds again so the server could startup');
       browser.sleep(1000 * 15).then(() => {

@@ -32,7 +32,7 @@
     "prepush": "npm test",
     "commitmsg": "validate-commit-msg",
     "compodoc": "./node_modules/.bin/compodoc src/ -p tsconfig.json -n Hetzner-Cloud-Mobile",
-    "e2e:loc":"LANG='de' node test-config/protractor.server.js && LANG='de' node test-config/protractor.server.js"
+    "e2e:loc": "LANG='de' node test-config/protractor.server.js && LANG='de' node test-config/protractor.server.js"
   },
   "betterScripts": {
     "dev": {
@@ -114,6 +114,7 @@
     "@angular/platform-browser": "5.0.3",
     "@angular/platform-browser-dynamic": "5.0.3",
     "@ionic-native/app-version": "^4.5.3",
+    "@ionic-native/camera": "^4.5.3",
     "@ionic-native/core": "4.4.0",
     "@ionic-native/fingerprint-aio": "^4.5.3",
     "@ionic-native/globalization": "^4.5.3",
@@ -132,6 +133,7 @@
     "cordova-ios": "^4.5.4",
     "cordova-plugin-add-swift-support": "^1.7.1",
     "cordova-plugin-app-version": "^0.1.9",
+    "cordova-plugin-camera": "^4.0.2",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-fingerprint-aio": "^1.3.4",
     "cordova-plugin-globalization": "^1.0.9",
@@ -195,7 +197,8 @@
       "cordova-plugin-app-version": {},
       "cordova-plugin-fingerprint-aio": {},
       "onesignal-cordova-plugin": {},
-      "cordova-plugin-ignore-lint-translation": {}
+      "cordova-plugin-ignore-lint-translation": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "ios",

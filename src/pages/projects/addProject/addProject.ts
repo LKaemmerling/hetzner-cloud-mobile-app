@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
 import {project} from "../../../models/project/project";
-import {ViewController} from "ionic-angular";
+import {LoadingController, ViewController} from "ionic-angular";
 import {LocationApiProvider} from "../../../providers/location-api/location-api";
 import {TranslateService} from "@ngx-translate/core";
+import {Camera} from "@ionic-native/camera";
+import {Storage} from "@ionic/storage";
 
 @Component({
   selector: 'modal-addProject',
@@ -13,8 +15,36 @@ export class addProjectModal {
   public project_name: string;
   public api_key: string;
   public error: string = null;
+  public experimental_ocr_reading: boolean = false;
+  public image: string;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider, protected translate: TranslateService) {
+  constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider, protected translate: TranslateService, protected camera: Camera, public storage: Storage, public loadingCtrl: LoadingController) {
+    storage.get('experimental_ocr_reading').then(value => {
+      if (value != undefined) {
+        this.experimental_ocr_reading = value;
+      }
+    });
+  }
+
+  public scanApiKey() {
+    this.camera.getPicture({
+      quality: 100,
+      destinationType: 0, // DATA_URL
+      sourceType: 1,
+      allowEdit: true,
+      saveToPhotoAlbum: false,
+      correctOrientation: true
+    }).then((imageData) => {
+      this.image = `data:image/jpeg;base64,${imageData}`;
+      let loader = this.loadingCtrl.create();
+      loader.present();
+      (<any>window).OCRAD(document.getElementById('image'), text => {
+        loader.dismissAll();
+        this.api_key = text;
+      });
+    }, (err) => {
+      console.log(`ERROR -> ${JSON.stringify(err)}`);
+    });
   }
 
   public saveProject() {
