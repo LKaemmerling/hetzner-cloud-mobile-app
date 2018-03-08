@@ -7,6 +7,7 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ServersService} from "../../../models/servers/ServersService";
 import {Storage} from "@ionic/storage";
 import {TranslateService} from "@ngx-translate/core";
+import {editServerModal} from "../editServer/editServer";
 
 @Component({
   selector: 'page-servers',
@@ -63,6 +64,16 @@ export class ServersPage {
   public details(server) {
     this.navCtrl.push(ServerPage, {server: server});
   }
+
+  public openEditModal(server) {
+    let modal = this.modal.create(editServerModal, {server: server});
+    modal.onDidDismiss(() => {
+      this.loadServers();
+    });
+
+    modal.present();
+  }
+
 
   public ionViewWillEnter() {
     this.serversService.reloadServers().then(() => {
