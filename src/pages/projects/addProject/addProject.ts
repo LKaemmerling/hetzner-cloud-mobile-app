@@ -36,12 +36,16 @@ export class addProjectModal {
       correctOrientation: true
     }).then((imageData) => {
       this.image = `data:image/jpeg;base64,${imageData}`;
-      let loader = this.loadingCtrl.create();
-      loader.present();
-      (<any>window).OCRAD(document.getElementById('image'), text => {
-        loader.dismissAll();
-        this.api_key = text;
+      let loader = this.loadingCtrl.create({
+        'content':'This could need some time.'
       });
+      loader.present();
+      setTimeout(() => {
+        (<any>window).OCRAD(document.getElementById('image'), text => {
+          loader.dismissAll();
+          this.api_key = text;
+        });
+      }, 1000);
     }, (err) => {
       console.log(`ERROR -> ${JSON.stringify(err)}`);
     });
