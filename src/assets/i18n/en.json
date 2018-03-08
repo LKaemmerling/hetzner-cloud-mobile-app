@@ -38,10 +38,10 @@
         "AUTH": {
           "TITLE": "Authentication",
           "NOT_AVAILABLE": "Unfortunately there was no secure authentication found on your device."
-        },
-        "DESIGN":{
-          "COMPACT_SERVERS":"Enable Compact Server Design?"
         }
+      },
+      "DESIGN":{
+        "COMPACT_SERVERS":"Enable Compact Server Design?"
       }
     },
     "STATUS": {

@@ -1,7 +1,7 @@
-<ion-header>
+rmrm <ion-header>
   <ion-toolbar>
     <ion-title>
-      {{ 'PAGE.SERVERS.MODAL.RESCUE_MODUS.TITLE' | translate}}
+      {{ 'PAGE.SERVERS.MODAL.RESCUE_MODE.TITLE' | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -16,23 +16,23 @@
   <ion-card>
 
     <ion-card-content>
-      <p [innerHTML]="'PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.RESCUE_MODE'|translate" text-wrap=""></p>
-      <p *ngIf="root_password_reset != null" class="message_box success" translate="" [translateParams]="{root_password_reset:root_password_reset}">PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.NEW_CREDENTIALS</p>
-      <button (click)="rescueActivate()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.RESCUE_MODUS.ACTIONS.ACTIVATE'
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.RESCUE_MODE.DESCRIPTION.RESCUE_MODE'|translate" text-wrap=""></p>
+      <p *ngIf="root_password_reset != null" class="message_box success" translate="" [translateParams]="{root_password_reset:root_password_reset}">PAGE.SERVERS.MODAL.RESCUE_MODE.DESCRIPTION.NEW_CREDENTIALS</p>
+      <button (click)="rescueActivate()" ion-button color="danger">{{ 'PAGE.SERVERS.MODAL.RESCUE_MODE.ACTIONS.ACTIVATE'
         | translate}}
       </button>
       <button (click)="rescueActivateAndReset()" ion-button color="danger">{{
-        'PAGE.SERVERS.MODAL.RESCUE_MODUS.ACTIONS.ACTIVATE_RESET' | translate}}
+        'PAGE.SERVERS.MODAL.RESCUE_MODE.ACTIONS.ACTIVATE_RESET' | translate}}
       </button>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
     <ion-card-content>
-      <p [innerHTML]="'PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.RESET_ROOT_PASSWORD'|translate"></p>
-      <p *ngIf="root_password != null" class="message_box success" translate="" [translateParams]="{root_password_reset:root_password}">PAGE.SERVERS.MODAL.RESCUE_MODUS.DESCRIPTION.NEW_CREDENTIALS</p>
+      <p [innerHTML]="'PAGE.SERVERS.MODAL.RESCUE_MODE.DESCRIPTION.RESET_ROOT_PASSWORD'|translate"></p>
+      <p *ngIf="root_password != null" class="message_box success" translate="" [translateParams]="{root_password_reset:root_password}">PAGE.SERVERS.MODAL.RESCUE_MODE.DESCRIPTION.NEW_CREDENTIALS</p>
       <button (click)="resetRootpassword()" ion-button color="danger">{{
-        'PAGE.SERVERS.MODAL.RESCUE_MODUS.ACTIONS.RESET_ROOT_PASSWORD' | translate}}
+        'PAGE.SERVERS.MODAL.RESCUE_MODE.ACTIONS.RESET_ROOT_PASSWORD' | translate}}
       </button>
     </ion-card-content>
   </ion-card>

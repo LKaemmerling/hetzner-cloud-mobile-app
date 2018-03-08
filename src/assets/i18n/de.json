@@ -38,10 +38,10 @@
         "AUTH": {
           "TITLE": "Authentifizierung",
           "NOT_AVAILABLE": "Leider ist keine sichere Authentifizierung auf Ihrem Gerät vorhanden."
-        },
-        "DESIGN":{
-          "COMPACT_SERVERS":"Kompaktes Server Design aktivieren?"
         }
+      },
+      "DESIGN": {
+        "COMPACT_SERVERS": "Kompaktes Server Design aktivieren?"
       }
     },
     "ACTIONS": {
@@ -106,7 +106,7 @@
       "MODAL": {
         "ADD": {
           "TITLE": "Projekt hinzufügen",
-          "SCAN":"Projekt QR-Code scannen",
+          "SCAN": "Projekt QR-Code scannen",
           "FORM": {
             "PROJECT_NAME": "Bezeichnung:",
             "API_TOKEN": "API-Token:",
@@ -122,9 +122,9 @@
             "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
           }
         },
-        "SHARE":{
-          "TITLE":"Projekt teilen",
-          "MESSAGE":"Mit dieser Funktion können Sie einfach Projekte zwischen Ihren Geräten teilen, ohne dauerhaft den API-Key der den Projektnamen eingeben zu müssen. Scannen Sie einfach diesen QR-Code bei Erstellung eines neuen Projektes."
+        "SHARE": {
+          "TITLE": "Projekt teilen",
+          "MESSAGE": "Mit dieser Funktion können Sie einfach Projekte zwischen Ihren Geräten teilen, ohne dauerhaft den API-Key der den Projektnamen eingeben zu müssen. Scannen Sie einfach diesen QR-Code bei Erstellung eines neuen Projektes."
         }
       }
     },
