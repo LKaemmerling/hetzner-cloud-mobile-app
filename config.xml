@@ -87,6 +87,12 @@
         <config-file mode="add" parent="ITSAppUsesNonExemptEncryption" target="*-Info.plist">
             <false />
         </config-file>
+      <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+        <string>To scan QR-Codes Generated from other instances of the app</string>
+      </edit-config>
+      <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+        <string>To scan QR-Codes Generated from other instances of the app</string>
+      </edit-config>
     </platform>
     <plugin name="cordova-sqlite-storage" spec="~2.2.0" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.1" />
