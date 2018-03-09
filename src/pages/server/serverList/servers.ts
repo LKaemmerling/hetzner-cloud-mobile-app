@@ -45,7 +45,7 @@ export class ServersPage {
   }
 
   openSubMenu(menuId) {
-    if (this.visible[menuId] != undefined && this.visible[menuId] == true) {
+    if (this.visible[menuId] != undefined && this.visible[menuId] == 'active') {
       this.visible = [];
     } else {
       this.visible = [];
