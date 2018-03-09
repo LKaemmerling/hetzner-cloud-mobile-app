@@ -49,7 +49,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HetznerApiProviderModule} from "../providers/hetznerApiProvider.module";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {shareProjectModal} from "../pages/projects/shareProject/shareProject";
-import {NgxQRCodeModule} from "@techiediaries/ngx-qrcode";
+import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode";
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.1.0"
 });
