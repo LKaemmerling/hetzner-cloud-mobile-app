@@ -16,7 +16,8 @@
   <p class="message_box info" text-wrap="">{{ 'PAGE.PROJECTS.MODAL.SHARE.MESSAGE' | translate }}</p>
   <ion-row>
     <ion-col col-xl-4 offset-xl-4 col-sm-12 col-md-4 offset-md-4 col-lg-4 offset-lg-4>
-      <qr-code [value]="project" [size]="200"></qr-code>
+      <ngx-qrcode
+        [qrc-value]="project"></ngx-qrcode>
     </ion-col>
   </ion-row>
 </ion-content>
