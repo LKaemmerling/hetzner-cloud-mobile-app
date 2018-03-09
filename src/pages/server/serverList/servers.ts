@@ -9,7 +9,7 @@ import {Storage} from "@ionic/storage";
 import {TranslateService} from "@ngx-translate/core";
 import {editServerModal} from "../editServer/editServer";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
-import {fadeIn, fadeOut} from "ng-animate/lib";
+import {fadeIn, fadeOut} from "ng-animate";
 
 @Component({
   selector: 'page-servers',

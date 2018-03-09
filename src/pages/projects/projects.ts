@@ -8,7 +8,7 @@ import {ServersService} from "../../models/servers/ServersService";
 import {Storage} from "@ionic/storage";
 import {shareProjectModal} from "./shareProject/shareProject";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
-import {fadeIn, fadeOut} from "ng-animate/lib";
+import {fadeIn, fadeOut} from "ng-animate";
 
 @Component({
   selector: 'page-projects',
