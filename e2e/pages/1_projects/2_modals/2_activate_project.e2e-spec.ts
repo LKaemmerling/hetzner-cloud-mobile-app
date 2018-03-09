@@ -4,7 +4,7 @@ import {describe} from "selenium-webdriver/testing";
 import {ElementHandleEventFn} from "@angular/core/src/view";
 import {promise, WebElement} from "selenium-webdriver";
 
-describe('[1][2][1] Activate Project', () => {
+xdescribe('[1][2][1] Activate Project', () => {
   let page: Page;
   let first_active: promise.Promise<string>;
   let next_active: ElementFinder;
@@ -20,16 +20,16 @@ describe('[1][2][1] Activate Project', () => {
     page.navigateToMenuPoint(page.getLocal('PAGE.PROJECTS.TITLE'));
     browser.sleep(500);
   });
-  xit('[1] when i select the other project and push "activate" it should deactivate the other', () => {
-    first_active = element(by.id('project_0')).getAttribute('id');
-    first_in_active = element(by.id('project_1'));
-    next_in_active = element(by.id('project_0')).getAttribute('id');
+  it('[1] when i select the other project and push "activate" it should deactivate the other', () => {
+    first_active = element(by.css('[data-project*="Hetzner Cloud App E2E"]')).getAttribute('id');
+    first_in_active = element(by.css('[data-project*="Inactive Project"]'));
+    next_in_active = element(by.css('[data-project*="Hetzner Cloud App E2E"]')).getAttribute('id');
     browser.sleep(500);
     first_in_active.click();
     browser.sleep(500);
     element(by.className('activate_project')).click();
     browser.sleep(1000);
-    next_active = element(by.className('active-project'));
+    next_active = element(by.css('[data-project*="Inactive Project"]'));
     browser.sleep(1000);
     expect(first_active).toBe(next_in_active);
     browser.sleep(1000);

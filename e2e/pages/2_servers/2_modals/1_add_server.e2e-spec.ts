@@ -62,8 +62,11 @@ describe('[2][2][1] Create Server', () => {
     element(by.buttonText(page.getLocal('ACTIONS.ORDER'))).click();
     //console.debug('Sorry the Server Creation could take up to 15 seconds');
     browser.sleep(1000 * 15).then(() => {
-      expect(element(by.partialButtonText('E2E-Test-Server')).getText()).toContain('E2E-Test-Server');
-      element(by.partialButtonText('E2E-Test-Server')).click();
+      page.screenshot('servers_list');
+      expect(element(by.css('#server_0 h2')).getText()).toContain('E2E-Test-Server');
+      element(by.css('#server_0  .server_menu')).click();
+      browser.sleep(500);
+      element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
       browser.sleep(500);
       page.screenshot('server_detail');
       browser.sleep(500);
@@ -78,7 +81,9 @@ describe('[2][2][1] Create Server', () => {
   });
 
   it("[2] deletes server", () => {
-    element(by.partialButtonText('E2E-Test-Server')).click();
+    element(by.css('#server_0  .server_menu')).click();
+    browser.sleep(500);
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
     browser.sleep(500);
     element(by.id('server_actions')).click();
     browser.sleep(500);

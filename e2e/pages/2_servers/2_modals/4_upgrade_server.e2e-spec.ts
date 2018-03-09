@@ -12,7 +12,9 @@ describe('[2][2][3] Upgrade Server', () => {
     browser.sleep(500);
     page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
-    element(by.partialButtonText('E2E-Test-Server')).click();
+    element(by.css('#server_0  .server_menu')).click();
+    browser.sleep(500);
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
     browser.sleep(500);
     element(by.id('server_actions')).click();
     browser.sleep(500);
@@ -24,7 +26,9 @@ describe('[2][2][3] Upgrade Server', () => {
   beforeEach(() => {
     page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
-    element(by.partialButtonText('E2E-Test-Server')).click();
+    element(by.css('#server_0  .server_menu')).click();
+    browser.sleep(500);
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
     browser.sleep(500);
     element(by.id('server_actions')).click();
     browser.sleep(500);
@@ -47,7 +51,9 @@ describe('[2][2][3] Upgrade Server', () => {
       browser.sleep(1000 * 90).then(() => { // Wait 1 1/2 Minutes
           page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
           browser.sleep(500);
-          element(by.partialButtonText('E2E-Test-Server')).click();
+          element(by.css('#server_0  .server_menu')).click();
+          browser.sleep(500);
+          element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
           browser.sleep(500);
           expect(element(by.id('server_type_memory')).getText()).toContain('4096 MB');
         }

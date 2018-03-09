@@ -15,6 +15,6 @@ describe('[2][1] Servers List', () => {
   });
 
   it('[1] first of all it should not have any servers', () => {
-    expect(element(by.xpath('//*[@id="nav"]/page-servers[1]/ion-content[1]/div[2]/ion-card[1]/ion-list[1]/p[1]')).getText()).toContain(page.getLocal('PAGE.SERVERS.NO_SERVERS'));
+    expect(element(by.id('no_servers')).getText()).toContain(page.getLocal('PAGE.SERVERS.NO_SERVERS'));
   })
 });

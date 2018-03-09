@@ -50,11 +50,11 @@
 <ion-content *ngIf="!experimental_servers_design">
   <ion-row class="row">
     <ion-col col-12 col-sm-2 col-md-3 col-lg-4 col-xl-2 *ngFor="let server of _search; let i = index">
-      <ion-card class="server" [id]="'server_'+server.id">
+      <ion-card class="server" [id]="'server_'+i">
         <ion-row class="server_header" text-center="">
           <ion-col offset-9 col-3 style="max-height:20px;">
             <button ion-button="" clear="" color="light"
-                    (click)="openSubMenu('server_'+i+'_content')" class="server_menu">
+                    (click)="openSubMenu('server_'+i+'_content')" class="server_menu" [attr.data-server]="server.name">
               <i class="fas fa-ellipsis-h fa-2x"></i>
             </button>
           </ion-col>
@@ -84,7 +84,7 @@
             {{ server.public_net.ipv4.ip }}</p>
 
         </ion-card-content>
-        <ion-card-content [id]="'server_'+i+'_content'" *ngIf="visible['server_'+i+'_content'] == true">
+        <ion-card-content [id]="'server_'+i+'_content'" style="display:none;" [@animate]="visible['server_'+i+'_content']">
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="primary" icon-start="" ion-button="" small="" (click)="details(server)"
@@ -112,7 +112,7 @@
       <ion-card *ngIf="_search == null || _search.length == 0" id="no_servers">
         <ion-card-content>
           <p class="message_box info" text-wrap=""
-             [innerHTML]="'PAGE.PROJECTS.NO_SERVERS' | translate"></p>
+             [innerHTML]="'PAGE.SERVERS.NO_SERVERS' | translate"></p>
         </ion-card-content>
       </ion-card>
     </ion-col>

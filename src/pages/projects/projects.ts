@@ -7,10 +7,23 @@ import {TranslateService} from "@ngx-translate/core";
 import {ServersService} from "../../models/servers/ServersService";
 import {Storage} from "@ionic/storage";
 import {shareProjectModal} from "./shareProject/shareProject";
+import {state, style, transition, trigger, useAnimation} from "@angular/animations";
+import {fadeIn, fadeOut} from "ng-animate/lib";
 
 @Component({
   selector: 'page-projects',
-  templateUrl: 'projects.html'
+  templateUrl: 'projects.html',
+  animations: [
+    trigger('animate', [
+      state('active', style({
+        display: 'block',
+      })),
+      state('*', style({
+        display: 'none',
+      })),
+      transition('* => active', useAnimation(fadeIn, {params: {timing: 1, delay: 0}})),
+      transition('active => *', useAnimation(fadeOut, {params: {timing: 0, delay: 0}}))])
+  ],
 })
 export class ProjectsPage {
   public _projects = [];
@@ -26,7 +39,7 @@ export class ProjectsPage {
       this.visible = [];
     } else {
       this.visible = [];
-      this.visible[menuId] = true;
+      this.visible[menuId] = 'active';
     }
 
   }

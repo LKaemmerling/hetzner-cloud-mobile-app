@@ -8,10 +8,23 @@ import {ServersService} from "../../../models/servers/ServersService";
 import {Storage} from "@ionic/storage";
 import {TranslateService} from "@ngx-translate/core";
 import {editServerModal} from "../editServer/editServer";
+import {state, style, transition, trigger, useAnimation} from "@angular/animations";
+import {fadeIn, fadeOut} from "ng-animate/lib";
 
 @Component({
   selector: 'page-servers',
-  templateUrl: 'servers.html'
+  templateUrl: 'servers.html',
+  animations: [
+    trigger('animate', [
+      state('active', style({
+        display: 'block',
+      })),
+      state('*', style({
+        display: 'none',
+      })),
+      transition('* => active', useAnimation(fadeIn, {params: {timing: 1, delay: 0}})),
+      transition('active => *', useAnimation(fadeOut, {params: {timing: 0, delay: 0}}))])
+  ],
 })
 export class ServersPage {
 
@@ -19,7 +32,7 @@ export class ServersPage {
   public _search;
   public loading: boolean = false;
   public loading_done: boolean = false;
-  public visible: Array<boolean> = [];
+  public visible: Array<string> = [];
   public experimental_servers_design: boolean = false;
 
   constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController, public serversService: ServersService, public storage: Storage, public translate: TranslateService) {
@@ -36,7 +49,7 @@ export class ServersPage {
       this.visible = [];
     } else {
       this.visible = [];
-      this.visible[menuId] = true;
+      this.visible[menuId] = 'active';
     }
 
   }

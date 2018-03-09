@@ -46,15 +46,30 @@ export class MyApp {
                 localizedFallbackTitle: 'Pin benutzen', //Only for iOS
                 localizedReason: 'Bitte authentifizieren Sie sich.' //Only for iOS
               }).then(result => {
+                this.loadHetznerSpecificData();
               }).catch(err => {
                 alert('Authentifizierung fehlgeschlagen. App wird beendet');
-                platform.exitApp();
+                if (platform.is('ios') == false) {
+                  platform.exitApp();
+                }
               });
+            } else {
+              this.loadHetznerSpecificData();
+            }
+          });
+        }).catch(reason => {
+          storage.get('auth').then(val => {
+            if (val != undefined && val == 'enabled') {
+              alert('Authentifizierung fehlgeschlagen. App wird beendet');
+              if (platform.is('ios') == false) {
+                platform.exitApp();
+              }
+            } else {
+              this.loadHetznerSpecificData();
             }
           });
         });
         splashScreen.hide();
-        this.loadHetznerSpecificData();
       });
     });
   }

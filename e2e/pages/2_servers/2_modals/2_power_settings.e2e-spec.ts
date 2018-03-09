@@ -14,7 +14,9 @@ describe('[2][2][2] Power Settings', () => {
   beforeEach(() => {
     page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
-    element(by.partialButtonText('E2E-Test-Server')).click();
+    element(by.css('[data-server*="E2E-Test-Server"]')).click();
+    browser.sleep(500);
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
     browser.sleep(500);
     element(by.id('server_actions')).click();
     browser.sleep(500);
@@ -27,7 +29,9 @@ describe('[2][2][2] Power Settings', () => {
     browser.sleep(1000);
     page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
-    element(by.partialButtonText('E2E-Test-Server')).click();
+    element(by.css('[data-server*="E2E-Test-Server"]')).click();
+    browser.sleep(500);
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
     browser.sleep(500);
     element(by.id('server_actions')).click();
     browser.sleep(500);
@@ -51,7 +55,9 @@ describe('[2][2][2] Power Settings', () => {
         //console.debug('Give the Server some time to shutdown');
         page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
         browser.sleep(500);
-        element(by.partialButtonText('E2E-Test-Server')).click();
+        element(by.css('[data-server*="E2E-Test-Server"]')).click();
+        browser.sleep(500);
+        element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
         browser.sleep(500);
         element(by.id('server_actions')).click();
         browser.sleep(500);
@@ -70,16 +76,19 @@ describe('[2][2][2] Power Settings', () => {
     element(by.id('reset')).click();
     browser.sleep(1000 * 30).then(() => {
       //console.debug('Give the Server some time to reset');
+
+      page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
+      browser.sleep(500);
+      element(by.css('[data-server*="E2E-Test-Server"]')).click();
+      browser.sleep(500);
+      element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
+      browser.sleep(500);
+      element(by.id('server_actions')).click();
+      browser.sleep(500);
+      element(by.id('power_settings')).click();
+      browser.sleep(500);
+      expect(element(by.id('power_off')).isDisplayed()).toBeTruthy();
     });
-    page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
-    browser.sleep(500);
-    element(by.partialButtonText('E2E-Test-Server')).click();
-    browser.sleep(500);
-    element(by.id('server_actions')).click();
-    browser.sleep(500);
-    element(by.id('power_settings')).click();
-    browser.sleep(500);
-    expect(element(by.id('power_off')).isDisplayed()).toBeTruthy();
   });
 
   afterAll(() => {

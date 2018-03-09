@@ -16,7 +16,7 @@
         <ion-row class="project_header" text-center="">
           <ion-col offset-9 col-3 style="max-height:20px;">
             <button ion-button="" clear="" color="light"
-                    (click)="openSubMenu('project_'+i+'_content')" class="project_menu">
+                    (click)="openSubMenu('project_'+i+'_content')" class="project_menu" [attr.data-project]="_project.name">
               <i class="fas fa-ellipsis-h fa-2x"></i>
             </button>
           </ion-col>
@@ -25,7 +25,7 @@
             </h2>
           </ion-col>
         </ion-row>
-        <ion-card-content [id]="'project_'+i+'_content'" *ngIf="visible['project_'+i+'_content'] == true">
+        <ion-card-content [id]="'project_'+i+'_content'" style="display:none;" [@animate]="visible['project_'+i+'_content']">
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="secondary" icon-start="" ion-button="" small="" (click)="selectProject(_project)" class="activate_project"

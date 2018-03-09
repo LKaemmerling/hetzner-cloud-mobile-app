@@ -51,7 +51,7 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {shareProjectModal} from "../pages/projects/shareProject/shareProject";
 import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode/dist";
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.1.0"
+  appVersion: "1.1.1"
 });
 
 export function createTranslateLoader(http: HttpClient) {
@@ -132,7 +132,9 @@ export class MyErrorHandler implements ErrorHandler {
       }
     }),
     HetznerApiProviderModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    BrowserAnimationsModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [

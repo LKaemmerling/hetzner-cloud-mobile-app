@@ -7,7 +7,7 @@ export class Page {
 
   getLocal(_local) {
     this.loadLocalization();
-    return this.fetchFromObject(this.local,_local);
+    return this.fetchFromObject(this.local, _local);
   }
 
   private loadLocalization() {
@@ -17,14 +17,15 @@ export class Page {
   navigateTo(destination) {
     return browser.get(destination);
   }
+
   private fetchFromObject(obj, prop) {
 
-    if(typeof obj === 'undefined') {
+    if (typeof obj === 'undefined') {
       return false;
     }
 
     var _index = prop.indexOf('.')
-    if(_index > -1) {
+    if (_index > -1) {
       return this.fetchFromObject(obj[prop.substring(0, _index)], prop.substr(_index + 1));
     }
 
@@ -37,7 +38,7 @@ export class Page {
 
   screenshot(name: string) {
     if (("" + browser.params.global.screenshots) == 'y') {
-      name = "screenshots/"+browser.params.global.lang+"/"+ name + '.png';
+      name = "screenshots/" + browser.params.global.lang + "/" + name + '.png';
       // within a test:
       browser.takeScreenshot().then(function (png) {
         var stream = fs.createWriteStream(name);
@@ -122,8 +123,9 @@ export class Page {
 
   deleteServer(name: string = "E2E-Test-Server") {
     this.navigateToMenuPoint(this.getLocal('PAGE.SERVERS.TITLE'));
+    element(by.css('[data-server*="' + name + '"]')).click();
     browser.sleep(500);
-    element(by.partialButtonText(name)).click();
+    element(by.partialButtonText(this.getLocal('ACTIONS.OPEN_DETAILS'))).click();
     browser.sleep(500);
     element(by.id('server_actions')).click();
     browser.sleep(500);
