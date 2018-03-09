@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.lkdevelopment.hetzner" version="1.0.7" xmlns="http://www.w3.org/ns/widgets">
+<widget id="de.lkdevelopment.hetzner" version="1.0.7" xmlns="http://www.w3.org/ns/widgets" android-versionCode="107" ios-CFBundleVersion="107">
     <name>Hetzner Cloud Mobile</name>
     <description>A mobile App for the Hetzner Cloud.</description>
     <author email="kontakt@lukas-kaemmerling.de" href="https://lk-development.de">LK-Development</author>
