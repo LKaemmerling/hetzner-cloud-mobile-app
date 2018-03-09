@@ -5,6 +5,7 @@
     <author email="kontakt@lukas-kaemmerling.de" href="https://lk-development.de">LK-Development</author>
     <content src="index.html" />
     <access origin="*" />
+    <engine name="android" spec="6.4.0" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
