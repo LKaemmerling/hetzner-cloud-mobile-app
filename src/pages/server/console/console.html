@@ -14,6 +14,14 @@
 
 <ion-content>
 <div class="console_container">
-  <div id="console_container"></div>
+  <div id="console_container">
+    <!-- Note that Google Chrome on Android doesn't respect any of these,
+     html attributes which attempt to disable text suggestions on the
+     on-screen keyboard. Let's hope Chrome implements the ime-mode
+     style for example -->
+    <textarea id="noVNC_keyboardinput" autocapitalize="off"
+              autocorrect="off" autocomplete="off" spellcheck="false"
+              mozactionhint="Enter" tabindex="-1"></textarea>
+  </div>
 </div>
 </ion-content>
