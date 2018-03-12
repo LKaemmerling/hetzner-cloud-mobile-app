@@ -1,10 +1,15 @@
-define(['exports'], function (exports) {
-  'use strict';
+/*
+ * noVNC: HTML5 VNC client
+ * Copyright (C) 2017 Pierre Ossman for Cendio AB
+ * Licensed under MPL 2.0 or any later version (see LICENSE.txt)
+ */
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.default = {
+/*
+ * Mapping between Microsoft® Windows® Virtual-Key codes and
+ * HTML key codes.
+ */
+
+export default {
     0x08: 'Backspace',
     0x09: 'Tab',
     0x0a: 'NumpadClear',
@@ -107,6 +112,5 @@ define(['exports'], function (exports) {
     0xb5: 'MediaSelect',
     0xb6: 'LaunchApp1',
     0xb7: 'LaunchApp2',
-    0xe1: 'AltRight' // Only when it is AltGraph
-  };
-});
+    0xe1: 'AltRight', // Only when it is AltGraph
+};
