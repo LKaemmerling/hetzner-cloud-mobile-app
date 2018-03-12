@@ -13,6 +13,8 @@ import {ServersService} from "../../models/servers/ServersService";
 import {ServersPage} from "./serverList/servers";
 import {ServerMetricsPage} from "./server-metrics/server-metrics";
 import {TranslateService} from "@ngx-translate/core";
+import {consoleModal} from "./console/console";
+import {InAppBrowser} from "@ionic-native/in-app-browser";
 
 @Component({
   selector: 'page-server',
@@ -23,7 +25,7 @@ export class ServerPage {
   public powerOn = true;
   public rescueMode = false;
 
-  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public serverService: ServersService, public translate:TranslateService) {
+  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public serverService: ServersService, public translate: TranslateService) {
     this.server = navParams.get('server');
     this.powerOn = (this.server.status == 'running');
     this.rescueMode = this.server.rescue_enabled;
@@ -91,6 +93,11 @@ export class ServerPage {
 
   public metricsPage() {
     this.navCtrl.push(ServerMetricsPage, {server: this.server});
+  }
+
+  public console() {
+    let modal = this.modalCtrl.create(consoleModal, {server: this.server});
+    modal.present();
   }
 
   public delete() {

@@ -50,8 +50,11 @@ import {HetznerApiProviderModule} from "../providers/hetznerApiProvider.module";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {shareProjectModal} from "../pages/projects/shareProject/shareProject";
 import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode/dist";
+import {ComponentsModule} from "../components/components.module";
+import {consoleModal} from "../pages/server/console/console";
+
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.1.1"
+  appVersion: "1.2.0"
 });
 
 export function createTranslateLoader(http: HttpClient) {
@@ -110,7 +113,8 @@ export class MyErrorHandler implements ErrorHandler {
     HetznerStatusPage,
     ServerMetricsPage,
     SettingsPage,
-    ActionsPage
+    ActionsPage,
+    consoleModal
 
   ],
   imports: [
@@ -134,7 +138,7 @@ export class MyErrorHandler implements ErrorHandler {
     HetznerApiProviderModule,
     NgxQRCodeModule,
     BrowserAnimationsModule,
-
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -166,7 +170,8 @@ export class MyErrorHandler implements ErrorHandler {
     HetznerStatusPage,
     ServerMetricsPage,
     SettingsPage,
-    ActionsPage
+    ActionsPage,
+    consoleModal
   ],
   providers: [
     StatusBar,

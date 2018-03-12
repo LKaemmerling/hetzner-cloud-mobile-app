@@ -135,4 +135,8 @@ export class ServerApiProvider extends HetznerApiProvider {
   getMetrics(serverId: number, type: string, start: string, end: string, step:number = 86400) {
     return this._get('servers/' + serverId + '/metrics?type=' + type + '&start=' + start + '&end=' + end+ '&step=' + step);
   }
+
+  requestConsole(serverId: number){
+    return this._post('servers/' + serverId + '/actions/request_console');
+  }
 }

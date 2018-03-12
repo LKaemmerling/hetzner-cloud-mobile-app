@@ -40,8 +40,8 @@
           "NOT_AVAILABLE": "Unfortunately there was no secure authentication found on your device."
         }
       },
-      "DESIGN":{
-        "COMPACT_SERVERS":"Enable Compact Server Design?"
+      "DESIGN": {
+        "COMPACT_SERVERS": "Enable Compact Server Design?"
       }
     },
     "STATUS": {
@@ -51,10 +51,10 @@
           "TITLE": "Hetzner Status - Settings",
           "TEXT": "This app is able to send push notifications from Hetzner Status. You can enable notification categories individually.",
           "SAVE_SUCCESS": "Settings saved successfully",
-          "NOTIFICATION_SETTINGS":{
-            "TITLE":"Notification Settings",
-            "SOUND":"Activate Sound",
-            "VIBRATE":"Activate Vibration"
+          "NOTIFICATION_SETTINGS": {
+            "TITLE": "Notification Settings",
+            "SOUND": "Activate Sound",
+            "VIBRATE": "Activate Vibration"
           },
           "CATEGORY": {
             "GENERAL": "General",
@@ -93,7 +93,7 @@
         "CHANGE_DNS_PTR": "Reverse DNS for Server {{subject}} changed",
         "ASSIGN_FLOATING_IP": "Floating IP to Server {{subject}} assigned",
         "UNASSIGN_FLOATING_IP": "Floating IP {{subject}} unassigned",
-        "REQUEST_CONSOLE":"VNC Session for Server {{subject}} created"
+        "REQUEST_CONSOLE": "VNC Session for Server {{subject}} created"
       }
     },
     "PROJECTS": {
@@ -106,12 +106,12 @@
       "MODAL": {
         "ADD": {
           "TITLE": "Add project",
-          "SCAN":"Scan Project QR-Code",
+          "SCAN": "Scan Project QR-Code",
           "FORM": {
             "PROJECT_NAME": "Name:",
             "API_TOKEN": "API token:",
-            "TOOLTIP":{
-              "PROJECT_NAME":"You can freely choose the project name. It is recommended to use the project name of the project from the Hetzner Cloud Console.",
+            "TOOLTIP": {
+              "PROJECT_NAME": "You can freely choose the project name. It is recommended to use the project name of the project from the Hetzner Cloud Console.",
               "API_TOKEN": "You can create the API token under the menu item 'Access' in the Hetzner Cloud Console."
             }
           },
@@ -122,9 +122,9 @@
             "SCAN_ERROR": "There was a error while scanning the image."
           }
         },
-        "SHARE":{
-          "TITLE":"Share Project",
-          "MESSAGE":"With this feature, you can easily share projects between your devices without having to permanently enter the API key of the project name. Just scan this QR-code when creating a new project."
+        "SHARE": {
+          "TITLE": "Share Project",
+          "MESSAGE": "With this feature, you can easily share projects between your devices without having to permanently enter the API key of the project name. Just scan this QR-code when creating a new project."
         }
       }
     },
@@ -223,7 +223,8 @@
             "METRICS": "Graphs",
             "RESCUE": "Rescue mode settings",
             "BACKUP": "Backup settings",
-            "POWER": "Power settings"
+            "POWER": "Power settings",
+            "CONSOLE": "VNC console"
           }
         },
         "ADD": {
@@ -309,6 +310,12 @@
               "14_18": "2 pm and 6 pm",
               "18_22": "6 pm and 10 pm"
             }
+          }
+        },
+        "CONSOLE": {
+          "TITLE": "VNC-Console",
+          "ERRORS": {
+            "GENERIC_ERROR": "Oh! There was an error!"
           }
         },
         "UPGRADE": {

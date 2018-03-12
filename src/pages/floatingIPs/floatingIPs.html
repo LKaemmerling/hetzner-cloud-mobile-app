@@ -5,10 +5,7 @@
     </button>
     <ion-title>{{ 'PAGE.FLOATING_IPS.TITLE' | translate}}</ion-title>
     <ion-buttons end>
-      <button ion-button right="" (click)="loadFloatingIPs()">
-        <i class="fas fa-sync fa-1x" [ngClass]="{'fa-spin':loading}" *ngIf="loading_done == false"></i>
-        <i class="fas fa-check fa-1x" ion-text color="secondary" *ngIf="loading_done == true"></i>
-      </button>
+      <loading-indicator (action)="loadFloatingIPs()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
     </ion-buttons>
   </ion-navbar>
 </ion-header>

@@ -1,0 +1,20 @@
+<!-- Generated template for the ServerStatusIndicatorComponent component -->
+<span>
+  <span *ngIf="['initializing','starting','stopping','deleting','migrating','rebuilding'].includes(status)"><i
+    class="fas fa-spin fa-spinner fa-pulse"></i></span>
+  <span *ngIf="!['initializing','starting','stopping','deleting','migrating','rebuilding'].includes(status)">
+                 <svg class="server-status-indicator"
+                      [ngClass]="{'server-status-indicator--on': status == 'running','server-status-indicator--off': status !== 'running'}"
+                      height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
+                <circle class="server-status-indicator__back ng-trigger ng-trigger-serverState-backCircle" cx="25"
+                        cy="25"
+                        r="25">
+
+                </circle>
+                <circle class="server-status-indicator__front ng-trigger ng-trigger-serverState-frontCircle" cx="25"
+                        cy="25"
+                        r="25">
+                </circle>
+              </svg>
+  </span>
+</span>

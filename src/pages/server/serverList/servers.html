@@ -5,10 +5,7 @@
     </button>
     <ion-title>{{ 'PAGE.SERVERS.TITLE' | translate}}</ion-title>
     <ion-buttons end>
-      <button ion-button right="" (click)="refresh()">
-        <i class="fas fa-sync fa-1x" [ngClass]="{'fa-spin':loading}" *ngIf="loading_done == false"></i>
-        <i class="fas fa-check fa-1x" ion-text color="secondary" *ngIf="loading_done == true"></i>
-      </button>
+      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -21,19 +18,7 @@
       <button ion-item *ngFor="let server of _search ; let i = index" (click)="details(server)" [id]="server.name">
 
         <h2>{{ server.name }}
-          <span *ngIf="server.status == 'migrating'"><i class="fas fa-spin fa-spinner fa-pulse"></i></span>
-          <span *ngIf="server.status != 'migrating'">
-                 <svg class="server-status-indicator "
-                      [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}"
-                      height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
-                <circle class="server-status-indicator__back ng-trigger ng-trigger-serverState-backCircle" cx="25"
-                        cy="25"
-                        r="25"></circle>
-                <circle class="server-status-indicator__front ng-trigger ng-trigger-serverState-frontCircle" cx="25"
-                        cy="25"
-                        r="25"></circle>
-              </svg>
-              </span>
+          <server-status-indicator [status]="server.status" right=""></server-status-indicator>
         </h2>
         <p text-wrap="">{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{
           server.datacenter.name
@@ -59,20 +44,8 @@
             </button>
           </ion-col>
           <ion-col col-12 align-items-start>
-            <h2>{{ server.name }} <span *ngIf="server.status == 'migrating'"><i
-              class="fas fa-spin fa-spinner fa-pulse"></i></span>
-              <span *ngIf="server.status != 'migrating'">
-                 <svg class="server-status-indicator "
-                      [ngClass]="{'server-status-indicator--on': server.status == 'running','server-status-indicator--off': server.status !== 'running'}"
-                      height="50px" viewBox="0 0 50 50" width="50px" xmlns="http://www.w3.org/2000/svg">
-                <circle class="server-status-indicator__back ng-trigger ng-trigger-serverState-backCircle" cx="25"
-                        cy="25"
-                        r="25"></circle>
-                <circle class="server-status-indicator__front ng-trigger ng-trigger-serverState-frontCircle" cx="25"
-                        cy="25"
-                        r="25"></circle>
-              </svg>
-              </span>
+            <h2>{{ server.name }}
+              <server-status-indicator [status]="server.status"></server-status-indicator>
             </h2>
           </ion-col>
         </ion-row>
@@ -84,7 +57,8 @@
             {{ server.public_net.ipv4.ip }}</p>
 
         </ion-card-content>
-        <ion-card-content [id]="'server_'+i+'_content'" style="display:none;" [@animate]="visible['server_'+i+'_content']">
+        <ion-card-content [id]="'server_'+i+'_content'" style="display:none;"
+                          [@animate]="visible['server_'+i+'_content']">
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="primary" icon-start="" ion-button="" small="" (click)="details(server)"

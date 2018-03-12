@@ -65,7 +65,7 @@ describe('[2][2][1] Create Server', () => {
       page.screenshot('servers_list');
       expect(element(by.css('#server_0 h2')).getText()).toContain('E2E-Test-Server');
       element(by.css('#server_0  .server_menu')).click();
-      browser.sleep(500);
+      browser.sleep(2000);
       element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
       browser.sleep(500);
       page.screenshot('server_detail');

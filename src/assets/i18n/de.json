@@ -223,7 +223,8 @@
             "METRICS": "Graphen",
             "RESCUE": "Rescue Modus Einstellungen",
             "BACKUP": "Backup Einstellungen",
-            "POWER": "Power Einstellungen"
+            "POWER": "Power Einstellungen",
+            "CONSOLE": "VNC Konsole"
           }
         },
         "ADD": {
@@ -309,6 +310,12 @@
               "14_18": "14 Uhr und 18 Uhr",
               "18_22": "18 Uhr und 22 Uhr"
             }
+          }
+        },
+        "CONSOLE": {
+          "TITLE": "VNC-Konsole",
+          "ERRORS": {
+            "GENERIC_ERROR": "Leider gab es einen Fehler beim Abrufen des Webservices."
           }
         },
         "UPGRADE": {
