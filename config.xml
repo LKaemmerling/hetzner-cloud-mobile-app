@@ -110,6 +110,7 @@
     <plugin name="cordova-plugin-camera" spec="^4.0.2" />
     <plugin name="phonegap-plugin-barcodescanner" spec="^7.0.2" />
     <allow-navigation href="http://192.168.178.24:8100" />
+    <allow-navigation href="*" />
     <access origin="wss:///*" />
     <access origin="https://api.hetzner.cloud" />
 </widget>
