@@ -14,7 +14,6 @@ import {ServersPage} from "./serverList/servers";
 import {ServerMetricsPage} from "./server-metrics/server-metrics";
 import {TranslateService} from "@ngx-translate/core";
 import {consoleModal} from "./console/console";
-import {InAppBrowser} from "@ionic-native/in-app-browser";
 
 @Component({
   selector: 'page-server',
