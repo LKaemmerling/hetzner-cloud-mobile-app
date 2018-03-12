@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="102002" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="102002" version="1.2.0" xmlns="http://www.w3.org/ns/widgets">
+<widget android-versionCode="102003" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="102003" version="1.2.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Hetzner Cloud Mobile</name>
     <description>A mobile App for the Hetzner Cloud.</description>
     <author email="kontakt@lukas-kaemmerling.de" href="https://lk-development.de">LK-Development</author>
@@ -94,6 +94,8 @@
         <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
             <string>To scan QR-Codes Generated from other instances of the app</string>
         </edit-config>
+        <preference name="swift-version" value="3.2" />
+        <preference name="UseLegacySwiftLanguageVersion" value="true" />
     </platform>
     <plugin name="cordova-sqlite-storage" spec="~2.2.0" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.1" />
