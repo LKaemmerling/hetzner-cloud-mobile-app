@@ -32,7 +32,22 @@ export class consoleModal {
     this.rfb.sendKey(this.input);
     this.input = '';
   }
-
+  public sendCtrlAltDel() {
+    this.rfb.sendCtrlAltDel();
+    return false;
+  }
+  public machineShutdown() {
+    this.rfb.machineShutdown();
+    return false;
+  }
+  public machineReboot() {
+    this.rfb.machineReboot();
+    return false;
+  }
+  public machineReset() {
+    this.rfb.machineReset();
+    return false;
+  }
   public dismiss() {
     this.viewCtrl.dismiss();
   }
