@@ -125,7 +125,7 @@ export class consoleModal {
       newLen = Math.max(event.target.selectionStart, newValue.value.length);
     } catch (err) {
       // selectionStart is undefined in Google Chrome
-      newLen = newValue.value.length;
+      newLen = newValue.length;
     }
     var oldLen = oldValue.length;
 
