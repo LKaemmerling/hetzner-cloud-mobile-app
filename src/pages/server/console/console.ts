@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
-import {DomSanitizer} from "@angular/platform-browser";
 
 import RFB from '@novnc/novnc/core/rfb.js';
 import {Keyboard} from "@ionic-native/keyboard";
@@ -19,7 +18,8 @@ export class consoleModal {
     this.server = navParams.get('server');
     this.serverApiProvider.requestConsole(this.server.id).then((response) => {
       this.rfb = new RFB(document.getElementById('console_container'), response['wss_url'], {credentials: {password: response['password']}});
-      this.keyboard.show();
+      document.getElementById('noVNC_keyboardinput').click();
+      //this.keyboard.show();
       this.rfb.focus();
     });
   }
