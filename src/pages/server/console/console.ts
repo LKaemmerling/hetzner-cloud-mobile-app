@@ -5,7 +5,7 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import RFB from '@novnc/novnc/core/rfb.js';
 import {KeyTable} from "@novnc/novnc/core/input/keysym.js";
 import {keysyms} from '@novnc/novnc/core/input/keysymdef.js';
-import Keyboard from '@novnc/novnc/core/input/Keyboard.js';
+import {Keyboard} from '@novnc/novnc/core/input/Keyboard.js';
 
 @Component({
   selector: 'modal-console',
