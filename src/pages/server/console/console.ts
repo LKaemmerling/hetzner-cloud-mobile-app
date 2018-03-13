@@ -31,6 +31,10 @@ export class consoleModal {
           return false;
         });
       document.getElementById("noVNC_keyboardinput")
+        .addEventListener('input', (event) => {
+          this.keyInput(event);
+        });
+      document.getElementById("noVNC_keyboardinput")
         .addEventListener('focus', (event) => {
           this.onfocusVirtualKeyboard(event)
         });

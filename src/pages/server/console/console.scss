@@ -15,5 +15,15 @@ modal-console {
     font: bold 12px Helvetica;
     margin: auto;
   }
-
+  #noVNC_keyboardinput {
+    width: 1px;
+    height: 1px;
+    background-color: #fff;
+    color: #fff;
+    border: 0;
+    position: absolute;
+    left: -40px;
+    z-index: -1;
+    ime-mode: disabled;
+  }
 }
