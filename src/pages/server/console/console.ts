@@ -179,6 +179,7 @@ export class consoleModal {
     this.rfb.sendCtrlAltDel();
     return false;
   }
+
   public dismiss() {
     this.viewCtrl.dismiss();
   }

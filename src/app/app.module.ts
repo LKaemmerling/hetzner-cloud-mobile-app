@@ -1,6 +1,6 @@
-import {ErrorHandler, NgModule} from '@angular/core';
+import {ErrorHandler, Injectable, Injector, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {IonicApp, IonicModule} from 'ionic-angular';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AboutPage} from '../pages/about/about';
@@ -12,6 +12,7 @@ import {ProjectModule} from "../models/project/project.module";
 import {ProjectsPage} from "../pages/projects/projects";
 import {addProjectModal} from "../pages/projects/addProject/addProject";
 import {ServersPage} from "../pages/server/serverList/servers";
+import {Pro} from '@ionic/pro';
 import {ServerPage} from "../pages/server/server";
 import {addServerModal} from "../pages/server/addServer/addServer";
 import {editServerModal} from "../pages/server/editServer/editServer";
@@ -53,8 +54,34 @@ import {ComponentsModule} from "../components/components.module";
 import {consoleModal} from "../pages/server/console/console";
 import {Keyboard} from "@ionic-native/keyboard";
 
+const IonicPro = Pro.init('359b3ec5', {
+  appVersion: "1.2.0"
+});
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+@Injectable()
+export class MyErrorHandler implements ErrorHandler {
+  ionicErrorHandler: IonicErrorHandler;
+
+  constructor(injector: Injector) {
+    try {
+      this.ionicErrorHandler = injector.get(IonicErrorHandler);
+    } catch (e) {
+      // Unable to get the IonicErrorHandler provider, ensure
+      // IonicErrorHandler has been added to the providers list below
+    }
+  }
+
+  handleError(err: any): void {
+    IonicPro.monitoring.handleNewError(err);
+    // Remove this if you want to disable Ionic's auto exception handling
+    // in development mode.
+    this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+    console.log(err);
+  }
 }
 
 @NgModule({
@@ -150,7 +177,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    ErrorHandler,
+    {provide: ErrorHandler, useClass: MyErrorHandler},
     OneSignal,
     InAppBrowser,
     AppVersion,
