@@ -52,6 +52,7 @@ import {shareProjectModal} from "../pages/projects/shareProject/shareProject";
 import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode/dist";
 import {ComponentsModule} from "../components/components.module";
 import {consoleModal} from "../pages/server/console/console";
+import {Keyboard} from "@ionic-native/keyboard";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.2.0"
@@ -181,7 +182,8 @@ export class MyErrorHandler implements ErrorHandler {
     InAppBrowser,
     AppVersion,
     FingerprintAIO,
-    BarcodeScanner
+    BarcodeScanner,
+    Keyboard
   ]
 })
 export class AppModule {
