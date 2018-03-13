@@ -46,7 +46,7 @@ export class consoleModal {
   }
 
   protected showVirtualKeyboard() {
-    var input = document.getElementById('noVNC_keyboardinput');
+    var input = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
 
     if (document.activeElement == input) return;
 
@@ -95,7 +95,7 @@ export class consoleModal {
   }
 
   protected resetKeyboard() {
-    var kbi = document.getElementById('noVNC_keyboardinput');
+    var kbi = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
     kbi.value = new Array(this.defaultKeyboardinputLen).join("_");
     this.lastKeyboardinput = kbi.value;
   }
@@ -166,12 +166,7 @@ export class consoleModal {
       this.lastKeyboardinput = newValue;
     }
   }
-
-  public send() {
-    this.rfb.sendKey(this.input);
-    this.input = '';
-  }
-
+  
   public sendCtrlAltDel() {
     this.rfb.sendCtrlAltDel();
     return false;
