@@ -108,19 +108,17 @@ export class consoleModal {
     this.lastKeyboardinput = kbi.value;
   }
 
-  public keyInput() {
-    var newValue = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
+  public keyInput(event) {
+    var newValue = event.target.value;
     if (!this.lastKeyboardinput) {
       this.resetKeyboard();
     }
     var oldValue = this.lastKeyboardinput;
-    var target = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
-
     var newLen;
     try {
       // Try to check caret position since whitespace at the end
       // will not be considered by value.length in some browsers
-      newLen = Math.max(target.selectionStart, newValue.value.length);
+      newLen = Math.max(event.target.selectionStart, newValue.value.length);
     } catch (err) {
       // selectionStart is undefined in Google Chrome
       newLen = newValue.value.length;
@@ -139,7 +137,7 @@ export class consoleModal {
     // text-corrections or other input that modify existing text
     var i;
     for (i = 0; i < Math.min(oldLen, newLen); i++) {
-      if (newValue.value.charAt(i) != oldValue.charAt(i)) {
+      if (newValue.charAt(i) != oldValue.charAt(i)) {
         inputs = newLen - i;
         backspaces = oldLen - i;
         break;
@@ -151,8 +149,8 @@ export class consoleModal {
       this.rfb.sendKey(KeyTable.XK_BackSpace, "Backspace");
     }
     for (i = newLen - inputs; i < newLen; i++) {
-      console.log(keysyms.lookup(newValue.value.charCodeAt(i)));
-      this.rfb.sendKey(keysyms.lookup(newValue.value.charCodeAt(i)));
+      console.log(keysyms.lookup(newValue.charCodeAt(i)));
+      this.rfb.sendKey(keysyms.lookup(newValue.charCodeAt(i)));
     }
 
     // Control the text content length in the keyboardinput element
@@ -165,11 +163,11 @@ export class consoleModal {
       // This sometimes causes the keyboard to disappear for a second
       // but it is required for the android keyboard to recognize that
       // text has been added to the field
-      target.blur();
+      event.target.blur();
       // This has to be ran outside of the input handler in order to work
-      setTimeout(target.focus.bind(event.target), 0);
+      setTimeout(event.target.focus.bind(event.target), 0);
     } else {
-      this.lastKeyboardinput = newValue.value;
+      this.lastKeyboardinput = newValue;
     }
   }
 
