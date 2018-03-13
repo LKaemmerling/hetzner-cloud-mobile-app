@@ -3,9 +3,9 @@ import {LoadingController, NavController, NavParams, ViewController} from "ionic
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 
 import RFB from '@novnc/novnc/core/rfb.js';
-import * as KeyTable from "@novnc/novnc/core/input/keysym";
-import * as keysyms from '@novnc/novnc/core/input/keysymdef';
-import * as Keyboard from '@novnc/novnc/core/input/Keyboard';
+import * as KeyTable from "@novnc/novnc/core/input/keysym.js";
+import * as keysyms from '@novnc/novnc/core/input/keysymdef.js';
+import * as Keyboard from '@novnc/novnc/core/input/Keyboard.js';
 
 @Component({
   selector: 'modal-console',
