@@ -4,10 +4,11 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <div id="noVNC_status_bar" style="height:200px;">
+  <div id="noVNC_status_bar" style="height:70px; margin-top:70px;">
     <div id="noVNC_buttons">
       <ion-buttons>
-        <button (click)="keyboard()" ion-button="" color="primary" id="noVNC_keyboard_button"><i class="fas fa-keyboard"></i></button>
+        <button (click)="keyboard()" ion-button="" color="primary" id="noVNC_keyboard_button"><i
+          class="fas fa-keyboard"></i></button>
         <button (click)="sendCtrlAltDel()" ion-button="" color="danger">Send Ctrl Alt Del</button>
         <button (click)="machineShutdown()" ion-button="" color="danger">Shutdown</button>
         <button (click)="machineReboot()" ion-button="" color="secondary">Reboot</button>
@@ -23,7 +24,7 @@
      style for example -->
       <textarea id="noVNC_keyboardinput" autocapitalize="off"
                 autocorrect="off" autocomplete="off" spellcheck="false"
-                mozactionhint="Enter" tabindex="-1"></textarea>
+                mozactionhint="Enter" tabindex="-1" [(ngModel)]="lastKeyboardinput"></textarea>
     </div>
 
   </div>

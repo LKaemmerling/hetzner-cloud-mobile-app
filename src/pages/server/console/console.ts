@@ -3,8 +3,9 @@ import {LoadingController, NavController, NavParams, ViewController} from "ionic
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 
 import RFB from '@novnc/novnc/core/rfb.js';
-var KeyTable = require('@novnc/novnc/core/input/keysym.js');
-var keysyms = require('@novnc/novnc/core/input/keysymdef.js');
+
+var KeyTable = require('@novnc/novnc/core/input/keysym.js').default;
+var keysyms = require('@novnc/novnc/core/input/keysymdef.js').default;
 var Keyboard = require('@novnc/novnc/core/input/keyboard.js').default;
 
 @Component({
@@ -30,19 +31,26 @@ export class consoleModal {
           return false;
         });
       document.getElementById("noVNC_keyboardinput")
-        .addEventListener('change', this.keyInput);
+        .addEventListener('focus', (event) => {
+          this.onfocusVirtualKeyboard(event)
+        });
       document.getElementById("noVNC_keyboardinput")
-        .addEventListener('focus', this.onfocusVirtualKeyboard);
-      document.getElementById("noVNC_keyboardinput")
-        .addEventListener('blur', this.onblurVirtualKeyboard);
+        .addEventListener('blur', (event) => {
+          this.onblurVirtualKeyboard(event)
+        });
       this.touchKeyboard = new Keyboard(document.getElementById('noVNC_keyboardinput'));
-      this.touchKeyboard.onkeyevent = this.keyInput;
+      this.touchKeyboard.onkeyevent = (keysym, code, down) => {
+        this.keyevent(keysym, code, down);
+      };
       this.touchKeyboard.grab();
-      this.rfb.addEventListener("connect", () => {
-        this.rfb.focus();
-      });
-
     });
+  }
+
+  keyevent(keysym, code, down) {
+    console.log(this.rfb);
+    if (!this.rfb) return;
+
+    this.rfb.sendKey(keysym, code, down);
   }
 
   protected showVirtualKeyboard() {
@@ -100,25 +108,23 @@ export class consoleModal {
     this.lastKeyboardinput = kbi.value;
   }
 
-  public keyInput(event) {
-
-    if (!this.rfb) return;
-
-    var newValue = event.target.value;
-
+  public keyInput(e) {
+    console.log(e);
+    var newValue = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
     if (!this.lastKeyboardinput) {
       this.resetKeyboard();
     }
     var oldValue = this.lastKeyboardinput;
+    var target = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
 
     var newLen;
     try {
       // Try to check caret position since whitespace at the end
       // will not be considered by value.length in some browsers
-      newLen = Math.max(event.target.selectionStart, newValue.length);
+      newLen = Math.max(target.selectionStart, newValue.value.length);
     } catch (err) {
       // selectionStart is undefined in Google Chrome
-      newLen = newValue.length;
+      newLen = newValue.value.length;
     }
     var oldLen = oldValue.length;
 
@@ -134,7 +140,7 @@ export class consoleModal {
     // text-corrections or other input that modify existing text
     var i;
     for (i = 0; i < Math.min(oldLen, newLen); i++) {
-      if (newValue.charAt(i) != oldValue.charAt(i)) {
+      if (newValue.value.charAt(i) != oldValue.charAt(i)) {
         inputs = newLen - i;
         backspaces = oldLen - i;
         break;
@@ -146,7 +152,8 @@ export class consoleModal {
       this.rfb.sendKey(KeyTable.XK_BackSpace, "Backspace");
     }
     for (i = newLen - inputs; i < newLen; i++) {
-      this.rfb.sendKey(keysyms.lookup(newValue.charCodeAt(i)));
+      console.log(keysyms.lookup(newValue.value.charCodeAt(i)));
+      this.rfb.sendKey(keysyms.lookup(newValue.value.charCodeAt(i)));
     }
 
     // Control the text content length in the keyboardinput element
@@ -159,11 +166,11 @@ export class consoleModal {
       // This sometimes causes the keyboard to disappear for a second
       // but it is required for the android keyboard to recognize that
       // text has been added to the field
-      event.target.blur();
+      target.blur();
       // This has to be ran outside of the input handler in order to work
-      setTimeout(event.target.focus.bind(event.target), 0);
+      setTimeout(target.focus.bind(event.target), 0);
     } else {
-      this.lastKeyboardinput = newValue;
+      this.lastKeyboardinput = newValue.value;
     }
   }
 
