@@ -19,17 +19,17 @@ do things.
 ## Conversion of Modules
 
 noVNC is written using ECMAScript 6 modules. Many of the major browsers support
-these modules natively, but not all. They are also not supported by Node.js. To
+these modules natively, but not all. They are also not supported by Node. To
 use noVNC in these places the library must first be converted.
 
 Fortunately noVNC includes a script to handle this conversion. Please follow
 the following steps:
 
- 1. Install Node.js
+ 1. Install Node
  2. Run `npm install` in the noVNC directory
- 3. Run `./utils/use_require.js --as <module format>`
+ 3. Run `./utils/use_require --as <module format>`
 
 Several module formats are available. Please run
-`./utils/use_require.js --help` to see them all.
+`./utils/use_require --help` to see them all.
 
 The result of the conversion is available in the `lib/` directory.

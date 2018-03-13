@@ -12,7 +12,7 @@
  * read binary data off of the receive queue.
  */
 
-import * as Log from './util/logging.js';
+import * as Log from './util/logging';
 
 export default function Websock() {
     "use strict";

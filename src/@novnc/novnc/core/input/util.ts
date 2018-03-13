@@ -1,9 +1,8 @@
-import KeyTable from "./keysym.js";
-import keysyms from "./keysymdef.js";
-import vkeys from "./vkeys.js";
-import fixedkeys from "./fixedkeys.js";
-import DOMKeyTable from "./domkeytable.js";
-import * as browser from "../util/browser.js";
+import keysyms from "./keysymdef";
+import vkeys from "./vkeys";
+import fixedkeys from "./fixedkeys";
+import DOMKeyTable from "./domkeytable";
+import * as browser from "../util/browser";
 
 // Get 'KeyboardEvent.code', handling legacy browsers
 export function getKeycode(evt){

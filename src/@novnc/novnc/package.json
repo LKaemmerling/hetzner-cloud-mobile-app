@@ -107,8 +107,8 @@
     "url": "git+https://github.com/novnc/noVNC.git"
   },
   "scripts": {
-    "prepare": "node ./utils/use_require.js --as commonjs --clean",
-    "test": "PATH=$PATH:node_modules/karma/bin karma start karma.conf.js"
+    "prepare": "node ./utils/use_require --as commonjs --clean",
+    "test": "PATH=$PATH:node_modules/karma/bin karma start karma.conf"
   },
   "version": "1.0.0"
 }

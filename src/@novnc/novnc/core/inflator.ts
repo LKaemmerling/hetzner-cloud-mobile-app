@@ -1,5 +1,5 @@
-import { inflateInit, inflate, inflateReset } from "../vendor/pako/lib/zlib/inflate.js";
-import ZStream from "../vendor/pako/lib/zlib/zstream.js";
+import {inflate, inflateInit, inflateReset} from "../vendor/pako/lib/zlib/inflate";
+import ZStream from "../vendor/pako/lib/zlib/zstream";
 
 Inflate.prototype = {
     inflate: function (data, flush, expected) {

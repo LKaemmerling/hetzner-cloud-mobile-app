@@ -11,19 +11,19 @@ official external API.
 
 ## 1.1 Module List
 
-* __Mouse__ (core/input/mouse.js): Mouse input event handler with
+* __Mouse__ (core/input/mouse): Mouse input event handler with
 limited touch support.
 
-* __Keyboard__ (core/input/keyboard.js): Keyboard input event handler with
+* __Keyboard__ (core/input/keyboard): Keyboard input event handler with
 non-US keyboard support. Translates keyDown and keyUp events to X11
 keysym values.
 
-* __Display__ (core/display.js): Efficient 2D rendering abstraction
+* __Display__ (core/display): Efficient 2D rendering abstraction
 layered on the HTML5 canvas element.
 
-* __Websock__ (core/websock.js): Websock client from websockify
+* __Websock__ (core/websock): Websock client from websockify
 with transparent binary data support.
-[Websock API](https://github.com/novnc/websockify/wiki/websock.js) wiki page.
+[Websock API](https://github.com/novnc/websockify/wiki/websock) wiki page.
 
 
 ## 1.2 Callbacks

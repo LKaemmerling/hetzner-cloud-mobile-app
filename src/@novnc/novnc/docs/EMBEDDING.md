@@ -75,9 +75,9 @@ for the application.
 It is possible to perform this conversion ahead of time, avoiding the extra
 load times. To do this please follow these steps:
 
- 1. Install Node.js
+ 1. Install Node
  2. Run `npm install` in the noVNC directory
- 3. Run `./utils/use_require.js --with-app --as commonjs`
+ 3. Run `./utils/use_require --with-app --as commonjs`
 
 This will produce a `build/` directory that includes everything needed to run
 the noVNC application.

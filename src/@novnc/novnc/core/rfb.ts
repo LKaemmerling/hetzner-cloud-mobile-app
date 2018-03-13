@@ -10,20 +10,20 @@
  * (c) 2012 Michael Tinglof, Joe Balaz, Les Piech (Mercuri.ca)
  */
 
-import * as Log from './util/logging.js';
-import { decodeUTF8 } from './util/strings.js';
-import { supportsCursorURIs, isTouchDevice } from './util/browser.js';
-import EventTargetMixin from './util/eventtarget.js';
-import Display from "./display.js";
-import Keyboard from "./input/keyboard.js";
-import Mouse from "./input/mouse.js";
-import Websock from "./websock.js";
-import DES from "./des.js";
-import KeyTable from "./input/keysym.js";
-import XtScancode from "./input/xtscancodes.js";
-import Inflator from "./inflator.js";
-import { encodings, encodingName } from "./encodings.js";
-import "./util/polyfill.js";
+import * as Log from './util/logging';
+import {decodeUTF8} from './util/strings';
+import {isTouchDevice, supportsCursorURIs} from './util/browser';
+import EventTargetMixin from './util/eventtarget';
+import Display from "./display";
+import Keyboard from "./input/keyboard";
+import Mouse from "./input/mouse";
+import Websock from "./websock";
+import DES from "./des";
+import KeyTable from "./input/keysym";
+import XtScancode from "./input/xtscancodes";
+import Inflator from "./inflator";
+import {encodingName, encodings} from "./encodings";
+import "./util/polyfill";
 
 /*jslint white: false, browser: true */
 /*global window, Util, Display, Keyboard, Mouse, Websock, Websock_native, Base64, DES, KeyTable, Inflator, XtScancode */

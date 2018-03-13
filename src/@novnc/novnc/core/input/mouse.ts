@@ -5,9 +5,9 @@
  * Licensed under MPL 2.0 or any later version (see LICENSE.txt)
  */
 
-import * as Log from '../util/logging.js';
-import { isTouchDevice } from '../util/browser.js';
-import { setCapture, stopEvent, getPointerEvent } from '../util/events.js';
+import * as Log from '../util/logging';
+import {isTouchDevice} from '../util/browser';
+import {getPointerEvent, setCapture, stopEvent} from '../util/events';
 
 var WHEEL_STEP = 10; // Delta threshold for a mouse wheel step
 var WHEEL_STEP_TIMEOUT = 50; // ms

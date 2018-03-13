@@ -7,8 +7,8 @@
  * See README.md for usage and integration instructions.
  */
 
-import * as Log from './util/logging.js';
-import Base64 from "./base64.js";
+import * as Log from './util/logging';
+import Base64 from "./base64";
 
 export default function Display(target) {
     this._drawCtx = null;

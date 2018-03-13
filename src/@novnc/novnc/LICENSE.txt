@@ -5,9 +5,9 @@ Public License 2.0). The noVNC core library is composed of the
 Javascript code necessary for full noVNC operation. This includes (but
 is not limited to):
 
-    core/**/*.js
-    app/*.js
-    test/playback.js
+    core/**/*
+    app/*
+    test/playback
 
 The HTML, CSS, font and images files that included with the noVNC
 source distibution (or repository) are not considered part of the
@@ -35,9 +35,9 @@ The are several files and projects that have been incorporated into
 the noVNC core library. Here is a list of those files and the original
 licenses (all MPL 2.0 compatible):
 
-    core/base64.js          : MPL 2.0
+    core/base64          : MPL 2.0
 
-    core/des.js             : Various BSD style licenses
+    core/des             : Various BSD style licenses
 
     vendor/pako/            : MIT
 
@@ -45,7 +45,7 @@ licenses (all MPL 2.0 compatible):
 
     vendor/browser-es-module-loader/dist/ : Various BSD style licenses
 
-    vendor/promise.js       : MIT
+    vendor/promise       : MIT
 
 Any other files not mentioned above are typically marked with
 a copyright/license header at the top of the file. The default noVNC
