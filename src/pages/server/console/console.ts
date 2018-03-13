@@ -108,8 +108,7 @@ export class consoleModal {
     this.lastKeyboardinput = kbi.value;
   }
 
-  public keyInput(e) {
-    console.log(e);
+  public keyInput() {
     var newValue = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
     if (!this.lastKeyboardinput) {
       this.resetKeyboard();
