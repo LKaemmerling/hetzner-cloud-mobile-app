@@ -12,7 +12,6 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "target": "es5",
-    "noResolve": false,
     "allowJs":true
   },
   "include": [
