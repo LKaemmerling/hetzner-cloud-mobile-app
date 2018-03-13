@@ -4,6 +4,17 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
+  <div id="noVNC_status_bar">
+    <div id="noVNC_buttons">
+      <ion-buttons>
+        <button (click)="keyboard()" ion-button="" color="primary"><i class="fas fa-keyboard"></i></button>
+        <button (click)="sendCtrlAltDel()" ion-button="" color="danger">Send Ctrl Alt Del</button>
+        <button (click)="machineShutdown()" ion-button="" color="danger">Shutdown</button>
+        <button (click)="machineReboot()" ion-button="" color="secondary">Reboot</button>
+        <button (click)="machineReset()" ion-button="" color="secondary">Reset</button>
+      </ion-buttons>
+    </div>
+  </div>
   <div class="console_container">
     <div id="console_container">
       <!-- Note that Google Chrome on Android doesn't respect any of these,
@@ -14,16 +25,6 @@
                 autocorrect="off" autocomplete="off" spellcheck="false"
                 mozactionhint="Enter" tabindex="-1"></textarea>
     </div>
-    <div id="noVNC_status_bar">
-      <div id="noVNC_buttons">
-        <ion-buttons>
-          <button (click)="keyboard()" ion-button="" color="primary"><i class="fas fa-keyboard"></i></button>
-          <button (click)="sendCtrlAltDel()" ion-button="" color="danger">Send Ctrl Alt Del</button>
-          <button (click)="machineShutdown()" ion-button="" color="danger">Shutdown</button>
-          <button (click)="machineReboot()" ion-button="" color="secondary">Reboot</button>
-          <button (click)="machineReset()" ion-button="" color="secondary">Reset</button>
-        </ion-buttons>
-      </div>
-    </div>
+
   </div>
 </ion-content>
