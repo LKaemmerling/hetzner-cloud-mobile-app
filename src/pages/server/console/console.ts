@@ -30,7 +30,7 @@ export class consoleModal {
           return false;
         });
       document.getElementById("noVNC_keyboardinput")
-        .addEventListener('input', this.keyInput);
+        .addEventListener('change', this.keyInput);
       document.getElementById("noVNC_keyboardinput")
         .addEventListener('focus', this.onfocusVirtualKeyboard);
       document.getElementById("noVNC_keyboardinput")

@@ -4,10 +4,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <div id="noVNC_status_bar">
+  <div id="noVNC_status_bar" style="height:200px;">
     <div id="noVNC_buttons">
       <ion-buttons>
-        <button (click)="keyboard()" ion-button="" color="primary"><i class="fas fa-keyboard"></i></button>
+        <button (click)="keyboard()" ion-button="" color="primary" id="noVNC_keyboard_button"><i class="fas fa-keyboard"></i></button>
         <button (click)="sendCtrlAltDel()" ion-button="" color="danger">Send Ctrl Alt Del</button>
         <button (click)="machineShutdown()" ion-button="" color="danger">Shutdown</button>
         <button (click)="machineReboot()" ion-button="" color="secondary">Reboot</button>
