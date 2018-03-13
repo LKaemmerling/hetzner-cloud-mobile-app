@@ -4,18 +4,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <div id="noVNC_status_bar" style="height:70px; margin-top:70px;">
-    <div id="noVNC_buttons">
-      <ion-buttons>
-        <button (click)="keyboard()" ion-button="" color="primary" id="noVNC_keyboard_button"><i
-          class="fas fa-keyboard"></i></button>
-        <button (click)="sendCtrlAltDel()" ion-button="" color="danger">Send Ctrl Alt Del</button>
-        <button (click)="machineShutdown()" ion-button="" color="danger">Shutdown</button>
-        <button (click)="machineReboot()" ion-button="" color="secondary">Reboot</button>
-        <button (click)="machineReset()" ion-button="" color="secondary">Reset</button>
-      </ion-buttons>
-    </div>
-  </div>
+
   <div class="console_container">
     <div id="console_container">
       <!-- Note that Google Chrome on Android doesn't respect any of these,
@@ -25,6 +14,15 @@
       <textarea id="noVNC_keyboardinput" autocapitalize="off"
                 autocorrect="off" autocomplete="off" spellcheck="false"
                 mozactionhint="Enter" tabindex="-1" (change)="keyInput($event)"></textarea>
+      </div>
+    <div id="noVNC_status_bar" style="display:flex; justify-content: space-between; width: 100%;">
+      <div id="noVNC_buttons">
+        <ion-buttons>
+          <button (click)="keyboard()" ion-button="" color="primary" id="noVNC_keyboard_button"><i
+            class="fas fa-keyboard"></i></button>
+          <button (click)="sendCtrlAltDel()" ion-button="" color="danger">Send Ctrl Alt Del</button>
+        </ion-buttons>
+      </div>
     </div>
 
   </div>

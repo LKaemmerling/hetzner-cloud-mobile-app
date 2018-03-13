@@ -179,22 +179,6 @@ export class consoleModal {
     this.rfb.sendCtrlAltDel();
     return false;
   }
-
-  public machineShutdown() {
-    this.rfb.machineShutdown();
-    return false;
-  }
-
-  public machineReboot() {
-    this.rfb.machineReboot();
-    return false;
-  }
-
-  public machineReset() {
-    this.rfb.machineReset();
-    return false;
-  }
-
   public dismiss() {
     this.viewCtrl.dismiss();
   }
