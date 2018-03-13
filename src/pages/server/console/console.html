@@ -15,9 +15,9 @@
                 autocorrect="off" autocomplete="off" spellcheck="false"
                 mozactionhint="Enter" tabindex="-1" (change)="keyInput($event)"></textarea>
       </div>
-    <div id="noVNC_status_bar" style="display:flex; justify-content: space-between; width: 100%;">
-      <div id="noVNC_buttons">
-        <ion-buttons>
+    <div id="noVNC_status_bar">
+      <div id="noVNC_buttons" style="display:flex; justify-content: space-between; width: 100%; margin-top:-100px;">
+        <ion-buttons style="background-color:#cccccc; width: 100%; border-top:#f53d3d solid 2px;">
           <button (click)="keyboard()" ion-button="" color="primary" id="noVNC_keyboard_button"><i
             class="fas fa-keyboard"></i></button>
           <button (click)="sendCtrlAltDel()" ion-button="" color="danger">Send Ctrl Alt Del</button>

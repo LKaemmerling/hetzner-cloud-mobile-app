@@ -51,7 +51,6 @@ export class consoleModal {
   }
 
   keyevent(keysym, code, down) {
-    console.log(this.rfb);
     if (!this.rfb) return;
 
     this.rfb.sendKey(keysym, code, down);
