@@ -1,27 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      {{ 'PAGE.SERVERS.MODAL.CONSOLE.TITLE' | translate}}
-    </ion-title>
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
-        <i class="fas fa-times" showWhen="android,windows"></i>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-navbar>
+    <ion-title > {{ 'PAGE.SERVERS.MODAL.CONSOLE.TITLE' | translate}}</ion-title>
+  </ion-navbar>
 </ion-header>
-
 <ion-content>
 <div class="console_container">
   <div id="console_container">
-    <!-- Note that Google Chrome on Android doesn't respect any of these,
-     html attributes which attempt to disable text suggestions on the
-     on-screen keyboard. Let's hope Chrome implements the ime-mode
-     style for example -->
-    <textarea id="noVNC_keyboardinput" autocapitalize="off"
-              autocorrect="off" autocomplete="off" spellcheck="false"
-              mozactionhint="Enter" tabindex="-1"></textarea>
   </div>
+  <div id="noVNC_status_bar">
+    <ion-input ([ngModel])="input"></ion-input>
+    <ion-buttons>
+      <button ion-button="" (click)="send()">Send</button>
+    </ion-buttons>
+    <div id="noVNC_buttons">
+      <input type=button value="Send CtrlAltDel"
+             id="sendCtrlAltDelButton" class="noVNC_shown">
+      <span id="noVNC_power_buttons" class="noVNC_hidden">
+        <input type=button value="Shutdown"
+               id="machineShutdownButton">
+        <input type=button value="Reboot"
+               id="machineRebootButton">
+        <input type=button value="Reset"
+               id="machineResetButton">
+      </span>
+    </div>
+  </div>
+
 </div>
 </ion-content>

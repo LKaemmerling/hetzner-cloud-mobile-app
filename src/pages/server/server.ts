@@ -95,8 +95,7 @@ export class ServerPage {
   }
 
   public console() {
-    let modal = this.modalCtrl.create(consoleModal, {server: this.server});
-    modal.present();
+    this.navCtrl.push(consoleModal, {server: this.server});
   }
 
   public delete() {

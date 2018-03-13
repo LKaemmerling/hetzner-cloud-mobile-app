@@ -13,15 +13,24 @@ export class consoleModal {
   public server: any;
   public payload;
   public rfb;
+  public input: string;
 
   constructor(public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController, public keyboard: Keyboard) {
     this.server = navParams.get('server');
     this.serverApiProvider.requestConsole(this.server.id).then((response) => {
       this.rfb = new RFB(document.getElementById('console_container'), response['wss_url'], {credentials: {password: response['password']}});
-      document.getElementById('noVNC_keyboardinput').click();
-      //this.keyboard.show();
-      this.rfb.focus();
+      this.rfb.viewOnly = false;
+      this.rfb.addEventListener("connect", () => {
+        this.keyboard.show();
+        this.rfb.focus();
+      });
+
     });
+  }
+
+  public send() {
+    this.rfb.sendKey(this.input);
+    this.input = '';
   }
 
   public dismiss() {
