@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 
-import RFB from '../../../@novnc/novnc/core/rfb'
-import KeyTable from '../../../@novnc/novnc/core/input/keysym';
-import keysyms from '../../../@novnc/novnc/core/input/keysymdef';
-import Keyboard  from'../../../@novnc/novnc/core/input/keyboard';
+var RFB = require('@novnc/novnc/core/rfb.js');
+var KeyTable  = require( '@novnc/novnc/core/input/keysym.js');
+var keysyms  = require( '@novnc/novnc/core/input/keysymdef.js');
+var Keyboard   = require('@novnc/novnc/core/input/keyboard.js');
 
 @Component({
   selector: 'modal-console',
