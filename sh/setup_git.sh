@@ -9,4 +9,4 @@ echo "GitHub Mirror";
 git remote set-url --add --push origin git@github.com:LKDevelopment/hetzner-cloud-mobile-app.git
 echo "Setup done now fetch everything from gitlab";
 git fetch
-git push --
+git push --set-upstream origin master
