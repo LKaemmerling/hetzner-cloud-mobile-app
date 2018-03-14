@@ -14,7 +14,7 @@
   "PAGE": {
     "HOME": {
       "TITLE": "Startseite",
-      "TEXT": "<h2>Willkommen auf der Hetzner Cloud Mobile App.</h2> <p>Diese App ist eine inoffizielle App für die Hetzner Cloud. Über diese App können Sie viele der aus der Hetzner Cloud Console bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p>",
+      "TEXT": "<h2>Willkommen auf der Hetzner Cloud Mobile App.</h2> <p>Diese App ist eine inoffizielle App für die Hetzner Cloud. Über diese App können Sie viele der aus der Hetzner Cloud Console bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p> <p class='message_box info'>Wir möchten die App noch weiter verbessern und haben daher eine kleine Umfrage vorbereitet. Bitte nehmen Sie sich kurz Zeit um die <a href='https://goo.gl/forms/6fgsHcM62fLEpzmB3' target='_blank'>Umfrage auszufüllen</a>.",
       "ADD_PROJECT_BUTTON": "Jetzt erstes Projekt hinzufügen!"
     },
     "ABOUT": {
