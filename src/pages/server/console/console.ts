@@ -152,7 +152,7 @@ export class consoleModal {
       this.rfb.sendKey(KeyTable.XK_BackSpace, "Backspace");
     }
     for (i = newLen - inputs; i < newLen; i++) {
-      console.log(keysyms.lookup(newValue.charCodeAt(i)));
+      alert(keysyms.lookup(newValue.charCodeAt(i)));
       this.rfb.sendKey(keysyms.lookup(newValue.charCodeAt(i)));
     }
 
