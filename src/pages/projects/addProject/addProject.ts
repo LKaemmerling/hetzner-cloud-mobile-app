@@ -28,9 +28,13 @@ export class addProjectModal {
 
   public scanProject() {
     this.barcodeScanner.scan().then((barcodeData) => {
-     let payload = JSON.parse(barcodeData.text);
-      this.project_name = payload['name'];
-      this.api_key = payload['api_key'];
+      try {
+        let payload = JSON.parse(barcodeData.text);
+        this.project_name = payload['name'];
+        this.api_key = payload['api_key'];
+      }catch (e){
+        this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.SCAN_ERROR';
+      }
     }, (err) => {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.SCAN_ERROR';
       return;

@@ -55,7 +55,7 @@ import {consoleModal} from "../pages/server/console/console";
 import {Keyboard} from "@ionic-native/keyboard";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.2.0"
+  appVersion: "1.2.1"
 });
 
 export function createTranslateLoader(http: HttpClient) {

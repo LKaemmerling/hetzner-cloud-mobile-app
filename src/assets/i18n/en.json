@@ -242,7 +242,7 @@
             "REQUIRED_TYPE": "Please choose a server type.",
             "REQUIRED_LOCATION": "Please choose a location.",
             "REQUIRED_IMAGE": "Please choose a image.",
-            "REQUIRED_NAME": "Please enter a name longer than 3 characters.",
+            "REQUIRED_NAME": "Please enter a valid hostname longer than 3 characters.",
             "NETWORK_ERROR": "There was an error executing your task. Please try again."
           }
         },

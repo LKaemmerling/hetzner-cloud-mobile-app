@@ -99,7 +99,7 @@ export class ServersPage {
     this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
       _delete = text;
     });
-    if (confirm('Möchten Sie den Server ' + server.name + ' wirklich unwiderruflich löschen?')) {
+    if (confirm(_delete)) {
       var loader = this.loadingCtrl.create();
       loader.present();
       this.serverApiProvider.delete(server.id).then((data) => {

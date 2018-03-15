@@ -242,7 +242,7 @@
             "REQUIRED_TYPE": "Bitte geben Sie einen Typen an.",
             "REQUIRED_LOCATION": "Bitte geben Sie einen Standort an.",
             "REQUIRED_IMAGE": "Bitte geben Sie ein Image an.",
-            "REQUIRED_NAME": "Bitte geben Sie einen Namen an der länger als drei Zeichen ist.",
+            "REQUIRED_NAME": "Bitte geben Sie einen validen Hostnamen ein der länger als drei Zeichen ist.",
             "NETWORK_ERROR": "Leider gab es bei der Anfrage einen Fehler. Probieren Sie es bitte erneut."
           }
         },
