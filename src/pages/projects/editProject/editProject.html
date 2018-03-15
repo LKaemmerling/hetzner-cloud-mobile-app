@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ 'PAGE.PROJECTS.MODAL.EDIT.TITLE' | translate }}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
+        <i class="fas fa-times" showWhen="android,windows"></i>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p *ngIf="error !== null" class="message_box error" text-wrap="">{{ error | translate }}</p>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>{{ 'PAGE.PROJECTS.MODAL.ADD.FORM.PROJECT_NAME' | translate }}</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="project.name" required=""></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button color="danger" (click)="saveProject()">{{ 'ACTIONS.SAVE' | translate }}</button>
+  <div class="message_box info">
+    {{'PAGE.PROJECTS.MODAL.ADD.FORM.TOOLTIP.PROJECT_NAME' | translate}}
+  </div>
+</ion-content>

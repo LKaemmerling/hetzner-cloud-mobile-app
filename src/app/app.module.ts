@@ -53,6 +53,7 @@ import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode/dist";
 import {ComponentsModule} from "../components/components.module";
 import {consoleModal} from "../pages/server/console/console";
 import {Keyboard} from "@ionic-native/keyboard";
+import {editProjectModal} from "../pages/projects/editProject/editProject";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.2.1"
@@ -92,6 +93,7 @@ export class MyErrorHandler implements ErrorHandler {
     ProjectsPage,
     addProjectModal,
     shareProjectModal,
+    editProjectModal,
     ServersPage,
     ServerPage,
     addServerModal,
@@ -172,7 +174,8 @@ export class MyErrorHandler implements ErrorHandler {
     ServerMetricsPage,
     SettingsPage,
     ActionsPage,
-    consoleModal
+    consoleModal,
+    editProjectModal
   ],
   providers: [
     StatusBar,

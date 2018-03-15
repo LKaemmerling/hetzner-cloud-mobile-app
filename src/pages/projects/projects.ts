@@ -9,6 +9,7 @@ import {Storage} from "@ionic/storage";
 import {shareProjectModal} from "./shareProject/shareProject";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
 import {fadeIn, fadeOut} from "ng-animate";
+import {editProjectModal} from "./editProject/editProject";
 
 @Component({
   selector: 'page-projects',
@@ -42,6 +43,14 @@ export class ProjectsPage {
       this.visible[menuId] = 'active';
     }
 
+  }
+
+  openEditModal(project) {
+    let modal = this.modal.create(editProjectModal, {project: project});
+    modal.onDidDismiss(() => {
+      this._projects = this.project.projects;
+    });
+    modal.present();
   }
 
   openProjectModal() {

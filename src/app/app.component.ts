@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Nav, Platform} from 'ionic-angular';
+import {App, Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
@@ -27,8 +27,9 @@ export class MyApp {
   rootPage: any = HomePage;
   public lang: string = 'de';
 
-  constructor(platform: Platform, statusBar: StatusBar, public splashScreen: SplashScreen, public projects: ProjectsService, public storage: Storage, public servers: ServersService, public oneSignal: OneSignal, public fingerPrint: FingerprintAIO, public translate: TranslateService) {
+  constructor(app:App,platform: Platform, statusBar: StatusBar, public splashScreen: SplashScreen, public projects: ProjectsService, public storage: Storage, public servers: ServersService, public oneSignal: OneSignal, public fingerPrint: FingerprintAIO, public translate: TranslateService) {
     platform.ready().then(() => {
+      app.getRootNav()
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       storage.ready().then(() => {

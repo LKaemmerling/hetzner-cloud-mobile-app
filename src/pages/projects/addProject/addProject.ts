@@ -15,15 +15,10 @@ export class addProjectModal {
   public project_name: string;
   public api_key: string;
   public error: string = null;
-  public experimental_shareable_projects: boolean = false;
   public image: string = '';
 
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider, protected translate: TranslateService, protected storage: Storage, public barcodeScanner: BarcodeScanner) {
-    storage.get('experimental_shareable_projects').then((val) => {
-      if (val != undefined) {
-        this.experimental_shareable_projects = val;
-      }
-    });
+
   }
 
   public scanProject() {

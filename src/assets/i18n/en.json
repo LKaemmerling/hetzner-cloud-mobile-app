@@ -122,8 +122,11 @@
             "SCAN_ERROR": "There was a error while scanning the image."
           }
         },
+        "EDIT": {
+          "TITLE": "Edit project"
+        },
         "SHARE": {
-          "TITLE": "Share Project",
+          "TITLE": "Share project",
           "MESSAGE": "With this feature, you can easily share projects between your devices without having to permanently enter the API key of the project name. Just scan this QR-code when creating a new project."
         }
       }

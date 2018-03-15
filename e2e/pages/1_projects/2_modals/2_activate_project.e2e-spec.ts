@@ -4,7 +4,7 @@ import {describe} from "selenium-webdriver/testing";
 import {ElementHandleEventFn} from "@angular/core/src/view";
 import {promise, WebElement} from "selenium-webdriver";
 
-xdescribe('[1][2][1] Activate Project', () => {
+xdescribe('[1][2][2] Activate Project', () => {
   let page: Page;
   let first_active: promise.Promise<string>;
   let next_active: ElementFinder;

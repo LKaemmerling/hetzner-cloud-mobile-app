@@ -122,6 +122,9 @@
             "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
           }
         },
+        "EDIT": {
+          "TITLE": "Projekt bearbeiten"
+        },
         "SHARE": {
           "TITLE": "Projekt teilen",
           "MESSAGE": "Mit dieser Funktion können Sie einfach Projekte zwischen Ihren Geräten teilen, ohne dauerhaft den API-Key der den Projektnamen eingeben zu müssen. Scannen Sie einfach diesen QR-Code bei Erstellung eines neuen Projektes."

@@ -5,7 +5,6 @@
     <author email="kontakt@lukas-kaemmerling.de" href="https://lk-development.de">LK-Development</author>
     <content src="index.html" />
     <access origin="*" />
-    <engine name="android" spec="6.4.0" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -107,4 +106,6 @@
     <allow-navigation href="*" />
     <access origin="wss:///*" />
     <access origin="https://api.hetzner.cloud" />
+    <engine name="android" spec="6.4.0" />
+    <engine name="browser" spec="5.0.3" />
 </widget>
