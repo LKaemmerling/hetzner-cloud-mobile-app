@@ -14,14 +14,29 @@
       <textarea id="noVNC_keyboardinput" autocapitalize="off"
                 autocorrect="off" autocomplete="off" spellcheck="false"
                 mozactionhint="Enter" tabindex="-1" (change)="keyInput($event)"></textarea>
-      </div>
+    </div>
     <div id="noVNC_status_bar">
-      <div id="noVNC_buttons" style="display:flex; justify-content: space-between; width: 100%; margin-top:-100px;">
-        <ion-buttons style="background-color:#cccccc; width: 100%; border-top:#f53d3d solid 2px;">
-          <button (click)="keyboard()" ion-button="" color="primary" id="noVNC_keyboard_button"><i
-            class="fas fa-keyboard"></i></button>
-          <button (click)="sendCtrlAltDel()" ion-button="" color="danger">Send Ctrl Alt Del</button>
-        </ion-buttons>
+      <div id="noVNC_buttons" style="display:flex; justify-content: space-between; margin-top:-100px;">
+        <div style="width: 100%; background-color:#cccccc; border-top:#f53d3d solid 2px; z-index: 99;">
+          <div style="font-size:12px;" ion-row="">
+            <div ion-text=""  left="" col-6>
+              {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv4' | translate}} {{ server.public_net.ipv4.ip }} <br/>
+              {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv6' | translate}} {{ server.public_net.ipv6.ip }} <br/>
+            </div>
+            <div ion-text="" right="" col-6>
+              <em>{{ server.name }}</em><br/>
+              {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}} {{
+              server.datacenter.description}}<br/>
+            </div>
+          </div>
+          <div ion-row="">
+            <ion-buttons col-12="">
+              <button (click)="keyboard()" ion-button="" color="primary" id="noVNC_keyboard_button"><i
+                class="fas fa-keyboard"></i></button>
+              <button (click)="sendCtrlAltDel()" ion-button="" color="danger">Send Ctrl Alt Del</button>
+            </ion-buttons>
+          </div>
+        </div>
       </div>
     </div>
 
