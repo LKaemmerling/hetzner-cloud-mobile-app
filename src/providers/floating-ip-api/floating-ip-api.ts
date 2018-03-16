@@ -53,7 +53,7 @@ export class FloatingIpApiProvider extends HetznerApiProvider {
   }
 
   /**
-   * Assigns a Floating IP to a server
+   * Assigns a Floating IP to a Server
    * @see https://docs.hetzner.cloud/#resources-floating-ip-actions-post
    * @param {number} floatingIpId
    * @param {number} serverId

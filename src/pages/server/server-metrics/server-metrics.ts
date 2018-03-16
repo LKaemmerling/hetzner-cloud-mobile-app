@@ -2,6 +2,7 @@ import {Component, QueryList, SimpleChanges, ViewChildren} from '@angular/core';
 import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {BaseChartDirective} from "ng2-charts";
+import {Server} from "../../../models/servers/server";
 
 /**
  * Generated class for the ServerMetricsPage page.
@@ -16,19 +17,19 @@ import {BaseChartDirective} from "ng2-charts";
 })
 export class ServerMetricsPage {
 
-  public min = '';
-  public max = '';
-  public time_start = null;
+  public min:string = '';
+  public max:string = '';
+  public time_start:string = null;
 
   public time_end = null;
-  public server;
-  public cpu_metrics = [];
-  public cpu_metrics_label = [];
-  public options = {
+  public server:Server;
+  public cpu_metrics:Array<any> = [];
+  public cpu_metrics_label:Array<any> = [];
+  public options:object = {
     responsive: true,
     spanGaps: true,
   };
-  public mb_options = {
+  public mb_options:object = {
     responsive: true,
     spanGaps: true,
     scales: {
@@ -43,16 +44,23 @@ export class ServerMetricsPage {
     }
   };
   @ViewChildren(BaseChartDirective) chart: QueryList<BaseChartDirective>;
-  public disk_metrics = [];
-  public disk_labels = [];
-  public disk_bandwidth_metrics = [];
-  public disk_bandwidth_labels = [];
-  public network_pps_metrics = [];
-  public network_pps_labels = [];
+  public disk_metrics:Array<any> = [];
+  public disk_labels:Array<any> = [];
+  public disk_bandwidth_metrics:Array<any> = [];
+  public disk_bandwidth_labels:Array<any> = [];
+  public network_pps_metrics:Array<any> = [];
+  public network_pps_labels:Array<any> = [];
 
-  public network_bandwidth_metrics = [];
-  public network_bandwidth_labels = [];
+  public network_bandwidth_metrics:Array<any> = [];
+  public network_bandwidth_labels:Array<any> = [];
 
+  /**
+   *
+   * @param {NavController} navCtrl
+   * @param {NavParams} navParams
+   * @param {ServerApiProvider} serverApiProvider
+   * @param {LoadingController} loadingCtrl
+   */
   constructor(public navCtrl: NavController, public navParams: NavParams, public serverApiProvider: ServerApiProvider,public loadingCtrl:LoadingController) {
     this.min = new Date(new Date().setDate(new Date().getDate() - 30)).toISOString();
     this.max = new Date().toISOString();
@@ -62,6 +70,10 @@ export class ServerMetricsPage {
     this.load(false);
   }
 
+  /**
+   *
+   * @param {boolean} reload
+   */
   public load(reload = true) {
     var loader = this.loadingCtrl.create();
     loader.present();
@@ -83,10 +95,12 @@ export class ServerMetricsPage {
         });
       });
     });
-
-
   }
 
+  /**
+   *
+   * @returns {Promise<any>}
+   */
   public getCpuMetrics() {
     return new Promise((resolve, reject = null) => {
       this.cpu_metrics = [];
@@ -102,6 +116,10 @@ export class ServerMetricsPage {
     });
   }
 
+  /**
+   *
+   * @returns {Promise<any>}
+   */
   public getDiskMetrics() {
     return new Promise((resolve, reject = null) => {
       this.serverApiProvider.getMetrics(this.server.id, 'disk', this.time_start, this.time_end).then((data) => {
@@ -135,6 +153,10 @@ export class ServerMetricsPage {
     });
   }
 
+  /**
+   *
+   * @returns {Promise<any>}
+   */
   public getNetworkMetrics() {
     return new Promise((resolve, reject = null) => {
       this.serverApiProvider.getMetrics(this.server.id, 'network', this.time_start, this.time_end).then((data) => {
@@ -166,8 +188,11 @@ export class ServerMetricsPage {
       });
     });
   }
-
-
+  /**
+   *
+   * @param UNIX_timestamp
+   * @returns {string}
+   */
   public timeConverter(UNIX_timestamp) {
     //var f = UNIX_timestamp.split('.');
     var a = new Date(UNIX_timestamp * 1000);
@@ -204,10 +229,10 @@ export class ServerMetricsPage {
     ];
 
     let unit = 0;
-bytes = parseFloat(String(bytes));
-if(bytes < 0){
-  bytes = bytes * -1;
-}
+    bytes = parseFloat(String(bytes));
+    if(bytes < 0){
+      bytes = bytes * -1;
+    }
     while (bytes >= 1024) {
       bytes /= 1024;
       unit++;

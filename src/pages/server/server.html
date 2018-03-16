@@ -86,7 +86,7 @@
         {{ 'PAGE.SERVERS.TYPE_DETAILS.MEMORY' | translate}}
       </div>
       <div item-right="" id="server_type_memory">
-        {{ server.server_type.memory * 1024 }} MB
+        {{ server.server_type.memory * 1024  }} MB
       </div>
     </ion-item>
     <ion-item>
@@ -102,7 +102,8 @@
         {{ 'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE' | translate}}
       </div>
       <div item-right="">
-        {{ server.server_type.storage_type}}
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STORAGE_TYPE.'+server.server_type.storage_type.toUpperCase() |
+        translate}}
       </div>
     </ion-item>
   </ion-list>
@@ -115,7 +116,7 @@
         <div class="label" color="danger">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.DELETE' | translate}}</div>
         <i class="fas fa-trash"></i>
       </button>
-      <button ion-fab color="danger" (click)="powerSettingsModal()"  id="power_settings">
+      <button ion-fab color="danger" (click)="powerSettingsModal()" id="power_settings">
         <div class="label" color="danger">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.POWER' | translate}}</div>
         <i class="fas fa-power-off"></i>
       </button>
@@ -139,7 +140,7 @@
         <div class="label" color="light">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.METRICS' | translate}}</div>
         <i class="fas fa-chart-area"></i>
       </button>
-      <button ion-fab color="light" (click)="console()">
+      <button ion-fab color="light" (click)="consolePage()">
         <div class="label" color="light">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.CONSOLE' | translate}}</div>
         <i class="fas fa-terminal"></i>
       </button>

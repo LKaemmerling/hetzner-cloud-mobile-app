@@ -39,7 +39,7 @@
     </ion-list-header>
     <ion-item>
       <ion-label>{{ 'PAGE.SETTINGS.DESIGN.COMPACT_SERVERS' | translate }}</ion-label>
-      <ion-toggle [(ngModel)]="experimental_servers_design" (ionChange)="changeServersDesign()"></ion-toggle>
+      <ion-toggle [(ngModel)]="compact_server_design" (ionChange)="changeServersDesign()"></ion-toggle>
     </ion-item>
   </ion-list>
   <button ion-button="" color="danger" (click)="openDeleteAllPage()">

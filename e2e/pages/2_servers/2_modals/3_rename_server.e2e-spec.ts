@@ -16,8 +16,8 @@ describe('[2][2][3] Rename Server', () => {
     page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
     element(by.css('#server_0  .server_menu')).click();
-    browser.sleep(500);
-    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
+    browser.sleep(2000);
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS').toUpperCase())).click();
     browser.sleep(2000);
     element(by.id('server_actions')).click();
     browser.sleep(500);

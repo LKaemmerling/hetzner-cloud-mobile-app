@@ -3,6 +3,7 @@ import {LoadingController, NavController, NavParams, ViewController} from "ionic
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 
 import RFB from '@novnc/novnc/core/rfb.js';
+import {Server} from "../../../models/servers/server";
 
 var KeyTable = require('@novnc/novnc/core/input/keysym.js').default;
 var keysyms = require('@novnc/novnc/core/input/keysymdef.js').default;
@@ -13,14 +14,43 @@ var Keyboard = require('@novnc/novnc/core/input/keyboard.js').default;
   templateUrl: 'console.html'
 })
 export class consoleModal {
-  public server: any;
+  /**
+   *
+   */
+  public server: Server;
+  /**
+   *
+   */
   public payload;
+  /**
+   *
+   */
   public rfb;
+  /**
+   *
+   */
   public input: string;
+  /**
+   *
+   */
   protected defaultKeyboardinputLen: 100;
+  /**
+   *
+   */
   protected lastKeyboardinput: string;
+  /**
+   *
+   */
   protected touchKeyboard;
 
+  /**
+   *
+   * @param {ViewController} viewCtrl
+   * @param {ServerApiProvider} serverApiProvider
+   * @param {NavParams} navParams
+   * @param {NavController} navCtrl
+   * @param {LoadingController} loadingCtrl
+   */
   constructor(public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
     this.serverApiProvider.requestConsole(this.server.id).then((response) => {
@@ -50,12 +80,21 @@ export class consoleModal {
     });
   }
 
+  /**
+   *
+   * @param keysym
+   * @param code
+   * @param down
+   */
   keyevent(keysym, code, down) {
     if (!this.rfb) return;
 
     this.rfb.sendKey(keysym, code, down);
   }
 
+  /**
+   *
+   */
   protected showVirtualKeyboard() {
     var input = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
 
@@ -71,6 +110,10 @@ export class consoleModal {
     } // setSelectionRange is undefined in Google Chrome
   }
 
+  /**
+   *
+   * @param event
+   */
   protected onblurVirtualKeyboard(event) {
     document.getElementById('noVNC_keyboard_button')
       .classList.remove("noVNC_selected");
@@ -79,6 +122,10 @@ export class consoleModal {
     }
   }
 
+  /**
+   *
+   * @param event
+   */
   protected onfocusVirtualKeyboard(event) {
     document.getElementById('noVNC_keyboard_button')
       .classList.add("noVNC_selected");
@@ -87,6 +134,9 @@ export class consoleModal {
     }
   }
 
+  /**
+   *
+   */
   protected hideVirtualKeyboard() {
     var input = document.getElementById('noVNC_keyboardinput');
 
@@ -95,6 +145,9 @@ export class consoleModal {
     input.blur();
   }
 
+  /**
+   *
+   */
   public keyboard() {
     if (document.getElementById('noVNC_keyboard_button')
         .classList.contains("noVNC_selected")) {
@@ -105,12 +158,19 @@ export class consoleModal {
 
   }
 
+  /**
+   *
+   */
   protected resetKeyboard() {
     var kbi = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
     kbi.value = new Array(this.defaultKeyboardinputLen).join("_");
     this.lastKeyboardinput = kbi.value;
   }
 
+  /**
+   *
+   * @param event
+   */
   public keyInput(event) {
     var newValue = event.target.value;
     if (!this.lastKeyboardinput) {
@@ -173,11 +233,18 @@ export class consoleModal {
     }
   }
 
+  /**
+   *
+   * @returns {boolean}
+   */
   public sendCtrlAltDel() {
     this.rfb.sendCtrlAltDel();
     return false;
   }
 
+  /**
+   *
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }

@@ -10,6 +10,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {editServerModal} from "../editServer/editServer";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
 import {fadeIn, fadeOut} from "ng-animate";
+import {Server} from "../../../models/servers/server";
 
 @Component({
   selector: 'page-servers',
@@ -22,38 +23,80 @@ import {fadeIn, fadeOut} from "ng-animate";
       state('*', style({
         display: 'none',
       })),
-      transition('* => active', useAnimation(fadeIn, {params: {timing: 1, delay: 0}})),
+      transition('* => active', useAnimation(fadeIn, {params: {timing: 0.3, delay: 0}})),
       transition('active => *', useAnimation(fadeOut, {params: {timing: 0, delay: 0}}))])
   ],
 })
 export class ServersPage {
+  /**
+   *
+   * @type {any[]}
+   */
+  public servers: Array<Server> = [];
+  /**
+   *
+   * @type {any[]}
+   *
+   */
+  public _search: Array<Server> = [];
 
-  public servers;
-  public _search;
+  /**
+   *
+   * @type {boolean}
+   */
   public loading: boolean = false;
+  /**
+   *
+   * @type {boolean}
+   */
   public loading_done: boolean = false;
+  /**
+   *
+   * @type {any[]}
+   */
   public visible: Array<string> = [];
-  public experimental_servers_design: boolean = false;
+  /**
+   *
+   * @type {boolean}
+   */
+  public compact_server_design: boolean = false;
 
+  /**
+   *
+   * @param {NavController} navCtrl
+   * @param {ProjectsService} project
+   * @param {ServerApiProvider} serverApiProvider
+   * @param {ModalController} modal
+   * @param {LoadingController} loadingCtrl
+   * @param {ServersService} serversService
+   * @param {Storage} storage
+   * @param {TranslateService} translate
+   */
   constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController, public serversService: ServersService, public storage: Storage, public translate: TranslateService) {
     this.servers = this._search = this.serversService.servers;
-    storage.get('experimental_servers_design').then((val) => {
+    storage.get('compact_server_design').then((val) => {
       if (val != undefined) {
-        this.experimental_servers_design = val;
+        this.compact_server_design = val;
       }
     });
   }
 
-  openSubMenu(menuId) {
+  /**
+   *
+   * @param {string} menuId
+   */
+  openSubMenu(menuId: string) {
+    this.visible = [];
     if (this.visible[menuId] != undefined && this.visible[menuId] == 'active') {
-      this.visible = [];
+
     } else {
-      this.visible = [];
       this.visible[menuId] = 'active';
     }
-
   }
 
+  /**
+   *
+   */
   public loadServers() {
     this.loading = true;
     this.serversService.reloadServers().then(() => {
@@ -65,36 +108,32 @@ export class ServersPage {
     });
   }
 
+  /**
+   *
+   * @param {any} refresher
+   */
   public refresh(refresher = null) {
 
     this.loadServers();
     if (refresher !== null) {
       refresher.complete();
-      ;
     }
   }
 
-  public details(server) {
-    this.navCtrl.push(ServerPage, {server: server});
-  }
-
-  public openEditModal(server) {
-    let modal = this.modal.create(editServerModal, {server: server});
-    modal.onDidDismiss(() => {
-      this.loadServers();
-    });
-
-    modal.present();
-  }
-
-
+  /**
+   *
+   */
   public ionViewWillEnter() {
     this.serversService.reloadServers().then(() => {
       this.servers = this._search = this.serversService.servers;
     });
   }
 
-  public delete(server) {
+  /**
+   *
+   * @param {Server} server
+   */
+  public delete(server:Server) {
     let _delete: string = '';
     this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
       _delete = text;
@@ -103,12 +142,16 @@ export class ServersPage {
       var loader = this.loadingCtrl.create();
       loader.present();
       this.serverApiProvider.delete(server.id).then((data) => {
-        this.loadServers()
+        this.loadServers();
         loader.dismiss();
       });
     }
   }
 
+  /**
+   *
+   * @param ev
+   */
   search(ev) {
     // Reset items back to all of the items
     this._search = this.servers;
@@ -126,12 +169,36 @@ export class ServersPage {
     }
   }
 
+  /**
+   *
+   */
   openCreateServerModal() {
     let modal = this.modal.create(addServerModal);
     modal.onDidDismiss(() => {
       this.loadServers();
-    })
+    });
 
     modal.present();
+  }
+
+  /**
+   *
+   * @param {Server} server
+   */
+  public openEditModal(server:Server) {
+    let modal = this.modal.create(editServerModal, {server: server});
+    modal.onDidDismiss(() => {
+      this.loadServers();
+    });
+
+    modal.present();
+  }
+
+  /**
+   *
+   * @param {Server} server
+   */
+  public openDetailsPage(server:Server) {
+    this.navCtrl.push(ServerPage, {server: server});
   }
 }

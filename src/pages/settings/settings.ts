@@ -19,14 +19,38 @@ import {OneSignal} from "@ionic-native/onesignal";
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
-
+  /**
+   * Contains the Version String of the app
+   * @type {string}
+   */
   public version: string = 'DEV-VERSION';
+  /**
+   * -1 if the finger print Auth isn't available, 0 if is available but not enabled, 1 if available and enabled
+   * @type {number}
+   */
   public finger_print: number = -1;
-
+  /**
+   * The Language Key
+   * @type {string}
+   */
   public language: string = 'de';
-  public experimental_servers_design: boolean = false;
+  /**
+   *
+   * @type {boolean}
+   */
+  public compact_server_design: boolean = false;
 
-
+  /**
+   *
+   * @param {NavController} navCtrl
+   * @param {NavParams} navParams
+   * @param {AppVersion} appVersion
+   * @param {FingerprintAIO} fingerprint
+   * @param {Storage} storage
+   * @param {LoadingController} loadingCtrl
+   * @param {TranslateService} translate
+   * @param {OneSignal} oneSignal
+   */
   constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO, public storage: Storage, public loadingCtrl: LoadingController, public translate: TranslateService, public oneSignal: OneSignal) {
     appVersion.getVersionNumber().then((_version) => {
       this.version = _version;
@@ -36,9 +60,9 @@ export class SettingsPage {
         this.language = value;
       }
     });
-    storage.get('experimental_servers_design').then(value => {
+    storage.get('compact_server_design').then(value => {
       if (value != undefined) {
-        this.experimental_servers_design = value;
+        this.compact_server_design = value;
       }
     });
 
@@ -56,10 +80,16 @@ export class SettingsPage {
     }).then(() => this.finger_print = -1);
   }
 
+  /**
+   *
+   */
   openDeleteAllPage() {
     this.navCtrl.push(DeleteAllDataPage);
   }
 
+  /**
+   *
+   */
   changeLanguage() {
     let loader = this.loadingCtrl.create();
     loader.present();
@@ -73,6 +103,9 @@ export class SettingsPage {
     loader.dismiss();
   }
 
+  /**
+   *
+   */
   openFingerprint() {
     this.fingerprint.show({
       clientId: 'Hetzner-Cloud-Mobile',
@@ -91,10 +124,13 @@ export class SettingsPage {
     });
   }
 
+  /**
+   *
+   */
   changeServersDesign() {
     let loader = this.loadingCtrl.create();
     loader.present();
-    this.storage.set('experimental_servers_design', this.experimental_servers_design);
+    this.storage.set('compact_server_design', this.compact_server_design);
     loader.dismiss();
   }
 

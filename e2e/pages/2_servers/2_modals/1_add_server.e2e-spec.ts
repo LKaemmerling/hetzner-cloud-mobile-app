@@ -15,7 +15,7 @@ describe('[2][2][1] Create Server', () => {
   });
 
 
-  it('[1] when i click the button it should open the modal then i should test the form and then i create the server', () => {
+  it('[1] when i click the button it should open the modal then i should test the form and then i create the Server', () => {
     element(by.className('fab')).click();
     browser.sleep(500);
     expect(element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addServer[1]/ion-header[1]/ion-toolbar[1]/div[2]/ion-title[1]/div[1]')).getText()).toContain(page.getLocal('PAGE.SERVERS.MODAL.ADD.TITLE'));
@@ -60,7 +60,7 @@ describe('[2][2][1] Create Server', () => {
     browser.sleep(500);
     page.screenshot('add_server');
     element(by.buttonText(page.getLocal('ACTIONS.ORDER'))).click();
-    //console.debug('Sorry the Server Creation could take up to 15 seconds');
+    //consolePage.debug('Sorry the Server Creation could take up to 15 seconds');
     browser.sleep(1000 * 15).then(() => {
       page.screenshot('servers_list');
       expect(element(by.css('#server_0 h2')).getText()).toContain('E2E-Test-Server');
@@ -73,14 +73,14 @@ describe('[2][2][1] Create Server', () => {
       element(by.id('server_actions')).click();
       browser.sleep(500);
       page.screenshot('server_actions');
-      //console.debug('wait 15 seconds again so the server could startup');
+      //consolePage.debug('wait 15 seconds again so the Server could startup');
       browser.sleep(1000 * 15).then(() => {
-        //console.debug('done');
+        //consolePage.debug('done');
       });
     });
   });
 
-  it("[2] deletes server", () => {
+  it("[2] deletes Server", () => {
     element(by.css('#server_0  .server_menu')).click();
     browser.sleep(500);
     element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
@@ -90,9 +90,9 @@ describe('[2][2][1] Create Server', () => {
     element(by.id('delete_server')).click();
     browser.sleep(500);
     browser.switchTo().alert().accept();
-    //console.log('wait 5 seconds');
+    //consolePage.log('wait 5 seconds');
     browser.sleep(1000 * 5).then(() => {
-      //console.log('done');
+      //consolePage.log('done');
     });
   });
 });

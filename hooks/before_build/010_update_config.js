@@ -26,7 +26,7 @@ fs.readFile('config.xml', 'utf8', function(err, data) {
         // Get JS Obj
         var obj = result;
         obj['widget']['$']['version'] = packageJson.version;
-        // console.log(obj);
+        // consolePage.log(obj);
         // Build XML from JS Obj
         var builder = new xml2js.Builder();
         var xml = builder.buildObject(obj);
@@ -37,7 +37,7 @@ fs.readFile('config.xml', 'utf8', function(err, data) {
                 return console.log(err);
             }
 
-            //console.log('Build number successfully incremented');
+            //consolePage.log('Build number successfully incremented');
         });
 
     });

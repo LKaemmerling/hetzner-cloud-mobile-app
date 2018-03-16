@@ -22,7 +22,7 @@
 
     <ion-item>
       <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.TYPE' | translate}}</ion-label>
-      <ion-select [(ngModel)]="server_type" id="select_type" required="" interface="popover">
+      <ion-select [(ngModel)]="server_type" id="select_type" required="">
         <ion-option *ngFor="let _server_type of server_types"  [value]="_server_type"  [id]="'type'+_server_type.id"  [translate]="'PAGE.SERVERS.MODAL.ADD.FORM.PRICING'" [translateParams]="{typeName:_server_type.description, typePrice:_server_type.prices[0].price_monthly.gross | number:'1.2-2'}">
         </ion-option>
       </ion-select>

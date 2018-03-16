@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../../providers/server-api/server-api";
+import {Server} from "../../../../models/servers/server";
 
 
 @Component({
@@ -8,14 +9,30 @@ import {ServerApiProvider} from "../../../../providers/server-api/server-api";
   templateUrl: 'changeIPv6ReverseDNS.html'
 })
 export class changeIPv6ReverseDNSModal {
-  public server: any;
+  /**
+   *
+   */
+  public server: Server;
+  /**
+   *
+   */
   public param: any;
 
+  /**
+   *
+   * @param {ViewController} viewCtrl
+   * @param {LoadingController} loadingCtrl
+   * @param {NavParams} navParams
+   * @param {ServerApiProvider} serverApiProvider
+   */
   constructor(public viewCtrl: ViewController, public loadingCtrl: LoadingController, navParams: NavParams, public serverApiProvider: ServerApiProvider) {
     this.server = navParams.get('server');
     this.param = {serverName: this.server.name};
   }
 
+  /**
+   *
+   */
   public saveReverseDNS() {
     let loader = this.loadingCtrl.create();
     loader.present();
@@ -30,10 +47,16 @@ export class changeIPv6ReverseDNSModal {
 
   }
 
+  /**
+   *
+   */
   public addEntry() {
     this.server.public_net.ipv6.dns_ptr.push({ip: '', dns_ptr: ''});
   }
 
+  /**
+   *
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }

@@ -7,7 +7,7 @@ function startWebServer(host, root, cb) {
   // Serve up public/ftp folder
   const serve = require('serve-static')(root);
 
-  // Create server
+  // Create Server
   const server = require('http').createServer(
     (req, res) => serve(req, res, require('finalhandler')(req, res))
 );

@@ -14,22 +14,37 @@ import {ServersPage} from "./serverList/servers";
 import {ServerMetricsPage} from "./server-metrics/server-metrics";
 import {TranslateService} from "@ngx-translate/core";
 import {consoleModal} from "./console/console";
+import {Server} from "../../models/Servers/Server";
 
 @Component({
   selector: 'page-server',
   templateUrl: 'server.html'
 })
 export class ServerPage {
-  public server;
-  public powerOn = true;
-  public rescueMode = false;
+  /**
+   *
+   */
+  public server: Server;
 
+  /**
+   *
+   * @param navCtrl
+   * @param project
+   * @param serverApiProvider
+   * @param navParams
+   * @param modalCtrl
+   * @param loadingCtrl
+   * @param serverService
+   * @param translate
+   */
   constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public serverService: ServersService, public translate: TranslateService) {
     this.server = navParams.get('server');
-    this.powerOn = (this.server.status == 'running');
-    this.rescueMode = this.server.rescue_enabled;
   }
 
+  /**
+   *
+   * @param refresher
+   */
   public refresh(refresher) {
     this.serverApiProvider.getServer(this.server.id).then((data) => {
       this.server = data['server'];
@@ -37,67 +52,79 @@ export class ServerPage {
     });
   }
 
-  public toggleStatus() {
-    if (!this.powerOn) {
-      this.serverApiProvider.shutdown(this.server.id);
-    } else {
-      this.serverApiProvider.powerOn(this.server.id);
-    }
-    //this.powerOn = !this.powerOn;
-  }
-
-  public toggleRescueMode() {
-    if (!this.rescueMode) {
-      this.serverApiProvider.disable_rescue(this.server.id);
-    } else {
-      this.serverApiProvider.enable_rescue(this.server.id);
-    }
-    //this.rescueMode = !this.rescueMode;
-  }
-
+  /**
+   * Open the Edit Server Modal
+   */
   public openEditModal() {
     let modal = this.modalCtrl.create(editServerModal, {server: this.server});
     modal.present();
   }
 
+  /**
+   * Open the Power Settings Modal
+   */
   public powerSettingsModal() {
     let modal = this.modalCtrl.create(powerSettingsModal, {server: this.server});
     modal.present();
   }
 
+  /**
+   * Open Rescue Mode Modal
+   */
   public rescueModeModal() {
     let modal = this.modalCtrl.create(rescueModeModal, {server: this.server});
     modal.present();
   }
 
+  /**
+   * Open the Modal for Server Upgrades
+   */
   public resizeModal() {
     let modal = this.modalCtrl.create(resizeServerModal, {server: this.server});
     modal.present();
   }
 
+  /**
+   * Open the Modal for the Backup Settings
+   */
   public backupSettingsModal() {
     let modal = this.modalCtrl.create(backupSettingsModal, {server: this.server});
     modal.present();
   }
 
+  /**
+   * Open the Modal for the IPv4 Reverse DNS Changes
+   */
   public changeIPv4ReverseDNSModal() {
     let modal = this.modalCtrl.create(changeIPv4ReverseDNSModal, {server: this.server});
     modal.present();
   }
 
+  /**
+   * Open the Modal for the IPv6 Reverse DNS Changes
+   */
   public changeIPv6ReverseDNSModal() {
     let modal = this.modalCtrl.create(changeIPv6ReverseDNSModal, {server: this.server});
     modal.present();
   }
 
+  /**
+   * Open the Page for the Server Metrics
+   */
   public metricsPage() {
     this.navCtrl.push(ServerMetricsPage, {server: this.server});
   }
 
-  public console() {
+  /**
+   * Open the Page for the VNC Console
+   */
+  public consolePage() {
     this.navCtrl.push(consoleModal, {server: this.server});
   }
 
+  /**
+   * Ask for Confirmation of Server Deletion
+   */
   public delete() {
     let _delete: string = '';
     this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {

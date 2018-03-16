@@ -208,7 +208,11 @@
             "TITLE": "Informationen:",
             "LOCATION": "Standort:",
             "STATUS": "Status:",
-            "IMAGE": "Image:"
+            "IMAGE": "Image:",
+            "STORAGE_TYPE":{
+              "LOCAL": "lokale Festplatten",
+              "NETWORK": "Netzwerk Ceph Cluster"
+            }
           },
           "NETWORK": {
             "TITLE": "Netzwerk:",

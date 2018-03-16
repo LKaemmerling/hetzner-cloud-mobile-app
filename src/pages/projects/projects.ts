@@ -22,7 +22,7 @@ import {editProjectModal} from "./editProject/editProject";
       state('*', style({
         display: 'none',
       })),
-      transition('* => active', useAnimation(fadeIn, {params: {timing: 1, delay: 0}})),
+      transition('* => active', useAnimation(fadeIn, {params: {timing: 0.3, delay: 0}})),
       transition('active => *', useAnimation(fadeOut, {params: {timing: 0, delay: 0}}))])
   ],
 })

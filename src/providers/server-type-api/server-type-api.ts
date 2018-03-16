@@ -10,7 +10,7 @@ import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 @Injectable()
 export class ServerTypeApiProvider extends HetznerApiProvider {
   /**
-   * Gets all server type objects
+   * Gets all Server type objects
    * @see https://docs.hetzner.cloud/#resources-server-types-get
    * @param {string} searchTerm
    * @returns {Promise<any>}

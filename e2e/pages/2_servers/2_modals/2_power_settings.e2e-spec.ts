@@ -14,9 +14,9 @@ describe('[2][2][2] Power Settings', () => {
   beforeEach(() => {
     page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
-    element(by.css('[data-server*="E2E-Test-Server"]')).click();
-    browser.sleep(500);
-    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
+    element(by.css('[data-Server*="E2E-Test-Server"]')).click();
+    browser.sleep(2000);
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS').toUpperCase())).click();
     browser.sleep(2000);
     element(by.id('server_actions')).click();
     browser.sleep(500);
@@ -29,9 +29,9 @@ describe('[2][2][2] Power Settings', () => {
     browser.sleep(1000);
     page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
     browser.sleep(500);
-    element(by.css('[data-server*="E2E-Test-Server"]')).click();
-    browser.sleep(500);
-    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
+    element(by.css('[data-Server*="E2E-Test-Server"]')).click();
+    browser.sleep(2000);
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS').toUpperCase())).click();
     browser.sleep(2000);
     element(by.id('server_actions')).click();
     browser.sleep(500);
@@ -40,7 +40,7 @@ describe('[2][2][2] Power Settings', () => {
     expect(element(by.id('power_on')).isDisplayed()).toBeTruthy();
     element(by.id('power_on')).click();
     browser.sleep(1000 * 20).then(() => {
-      //console.debug('Give the Server some time to come up');
+      //consolePage.debug('Give the Server some time to come up');
     });
   });
   /**
@@ -52,12 +52,12 @@ describe('[2][2][2] Power Settings', () => {
       element(by.id('shutdown')).click();
       browser.sleep(500);
       browser.sleep(1000 * 90).then(() => {
-        //console.debug('Give the Server some time to shutdown');
+        //consolePage.debug('Give the Server some time to shutdown');
         page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
         browser.sleep(500);
-        element(by.css('[data-server*="E2E-Test-Server"]')).click();
-        browser.sleep(500);
-        element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
+        element(by.css('[data-Server*="E2E-Test-Server"]')).click();
+        browser.sleep(2000);
+        element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS').toUpperCase())).click();
         browser.sleep(2000);
         element(by.id('server_actions')).click();
         browser.sleep(500);
@@ -67,7 +67,7 @@ describe('[2][2][2] Power Settings', () => {
         browser.sleep(500);
         element(by.id('power_on')).click();
         browser.sleep(1000 * 10).then(() => {
-          //console.debug('Give the Server some time to come up');
+          //consolePage.debug('Give the Server some time to come up');
         });
       });
     });
@@ -75,13 +75,13 @@ describe('[2][2][2] Power Settings', () => {
   it("[3] reset", () => {
     element(by.id('reset')).click();
     browser.sleep(1000 * 30).then(() => {
-      //console.debug('Give the Server some time to reset');
+      //consolePage.debug('Give the Server some time to reset');
 
       page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
       browser.sleep(500);
-      element(by.css('[data-server*="E2E-Test-Server"]')).click();
-      browser.sleep(500);
-      element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
+      element(by.css('[data-Server*="E2E-Test-Server"]')).click();
+      browser.sleep(2000);
+      element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS').toUpperCase())).click();
       browser.sleep(2000);
       element(by.id('server_actions')).click();
       browser.sleep(500);

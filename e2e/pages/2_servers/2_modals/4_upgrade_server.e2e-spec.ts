@@ -47,7 +47,7 @@ describe('[2][2][3] Upgrade Server', () => {
     browser.sleep(1000 * 30).then(() => { // Wait 30 Seconds
       page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
       browser.sleep(500);
-      //console.debug('Give the Server some time to upgrade');
+      //consolePage.debug('Give the Server some time to upgrade');
       browser.sleep(1000 * 90).then(() => { // Wait 1 1/2 Minutes
           page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
           browser.sleep(500);

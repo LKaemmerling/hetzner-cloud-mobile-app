@@ -41,7 +41,7 @@
         }
       },
       "DESIGN": {
-        "COMPACT_SERVERS": "Enable Compact Server Design?"
+        "COMPACT_SERVERS": "Enable compact Server Design?"
       }
     },
     "STATUS": {
@@ -208,7 +208,11 @@
             "TITLE": "Information:",
             "LOCATION": "Location:",
             "STATUS": "Status:",
-            "IMAGE": "Image:"
+            "IMAGE": "Image:",
+            "STORAGE_TYPE":{
+              "LOCAL": "local Disks",
+              "NETWORK": "Network Ceph Cluster"
+            }
           },
           "NETWORK": {
             "TITLE": "Network:",

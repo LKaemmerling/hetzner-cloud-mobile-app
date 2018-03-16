@@ -11,7 +11,7 @@ import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 export class ServerApiProvider extends HetznerApiProvider {
 
   /**
-   * Returns all existing server objects
+   * Returns all existing Server objects
    * @see https://docs.hetzner.cloud/#resources-servers-get
    * @param {string} searchTerm
    * @returns {Promise<any>}
@@ -21,7 +21,7 @@ export class ServerApiProvider extends HetznerApiProvider {
   }
 
   /**
-   * Returns a specific server object. The server must exist inside the project
+   * Returns a specific Server object. The Server must exist inside the project
    * @see https://docs.hetzner.cloud/#resources-servers-get-1
    * @param {number} serverId
    * @returns {Promise<any>}
@@ -31,7 +31,7 @@ export class ServerApiProvider extends HetznerApiProvider {
   }
 
   /**
-   * Creates a new server. Returns preliminary information about the server as well as an action that covers progress of creation.
+   * Creates a new Server. Returns preliminary information about the Server as well as an action that covers progress of creation.
    * @see https://docs.hetzner.cloud/#resources-servers-post
    * @param {string} name
    * @param {number} server_type_id

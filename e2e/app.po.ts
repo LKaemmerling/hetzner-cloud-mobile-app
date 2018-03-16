@@ -110,12 +110,12 @@ export class Page {
     }
     element(by.buttonText(this.getLocal('ACTIONS.ORDER'))).click();
 
-    //console.debug('Sorry the Server Creation could take up to 15 seconds');
+    //consolePage.debug('Sorry the Server Creation could take up to 15 seconds');
     browser.sleep(1000 * 15).then(() => {
       if (wait_on_startup) {
-        //console.debug('wait 15 seconds again so the server could startup');
+        //consolePage.debug('wait 15 seconds again so the Server could startup');
         browser.sleep(1000 * 15).then(() => {
-          //console.debug('done');
+          //consolePage.debug('done');
         });
       }
     });
@@ -123,7 +123,7 @@ export class Page {
 
   deleteServer(name: string = "E2E-Test-Server") {
     this.navigateToMenuPoint(this.getLocal('PAGE.SERVERS.TITLE'));
-    element(by.css('[data-server*="' + name + '"]')).click();
+    element(by.css('[data-Server*="' + name + '"]')).click();
     browser.sleep(500);
     element(by.partialButtonText(this.getLocal('ACTIONS.OPEN_DETAILS'))).click();
     browser.sleep(500);
@@ -132,9 +132,9 @@ export class Page {
     element(by.id('delete_server')).click();
     browser.sleep(500);
     browser.switchTo().alert().accept();
-    //console.log('wait 5 seconds');
+    //consolePage.log('wait 5 seconds');
     browser.sleep(1000 * 5).then(() => {
-      //console.log('done');
+      //consolePage.log('done');
     });
   }
 

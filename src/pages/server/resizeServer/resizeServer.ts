@@ -3,19 +3,46 @@ import {ProjectsService} from "../../../models/project/ProjectsService";
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ServerTypeApiProvider} from "../../../providers/server-type-api/server-type-api";
+import {Server, ServerType} from "../../../models/servers/server";
 
 @Component({
   selector: 'modal-resizeServer',
   templateUrl: 'resizeServer.html'
 })
 export class resizeServerModal {
-  public server: any;
-  public server_types: Array<any> = [];
-  public server_type: any;
-  public upgrade_disk: false;
-
+  /**
+   *
+   */
+  public server: Server;
+  /**
+   *
+   * @type {any[]}
+   */
+  public server_types: Array<ServerType> = [];
+  /**
+   *
+   */
+  public server_type: ServerType;
+  /**
+   *
+   */
+  public upgrade_disk: boolean = false;
+  /**
+   *
+   * @type {null}
+   */
   public error: string = null;
 
+  /**
+   *
+   * @param {ProjectsService} project
+   * @param {ViewController} viewCtrl
+   * @param {ServerApiProvider} serverApiProvider
+   * @param {NavParams} navParams
+   * @param {NavController} navCtrl
+   * @param {ServerTypeApiProvider} serverTypeApiProvider
+   * @param {LoadingController} loadingCtrl
+   */
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public serverTypeApiProvider: ServerTypeApiProvider, public loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
     serverTypeApiProvider.getServerTypes().then((data) => {
@@ -27,7 +54,9 @@ export class resizeServerModal {
     })
   }
 
-
+  /**
+   *
+   */
   public resizeServer() {
 
     if (this.server_type == null) {

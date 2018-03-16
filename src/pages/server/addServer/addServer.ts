@@ -7,26 +7,80 @@ import {ImageApiProvider} from "../../../providers/image-api/image-api";
 import {LocationApiProvider} from "../../../providers/location-api/location-api";
 import {SshKeyApiProvider} from "../../../providers/ssh-key-api/ssh-key-api";
 import {ServersService} from "../../../models/servers/ServersService";
+import {Location, ServerType} from "../../../models/servers/server";
 
 @Component({
   selector: 'modal-addServer',
   templateUrl: 'addServer.html'
 })
 export class addServerModal {
+  /**
+   *
+   */
   public name: string;
-  public server_type: any;
-  public server_types: Array<any>;
+  /**
+   *
+   */
+  public server_type: ServerType;
+  /**
+   *
+   */
+  public server_types: Array<ServerType>;
+  /**
+   *
+   */
   public location: number;
-  public locations: Array<any>;
+  /**
+   *
+   */
+  public locations: Array<Location>;
+  /**
+   *
+   */
   public ssh_key: Array<any>;
+  /**
+   *
+   */
   public ssh_keys: Array<any>;
+  /**
+   *
+   */
   public image: number;
+  /**
+   *
+   */
   public images: Array<any>;
+  /**
+   *
+   * @type {boolean}
+   */
   public start_after_create: boolean = true;
 
+  /**
+   *
+   * @type {null}
+   */
   public error: string = null;
+  /**
+   *
+   * @type {null}
+   * @private
+   */
   public __selected_image: number = null;
 
+  /**
+   *
+   * @param {ProjectsService} project
+   * @param {ViewController} viewCtrl
+   * @param {ServerApiProvider} serverApiProvider
+   * @param {ServerTypeApiProvider} serverTypeApiProvider
+   * @param {ImageApiProvider} imageApiProvider
+   * @param {LocationApiProvider} locationApiProvider
+   * @param {SshKeyApiProvider} sshKeyApiProvider
+   * @param {LoadingController} loadingCtrl
+   * @param {ServersService} serverService
+   * @param {NavParams} navParams
+   */
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public serverTypeApiProvider: ServerTypeApiProvider, public imageApiProvider: ImageApiProvider, public locationApiProvider: LocationApiProvider, public sshKeyApiProvider: SshKeyApiProvider, public loadingCtrl: LoadingController, public serverService: ServersService, public navParams: NavParams) {
     this.__selected_image = this.navParams.get('selected_image');
     if (this.__selected_image != null) {
@@ -46,7 +100,9 @@ export class addServerModal {
     })
   }
 
-
+  /**
+   *
+   */
   public createServer() {
     this.error = null;
     if (this.server_type == null) {
@@ -61,7 +117,7 @@ export class addServerModal {
       this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_IMAGE';
       return;
     }
-    if (this.name == null || this.name.length < 3 ||  /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/g.test(this.name) == false) {
+    if (this.name == null || this.name.length < 3 || /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/g.test(this.name) == false) {
       this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_NAME';
       return;
     }
@@ -80,6 +136,9 @@ export class addServerModal {
     });
   }
 
+  /**
+   *
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }

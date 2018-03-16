@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ProjectsService} from "../../../models/project/ProjectsService";
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
+import {Server} from "../../../models/servers/server";
 
 
 @Component({
@@ -9,23 +10,27 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
   templateUrl: 'powerSettings.html'
 })
 export class powerSettingsModal {
-  public server: any;
+  /**
+   *
+   */
+  public server: Server;
 
+  /**
+   *
+   * @param {ProjectsService} project
+   * @param {ViewController} viewCtrl
+   * @param {ServerApiProvider} serverApiProvider
+   * @param {NavParams} navParams
+   * @param {NavController} navCtrl
+   * @param {LoadingController} loadingCtrl
+   */
   constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
   }
 
-
-  public softReboot() {
-    var loader = this.loadingCtrl.create();
-    loader.present();
-    this.serverApiProvider.reboot(this.server.id).then(() => {
-      loader.dismiss();
-      this.dismiss();
-    });
-
-  }
-
+  /**
+   *
+   */
   public reset() {
     var loader = this.loadingCtrl.create();
     loader.present();
@@ -36,6 +41,9 @@ export class powerSettingsModal {
 
   }
 
+  /**
+   *
+   */
   public shutdown() {
     var loader = this.loadingCtrl.create();
     loader.present();
@@ -46,6 +54,9 @@ export class powerSettingsModal {
 
   }
 
+  /**
+   *
+   */
   public powerOff() {
     var loader = this.loadingCtrl.create();
     loader.present();
@@ -55,6 +66,9 @@ export class powerSettingsModal {
     });
   }
 
+  /**
+   *
+   */
   public powerOn() {
     var loader = this.loadingCtrl.create();
     loader.present();
@@ -63,6 +77,10 @@ export class powerSettingsModal {
       this.dismiss();
     });
   }
+
+  /**
+   *
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }
