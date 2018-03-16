@@ -14,7 +14,7 @@ import {ServersPage} from "./serverList/servers";
 import {ServerMetricsPage} from "./server-metrics/server-metrics";
 import {TranslateService} from "@ngx-translate/core";
 import {consoleModal} from "./console/console";
-import {Server} from "../../models/Servers/Server";
+import {Server} from "../../models/Servers/server";
 
 @Component({
   selector: 'page-server',
