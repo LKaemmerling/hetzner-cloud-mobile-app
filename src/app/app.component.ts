@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {App, Nav, Platform} from 'ionic-angular';
+import {Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
@@ -22,14 +22,78 @@ import {ActionsPage} from "../pages/actions/actions";
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class HetznerCloudMobileApp {
+  /**
+   *
+   */
   @ViewChild(Nav) nav: Nav;
+  /**
+   *
+   * @type {HomePage}
+   */
   rootPage: any = HomePage;
+  /**
+   *
+   * @type {string}
+   */
   public lang: string = 'de';
+  /**
+   *
+   * @type {({key: string; icon: string; page: HomePage; hidden: boolean} | {key: string; icon: string; page: ProjectsPage; hidden: boolean} | {key: string; icon: string; page: ServersPage; hidden: boolean} | {key: string; icon: string; page: FloatingIPsPage; hidden: boolean} | {key: string; icon: string; page: ImagesPage; hidden: boolean} | {key: string; icon: string; page: ActionsPage; hidden: boolean} | {key: string; icon: string; page: HetznerStatusPage; hidden: boolean} | {key: string; icon: string; page: SettingsPage; hidden: boolean})[]}
+   */
+  protected menu_entries: Array<object> = [
+    {
+      key: 'PAGE.HOME.TITLE',
+      icon: 'fa-home',
+      page: HomePage,
+      hidden: false
+    },
+    {
+      key: 'PAGE.PROJECTS.TITLE',
+      icon: 'fa-lock',
+      page: ProjectsPage,
+      hidden: true
+    },
+    {
+      key: 'PAGE.SERVERS.TITLE',
+      icon: 'fa-server',
+      page: ServersPage,
+      hidden: true
+    },
+    {
+      key: 'PAGE.FLOATING_IPS.TITLE',
+      icon: 'fa-cloud',
+      page: FloatingIPsPage,
+      hidden: true
+    },
+    {
+      key: 'PAGE.IMAGES.TITLE',
+      icon: 'fa-puzzle-piece',
+      page: ImagesPage,
+      hidden: true
+    },
+    {
+      key: 'PAGE.ACTIONS.TITLE',
+      icon: 'fa-cog',
+      page: ActionsPage,
+      hidden: true
+    },
+    {
+      key: 'PAGE.STATUS.TITLE',
+      icon: 'fa-bell',
+      page: HetznerStatusPage,
+      hidden: false
+    },
+    {
+      key: 'PAGE.SETTINGS.TITLE',
+      icon: 'fa-cogs',
+      page: SettingsPage,
+      hidden: false
+    }
+  ];
 
-  constructor(app:App,platform: Platform, statusBar: StatusBar, public splashScreen: SplashScreen, public projects: ProjectsService, public storage: Storage, public servers: ServersService, public oneSignal: OneSignal, public fingerPrint: FingerprintAIO, public translate: TranslateService) {
+  constructor(platform: Platform, statusBar: StatusBar, public splashScreen: SplashScreen, public projects: ProjectsService, public storage: Storage, public servers: ServersService, public oneSignal: OneSignal, public fingerPrint: FingerprintAIO, public translate: TranslateService) {
     platform.ready().then(() => {
-      app.getRootNav()
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       storage.ready().then(() => {
@@ -75,11 +139,17 @@ export class MyApp {
     });
   }
 
+  /**
+   *
+   */
   public loadHetznerSpecificData() {
     this.projects.loadProjects();
     this.servers.loadServers();
   }
 
+  /**
+   *
+   */
   public loadLocalization() {
     this.translate.setDefaultLang(this.lang);
     this.translate.addLangs(['en', 'de']);
@@ -92,39 +162,25 @@ export class MyApp {
     });
   }
 
-  openHomePage() {
-    this.nav.setRoot(HomePage);
+  /**
+   *
+   * @param menu
+   */
+  openPage(menu) {
+    this.nav.setRoot(menu.page);
   }
 
+  /**
+   *
+   */
   openProjectsPage() {
     this.nav.setRoot(ProjectsPage);
   }
 
+  /**
+   *
+   */
   openAboutPage() {
     this.nav.setRoot(AboutPage);
-  }
-
-  openServersPage() {
-    this.nav.setRoot(ServersPage);
-  }
-
-  openFloatingIPsPage() {
-    this.nav.setRoot(FloatingIPsPage);
-  }
-
-  openImagesPage() {
-    this.nav.setRoot(ImagesPage);
-  }
-
-  openHetznerStatusPage() {
-    this.nav.setRoot(HetznerStatusPage);
-  }
-
-  openSettingsPage() {
-    this.nav.setRoot(SettingsPage);
-  }
-
-  openActionsPage() {
-    this.nav.setRoot(ActionsPage);
   }
 }

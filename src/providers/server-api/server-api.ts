@@ -52,6 +52,12 @@ export class ServerApiProvider extends HetznerApiProvider {
     })
   }
 
+  /**
+   * Changes a Servername
+   * @param {number} serverId
+   * @param {string} newName
+   * @returns {Promise<any>}
+   */
   changeServerName(serverId: number, newName: string) {
 
     return this._put('servers/' + serverId, {
@@ -59,6 +65,13 @@ export class ServerApiProvider extends HetznerApiProvider {
     })
   }
 
+  /**
+   * Change the Type of an Server
+   * @param {number} serverId
+   * @param {number} server_type_id
+   * @param {boolean} upgrade_disk
+   * @returns {Promise<any>}
+   */
   changeServerType(serverId: number, server_type_id: number, upgrade_disk: boolean) {
     return this._post('servers/' + serverId + '/actions/change_type', {
       upgrade_disk: upgrade_disk,
@@ -66,6 +79,11 @@ export class ServerApiProvider extends HetznerApiProvider {
     })
   }
 
+  /**
+   * Power on a Server
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   powerOn(serverId: number) {
     return this._post('servers/' + serverId + '/actions/poweron');
   }

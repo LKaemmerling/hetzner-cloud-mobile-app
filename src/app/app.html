@@ -6,29 +6,8 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item="" (click)="openHomePage()" menuClose="">
-        <i class="fas fa-fw fa-home"></i> {{ 'PAGE.HOME.TITLE' | translate }}
-      </button>
-      <button ion-item="" (click)="openProjectsPage()" menuClose="">
-        <i class="fas fa-fw fa-lock"></i> {{ 'PAGE.PROJECTS.TITLE' | translate }}
-      </button>
-      <button ion-item *ngIf="projects.actual_project != null" (click)="openServersPage()" menuClose="">
-        <i class="fas fa-fw fa-server"></i> {{ 'PAGE.SERVERS.TITLE' | translate }}
-      </button>
-      <button ion-item *ngIf="projects.actual_project != null" (click)="openFloatingIPsPage()" menuClose="">
-        <i class="fas fa-fw fa-cloud"></i> {{ 'PAGE.FLOATING_IPS.TITLE' | translate }}
-      </button>
-      <button ion-item *ngIf="projects.actual_project != null" (click)="openImagesPage()" menuClose="">
-        <i class="fas fa-puzzle-piece fa-fw"></i> {{ 'PAGE.IMAGES.TITLE' | translate }}
-      </button>
-      <button ion-item *ngIf="projects.actual_project != null" (click)="openActionsPage()" menuClose="" >
-        <i class="fas fa-cog fa-fw"></i> {{ 'PAGE.ACTIONS.TITLE' | translate }}
-      </button>
-      <button ion-item menuClose="" (click)="openHetznerStatusPage()">
-        <i class="fas fa-bell fa-fw"></i> {{ 'PAGE.STATUS.TITLE' | translate }}
-      </button>
-      <button ion-item menuClose="" (click)="openSettingsPage()" id="settings_page">
-        <i class="fas fa-cogs fa-fw"></i> {{ 'PAGE.SETTINGS.TITLE' | translate }}
+      <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose="">
+        <i [class]="'fas fa-fw '+menu_entry.icon"></i> {{ menu_entry.key | translate }}
       </button>
       <button ion-item (click)="openAboutPage()" menuClose=""
               style="position: fixed; bottom:0; text-align: center;font-size:12px;">

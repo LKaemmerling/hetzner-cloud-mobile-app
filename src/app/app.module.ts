@@ -1,7 +1,7 @@
 import {ErrorHandler, Injectable, Injector, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
-import {MyApp} from './app.component';
+import {HetznerCloudMobileApp} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AboutPage} from '../pages/about/about';
 import {HomePage} from '../pages/home/home';
@@ -87,7 +87,7 @@ export class MyErrorHandler implements ErrorHandler {
 
 @NgModule({
   declarations: [
-    MyApp,
+    HetznerCloudMobileApp,
     AboutPage,
     HomePage,
     ProjectsPage,
@@ -122,7 +122,7 @@ export class MyErrorHandler implements ErrorHandler {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(HetznerCloudMobileApp),
     IonicStorageModule.forRoot(),
     ProjectModule,
     HttpClientModule,
@@ -145,7 +145,7 @@ export class MyErrorHandler implements ErrorHandler {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    HetznerCloudMobileApp,
     AboutPage,
     HomePage,
     ProjectsPage,

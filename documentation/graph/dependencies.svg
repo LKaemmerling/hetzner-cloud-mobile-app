@@ -5,7 +5,7 @@
  -->
 <!-- Title: dependencies Pages: 1 -->
 <svg width="6014pt" height="363pt"
- viewBox="0.00 0.00 6014.00 363.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+     viewBox="0.00 0.00 6014.00 363.00" xmlns="http://www.w3.org/2000/svg">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 359)">
 <title>dependencies</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-359 6010,-359 6010,4 -4,4"/>
@@ -84,7 +84,7 @@
 <title>cluster_ServersModule_providers</title>
 <polygon fill="none" stroke="#000000" points="1810,-78 1810,-130 1964,-130 1964,-78 1810,-78"/>
 </g>
-<!-- MyApp -->
+<!-- HetznerCloudMobileApp -->
 <g id="node1" class="node">
 <title>MyApp</title>
 <polygon fill="#ffffb3" stroke="#000000" points="5405.5529,-198 5346.4471,-198 5346.4471,-162 5405.5529,-162 5405.5529,-198"/>
@@ -96,7 +96,7 @@
 <polygon fill="#8dd3c7" stroke="#000000" points="3364.6571,-263 3361.6571,-267 3340.6571,-267 3337.6571,-263 3281.3429,-263 3281.3429,-227 3364.6571,-227 3364.6571,-263"/>
 <text text-anchor="middle" x="3323" y="-240.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppModule</text>
 </g>
-<!-- MyApp&#45;&gt;AppModule -->
+<!-- HetznerCloudMobileApp&#45;&gt;AppModule -->
 <g id="edge1" class="edge">
 <title>MyApp&#45;&gt;AppModule</title>
 <path fill="none" stroke="#000000" d="M5376,-198.3802C5376,-222.2785 5376,-261 5376,-261 5376,-261 3374.9398,-261 3374.9398,-261"/>
