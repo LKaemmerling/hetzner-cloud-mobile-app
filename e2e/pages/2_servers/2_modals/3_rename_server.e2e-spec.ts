@@ -1,7 +1,6 @@
 import {Page} from "../../../app.po";
 import {browser, by, element} from "protractor";
 import {describe} from "selenium-webdriver/testing";
-import {skip} from "rxjs/operator/skip";
 
 describe('[2][2][3] Rename Server', () => {
   let page: Page;
@@ -17,7 +16,7 @@ describe('[2][2][3] Rename Server', () => {
     browser.sleep(500);
     element(by.css('#server_0  .server_menu')).click();
     browser.sleep(2000);
-    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS').toUpperCase())).click();
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
     browser.sleep(2000);
     element(by.id('server_actions')).click();
     browser.sleep(500);

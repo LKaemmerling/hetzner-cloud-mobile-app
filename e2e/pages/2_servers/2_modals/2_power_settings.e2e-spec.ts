@@ -16,7 +16,7 @@ describe('[2][2][2] Power Settings', () => {
     browser.sleep(500);
     element(by.css('[data-server*="E2E-Test-Server"]')).click();
     browser.sleep(2000);
-    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS').toUpperCase())).click();
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
     browser.sleep(2000);
     element(by.id('server_actions')).click();
     browser.sleep(500);
@@ -31,7 +31,7 @@ describe('[2][2][2] Power Settings', () => {
     browser.sleep(500);
     element(by.css('[data-server*="E2E-Test-Server"]')).click();
     browser.sleep(2000);
-    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS').toUpperCase())).click();
+    element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS'))).click();
     browser.sleep(2000);
     element(by.id('server_actions')).click();
     browser.sleep(500);
@@ -79,7 +79,7 @@ describe('[2][2][2] Power Settings', () => {
 
       page.navigateToMenuPoint(page.getLocal('PAGE.SERVERS.TITLE'));
       browser.sleep(500);
-      element(by.css('[data-Server*="E2E-Test-Server"]')).click();
+      element(by.css('[data-server*="E2E-Test-Server"]')).click();
       browser.sleep(2000);
       element(by.partialButtonText(page.getLocal('ACTIONS.OPEN_DETAILS').toUpperCase())).click();
       browser.sleep(2000);
