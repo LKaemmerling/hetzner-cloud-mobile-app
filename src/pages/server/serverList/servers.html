@@ -35,7 +35,7 @@
 <ion-content *ngIf="!compact_server_design">
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
     <ion-row class="row">
-      <ion-col col-12 col-sm-2 col-md-3 col-lg-4 col-xl-2 *ngFor="let server of _search; let i = index">
+      <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let server of _search; let i = index">
         <ion-card class="server" [id]="'server_'+i">
           <ion-row class="server_header" text-center="">
             <ion-col offset-9 col-3 style="max-height:20px;">

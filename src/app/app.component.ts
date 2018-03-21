@@ -18,6 +18,7 @@ import {SettingsPage} from "../pages/settings/settings";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {TranslateService} from "@ngx-translate/core";
 import {ActionsPage} from "../pages/actions/actions";
+import {SshkeysPage} from "../pages/sshkeys/sshkeys";
 
 @Component({
   templateUrl: 'app.html'
@@ -70,6 +71,12 @@ export class HetznerCloudMobileApp {
       key: 'PAGE.IMAGES.TITLE',
       icon: 'fa-puzzle-piece',
       page: ImagesPage,
+      hidden: true
+    },
+    {
+      key: 'PAGE.SSH_KEYS.TITLE',
+      icon: 'fa-key',
+      page: SshkeysPage,
       hidden: true
     },
     {

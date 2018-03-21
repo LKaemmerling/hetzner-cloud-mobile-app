@@ -50,7 +50,7 @@ export class SshKeyApiProvider extends HetznerApiProvider {
    * @param {string} name
    * @returns {Promise<any>}
    */
-  delete(id: number, name: string) {
+  delete(id: number) {
     return this._delete('ssh_keys/' + id);
   }
 }

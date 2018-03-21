@@ -46,6 +46,7 @@ export class FloatingIPsPage {
   }
 
   public delete(floatingIp) {
+    /** @TODO **/
     if (confirm('Möchten Sie diese Floating IP wirklich unwiderruflich löschen?')) {
       this.floatingIpApiProvider.deleteFloatingIp(floatingIp.id).then((data) => {
     this.loadFloatingIPs();
@@ -54,7 +55,7 @@ export class FloatingIPsPage {
   }
 
   public openActionSheets(floatingIp) {
-
+    /** @TODO **/
     var actions = {
       title: 'Aktionen für die Floating IP ' + floatingIp.name,
       cssClass: 'action-sheets-basic-page',

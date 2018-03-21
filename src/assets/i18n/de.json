@@ -26,6 +26,19 @@
       "TEXT": "Möchten Sie alle Daten der App löschen? Sie müssen, sofern Sie die App weiterhin benutzen möchten, alle Projekte neu eingeben.",
       "BUTTON": "Ja ich möchte alle Daten, die diese App lokal gespeichert hat, löschen."
     },
+    "SSH_KEYS": {
+      "TITLE": "SSH-Schlüssel",
+      "NO_SSH_KEYS": "Sie haben noch keinen SSH-Schlüssel hinterlegt",
+      "ADD_SSH_KEYS": "Das Hinzufügen von SSH-Schlüsseln über die App wird aus Sicherheitsgründen nicht empfohlen. Nutzen Sie hierfür bitte die Hetzner Cloud Console.",
+      "MODAL": {
+        "EDIT": {
+          "TITLE": "SSH-Key bearbeiten",
+          "FORM": {
+            "NAME": "Bezeichnung"
+          }
+        }
+      }
+    },
     "SETTINGS": {
       "TITLE": "Einstellungen",
       "APP": {
@@ -209,7 +222,7 @@
             "LOCATION": "Standort:",
             "STATUS": "Status:",
             "IMAGE": "Image:",
-            "STORAGE_TYPE":{
+            "STORAGE_TYPE": {
               "LOCAL": "lokale Festplatten",
               "NETWORK": "Netzwerk Ceph Cluster"
             }

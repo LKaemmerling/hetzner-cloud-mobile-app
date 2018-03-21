@@ -54,9 +54,11 @@ import {ComponentsModule} from "../components/components.module";
 import {consoleModal} from "../pages/server/console/console";
 import {Keyboard} from "@ionic-native/keyboard";
 import {editProjectModal} from "../pages/projects/editProject/editProject";
+import {SshkeysPage} from "../pages/sshkeys/sshkeys";
+import {editSSHKeyModal} from "../pages/sshkeys/editSSHKey/editSSHKey";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.2.1"
+  appVersion: "1.3.0"
 });
 
 export function createTranslateLoader(http: HttpClient) {
@@ -117,8 +119,9 @@ export class MyErrorHandler implements ErrorHandler {
     ServerMetricsPage,
     SettingsPage,
     ActionsPage,
-    consoleModal
-
+    consoleModal,
+    SshkeysPage,
+    editSSHKeyModal
   ],
   imports: [
     BrowserModule,
@@ -175,7 +178,9 @@ export class MyErrorHandler implements ErrorHandler {
     SettingsPage,
     ActionsPage,
     consoleModal,
-    editProjectModal
+    editProjectModal,
+    SshkeysPage,
+    editSSHKeyModal
   ],
   providers: [
     StatusBar,

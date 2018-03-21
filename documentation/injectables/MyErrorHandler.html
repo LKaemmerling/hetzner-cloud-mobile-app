@@ -125,6 +125,9 @@
                                     <a href="../components/FloatingIPsPage.html" >FloatingIPsPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/HetznerCloudMobileApp.html" >HetznerCloudMobileApp</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/HetznerStatusPage.html" >HetznerStatusPage</a>
                                 </li>
                                 <li class="link">
@@ -138,9 +141,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/LoadingIndicatorComponent.html" >LoadingIndicatorComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/MyApp.html" >MyApp</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ProjectsPage.html" >ProjectsPage</a>
@@ -159,6 +159,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/SettingsPage.html" >SettingsPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/addFloatingIPModal.html" >addFloatingIPModal</a>
@@ -192,6 +195,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/editProjectModal.html" >editProjectModal</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/editSSHKeyModal.html" >editSSHKeyModal</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/editServerModal.html" >editServerModal</a>
@@ -490,6 +496,9 @@
                                            <a href="../components/FloatingIPsPage.html" >FloatingIPsPage</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/HetznerCloudMobileApp.html" >HetznerCloudMobileApp</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/HetznerStatusPage.html" >HetznerStatusPage</a>
                                        </li>
                                        <li class="link">
@@ -503,9 +512,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/LoadingIndicatorComponent.html" >LoadingIndicatorComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/MyApp.html" >MyApp</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ProjectsPage.html" >ProjectsPage</a>
@@ -524,6 +530,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SettingsPage.html" >SettingsPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/addFloatingIPModal.html" >addFloatingIPModal</a>
@@ -557,6 +566,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/editProjectModal.html" >editProjectModal</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/editSSHKeyModal.html" >editSSHKeyModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/editServerModal.html" >editServerModal</a>
@@ -826,7 +838,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/app.module.ts:68</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/app.module.ts:70</a></div>
                                         </td>
                                     </tr>
             
@@ -891,7 +903,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/app.module.ts:79</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/app.module.ts:81</a></div>
                                         </td>
                                     </tr>
             
@@ -972,7 +984,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/app.module.ts:68</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/app.module.ts:70</a></div>
                                         </td>
                                     </tr>
             
@@ -988,7 +1000,7 @@
         <pre class="line-numbers"><code class="language-typescript">import {ErrorHandler, Injectable, Injector, NgModule} from &#x27;@angular/core&#x27;;
 import {BrowserModule} from &#x27;@angular/platform-browser&#x27;;
 import {IonicApp, IonicErrorHandler, IonicModule} from &#x27;ionic-angular&#x27;;
-import {MyApp} from &#x27;./app.component&#x27;;
+import {HetznerCloudMobileApp} from &#x27;./app.component&#x27;;
 import {HttpClient, HttpClientModule} from &#x27;@angular/common/http&#x27;;
 import {AboutPage} from &#x27;../pages/about/about&#x27;;
 import {HomePage} from &#x27;../pages/home/home&#x27;;
@@ -1041,9 +1053,11 @@ import {ComponentsModule} from &quot;../components/components.module&quot;;
 import {consoleModal} from &quot;../pages/server/console/console&quot;;
 import {Keyboard} from &quot;@ionic-native/keyboard&quot;;
 import {editProjectModal} from &quot;../pages/projects/editProject/editProject&quot;;
+import {SshkeysPage} from &quot;../pages/sshkeys/sshkeys&quot;;
+import {editSSHKeyModal} from &quot;../pages/sshkeys/editSSHKey/editSSHKey&quot;;
 
 const IonicPro &#x3D; Pro.init(&#x27;359b3ec5&#x27;, {
-  appVersion: &quot;1.2.1&quot;
+  appVersion: &quot;1.3.0&quot;
 });
 
 export function createTranslateLoader(http: HttpClient) {
@@ -1074,7 +1088,7 @@ export class MyErrorHandler implements ErrorHandler {
 
 @NgModule({
   declarations: [
-    MyApp,
+    HetznerCloudMobileApp,
     AboutPage,
     HomePage,
     ProjectsPage,
@@ -1104,12 +1118,13 @@ export class MyErrorHandler implements ErrorHandler {
     ServerMetricsPage,
     SettingsPage,
     ActionsPage,
-    consoleModal
-
+    consoleModal,
+    SshkeysPage,
+    editSSHKeyModal
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(HetznerCloudMobileApp),
     IonicStorageModule.forRoot(),
     ProjectModule,
     HttpClientModule,
@@ -1132,7 +1147,7 @@ export class MyErrorHandler implements ErrorHandler {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    HetznerCloudMobileApp,
     AboutPage,
     HomePage,
     ProjectsPage,
@@ -1162,7 +1177,9 @@ export class MyErrorHandler implements ErrorHandler {
     SettingsPage,
     ActionsPage,
     consoleModal,
-    editProjectModal
+    editProjectModal,
+    SshkeysPage,
+    editSSHKeyModal
   ],
   providers: [
     StatusBar,

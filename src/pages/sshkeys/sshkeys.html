@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <i class="fas fa-bars fa-2x"></i>
+    </button>
+    <ion-title>{{ 'PAGE.SSH_KEYS.TITLE' | translate}}</ion-title>
+    <ion-buttons end>
+      <loading-indicator (action)="loadSSHKeys()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-list>
+      <ion-item *ngFor="let _ssh_key of _ssh_keys" (click)="openActionSheets(_ssh_key)">
+        <div>
+          <h2>{{ _ssh_key.name }}</h2>
+          <p>{{ _ssh_key.fingerprint }}</p>
+        </div>
+      </ion-item>
+
+      <p ion-item *ngIf="_ssh_keys == null || _ssh_keys.length == 0" text-wrap="" class="message_box info">
+        {{ 'PAGE.SSH_KEYS.NO_SSH_KEYS' | translate}}
+      </p>
+    </ion-list>
+  </ion-card>
+ <p class="message_box info">
+   {{ 'PAGE.SSH_KEYS.ADD_SSH_KEYS' | translate}}
+ </p>
+</ion-content>

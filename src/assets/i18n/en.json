@@ -26,6 +26,19 @@
       "TEXT": "Are you sure you want to delete all data? If you want to use this app in future, you have to set up all your projects again.",
       "BUTTON": "Yes, I want to delete all local app data."
     },
+    "SSH_KEYS": {
+      "TITLE": "SSH keys",
+      "NO_SSH_KEYS": "Oh! Looks like you don't have any SSH keys.",
+      "ADD_SSH_KEYS": "Adding SSH keys through the app is not recommended for security reasons. Please use the Hetzner Cloud Console for this.",
+      "MODAL": {
+        "EDIT": {
+          "TITLE": "Edit SSH key",
+          "FORM": {
+            "NAME": "Name"
+          }
+        }
+      }
+    },
     "SETTINGS": {
       "TITLE": "Settings",
       "APP": {

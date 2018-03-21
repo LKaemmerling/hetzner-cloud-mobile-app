@@ -73,7 +73,7 @@ export class ImagesPage {
         cssClass: 'action-sheets-basic-page',
         buttons: [
           {
-            text: 'Neuen Server erstellen',
+            text: _create_server,
             icon: 'add',
             handler: () => {
               this.modal.create(addServerModal, {selected_image: image.id}).present();
