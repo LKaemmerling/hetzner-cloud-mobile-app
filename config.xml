@@ -107,5 +107,4 @@
     <access origin="wss:///*" />
     <access origin="https://api.hetzner.cloud" />
     <engine name="android" spec="6.4.0" />
-    <engine name="browser" spec="5.0.3" />
 </widget>
