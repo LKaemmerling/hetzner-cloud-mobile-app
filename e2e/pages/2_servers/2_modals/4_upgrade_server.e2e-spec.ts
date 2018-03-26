@@ -59,8 +59,6 @@ describe('[2][2][3] Upgrade Server', () => {
         }
       );
     });
-
-
   });
   afterAll(() => {
     page.deleteServer('E2E-Test-Server');

@@ -19,6 +19,7 @@ import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {TranslateService} from "@ngx-translate/core";
 import {ActionsPage} from "../pages/actions/actions";
 import {SshkeysPage} from "../pages/sshkeys/sshkeys";
+import { AppRate } from '@ionic-native/app-rate';
 
 @Component({
   templateUrl: 'app.html'
@@ -99,7 +100,7 @@ export class HetznerCloudMobileApp {
     }
   ];
 
-  constructor(platform: Platform, statusBar: StatusBar, public splashScreen: SplashScreen, public projects: ProjectsService, public storage: Storage, public servers: ServersService, public oneSignal: OneSignal, public fingerPrint: FingerprintAIO, public translate: TranslateService) {
+  constructor(platform: Platform, statusBar: StatusBar, public splashScreen: SplashScreen, public projects: ProjectsService, public storage: Storage, public servers: ServersService, public oneSignal: OneSignal, public fingerPrint: FingerprintAIO, public translate: TranslateService, private appRate: AppRate) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -141,6 +142,14 @@ export class HetznerCloudMobileApp {
             }
           });
         });
+        this.appRate.preferences = {
+          usesUntilPrompt: 3,
+          storeAppURL: {
+            ios: '1342303703',
+            android: 'market://details?id=de.lkdevelopment.hetzner'
+          }
+        };
+
         splashScreen.hide();
       });
     });

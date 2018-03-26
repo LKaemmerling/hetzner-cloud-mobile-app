@@ -56,9 +56,10 @@ import {Keyboard} from "@ionic-native/keyboard";
 import {editProjectModal} from "../pages/projects/editProject/editProject";
 import {SshkeysPage} from "../pages/sshkeys/sshkeys";
 import {editSSHKeyModal} from "../pages/sshkeys/editSSHKey/editSSHKey";
+import {AppRate} from "@ionic-native/app-rate";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.3.0"
+  appVersion: "1.3.1"
 });
 
 export function createTranslateLoader(http: HttpClient) {
@@ -191,7 +192,8 @@ export class MyErrorHandler implements ErrorHandler {
     AppVersion,
     FingerprintAIO,
     BarcodeScanner,
-    Keyboard
+    Keyboard,
+    AppRate
   ]
 })
 export class AppModule {
