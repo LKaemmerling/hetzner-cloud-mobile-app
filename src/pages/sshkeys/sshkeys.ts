@@ -26,7 +26,7 @@ export class SshkeysPage {
               protected actionSheetCtrl: ActionSheetController,
               protected modalCtrl: ModalController,
               protected sshKeyProvider: SshKeyApiProvider) {
-    this.loadSSHKeys();
+    this._ssh_keys = this.sshKeysService.ssh_keys;
   }
 
   loadSSHKeys() {

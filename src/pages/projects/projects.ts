@@ -11,6 +11,7 @@ import {state, style, transition, trigger, useAnimation} from "@angular/animatio
 import {fadeIn, fadeOut} from "ng-animate";
 import {editProjectModal} from "./editProject/editProject";
 import {PricingService} from "../../modules/hetzner-cloud-data/pricings/pricing.service";
+import {HetznerCloudDataService} from "../../modules/hetzner-cloud-data/hetzner-cloud-data.service";
 
 @Component({
   selector: 'page-projects',
@@ -31,9 +32,13 @@ export class ProjectsPage {
   public _projects = [];
   public visible = [];
 
-  constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService, public serversService: ServersService,
-              public storage: Storage,
-              public pricesService: PricingService) {
+  constructor(protected project: ProjectsService,
+              protected modal: ModalController,
+              protected actionSheetCtrl: ActionSheetController,
+              protected translate: TranslateService,
+              protected serversService: ServersService,
+              protected storage: Storage,
+              protected hetznerCloudDataService: HetznerCloudDataService) {
     this._projects = project.projects;
 
   }
@@ -66,8 +71,7 @@ export class ProjectsPage {
 
   selectProject(project: project) {
     this.project.selectProject(project).then(() => {
-      this.serversService.reloadServers();
-      this.pricesService.reloadPrices();
+      this.hetznerCloudDataService.loadDataFromStorage();
     });
 
   }
