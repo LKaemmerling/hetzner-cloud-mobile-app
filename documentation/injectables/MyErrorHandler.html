@@ -84,6 +84,9 @@
                                     <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/ConfigModule.html" >ConfigModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                 </li>
                                 <li class="link">
@@ -238,6 +241,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ActionsApiProvider.html" >ActionsApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ConfigService.html" >ConfigService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
@@ -503,6 +509,9 @@
                                            <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/ConfigModule.html" >ConfigModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                        </li>
                                        <li class="link">
@@ -657,6 +666,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ActionsApiProvider.html" >ActionsApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ConfigService.html" >ConfigService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
@@ -934,7 +946,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/app.module.ts:71</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/app.module.ts:72</a></div>
                                         </td>
                                     </tr>
             
@@ -1011,7 +1023,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/app.module.ts:82</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/app.module.ts:83</a></div>
                                         </td>
                                     </tr>
             
@@ -1092,7 +1104,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/app.module.ts:71</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/app.module.ts:72</a></div>
                                         </td>
                                     </tr>
             
@@ -1167,6 +1179,7 @@ import {createTranslateLoader} from &quot;../providers/translation/loader&quot;;
 import {PricingModule} from &quot;../models/pricings/Pricing.module&quot;;
 import {NetworkProvider} from &#x27;../models/network/network&#x27;;
 import {NetworkModule} from &quot;../models/network/Network.module&quot;;
+import {ConfigModule} from &quot;../models/config/ConfigModule&quot;;
 
 const IonicPro &#x3D; Pro.init(&#x27;359b3ec5&#x27;, {
   appVersion: &quot;1.4.0&quot;
@@ -1236,6 +1249,7 @@ export class MyErrorHandler implements ErrorHandler {
   imports: [
     BrowserModule,
     IonicModule.forRoot(HetznerCloudMobileApp),
+    ConfigModule,
     IonicStorageModule.forRoot(),
     ProjectModule,
     PricingModule,

@@ -84,6 +84,9 @@
                                     <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/ConfigModule.html" >ConfigModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                 </li>
                                 <li class="link">
@@ -238,6 +241,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ActionsApiProvider.html" >ActionsApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ConfigService.html" >ConfigService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
@@ -503,6 +509,9 @@
                                            <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/ConfigModule.html" >ConfigModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                        </li>
                                        <li class="link">
@@ -657,6 +666,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ActionsApiProvider.html" >ActionsApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ConfigService.html" >ConfigService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
@@ -967,11 +979,10 @@
 
     <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import {NgModule} from &#x27;@angular/core&#x27;;
-import {CommonModule} from &#x27;@angular/common&#x27;;
 import {ServersService} from &quot;./ServersService&quot;;
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [],
   providers: [ServersService]
 })
 export class ServersModule {

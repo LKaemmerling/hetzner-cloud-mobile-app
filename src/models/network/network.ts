@@ -3,13 +3,12 @@ import {Injectable} from '@angular/core';
 import {Network} from "@ionic-native/network";
 import {Observable} from "rxjs/Observable";
 import {TranslateService} from "@ngx-translate/core";
+import {ConfigModule} from "../config/ConfigModule";
+import {ConfigService} from "../config/config.service";
 
-/*
-  Generated class for the NetworkProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+/**
+ * This Provider contains all logic for the network available info like "app has connection"
+ */
 @Injectable()
 export class NetworkProvider {
   /**
@@ -31,10 +30,14 @@ export class NetworkProvider {
    * @param {HttpClient} http
    * @param {Network} network
    * @param {TranslateService} translate
+   * @param {ConfigService} config
    */
-  constructor(public http: HttpClient, protected network: Network, protected translate: TranslateService) {
+  constructor(protected http: HttpClient, protected network: Network, protected translate: TranslateService, protected config: ConfigService) {
   }
 
+  /**
+   *
+   */
   public init() {
     this.registerListener();
     this.checkIfConnectionIsAvailable();
@@ -44,7 +47,7 @@ export class NetworkProvider {
    *
    */
   public checkIfConnectionIsAvailable() {
-    this.http.get('https://api.hetzner.cloud').subscribe(data => {
+    this.http.get(this.config.api_url).subscribe(data => {
       this.has_connection = true;
     }, err => {
       if (err.error.error.code == "not_found") {
@@ -80,7 +83,7 @@ export class NetworkProvider {
    */
   public quickTestApiKey(api_key) {
     return new Promise((resolve, reject) => {
-      this.http.get('https://api.hetzner.cloud/v1/locations', {
+      this.http.get(this.config.api_url + '/v1/locations', {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key)
       }).subscribe(data => {
         resolve();

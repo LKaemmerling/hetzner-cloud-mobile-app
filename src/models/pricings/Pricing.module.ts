@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {PricingServices} from "./PricingServices";
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [],
   providers: [PricingServices]
 })
 export class PricingModule {

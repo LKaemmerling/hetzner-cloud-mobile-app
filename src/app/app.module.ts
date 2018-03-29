@@ -60,6 +60,7 @@ import {createTranslateLoader} from "../providers/translation/loader";
 import {PricingModule} from "../models/pricings/Pricing.module";
 import {NetworkProvider} from '../models/network/network';
 import {NetworkModule} from "../models/network/Network.module";
+import {ConfigModule} from "../models/config/ConfigModule";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.4.0"
@@ -129,6 +130,7 @@ export class MyErrorHandler implements ErrorHandler {
   imports: [
     BrowserModule,
     IonicModule.forRoot(HetznerCloudMobileApp),
+    ConfigModule,
     IonicStorageModule.forRoot(),
     ProjectModule,
     PricingModule,

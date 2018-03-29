@@ -8,9 +8,11 @@ import {ServerTypeApiProvider} from "./server-type-api/server-type-api";
 import {SshKeyApiProvider} from "./ssh-key-api/ssh-key-api";
 import {LocationApiProvider} from "./location-api/location-api";
 import {PricesApiProvider} from "./pricing-api/pricing-api";
+import {ConfigModule} from "../models/config/ConfigModule";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
-  imports: [],
+  imports: [HttpClientModule, ConfigModule],
   providers: [
     ServerApiProvider,
     ServerTypeApiProvider,

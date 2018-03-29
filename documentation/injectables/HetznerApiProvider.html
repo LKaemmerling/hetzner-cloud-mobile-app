@@ -84,6 +84,9 @@
                                     <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/ConfigModule.html" >ConfigModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                 </li>
                                 <li class="link">
@@ -238,6 +241,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ActionsApiProvider.html" >ActionsApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ConfigService.html" >ConfigService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
@@ -503,6 +509,9 @@
                                            <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/ConfigModule.html" >ConfigModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                        </li>
                                        <li class="link">
@@ -657,6 +666,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ActionsApiProvider.html" >ActionsApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ConfigService.html" >ConfigService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
@@ -893,29 +905,6 @@
                     <tbody>
                         <tr>
                             <td class="col-md-4">
-                                <h6><b>Properties</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                            <span class="modifier">Public</span>
-                                        <a href="#apiUrl">apiUrl</a>
-                                    </li>
-                                    <li>
-                                            <span class="modifier">Public</span>
-                                        <a href="#http">http</a>
-                                    </li>
-                                    <li>
-                                            <span class="modifier">Public</span>
-                                        <a href="#projectService">projectService</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
                                 <h6><b>Methods</b></h6>
                             </td>
                         </tr>
@@ -951,7 +940,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-            <code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, projectService: <a href="../injectables/ProjectsService.html">ProjectsService</a>)</code>
+            <code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, projectService: <a href="../injectables/ProjectsService.html">ProjectsService</a>, configService: <a href="../injectables/ConfigService.html">ConfigService</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -997,6 +986,18 @@
                                                                 </td>
                                                                 
                                                             </tr>
+                                                            <tr>
+                                                                <td>configService</td>
+                                                              
+                                                                    <td>
+                                                                                <code><a href="../injectables/ConfigService.html" target="_self" >ConfigService</a></code>
+                                                                    </td>
+                                                              
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                            </tr>
                                                     </tbody>
                                                 </table>
                                         </div>
@@ -1033,7 +1034,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:80</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:82</a></div>
                                         </td>
                                     </tr>
             
@@ -1104,7 +1105,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:18</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:20</a></div>
                                         </td>
                                     </tr>
             
@@ -1175,7 +1176,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:39</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:41</a></div>
                                         </td>
                                     </tr>
             
@@ -1265,7 +1266,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:60</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:62</a></div>
                                         </td>
                                     </tr>
             
@@ -1351,7 +1352,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:98</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:100</a></div>
                                         </td>
                                     </tr>
             
@@ -1375,122 +1376,6 @@
                     </table>
             </section>
 
-            <section>
-                
-                    <h3 id="inputs">
-                        Properties
-                    </h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="apiUrl"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Public</span>
-                                        apiUrl
-                                        </b>
-                                        <a href="#apiUrl"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-reset"></span><code>apiUrl:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-            
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Default value : </i><code>&#x27;https://api.hetzner.cloud/v1&#x27;</code>
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:7</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="http"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Public</span>
-                                        http
-                                        </b>
-                                        <a href="#http"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-reset"></span><code>http:     <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:9</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="projectService"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Public</span>
-                                        projectService
-                                        </b>
-                                        <a href="#projectService"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-reset"></span><code>projectService:     <code><a href="../injectables/ProjectsService.html" target="_self" >ProjectsService</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../injectables/ProjectsService.html" target="_self" >ProjectsService</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/providers/hetzner-api/hetzner-api.ts:9</a></div>
-                                        </td>
-                                    </tr>
-            
-            
-                        </tbody>
-                    </table>
-            </section>
 
     </div>
 
@@ -1499,12 +1384,14 @@
         <pre class="line-numbers"><code class="language-typescript">import {HttpClient, HttpHeaders} from &#x27;@angular/common/http&#x27;;
 import {Injectable} from &#x27;@angular/core&#x27;;
 import {ProjectsService} from &quot;../../models/project/ProjectsService&quot;;
+import {ConfigService} from &quot;../../models/config/config.service&quot;;
 
 @Injectable()
 export abstract class HetznerApiProvider {
-  public apiUrl &#x3D; &#x27;https://api.hetzner.cloud/v1&#x27;;
 
-  constructor(public http: HttpClient, public projectService: ProjectsService) {
+
+
+  constructor(protected http: HttpClient, protected projectService: ProjectsService, protected configService: ConfigService) {
   }
 
   /**
@@ -1515,7 +1402,7 @@ export abstract class HetznerApiProvider {
    */
   _get(method: string) {
     return new Promise((resolve, reject &#x3D; null) &#x3D;&gt; {
-      this.http.get(this.apiUrl + &#x27;/&#x27; + method, {
+      this.http.get(this.configService.api_url+ &#x27;/&#x27; + method, {
         headers: this.getHeaders(),
       }).subscribe(data &#x3D;&gt; {
         resolve(data);
@@ -1536,7 +1423,7 @@ export abstract class HetznerApiProvider {
    */
   _post(method: string, body: object &#x3D; {}) {
     return new Promise((resolve, reject &#x3D; null) &#x3D;&gt; {
-      this.http.post(this.apiUrl + &#x27;/&#x27; + method, body, {
+      this.http.post(this.configService.api_url + &#x27;/&#x27; + method, body, {
         headers: this.getHeaders(),
       }).subscribe(data &#x3D;&gt; {
         resolve(data);
@@ -1557,7 +1444,7 @@ export abstract class HetznerApiProvider {
    */
   _put(method: string, body: object) {
     return new Promise((resolve, reject &#x3D; null) &#x3D;&gt; {
-      this.http.put(this.apiUrl + &#x27;/&#x27; + method, body, {
+      this.http.put(this.configService.api_url + &#x27;/&#x27; + method, body, {
         headers: this.getHeaders(),
       }).subscribe(data &#x3D;&gt; {
         resolve(data);
@@ -1577,7 +1464,7 @@ export abstract class HetznerApiProvider {
    */
   _delete(method: string) {
     return new Promise((resolve, reject &#x3D; null) &#x3D;&gt; {
-      this.http.delete(this.apiUrl + &#x27;/&#x27; + method, {
+      this.http.delete(this.configService.api_url + &#x27;/&#x27; + method, {
         headers: this.getHeaders(),
       }).subscribe(data &#x3D;&gt; {
         resolve(data);
