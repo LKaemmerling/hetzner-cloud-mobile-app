@@ -6,7 +6,8 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose="">
+      <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose="" class="hidden"
+              [ngClass]="{'visible':(menu_entry.hidden == true && projects.actual_project != null) || menu_entry.hidden==false}">
         <i [class]="'fas fa-fw '+menu_entry.icon"></i> {{ menu_entry.key | translate }}
       </button>
       <button ion-item (click)="openAboutPage()" menuClose=""

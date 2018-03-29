@@ -58,6 +58,8 @@ import {editSSHKeyModal} from "../pages/sshkeys/editSSHKey/editSSHKey";
 import {AppRate} from "@ionic-native/app-rate";
 import {createTranslateLoader} from "../providers/translation/loader";
 import {PricingModule} from "../models/pricings/Pricing.module";
+import {NetworkProvider} from '../models/network/network';
+import {NetworkModule} from "../models/network/Network.module";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.4.0"
@@ -68,7 +70,7 @@ const IonicPro = Pro.init('359b3ec5', {
 export class MyErrorHandler implements ErrorHandler {
   ionicErrorHandler: IonicErrorHandler;
 
-  constructor(injector: Injector) {
+  constructor(protected injector: Injector, protected network: NetworkProvider) {
     try {
       this.ionicErrorHandler = injector.get(IonicErrorHandler);
     } catch (e) {
@@ -78,7 +80,9 @@ export class MyErrorHandler implements ErrorHandler {
   }
 
   handleError(err: any): void {
-    IonicPro.monitoring.handleNewError(err);
+    if (this.network.has_connection == true) {
+      IonicPro.monitoring.handleNewError(err);
+    }
     // Remove this if you want to disable Ionic's auto exception handling
     // in development mode.
     this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
@@ -144,7 +148,8 @@ export class MyErrorHandler implements ErrorHandler {
     HetznerApiProviderModule,
     NgxQRCodeModule,
     BrowserAnimationsModule,
-    ComponentsModule
+    ComponentsModule,
+    NetworkModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

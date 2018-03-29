@@ -21,6 +21,7 @@ import {ActionsPage} from "../pages/actions/actions";
 import {SshkeysPage} from "../pages/sshkeys/sshkeys";
 import {AppRate} from '@ionic-native/app-rate';
 import {PricingServices} from "../models/pricings/PricingServices";
+import {NetworkProvider} from "../models/network/network";
 
 @Component({
   templateUrl: 'app.html'
@@ -40,6 +41,7 @@ export class HetznerCloudMobileApp {
    * @type {string}
    */
   public lang: string = 'de';
+
   /**
    *
    * @type {({key: string; icon: string; page: HomePage; hidden: boolean} | {key: string; icon: string; page: ProjectsPage; hidden: boolean} | {key: string; icon: string; page: ServersPage; hidden: boolean} | {key: string; icon: string; page: FloatingIPsPage; hidden: boolean} | {key: string; icon: string; page: ImagesPage; hidden: boolean} | {key: string; icon: string; page: ActionsPage; hidden: boolean} | {key: string; icon: string; page: HetznerStatusPage; hidden: boolean} | {key: string; icon: string; page: SettingsPage; hidden: boolean})[]}
@@ -55,7 +57,7 @@ export class HetznerCloudMobileApp {
       key: 'PAGE.PROJECTS.TITLE',
       icon: 'fa-lock',
       page: ProjectsPage,
-      hidden: true
+      hidden: false
     },
     {
       key: 'PAGE.SERVERS.TITLE',
@@ -112,8 +114,11 @@ export class HetznerCloudMobileApp {
     protected fingerPrint: FingerprintAIO,
     protected translate: TranslateService,
     protected appRate: AppRate,
-    protected prices: PricingServices) {
+    protected prices: PricingServices,
+    protected network: NetworkProvider) {
     platform.ready().then(() => {
+      this.network.init();
+      this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       storage.ready().then(() => {
@@ -171,9 +176,15 @@ export class HetznerCloudMobileApp {
    *
    */
   public loadHetznerSpecificData() {
-    this.projects.loadProjects();
-    this.servers.loadServers();
-    this.prices.loadPrices();
+    this.projects.loadProjects().then(() => {
+      if (this.network.has_connection == true) {
+        this.prices.reloadPrices();
+        this.servers.reloadServers();
+      } else {
+        this.prices.loadPrices();
+        this.servers.loadServers();
+      }
+    });
   }
 
   /**

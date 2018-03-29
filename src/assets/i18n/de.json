@@ -1,6 +1,7 @@
 {
   "GLOBAL": {
-    "DATE_FORMAT": "dd.mm.yyyy HH:MM:ss"
+    "DATE_FORMAT": "dd.mm.yyyy HH:MM:ss",
+    "NO_CONNECTION": "Leider haben Sie aktuell kein Internet. Die Ansicht der App funktioniert weiterhin, allerdings sind alle Funktionen zum Interagieren mit Ihren Systemen solange deaktiviert wie Sie kein Internet haben."
   },
   "ACTIONS": {
     "DELETE": "Löschen",

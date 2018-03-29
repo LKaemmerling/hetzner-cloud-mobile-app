@@ -27,15 +27,19 @@ export class ProjectsService {
    *
    */
   public loadProjects() {
-    this.storage.get('projects').then((val) => {
-      if (val !== undefined) {
-        this.projects = val;
-      }
-    });
-    this.storage.get('actual_project').then((val) => {
-      if (val !== undefined) {
-        this.actual_project = val;
-      }
+    return new Promise((resolve) => {
+      this.storage.get('projects').then((val) => {
+        if (val !== undefined) {
+          this.projects = val;
+        }
+        this.storage.get('actual_project').then((val) => {
+          if (val !== undefined) {
+            this.actual_project = val;
+          }
+          resolve();
+        });
+      });
+
     });
   }
 
