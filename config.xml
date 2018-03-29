@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="104000" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="104000" version="1.4.0" xmlns="http://www.w3.org/ns/widgets">
+<widget android-versionCode="104001" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="104001" version="1.4.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Hetzner Cloud Mobile</name>
     <description>A mobile App for the Hetzner Cloud.</description>
     <author email="kontakt@lukas-kaemmerling.de" href="https://lk-development.de">LK-Development</author>
-    <content original-src="index.html" src="http://192.168.178.87:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -110,5 +110,4 @@
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
     <allow-navigation href="http://192.168.178.87:8100" />
     <engine name="android" spec="6.4.0" />
-    <engine name="browser" spec="5.0.3" />
 </widget>
