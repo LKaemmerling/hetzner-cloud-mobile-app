@@ -184,6 +184,11 @@ export class HetznerCloudMobileApp {
         this.prices.loadPrices();
         this.servers.loadServers();
       }
+    }, () => {
+      this.translate.get('GLOBAL.MISSING_OR_WRONG_PROJECT').subscribe((text) => {
+        alert(text);
+      });
+      this.nav.setRoot(ProjectsPage);
     });
   }
 
@@ -223,4 +228,5 @@ export class HetznerCloudMobileApp {
   openAboutPage() {
     this.nav.setRoot(AboutPage);
   }
+
 }

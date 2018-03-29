@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Network} from "@ionic-native/network";
 import {Observable} from "rxjs/Observable";
@@ -71,5 +71,18 @@ export class NetworkProvider {
     this.onConnectListener.subscribe(() => {
       this.has_connection = true;
     })
+  }
+
+  public quickTestApiKey(api_key) {
+    return new Promise((resolve, reject) => {
+      this.http.get('https://api.hetzner.cloud/v1/locations', {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key)
+      }).subscribe(data => {
+        resolve();
+      }, err => {
+        reject();
+
+      });
+    });
   }
 }

@@ -1,7 +1,8 @@
 {
   "GLOBAL": {
     "DATE_FORMAT": "dd.mm.yyyy HH:MM:ss",
-    "NO_CONNECTION": "Leider haben Sie aktuell kein Internet. Die Ansicht der App funktioniert weiterhin, allerdings sind alle Funktionen zum Interagieren mit Ihren Systemen solange deaktiviert wie Sie kein Internet haben."
+    "NO_CONNECTION": "Leider haben Sie aktuell kein Internet. Die Ansicht der App funktioniert weiterhin, allerdings sind alle Funktionen zum Interagieren mit Ihren Systemen solange deaktiviert wie Sie kein Internet haben.",
+    "MISSING_OR_WRONG_PROJECT":"Ihr gewählter API-Key ist nicht mehr gültig oder Sie haben kein Projekt ausgewählt. Bitte wählen Sie nun ein Projekt aus."
   },
   "ACTIONS": {
     "DELETE": "Löschen",

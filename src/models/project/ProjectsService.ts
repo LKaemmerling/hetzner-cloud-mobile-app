@@ -1,6 +1,8 @@
 import {Storage} from "@ionic/storage";
 import {project} from "./project";
 import {Injectable} from '@angular/core';
+import {NetworkProvider} from "../network/network";
+
 
 @Injectable()
 export class ProjectsService {
@@ -19,7 +21,7 @@ export class ProjectsService {
    *
    * @param {Storage} storage
    */
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, private network: NetworkProvider) {
     this.projects = [];
   }
 
@@ -27,16 +29,24 @@ export class ProjectsService {
    *
    */
   public loadProjects() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.storage.get('projects').then((val) => {
         if (val !== undefined) {
           this.projects = val;
         }
         this.storage.get('actual_project').then((val) => {
           if (val !== undefined) {
-            this.actual_project = val;
+            this.network.quickTestApiKey(val.api_key).then(() => {
+              this.actual_project = val;
+              resolve();
+            }, () => {
+              /** this.removeProject(val);
+               this.saveProjects(); **/
+              if (this.projects.length > 0) {
+                reject();
+              }
+            })
           }
-          resolve();
         });
       });
 
@@ -93,4 +103,5 @@ export class ProjectsService {
     this.saveProjects();
     return this.projects;
   }
+
 }

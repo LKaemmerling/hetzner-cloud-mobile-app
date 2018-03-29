@@ -1,7 +1,8 @@
 {
   "GLOBAL": {
     "DATE_FORMAT": "yyyy-mm-dd HH:MM:ss",
-    "NO_CONNECTION": "Unfortunately, you currently have no internet. The view of the app will continue to work, but all features to interact with your systems will be disabled as long as you have no Internet."
+    "NO_CONNECTION": "Unfortunately, you currently have no internet. The view of the app will continue to work, but all features to interact with your systems will be disabled as long as you have no Internet.",
+    "MISSING_OR_WRONG_PROJECT": "Your chosen API key is no longer valid or you have not selected a project. Please select a project now."
   },
   "ACTIONS": {
     "DELETE": "Delete",
@@ -230,7 +231,7 @@
             "LOCATION": "Location:",
             "STATUS": "Status:",
             "IMAGE": "Image:",
-            "STORAGE_TYPE":{
+            "STORAGE_TYPE": {
               "LOCAL": "local Disks",
               "NETWORK": "Network Ceph Cluster"
             }
