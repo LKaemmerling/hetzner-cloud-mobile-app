@@ -19,21 +19,18 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class HetznerStatusPage {
   public messages;
-
+  public loading: boolean = false;
+  public loading_done: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, protected statusApi: StatusApiProvider, protected storage: Storage, protected platform: Platform, protected browser: InAppBrowser, protected translate: TranslateService) {
-    this.load();
+    this.loadMessages();
   }
 
   openSettings() {
     this.navCtrl.push(HetznerStatusSettingPage);
   }
 
-  public refresh(refresher) {
-    this.load();
-    refresher.complete();
-  }
-
-  public load() {
+  public loadMessages() {
+    this.loading = true;
     this.storage.get('lang').then(value => {
       let lang = 'de';
       if (value != undefined) {
@@ -41,6 +38,9 @@ export class HetznerStatusPage {
       }
       this.statusApi.getStatus(lang).then((data) => {
         this.messages = data;
+        this.loading = false;
+        this.loading_done = true;
+        setTimeout(() => this.loading_done = false, 3000);
       }, (error) => {
         if (error.error instanceof ErrorEvent) {
           // A client-side or network error occurred. Handle it accordingly.

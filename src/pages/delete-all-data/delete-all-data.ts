@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController} from 'ionic-angular';
 import {Storage} from "@ionic/storage";
-import {ProjectsService} from "../../models/project/ProjectsService";
+import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects.service";
 import {HomePage} from "../home/home";
 
 /**

@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../models/project/ProjectsService";
+import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects.service";
 import {ActionSheetController, ModalController} from "ionic-angular";
 import {addProjectModal} from "./addProject/addProject";
-import {project} from "../../models/project/project";
+import {project} from "../../modules/hetzner-cloud-data/project/project";
 import {TranslateService} from "@ngx-translate/core";
-import {ServersService} from "../../models/servers/ServersService";
+import {ServersService} from "../../modules/hetzner-cloud-data/servers/servers.service";
 import {Storage} from "@ionic/storage";
 import {shareProjectModal} from "./shareProject/shareProject";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
 import {fadeIn, fadeOut} from "ng-animate";
 import {editProjectModal} from "./editProject/editProject";
-import {PricingServices} from "../../models/pricings/PricingServices";
+import {PricingService} from "../../modules/hetzner-cloud-data/pricings/pricing.service";
 
 @Component({
   selector: 'page-projects',
@@ -33,7 +33,7 @@ export class ProjectsPage {
 
   constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService, public serversService: ServersService,
               public storage: Storage,
-              public pricesService: PricingServices) {
+              public pricesService: PricingService) {
     this._projects = project.projects;
 
   }

@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../../models/project/ProjectsService";
-import {project} from "../../../models/project/project";
+import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
+import {project} from "../../../modules/hetzner-cloud-data/project/project";
 import {ViewController} from "ionic-angular";
-import {LocationApiProvider} from "../../../providers/location-api/location-api";
 import {TranslateService} from "@ngx-translate/core";
 import {Storage} from "@ionic/storage";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
+import {NetworkProvider} from "../../../modules/hetzner-app/network/network";
 
 @Component({
   selector: 'modal-addProject',
@@ -17,7 +17,7 @@ export class addProjectModal {
   public error: string = null;
   public image: string = '';
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public locationApiProvider: LocationApiProvider, protected translate: TranslateService, protected storage: Storage, public barcodeScanner: BarcodeScanner) {
+  constructor(public project: ProjectsService, public viewCtrl: ViewController, public network: NetworkProvider, protected translate: TranslateService, protected storage: Storage, public barcodeScanner: BarcodeScanner) {
 
   }
 
@@ -27,7 +27,7 @@ export class addProjectModal {
         let payload = JSON.parse(barcodeData.text);
         this.project_name = payload['name'];
         this.api_key = payload['api_key'];
-      }catch (e){
+      } catch (e) {
         this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.SCAN_ERROR';
       }
     }, (err) => {
@@ -46,28 +46,16 @@ export class addProjectModal {
       return;
     }
     ;
-    var _new = new project(this.project_name, this.api_key);
-    this.project.addProject(_new);
 
-    var selected = null;
-    if (this.project.actual_project != null) {
-      selected = this.project.actual_project;
-    }
-    this.project.selectProject(_new);
-    this.locationApiProvider.getLocations().then(() => {
-      if (selected != null) {
-        this.project.selectProject(selected);
-      }
+    this.network.quickTestApiKey(this.api_key).then(() => {
+      var _new = new project(this.project_name, this.api_key);
+      this.project.addProject(_new);
+      this.project.selectProject(_new);
       this.project.saveProjects();
       this.dismiss();
     }, () => {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.INVALID_KEY';
-      this.project.removeProject(_new);
-      if (selected != null) {
-        this.project.selectProject(selected);
-      }
     });
-
   }
 
   public dismiss() {

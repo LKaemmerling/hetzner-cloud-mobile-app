@@ -8,7 +8,6 @@ import {HomePage} from '../pages/home/home';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {IonicStorageModule} from '@ionic/storage';
-import {ProjectModule} from "../models/project/project.module";
 import {ProjectsPage} from "../pages/projects/projects";
 import {addProjectModal} from "../pages/projects/addProject/addProject";
 import {ServersPage} from "../pages/server/serverList/servers";
@@ -33,7 +32,6 @@ import {FloatingIPPage} from "../pages/floatingIPs/floatingIp/floatingIP";
 import {ImagesPage} from "../pages/images/images";
 import {editImageModal} from "../pages/images/editImage/editImage";
 import {assignToServerModal} from "../pages/floatingIPs/assignToServer/assignToServer";
-import {ServersModule} from "../models/servers/Servers.module";
 import {HetznerStatusSettingPage} from "../pages/hetzner-status-setting/hetzner-status-setting";
 import {OneSignal} from "@ionic-native/onesignal";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
@@ -57,7 +55,9 @@ import {SshkeysPage} from "../pages/sshkeys/sshkeys";
 import {editSSHKeyModal} from "../pages/sshkeys/editSSHKey/editSSHKey";
 import {AppRate} from "@ionic-native/app-rate";
 import {createTranslateLoader} from "../providers/translation/loader";
-import {PricingModule} from "../models/pricings/Pricing.module";
+import {NetworkProvider} from '../modules/hetzner-app/network/network';
+import {HetznerCloudDataModule} from "../modules/hetzner-cloud-data/hetzner-cloud-data.module";
+import {HetznerAppModule} from "../modules/hetzner-app/hetzner-app.module";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.4.0"
@@ -68,7 +68,7 @@ const IonicPro = Pro.init('359b3ec5', {
 export class MyErrorHandler implements ErrorHandler {
   ionicErrorHandler: IonicErrorHandler;
 
-  constructor(injector: Injector) {
+  constructor(protected injector: Injector, protected network: NetworkProvider) {
     try {
       this.ionicErrorHandler = injector.get(IonicErrorHandler);
     } catch (e) {
@@ -78,7 +78,9 @@ export class MyErrorHandler implements ErrorHandler {
   }
 
   handleError(err: any): void {
-    IonicPro.monitoring.handleNewError(err);
+    if (this.network.has_connection == true) {
+      IonicPro.monitoring.handleNewError(err);
+    }
     // Remove this if you want to disable Ionic's auto exception handling
     // in development mode.
     this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
@@ -125,14 +127,13 @@ export class MyErrorHandler implements ErrorHandler {
   imports: [
     BrowserModule,
     IonicModule.forRoot(HetznerCloudMobileApp),
+    HetznerAppModule,
     IonicStorageModule.forRoot(),
-    ProjectModule,
-    PricingModule,
+    HetznerCloudDataModule,
     HttpClientModule,
     PipesModule,
     BrowserAnimationsModule,
     TooltipsModule,
-    ServersModule,
     ChartsModule,
     TranslateModule.forRoot({
       loader: {

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {ActionsApiProvider} from "../../providers/actions-api/actions-api";
+import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 /**
  * Generated class for the ActionsPage page.
@@ -14,27 +15,44 @@ import {ActionsApiProvider} from "../../providers/actions-api/actions-api";
   templateUrl: 'actions.html',
 })
 export class ActionsPage {
-
+  /**
+   *
+   */
   public actions: Array<any>;
-  public loading:boolean = false;
-  public loading_done:boolean = false;
+  /**
+   *
+   * @type {boolean}
+   */
+  public loading: boolean = false;
+  /**
+   *
+   * @type {boolean}
+   */
+  public loading_done: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionsApi: ActionsApiProvider) {
+  /**
+   *
+   * @param {NavController} navCtrl
+   * @param {NavParams} navParams
+   * @param {ActionsApiProvider} actionsApi
+   */
+  constructor(protected navCtrl: NavController,
+              protected navParams: NavParams,
+              protected actionsApi: ActionsApiProvider,
+              protected network: NetworkProvider) {
     this.loadActions();
   }
+
+  /**
+   * Load the Actions frome the API
+   */
   loadActions() {
     this.loading = true;
     this.actionsApi.getActions().then((data) => {
       this.actions = data['actions'];
       this.loading = false;
       this.loading_done = true;
-      setTimeout(() => this.loading_done = false,3000);
+      setTimeout(() => this.loading_done = false, 3000);
     })
   }
-
-  refresh(refresher) {
-    this.loadActions();
-    refresher.complete();
-  }
-
 }

@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
 import {LoadingController, ModalController, NavController} from 'ionic-angular';
-import {ProjectsService} from "../../../models/project/ProjectsService";
+import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
 import {ServerPage} from "../server";
 import {addServerModal} from "../addServer/addServer";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
-import {ServersService} from "../../../models/servers/ServersService";
+import {ServersService} from "../../../modules/hetzner-cloud-data/servers/servers.service";
 import {Storage} from "@ionic/storage";
 import {TranslateService} from "@ngx-translate/core";
 import {editServerModal} from "../editServer/editServer";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
 import {fadeIn, fadeOut} from "ng-animate";
-import {Server} from "../../../models/servers/server";
+import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
 @Component({
   selector: 'page-servers',

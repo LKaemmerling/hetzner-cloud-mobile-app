@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {LoadingController, ModalController, NavController, NavParams} from 'ionic-angular';
-import {ProjectsService} from "../../models/project/ProjectsService";
+import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects.service";
 import {editServerModal} from "./editServer/editServer";
 import {powerSettingsModal} from "./powerSettings/powerSettings";
 import {rescueModeModal} from "./rescueMode/rescueMode";
@@ -9,12 +9,12 @@ import {backupSettingsModal} from "./backupSettings/backupSettings";
 import {ServerApiProvider} from "../../providers/server-api/server-api";
 import {changeIPv4ReverseDNSModal} from "./reverseDNS/ipv4/changeIPv4ReverseDNSModal";
 import {changeIPv6ReverseDNSModal} from "./reverseDNS/ipv6/changeIPv6ReverseDNS";
-import {ServersService} from "../../models/servers/ServersService";
+import {ServersService} from "../../modules/hetzner-cloud-data/servers/servers.service";
 import {ServersPage} from "./serverList/servers";
 import {ServerMetricsPage} from "./server-metrics/server-metrics";
 import {TranslateService} from "@ngx-translate/core";
 import {consoleModal} from "./console/console";
-import {Server} from "../../models/servers/server";
+import {Server} from "../../modules/hetzner-cloud-data/servers/server";
 
 @Component({
   selector: 'page-server',

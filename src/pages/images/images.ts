@@ -1,25 +1,53 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../models/project/ProjectsService";
+import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects.service";
 import {ActionSheetController, ModalController, NavController} from "ionic-angular";
 import {ImageApiProvider} from "../../providers/image-api/image-api";
 import {editImageModal} from "./editImage/editImage";
 import {addServerModal} from "../server/addServer/addServer";
 import {TranslateService} from "@ngx-translate/core";
+import {ImagesService} from "../../modules/hetzner-cloud-data/images/images.service";
+import {Image} from "../../modules/hetzner-cloud-data/servers/server";
 
 
 @Component({
   selector: 'page-images',
   templateUrl: 'images.html'
 })
+/**
+ *
+ */
 export class ImagesPage {
-  public images = [];
+  /**
+   *
+   * @type {Image[]}
+   */
+  public images: Array<Image> = [];
+  /**
+   *
+   * @type {boolean}
+   */
   public loading: boolean = false;
+  /**
+   *
+   * @type {boolean}
+   */
   public loading_done: boolean = false;
 
+  /**
+   *
+   * @param {ProjectsService} project
+   * @param {ModalController} modal
+   * @param {ImageApiProvider} imageApiProvider
+   * @param {ImagesService} imagesService
+   * @param {NavController} navCtrl
+   * @param {ActionSheetController} actionSheetCtrl
+   * @param {TranslateService} translate
+   */
   constructor(
     protected project: ProjectsService,
     protected modal: ModalController,
     protected imageApiProvider: ImageApiProvider,
+    protected imagesService: ImagesService,
     protected navCtrl: NavController,
     protected actionSheetCtrl: ActionSheetController,
     protected translate: TranslateService
@@ -27,21 +55,32 @@ export class ImagesPage {
     this.loadImages();
   }
 
+  /**
+   *
+   */
   public loadImages() {
     this.loading = true;
-    this.imageApiProvider.getImages().then((data) => {
-      this.images = data['images'];
+    this.imagesService.reloadImages().then(() => {
+      this.images = this.imagesService.images;
       this.loading = false;
       this.loading_done = true;
       setTimeout(() => this.loading_done = false, 3000);
     });
   }
 
+  /**
+   *
+   * @param image
+   */
   public openEdit(image) {
     this.modal.create(editImageModal, {image: image}).present();
   }
 
-  public delete(image) {
+  /**
+   *
+   * @param {Image} image
+   */
+  public delete(image: Image) {
     let _delete_confirmation: string = '';
     this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
       _delete_confirmation = text;
@@ -53,7 +92,11 @@ export class ImagesPage {
     }
   }
 
-  public openActionSheets(image) {
+  /**
+   *
+   * @param {Image} image
+   */
+  public openActionSheets(image: Image) {
     var actions;
     let _title: string = '';
     this.translate.get('PAGE.IMAGES.ACTIONS.TITLE', {imageDescription: image.description}).subscribe((text) => {

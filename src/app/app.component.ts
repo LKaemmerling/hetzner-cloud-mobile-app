@@ -3,7 +3,7 @@ import {Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
-import {ProjectsService} from "../models/project/ProjectsService";
+import {ProjectsService} from "../modules/hetzner-cloud-data/project/projects.service";
 import {HomePage} from "../pages/home/home";
 import {ProjectsPage} from "../pages/projects/projects";
 import {AboutPage} from "../pages/about/about";
@@ -11,7 +11,7 @@ import {ServersPage} from "../pages/server/serverList/servers";
 import {Storage} from "@ionic/storage";
 import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
 import {ImagesPage} from "../pages/images/images";
-import {ServersService} from "../models/servers/ServersService";
+import {ServersService} from "../modules/hetzner-cloud-data/servers/servers.service";
 import {OneSignal} from "@ionic-native/onesignal";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 import {SettingsPage} from "../pages/settings/settings";
@@ -19,8 +19,14 @@ import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {TranslateService} from "@ngx-translate/core";
 import {ActionsPage} from "../pages/actions/actions";
 import {SshkeysPage} from "../pages/sshkeys/sshkeys";
-import {AppRate} from '@ionic-native/app-rate';
-import {PricingServices} from "../models/pricings/PricingServices";
+import {PricingService} from "../modules/hetzner-cloud-data/pricings/pricing.service";
+import {NetworkProvider} from "../modules/hetzner-app/network/network";
+import {SshKeysService} from "../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
+import {ImagesService} from "../modules/hetzner-cloud-data/images/images.service";
+import {LocationsService} from "../modules/hetzner-cloud-data/locations/locations.service";
+import {ServerTypesService} from "../modules/hetzner-cloud-data/server-types/server-types.service";
+import {HetznerCloudDataService} from "../modules/hetzner-cloud-data/hetzner-cloud-data.service";
+import {ConfigService} from "../modules/hetzner-app/config/config.service";
 
 @Component({
   templateUrl: 'app.html'
@@ -40,6 +46,7 @@ export class HetznerCloudMobileApp {
    * @type {string}
    */
   public lang: string = 'de';
+
   /**
    *
    * @type {({key: string; icon: string; page: HomePage; hidden: boolean} | {key: string; icon: string; page: ProjectsPage; hidden: boolean} | {key: string; icon: string; page: ServersPage; hidden: boolean} | {key: string; icon: string; page: FloatingIPsPage; hidden: boolean} | {key: string; icon: string; page: ImagesPage; hidden: boolean} | {key: string; icon: string; page: ActionsPage; hidden: boolean} | {key: string; icon: string; page: HetznerStatusPage; hidden: boolean} | {key: string; icon: string; page: SettingsPage; hidden: boolean})[]}
@@ -55,7 +62,7 @@ export class HetznerCloudMobileApp {
       key: 'PAGE.PROJECTS.TITLE',
       icon: 'fa-lock',
       page: ProjectsPage,
-      hidden: true
+      hidden: false
     },
     {
       key: 'PAGE.SERVERS.TITLE',
@@ -102,24 +109,25 @@ export class HetznerCloudMobileApp {
   ];
 
   constructor(
-    platform: Platform,
-    statusBar: StatusBar,
+    protected platform: Platform,
+    protected statusBar: StatusBar,
     protected splashScreen: SplashScreen,
-    protected projects: ProjectsService,
     protected storage: Storage,
-    protected servers: ServersService,
     protected oneSignal: OneSignal,
     protected fingerPrint: FingerprintAIO,
     protected translate: TranslateService,
-    protected appRate: AppRate,
-    protected prices: PricingServices) {
+    protected network: NetworkProvider,
+    protected hetzerCloudData: HetznerCloudDataService,
+    protected projects: ProjectsService,
+    protected config: ConfigService) {
     platform.ready().then(() => {
+      this.network.init();
+      this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       storage.ready().then(() => {
         statusBar.styleDefault();
-        oneSignal.startInit('e8714cee-7480-45da-bad0-19ba3c3e89c4', '1069973161280');
-        oneSignal.endInit();
+        this.loadOneSignal();
         this.loadLocalization();
         fingerPrint.isAvailable().then(res => {
           storage.get('auth').then(val => {
@@ -154,15 +162,6 @@ export class HetznerCloudMobileApp {
             }
           });
         });
-        this.appRate.preferences = {
-          usesUntilPrompt: 3,
-          storeAppURL: {
-            ios: '1342303703',
-            android: 'market://details?id=de.lkdevelopment.hetzner'
-          }
-        };
-
-        splashScreen.hide();
       });
     });
   }
@@ -170,16 +169,21 @@ export class HetznerCloudMobileApp {
   /**
    *
    */
-  public loadHetznerSpecificData() {
-    this.projects.loadProjects();
-    this.servers.loadServers();
-    this.prices.loadPrices();
+  private loadHetznerSpecificData() {
+    this.hetzerCloudData.loadData().then(() => {
+      this.splashScreen.hide();
+    }, () => {
+      this.translate.get('GLOBAL.MISSING_OR_WRONG_PROJECT').subscribe((text) => {
+        alert(text);
+      });
+      this.nav.setRoot(ProjectsPage);
+    });
   }
 
   /**
    *
    */
-  public loadLocalization() {
+  private loadLocalization() {
     this.translate.setDefaultLang(this.lang);
     this.translate.addLangs(['en', 'de']);
     this.storage.get('lang').then(lang => {
@@ -189,6 +193,14 @@ export class HetznerCloudMobileApp {
         this.translate.use(this.lang);
       }
     });
+  }
+
+  /**
+   *
+   */
+  private loadOneSignal() {
+    this.oneSignal.startInit(this.config.oneSignal.appId, this.config.oneSignal.googleProjectId);
+    this.oneSignal.endInit();
   }
 
   /**
@@ -212,4 +224,5 @@ export class HetznerCloudMobileApp {
   openAboutPage() {
     this.nav.setRoot(AboutPage);
   }
+
 }

@@ -1,12 +1,17 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ProjectsService} from "../../models/project/ProjectsService";
+import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects.service";
+import {ConfigService} from "../../modules/hetzner-app/config/config.service";
 
 @Injectable()
 export abstract class HetznerApiProvider {
-  public apiUrl = 'https://api.hetzner.cloud/v1';
-
-  constructor(public http: HttpClient, public projectService: ProjectsService) {
+  /**
+   *
+   * @param {HttpClient} http
+   * @param {ProjectsService} projectService
+   * @param {ConfigService} configService
+   */
+  constructor(protected http: HttpClient, protected projectService: ProjectsService, protected configService: ConfigService) {
   }
 
   /**
@@ -17,7 +22,7 @@ export abstract class HetznerApiProvider {
    */
   _get(method: string) {
     return new Promise((resolve, reject = null) => {
-      this.http.get(this.apiUrl + '/' + method, {
+      this.http.get(this.configService.api_url + '/' + method, {
         headers: this.getHeaders(),
       }).subscribe(data => {
         resolve(data);
@@ -38,7 +43,7 @@ export abstract class HetznerApiProvider {
    */
   _post(method: string, body: object = {}) {
     return new Promise((resolve, reject = null) => {
-      this.http.post(this.apiUrl + '/' + method, body, {
+      this.http.post(this.configService.api_url + '/' + method, body, {
         headers: this.getHeaders(),
       }).subscribe(data => {
         resolve(data);
@@ -59,7 +64,7 @@ export abstract class HetznerApiProvider {
    */
   _put(method: string, body: object) {
     return new Promise((resolve, reject = null) => {
-      this.http.put(this.apiUrl + '/' + method, body, {
+      this.http.put(this.configService.api_url + '/' + method, body, {
         headers: this.getHeaders(),
       }).subscribe(data => {
         resolve(data);
@@ -79,7 +84,7 @@ export abstract class HetznerApiProvider {
    */
   _delete(method: string) {
     return new Promise((resolve, reject = null) => {
-      this.http.delete(this.apiUrl + '/' + method, {
+      this.http.delete(this.configService.api_url + '/' + method, {
         headers: this.getHeaders(),
       }).subscribe(data => {
         resolve(data);

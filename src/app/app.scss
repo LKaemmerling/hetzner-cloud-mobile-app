@@ -47,7 +47,12 @@
 .text-white {
   color: #ffffff !important;
 }
-
+.hidden{
+  display: none;
+}
+.visible{
+  display: block;
+}
 ion-fab {
   button {
     box-shadow: 0 4px 10px #6b6b6b;

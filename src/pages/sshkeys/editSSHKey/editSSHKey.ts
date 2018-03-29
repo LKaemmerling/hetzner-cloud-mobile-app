@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../../models/project/ProjectsService";
+import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ImageApiProvider} from "../../../providers/image-api/image-api";
 import {SshKeyApiProvider} from "../../../providers/ssh-key-api/ssh-key-api";

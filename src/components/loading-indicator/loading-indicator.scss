@@ -1,11 +1,15 @@
 loading-indicator {
-  .fa-sync{
-    color:#ffffff ;
+  .fa-sync, .fa-exclamation {
+    color: #ffffff;
   }
   .fa-check {
-    color:#8cdd92 ;
+    color: #8cdd92;
   }
-  .fa-times{
+  .fa-times {
     color: #488aff;
   }
+  .fa-play {
+    color:#ff0000;
+  }
+
 }

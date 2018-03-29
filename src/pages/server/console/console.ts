@@ -3,7 +3,7 @@ import {LoadingController, NavController, NavParams, ViewController} from "ionic
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 
 import RFB from '@novnc/novnc/core/rfb.js';
-import {Server} from "../../../models/servers/server";
+import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
 var KeyTable = require('@novnc/novnc/core/input/keysym.js').default;
 var keysyms = require('@novnc/novnc/core/input/keysymdef.js').default;

@@ -14,7 +14,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <p class="message_box error" *ngIf="!network.has_connection"> {{ 'GLOBAL.FEATURE_NEEDS_CONNECTION' | translate}}</p>
+  <ion-card *ngIf="network.has_connection">
     <ion-list *ngFor="let action of actions">
       <ion-item>
         <h3 [translate]="'PAGE.ACTIONS.COMMANDS.'+(action.command.toUpperCase())"

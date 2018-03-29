@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 import {LoadingController, ModalController, NavController, NavParams} from "ionic-angular";
-import {ProjectsService} from "../../../models/project/ProjectsService";
+import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
 import {FloatingIpApiProvider} from "../../../providers/floating-ip-api/floating-ip-api";
 import {editFloatingIpModal} from "../editFloatingIp/editFloatingIp";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";

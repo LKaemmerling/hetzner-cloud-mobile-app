@@ -1,9 +1,8 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {PricingServices} from "../../models/pricings/PricingServices";
+import {PricingService} from "../../modules/hetzner-cloud-data/pricings/pricing.service";
 import {isNumeric} from "rxjs/util/isNumeric";
-
-let dateFormat = require('dateformat');
 import {TranslateService} from "@ngx-translate/core";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the PriceReplacePipe pipe.
@@ -13,8 +12,16 @@ import {TranslateService} from "@ngx-translate/core";
 @Pipe({
   name: 'replacePrice',
 })
+/**
+ *
+ */
 export class PriceReplacePipe implements PipeTransform {
-  constructor(protected prices: PricingServices, protected translate: TranslateService) {
+  /**
+   *
+   * @param {PricingService} prices
+   * @param {TranslateService} translate
+   */
+  constructor(protected prices: PricingService, protected translate: TranslateService) {
 
   }
 
@@ -22,6 +29,7 @@ export class PriceReplacePipe implements PipeTransform {
    * Takes a value and replace
    */
   transform(value: string, ...args) {
+    let dateFormat = require('dateformat');
     var values = value.match(/\<<(.*?)\>>/g);
     if (values != null) {
       values.forEach((val, key) => {
@@ -39,7 +47,7 @@ export class PriceReplacePipe implements PipeTransform {
           price = dateFormat(price, format);
         }
         value = value.replace(val, price)
-      })
+      });
       return value;
     } else {
       return value;

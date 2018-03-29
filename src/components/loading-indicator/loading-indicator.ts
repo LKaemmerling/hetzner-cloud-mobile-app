@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
+import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 /**
  * Generated class for the LoadingIndicatorComponent component.
@@ -17,9 +18,10 @@ export class LoadingIndicatorComponent {
   @Input() loading_error?: boolean;
   @Input() error_message?: string;
   @Output() action = new EventEmitter<string>()
+  public network_available: boolean = false;
 
-
-  constructor() {
+  constructor(public network: NetworkProvider) {
+    this.network_available = this.network.has_connection;
   }
 
   callAction() {

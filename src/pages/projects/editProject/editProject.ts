@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../../models/project/ProjectsService";
-import {project} from "../../../models/project/project";
+import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
+import {project} from "../../../modules/hetzner-cloud-data/project/project";
 import {NavParams, ViewController} from "ionic-angular";
 import {TranslateService} from "@ngx-translate/core";
 import {Storage} from "@ionic/storage";
