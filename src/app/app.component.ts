@@ -26,6 +26,7 @@ import {ImagesService} from "../modules/hetzner-cloud-data/images/images.service
 import {LocationsService} from "../modules/hetzner-cloud-data/locations/locations.service";
 import {ServerTypesService} from "../modules/hetzner-cloud-data/server-types/server-types.service";
 import {HetznerCloudDataService} from "../modules/hetzner-cloud-data/hetzner-cloud-data.service";
+import {ConfigService} from "../modules/hetzner-app/config/config.service";
 
 @Component({
   templateUrl: 'app.html'
@@ -117,7 +118,8 @@ export class HetznerCloudMobileApp {
     protected translate: TranslateService,
     protected network: NetworkProvider,
     protected hetzerCloudData: HetznerCloudDataService,
-    protected projects: ProjectsService) {
+    protected projects: ProjectsService,
+    protected config: ConfigService) {
     platform.ready().then(() => {
       this.network.init();
       this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
@@ -125,8 +127,7 @@ export class HetznerCloudMobileApp {
       // Here you can do any higher level native things you might need.
       storage.ready().then(() => {
         statusBar.styleDefault();
-        oneSignal.startInit('e8714cee-7480-45da-bad0-19ba3c3e89c4', '1069973161280');
-        oneSignal.endInit();
+        this.loadOneSignal();
         this.loadLocalization();
         fingerPrint.isAvailable().then(res => {
           storage.get('auth').then(val => {
@@ -168,7 +169,7 @@ export class HetznerCloudMobileApp {
   /**
    *
    */
-  public loadHetznerSpecificData() {
+  private loadHetznerSpecificData() {
     this.hetzerCloudData.loadData().then(() => {
       this.splashScreen.hide();
     }, () => {
@@ -182,7 +183,7 @@ export class HetznerCloudMobileApp {
   /**
    *
    */
-  public loadLocalization() {
+  private loadLocalization() {
     this.translate.setDefaultLang(this.lang);
     this.translate.addLangs(['en', 'de']);
     this.storage.get('lang').then(lang => {
@@ -192,6 +193,14 @@ export class HetznerCloudMobileApp {
         this.translate.use(this.lang);
       }
     });
+  }
+
+  /**
+   *
+   */
+  private loadOneSignal() {
+    this.oneSignal.startInit(this.config.oneSignal.appId, this.config.oneSignal.googleProjectId);
+    this.oneSignal.endInit();
   }
 
   /**

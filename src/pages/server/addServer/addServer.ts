@@ -91,7 +91,8 @@ export class addServerModal {
               protected serverTypesService: ServerTypesService,
               protected imagesService: ImagesService,
               protected locationService: LocationsService,
-              protected sshKeysService: SshKeysService) {
+              protected sshKeysService: SshKeysService
+  ) {
     this.__selected_image = this.navParams.get('selected_image');
     if (this.__selected_image != null) {
       this.image = this.__selected_image;

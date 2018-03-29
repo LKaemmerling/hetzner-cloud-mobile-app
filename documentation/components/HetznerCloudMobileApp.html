@@ -990,12 +990,16 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Private</span>
                                 <a href="#loadHetznerSpecificData">loadHetznerSpecificData</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Private</span>
                                 <a href="#loadLocalization">loadLocalization</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadOneSignal">loadOneSignal</a>
                             </li>
                             <li>
                                 <a href="#openAboutPage">openAboutPage</a>
@@ -1019,12 +1023,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-    <code>constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, storage: Storage, oneSignal: OneSignal, fingerPrint: FingerprintAIO, translate: TranslateService, network: <a href="../injectables/NetworkProvider.html">NetworkProvider</a>, hetzerCloudData: <a href="../injectables/HetznerCloudDataService.html">HetznerCloudDataService</a>, projects: <a href="../injectables/ProjectsService.html">ProjectsService</a>)</code>
+    <code>constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, storage: Storage, oneSignal: OneSignal, fingerPrint: FingerprintAIO, translate: TranslateService, network: <a href="../injectables/NetworkProvider.html">NetworkProvider</a>, hetzerCloudData: <a href="../injectables/HetznerCloudDataService.html">HetznerCloudDataService</a>, projects: <a href="../injectables/ProjectsService.html">ProjectsService</a>, config: <a href="../injectables/ConfigService.html">ConfigService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/app.component.ts:108</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/app.component.ts:109</a></div>
                                 </td>
                             </tr>
     
@@ -1161,6 +1165,18 @@
                                                         </td>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <td>config</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/ConfigService.html" target="_self" >ConfigService</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
                                             </tbody>
                                         </table>
                                 </div>
@@ -1186,7 +1202,7 @@
                             <a name="loadHetznerSpecificData"></a>
                             <span class="name">
                                 <b>
-                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Private</span>
                                 loadHetznerSpecificData
                                 </b>
                                 <a href="#loadHetznerSpecificData"><span class="fa fa-link"></span></a>
@@ -1203,7 +1219,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/app/app.component.ts:171</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">src/app/app.component.ts:172</a></div>
                                 </td>
                             </tr>
     
@@ -1225,7 +1241,7 @@
                             <a name="loadLocalization"></a>
                             <span class="name">
                                 <b>
-                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Private</span>
                                 loadLocalization
                                 </b>
                                 <a href="#loadLocalization"><span class="fa fa-link"></span></a>
@@ -1242,7 +1258,46 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">src/app/app.component.ts:185</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/app/app.component.ts:186</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="loadOneSignal"></a>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Private</span>
+                                loadOneSignal
+                                </b>
+                                <a href="#loadOneSignal"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>loadOneSignal()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/app/app.component.ts:201</a></div>
                                 </td>
                             </tr>
     
@@ -1279,7 +1334,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">src/app/app.component.ts:215</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">src/app/app.component.ts:224</a></div>
                                 </td>
                             </tr>
     
@@ -1316,7 +1371,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/app/app.component.ts:201</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/app/app.component.ts:210</a></div>
                                 </td>
                             </tr>
     
@@ -1381,7 +1436,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="208" class="link-to-prism">src/app/app.component.ts:208</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">src/app/app.component.ts:217</a></div>
                                 </td>
                             </tr>
     
@@ -1436,7 +1491,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/app.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/app.component.ts:48</a></div>
                                 </td>
                             </tr>
     
@@ -1531,7 +1586,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/app.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/app.component.ts:54</a></div>
                                 </td>
                             </tr>
     
@@ -1570,7 +1625,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/app.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/app.component.ts:38</a></div>
                                 </td>
                             </tr>
     
@@ -1609,7 +1664,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/app.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/app.component.ts:43</a></div>
                                 </td>
                             </tr>
     
@@ -1650,6 +1705,7 @@ import {ImagesService} from &quot;../modules/hetzner-cloud-data/images/images.se
 import {LocationsService} from &quot;../modules/hetzner-cloud-data/locations/locations.service&quot;;
 import {ServerTypesService} from &quot;../modules/hetzner-cloud-data/server-types/server-types.service&quot;;
 import {HetznerCloudDataService} from &quot;../modules/hetzner-cloud-data/hetzner-cloud-data.service&quot;;
+import {ConfigService} from &quot;../modules/hetzner-app/config/config.service&quot;;
 
 @Component({
   templateUrl: &#x27;app.html&#x27;
@@ -1741,7 +1797,8 @@ export class HetznerCloudMobileApp {
     protected translate: TranslateService,
     protected network: NetworkProvider,
     protected hetzerCloudData: HetznerCloudDataService,
-    protected projects: ProjectsService) {
+    protected projects: ProjectsService,
+    protected config: ConfigService) {
     platform.ready().then(() &#x3D;&gt; {
       this.network.init();
       this.network.onConnectListener.subscribe(() &#x3D;&gt; this.loadHetznerSpecificData());
@@ -1749,8 +1806,7 @@ export class HetznerCloudMobileApp {
       // Here you can do any higher level native things you might need.
       storage.ready().then(() &#x3D;&gt; {
         statusBar.styleDefault();
-        oneSignal.startInit(&#x27;e8714cee-7480-45da-bad0-19ba3c3e89c4&#x27;, &#x27;1069973161280&#x27;);
-        oneSignal.endInit();
+        this.loadOneSignal();
         this.loadLocalization();
         fingerPrint.isAvailable().then(res &#x3D;&gt; {
           storage.get(&#x27;auth&#x27;).then(val &#x3D;&gt; {
@@ -1792,7 +1848,7 @@ export class HetznerCloudMobileApp {
   /**
    *
    */
-  public loadHetznerSpecificData() {
+  private loadHetznerSpecificData() {
     this.hetzerCloudData.loadData().then(() &#x3D;&gt; {
       this.splashScreen.hide();
     }, () &#x3D;&gt; {
@@ -1806,7 +1862,7 @@ export class HetznerCloudMobileApp {
   /**
    *
    */
-  public loadLocalization() {
+  private loadLocalization() {
     this.translate.setDefaultLang(this.lang);
     this.translate.addLangs([&#x27;en&#x27;, &#x27;de&#x27;]);
     this.storage.get(&#x27;lang&#x27;).then(lang &#x3D;&gt; {
@@ -1816,6 +1872,14 @@ export class HetznerCloudMobileApp {
         this.translate.use(this.lang);
       }
     });
+  }
+
+  /**
+   *
+   */
+  private loadOneSignal() {
+    this.oneSignal.startInit(this.config.oneSignal.appId, this.config.oneSignal.googleProjectId);
+    this.oneSignal.endInit();
   }
 
   /**
