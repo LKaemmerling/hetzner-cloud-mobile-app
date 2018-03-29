@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ActionSheetController, ModalController, NavController, NavParams} from 'ionic-angular';
 import {SshKeyApiProvider} from "../../providers/ssh-key-api/ssh-key-api";
 import {editSSHKeyModal} from "./editSSHKey/editSSHKey";
+import {SshKeysService} from "../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
 
 /**
  * Generated class for the SshkeysPage page.
@@ -19,22 +20,29 @@ export class SshkeysPage {
   public loading: boolean = false;
   public loading_done: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public sshKeyProvider: SshKeyApiProvider, public actionSheetCtrl: ActionSheetController, public modalCtrl: ModalController) {
+  constructor(protected navCtrl: NavController,
+              protected navParams: NavParams,
+              protected sshKeysService: SshKeysService,
+              protected actionSheetCtrl: ActionSheetController,
+              protected modalCtrl: ModalController,
+              protected sshKeyProvider: SshKeyApiProvider) {
     this.loadSSHKeys();
   }
 
   loadSSHKeys() {
     this.loading = true;
-    this.sshKeyProvider.getSSHKeys().then((val) => {
-      this._ssh_keys = val['ssh_keys'];
+    this.sshKeysService.reloadSshKeys().then(() => {
+      this._ssh_keys = this.sshKeysService.ssh_keys;
       this.loading = false;
       this.loading_done = true;
       setTimeout(() => this.loading_done = false, 3000);
     });
   }
-  public ionViewWillEnter(){
+
+  public ionViewWillEnter() {
     this.loadSSHKeys();
   }
+
   public delete(ssh_key) {
     if (confirm('Möchten Sie diesen SSH-Key wirklich unwiderruflich löschen?')) {
       this.sshKeyProvider.delete(ssh_key.id).then((data) => {

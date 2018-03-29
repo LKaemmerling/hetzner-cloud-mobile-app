@@ -5,9 +5,12 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ServerTypeApiProvider} from "../../../providers/server-type-api/server-type-api";
 import {ImageApiProvider} from "../../../providers/image-api/image-api";
 import {LocationApiProvider} from "../../../providers/location-api/location-api";
-import {SshKeyApiProvider} from "../../../providers/ssh-key-api/ssh-key-api";
 import {ServersService} from "../../../modules/hetzner-cloud-data/servers/servers.service";
 import {Location, ServerType} from "../../../modules/hetzner-cloud-data/servers/server";
+import {SshKeysService} from "../../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
+import {ImagesService} from "../../../modules/hetzner-cloud-data/images/images.service";
+import {LocationsService} from "../../../modules/hetzner-cloud-data/locations/locations.service";
+import {ServerTypesService} from "../../../modules/hetzner-cloud-data/server-types/server-types.service";
 
 @Component({
   selector: 'modal-addServer',
@@ -70,34 +73,36 @@ export class addServerModal {
 
   /**
    *
-   * @param {ProjectsService} project
    * @param {ViewController} viewCtrl
-   * @param {ServerApiProvider} serverApiProvider
-   * @param {ServerTypeApiProvider} serverTypeApiProvider
-   * @param {ImageApiProvider} imageApiProvider
-   * @param {LocationApiProvider} locationApiProvider
-   * @param {SshKeyApiProvider} sshKeyApiProvider
    * @param {LoadingController} loadingCtrl
-   * @param {ServersService} serverService
+   * @param {ServerApiProvider} serverApiProvider
    * @param {NavParams} navParams
+   * @param {ServersService} serverService
+   * @param {ServerTypesService} serverTypesService
+   * @param {ImagesService} imagesService
+   * @param {LocationsService} locationService
+   * @param {SshKeysService} sshKeysService
    */
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public serverTypeApiProvider: ServerTypeApiProvider, public imageApiProvider: ImageApiProvider, public locationApiProvider: LocationApiProvider, public sshKeyApiProvider: SshKeyApiProvider, public loadingCtrl: LoadingController, public serverService: ServersService, public navParams: NavParams) {
+  constructor(protected viewCtrl: ViewController,
+              protected loadingCtrl: LoadingController,
+              protected serverApiProvider: ServerApiProvider,
+              protected navParams: NavParams,
+              protected serverService: ServersService,
+              protected serverTypesService: ServerTypesService,
+              protected imagesService: ImagesService,
+              protected locationService: LocationsService,
+              protected sshKeysService: SshKeysService) {
     this.__selected_image = this.navParams.get('selected_image');
     if (this.__selected_image != null) {
       this.image = this.__selected_image;
     }
-    locationApiProvider.getLocations().then((data) => {
-      this.locations = data['locations'];
-    });
-    imageApiProvider.getImages().then((data) => {
-      this.images = data['images'];
-    });
-    serverTypeApiProvider.getServerTypes().then((data) => {
-      this.server_types = data['server_types'];
-    });
-    sshKeyApiProvider.getSSHKeys().then((data) => {
-      this.ssh_keys = data['ssh_keys'];
-    })
+
+    this.locations = this.locationService.locations;
+
+    this.server_types = serverTypesService.server_types;
+
+    this.images = imagesService.images;
+    this.ssh_keys = sshKeysService.ssh_keys;
   }
 
   /**

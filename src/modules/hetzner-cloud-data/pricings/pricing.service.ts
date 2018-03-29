@@ -20,6 +20,11 @@ export class PricingService {
     this.prices = null;
   }
 
+  /**
+   *
+   * @param {string} identifier
+   * @returns {any}
+   */
   public getPrice(identifier: string) {
     console.log(this.prices)
     if (this.prices == null) {

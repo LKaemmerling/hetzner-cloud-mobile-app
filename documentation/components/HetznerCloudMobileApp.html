@@ -243,10 +243,19 @@
                                     <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/HetznerCloudDataService.html" >HetznerCloudDataService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/ImageApiProvider.html" >ImageApiProvider</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/ImagesService.html" >ImagesService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/LocationApiProvider.html" >LocationApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LocationsService.html" >LocationsService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/MyErrorHandler.html" >MyErrorHandler</a>
@@ -270,10 +279,16 @@
                                     <a href="../injectables/ServerTypeApiProvider.html" >ServerTypeApiProvider</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/ServerTypesService.html" >ServerTypesService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/ServersService.html" >ServersService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/SshKeyApiProvider.html" >SshKeyApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SshKeysService.html" >SshKeysService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/StatusApiProvider.html" >StatusApiProvider</a>
@@ -414,6 +429,9 @@
                         </ul>
                     </li>
             
+                        <li class="chapter">
+                            <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-fw fa-code-fork"></span>Routes</a>
+                        </li>
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
@@ -659,10 +677,19 @@
                                            <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/HetznerCloudDataService.html" >HetznerCloudDataService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/ImageApiProvider.html" >ImageApiProvider</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/ImagesService.html" >ImagesService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/LocationApiProvider.html" >LocationApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LocationsService.html" >LocationsService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/MyErrorHandler.html" >MyErrorHandler</a>
@@ -686,10 +713,16 @@
                                            <a href="../injectables/ServerTypeApiProvider.html" >ServerTypeApiProvider</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/ServerTypesService.html" >ServerTypesService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/ServersService.html" >ServersService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/SshKeyApiProvider.html" >SshKeyApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SshKeysService.html" >SshKeysService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/StatusApiProvider.html" >StatusApiProvider</a>
@@ -830,6 +863,9 @@
                                </ul>
                            </li>
                    
+                               <li class="chapter">
+                                   <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-fw fa-code-fork"></span>Routes</a>
+                               </li>
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
@@ -983,12 +1019,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-    <code>constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, projects: <a href="../injectables/ProjectsService.html">ProjectsService</a>, storage: Storage, servers: <a href="../injectables/ServersService.html">ServersService</a>, oneSignal: OneSignal, fingerPrint: FingerprintAIO, translate: TranslateService, appRate: AppRate, prices: <a href="../injectables/PricingService.html">PricingService</a>, network: <a href="../injectables/NetworkProvider.html">NetworkProvider</a>)</code>
+    <code>constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, storage: Storage, oneSignal: OneSignal, fingerPrint: FingerprintAIO, translate: TranslateService, network: <a href="../injectables/NetworkProvider.html">NetworkProvider</a>, hetzerCloudData: <a href="../injectables/HetznerCloudDataService.html">HetznerCloudDataService</a>, projects: <a href="../injectables/ProjectsService.html">ProjectsService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/app.component.ts:104</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/app.component.ts:108</a></div>
                                 </td>
                             </tr>
     
@@ -1042,34 +1078,10 @@
                                                         
                                                     </tr>
                                                     <tr>
-                                                        <td>projects</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../injectables/ProjectsService.html" target="_self" >ProjectsService</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
                                                         <td>storage</td>
                                                       
                                                             <td>
                                                                         <code>Storage</code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>servers</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../injectables/ServersService.html" target="_self" >ServersService</a></code>
                                                             </td>
                                                       
                                                         <td>
@@ -1114,34 +1126,34 @@
                                                         
                                                     </tr>
                                                     <tr>
-                                                        <td>appRate</td>
-                                                      
-                                                            <td>
-                                                                        <code>AppRate</code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>prices</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../injectables/PricingService.html" target="_self" >PricingService</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
                                                         <td>network</td>
                                                       
                                                             <td>
                                                                         <code><a href="../injectables/NetworkProvider.html" target="_self" >NetworkProvider</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>hetzerCloudData</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/HetznerCloudDataService.html" target="_self" >HetznerCloudDataService</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>projects</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/ProjectsService.html" target="_self" >ProjectsService</a></code>
                                                             </td>
                                                       
                                                         <td>
@@ -1191,7 +1203,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/app/app.component.ts:170</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/app/app.component.ts:171</a></div>
                                 </td>
                             </tr>
     
@@ -1230,7 +1242,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">src/app/app.component.ts:190</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">src/app/app.component.ts:185</a></div>
                                 </td>
                             </tr>
     
@@ -1267,7 +1279,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">src/app/app.component.ts:220</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">src/app/app.component.ts:215</a></div>
                                 </td>
                             </tr>
     
@@ -1304,7 +1316,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="206" class="link-to-prism">src/app/app.component.ts:206</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/app/app.component.ts:201</a></div>
                                 </td>
                             </tr>
     
@@ -1369,7 +1381,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">src/app/app.component.ts:213</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="208" class="link-to-prism">src/app/app.component.ts:208</a></div>
                                 </td>
                             </tr>
     
@@ -1424,7 +1436,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/app.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/app.component.ts:47</a></div>
                                 </td>
                             </tr>
     
@@ -1519,7 +1531,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/app.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/app.component.ts:53</a></div>
                                 </td>
                             </tr>
     
@@ -1558,7 +1570,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/app.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/app.component.ts:37</a></div>
                                 </td>
                             </tr>
     
@@ -1597,7 +1609,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/app.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/app.component.ts:42</a></div>
                                 </td>
                             </tr>
     
@@ -1631,9 +1643,13 @@ import {FingerprintAIO} from &quot;@ionic-native/fingerprint-aio&quot;;
 import {TranslateService} from &quot;@ngx-translate/core&quot;;
 import {ActionsPage} from &quot;../pages/actions/actions&quot;;
 import {SshkeysPage} from &quot;../pages/sshkeys/sshkeys&quot;;
-import {AppRate} from &#x27;@ionic-native/app-rate&#x27;;
 import {PricingService} from &quot;../modules/hetzner-cloud-data/pricings/pricing.service&quot;;
 import {NetworkProvider} from &quot;../modules/hetzner-app/network/network&quot;;
+import {SshKeysService} from &quot;../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service&quot;;
+import {ImagesService} from &quot;../modules/hetzner-cloud-data/images/images.service&quot;;
+import {LocationsService} from &quot;../modules/hetzner-cloud-data/locations/locations.service&quot;;
+import {ServerTypesService} from &quot;../modules/hetzner-cloud-data/server-types/server-types.service&quot;;
+import {HetznerCloudDataService} from &quot;../modules/hetzner-cloud-data/hetzner-cloud-data.service&quot;;
 
 @Component({
   templateUrl: &#x27;app.html&#x27;
@@ -1716,18 +1732,16 @@ export class HetznerCloudMobileApp {
   ];
 
   constructor(
-    platform: Platform,
-    statusBar: StatusBar,
+    protected platform: Platform,
+    protected statusBar: StatusBar,
     protected splashScreen: SplashScreen,
-    protected projects: ProjectsService,
     protected storage: Storage,
-    protected servers: ServersService,
     protected oneSignal: OneSignal,
     protected fingerPrint: FingerprintAIO,
     protected translate: TranslateService,
-    protected appRate: AppRate,
-    protected prices: PricingService,
-    protected network: NetworkProvider) {
+    protected network: NetworkProvider,
+    protected hetzerCloudData: HetznerCloudDataService,
+    protected projects: ProjectsService) {
     platform.ready().then(() &#x3D;&gt; {
       this.network.init();
       this.network.onConnectListener.subscribe(() &#x3D;&gt; this.loadHetznerSpecificData());
@@ -1771,7 +1785,6 @@ export class HetznerCloudMobileApp {
             }
           });
         });
-        splashScreen.hide();
       });
     });
   }
@@ -1780,14 +1793,8 @@ export class HetznerCloudMobileApp {
    *
    */
   public loadHetznerSpecificData() {
-    this.projects.loadProjects().then(() &#x3D;&gt; {
-      if (this.network.has_connection &#x3D;&#x3D; true) {
-        this.prices.reloadPrices();
-        this.servers.reloadServers();
-      } else {
-        this.prices.loadPrices();
-        this.servers.loadServers();
-      }
+    this.hetzerCloudData.loadData().then(() &#x3D;&gt; {
+      this.splashScreen.hide();
     }, () &#x3D;&gt; {
       this.translate.get(&#x27;GLOBAL.MISSING_OR_WRONG_PROJECT&#x27;).subscribe((text) &#x3D;&gt; {
         alert(text);

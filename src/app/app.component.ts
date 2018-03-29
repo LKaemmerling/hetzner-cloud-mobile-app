@@ -19,9 +19,13 @@ import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {TranslateService} from "@ngx-translate/core";
 import {ActionsPage} from "../pages/actions/actions";
 import {SshkeysPage} from "../pages/sshkeys/sshkeys";
-import {AppRate} from '@ionic-native/app-rate';
 import {PricingService} from "../modules/hetzner-cloud-data/pricings/pricing.service";
 import {NetworkProvider} from "../modules/hetzner-app/network/network";
+import {SshKeysService} from "../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
+import {ImagesService} from "../modules/hetzner-cloud-data/images/images.service";
+import {LocationsService} from "../modules/hetzner-cloud-data/locations/locations.service";
+import {ServerTypesService} from "../modules/hetzner-cloud-data/server-types/server-types.service";
+import {HetznerCloudDataService} from "../modules/hetzner-cloud-data/hetzner-cloud-data.service";
 
 @Component({
   templateUrl: 'app.html'
@@ -104,18 +108,16 @@ export class HetznerCloudMobileApp {
   ];
 
   constructor(
-    platform: Platform,
-    statusBar: StatusBar,
+    protected platform: Platform,
+    protected statusBar: StatusBar,
     protected splashScreen: SplashScreen,
-    protected projects: ProjectsService,
     protected storage: Storage,
-    protected servers: ServersService,
     protected oneSignal: OneSignal,
     protected fingerPrint: FingerprintAIO,
     protected translate: TranslateService,
-    protected appRate: AppRate,
-    protected prices: PricingService,
-    protected network: NetworkProvider) {
+    protected network: NetworkProvider,
+    protected hetzerCloudData: HetznerCloudDataService,
+    protected projects: ProjectsService) {
     platform.ready().then(() => {
       this.network.init();
       this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
@@ -159,7 +161,6 @@ export class HetznerCloudMobileApp {
             }
           });
         });
-        splashScreen.hide();
       });
     });
   }
@@ -168,14 +169,8 @@ export class HetznerCloudMobileApp {
    *
    */
   public loadHetznerSpecificData() {
-    this.projects.loadProjects().then(() => {
-      if (this.network.has_connection == true) {
-        this.prices.reloadPrices();
-        this.servers.reloadServers();
-      } else {
-        this.prices.loadPrices();
-        this.servers.loadServers();
-      }
+    this.hetzerCloudData.loadData().then(() => {
+      this.splashScreen.hide();
     }, () => {
       this.translate.get('GLOBAL.MISSING_OR_WRONG_PROJECT').subscribe((text) => {
         alert(text);
