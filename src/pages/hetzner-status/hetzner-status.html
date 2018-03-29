@@ -7,6 +7,7 @@
       {{ 'PAGE.STATUS.TITLE' | translate }}
     </ion-title>
     <ion-buttons end>
+      <loading-indicator (action)="loadMessages()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
       <button ion-button (click)="openSettings()">
         <i class="fas fa-ellipsis-v"></i>
       </button>
@@ -15,9 +16,6 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-refresher (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
   <ion-card *ngFor="let message of messages">
     <ion-card-header text-wrap>
       {{ message.title }} <ion-icon name="link" item-start (click)="openPage(message.permalink)"></ion-icon>
