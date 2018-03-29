@@ -60,7 +60,7 @@ import {createTranslateLoader} from "../providers/translation/loader";
 import {PricingModule} from "../models/pricings/Pricing.module";
 
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.3.1"
+  appVersion: "1.4.0"
 });
 
 
