@@ -13,6 +13,7 @@ export class ServersService {
   /**
    *
    * @param {Storage} storage
+   * @param {ServerApiProvider} serverApiProvider
    */
   constructor(private storage: Storage, private serverApiProvider: ServerApiProvider) {
     this.servers = [];

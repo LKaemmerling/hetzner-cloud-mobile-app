@@ -19,6 +19,10 @@
       <span item-right>{{ version }}</span>
     </div>
     <div ion-item="">
+      <ion-label>{{ 'PAGE.SETTINGS.APP.LATEST_UPDATE.TITLE' | translate }}</ion-label>
+      <span item-right="">{{'PAGE.SETTINGS.APP.LATEST_UPDATE.TEXT' | translate |replacePrice }}</span>
+    </div>
+    <div ion-item="">
       <ion-label>{{ 'PAGE.SETTINGS.APP.LANGUAGE' | translate }}</ion-label>
       <ion-select [(ngModel)]="language" (ionChange)="changeLanguage()" id="language">
         <ion-option value="de">Deutsch</ion-option>
@@ -35,7 +39,7 @@
     <p ion-item="" class="message_box info" *ngIf="finger_print == -1" text-wrap=""
        [innerHTML]="'PAGE.SETTINGS.SECURITY.AUTH.NOT_AVAILABLE' | translate "></p>
     <ion-list-header>
-    Design
+      Design
     </ion-list-header>
     <ion-item>
       <ion-label>{{ 'PAGE.SETTINGS.DESIGN.COMPACT_SERVERS' | translate }}</ion-label>

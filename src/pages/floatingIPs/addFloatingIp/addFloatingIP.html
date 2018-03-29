@@ -15,7 +15,7 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label fixed>{{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.DESCRIPTION' | translate}}</ion-label>
+      <ion-label fixed>{{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.DESCRIPTION' | translate | replacePrice}}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="description" required=""></ion-input>
     </ion-item>
 
@@ -35,7 +35,7 @@
       </ion-select>
     </ion-item>
     <p ion-item="" text-wrap="" class="message_box info">
-      {{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.INFO' | translate}}
+      {{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.INFO' | translate | replacePrice}}
     </p>
   </ion-list>
   <button ion-button color="danger" (click)="createFloatingIP()">{{ 'ACTIONS.ORDER' | translate}}</button>

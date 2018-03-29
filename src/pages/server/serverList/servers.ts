@@ -72,7 +72,16 @@ export class ServersPage {
    * @param {Storage} storage
    * @param {TranslateService} translate
    */
-  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public modal: ModalController, public loadingCtrl: LoadingController, public serversService: ServersService, public storage: Storage, public translate: TranslateService) {
+  constructor(
+    protected navCtrl: NavController,
+    protected project: ProjectsService,
+    protected serverApiProvider: ServerApiProvider,
+    protected modal: ModalController,
+    protected loadingCtrl: LoadingController,
+    protected serversService: ServersService,
+    protected storage: Storage,
+    protected translate: TranslateService
+  ) {
     this.servers = this._search = this.serversService.servers;
     storage.get('compact_server_design').then((val) => {
       if (val != undefined) {
@@ -133,7 +142,7 @@ export class ServersPage {
    *
    * @param {Server} server
    */
-  public delete(server:Server) {
+  public delete(server: Server) {
     let _delete: string = '';
     this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
       _delete = text;
@@ -185,7 +194,7 @@ export class ServersPage {
    *
    * @param {Server} server
    */
-  public openEditModal(server:Server) {
+  public openEditModal(server: Server) {
     let modal = this.modal.create(editServerModal, {server: server});
     modal.onDidDismiss(() => {
       this.loadServers();
@@ -198,7 +207,7 @@ export class ServersPage {
    *
    * @param {Server} server
    */
-  public openDetailsPage(server:Server) {
+  public openDetailsPage(server: Server) {
     this.navCtrl.push(ServerPage, {server: server});
   }
 }
