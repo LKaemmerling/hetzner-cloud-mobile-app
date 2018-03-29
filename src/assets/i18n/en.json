@@ -1,4 +1,7 @@
 {
+  "GLOBAL": {
+    "DATE_FORMAT": "yyyy-mm-dd HH:MM:ss"
+  },
   "ACTIONS": {
     "DELETE": "Delete",
     "DELETE_CONFIRMATION": "Are you sure that you want to delete?",
@@ -44,7 +47,11 @@
       "APP": {
         "TITLE": "App information",
         "VERSION": "Version:",
-        "LANGUAGE": "Language:"
+        "LANGUAGE": "Language:",
+        "LATEST_UPDATE": {
+          "TITLE": "Last price update:",
+          "TEXT": "<<latest_update>>"
+        }
       },
       "SECURITY": {
         "TITLE": "Security",
@@ -183,7 +190,7 @@
             "DESCRIPTION": "Name:",
             "NETWORK_PROTOCOL": "Protocol:",
             "SERVER": "Server:",
-            "INFO": "A floating IP costs 1,19€ including german VAT currently."
+            "INFO": "A floating IP costs <<floating_ip.price_monthly.gross>> <<currency>> (including german VAT of <<vat_rate>>%)."
           },
           "ERRORS": {
             "REQUIRED_DESCRIPTION": "Please enter a name.",
@@ -305,8 +312,8 @@
         "BACKUPS": {
           "TITLE": "Backup settings",
           "DESCRIPTION": {
-            "BACKUPS": "Backups are automatic copies of your hard disk. Each server contains 7 slots for backups. If all slots are used, the oldest backup will be deleted. We suggest to shutdown the server when creating a manual backup, so that the data remains consistent.<br/><br/>By activating backups an additional monthly fee of 20% of the server fee will be billed.<br/>",
-            "SNAPSHOTS": "Snapshots are direct copies of the hard disk of your server.<br/>You can create new server using this snapshot and you're able to move these snapshots to other projects.<br/>We suggest to shutdown the server before creating a snapshot, so that the data is completely consistent.<br/>Snapshots are currently billed 0.0119 €/GB/month (including german VAT of 19%).<br/>",
+            "BACKUPS": "Backups are automatic copies of your hard disk. Each server contains 7 slots for backups. If all slots are used, the oldest backup will be deleted. We suggest to shutdown the server when creating a manual backup, so that the data remains consistent.<br/><br/>By activating backups an additional monthly fee of <<server_backup.percentage>>% of the server fee will be billed.<br/>",
+            "SNAPSHOTS": "Snapshots are direct copies of the hard disk of your server.<br/>You can create new server using this snapshot and you're able to move these snapshots to other projects.<br/>We suggest to shutdown the server before creating a snapshot, so that the data is completely consistent.<br/>Snapshots are currently billed <<image.price_per_gb_month.gross>> <<currency>>/GB/month (including german VAT of <<vat_rate>>%).<br/>",
             "REBUILD": "By rebuilding your server, the hard disk will be completely deleted and replaced with the selected image.<br />All data will be destroyed!"
           },
           "ACTIONS": {

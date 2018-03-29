@@ -1,4 +1,7 @@
 {
+  "GLOBAL": {
+    "DATE_FORMAT": "dd.mm.yyyy HH:MM:ss"
+  },
   "ACTIONS": {
     "DELETE": "Löschen",
     "DELETE_CONFIRMATION": "Möchten Sie die Aktion 'löschen' unwiderruflich wirklich ausführen?",
@@ -14,7 +17,7 @@
   "PAGE": {
     "HOME": {
       "TITLE": "Startseite",
-      "TEXT": "<h2>Willkommen auf der Hetzner Cloud Mobile App.</h2> <p>Diese App ist eine inoffizielle App für die Hetzner Cloud. Über diese App können Sie viele der aus der Hetzner Cloud Console bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p> <p class='message_box info'>Wir möchten die App noch weiter verbessern und haben daher eine kleine Umfrage vorbereitet. Bitte nehmen Sie sich kurz Zeit um die <a href='https://goo.gl/forms/6fgsHcM62fLEpzmB3' target='_system'>Umfrage auszufüllen</a>.",
+      "TEXT": "<h2>Willkommen auf der Hetzner Cloud Mobile App.</h2> <p>Diese App ist eine inoffizielle App für die Hetzner Cloud. Über diese App können Sie viele der aus der Hetzner Cloud Console bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p>",
       "ADD_PROJECT_BUTTON": "Jetzt erstes Projekt hinzufügen!"
     },
     "ABOUT": {
@@ -44,7 +47,11 @@
       "APP": {
         "TITLE": "App Informationen",
         "VERSION": "Version:",
-        "LANGUAGE": "Sprache:"
+        "LANGUAGE": "Sprache:",
+        "LATEST_UPDATE": {
+          "TITLE": "Letzte Preis-Aktualisierung:",
+          "TEXT": "<<latest_update>>"
+        }
       },
       "SECURITY": {
         "TITLE": "Sicherheit",
@@ -183,7 +190,7 @@
             "DESCRIPTION": "Bezeichnung:",
             "NETWORK_PROTOCOL": "Netzwerkprotokoll:",
             "SERVER": "Server:",
-            "INFO": "Eine Floating IP kostet aktuell 1,19€ pro Monat."
+            "INFO": "Eine Floating IP kostet aktuell <<floating_ip.price_monthly.gross>> <<currency>> pro Monat. (inkl. <<vat_rate>> % USt.)."
           },
           "ERRORS": {
             "REQUIRED_DESCRIPTION": "Bitte geben Sie eine Bezeichnung ein.",
@@ -305,8 +312,8 @@
         "BACKUPS": {
           "TITLE": "Backup Einstellungen",
           "DESCRIPTION": {
-            "BACKUPS": "Backups sind automatische Kopien der Festplatte Ihres Servers.<br/><br/>Jeder Server erhält 7 Slots für Backups. Wenn alle Slots belegt sind und ein neues Backup gestartet wird, wird automatisch das älteste Backup gelöscht.<br/><br/>Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie ein manuelles Backup erstellen, um sicherzustellen, dass die Daten auf der Festplatte konsistent sind.<br/><br/>Durch das Aktivieren des Backups entstehen monatlich wiederkehrende Kosten von 20 % des Server-Tarifs.<br/>",
-            "SNAPSHOTS": "Snapshots sind sofortige Kopien der Festplatten Ihres Servers.<br/>Sie können neue Server aus Snapshots erstellen oder diese zwischen Projekten verschieben.<br/>Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie einen Snapshot erstellen, um sicherzustellen, dass die Daten auf der Festplatte konsistent sind.<br/>Snapshots erzeugen monatlich wiederkehrende Kosten von 0,0119 €/GB/Monat (inkl. 19 % USt.).<br/>",
+            "BACKUPS": "Backups sind automatische Kopien der Festplatte Ihres Servers.<br/><br/>Jeder Server erhält 7 Slots für Backups. Wenn alle Slots belegt sind und ein neues Backup gestartet wird, wird automatisch das älteste Backup gelöscht.<br/><br/>Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie ein manuelles Backup erstellen, um sicherzustellen, dass die Daten auf der Festplatte konsistent sind.<br/><br/>Durch das Aktivieren des Backups entstehen monatlich wiederkehrende Kosten von <<server_backup.percentage>> % des Server-Tarifs.<br/>",
+            "SNAPSHOTS": "Snapshots sind sofortige Kopien der Festplatten Ihres Servers.<br/>Sie können neue Server aus Snapshots erstellen oder diese zwischen Projekten verschieben.<br/>Wir empfehlen Ihnen den Server herunterzufahren, bevor Sie einen Snapshot erstellen, um sicherzustellen, dass die Daten auf der Festplatte konsistent sind.<br/>Snapshots erzeugen monatlich wiederkehrende Kosten von <<image.price_per_gb_month.gross>> <<currency>>/GB/Monat (inkl. <<vat_rate>> % USt.).<br/>",
             "REBUILD": "Bei einem Rebuild wird Ihr Server ausgeschaltet und die Festplatte mit dem ausgewählten Image überschrieben.<br/>Alle bestehenden Daten auf der Festplatte werden überschrieben!"
           },
           "ACTIONS": {

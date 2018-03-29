@@ -45,7 +45,6 @@ import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {ActionsPage} from "../pages/actions/actions";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HetznerApiProviderModule} from "../providers/hetznerApiProvider.module";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {shareProjectModal} from "../pages/projects/shareProject/shareProject";
@@ -57,14 +56,13 @@ import {editProjectModal} from "../pages/projects/editProject/editProject";
 import {SshkeysPage} from "../pages/sshkeys/sshkeys";
 import {editSSHKeyModal} from "../pages/sshkeys/editSSHKey/editSSHKey";
 import {AppRate} from "@ionic-native/app-rate";
+import {createTranslateLoader} from "../providers/translation/loader";
+import {PricingModule} from "../models/pricings/Pricing.module";
 
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.3.1"
 });
 
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 
 @Injectable()
 export class MyErrorHandler implements ErrorHandler {
@@ -129,6 +127,7 @@ export class MyErrorHandler implements ErrorHandler {
     IonicModule.forRoot(HetznerCloudMobileApp),
     IonicStorageModule.forRoot(),
     ProjectModule,
+    PricingModule,
     HttpClientModule,
     PipesModule,
     BrowserAnimationsModule,

@@ -10,6 +10,7 @@ import {shareProjectModal} from "./shareProject/shareProject";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
 import {fadeIn, fadeOut} from "ng-animate";
 import {editProjectModal} from "./editProject/editProject";
+import {PricingServices} from "../../models/pricings/PricingServices";
 
 @Component({
   selector: 'page-projects',
@@ -30,7 +31,9 @@ export class ProjectsPage {
   public _projects = [];
   public visible = [];
 
-  constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService, public serversService: ServersService, public storage: Storage) {
+  constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService, public serversService: ServersService,
+              public storage: Storage,
+              public pricesService: PricingServices) {
     this._projects = project.projects;
 
   }
@@ -64,6 +67,7 @@ export class ProjectsPage {
   selectProject(project: project) {
     this.project.selectProject(project).then(() => {
       this.serversService.reloadServers();
+      this.pricesService.reloadPrices();
     });
 
   }
