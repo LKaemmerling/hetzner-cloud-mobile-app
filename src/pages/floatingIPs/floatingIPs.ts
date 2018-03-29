@@ -5,6 +5,7 @@ import {ActionSheetController, ModalController, NavController} from "ionic-angul
 import {addFloatingIPModal} from "./addFloatingIp/addFloatingIP";
 import {FloatingIpApiProvider} from "../../providers/floating-ip-api/floating-ip-api";
 import {FloatingIPPage} from "./floatingIp/floatingIP";
+import {FloatingIpsService} from "../../modules/hetzner-cloud-data/floating-ips/floating-ips.service";
 
 @Component({
   selector: 'page-floatingIPs',
@@ -12,19 +13,29 @@ import {FloatingIPPage} from "./floatingIp/floatingIP";
 })
 export class FloatingIPsPage {
   public _floating_ips = [];
-  public loading:boolean = false;
-  public loading_done:boolean = false;
-  constructor(public project: ProjectsService, public modal: ModalController, public floatingIpApiProvider: FloatingIpApiProvider, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController) {
-    this.loadFloatingIPs();
+  public loading: boolean = false;
+  public loading_done: boolean = false;
+
+  constructor(protected project: ProjectsService,
+              protected modal: ModalController,
+              protected floatingApiService: FloatingIpsService,
+              protected navCtrl: NavController,
+              protected floatingIpApiProvider: FloatingIpApiProvider,
+              protected actionSheetCtrl: ActionSheetController
+  ) {
+    this
+      ._floating_ips = this.floatingApiService.floating_ips;
   }
 
-  public loadFloatingIPs() {
+  public
+
+  loadFloatingIPs() {
     this.loading = true;
-    this.floatingIpApiProvider.getFloatingIps().then((data) => {
+    this.floatingApiService.reloadFloatingIps().then((data) => {
       this._floating_ips = data['floating_ips'];
       this.loading = false;
       this.loading_done = true;
-      setTimeout(() => this.loading_done = false,3000);
+      setTimeout(() => this.loading_done = false, 3000);
     });
   }
 
@@ -40,16 +51,11 @@ export class FloatingIPsPage {
     this.navCtrl.push(FloatingIPPage, {floating_ip: floatingIp});
   }
 
-  public refresh(refresher) {
-    this.loadFloatingIPs();
-    refresher.complete();
-  }
-
   public delete(floatingIp) {
     /** @TODO **/
     if (confirm('Möchten Sie diese Floating IP wirklich unwiderruflich löschen?')) {
       this.floatingIpApiProvider.deleteFloatingIp(floatingIp.id).then((data) => {
-    this.loadFloatingIPs();
+        this.loadFloatingIPs();
       });
     }
   }

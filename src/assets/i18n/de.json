@@ -52,7 +52,7 @@
         "VERSION": "Version:",
         "LANGUAGE": "Sprache:",
         "LATEST_UPDATE": {
-          "TITLE": "Letzte Preis-Aktualisierung:",
+          "TITLE": "Letzte Aktualisierung:",
           "TEXT": "<<latest_update>>"
         }
       },

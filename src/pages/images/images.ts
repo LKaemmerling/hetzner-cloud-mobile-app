@@ -52,7 +52,7 @@ export class ImagesPage {
     protected actionSheetCtrl: ActionSheetController,
     protected translate: TranslateService
   ) {
-    this.loadImages();
+    this.images = this.imagesService.images;
   }
 
   /**

@@ -7,11 +7,22 @@ import {ImagesService} from "./images/images.service";
 import {LocationsService} from "./locations/locations.service";
 import {ServerTypesService} from "./server-types/server-types.service";
 import {HetznerCloudDataService} from "./hetzner-cloud-data.service";
+import {FloatingIpsService} from "./floating-ips/floating-ips.service";
 
 
 @NgModule({
   imports: [],
-  providers: [HetznerCloudDataService, ServersService, ProjectsService, PricingService, SshKeysService, ImagesService, LocationsService, ServerTypesService]
+  providers: [
+    HetznerCloudDataService,
+    ServersService,
+    ProjectsService,
+    PricingService,
+    SshKeysService,
+    ImagesService,
+    LocationsService,
+    FloatingIpsService,
+    ServerTypesService
+  ]
 })
 export class HetznerCloudDataModule {
 
