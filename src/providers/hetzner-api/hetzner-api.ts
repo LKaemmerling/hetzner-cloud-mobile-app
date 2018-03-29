@@ -1,13 +1,16 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ProjectsService} from "../../models/project/ProjectsService";
-import {ConfigService} from "../../models/config/config.service";
+import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects.service";
+import {ConfigService} from "../../modules/hetzner-app/config/config.service";
 
 @Injectable()
 export abstract class HetznerApiProvider {
-
-
-
+  /**
+   *
+   * @param {HttpClient} http
+   * @param {ProjectsService} projectService
+   * @param {ConfigService} configService
+   */
   constructor(protected http: HttpClient, protected projectService: ProjectsService, protected configService: ConfigService) {
   }
 
@@ -19,7 +22,7 @@ export abstract class HetznerApiProvider {
    */
   _get(method: string) {
     return new Promise((resolve, reject = null) => {
-      this.http.get(this.configService.api_url+ '/' + method, {
+      this.http.get(this.configService.api_url + '/' + method, {
         headers: this.getHeaders(),
       }).subscribe(data => {
         resolve(data);

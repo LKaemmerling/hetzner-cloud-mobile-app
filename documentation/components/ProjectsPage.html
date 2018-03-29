@@ -84,25 +84,16 @@
                                     <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/ConfigModule.html" >ConfigModule</a>
-                                </li>
-                                <li class="link">
                                     <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/NetworkModule.html" >NetworkModule</a>
+                                    <a href="../modules/HetznerAppModule.html" >HetznerAppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/HetznerCloudDataModule.html" >HetznerCloudDataModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/PipesModule.html" >PipesModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/PricingModule.html" >PricingModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/ProjectModule.html" >ProjectModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/ServersModule.html" >ServersModule</a>
                                 </li>
                         </ul>
                     </li>
@@ -267,7 +258,7 @@
                                     <a href="../injectables/PricesApiProvider.html" >PricesApiProvider</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/PricingServices.html" >PricingServices</a>
+                                    <a href="../injectables/PricingService.html" >PricingService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ProjectsService.html" >ProjectsService</a>
@@ -509,25 +500,16 @@
                                            <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/ConfigModule.html" >ConfigModule</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/NetworkModule.html" >NetworkModule</a>
+                                           <a href="../modules/HetznerAppModule.html" >HetznerAppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/HetznerCloudDataModule.html" >HetznerCloudDataModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/PipesModule.html" >PipesModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/PricingModule.html" >PricingModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/ProjectModule.html" >ProjectModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/ServersModule.html" >ServersModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -692,7 +674,7 @@
                                            <a href="../injectables/PricesApiProvider.html" >PricesApiProvider</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/PricingServices.html" >PricingServices</a>
+                                           <a href="../injectables/PricingService.html" >PricingService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ProjectsService.html" >ProjectsService</a>
@@ -1037,7 +1019,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-    <code>constructor(project: <a href="../injectables/ProjectsService.html">ProjectsService</a>, modal: ModalController, actionSheetCtrl: ActionSheetController, translate: TranslateService, serversService: <a href="../injectables/ServersService.html">ServersService</a>, storage: Storage, pricesService: <a href="../injectables/PricingServices.html">PricingServices</a>)</code>
+    <code>constructor(project: <a href="../injectables/ProjectsService.html">ProjectsService</a>, modal: ModalController, actionSheetCtrl: ActionSheetController, translate: TranslateService, serversService: <a href="../injectables/ServersService.html">ServersService</a>, storage: Storage, pricesService: <a href="../injectables/PricingService.html">PricingService</a>)</code>
                         </td>
                     </tr>
                             <tr>
@@ -1135,7 +1117,7 @@
                                                         <td>pricesService</td>
                                                       
                                                             <td>
-                                                                        <code><a href="../injectables/PricingServices.html" target="_self" >PricingServices</a></code>
+                                                                        <code><a href="../injectables/PricingService.html" target="_self" >PricingService</a></code>
                                                             </td>
                                                       
                                                         <td>
@@ -1808,13 +1790,13 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>pricesService:     <code><a href="../injectables/PricingServices.html" target="_self" >PricingServices</a></code>
+                            <span class="modifier-icon fa fa-reset"></span><code>pricesService:     <code><a href="../injectables/PricingService.html" target="_self" >PricingService</a></code>
     </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../injectables/PricingServices.html" target="_self" >PricingServices</a></code>
+                                <i>Type : </i>    <code><a href="../injectables/PricingService.html" target="_self" >PricingService</a></code>
     
                             </td>
                         </tr>
@@ -2014,18 +1996,18 @@
 
     <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {ProjectsService} from &quot;../../models/project/ProjectsService&quot;;
+import {ProjectsService} from &quot;../../modules/hetzner-cloud-data/project/projects.service&quot;;
 import {ActionSheetController, ModalController} from &quot;ionic-angular&quot;;
 import {addProjectModal} from &quot;./addProject/addProject&quot;;
-import {project} from &quot;../../models/project/project&quot;;
+import {project} from &quot;../../modules/hetzner-cloud-data/project/project&quot;;
 import {TranslateService} from &quot;@ngx-translate/core&quot;;
-import {ServersService} from &quot;../../models/servers/ServersService&quot;;
+import {ServersService} from &quot;../../modules/hetzner-cloud-data/servers/servers.service&quot;;
 import {Storage} from &quot;@ionic/storage&quot;;
 import {shareProjectModal} from &quot;./shareProject/shareProject&quot;;
 import {state, style, transition, trigger, useAnimation} from &quot;@angular/animations&quot;;
 import {fadeIn, fadeOut} from &quot;ng-animate&quot;;
 import {editProjectModal} from &quot;./editProject/editProject&quot;;
-import {PricingServices} from &quot;../../models/pricings/PricingServices&quot;;
+import {PricingService} from &quot;../../modules/hetzner-cloud-data/pricings/pricing.service&quot;;
 
 @Component({
   selector: &#x27;page-projects&#x27;,
@@ -2048,7 +2030,7 @@ export class ProjectsPage {
 
   constructor(public project: ProjectsService, public modal: ModalController, public actionSheetCtrl: ActionSheetController, public translate: TranslateService, public serversService: ServersService,
               public storage: Storage,
-              public pricesService: PricingServices) {
+              public pricesService: PricingService) {
     this._projects &#x3D; project.projects;
 
   }

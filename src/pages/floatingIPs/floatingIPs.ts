@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../models/project/ProjectsService";
+import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects.service";
 import {ActionSheetController, ModalController, NavController} from "ionic-angular";
 
 import {addFloatingIPModal} from "./addFloatingIp/addFloatingIP";

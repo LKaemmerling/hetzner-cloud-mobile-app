@@ -84,25 +84,16 @@
                                     <a href="./modules/ComponentsModule.html" >ComponentsModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./modules/ConfigModule.html" >ConfigModule</a>
-                                </li>
-                                <li class="link">
                                     <a href="./modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./modules/NetworkModule.html" >NetworkModule</a>
+                                    <a href="./modules/HetznerAppModule.html" >HetznerAppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/HetznerCloudDataModule.html" >HetznerCloudDataModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="./modules/PipesModule.html" >PipesModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="./modules/PricingModule.html" >PricingModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="./modules/ProjectModule.html" >ProjectModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="./modules/ServersModule.html" >ServersModule</a>
                                 </li>
                         </ul>
                     </li>
@@ -267,7 +258,7 @@
                                     <a href="./injectables/PricesApiProvider.html" >PricesApiProvider</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./injectables/PricingServices.html" >PricingServices</a>
+                                    <a href="./injectables/PricingService.html" >PricingService</a>
                                 </li>
                                 <li class="link">
                                     <a href="./injectables/ProjectsService.html" >ProjectsService</a>
@@ -423,6 +414,9 @@
                         </ul>
                     </li>
             
+                        <li class="chapter">
+                            <a data-type="chapter-link" href="./routes.html" ><span class="fa fa-fw fa-code-fork"></span>Routes</a>
+                        </li>
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="./coverage.html"  class="active" ><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
@@ -509,25 +503,16 @@
                                            <a href="./modules/ComponentsModule.html" >ComponentsModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./modules/ConfigModule.html" >ConfigModule</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="./modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./modules/NetworkModule.html" >NetworkModule</a>
+                                           <a href="./modules/HetznerAppModule.html" >HetznerAppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/HetznerCloudDataModule.html" >HetznerCloudDataModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="./modules/PipesModule.html" >PipesModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="./modules/PricingModule.html" >PricingModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="./modules/ProjectModule.html" >ProjectModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="./modules/ServersModule.html" >ServersModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -692,7 +677,7 @@
                                            <a href="./injectables/PricesApiProvider.html" >PricesApiProvider</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./injectables/PricingServices.html" >PricingServices</a>
+                                           <a href="./injectables/PricingService.html" >PricingService</a>
                                        </li>
                                        <li class="link">
                                            <a href="./injectables/ProjectsService.html" >ProjectsService</a>
@@ -848,6 +833,9 @@
                                </ul>
                            </li>
                    
+                               <li class="chapter">
+                                   <a data-type="chapter-link" href="./routes.html" ><span class="fa fa-fw fa-code-fork"></span>Routes</a>
+                               </li>
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="./coverage.html"  class="active" ><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
@@ -979,7 +967,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./injectables/ConfigService.html">src/models/config/config.service.ts</a>
+                    <a href="./injectables/ConfigService.html">src/modules/hetzner-app/config/config.service.ts</a>
             </td>
             <td>
                 injectable
@@ -995,7 +983,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./injectables/NetworkProvider.html">src/models/network/network.ts</a>
+                    <a href="./injectables/NetworkProvider.html">src/modules/hetzner-app/network/network.ts</a>
             </td>
             <td>
                 injectable
@@ -1011,13 +999,13 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./injectables/PricingServices.html">src/models/pricings/PricingServices.ts</a>
+                    <a href="./injectables/PricingService.html">src/modules/hetzner-cloud-data/pricings/pricing.service.ts</a>
             </td>
             <td>
                 injectable
             </td>
             <td>
-                PricingServices
+                PricingService
             </td>
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
@@ -1027,7 +1015,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/FloatingIp.html">src/models/pricings/pricings.ts</a>
+                    <a href="./interfaces/FloatingIp.html">src/modules/hetzner-cloud-data/pricings/pricings.ts</a>
             </td>
             <td>
                 interface
@@ -1043,71 +1031,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Image.html">src/models/pricings/pricings.ts</a>
-            </td>
-            <td>
-                interface
-            </td>
-            <td>
-                Image
-            </td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/2)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                    <a href="./interfaces/Price.html">src/models/pricings/pricings.ts</a>
-            </td>
-            <td>
-                interface
-            </td>
-            <td>
-                Price
-            </td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/4)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                    <a href="./interfaces/PriceHourly.html">src/models/pricings/pricings.ts</a>
-            </td>
-            <td>
-                interface
-            </td>
-            <td>
-                PriceHourly
-            </td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/3)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                    <a href="./interfaces/PriceMonthly.html">src/models/pricings/pricings.ts</a>
-            </td>
-            <td>
-                interface
-            </td>
-            <td>
-                PriceMonthly
-            </td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/3)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                    <a href="./interfaces/PricePerGbMonth.html">src/models/pricings/pricings.ts</a>
+                    <a href="./interfaces/PricePerGbMonth.html">src/modules/hetzner-cloud-data/pricings/pricings.ts</a>
             </td>
             <td>
                 interface
@@ -1123,7 +1047,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/PricePerTb.html">src/models/pricings/pricings.ts</a>
+                    <a href="./interfaces/PricePerTb.html">src/modules/hetzner-cloud-data/pricings/pricings.ts</a>
             </td>
             <td>
                 interface
@@ -1139,7 +1063,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Pricing.html">src/models/pricings/pricings.ts</a>
+                    <a href="./interfaces/Pricing.html">src/modules/hetzner-cloud-data/pricings/pricings.ts</a>
             </td>
             <td>
                 interface
@@ -1155,7 +1079,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/ServerBackup.html">src/models/pricings/pricings.ts</a>
+                    <a href="./interfaces/ServerBackup.html">src/modules/hetzner-cloud-data/pricings/pricings.ts</a>
             </td>
             <td>
                 interface
@@ -1171,7 +1095,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Traffic.html">src/models/pricings/pricings.ts</a>
+                    <a href="./interfaces/Traffic.html">src/modules/hetzner-cloud-data/pricings/pricings.ts</a>
             </td>
             <td>
                 interface
@@ -1187,23 +1111,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./injectables/ProjectsService.html">src/models/project/ProjectsService.ts</a>
-            </td>
-            <td>
-                injectable
-            </td>
-            <td>
-                ProjectsService
-            </td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/9)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                    <a href="./injectables/project.html">src/models/project/project.ts</a>
+                    <a href="./injectables/project.html">src/modules/hetzner-cloud-data/project/project.ts</a>
             </td>
             <td>
                 injectable
@@ -1219,23 +1127,23 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./injectables/ServersService.html">src/models/servers/ServersService.ts</a>
+                    <a href="./injectables/ProjectsService.html">src/modules/hetzner-cloud-data/project/projects.service.ts</a>
             </td>
             <td>
                 injectable
             </td>
             <td>
-                ServersService
+                ProjectsService
             </td>
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/6)</span>
+                <span class="coverage-count">(0/9)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/CreatedFrom.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/CreatedFrom.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1251,7 +1159,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Datacenter.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/Datacenter.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1267,7 +1175,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/DnsPtr.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/DnsPtr.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1283,7 +1191,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Image.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/Image.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1299,7 +1207,23 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Ipv4.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/Image.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                Image
+            </td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                    <a href="./interfaces/Ipv4.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1307,15 +1231,15 @@
             <td>
                 Ipv4
             </td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/4)</span>
+            <td align="right" data-sort="100">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(4/4)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Ipv6.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/Ipv6.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1331,7 +1255,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Iso.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/Iso.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1347,7 +1271,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Location.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/Location.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1363,7 +1287,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Price.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/Price.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1379,7 +1303,23 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/PriceHourly.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/Price.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                Price
+            </td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                    <a href="./interfaces/PriceHourly.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1395,7 +1335,23 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/PriceMonthly.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/PriceHourly.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                PriceHourly
+            </td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                    <a href="./interfaces/PriceMonthly.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1411,7 +1367,23 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/PublicNet.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/PriceMonthly.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                PriceMonthly
+            </td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                    <a href="./interfaces/PublicNet.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1427,7 +1399,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/Server.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/Server.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1443,7 +1415,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/ServerType.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/ServerType.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1459,7 +1431,7 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                    <a href="./interfaces/ServerTypes.html">src/models/servers/server.ts</a>
+                    <a href="./interfaces/ServerTypes.html">src/modules/hetzner-cloud-data/servers/server.ts</a>
             </td>
             <td>
                 interface
@@ -1470,6 +1442,22 @@
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                    <a href="./injectables/ServersService.html">src/modules/hetzner-cloud-data/servers/servers.service.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                ServersService
+            </td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
             </td>
         </tr>
         <tr class="low">
@@ -2128,7 +2116,7 @@
                 <span class="coverage-count">(5/7)</span>
             </td>
         </tr>
-        <tr class="good">
+        <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
                     <a href="./injectables/ImageApiProvider.html">src/providers/image-api/image-api.ts</a>
@@ -2139,9 +2127,9 @@
             <td>
                 ImageApiProvider
             </td>
-            <td align="right" data-sort="75">
-                <span class="coverage-percent">75 %</span>
-                <span class="coverage-count">(3/4)</span>
+            <td align="right" data-sort="100">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(4/4)</span>
             </td>
         </tr>
         <tr class="medium">

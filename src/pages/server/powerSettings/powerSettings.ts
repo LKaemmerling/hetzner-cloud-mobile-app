@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../../models/project/ProjectsService";
+import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
-import {Server} from "../../../models/servers/server";
+import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
 
 @Component({

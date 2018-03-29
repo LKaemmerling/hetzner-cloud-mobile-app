@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../../models/project/ProjectsService";
-import {project} from "../../../models/project/project";
+import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
+import {project} from "../../../modules/hetzner-cloud-data/project/project";
 import {ViewController} from "ionic-angular";
-import {LocationApiProvider} from "../../../providers/location-api/location-api";
 import {TranslateService} from "@ngx-translate/core";
 import {Storage} from "@ionic/storage";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
-import {NetworkProvider} from "../../../models/network/network";
+import {NetworkProvider} from "../../../modules/hetzner-app/network/network";
 
 @Component({
   selector: 'modal-addProject',

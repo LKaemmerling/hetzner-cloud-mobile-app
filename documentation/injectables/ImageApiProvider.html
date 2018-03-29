@@ -84,25 +84,16 @@
                                     <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/ConfigModule.html" >ConfigModule</a>
-                                </li>
-                                <li class="link">
                                     <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/NetworkModule.html" >NetworkModule</a>
+                                    <a href="../modules/HetznerAppModule.html" >HetznerAppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/HetznerCloudDataModule.html" >HetznerCloudDataModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/PipesModule.html" >PipesModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/PricingModule.html" >PricingModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/ProjectModule.html" >ProjectModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/ServersModule.html" >ServersModule</a>
                                 </li>
                         </ul>
                     </li>
@@ -267,7 +258,7 @@
                                     <a href="../injectables/PricesApiProvider.html" >PricesApiProvider</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/PricingServices.html" >PricingServices</a>
+                                    <a href="../injectables/PricingService.html" >PricingService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ProjectsService.html" >ProjectsService</a>
@@ -423,6 +414,9 @@
                         </ul>
                     </li>
             
+                        <li class="chapter">
+                            <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-fw fa-code-fork"></span>Routes</a>
+                        </li>
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
@@ -509,25 +503,16 @@
                                            <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/ConfigModule.html" >ConfigModule</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/NetworkModule.html" >NetworkModule</a>
+                                           <a href="../modules/HetznerAppModule.html" >HetznerAppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/HetznerCloudDataModule.html" >HetznerCloudDataModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/PipesModule.html" >PipesModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/PricingModule.html" >PricingModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/ProjectModule.html" >ProjectModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/ServersModule.html" >ServersModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -692,7 +677,7 @@
                                            <a href="../injectables/PricesApiProvider.html" >PricesApiProvider</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/PricingServices.html" >PricingServices</a>
+                                           <a href="../injectables/PricingService.html" >PricingService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ProjectsService.html" >ProjectsService</a>
@@ -848,6 +833,9 @@
                                </ul>
                            </li>
                    
+                               <li class="chapter">
+                                   <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-fw fa-code-fork"></span>Routes</a>
+                               </li>
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
@@ -897,6 +885,13 @@
             <code>src/providers/image-api/image-api.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This Provider contains all Methods for The Images at Hetzner</p>
+
+            </p>
 
 
             <section>
@@ -918,7 +913,6 @@
                                         <a href="#getImages">getImages</a>
                                     </li>
                                     <li>
-                                            <span class="modifier">Public</span>
                                         <a href="#update">update</a>
                                     </li>
                                 </ul>
@@ -956,7 +950,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/providers/image-api/image-api.ts:30</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/providers/image-api/image-api.ts:26</a></div>
                                         </td>
                                     </tr>
             
@@ -1027,7 +1021,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/providers/image-api/image-api.ts:20</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/providers/image-api/image-api.ts:16</a></div>
                                         </td>
                                     </tr>
             
@@ -1087,7 +1081,6 @@
                                     <a name="update"></a>
                                     <span class="name">
                                         <b>
-                                            <span class="modifier">Public</span>
                                         update
                                         </b>
                                         <a href="#update"><span class="fa fa-link"></span></a>
@@ -1096,15 +1089,14 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon fa fa-reset"></span>
-                                    <code>update(imageId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, description: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+            <code>update(imageId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, description: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/providers/image-api/image-api.ts:41</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/providers/image-api/image-api.ts:37</a></div>
                                         </td>
                                     </tr>
             
@@ -1176,15 +1168,11 @@
         <pre class="line-numbers"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
 import {HetznerApiProvider} from &quot;../hetzner-api/hetzner-api&quot;;
 
-/*
-  Generated class for the ImageApiProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+/**
+ * This Provider contains all Methods for The Images at Hetzner
+ */
 @Injectable()
 export class ImageApiProvider extends HetznerApiProvider {
-
 
   /**
    * Returns all image objects
@@ -1213,7 +1201,7 @@ export class ImageApiProvider extends HetznerApiProvider {
    * @param {string} description
    * @returns {Promise&lt;any&gt;}
    */
-  public update(imageId: number, description: string) {
+  update(imageId: number, description: string) {
     return this._put(&#x27;images/&#x27; + imageId, {description: description});
   }
 

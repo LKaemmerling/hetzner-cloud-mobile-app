@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
-import {NetworkProvider} from "../../models/network/network";
+import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 /**
  * Generated class for the LoadingIndicatorComponent component.

@@ -84,25 +84,16 @@
                                     <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/ConfigModule.html" >ConfigModule</a>
-                                </li>
-                                <li class="link">
                                     <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/NetworkModule.html" >NetworkModule</a>
+                                    <a href="../modules/HetznerAppModule.html" >HetznerAppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/HetznerCloudDataModule.html" >HetznerCloudDataModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/PipesModule.html" >PipesModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/PricingModule.html" >PricingModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/ProjectModule.html" >ProjectModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/ServersModule.html" >ServersModule</a>
                                 </li>
                         </ul>
                     </li>
@@ -267,7 +258,7 @@
                                     <a href="../injectables/PricesApiProvider.html" >PricesApiProvider</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/PricingServices.html" >PricingServices</a>
+                                    <a href="../injectables/PricingService.html" >PricingService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ProjectsService.html" >ProjectsService</a>
@@ -509,25 +500,16 @@
                                            <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/ConfigModule.html" >ConfigModule</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/NetworkModule.html" >NetworkModule</a>
+                                           <a href="../modules/HetznerAppModule.html" >HetznerAppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/HetznerCloudDataModule.html" >HetznerCloudDataModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/PipesModule.html" >PipesModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/PricingModule.html" >PricingModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/ProjectModule.html" >ProjectModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/ServersModule.html" >ServersModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -692,7 +674,7 @@
                                            <a href="../injectables/PricesApiProvider.html" >PricesApiProvider</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/PricingServices.html" >PricingServices</a>
+                                           <a href="../injectables/PricingService.html" >PricingService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ProjectsService.html" >ProjectsService</a>
@@ -1997,7 +1979,7 @@
     <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
 import {LoadingController, ModalController, NavController, NavParams} from &#x27;ionic-angular&#x27;;
-import {ProjectsService} from &quot;../../models/project/ProjectsService&quot;;
+import {ProjectsService} from &quot;../../modules/hetzner-cloud-data/project/projects.service&quot;;
 import {editServerModal} from &quot;./editServer/editServer&quot;;
 import {powerSettingsModal} from &quot;./powerSettings/powerSettings&quot;;
 import {rescueModeModal} from &quot;./rescueMode/rescueMode&quot;;
@@ -2006,12 +1988,12 @@ import {backupSettingsModal} from &quot;./backupSettings/backupSettings&quot;;
 import {ServerApiProvider} from &quot;../../providers/server-api/server-api&quot;;
 import {changeIPv4ReverseDNSModal} from &quot;./reverseDNS/ipv4/changeIPv4ReverseDNSModal&quot;;
 import {changeIPv6ReverseDNSModal} from &quot;./reverseDNS/ipv6/changeIPv6ReverseDNS&quot;;
-import {ServersService} from &quot;../../models/servers/ServersService&quot;;
+import {ServersService} from &quot;../../modules/hetzner-cloud-data/servers/servers.service&quot;;
 import {ServersPage} from &quot;./serverList/servers&quot;;
 import {ServerMetricsPage} from &quot;./server-metrics/server-metrics&quot;;
 import {TranslateService} from &quot;@ngx-translate/core&quot;;
 import {consoleModal} from &quot;./console/console&quot;;
-import {Server} from &quot;../../models/servers/server&quot;;
+import {Server} from &quot;../../modules/hetzner-cloud-data/servers/server&quot;;
 
 @Component({
   selector: &#x27;page-server&#x27;,

@@ -2,7 +2,7 @@ import {Component, QueryList, SimpleChanges, ViewChildren} from '@angular/core';
 import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {BaseChartDirective} from "ng2-charts";
-import {Server} from "../../../models/servers/server";
+import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
 /**
  * Generated class for the ServerMetricsPage page.

@@ -1,15 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 
-/*
-  Generated class for the ImageApiProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+/**
+ * This Provider contains all Methods for The Images at Hetzner
+ */
 @Injectable()
 export class ImageApiProvider extends HetznerApiProvider {
-
 
   /**
    * Returns all image objects
@@ -38,7 +34,7 @@ export class ImageApiProvider extends HetznerApiProvider {
    * @param {string} description
    * @returns {Promise<any>}
    */
-  public update(imageId: number, description: string) {
+  update(imageId: number, description: string) {
     return this._put('images/' + imageId, {description: description});
   }
 

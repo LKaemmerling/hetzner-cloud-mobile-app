@@ -8,8 +8,8 @@ import {PlatformMock, SplashScreenMock, StatusBarMock} from '../../../test-confi
 import {HttpClientModule} from "@angular/common/http";
 import {LoadingControllerMock, ModalControllerMock, StorageMock} from "ionic-mocks";
 import {TranslateFakeLoader, TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import {ProjectModule} from "../../models/project/project.module";
-import {ServersModule} from "../../models/servers/Servers.module";
+import {ProjectModule} from "../../modules/hetzner-cloud-data/project/project.module";
+import {ServersModule} from "../../modules/hetzner-cloud-data/servers/Servers.module";
 import {IonicStorageModule, Storage} from "@ionic/storage";
 
 describe('Home Page', () => {

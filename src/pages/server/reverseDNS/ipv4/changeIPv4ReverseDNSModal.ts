@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../../providers/server-api/server-api";
-import {Server} from "../../../../models/servers/server";
+import {Server} from "../../../../modules/hetzner-cloud-data/servers/server";
 
 
 @Component({

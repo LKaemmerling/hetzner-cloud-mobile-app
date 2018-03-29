@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../../models/project/ProjectsService";
+import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
 import {LoadingController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ServerTypeApiProvider} from "../../../providers/server-type-api/server-type-api";
 import {ImageApiProvider} from "../../../providers/image-api/image-api";
 import {LocationApiProvider} from "../../../providers/location-api/location-api";
 import {SshKeyApiProvider} from "../../../providers/ssh-key-api/ssh-key-api";
-import {ServersService} from "../../../models/servers/ServersService";
-import {Location, ServerType} from "../../../models/servers/server";
+import {ServersService} from "../../../modules/hetzner-cloud-data/servers/servers.service";
+import {Location, ServerType} from "../../../modules/hetzner-cloud-data/servers/server";
 
 @Component({
   selector: 'modal-addServer',

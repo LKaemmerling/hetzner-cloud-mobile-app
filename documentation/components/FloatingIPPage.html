@@ -84,25 +84,16 @@
                                     <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/ConfigModule.html" >ConfigModule</a>
-                                </li>
-                                <li class="link">
                                     <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/NetworkModule.html" >NetworkModule</a>
+                                    <a href="../modules/HetznerAppModule.html" >HetznerAppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/HetznerCloudDataModule.html" >HetznerCloudDataModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/PipesModule.html" >PipesModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/PricingModule.html" >PricingModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/ProjectModule.html" >ProjectModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/ServersModule.html" >ServersModule</a>
                                 </li>
                         </ul>
                     </li>
@@ -267,7 +258,7 @@
                                     <a href="../injectables/PricesApiProvider.html" >PricesApiProvider</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/PricingServices.html" >PricingServices</a>
+                                    <a href="../injectables/PricingService.html" >PricingService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ProjectsService.html" >ProjectsService</a>
@@ -509,25 +500,16 @@
                                            <a href="../modules/ComponentsModule.html" >ComponentsModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/ConfigModule.html" >ConfigModule</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../modules/HetznerApiProviderModule.html" >HetznerApiProviderModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/NetworkModule.html" >NetworkModule</a>
+                                           <a href="../modules/HetznerAppModule.html" >HetznerAppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/HetznerCloudDataModule.html" >HetznerCloudDataModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/PipesModule.html" >PipesModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/PricingModule.html" >PricingModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/ProjectModule.html" >ProjectModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/ServersModule.html" >ServersModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -692,7 +674,7 @@
                                            <a href="../injectables/PricesApiProvider.html" >PricesApiProvider</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/PricingServices.html" >PricingServices</a>
+                                           <a href="../injectables/PricingService.html" >PricingService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ProjectsService.html" >ProjectsService</a>
@@ -1894,7 +1876,7 @@
         <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
 
 import {LoadingController, ModalController, NavController, NavParams} from &quot;ionic-angular&quot;;
-import {ProjectsService} from &quot;../../../models/project/ProjectsService&quot;;
+import {ProjectsService} from &quot;../../../modules/hetzner-cloud-data/project/projects.service&quot;;
 import {FloatingIpApiProvider} from &quot;../../../providers/floating-ip-api/floating-ip-api&quot;;
 import {editFloatingIpModal} from &quot;../editFloatingIp/editFloatingIp&quot;;
 import {ServerApiProvider} from &quot;../../../providers/server-api/server-api&quot;;

@@ -3,7 +3,7 @@ import {Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
-import {ProjectsService} from "../models/project/ProjectsService";
+import {ProjectsService} from "../modules/hetzner-cloud-data/project/projects.service";
 import {HomePage} from "../pages/home/home";
 import {ProjectsPage} from "../pages/projects/projects";
 import {AboutPage} from "../pages/about/about";
@@ -11,7 +11,7 @@ import {ServersPage} from "../pages/server/serverList/servers";
 import {Storage} from "@ionic/storage";
 import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
 import {ImagesPage} from "../pages/images/images";
-import {ServersService} from "../models/servers/ServersService";
+import {ServersService} from "../modules/hetzner-cloud-data/servers/servers.service";
 import {OneSignal} from "@ionic-native/onesignal";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 import {SettingsPage} from "../pages/settings/settings";
@@ -20,8 +20,8 @@ import {TranslateService} from "@ngx-translate/core";
 import {ActionsPage} from "../pages/actions/actions";
 import {SshkeysPage} from "../pages/sshkeys/sshkeys";
 import {AppRate} from '@ionic-native/app-rate';
-import {PricingServices} from "../models/pricings/PricingServices";
-import {NetworkProvider} from "../models/network/network";
+import {PricingService} from "../modules/hetzner-cloud-data/pricings/pricing.service";
+import {NetworkProvider} from "../modules/hetzner-app/network/network";
 
 @Component({
   templateUrl: 'app.html'
@@ -114,7 +114,7 @@ export class HetznerCloudMobileApp {
     protected fingerPrint: FingerprintAIO,
     protected translate: TranslateService,
     protected appRate: AppRate,
-    protected prices: PricingServices,
+    protected prices: PricingService,
     protected network: NetworkProvider) {
     platform.ready().then(() => {
       this.network.init();
@@ -159,14 +159,6 @@ export class HetznerCloudMobileApp {
             }
           });
         });
-        this.appRate.preferences = {
-          usesUntilPrompt: 3,
-          storeAppURL: {
-            ios: '1342303703',
-            android: 'market://details?id=de.lkdevelopment.hetzner'
-          }
-        };
-
         splashScreen.hide();
       });
     });
