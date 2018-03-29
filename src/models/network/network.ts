@@ -73,6 +73,11 @@ export class NetworkProvider {
     })
   }
 
+  /**
+   *
+   * @param api_key
+   * @returns {Promise<any>}
+   */
   public quickTestApiKey(api_key) {
     return new Promise((resolve, reject) => {
       this.http.get('https://api.hetzner.cloud/v1/locations', {
@@ -81,7 +86,6 @@ export class NetworkProvider {
         resolve();
       }, err => {
         reject();
-
       });
     });
   }
