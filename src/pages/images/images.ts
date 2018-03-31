@@ -17,6 +17,12 @@ import {Image} from "../../modules/hetzner-cloud-data/servers/server";
  *
  */
 export class ImagesPage {
+  protected types: Array<string> = ['snapshot', 'backup', 'system']
+  /**
+   *
+   * @type {string}
+   */
+  public type: string = 'snapshot';
   /**
    *
    * @type {Image[]}
@@ -52,7 +58,11 @@ export class ImagesPage {
     protected actionSheetCtrl: ActionSheetController,
     protected translate: TranslateService
   ) {
-    this.images = this.imagesService.images;
+    this.images = this.imagesService.getImages('snapshot');
+  }
+
+  public changeType() {
+    this.images = this.imagesService.getImages(this.type);
   }
 
   /**
@@ -61,7 +71,7 @@ export class ImagesPage {
   public loadImages() {
     this.loading = true;
     this.imagesService.reloadImages().then(() => {
-      this.images = this.imagesService.images;
+      this.images = this.imagesService.getImages(this.type);
       this.loading = false;
       this.loading_done = true;
       setTimeout(() => this.loading_done = false, 3000);
