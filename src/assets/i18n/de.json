@@ -160,6 +160,20 @@
       "ACTIONS": {
         "TITLE": "Aktionen für das Image '{{imageDescription}}'"
       },
+      "TYPES":{
+        "SNAPSHOT":{
+          "TITLE":"Snapshots",
+          "NO_SNAPSHOT":"Es sind keine Snapshots vorhanden"
+        },
+        "BACKUP":{
+          "TITLE":"Backups",
+          "NO_BACKUP":"Es sind keine Backups vorhanden"
+        },
+        "SYSTEM":{
+          "TITLE":"Hetzner Images",
+          "NO_SNAPSHOT":"Es sind keine Hetzner Images vorhanden"
+        }
+      },
       "MODAL": {
         "EDIT": {
           "TITLE": "Image bearbeiten",

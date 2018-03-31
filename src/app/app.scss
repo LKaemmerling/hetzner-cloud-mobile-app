@@ -36,8 +36,16 @@
   }
 }
 
-.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default, .back-button, .segment-button, .bar-button-default-ios {
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default, .back-button, .bar-button-default-ios {
   color: #ffffff !important;
+}
+
+.segment-button {
+  color: #d50c2d !important;
+}
+
+.segment-button.segment-activated{
+  border-color: #d50c2d !important;
 }
 
 .fab {
@@ -47,12 +55,15 @@
 .text-white {
   color: #ffffff !important;
 }
-.hidden{
+
+.hidden {
   display: none;
 }
-.visible{
+
+.visible {
   display: block;
 }
+
 ion-fab {
   button {
     box-shadow: 0 4px 10px #6b6b6b;

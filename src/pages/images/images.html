@@ -11,17 +11,32 @@
 </ion-header>
 
 <ion-content>
+  <ion-segment [(ngModel)]="type" (click)="changeType()">
+    <ion-segment-button value="snapshot" color="danger">
+      {{ 'PAGE.IMAGES.TYPES.SNAPSHOT.TITLE' |translate}}
+    </ion-segment-button>
+    <ion-segment-button value="backup">
+      {{ 'PAGE.IMAGES.TYPES.BACKUP.TITLE' |translate}}
+    </ion-segment-button>
+    <ion-segment-button value="system">
+      {{ 'PAGE.IMAGES.TYPES.SYSTEM.TITLE' |translate}}
+    </ion-segment-button>
+  </ion-segment>
   <ion-card>
     <ion-card-content>
-      <ion-list>
-          <ion-item *ngFor="let image of images" (click)="openActionSheets(image)">
-            <h2>{{ image.description }}</h2>
-            <p *ngIf="image.created_from != null" translate [translateParams]="{imageName: image.created_from.name}">PAGE.IMAGES.CREATED_FROM</p>
-            <div item-end>
-              <span class="pill">{{ image.type }}</span>
-            </div>
-          </ion-item>
+      <ion-list *ngIf="images.length > 0">
+        <ion-item *ngFor="let image of images" (click)="openActionSheets(image)">
+          <h2>{{ image.description }}</h2>
+          <p *ngIf="image.created_from != null" translate [translateParams]="{imageName: image.created_from.name}">
+            PAGE.IMAGES.CREATED_FROM</p>
+          <div item-end>
+            <span class="pill">{{ image.type }}</span>
+          </div>
+        </ion-item>
       </ion-list>
+      <p *ngIf="images.length == 0" class="message_box info">
+        {{ 'PAGE.IMAGES.TYPES.'+type.toUpperCase()+'.NO_'+ type.toUpperCase()|translate}}
+      </p>
     </ion-card-content>
   </ion-card>
 </ion-content>
