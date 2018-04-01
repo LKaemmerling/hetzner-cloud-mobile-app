@@ -71,7 +71,7 @@
                 <ion-item *ngFor="let image of imagesService.getBackupsByServer(server.id)">
                   <ion-row align-items-start>
                     <ion-col>
-                      <p>{{ image.description |truncatePipe:30}}</p>
+                      <p>{{ image.created}}</p>
                       <p>{{ image.disk_size }} GB</p>
                     </ion-col>
                     <ion-col>
