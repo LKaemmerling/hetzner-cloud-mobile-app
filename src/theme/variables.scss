@@ -45,8 +45,10 @@ $colors: (
 
 //$action-sheet-ios-button-text-color: #ffffff !important;
 //$button-ios-text-color:  #ffffff !important;
-$toolbar-text-color:  #ffffff !important;
-$background-color: hsl(0, 0%, 96%);
+$toolbar-text-color: #ffffff !important;
+.content {
+  background-color: hsl(0, 0%, 96%) !important;
+}
 
 // App iOS Variables
 // --------------------------------------------------
@@ -66,7 +68,6 @@ $background-color: hsl(0, 0%, 96%);
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
 // default are overridden.
-
 
 @import "ionic.theme.default";
 

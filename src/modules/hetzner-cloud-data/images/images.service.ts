@@ -55,11 +55,27 @@ export class ImagesService {
    * @param {string} type
    * @returns {Array<Image>}
    */
-  public getImages(type: string): Array<Image> {
+  public getImagesByType(type: string): Array<Image> {
     let tmp: Array<Image> = [];
 
     this.images.forEach((image) => {
       if (image.type == type) {
+        tmp.push(image);
+      }
+    });
+    return tmp;
+  }
+
+  /**
+   * Return all backups created from a specific server.
+   * @param {number} server_id
+   * @returns {Array<Image>}
+   */
+  public getBackupsByServer(server_id: number): Array<Image> {
+    let tmp: Array<Image> = [];
+
+    this.getImagesByType('backup').forEach((image) => {
+      if (image.created_from.id == server_id) {
         tmp.push(image);
       }
     });
