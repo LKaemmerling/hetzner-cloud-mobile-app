@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 import { ServerStatusIndicatorComponent } from './server-status-indicator/server-status-indicator';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator';
 import {IonicModule} from "ionic-angular";
+import { ServerBasicInformationComponent } from './server-basic-information/server-basic-information';
 @NgModule({
 	declarations: [
 	  ServerStatusIndicatorComponent,
-    LoadingIndicatorComponent
+    LoadingIndicatorComponent,
+    ServerBasicInformationComponent
   ],
-	imports: [CommonModule,IonicModule],
+	imports: [CommonModule, IonicModule],
 	exports: [
 	  ServerStatusIndicatorComponent,
-    LoadingIndicatorComponent
+    LoadingIndicatorComponent,
+    ServerBasicInformationComponent
   ]
 })
 export class ComponentsModule {}

@@ -7,6 +7,7 @@ import {addServerModal} from "../server/addServer/addServer";
 import {TranslateService} from "@ngx-translate/core";
 import {ImagesService} from "../../modules/hetzner-cloud-data/images/images.service";
 import {Image} from "../../modules/hetzner-cloud-data/servers/server";
+import {ServersService} from "../../modules/hetzner-cloud-data/servers/servers.service";
 
 
 @Component({
@@ -17,7 +18,7 @@ import {Image} from "../../modules/hetzner-cloud-data/servers/server";
  *
  */
 export class ImagesPage {
-  protected types: Array<string> = ['snapshot', 'backup', 'system']
+  protected types: Array<string> = ['snapshot', 'backup', 'system'];
   /**
    *
    * @type {string}
@@ -38,31 +39,50 @@ export class ImagesPage {
    * @type {boolean}
    */
   public loading_done: boolean = false;
+  /**
+   *
+   * @type {number[]}
+   */
+  public visible: Array<boolean> = [];
 
   /**
    *
-   * @param {ProjectsService} project
-   * @param {ModalController} modal
-   * @param {ImageApiProvider} imageApiProvider
-   * @param {ImagesService} imagesService
-   * @param {NavController} navCtrl
    * @param {ActionSheetController} actionSheetCtrl
+   * @param {ModalController} modal
+   * @param {NavController} navCtrl
+   * @param {ImagesService} imagesService
+   * @param {ProjectsService} project
+   * @param {ServersService} servers
    * @param {TranslateService} translate
+   * @param {ImageApiProvider} imageApiProvider
    */
   constructor(
-    protected project: ProjectsService,
-    protected modal: ModalController,
-    protected imageApiProvider: ImageApiProvider,
-    protected imagesService: ImagesService,
-    protected navCtrl: NavController,
     protected actionSheetCtrl: ActionSheetController,
-    protected translate: TranslateService
+    protected modal: ModalController,
+    protected navCtrl: NavController,
+    protected imagesService: ImagesService,
+    protected project: ProjectsService,
+    protected serversService: ServersService,
+    protected translate: TranslateService,
+    protected imageApiProvider: ImageApiProvider
   ) {
-    this.images = this.imagesService.getImages('snapshot');
+    this.images = this.imagesService.getImagesByType('snapshot');
   }
 
   public changeType() {
-    this.images = this.imagesService.getImages(this.type);
+    this.images = this.imagesService.getImagesByType(this.type);
+  }
+
+  /**
+   *
+   * @param {number} id
+   */
+  public toggle(id: number) {
+    if (this.visible[id] !== undefined) {
+      this.visible[id] = !this.visible[id];
+    } else {
+      this.visible[id] = true;
+    }
   }
 
   /**
@@ -71,7 +91,7 @@ export class ImagesPage {
   public loadImages() {
     this.loading = true;
     this.imagesService.reloadImages().then(() => {
-      this.images = this.imagesService.getImages(this.type);
+      this.images = this.imagesService.getImagesByType(this.type);
       this.loading = false;
       this.loading_done = true;
       setTimeout(() => this.loading_done = false, 3000);

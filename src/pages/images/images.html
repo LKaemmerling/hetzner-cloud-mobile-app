@@ -22,21 +22,93 @@
       {{ 'PAGE.IMAGES.TYPES.SYSTEM.TITLE' |translate}}
     </ion-segment-button>
   </ion-segment>
-  <ion-card>
-    <ion-card-content>
-      <ion-list *ngIf="images.length > 0">
-        <ion-item *ngFor="let image of images" (click)="openActionSheets(image)">
-          <h2>{{ image.description }}</h2>
-          <p *ngIf="image.created_from != null" translate [translateParams]="{imageName: image.created_from.name}">
-            PAGE.IMAGES.CREATED_FROM</p>
-          <div item-end>
-            <span class="pill">{{ image.type }}</span>
-          </div>
-        </ion-item>
+  <div [ngSwitch]="type">
+    <div *ngSwitchCase="'snapshot'">
+      <ion-card>
+        <ion-card-content>
+          <ion-list *ngIf="images.length > 0">
+            <ion-item *ngFor="let image of images" (click)="openActionSheets(image)">
+              <h2>{{ image.description }}</h2>
+              <p *ngIf="image.created_from != null" translate [translateParams]="{imageName: image.created_from.name}">
+                PAGE.IMAGES.CREATED_FROM</p>
+              <div item-end>
+                <span class="pill">{{ image.type }}</span>
+              </div>
+            </ion-item>
+          </ion-list>
+          <p *ngIf="images.length == 0" class="message_box info">
+            {{ 'PAGE.IMAGES.TYPES.'+type.toUpperCase()+'.NO_'+ type.toUpperCase()|translate}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div *ngSwitchCase="'backup'">
+      <ion-list *ngIf="serversService.servers.length > 0" padding="">
+        <div *ngFor="let server of serversService.getServersByEqualsNotData('backup_window',null)">
+          <ion-item (click)="toggle(server.id)">
+            <server-basic-information [server]="server"></server-basic-information>
+            <div item-end>
+              <i class="fas fa-chevron-down"
+                 [ngClass]="{'fa-chevron-down': visible[server.id] === undefined || visible[server.id] === false,'fa-chevron-up':visible[server.id] === true }"></i>
+            </div>
+          </ion-item>
+          <ion-item [ngClass]="{'hidden': visible[server.id] === undefined || visible[server.id] === false }">
+            <ion-list>
+              <ion-grid>
+                <ion-item-divider>
+
+                  <ion-row align-items-start>
+                    <ion-col>
+                      Beschreibung
+                    </ion-col>
+                    <ion-col>
+                      Status
+                    </ion-col>
+                    <ion-col>
+                    </ion-col>
+                  </ion-row>
+                </ion-item-divider>
+                <ion-item *ngFor="let image of imagesService.getBackupsByServer(server.id)">
+                  <ion-row align-items-start>
+                    <ion-col>
+                      <p>{{ image.description |truncatePipe:30}}</p>
+                      <p>{{ image.disk_size }} GB</p>
+                    </ion-col>
+                    <ion-col>
+                      <p>{{ image.status }}</p>
+                    </ion-col>
+                    <ion-col>
+                      <p><i class="fas fa-ellipsis-h" (click)="openActionSheets(image)"></i></p>
+                    </ion-col>
+                  </ion-row>
+                </ion-item>
+              </ion-grid>
+            </ion-list>
+          </ion-item>
+        </div>
       </ion-list>
       <p *ngIf="images.length == 0" class="message_box info">
         {{ 'PAGE.IMAGES.TYPES.'+type.toUpperCase()+'.NO_'+ type.toUpperCase()|translate}}
       </p>
-    </ion-card-content>
-  </ion-card>
+    </div>
+    <div *ngSwitchCase="'system'">
+      <ion-card>
+        <ion-card-content>
+          <ion-list *ngIf="images.length > 0">
+            <ion-item *ngFor="let image of images" (click)="openActionSheets(image)">
+              <h2>{{ image.description }}</h2>
+              <p *ngIf="image.created_from != null" translate [translateParams]="{imageName: image.created_from.name}">
+                PAGE.IMAGES.CREATED_FROM</p>
+              <div item-end>
+                <span class="pill">{{ image.type }}</span>
+              </div>
+            </ion-item>
+          </ion-list>
+          <p *ngIf="images.length == 0" class="message_box info">
+            {{ 'PAGE.IMAGES.TYPES.'+type.toUpperCase()+'.NO_'+ type.toUpperCase()|translate}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
 </ion-content>
