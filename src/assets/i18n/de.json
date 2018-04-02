@@ -160,18 +160,24 @@
       "ACTIONS": {
         "TITLE": "Aktionen für das Image '{{imageDescription}}'"
       },
-      "TYPES":{
-        "SNAPSHOT":{
-          "TITLE":"Snapshots",
-          "NO_SNAPSHOT":"Es sind keine Snapshots vorhanden"
+      "TYPES": {
+        "SNAPSHOT": {
+          "TITLE": "Snapshots",
+          "NO_SNAPSHOT": "Es sind keine Snapshots vorhanden."
         },
-        "BACKUP":{
-          "TITLE":"Backups",
-          "NO_BACKUP":"Es sind keine Backups vorhanden"
+        "BACKUP": {
+          "TITLE": "Backups",
+          "NO_BACKUP": "Es sind keine Backups vorhanden.",
+          "DESCRIPTION": "Beschreibung",
+          "STATUS": {
+            "TITLE": "Status",
+            "AVAILABLE": "Verfügbar",
+            "CREATING": "Wird erstellt"
+          }
         },
-        "SYSTEM":{
-          "TITLE":"Hetzner Images",
-          "NO_SNAPSHOT":"Es sind keine Hetzner Images vorhanden"
+        "SYSTEM": {
+          "TITLE": "Hetzner Images",
+          "NO_SNAPSHOT": "Es sind keine Hetzner Images vorhanden."
         }
       },
       "MODAL": {

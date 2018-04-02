@@ -160,6 +160,26 @@
       "ACTIONS": {
         "TITLE": "Actions for image '{{imageDescription}}'"
       },
+      "TYPES": {
+        "SNAPSHOT": {
+          "TITLE": "Snapshots",
+          "NO_SNAPSHOT": "There are no snapshots."
+        },
+        "BACKUP": {
+          "TITLE": "Backups",
+          "NO_BACKUP": "There are no backups.",
+          "DESCRIPTION": "Description",
+          "STATUS": {
+            "TITLE": "Status",
+            "AVAILABLE": "Available",
+            "CREATING": "Creating"
+          }
+        },
+        "SYSTEM": {
+          "TITLE": "Hetzner Images",
+          "NO_SNAPSHOT": "Currently there are no hetzner images."
+        }
+      },
       "MODAL": {
         "EDIT": {
           "TITLE": "Edit images",

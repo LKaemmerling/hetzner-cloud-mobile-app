@@ -23,6 +23,8 @@
     </ion-segment-button>
   </ion-segment>
   <div [ngSwitch]="type">
+    <p *ngIf="backup_done === true" class="message_box success" text-wrap="">{{
+      'PAGE.SERVERS.MODAL.BACKUPS.SUCCESS.BACKUP' | translate}}</p>
     <div *ngSwitchCase="'snapshot'">
       <ion-card>
         <ion-card-content>
@@ -55,14 +57,24 @@
           <ion-item [ngClass]="{'hidden': visible[server.id] === undefined || visible[server.id] === false }">
             <ion-list>
               <ion-grid>
+                <ion-item>
+                  <ion-col align-self-start>
+                    <button (click)="createBackup(server)" class="hc-button">Manuelles Backup erstellen</button>
+                  </ion-col>
+                  <ion-col align-self-end>
+                    <button (click)="backupSettingsModal(server)" class="hc-button">Backup Einstellungen</button>
+                  </ion-col>
+                </ion-item>
+              </ion-grid>
+              <ion-grid>
                 <ion-item-divider>
 
                   <ion-row align-items-start>
                     <ion-col>
-                      Beschreibung
+                      {{ 'PAGE.IMAGES.TYPES.BACKUP.DESCRIPTION'|translate}}
                     </ion-col>
                     <ion-col>
-                      Status
+                      {{ 'PAGE.IMAGES.TYPES.BACKUP.STATUS.TITLE'|translate}}
                     </ion-col>
                     <ion-col>
                     </ion-col>
@@ -71,14 +83,14 @@
                 <ion-item *ngFor="let image of imagesService.getBackupsByServer(server.id)">
                   <ion-row align-items-start>
                     <ion-col>
-                      <p>{{ image.created}}</p>
+                      <p>{{ image.created|date:"dd.mm.yyyy HH:mm" }}</p>
                       <p>{{ image.disk_size }} GB</p>
                     </ion-col>
                     <ion-col>
-                      <p>{{ image.status }}</p>
+                      <p>{{ 'PAGE.IMAGES.TYPES.BACKUP.STATUS.'+image.status.toUpperCase()|translate}}</p>
                     </ion-col>
                     <ion-col>
-                      <p><i class="fas fa-ellipsis-h" (click)="openActionSheets(image)"></i></p>
+                      <p><i class="fas fa-ellipsis-h" style="float: right;" (click)="openActionSheets(image)"></i></p>
                     </ion-col>
                   </ion-row>
                 </ion-item>
