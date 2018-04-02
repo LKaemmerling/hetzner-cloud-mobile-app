@@ -6,8 +6,10 @@ import {editImageModal} from "./editImage/editImage";
 import {addServerModal} from "../server/addServer/addServer";
 import {TranslateService} from "@ngx-translate/core";
 import {ImagesService} from "../../modules/hetzner-cloud-data/images/images.service";
-import {Image} from "../../modules/hetzner-cloud-data/servers/server";
+import {Image, Server} from "../../modules/hetzner-cloud-data/servers/server";
 import {ServersService} from "../../modules/hetzner-cloud-data/servers/servers.service";
+import {ServerApiProvider} from "../../providers/server-api/server-api";
+import {backupSettingsModal} from "../server/backupSettings/backupSettings";
 
 
 @Component({
@@ -45,6 +47,9 @@ export class ImagesPage {
    */
   public visible: Array<boolean> = [];
 
+
+  public backup_done: boolean = false;
+
   /**
    *
    * @param {ActionSheetController} actionSheetCtrl
@@ -60,15 +65,20 @@ export class ImagesPage {
     protected actionSheetCtrl: ActionSheetController,
     protected modal: ModalController,
     protected navCtrl: NavController,
+    protected modalCtrl: ModalController,
     protected imagesService: ImagesService,
     protected project: ProjectsService,
     protected serversService: ServersService,
     protected translate: TranslateService,
-    protected imageApiProvider: ImageApiProvider
+    protected imageApiProvider: ImageApiProvider,
+    protected serverApiProvider: ServerApiProvider
   ) {
     this.images = this.imagesService.getImagesByType('snapshot');
   }
 
+  /**
+   *
+   */
   public changeType() {
     this.images = this.imagesService.getImagesByType(this.type);
   }
@@ -83,6 +93,27 @@ export class ImagesPage {
     } else {
       this.visible[id] = true;
     }
+  }
+
+  /**
+   *
+   * @param {Server} server
+   */
+  public createBackup(server: Server) {
+
+    this.serverApiProvider.create_backup(server.id).then(() => {
+      this.loadImages();
+      this.backup_done = true;
+      setTimeout(() => this.loading_done = false, 3000);
+    })
+  }
+
+  /**
+   * Open the Modal for the Backup Settings
+   */
+  public backupSettingsModal(server) {
+    let modal = this.modalCtrl.create(backupSettingsModal, {server: server});
+    modal.present();
   }
 
   /**
