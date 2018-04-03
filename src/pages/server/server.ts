@@ -15,6 +15,7 @@ import {ServerMetricsPage} from "./server-metrics/server-metrics";
 import {TranslateService} from "@ngx-translate/core";
 import {consoleModal} from "./console/console";
 import {Server} from "../../modules/hetzner-cloud-data/servers/server";
+import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 @Component({
   selector: 'page-server',
@@ -28,27 +29,36 @@ export class ServerPage {
 
   /**
    *
-   * @param navCtrl
-   * @param project
-   * @param serverApiProvider
-   * @param navParams
-   * @param modalCtrl
-   * @param loadingCtrl
-   * @param serverService
-   * @param translate
+   * @param {LoadingController} loadingCtrl
+   * @param {ModalController} modalCtrl
+   * @param {NavController} navCtrl
+   * @param {NavParams} navParams
+   * @param {ProjectsService} project
+   * @param {ServersService} serverService
+   * @param {TranslateService} translate
+   * @param {NetworkProvider} networkProvider
+   * @param {ServerApiProvider} serverApiProvider
    */
-  constructor(public navCtrl: NavController, public project: ProjectsService, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public serverService: ServersService, public translate: TranslateService) {
+  constructor(
+    protected loadingCtrl: LoadingController,
+    protected modalCtrl: ModalController,
+    protected navCtrl: NavController,
+    protected navParams: NavParams,
+    protected project: ProjectsService,
+    protected serverService: ServersService,
+    protected translate: TranslateService,
+    protected networkProvider: NetworkProvider,
+    protected serverApiProvider: ServerApiProvider
+  ) {
     this.server = navParams.get('server');
   }
 
   /**
    *
-   * @param refresher
    */
-  public refresh(refresher) {
+  public refresh() {
     this.serverApiProvider.getServer(this.server.id).then((data) => {
       this.server = data['server'];
-      refresher.complete();
     });
   }
 
@@ -56,92 +66,133 @@ export class ServerPage {
    * Open the Edit Server Modal
    */
   public openEditModal() {
-    let modal = this.modalCtrl.create(editServerModal, {server: this.server});
-    modal.present();
+    if (this.networkProvider.has_connection) {
+      let modal = this.modalCtrl.create(editServerModal, {server: this.server});
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
    * Open the Power Settings Modal
    */
   public powerSettingsModal() {
-    let modal = this.modalCtrl.create(powerSettingsModal, {server: this.server});
-    modal.present();
+    if (this.networkProvider.has_connection) {
+      let modal = this.modalCtrl.create(powerSettingsModal, {server: this.server});
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
    * Open Rescue Mode Modal
    */
   public rescueModeModal() {
-    let modal = this.modalCtrl.create(rescueModeModal, {server: this.server});
-    modal.present();
+    if (this.networkProvider.has_connection) {
+      let modal = this.modalCtrl.create(rescueModeModal, {server: this.server});
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
    * Open the Modal for Server Upgrades
    */
   public resizeModal() {
-    let modal = this.modalCtrl.create(resizeServerModal, {server: this.server});
-    modal.present();
+    if (this.networkProvider.has_connection) {
+      let modal = this.modalCtrl.create(resizeServerModal, {server: this.server});
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
    * Open the Modal for the Backup Settings
    */
   public backupSettingsModal() {
-    let modal = this.modalCtrl.create(backupSettingsModal, {server: this.server});
-    modal.present();
+    if (this.networkProvider.has_connection) {
+      let modal = this.modalCtrl.create(backupSettingsModal, {server: this.server});
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
    * Open the Modal for the IPv4 Reverse DNS Changes
    */
   public changeIPv4ReverseDNSModal() {
-    let modal = this.modalCtrl.create(changeIPv4ReverseDNSModal, {server: this.server});
-    modal.present();
+    if (this.networkProvider.has_connection) {
+      let modal = this.modalCtrl.create(changeIPv4ReverseDNSModal, {server: this.server});
+      modal.present();
+
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
    * Open the Modal for the IPv6 Reverse DNS Changes
    */
   public changeIPv6ReverseDNSModal() {
-    let modal = this.modalCtrl.create(changeIPv6ReverseDNSModal, {server: this.server});
-    modal.present();
+    if (this.networkProvider.has_connection) {
+      let modal = this.modalCtrl.create(changeIPv6ReverseDNSModal, {server: this.server});
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
    * Open the Page for the Server Metrics
    */
   public metricsPage() {
-    this.navCtrl.push(ServerMetricsPage, {server: this.server});
+    if (this.networkProvider.has_connection) {
+      this.navCtrl.push(ServerMetricsPage, {server: this.server});
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
    * Open the Page for the VNC Console
    */
   public consolePage() {
-    this.navCtrl.push(consoleModal, {server: this.server});
+    if (this.networkProvider.has_connection) {
+      this.navCtrl.push(consoleModal, {server: this.server});
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
    * Ask for Confirmation of Server Deletion
    */
   public delete() {
-    let _delete: string = '';
-    this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
-      _delete = text;
-    });
-    if (confirm(_delete)) {
-      var loader = this.loadingCtrl.create();
-      loader.present();
-      this.serverApiProvider.delete(this.server.id).then((data) => {
-        loader.dismiss();
-        this.serverApiProvider.getServers().then((data) => {
-          this.serverService.servers = data['servers'];
-          this.serverService.saveServers();
-          this.navCtrl.setRoot(ServersPage);
-        });
+    if (this.networkProvider.has_connection) {
+      let _delete: string = '';
+      this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
+        _delete = text;
       });
+      if (confirm(_delete)) {
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        this.serverApiProvider.delete(this.server.id).then((data) => {
+          loader.dismiss();
+          this.serverApiProvider.getServers().then((data) => {
+            this.serverService.servers = data['servers'];
+            this.serverService.saveServers();
+            this.navCtrl.setRoot(ServersPage);
+          });
+        });
 
+      }
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
     }
   }
 }

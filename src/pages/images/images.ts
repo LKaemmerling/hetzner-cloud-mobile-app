@@ -10,6 +10,7 @@ import {Image, Server} from "../../modules/hetzner-cloud-data/servers/server";
 import {ServersService} from "../../modules/hetzner-cloud-data/servers/servers.service";
 import {ServerApiProvider} from "../../providers/server-api/server-api";
 import {backupSettingsModal} from "../server/backupSettings/backupSettings";
+import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 
 @Component({
@@ -60,6 +61,7 @@ export class ImagesPage {
    * @param {NavController} navCtrl
    * @param {ModalController} modalCtrl
    * @param {ImagesService} imagesService
+   * @param {NetworkProvider} networkProvider
    * @param {ProjectsService} project
    * @param {ServersService} serversService
    * @param {TranslateService} translate
@@ -72,11 +74,12 @@ export class ImagesPage {
     protected navCtrl: NavController,
     protected modalCtrl: ModalController,
     protected imagesService: ImagesService,
+    protected networkProvider: NetworkProvider,
     protected project: ProjectsService,
     protected serversService: ServersService,
     protected translate: TranslateService,
     protected imageApiProvider: ImageApiProvider,
-    protected serverApiProvider: ServerApiProvider
+    protected serverApiProvider: ServerApiProvider,
   ) {
     this.images = this.imagesService.getImagesByType('snapshot');
   }
@@ -105,20 +108,27 @@ export class ImagesPage {
    * @param {Server} server
    */
   public createBackup(server: Server) {
-
-    this.serverApiProvider.create_backup(server.id).then(() => {
-      this.loadImages();
-      this.backup_done = true;
-      setTimeout(() => this.loading_done = false, 3000);
-    })
+    if (this.networkProvider.has_connection) {
+      this.serverApiProvider.create_backup(server.id).then(() => {
+        this.loadImages();
+        this.backup_done = true;
+        setTimeout(() => this.loading_done = false, 3000);
+      })
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
    * Open the Modal for the Backup Settings
    */
   public backupSettingsModal(server) {
-    let modal = this.modalCtrl.create(backupSettingsModal, {server: server});
-    modal.present();
+    if (this.networkProvider.has_connection) {
+      let modal = this.modalCtrl.create(backupSettingsModal, {server: server});
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
@@ -139,7 +149,11 @@ export class ImagesPage {
    * @param image
    */
   public openEdit(image) {
-    this.modal.create(editImageModal, {image: image}).present();
+    if (this.networkProvider.has_connection) {
+      this.modal.create(editImageModal, {image: image}).present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
@@ -147,14 +161,18 @@ export class ImagesPage {
    * @param {Image} image
    */
   public delete(image: Image) {
-    let _delete_confirmation: string = '';
-    this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
-      _delete_confirmation = text;
-    });
-    if (confirm(_delete_confirmation)) {
-      this.imageApiProvider.delete(image.id).then((data) => {
-        this.loadImages();
+    if (this.networkProvider.has_connection) {
+      let _delete_confirmation: string = '';
+      this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
+        _delete_confirmation = text;
       });
+      if (confirm(_delete_confirmation)) {
+        this.imageApiProvider.delete(image.id).then((data) => {
+          this.loadImages();
+        });
+      }
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
     }
   }
 

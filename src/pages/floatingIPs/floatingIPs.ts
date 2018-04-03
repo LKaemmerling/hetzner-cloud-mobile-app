@@ -6,29 +6,55 @@ import {addFloatingIPModal} from "./addFloatingIp/addFloatingIP";
 import {FloatingIpApiProvider} from "../../providers/floating-ip-api/floating-ip-api";
 import {FloatingIPPage} from "./floatingIp/floatingIP";
 import {FloatingIpsService} from "../../modules/hetzner-cloud-data/floating-ips/floating-ips.service";
+import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 @Component({
   selector: 'page-floatingIPs',
   templateUrl: 'floatingIPs.html'
 })
 export class FloatingIPsPage {
+  /**
+   *
+   * @type {any[]}
+   */
   public _floating_ips = [];
+  /**
+   *
+   * @type {boolean}
+   */
   public loading: boolean = false;
+  /**
+   *
+   * @type {boolean}
+   */
   public loading_done: boolean = false;
 
-  constructor(protected project: ProjectsService,
-              protected modal: ModalController,
-              protected floatingApiService: FloatingIpsService,
-              protected navCtrl: NavController,
-              protected floatingIpApiProvider: FloatingIpApiProvider,
-              protected actionSheetCtrl: ActionSheetController
+  /**
+   *
+   * @param {ActionSheetController} actionSheetCtrl
+   * @param {NavController} navCtrl
+   * @param {ModalController} modal
+   * @param {ProjectsService} project
+   * @param {FloatingIpsService} floatingApiService
+   * @param {FloatingIpApiProvider} floatingIpApiProvider
+   * @param {NetworkProvider} networkProvider
+   */
+  constructor(
+    protected actionSheetCtrl: ActionSheetController,
+    protected navCtrl: NavController,
+    protected modal: ModalController,
+    protected project: ProjectsService,
+    protected floatingApiService: FloatingIpsService,
+    protected floatingIpApiProvider: FloatingIpApiProvider,
+    protected networkProvider: NetworkProvider
   ) {
     this
       ._floating_ips = this.floatingApiService.floating_ips;
   }
 
-  public
-
+  /**
+   *
+   */
   loadFloatingIPs() {
     this.loading = true;
     this.floatingApiService.reloadFloatingIps().then((data) => {
@@ -39,27 +65,50 @@ export class FloatingIPsPage {
     });
   }
 
+  /**
+   *
+   */
   openAddFloatingIP() {
-    let modal = this.modal.create(addFloatingIPModal);
-    modal.onDidDismiss(() => {
-      this.loadFloatingIPs();
-    });
-    modal.present();
+    if (this.networkProvider.has_connection) {
+      let modal = this.modal.create(addFloatingIPModal);
+      modal.onDidDismiss(() => {
+        this.loadFloatingIPs();
+      });
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
+  /**
+   *
+   * @param floatingIp
+   */
   openFloatingIP(floatingIp) {
     this.navCtrl.push(FloatingIPPage, {floating_ip: floatingIp});
   }
 
+  /**
+   *
+   * @param floatingIp
+   */
   public delete(floatingIp) {
     /** @TODO **/
-    if (confirm('Möchten Sie diese Floating IP wirklich unwiderruflich löschen?')) {
-      this.floatingIpApiProvider.deleteFloatingIp(floatingIp.id).then((data) => {
-        this.loadFloatingIPs();
-      });
+    if (this.networkProvider.has_connection) {
+      if (confirm('Möchten Sie diese Floating IP wirklich unwiderruflich löschen?')) {
+        this.floatingIpApiProvider.deleteFloatingIp(floatingIp.id).then((data) => {
+          this.loadFloatingIPs();
+        });
+      }
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
     }
   }
 
+  /**
+   *
+   * @param floatingIp
+   */
   public openActionSheets(floatingIp) {
     /** @TODO **/
     var actions = {

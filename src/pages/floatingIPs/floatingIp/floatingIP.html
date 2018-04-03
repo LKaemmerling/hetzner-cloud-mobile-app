@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title>{{floating_ip.description}}</ion-title>
+    <ion-buttons end>
+      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-refresher (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
   <ion-list inset>
     <ion-list-header>
       {{ 'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.TITLE' | translate}}

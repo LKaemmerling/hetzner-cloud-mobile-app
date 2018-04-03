@@ -65,13 +65,20 @@ export class NetworkProvider {
     this.onDisconnectListener = this.network.onDisconnect()
     this.onDisconnectListener.subscribe(() => {
       this.has_connection = false;
-      this.translate.get('GLOBAL.NO_CONNECTION').subscribe((text) => {
-        confirm(text);
-      })
+      this.displayNoNetworkNotice();
     });
     this.onConnectListener = this.network.onConnect();
     this.onConnectListener.subscribe(() => {
       this.has_connection = true;
+    })
+  }
+
+  /**
+   *
+   */
+  public displayNoNetworkNotice() {
+    this.translate.get('GLOBAL.NO_CONNECTION').subscribe((text) => {
+      alert(text);
     })
   }
 
