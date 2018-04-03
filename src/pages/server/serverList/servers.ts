@@ -11,6 +11,7 @@ import {editServerModal} from "../editServer/editServer";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
 import {fadeIn, fadeOut} from "ng-animate";
 import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
+import {NetworkProvider} from "../../../modules/hetzner-app/network/network";
 
 @Component({
   selector: 'page-servers',
@@ -63,24 +64,26 @@ export class ServersPage {
 
   /**
    *
-   * @param {NavController} navCtrl
-   * @param {ProjectsService} project
-   * @param {ServerApiProvider} serverApiProvider
-   * @param {ModalController} modal
    * @param {LoadingController} loadingCtrl
-   * @param {ServersService} serversService
+   * @param {ModalController} modalCtrl
+   * @param {NavController} navCtrl
    * @param {Storage} storage
+   * @param {ProjectsService} project
+   * @param {ServersService} serversService
    * @param {TranslateService} translate
+   * @param {NetworkProvider} networkProvider
+   * @param {ServerApiProvider} serverApiProvider
    */
   constructor(
-    protected navCtrl: NavController,
-    protected project: ProjectsService,
-    protected serverApiProvider: ServerApiProvider,
-    protected modal: ModalController,
     protected loadingCtrl: LoadingController,
-    protected serversService: ServersService,
+    protected modalCtrl: ModalController,
+    protected navCtrl: NavController,
     protected storage: Storage,
-    protected translate: TranslateService
+    protected project: ProjectsService,
+    protected serversService: ServersService,
+    protected translate: TranslateService,
+    protected networkProvider: NetworkProvider,
+    protected serverApiProvider: ServerApiProvider
   ) {
     this.servers = this._search = this.serversService.servers;
     storage.get('compact_server_design').then((val) => {
@@ -143,17 +146,21 @@ export class ServersPage {
    * @param {Server} server
    */
   public delete(server: Server) {
-    let _delete: string = '';
-    this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
-      _delete = text;
-    });
-    if (confirm(_delete)) {
-      var loader = this.loadingCtrl.create();
-      loader.present();
-      this.serverApiProvider.delete(server.id).then((data) => {
-        this.loadServers();
-        loader.dismiss();
+    if (this.networkProvider.has_connection) {
+      let _delete: string = '';
+      this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
+        _delete = text;
       });
+      if (confirm(_delete)) {
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        this.serverApiProvider.delete(server.id).then((data) => {
+          this.loadServers();
+          loader.dismiss();
+        });
+      }
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
     }
   }
 
@@ -182,12 +189,16 @@ export class ServersPage {
    *
    */
   openCreateServerModal() {
-    let modal = this.modal.create(addServerModal);
-    modal.onDidDismiss(() => {
-      this.loadServers();
-    });
+    if (this.networkProvider.has_connection) {
+      let modal = this.modalCtrl.create(addServerModal);
+      modal.onDidDismiss(() => {
+        this.loadServers();
+      });
 
-    modal.present();
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
@@ -195,12 +206,16 @@ export class ServersPage {
    * @param {Server} server
    */
   public openEditModal(server: Server) {
-    let modal = this.modal.create(editServerModal, {server: server});
-    modal.onDidDismiss(() => {
-      this.loadServers();
-    });
+    if (this.networkProvider.has_connection) {
+      let modal = this.modalCtrl.create(editServerModal, {server: server});
+      modal.onDidDismiss(() => {
+        this.loadServers();
+      });
 
-    modal.present();
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**

@@ -1,13 +1,14 @@
 <ion-header>
   <ion-navbar>
     <ion-title id="server_detail_name">{{server.name}}</ion-title>
+    <ion-buttons end>
+      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-refresher (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+
   <ion-list style="margin-bottom: 60px;">
     <ion-list-header>
       {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.TITLE' | translate}}

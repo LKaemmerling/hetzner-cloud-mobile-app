@@ -3,6 +3,7 @@ import {ActionSheetController, ModalController, NavController, NavParams} from '
 import {SshKeyApiProvider} from "../../providers/ssh-key-api/ssh-key-api";
 import {editSSHKeyModal} from "./editSSHKey/editSSHKey";
 import {SshKeysService} from "../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
+import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 /**
  * Generated class for the SshkeysPage page.
@@ -16,19 +17,46 @@ import {SshKeysService} from "../../modules/hetzner-cloud-data/ssh-keys/ssh-keys
   templateUrl: 'sshkeys.html',
 })
 export class SshkeysPage {
-  public _ssh_keys;
+  /**
+   *
+   * @type {any[]}
+   */
+  public _ssh_keys: Array<any> = [];
+  /**
+   *
+   * @type {boolean}
+   */
   public loading: boolean = false;
+  /**
+   *
+   * @type {boolean}
+   */
   public loading_done: boolean = false;
 
-  constructor(protected navCtrl: NavController,
-              protected navParams: NavParams,
-              protected sshKeysService: SshKeysService,
-              protected actionSheetCtrl: ActionSheetController,
-              protected modalCtrl: ModalController,
-              protected sshKeyProvider: SshKeyApiProvider) {
+  /**
+   *
+   * @param {ActionSheetController} actionSheetCtrl
+   * @param {ModalController} modalCtrl
+   * @param {NavController} navCtrl
+   * @param {NavParams} navParams
+   * @param {SshKeysService} sshKeysService
+   * @param {SshKeyApiProvider} sshKeyProvider
+   * @param {NetworkProvider} networkProvider
+   */
+  constructor(
+    protected actionSheetCtrl: ActionSheetController,
+    protected modalCtrl: ModalController,
+    protected navCtrl: NavController,
+    protected navParams: NavParams,
+    protected sshKeysService: SshKeysService,
+    protected sshKeyProvider: SshKeyApiProvider,
+    protected networkProvider: NetworkProvider) {
     this._ssh_keys = this.sshKeysService.ssh_keys;
   }
 
+  /**
+   *
+   */
   loadSSHKeys() {
     this.loading = true;
     this.sshKeysService.reloadSshKeys().then(() => {
@@ -39,18 +67,33 @@ export class SshkeysPage {
     });
   }
 
+  /**
+   *
+   */
   public ionViewWillEnter() {
     this.loadSSHKeys();
   }
 
+  /**
+   *
+   * @param ssh_key
+   */
   public delete(ssh_key) {
-    if (confirm('Möchten Sie diesen SSH-Key wirklich unwiderruflich löschen?')) {
-      this.sshKeyProvider.delete(ssh_key.id).then((data) => {
-        this.loadSSHKeys();
-      });
+    if (this.networkProvider.has_connection) {
+      if (confirm('Möchten Sie diesen SSH-Key wirklich unwiderruflich löschen?')) {
+        this.sshKeyProvider.delete(ssh_key.id).then((data) => {
+          this.loadSSHKeys();
+        });
+      }
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
     }
   }
 
+  /**
+   *
+   * @param ssh_key
+   */
   public openActionSheets(ssh_key) {
     /** @TODO **/
     var actions = {
@@ -69,7 +112,11 @@ export class SshkeysPage {
           text: 'Edit',
           icon: 'brush',
           handler: () => {
-            this.modalCtrl.create(editSSHKeyModal, {ssh_key: ssh_key}).present();
+            if (this.networkProvider.has_connection) {
+              this.modalCtrl.create(editSSHKeyModal, {ssh_key: ssh_key}).present();
+            } else {
+              this.networkProvider.displayNoNetworkNotice();
+            }
           }
         },
         {

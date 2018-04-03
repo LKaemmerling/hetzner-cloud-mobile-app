@@ -12,6 +12,7 @@ import {fadeIn, fadeOut} from "ng-animate";
 import {editProjectModal} from "./editProject/editProject";
 import {PricingService} from "../../modules/hetzner-cloud-data/pricings/pricing.service";
 import {HetznerCloudDataService} from "../../modules/hetzner-cloud-data/hetzner-cloud-data.service";
+import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 @Component({
   selector: 'page-projects',
@@ -29,20 +30,46 @@ import {HetznerCloudDataService} from "../../modules/hetzner-cloud-data/hetzner-
   ],
 })
 export class ProjectsPage {
-  public _projects = [];
+  /**
+   *
+   * @type {project[]}
+   */
+  public _projects: Array<project> = [];
+  /**
+   *
+   * @type {any[]}
+   */
   public visible = [];
 
-  constructor(protected project: ProjectsService,
-              protected modal: ModalController,
-              protected actionSheetCtrl: ActionSheetController,
-              protected translate: TranslateService,
-              protected serversService: ServersService,
-              protected storage: Storage,
-              protected hetznerCloudDataService: HetznerCloudDataService) {
+  /**
+   *
+   * @param {ActionSheetController} actionSheetCtrl
+   * @param {ModalController} modal
+   * @param {HetznerCloudDataService} hetznerCloudDataService
+   * @param {ProjectsService} project
+   * @param {ServersService} serversService
+   * @param {TranslateService} translate
+   * @param {Storage} storage
+   * @param {NetworkProvider} network
+   */
+  constructor(
+    protected actionSheetCtrl: ActionSheetController,
+    protected modal: ModalController,
+    protected hetznerCloudDataService: HetznerCloudDataService,
+    protected project: ProjectsService,
+    protected serversService: ServersService,
+    protected translate: TranslateService,
+    protected storage: Storage,
+    protected network: NetworkProvider
+  ) {
     this._projects = project.projects;
 
   }
 
+  /**
+   *
+   * @param menuId
+   */
   openSubMenu(menuId) {
     if (this.visible[menuId] != undefined && this.visible[menuId] == 'active') {
       this.visible = [];
@@ -53,7 +80,11 @@ export class ProjectsPage {
 
   }
 
-  openEditModal(project) {
+  /**
+   *
+   * @param {project} project
+   */
+  openEditModal(project: project) {
     let modal = this.modal.create(editProjectModal, {project: project});
     modal.onDidDismiss(() => {
       this._projects = this.project.projects;
@@ -61,55 +92,25 @@ export class ProjectsPage {
     modal.present();
   }
 
-  openProjectModal() {
-    let modal = this.modal.create(addProjectModal);
-    modal.onDidDismiss(() => {
-      this._projects = this.project.projects;
-    });
-    modal.present();
-  }
-
-  selectProject(project: project) {
-    this.project.selectProject(project).then(() => {
-      this.hetznerCloudDataService.loadDataFromStorage();
-    });
-
-  }
-
-  search(ev) {
-    // Reset items back to all of the items
-    this._projects = this.project.projects;
-
-    // set val to the value of the ev target
-    var val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this._projects = this._projects.filter((item) => {
-        if (item == null) {
-          return false;
-        }
-        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
-
-  public delete(project: project) {
-    this._projects = this.project.removeProject(project);
-    if (this.project.projects == null || this.project.projects.length == 0) {
-      this.project.selectProject(null).then(() => {
-        this.serversService.servers = [];
-        this.serversService.saveServers();
+  /**
+   *
+   */
+  openCreateProjectModal() {
+    if (this.network.has_connection) {
+      let modal = this.modal.create(addProjectModal);
+      modal.onDidDismiss(() => {
+        this._projects = this.project.projects;
       });
+      modal.present();
     } else {
-      this.project.selectProject(this.project.projects[0]).then(() => {
-        this.serversService.servers = [];
-        this.serversService.saveServers();
-      });
+      this.network.displayNoNetworkNotice();
     }
-    this._projects = this.project.projects;
   }
 
+  /**
+   *
+   * @param {project} project
+   */
   public openShareModal(project: project) {
     let modal = this.modal.create(shareProjectModal, {project: project});
     modal.onDidDismiss(() => {
@@ -118,6 +119,10 @@ export class ProjectsPage {
     modal.present();
   }
 
+  /**
+   *
+   * @param {project} project
+   */
   public openActionSheets(project: project) {
     let _title: string = '';
     this.translate.get('PAGE.PROJECTS.ACTIONS.TITLE', {projectName: project.name}).subscribe((text) => {
@@ -167,5 +172,61 @@ export class ProjectsPage {
       ]
     });
     actionSheet.present();
+  }
+
+  /**
+   *
+   * @param {project} project
+   */
+  selectProject(project: project) {
+    if (this.network.has_connection) {
+      this.project.selectProject(project).then(() => {
+        this.hetznerCloudDataService.loadDataFromStorage();
+      });
+    } else {
+      this.network.displayNoNetworkNotice();
+    }
+  }
+
+  /**
+   *
+   * @param event
+   */
+  search(event) {
+    // Reset items back to all of the items
+    this._projects = this.project.projects;
+
+    // set val to the value of the ev target
+    var val = event.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this._projects = this._projects.filter((item) => {
+        if (item == null) {
+          return false;
+        }
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+
+  /**
+   *
+   * @param {project} project
+   */
+  public delete(project: project) {
+    this._projects = this.project.removeProject(project);
+    if (this.project.projects == null || this.project.projects.length == 0) {
+      this.project.selectProject(null).then(() => {
+        this.serversService.servers = [];
+        this.serversService.saveServers();
+      });
+    } else {
+      this.project.selectProject(this.project.projects[0]).then(() => {
+        this.serversService.servers = [];
+        this.serversService.saveServers();
+      });
+    }
+    this._projects = this.project.projects;
   }
 }
