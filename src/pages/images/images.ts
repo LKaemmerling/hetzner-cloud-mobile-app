@@ -47,7 +47,10 @@ export class ImagesPage {
    */
   public visible: Array<boolean> = [];
 
-
+  /**
+   *
+   * @type {boolean}
+   */
   public backup_done: boolean = false;
 
   /**
@@ -55,11 +58,13 @@ export class ImagesPage {
    * @param {ActionSheetController} actionSheetCtrl
    * @param {ModalController} modal
    * @param {NavController} navCtrl
+   * @param {ModalController} modalCtrl
    * @param {ImagesService} imagesService
    * @param {ProjectsService} project
-   * @param {ServersService} servers
+   * @param {ServersService} serversService
    * @param {TranslateService} translate
    * @param {ImageApiProvider} imageApiProvider
+   * @param {ServerApiProvider} serverApiProvider
    */
   constructor(
     protected actionSheetCtrl: ActionSheetController,

@@ -96,13 +96,16 @@ export class addServerModal {
     this.__selected_image = this.navParams.get('selected_image');
     if (this.__selected_image != null) {
       this.image = this.__selected_image;
+      this.images = imagesService.images;
+    } else {
+      this.images = imagesService.getImagesByType('system');
     }
 
     this.locations = this.locationService.locations;
 
     this.server_types = serverTypesService.server_types;
 
-    this.images = imagesService.images;
+
     this.ssh_keys = sshKeysService.ssh_keys;
   }
 
