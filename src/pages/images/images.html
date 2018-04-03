@@ -56,16 +56,16 @@
           </ion-item>
           <ion-item [ngClass]="{'hidden': visible[server.id] === undefined || visible[server.id] === false }">
             <ion-list>
-              <ion-grid>
-                <ion-item>
-                  <ion-col align-self-start>
-                    <button (click)="createBackup(server)" class="hc-button">Manuelles Backup erstellen</button>
-                  </ion-col>
-                  <ion-col align-self-end>
-                    <button (click)="backupSettingsModal(server)" class="hc-button">Backup Einstellungen</button>
-                  </ion-col>
-                </ion-item>
-              </ion-grid>
+              <ion-item>
+
+                <button (click)="createBackup(server)" class="hc-button">{{
+                  'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.CREATE_BACKUP' | translate}}
+                </button>
+                <br />
+                <button (click)="backupSettingsModal(server)" class="hc-button" style="margin-top:5px;">{{
+                  'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.BACKUP' | translate}}
+                </button>
+              </ion-item>
               <ion-grid>
                 <ion-item-divider>
 
