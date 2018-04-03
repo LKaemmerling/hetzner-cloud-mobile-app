@@ -72,6 +72,12 @@ export class consoleModal {
         .addEventListener('blur', (event) => {
           this.onblurVirtualKeyboard(event)
         });
+      document.getElementById('console_container').addEventListener('click', (event) => {
+        this.keyboard();
+      });
+      document.getElementById('console_container').addEventListener('touchstart', (event) => {
+        this.keyboard();
+      });
       this.touchKeyboard = new Keyboard(document.getElementById('noVNC_keyboardinput'));
       this.touchKeyboard.onkeyevent = (keysym, code, down) => {
         this.keyevent(keysym, code, down);
@@ -150,7 +156,7 @@ export class consoleModal {
    */
   public keyboard() {
     if (document.getElementById('noVNC_keyboard_button')
-        .classList.contains("noVNC_selected")) {
+      .classList.contains("noVNC_selected")) {
       this.hideVirtualKeyboard();
     } else {
       this.showVirtualKeyboard();
