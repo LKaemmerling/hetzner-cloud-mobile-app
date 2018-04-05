@@ -1,12 +1,16 @@
-import {Injectable} from "@angular/core";
+/**
+ * The basic structure of every project
+ */
+export interface project {
+  /**
+   * The name of the project
+   * @type {string}
+   */
+  name: string;
+  /**
+   * The api key of the project
+   * @type {string}
+   */
+  api_key: string;
 
-@Injectable()
-export class project {
-  public name: string;
-  public api_key: string;
-
-  constructor(name: string = '', api_key: string = '') {
-    this.name = name;
-    this.api_key = api_key;
-  }
 }

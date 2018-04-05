@@ -6,10 +6,7 @@ import {SshKeysService} from "../../modules/hetzner-cloud-data/ssh-keys/ssh-keys
 import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 /**
- * Generated class for the SshkeysPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * This page lists all ssh keys
  */
 
 @Component({
@@ -18,23 +15,23 @@ import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 })
 export class SshkeysPage {
   /**
-   *
+   * All available ssh keys
    * @type {any[]}
    */
   public _ssh_keys: Array<any> = [];
   /**
-   *
+   * Is the component in the loading process?
    * @type {boolean}
    */
   public loading: boolean = false;
   /**
-   *
+   * Is the loading done?
    * @type {boolean}
    */
   public loading_done: boolean = false;
 
   /**
-   *
+   * Constructor
    * @param {ActionSheetController} actionSheetCtrl
    * @param {ModalController} modalCtrl
    * @param {NavController} navCtrl
@@ -55,7 +52,7 @@ export class SshkeysPage {
   }
 
   /**
-   *
+   * Load all ssh keys from the service
    */
   loadSSHKeys() {
     this.loading = true;
@@ -68,14 +65,14 @@ export class SshkeysPage {
   }
 
   /**
-   *
+   * Event fires when the view will be enterd
    */
   public ionViewWillEnter() {
     this.loadSSHKeys();
   }
 
   /**
-   *
+   * Delete the given ssh key
    * @param ssh_key
    */
   public delete(ssh_key) {
@@ -91,7 +88,7 @@ export class SshkeysPage {
   }
 
   /**
-   *
+   * Open the actions for the ssh key
    * @param ssh_key
    */
   public openActionSheets(ssh_key) {

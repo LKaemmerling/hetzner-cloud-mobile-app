@@ -4,25 +4,65 @@ import {LoadingController, ViewController} from "ionic-angular";
 import {FloatingIpApiProvider} from "../../../providers/floating-ip-api/floating-ip-api";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {TranslateService} from "@ngx-translate/core";
+import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
+import {ServersService} from "../../../modules/hetzner-cloud-data/servers/servers.service";
 
+/**
+ * Add a new floating ip
+ */
 @Component({
   selector: 'modal-addFloatingIP',
   templateUrl: 'addFloatingIP.html'
 })
 export class addFloatingIPModal {
-  public type;
-  public server;
-  public description;
-  public servers;
-
+  /**
+   * Is the floating ip ipv4 or ipv6?
+   * @type {string}
+   */
+  public type: string;
+  /**
+   * The server to that the ip points
+   * @type {Server}
+   */
+  public server: Server;
+  /**
+   * Give the ip a description
+   * @type {string}
+   */
+  public description: string;
+  /**
+   * List all available servers
+   * @type {any[]}
+   */
+  public servers: Array<Server> = [];
+  /**
+   * Does the api call fail?
+   * @type {string}
+   */
   public error: string = null;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public floatingIpApiProvider: FloatingIpApiProvider, public serverApiProvider: ServerApiProvider, public loadingCtrl: LoadingController, protected translate: TranslateService) {
-    this.serverApiProvider.getServers().then((data) => {
-      this.servers = data['servers'];
-    });
+  /**
+   * Constructor
+   * @param {LoadingController} loadingCtrl
+   * @param {ViewController} viewCtrl
+   * @param {ProjectsService} project
+   * @param {FloatingIpApiProvider} floatingIpApiProvider
+   * @param {ServersService} serverService
+   * @param {TranslateService} translate
+   */
+  constructor(
+    protected loadingCtrl: LoadingController,
+    protected viewCtrl: ViewController,
+    protected project: ProjectsService,
+    protected floatingIpApiProvider: FloatingIpApiProvider,
+    protected serverService: ServersService,
+    protected translate: TranslateService) {
+    this.servers = serverService.servers;
   }
 
+  /**
+   * Make the api call and validate date payload before
+   */
   public createFloatingIP() {
     this.error = null;
     if (this.description == null || this.description.length == 0) {
@@ -46,6 +86,9 @@ export class addFloatingIPModal {
 
   }
 
+  /**
+   * Dismiss the modal
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }

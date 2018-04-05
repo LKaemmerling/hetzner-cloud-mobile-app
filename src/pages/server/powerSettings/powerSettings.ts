@@ -4,19 +4,21 @@ import {LoadingController, NavController, NavParams, ViewController} from "ionic
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
-
+/**
+ * This modal makes it possible to change the power settins of the server
+ */
 @Component({
   selector: 'modal-powerSettings',
   templateUrl: 'powerSettings.html'
 })
 export class powerSettingsModal {
   /**
-   *
+   * The specific server
    */
   public server: Server;
 
   /**
-   *
+   * Constructor
    * @param {ProjectsService} project
    * @param {ViewController} viewCtrl
    * @param {ServerApiProvider} serverApiProvider
@@ -24,12 +26,12 @@ export class powerSettingsModal {
    * @param {NavController} navCtrl
    * @param {LoadingController} loadingCtrl
    */
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController) {
+  constructor(protected project: ProjectsService, protected viewCtrl: ViewController, protected serverApiProvider: ServerApiProvider, protected navParams: NavParams, protected navCtrl: NavController, protected loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
   }
 
   /**
-   *
+   * Makes a reset api call that reset the server
    */
   public reset() {
     var loader = this.loadingCtrl.create();
@@ -42,7 +44,7 @@ export class powerSettingsModal {
   }
 
   /**
-   *
+   * Makes a shutdown api call that shutdown the server
    */
   public shutdown() {
     var loader = this.loadingCtrl.create();
@@ -55,7 +57,7 @@ export class powerSettingsModal {
   }
 
   /**
-   *
+   * Makes a power off api call that power off the server
    */
   public powerOff() {
     var loader = this.loadingCtrl.create();
@@ -67,7 +69,7 @@ export class powerSettingsModal {
   }
 
   /**
-   *
+   * Makes a power on api call that power on the server
    */
   public powerOn() {
     var loader = this.loadingCtrl.create();
@@ -79,7 +81,7 @@ export class powerSettingsModal {
   }
 
   /**
-   *
+   * Dismiss the modal
    */
   public dismiss() {
     this.viewCtrl.dismiss();

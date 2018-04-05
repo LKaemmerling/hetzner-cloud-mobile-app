@@ -1,18 +1,21 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
-import {ImageApiProvider} from "../../../providers/image-api/image-api";
 import {LocationApiProvider} from "../../../providers/location-api/location-api";
 
+
+/**
+ * Service that contains all storage methods for the locations.
+ */
 @Injectable()
 export class LocationsService {
   /**
-   *
+   * All locations
    * @type {any[]}
    */
   public locations: Array<any> = [];
 
   /**
-   *
+   * Constructor
    * @param {Storage} storage
    * @param {LocationApiProvider} locationApiProvider
    */
@@ -21,7 +24,7 @@ export class LocationsService {
   }
 
   /**
-   *
+   *  Load all locations from the local storage.
    */
   public loadLocations() {
     return this.storage.get('locations').then((val) => {
@@ -32,14 +35,14 @@ export class LocationsService {
   }
 
   /**
-   *
+   * Save all locations to the local storage.
    */
   public saveLocations() {
     return this.storage.set('locations', this.locations);
   }
 
   /**
-   *
+   * Reload all locations from the api and save it into the local storage.
    * @returns {Promise<void>}
    */
   public reloadLocations() {

@@ -5,36 +5,39 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ServerTypeApiProvider} from "../../../providers/server-type-api/server-type-api";
 import {Server, ServerType} from "../../../modules/hetzner-cloud-data/servers/server";
 
+/**
+ * With this modal you can resize a server
+ */
 @Component({
   selector: 'modal-resizeServer',
   templateUrl: 'resizeServer.html'
 })
 export class resizeServerModal {
   /**
-   *
+   * The server that should be resized
    */
   public server: Server;
   /**
-   *
+   * All available server types
    * @type {any[]}
    */
   public server_types: Array<ServerType> = [];
   /**
-   *
+   * The new server type
    */
   public server_type: ServerType;
   /**
-   *
+   * Determine if the disk should be upgraded as well or not
    */
   public upgrade_disk: boolean = false;
   /**
-   *
-   * @type {null}
+   * If there is an error, this contains the message
+   * @type {string}
    */
   public error: string = null;
 
   /**
-   *
+   * Constructor
    * @param {ProjectsService} project
    * @param {ViewController} viewCtrl
    * @param {ServerApiProvider} serverApiProvider
@@ -43,7 +46,7 @@ export class resizeServerModal {
    * @param {ServerTypeApiProvider} serverTypeApiProvider
    * @param {LoadingController} loadingCtrl
    */
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public serverTypeApiProvider: ServerTypeApiProvider, public loadingCtrl: LoadingController) {
+  constructor(protected project: ProjectsService, protected viewCtrl: ViewController, protected serverApiProvider: ServerApiProvider, protected navParams: NavParams, protected navCtrl: NavController, protected serverTypeApiProvider: ServerTypeApiProvider, protected loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
     serverTypeApiProvider.getServerTypes().then((data) => {
       data['server_types'].forEach((type, key) => {
@@ -55,7 +58,7 @@ export class resizeServerModal {
   }
 
   /**
-   *
+   * Make the api call and validate the payload
    */
   public resizeServer() {
 
@@ -77,6 +80,9 @@ export class resizeServerModal {
     this.dismiss();
   }
 
+  /**
+   * Dismiss the modal
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }

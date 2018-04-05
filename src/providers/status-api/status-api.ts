@@ -1,16 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 
-/*
-  Generated class for the StatusApiProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+/**
+ * This is the provider that performs the api calls to the status api.
+ */
 @Injectable()
 export class StatusApiProvider extends HetznerApiProvider {
   /**
-   *
+   * The url of the status api
    * @type {string}
    */
   protected apiUrl: string = 'https://hetzner-status.lkdev.co/api';

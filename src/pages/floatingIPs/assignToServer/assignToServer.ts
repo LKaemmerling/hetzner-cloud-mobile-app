@@ -3,24 +3,53 @@ import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/proje
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {FloatingIpApiProvider} from "../../../providers/floating-ip-api/floating-ip-api";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
+import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
+import {ServersService} from "../../../modules/hetzner-cloud-data/servers/servers.service";
 
-
+/**
+ * This modal makes it possible to assign a new server to this floating ip
+ */
 @Component({
   selector: 'modal-assignToServer',
   templateUrl: 'assignToServer.html'
 })
 export class assignToServerModal {
+  /**
+   * The given floating ip
+   */
   public floatingIp: any;
-  public servers: Array<any> = null;
+  /**
+   * All available servers
+   * @type {Server[]}
+   */
+  public servers: Array<Server> = null;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public floatingIpProvider: FloatingIpApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController, public serverApiProvider: ServerApiProvider) {
+  /**
+   * Constructor
+   * @param {NavController} navCtrl
+   * @param {LoadingController} loadingCtrl
+   * @param {ViewController} viewCtrl
+   * @param {ProjectsService} project
+   * @param {ServersService} serversService
+   * @param {FloatingIpApiProvider} floatingIpProvider
+   * @param {NavParams} navParams
+   */
+  constructor(
+    protected navCtrl: NavController,
+    protected loadingCtrl: LoadingController,
+    protected viewCtrl: ViewController,
+    protected project: ProjectsService,
+    protected serversService: ServersService,
+    protected floatingIpProvider: FloatingIpApiProvider,
+    protected navParams: NavParams
+  ) {
     this.floatingIp = navParams.get('floating_ip');
-    this.serverApiProvider.getServers().then((data) => {
-      this.servers = data['servers'];
-    })
+    this.servers = this.serversService.servers;
   }
 
-
+  /**
+   * Make the api call
+   */
   public assignToServer() {
     let loader = this.loadingCtrl.create();
     loader.present();
@@ -31,6 +60,9 @@ export class assignToServerModal {
 
   }
 
+  /**
+   * Dismiss the modal
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }

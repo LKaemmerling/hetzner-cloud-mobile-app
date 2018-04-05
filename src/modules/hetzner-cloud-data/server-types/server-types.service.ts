@@ -1,28 +1,28 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
-import {ImageApiProvider} from "../../../providers/image-api/image-api";
-import {LocationApiProvider} from "../../../providers/location-api/location-api";
 import {ServerTypeApiProvider} from "../../../providers/server-type-api/server-type-api";
-
+/**
+ * Service that contains all storage methods for the server types.
+ */
 @Injectable()
 export class ServerTypesService {
   /**
-   *
+   * all server types
    * @type {any[]}
    */
   public server_types: Array<any> = [];
 
   /**
-   *
+   * Constructor
    * @param {Storage} storage
-   * @param {LocationApiProvider} locationApiProvider
+   * @param {ServerTypeApiProvider} serverTypeApiProvider
    */
   constructor(private storage: Storage, private serverTypeApiProvider: ServerTypeApiProvider) {
     this.server_types = [];
   }
 
   /**
-   *
+   * Load all server types from the storage
    */
   public loadServerTypes() {
     return this.storage.get('server_types').then((val) => {
@@ -33,14 +33,14 @@ export class ServerTypesService {
   }
 
   /**
-   *
+   * Save all server types to the storage
    */
   public saveServerTypes() {
     return this.storage.set('server_types', this.server_types);
   }
 
   /**
-   *
+   * Load all server types from the api and save it.
    * @returns {Promise<void>}
    */
   public reloadServerTypes() {

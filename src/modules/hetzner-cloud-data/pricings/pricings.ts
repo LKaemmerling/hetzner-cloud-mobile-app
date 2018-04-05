@@ -1,5 +1,8 @@
 import {ServerType} from "../servers/server";
 
+/**
+ *
+ */
 export interface PricePerGbMonth {
   net: string;
   gross: string;

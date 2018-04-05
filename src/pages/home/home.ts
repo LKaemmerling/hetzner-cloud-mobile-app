@@ -4,17 +4,28 @@ import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects
 import {ProjectsPage} from "../projects/projects";
 import {addProjectModal} from "../projects/addProject/addProject";
 
+/**
+ * This is the basic start screen
+ */
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController, public project: ProjectsService, public modal: ModalController) {
+  /**
+   * Constructor
+   * @param {NavController} navCtrl
+   * @param {ProjectsService} project
+   * @param {ModalController} modal
+   */
+  constructor(protected navCtrl: NavController, protected project: ProjectsService, protected modal: ModalController) {
 
   }
 
-  public openProjectsPage() {
+  /**
+   * This open the create project modal
+   */
+  public openCreateProject() {
 
     let modal = this.modal.create(addProjectModal);
     modal.onDidDismiss(() => {

@@ -1,17 +1,18 @@
 import {Component, Input} from '@angular/core';
+import {Server} from "../../modules/hetzner-cloud-data/servers/server";
 
 /**
- * Generated class for the ServerBasicInformationComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+ * The component shows all basic information about a server into two lines.
  */
 @Component({
   selector: 'server-basic-information',
   templateUrl: 'server-basic-information.html'
 })
 export class ServerBasicInformationComponent {
-
-  @Input() server: string;
+  /**
+   * The specific server
+   * @type {Server}
+   */
+  @Input() server: Server;
 
 }

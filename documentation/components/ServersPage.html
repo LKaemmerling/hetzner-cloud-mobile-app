@@ -146,6 +146,9 @@
                                     <a href="../components/ProjectsPage.html" >ProjectsPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ServerBasicInformationComponent.html" >ServerBasicInformationComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ServerMetricsPage.html" >ServerMetricsPage</a>
                                 </li>
                                 <li class="link">
@@ -240,6 +243,9 @@
                                     <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/FloatingIpsService.html" >FloatingIpsService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
                                 </li>
                                 <li class="link">
@@ -252,13 +258,13 @@
                                     <a href="../injectables/ImagesService.html" >ImagesService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/IonicProErrorHandler.html" >IonicProErrorHandler</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/LocationApiProvider.html" >LocationApiProvider</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocationsService.html" >LocationsService</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../injectables/MyErrorHandler.html" >MyErrorHandler</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/NetworkProvider.html" >NetworkProvider</a>
@@ -292,9 +298,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/StatusApiProvider.html" >StatusApiProvider</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../injectables/project.html" >project</a>
                                 </li>
                         </ul>
                     </li>
@@ -386,6 +389,9 @@
                                 <li class="link">
                                     <a href="../interfaces/Traffic.html" >Traffic</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/project.html" >project</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -405,6 +411,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/PriceReplacePipe.html" >PriceReplacePipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -580,6 +589,9 @@
                                            <a href="../components/ProjectsPage.html" >ProjectsPage</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ServerBasicInformationComponent.html" >ServerBasicInformationComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ServerMetricsPage.html" >ServerMetricsPage</a>
                                        </li>
                                        <li class="link">
@@ -674,6 +686,9 @@
                                            <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/FloatingIpsService.html" >FloatingIpsService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
                                        </li>
                                        <li class="link">
@@ -686,13 +701,13 @@
                                            <a href="../injectables/ImagesService.html" >ImagesService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/IonicProErrorHandler.html" >IonicProErrorHandler</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/LocationApiProvider.html" >LocationApiProvider</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocationsService.html" >LocationsService</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../injectables/MyErrorHandler.html" >MyErrorHandler</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/NetworkProvider.html" >NetworkProvider</a>
@@ -726,9 +741,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/StatusApiProvider.html" >StatusApiProvider</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../injectables/project.html" >project</a>
                                        </li>
                                </ul>
                            </li>
@@ -820,6 +832,9 @@
                                        <li class="link">
                                            <a href="../interfaces/Traffic.html" >Traffic</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/project.html" >project</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -839,6 +854,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/PriceReplacePipe.html" >PriceReplacePipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -918,6 +936,13 @@
     <code>src/pages/server/serverList/servers.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This page displays all available servers</p>
+
+    </p>
 
 
 
@@ -1049,17 +1074,19 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-    <code>constructor(navCtrl: NavController, project: <a href="../injectables/ProjectsService.html">ProjectsService</a>, serverApiProvider: <a href="../injectables/ServerApiProvider.html">ServerApiProvider</a>, modal: ModalController, loadingCtrl: LoadingController, serversService: <a href="../injectables/ServersService.html">ServersService</a>, storage: Storage, translate: TranslateService)</code>
+    <code>constructor(loadingCtrl: LoadingController, modalCtrl: ModalController, navCtrl: NavController, storage: Storage, project: <a href="../injectables/ProjectsService.html">ProjectsService</a>, serversService: <a href="../injectables/ServersService.html">ServersService</a>, translate: TranslateService, networkProvider: <a href="../injectables/NetworkProvider.html">NetworkProvider</a>, serverApiProvider: <a href="../injectables/ServerApiProvider.html">ServerApiProvider</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/pages/server/serverList/servers.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/pages/server/serverList/servers.ts:66</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Constructor</p>
+    </div>
                                 <div>
                                         <b>Parameters :</b>
                                         <table class="params">
@@ -1071,54 +1098,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                    <tr>
-                                                        <td>navCtrl</td>
-                                                      
-                                                            <td>
-                                                                        <code>NavController</code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>project</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../injectables/ProjectsService.html" target="_self" >ProjectsService</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>serverApiProvider</td>
-                                                      
-                                                            <td>
-                                                                        <code><a href="../injectables/ServerApiProvider.html" target="_self" >ServerApiProvider</a></code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>modal</td>
-                                                      
-                                                            <td>
-                                                                        <code>ModalController</code>
-                                                            </td>
-                                                      
-                                                        <td>
-                                                                no
-                                                        </td>
-                                                        
-                                                    </tr>
                                                     <tr>
                                                         <td>loadingCtrl</td>
                                                       
@@ -1132,10 +1111,22 @@
                                                         
                                                     </tr>
                                                     <tr>
-                                                        <td>serversService</td>
+                                                        <td>modalCtrl</td>
                                                       
                                                             <td>
-                                                                        <code><a href="../injectables/ServersService.html" target="_self" >ServersService</a></code>
+                                                                        <code>ModalController</code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>navCtrl</td>
+                                                      
+                                                            <td>
+                                                                        <code>NavController</code>
                                                             </td>
                                                       
                                                         <td>
@@ -1156,10 +1147,58 @@
                                                         
                                                     </tr>
                                                     <tr>
+                                                        <td>project</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/ProjectsService.html" target="_self" >ProjectsService</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>serversService</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/ServersService.html" target="_self" >ServersService</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
                                                         <td>translate</td>
                                                       
                                                             <td>
                                                                         <code>TranslateService</code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>networkProvider</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/NetworkProvider.html" target="_self" >NetworkProvider</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>serverApiProvider</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/ServerApiProvider.html" target="_self" >ServerApiProvider</a></code>
                                                             </td>
                                                       
                                                         <td>
@@ -1209,12 +1248,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">src/pages/server/serverList/servers.ts:145</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">src/pages/server/serverList/servers.ts:151</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Delete a specific server</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1280,12 +1321,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/pages/server/serverList/servers.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/pages/server/serverList/servers.ts:141</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Load all available servers from the api</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1319,12 +1362,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/pages/server/serverList/servers.ts:109</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/pages/server/serverList/servers.ts:115</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Load all available servers from the api</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1356,12 +1401,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">src/pages/server/serverList/servers.ts:184</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="194" class="link-to-prism">src/pages/server/serverList/servers.ts:194</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Open the create a new server modal</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1395,12 +1442,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/pages/server/serverList/servers.ts:210</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">src/pages/server/serverList/servers.ts:228</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Open the details page of a server</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1466,12 +1515,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">src/pages/server/serverList/servers.ts:197</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="211" class="link-to-prism">src/pages/server/serverList/servers.ts:211</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Open the edit a server modal</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1535,12 +1586,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/pages/server/serverList/servers.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/pages/server/serverList/servers.ts:103</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Open a sub menu for a specific server</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1606,12 +1659,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/pages/server/serverList/servers.ts:124</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">src/pages/server/serverList/servers.ts:130</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Load all available servers from the api</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1679,12 +1734,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/pages/server/serverList/servers.ts:164</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/pages/server/serverList/servers.ts:174</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Search of a string in the server name</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1762,10 +1819,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/pages/server/serverList/servers.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/pages/server/serverList/servers.ts:45</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>All available servers - filtered</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1802,10 +1865,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/pages/server/serverList/servers.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/pages/server/serverList/servers.ts:66</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Is the compact server design enabled or not?</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1842,10 +1911,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/pages/server/serverList/servers.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/pages/server/serverList/servers.ts:51</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Is the component in the loading process?</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1882,10 +1957,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/pages/server/serverList/servers.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/pages/server/serverList/servers.ts:56</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Is the loading done?</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1922,10 +2003,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/pages/server/serverList/servers.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/pages/server/serverList/servers.ts:39</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>All available servers</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1962,10 +2049,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/pages/server/serverList/servers.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/pages/server/serverList/servers.ts:61</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>All visible submenus</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1988,7 +2081,11 @@ import {editServerModal} from &quot;../editServer/editServer&quot;;
 import {state, style, transition, trigger, useAnimation} from &quot;@angular/animations&quot;;
 import {fadeIn, fadeOut} from &quot;ng-animate&quot;;
 import {Server} from &quot;../../../modules/hetzner-cloud-data/servers/server&quot;;
+import {NetworkProvider} from &quot;../../../modules/hetzner-app/network/network&quot;;
 
+/**
+ * This page displays all available servers
+ */
 @Component({
   selector: &#x27;page-servers&#x27;,
   templateUrl: &#x27;servers.html&#x27;,
@@ -2006,58 +2103,60 @@ import {Server} from &quot;../../../modules/hetzner-cloud-data/servers/server&qu
 })
 export class ServersPage {
   /**
-   *
+   * All available servers
    * @type {any[]}
    */
   public servers: Array&lt;Server&gt; &#x3D; [];
   /**
-   *
+   * All available servers - filtered
    * @type {any[]}
    *
    */
   public _search: Array&lt;Server&gt; &#x3D; [];
 
   /**
-   *
+   * Is the component in the loading process?
    * @type {boolean}
    */
   public loading: boolean &#x3D; false;
   /**
-   *
+   * Is the loading done?
    * @type {boolean}
    */
   public loading_done: boolean &#x3D; false;
   /**
-   *
+   * All visible submenus
    * @type {any[]}
    */
   public visible: Array&lt;string&gt; &#x3D; [];
   /**
-   *
+   * Is the compact server design enabled or not?
    * @type {boolean}
    */
   public compact_server_design: boolean &#x3D; false;
 
   /**
-   *
-   * @param {NavController} navCtrl
-   * @param {ProjectsService} project
-   * @param {ServerApiProvider} serverApiProvider
-   * @param {ModalController} modal
+   * Constructor
    * @param {LoadingController} loadingCtrl
-   * @param {ServersService} serversService
+   * @param {ModalController} modalCtrl
+   * @param {NavController} navCtrl
    * @param {Storage} storage
+   * @param {ProjectsService} project
+   * @param {ServersService} serversService
    * @param {TranslateService} translate
+   * @param {NetworkProvider} networkProvider
+   * @param {ServerApiProvider} serverApiProvider
    */
   constructor(
-    protected navCtrl: NavController,
-    protected project: ProjectsService,
-    protected serverApiProvider: ServerApiProvider,
-    protected modal: ModalController,
     protected loadingCtrl: LoadingController,
-    protected serversService: ServersService,
+    protected modalCtrl: ModalController,
+    protected navCtrl: NavController,
     protected storage: Storage,
-    protected translate: TranslateService
+    protected project: ProjectsService,
+    protected serversService: ServersService,
+    protected translate: TranslateService,
+    protected networkProvider: NetworkProvider,
+    protected serverApiProvider: ServerApiProvider
   ) {
     this.servers &#x3D; this._search &#x3D; this.serversService.servers;
     storage.get(&#x27;compact_server_design&#x27;).then((val) &#x3D;&gt; {
@@ -2068,7 +2167,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Open a sub menu for a specific server
    * @param {string} menuId
    */
   openSubMenu(menuId: string) {
@@ -2081,7 +2180,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Load all available servers from the api
    */
   public loadServers() {
     this.loading &#x3D; true;
@@ -2095,7 +2194,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Load all available servers from the api
    * @param {any} refresher
    */
   public refresh(refresher &#x3D; null) {
@@ -2107,7 +2206,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Load all available servers from the api
    */
   public ionViewWillEnter() {
     this.serversService.reloadServers().then(() &#x3D;&gt; {
@@ -2116,26 +2215,30 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Delete a specific server
    * @param {Server} server
    */
   public delete(server: Server) {
-    let _delete: string &#x3D; &#x27;&#x27;;
-    this.translate.get(&#x27;ACTIONS.DELETE_CONFIRMATION&#x27;).subscribe(text &#x3D;&gt; {
-      _delete &#x3D; text;
-    });
-    if (confirm(_delete)) {
-      var loader &#x3D; this.loadingCtrl.create();
-      loader.present();
-      this.serverApiProvider.delete(server.id).then((data) &#x3D;&gt; {
-        this.loadServers();
-        loader.dismiss();
+    if (this.networkProvider.has_connection) {
+      let _delete: string &#x3D; &#x27;&#x27;;
+      this.translate.get(&#x27;ACTIONS.DELETE_CONFIRMATION&#x27;).subscribe(text &#x3D;&gt; {
+        _delete &#x3D; text;
       });
+      if (confirm(_delete)) {
+        var loader &#x3D; this.loadingCtrl.create();
+        loader.present();
+        this.serverApiProvider.delete(server.id).then((data) &#x3D;&gt; {
+          this.loadServers();
+          loader.dismiss();
+        });
+      }
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
     }
   }
 
   /**
-   *
+   * Search of a string in the server name
    * @param ev
    */
   search(ev) {
@@ -2156,32 +2259,40 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Open the create a new server modal
    */
   openCreateServerModal() {
-    let modal &#x3D; this.modal.create(addServerModal);
-    modal.onDidDismiss(() &#x3D;&gt; {
-      this.loadServers();
-    });
+    if (this.networkProvider.has_connection) {
+      let modal &#x3D; this.modalCtrl.create(addServerModal);
+      modal.onDidDismiss(() &#x3D;&gt; {
+        this.loadServers();
+      });
 
-    modal.present();
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
-   *
+   * Open the edit a server modal
    * @param {Server} server
    */
   public openEditModal(server: Server) {
-    let modal &#x3D; this.modal.create(editServerModal, {server: server});
-    modal.onDidDismiss(() &#x3D;&gt; {
-      this.loadServers();
-    });
+    if (this.networkProvider.has_connection) {
+      let modal &#x3D; this.modalCtrl.create(editServerModal, {server: server});
+      modal.onDidDismiss(() &#x3D;&gt; {
+        this.loadServers();
+      });
 
-    modal.present();
+      modal.present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
   }
 
   /**
-   *
+   * Open the details page of a server
    * @param {Server} server
    */
   public openDetailsPage(server: Server) {
@@ -2206,87 +2317,80 @@ export class ServersPage {
 
 &lt;ion-content *ngIf&#x3D;&quot;compact_server_design&quot;&gt;
   &lt;ion-searchbar (ionInput)&#x3D;&quot;search($event)&quot;&gt;&lt;/ion-searchbar&gt;
-    &lt;ion-card&gt;
-      &lt;ion-list&gt;
+  &lt;ion-card&gt;
+    &lt;ion-list&gt;
 
-        &lt;button ion-item *ngFor&#x3D;&quot;let server of _search ; let i &#x3D; index&quot; (click)&#x3D;&quot;openDetailsPage(server)&quot; [id]&#x3D;&quot;server.name&quot;&gt;
-
-          &lt;h2&gt;{{ server.name }}
-            &lt;server-status-indicator [status]&#x3D;&quot;server.status&quot; right&#x3D;&quot;&quot;&gt;&lt;/server-status-indicator&gt;
-          &lt;/h2&gt;
+      &lt;button ion-item *ngFor&#x3D;&quot;let server of _search ; let i &#x3D; index&quot; (click)&#x3D;&quot;openDetailsPage(server)&quot;
+              [id]&#x3D;&quot;server.name&quot;&gt;
+        &lt;server-basic-information [server]&#x3D;&quot;server&quot;&gt;&lt;/server-basic-information&gt;
+      &lt;/button&gt;
+      &lt;p ion-item *ngIf&#x3D;&quot;_search &#x3D;&#x3D; null || _search.length &#x3D;&#x3D; 0&quot; class&#x3D;&quot;message_box info&quot; text-wrap&#x3D;&quot;&quot;
+         [innerHTML]&#x3D;&quot;&#x27;PAGE.SERVERS.NO_SERVERS&#x27; | translate&quot;&gt;
+      &lt;/p&gt;
+    &lt;/ion-list&gt;
+  &lt;/ion-card&gt;
+&lt;/ion-content&gt;
+&lt;ion-content *ngIf&#x3D;&quot;!compact_server_design&quot;&gt;
+  &lt;ion-searchbar (ionInput)&#x3D;&quot;search($event)&quot;&gt;&lt;/ion-searchbar&gt;
+  &lt;ion-row class&#x3D;&quot;row&quot;&gt;
+    &lt;ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor&#x3D;&quot;let server of _search; let i &#x3D; index&quot;&gt;
+      &lt;ion-card class&#x3D;&quot;server&quot; [id]&#x3D;&quot;&#x27;server_&#x27;+i&quot;&gt;
+        &lt;ion-row class&#x3D;&quot;server_header&quot; text-center&#x3D;&quot;&quot;&gt;
+          &lt;ion-col offset-9 col-3 style&#x3D;&quot;max-height:20px;&quot;&gt;
+            &lt;button ion-button&#x3D;&quot;&quot; clear&#x3D;&quot;&quot; color&#x3D;&quot;light&quot;
+                    (click)&#x3D;&quot;openSubMenu(&#x27;server_&#x27;+i+&#x27;_content&#x27;)&quot; class&#x3D;&quot;server_menu&quot;
+                    [attr.data-server]&#x3D;&quot;server.name&quot;&gt;
+              &lt;i class&#x3D;&quot;fas fa-ellipsis-h fa-2x&quot;&gt;&lt;/i&gt;
+            &lt;/button&gt;
+          &lt;/ion-col&gt;
+          &lt;ion-col col-12 align-items-start&gt;
+            &lt;h2&gt;{{ server.name }}
+              &lt;server-status-indicator [status]&#x3D;&quot;server.status&quot;&gt;&lt;/server-status-indicator&gt;
+            &lt;/h2&gt;
+          &lt;/ion-col&gt;
+        &lt;/ion-row&gt;
+        &lt;ion-card-content&gt;
           &lt;p text-wrap&#x3D;&quot;&quot;&gt;{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{
             server.datacenter.name
             }}
             /
             {{ server.public_net.ipv4.ip }}&lt;/p&gt;
-        &lt;/button&gt;
-        &lt;p ion-item *ngIf&#x3D;&quot;_search &#x3D;&#x3D; null || _search.length &#x3D;&#x3D; 0&quot; class&#x3D;&quot;message_box info&quot; text-wrap&#x3D;&quot;&quot;
-           [innerHTML]&#x3D;&quot;&#x27;PAGE.SERVERS.NO_SERVERS&#x27; | translate&quot;&gt;
-        &lt;/p&gt;
-      &lt;/ion-list&gt;
-    &lt;/ion-card&gt;
-&lt;/ion-content&gt;
-&lt;ion-content *ngIf&#x3D;&quot;!compact_server_design&quot;&gt;
-  &lt;ion-searchbar (ionInput)&#x3D;&quot;search($event)&quot;&gt;&lt;/ion-searchbar&gt;
-    &lt;ion-row class&#x3D;&quot;row&quot;&gt;
-      &lt;ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor&#x3D;&quot;let server of _search; let i &#x3D; index&quot;&gt;
-        &lt;ion-card class&#x3D;&quot;server&quot; [id]&#x3D;&quot;&#x27;server_&#x27;+i&quot;&gt;
-          &lt;ion-row class&#x3D;&quot;server_header&quot; text-center&#x3D;&quot;&quot;&gt;
-            &lt;ion-col offset-9 col-3 style&#x3D;&quot;max-height:20px;&quot;&gt;
-              &lt;button ion-button&#x3D;&quot;&quot; clear&#x3D;&quot;&quot; color&#x3D;&quot;light&quot;
-                      (click)&#x3D;&quot;openSubMenu(&#x27;server_&#x27;+i+&#x27;_content&#x27;)&quot; class&#x3D;&quot;server_menu&quot;
-                      [attr.data-server]&#x3D;&quot;server.name&quot;&gt;
-                &lt;i class&#x3D;&quot;fas fa-ellipsis-h fa-2x&quot;&gt;&lt;/i&gt;
+
+        &lt;/ion-card-content&gt;
+        &lt;ion-card-content [id]&#x3D;&quot;&#x27;server_&#x27;+i+&#x27;_content&#x27;&quot; style&#x3D;&quot;display:none;&quot;
+                          [@animate]&#x3D;&quot;visible[&#x27;server_&#x27;+i+&#x27;_content&#x27;]&quot;&gt;
+          &lt;ion-row class&#x3D;&quot;row&quot;&gt;
+            &lt;ion-col class&#x3D;&quot;col&quot; text-center&#x3D;&quot;&quot;&gt;
+              &lt;button clear&#x3D;&quot;&quot; color&#x3D;&quot;primary&quot; icon-start&#x3D;&quot;&quot; ion-button&#x3D;&quot;&quot; small&#x3D;&quot;&quot; (click)&#x3D;&quot;openDetailsPage(server)&quot;
+                      class&#x3D;&quot;open_server&quot;&gt;
+                &lt;i class&#x3D;&quot;fa fa-fw fa-info&quot;&gt;&lt;/i&gt; {{ &#x27;ACTIONS.OPEN_DETAILS&#x27; | translate }}
               &lt;/button&gt;
             &lt;/ion-col&gt;
-            &lt;ion-col col-12 align-items-start&gt;
-              &lt;h2&gt;{{ server.name }}
-                &lt;server-status-indicator [status]&#x3D;&quot;server.status&quot;&gt;&lt;/server-status-indicator&gt;
-              &lt;/h2&gt;
+            &lt;ion-col class&#x3D;&quot;col&quot; text-center&#x3D;&quot;&quot;&gt;
+              &lt;button clear&#x3D;&quot;&quot; color&#x3D;&quot;secondary&quot; icon-start&#x3D;&quot;&quot; ion-button&#x3D;&quot;&quot; small&#x3D;&quot;&quot; (click)&#x3D;&quot;openEditModal(server)&quot;
+                      class&#x3D;&quot;edit_server&quot;&gt;
+                &lt;i class&#x3D;&quot;fa fa-fw fa-edit&quot;&gt;&lt;/i&gt; {{ &#x27;ACTIONS.EDIT&#x27; | translate }}
+              &lt;/button&gt;
+            &lt;/ion-col&gt;
+            &lt;ion-col class&#x3D;&quot;col&quot; text-center&#x3D;&quot;&quot;&gt;
+              &lt;button clear&#x3D;&quot;&quot; color&#x3D;&quot;danger&quot; icon-start&#x3D;&quot;&quot; ion-button&#x3D;&quot;&quot; small&#x3D;&quot;&quot; (click)&#x3D;&quot;delete(server)&quot;
+                      class&#x3D;&quot;delete_server&quot;&gt;
+                &lt;i class&#x3D;&quot;fa fa-fw fa-trash&quot;&gt;&lt;/i&gt; {{ &#x27;ACTIONS.DELETE&#x27; | translate }}
+              &lt;/button&gt;
             &lt;/ion-col&gt;
           &lt;/ion-row&gt;
-          &lt;ion-card-content&gt;
-            &lt;p text-wrap&#x3D;&quot;&quot;&gt;{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{
-              server.datacenter.name
-              }}
-              /
-              {{ server.public_net.ipv4.ip }}&lt;/p&gt;
-
-          &lt;/ion-card-content&gt;
-          &lt;ion-card-content [id]&#x3D;&quot;&#x27;server_&#x27;+i+&#x27;_content&#x27;&quot; style&#x3D;&quot;display:none;&quot;
-                            [@animate]&#x3D;&quot;visible[&#x27;server_&#x27;+i+&#x27;_content&#x27;]&quot;&gt;
-            &lt;ion-row class&#x3D;&quot;row&quot;&gt;
-              &lt;ion-col class&#x3D;&quot;col&quot; text-center&#x3D;&quot;&quot;&gt;
-                &lt;button clear&#x3D;&quot;&quot; color&#x3D;&quot;primary&quot; icon-start&#x3D;&quot;&quot; ion-button&#x3D;&quot;&quot; small&#x3D;&quot;&quot; (click)&#x3D;&quot;openDetailsPage(server)&quot;
-                        class&#x3D;&quot;open_server&quot;&gt;
-                  &lt;i class&#x3D;&quot;fa fa-fw fa-info&quot;&gt;&lt;/i&gt; {{ &#x27;ACTIONS.OPEN_DETAILS&#x27; | translate }}
-                &lt;/button&gt;
-              &lt;/ion-col&gt;
-              &lt;ion-col class&#x3D;&quot;col&quot; text-center&#x3D;&quot;&quot;&gt;
-                &lt;button clear&#x3D;&quot;&quot; color&#x3D;&quot;secondary&quot; icon-start&#x3D;&quot;&quot; ion-button&#x3D;&quot;&quot; small&#x3D;&quot;&quot; (click)&#x3D;&quot;openEditModal(server)&quot;
-                        class&#x3D;&quot;edit_server&quot;&gt;
-                  &lt;i class&#x3D;&quot;fa fa-fw fa-edit&quot;&gt;&lt;/i&gt; {{ &#x27;ACTIONS.EDIT&#x27; | translate }}
-                &lt;/button&gt;
-              &lt;/ion-col&gt;
-              &lt;ion-col class&#x3D;&quot;col&quot; text-center&#x3D;&quot;&quot;&gt;
-                &lt;button clear&#x3D;&quot;&quot; color&#x3D;&quot;danger&quot; icon-start&#x3D;&quot;&quot; ion-button&#x3D;&quot;&quot; small&#x3D;&quot;&quot; (click)&#x3D;&quot;delete(server)&quot;
-                        class&#x3D;&quot;delete_server&quot;&gt;
-                  &lt;i class&#x3D;&quot;fa fa-fw fa-trash&quot;&gt;&lt;/i&gt; {{ &#x27;ACTIONS.DELETE&#x27; | translate }}
-                &lt;/button&gt;
-              &lt;/ion-col&gt;
-            &lt;/ion-row&gt;
-          &lt;/ion-card-content&gt;
-        &lt;/ion-card&gt;
-      &lt;/ion-col&gt;
-      &lt;ion-col col-12&gt;
-        &lt;ion-card *ngIf&#x3D;&quot;_search &#x3D;&#x3D; null || _search.length &#x3D;&#x3D; 0&quot; id&#x3D;&quot;no_servers&quot;&gt;
-          &lt;ion-card-content&gt;
-            &lt;p class&#x3D;&quot;message_box info&quot; text-wrap&#x3D;&quot;&quot;
-               [innerHTML]&#x3D;&quot;&#x27;PAGE.SERVERS.NO_SERVERS&#x27; | translate&quot;&gt;&lt;/p&gt;
-          &lt;/ion-card-content&gt;
-        &lt;/ion-card&gt;
-      &lt;/ion-col&gt;
-    &lt;/ion-row&gt;
+        &lt;/ion-card-content&gt;
+      &lt;/ion-card&gt;
+    &lt;/ion-col&gt;
+    &lt;ion-col col-12&gt;
+      &lt;ion-card *ngIf&#x3D;&quot;_search &#x3D;&#x3D; null || _search.length &#x3D;&#x3D; 0&quot; id&#x3D;&quot;no_servers&quot;&gt;
+        &lt;ion-card-content&gt;
+          &lt;p class&#x3D;&quot;message_box info&quot; text-wrap&#x3D;&quot;&quot;
+             [innerHTML]&#x3D;&quot;&#x27;PAGE.SERVERS.NO_SERVERS&#x27; | translate&quot;&gt;&lt;/p&gt;
+        &lt;/ion-card-content&gt;
+      &lt;/ion-card&gt;
+    &lt;/ion-col&gt;
+  &lt;/ion-row&gt;
   &lt;ion-fab bottom right&gt;
     &lt;button ion-fab (click)&#x3D;&quot;openCreateServerModal()&quot;&gt;&lt;i class&#x3D;&quot;fas fa-plus&quot;&gt;&lt;/i&gt;&lt;/button&gt;
   &lt;/ion-fab&gt;
@@ -2317,8 +2421,8 @@ export class ServersPage {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>{{ \'PAGE.SERVERS.TITLE\' | translate}}</ion-title>    <ion-buttons end>      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>    </ion-buttons>  </ion-navbar></ion-header><ion-content *ngIf="compact_server_design">  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>    <ion-card>      <ion-list>        <button ion-item *ngFor="let server of _search ; let i = index" (click)="openDetailsPage(server)" [id]="server.name">          <h2>{{ server.name }}            <server-status-indicator [status]="server.status" right=""></server-status-indicator>          </h2>          <p text-wrap="">{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{            server.datacenter.name            }}            /            {{ server.public_net.ipv4.ip }}</p>        </button>        <p ion-item *ngIf="_search == null || _search.length == 0" class="message_box info" text-wrap=""           [innerHTML]="\'PAGE.SERVERS.NO_SERVERS\' | translate">        </p>      </ion-list>    </ion-card></ion-content><ion-content *ngIf="!compact_server_design">  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>    <ion-row class="row">      <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let server of _search; let i = index">        <ion-card class="server" [id]="\'server_\'+i">          <ion-row class="server_header" text-center="">            <ion-col offset-9 col-3 style="max-height:20px;">              <button ion-button="" clear="" color="light"                      (click)="openSubMenu(\'server_\'+i+\'_content\')" class="server_menu"                      [attr.data-server]="server.name">                <i class="fas fa-ellipsis-h fa-2x"></i>              </button>            </ion-col>            <ion-col col-12 align-items-start>              <h2>{{ server.name }}                <server-status-indicator [status]="server.status"></server-status-indicator>              </h2>            </ion-col>          </ion-row>          <ion-card-content>            <p text-wrap="">{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{              server.datacenter.name              }}              /              {{ server.public_net.ipv4.ip }}</p>          </ion-card-content>          <ion-card-content [id]="\'server_\'+i+\'_content\'" style="display:none;"                            [@animate]="visible[\'server_\'+i+\'_content\']">            <ion-row class="row">              <ion-col class="col" text-center="">                <button clear="" color="primary" icon-start="" ion-button="" small="" (click)="openDetailsPage(server)"                        class="open_server">                  <i class="fa fa-fw fa-info"></i> {{ \'ACTIONS.OPEN_DETAILS\' | translate }}                </button>              </ion-col>              <ion-col class="col" text-center="">                <button clear="" color="secondary" icon-start="" ion-button="" small="" (click)="openEditModal(server)"                        class="edit_server">                  <i class="fa fa-fw fa-edit"></i> {{ \'ACTIONS.EDIT\' | translate }}                </button>              </ion-col>              <ion-col class="col" text-center="">                <button clear="" color="danger" icon-start="" ion-button="" small="" (click)="delete(server)"                        class="delete_server">                  <i class="fa fa-fw fa-trash"></i> {{ \'ACTIONS.DELETE\' | translate }}                </button>              </ion-col>            </ion-row>          </ion-card-content>        </ion-card>      </ion-col>      <ion-col col-12>        <ion-card *ngIf="_search == null || _search.length == 0" id="no_servers">          <ion-card-content>            <p class="message_box info" text-wrap=""               [innerHTML]="\'PAGE.SERVERS.NO_SERVERS\' | translate"></p>          </ion-card-content>        </ion-card>      </ion-col>    </ion-row>  <ion-fab bottom right>    <button ion-fab (click)="openCreateServerModal()"><i class="fas fa-plus"></i></button>  </ion-fab></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerCloudMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'modal-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>{{ \'PAGE.SERVERS.TITLE\' | translate}}</ion-title>    <ion-buttons end>      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>    </ion-buttons>  </ion-navbar></ion-header><ion-content *ngIf="compact_server_design">  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>  <ion-card>    <ion-list>      <button ion-item *ngFor="let server of _search ; let i = index" (click)="openDetailsPage(server)"              [id]="server.name">        <server-basic-information [server]="server"></server-basic-information>      </button>      <p ion-item *ngIf="_search == null || _search.length == 0" class="message_box info" text-wrap=""         [innerHTML]="\'PAGE.SERVERS.NO_SERVERS\' | translate">      </p>    </ion-list>  </ion-card></ion-content><ion-content *ngIf="!compact_server_design">  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>  <ion-row class="row">    <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let server of _search; let i = index">      <ion-card class="server" [id]="\'server_\'+i">        <ion-row class="server_header" text-center="">          <ion-col offset-9 col-3 style="max-height:20px;">            <button ion-button="" clear="" color="light"                    (click)="openSubMenu(\'server_\'+i+\'_content\')" class="server_menu"                    [attr.data-server]="server.name">              <i class="fas fa-ellipsis-h fa-2x"></i>            </button>          </ion-col>          <ion-col col-12 align-items-start>            <h2>{{ server.name }}              <server-status-indicator [status]="server.status"></server-status-indicator>            </h2>          </ion-col>        </ion-row>        <ion-card-content>          <p text-wrap="">{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{            server.datacenter.name            }}            /            {{ server.public_net.ipv4.ip }}</p>        </ion-card-content>        <ion-card-content [id]="\'server_\'+i+\'_content\'" style="display:none;"                          [@animate]="visible[\'server_\'+i+\'_content\']">          <ion-row class="row">            <ion-col class="col" text-center="">              <button clear="" color="primary" icon-start="" ion-button="" small="" (click)="openDetailsPage(server)"                      class="open_server">                <i class="fa fa-fw fa-info"></i> {{ \'ACTIONS.OPEN_DETAILS\' | translate }}              </button>            </ion-col>            <ion-col class="col" text-center="">              <button clear="" color="secondary" icon-start="" ion-button="" small="" (click)="openEditModal(server)"                      class="edit_server">                <i class="fa fa-fw fa-edit"></i> {{ \'ACTIONS.EDIT\' | translate }}              </button>            </ion-col>            <ion-col class="col" text-center="">              <button clear="" color="danger" icon-start="" ion-button="" small="" (click)="delete(server)"                      class="delete_server">                <i class="fa fa-fw fa-trash"></i> {{ \'ACTIONS.DELETE\' | translate }}              </button>            </ion-col>          </ion-row>        </ion-card-content>      </ion-card>    </ion-col>    <ion-col col-12>      <ion-card *ngIf="_search == null || _search.length == 0" id="no_servers">        <ion-card-content>          <p class="message_box info" text-wrap=""             [innerHTML]="\'PAGE.SERVERS.NO_SERVERS\' | translate"></p>        </ion-card-content>      </ion-card>    </ion-col>  </ion-row>  <ion-fab bottom right>    <button ion-fab (click)="openCreateServerModal()"><i class="fas fa-plus"></i></button>  </ion-fab></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerCloudMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'modal-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ServersPage'};
 </script>

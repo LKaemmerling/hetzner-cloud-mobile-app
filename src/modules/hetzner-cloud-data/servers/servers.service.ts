@@ -1,18 +1,20 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
-import {Image, Server} from "./server";
-
+import {Server} from "./server";
+/**
+ * Service that contains all storage methods for the servers.
+ */
 @Injectable()
 export class ServersService {
   /**
-   *
+   * All servers
    * @type {any[]}
    */
   public servers: Array<any> = [];
 
   /**
-   *
+   * Constructor
    * @param {Storage} storage
    * @param {ServerApiProvider} serverApiProvider
    */
@@ -21,7 +23,7 @@ export class ServersService {
   }
 
   /**
-   *
+   * Load all servers from the local storage
    */
   public loadServers() {
     return this.storage.get('servers').then((val) => {
@@ -32,14 +34,14 @@ export class ServersService {
   }
 
   /**
-   *
+   * Save all servers to the local storage
    */
   public saveServers() {
     return this.storage.set('servers', this.servers);
   }
 
   /**
-   *
+   * Load all servers from the api and save it
    * @returns {Promise<void>}
    */
   public reloadServers() {

@@ -10,9 +10,24 @@ import {ServersService} from "./servers/servers.service";
 import {NetworkProvider} from "../hetzner-app/network/network";
 import {FloatingIpsService} from "./floating-ips/floating-ips.service";
 
-
+/**
+ * Service that centralised all methods for the storage
+ */
 @Injectable()
 export class HetznerCloudDataService {
+  /**
+   * Constructor
+   * @param {ProjectsService} projects
+   * @param {ServersService} servers
+   * @param {SshKeysService} sshKeys
+   * @param {ImagesService} images
+   * @param {LocationsService} locations
+   * @param {PricingService} prices
+   * @param {ServerTypesService} serverTypes
+   * @param {NetworkProvider} network
+   * @param {FloatingIpsService} floatingIps
+   * @param {Storage} storage
+   */
   constructor(protected projects: ProjectsService,
               protected servers: ServersService,
               protected sshKeys: SshKeysService,
@@ -27,7 +42,7 @@ export class HetznerCloudDataService {
   }
 
   /**
-   *
+   * Load all available data from the api (network)
    */
   public loadDataFromNetwork() {
     this.prices.reloadPrices();
@@ -40,7 +55,7 @@ export class HetznerCloudDataService {
   }
 
   /**
-   *
+   * Load all available data from the local storage
    */
   public loadDataFromStorage() {
     this.prices.loadPrices();
@@ -53,7 +68,7 @@ export class HetznerCloudDataService {
   }
 
   /**
-   *
+   * This methods loads the data if there is a network connection from the api, if not from the storage
    * @returns {Promise<any>}
    */
   loadData() {

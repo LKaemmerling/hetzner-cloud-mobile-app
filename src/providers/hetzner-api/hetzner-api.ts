@@ -2,11 +2,13 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects.service";
 import {ConfigService} from "../../modules/hetzner-app/config/config.service";
-
+/**
+ * This is the basic provider, that is the parent of all other api providers
+ */
 @Injectable()
 export abstract class HetznerApiProvider {
   /**
-   *
+   * Constructor
    * @param {HttpClient} http
    * @param {ProjectsService} projectService
    * @param {ConfigService} configService

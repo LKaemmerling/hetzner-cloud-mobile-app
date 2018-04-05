@@ -22,69 +22,93 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_PipesModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="119,-70 119,-268 377,-268 377,-70 119,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="63,-70 63,-268 433,-268 433,-70 63,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_PipesModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="131,-78 131,-130 366,-130 366,-78 131,-78"/>
+<polygon fill="none" stroke="#000000" points="76,-78 76,-130 420,-130 420,-78 76,-78"/>
 </g>
-<g id="clust6" class="cluster">
+<g id="clust7" class="cluster">
 <title>cluster_PipesModule_exports</title>
-<polygon fill="none" stroke="#000000" points="127,-208 127,-260 369,-260 369,-208 127,-208"/>
+<polygon fill="none" stroke="#000000" points="71,-208 71,-260 425,-260 425,-208 71,-208"/>
 </g>
 <!-- FileSizePipe -->
 <g id="node1" class="node">
 <title>FileSizePipe</title>
-<polygon fill="#ffffb3" stroke="#000000" points="358.2689,-122 271.7311,-122 271.7311,-86 358.2689,-86 358.2689,-122"/>
-<text text-anchor="middle" x="315" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FileSizePipe</text>
+<polygon fill="#ffffb3" stroke="#000000" points="412.2689,-122 325.7311,-122 325.7311,-86 412.2689,-86 412.2689,-122"/>
+<text text-anchor="middle" x="369" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FileSizePipe</text>
 </g>
 <!-- PipesModule -->
-<g id="node3" class="node">
+<g id="node4" class="node">
 <title>PipesModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="241.8823,-187 238.8823,-191 217.8823,-191 214.8823,-187 152.1177,-187 152.1177,-151 241.8823,-151 241.8823,-187"/>
-<text text-anchor="middle" x="197" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">PipesModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="294.8823,-187 291.8823,-191 270.8823,-191 267.8823,-187 205.1177,-187 205.1177,-151 294.8823,-151 294.8823,-187"/>
+<text text-anchor="middle" x="250" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">PipesModule</text>
 </g>
 <!-- FileSizePipe&#45;&gt;PipesModule -->
 <g id="edge1" class="edge">
 <title>FileSizePipe&#45;&gt;PipesModule</title>
-<path fill="none" stroke="#000000" d="M329.4614,-122.0225C329.4614,-139.3734 329.4614,-163 329.4614,-163 329.4614,-163 252.2152,-163 252.2152,-163"/>
-<polygon fill="#000000" stroke="#000000" points="252.2153,-159.5001 242.2152,-163 252.2152,-166.5001 252.2153,-159.5001"/>
+<path fill="none" stroke="#000000" d="M383.8781,-122.0225C383.8781,-139.3734 383.8781,-163 383.8781,-163 383.8781,-163 304.9519,-163 304.9519,-163"/>
+<polygon fill="#000000" stroke="#000000" points="304.9519,-159.5001 294.9519,-163 304.9519,-166.5001 304.9519,-159.5001"/>
 </g>
 <!-- PriceReplacePipe -->
 <g id="node2" class="node">
 <title>PriceReplacePipe</title>
-<polygon fill="#ffffb3" stroke="#000000" points="253.2367,-122 138.7633,-122 138.7633,-86 253.2367,-86 253.2367,-122"/>
-<text text-anchor="middle" x="196" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">PriceReplacePipe</text>
+<polygon fill="#ffffb3" stroke="#000000" points="307.2367,-122 192.7633,-122 192.7633,-86 307.2367,-86 307.2367,-122"/>
+<text text-anchor="middle" x="250" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">PriceReplacePipe</text>
 </g>
 <!-- PriceReplacePipe&#45;&gt;PipesModule -->
 <g id="edge2" class="edge">
 <title>PriceReplacePipe&#45;&gt;PipesModule</title>
-<path fill="none" stroke="#000000" d="M197,-122.1061C197,-122.1061 197,-140.991 197,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="193.5001,-140.9909 197,-150.991 200.5001,-140.991 193.5001,-140.9909"/>
+<path fill="none" stroke="#000000" d="M250,-122.1061C250,-122.1061 250,-140.991 250,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="246.5001,-140.9909 250,-150.991 253.5001,-140.991 246.5001,-140.9909"/>
+</g>
+<!-- TruncatePipe -->
+<g id="node3" class="node">
+<title>TruncatePipe</title>
+<polygon fill="#ffffb3" stroke="#000000" points="174.1361,-122 83.8639,-122 83.8639,-86 174.1361,-86 174.1361,-122"/>
+<text text-anchor="middle" x="129" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">TruncatePipe</text>
+</g>
+<!-- TruncatePipe&#45;&gt;PipesModule -->
+<g id="edge3" class="edge">
+<title>TruncatePipe&#45;&gt;PipesModule</title>
+<path fill="none" stroke="#000000" d="M143.2726,-122.0225C143.2726,-139.3734 143.2726,-163 143.2726,-163 143.2726,-163 195.0473,-163 195.0473,-163"/>
+<polygon fill="#000000" stroke="#000000" points="195.0473,-166.5001 205.0473,-163 195.0473,-159.5001 195.0473,-166.5001"/>
 </g>
 <!-- FileSizePipe  -->
-<g id="node4" class="node">
+<g id="node5" class="node">
 <title>FileSizePipe </title>
-<polygon fill="#fb8072" stroke="#000000" points="361.269,-252 270.731,-252 270.731,-216 361.269,-216 361.269,-252"/>
-<text text-anchor="middle" x="316" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">FileSizePipe </text>
+<polygon fill="#fb8072" stroke="#000000" points="417.269,-252 326.731,-252 326.731,-216 417.269,-216 417.269,-252"/>
+<text text-anchor="middle" x="372" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">FileSizePipe </text>
 </g>
 <!-- PipesModule&#45;&gt;FileSizePipe  -->
-<g id="edge3" class="edge">
+<g id="edge4" class="edge">
 <title>PipesModule&#45;&gt;FileSizePipe </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M242.1123,-175C270.0138,-175 300.5386,-175 300.5386,-175 300.5386,-175 300.5386,-205.9775 300.5386,-205.9775"/>
-<polygon fill="#000000" stroke="#000000" points="297.0387,-205.9774 300.5386,-215.9775 304.0387,-205.9775 297.0387,-205.9774"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M294.9928,-175C323.6326,-175 355.3719,-175 355.3719,-175 355.3719,-175 355.3719,-205.9775 355.3719,-205.9775"/>
+<polygon fill="#000000" stroke="#000000" points="351.872,-205.9774 355.3719,-215.9775 358.872,-205.9775 351.872,-205.9774"/>
 </g>
 <!-- PriceReplacePipe  -->
-<g id="node5" class="node">
+<g id="node6" class="node">
 <title>PriceReplacePipe </title>
-<polygon fill="#fb8072" stroke="#000000" points="253.2366,-252 134.7634,-252 134.7634,-216 253.2366,-216 253.2366,-252"/>
-<text text-anchor="middle" x="194" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">PriceReplacePipe </text>
+<polygon fill="#fb8072" stroke="#000000" points="309.2366,-252 190.7634,-252 190.7634,-216 309.2366,-216 309.2366,-252"/>
+<text text-anchor="middle" x="250" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">PriceReplacePipe </text>
 </g>
 <!-- PipesModule&#45;&gt;PriceReplacePipe  -->
-<g id="edge4" class="edge">
+<g id="edge5" class="edge">
 <title>PipesModule&#45;&gt;PriceReplacePipe </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M197,-187.1061C197,-187.1061 197,-205.991 197,-205.991"/>
-<polygon fill="#000000" stroke="#000000" points="193.5001,-205.9909 197,-215.991 200.5001,-205.991 193.5001,-205.9909"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M250,-187.1061C250,-187.1061 250,-205.991 250,-205.991"/>
+<polygon fill="#000000" stroke="#000000" points="246.5001,-205.9909 250,-215.991 253.5001,-205.991 246.5001,-205.9909"/>
+</g>
+<!-- TruncatePipe  -->
+<g id="node7" class="node">
+<title>TruncatePipe </title>
+<polygon fill="#fb8072" stroke="#000000" points="173.1355,-252 78.8645,-252 78.8645,-216 173.1355,-216 173.1355,-252"/>
+<text text-anchor="middle" x="126" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">TruncatePipe </text>
+</g>
+<!-- PipesModule&#45;&gt;TruncatePipe  -->
+<g id="edge6" class="edge">
+<title>PipesModule&#45;&gt;TruncatePipe </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M204.919,-175C165.153,-175 113.4774,-175 113.4774,-175 113.4774,-175 113.4774,-205.9775 113.4774,-205.9775"/>
+<polygon fill="#000000" stroke="#000000" points="109.9775,-205.9774 113.4774,-215.9775 116.9775,-205.9775 109.9775,-205.9774"/>
 </g>
 </g>
 </svg>

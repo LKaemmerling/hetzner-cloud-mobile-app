@@ -13,6 +13,9 @@ import {fadeIn, fadeOut} from "ng-animate";
 import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 import {NetworkProvider} from "../../../modules/hetzner-app/network/network";
 
+/**
+ * This page displays all available servers
+ */
 @Component({
   selector: 'page-servers',
   templateUrl: 'servers.html',
@@ -30,40 +33,40 @@ import {NetworkProvider} from "../../../modules/hetzner-app/network/network";
 })
 export class ServersPage {
   /**
-   *
+   * All available servers
    * @type {any[]}
    */
   public servers: Array<Server> = [];
   /**
-   *
+   * All available servers - filtered
    * @type {any[]}
    *
    */
   public _search: Array<Server> = [];
 
   /**
-   *
+   * Is the component in the loading process?
    * @type {boolean}
    */
   public loading: boolean = false;
   /**
-   *
+   * Is the loading done?
    * @type {boolean}
    */
   public loading_done: boolean = false;
   /**
-   *
+   * All visible submenus
    * @type {any[]}
    */
   public visible: Array<string> = [];
   /**
-   *
+   * Is the compact server design enabled or not?
    * @type {boolean}
    */
   public compact_server_design: boolean = false;
 
   /**
-   *
+   * Constructor
    * @param {LoadingController} loadingCtrl
    * @param {ModalController} modalCtrl
    * @param {NavController} navCtrl
@@ -94,7 +97,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Open a sub menu for a specific server
    * @param {string} menuId
    */
   openSubMenu(menuId: string) {
@@ -107,7 +110,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Load all available servers from the api
    */
   public loadServers() {
     this.loading = true;
@@ -121,7 +124,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Load all available servers from the api
    * @param {any} refresher
    */
   public refresh(refresher = null) {
@@ -133,7 +136,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Load all available servers from the api
    */
   public ionViewWillEnter() {
     this.serversService.reloadServers().then(() => {
@@ -142,7 +145,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Delete a specific server
    * @param {Server} server
    */
   public delete(server: Server) {
@@ -165,7 +168,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Search of a string in the server name
    * @param ev
    */
   search(ev) {
@@ -186,7 +189,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Open the create a new server modal
    */
   openCreateServerModal() {
     if (this.networkProvider.has_connection) {
@@ -202,7 +205,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Open the edit a server modal
    * @param {Server} server
    */
   public openEditModal(server: Server) {
@@ -219,7 +222,7 @@ export class ServersPage {
   }
 
   /**
-   *
+   * Open the details page of a server
    * @param {Server} server
    */
   public openDetailsPage(server: Server) {

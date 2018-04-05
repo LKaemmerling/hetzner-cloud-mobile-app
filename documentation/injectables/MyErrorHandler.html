@@ -146,6 +146,9 @@
                                     <a href="../components/ProjectsPage.html" >ProjectsPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ServerBasicInformationComponent.html" >ServerBasicInformationComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ServerMetricsPage.html" >ServerMetricsPage</a>
                                 </li>
                                 <li class="link">
@@ -238,6 +241,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/FloatingIpsService.html" >FloatingIpsService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
@@ -405,6 +411,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/PriceReplacePipe.html" >PriceReplacePipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -580,6 +589,9 @@
                                            <a href="../components/ProjectsPage.html" >ProjectsPage</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ServerBasicInformationComponent.html" >ServerBasicInformationComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ServerMetricsPage.html" >ServerMetricsPage</a>
                                        </li>
                                        <li class="link">
@@ -672,6 +684,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/FloatingIpsService.html" >FloatingIpsService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
@@ -840,6 +855,9 @@
                                        <li class="link">
                                            <a href="../pipes/PriceReplacePipe.html" >PriceReplacePipe</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -964,7 +982,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/app.module.ts:69</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/app.module.ts:73</a></div>
                                         </td>
                                     </tr>
             
@@ -1041,7 +1059,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/app.module.ts:80</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/app.module.ts:84</a></div>
                                         </td>
                                     </tr>
             
@@ -1122,7 +1140,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/app.module.ts:69</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/app.module.ts:73</a></div>
                                         </td>
                                     </tr>
             
@@ -1196,6 +1214,10 @@ import {NetworkProvider} from &#x27;../modules/hetzner-app/network/network&#x27;
 import {HetznerCloudDataModule} from &quot;../modules/hetzner-cloud-data/hetzner-cloud-data.module&quot;;
 import {HetznerAppModule} from &quot;../modules/hetzner-app/hetzner-app.module&quot;;
 
+/**
+ * Init the Ionic Pro Monitoring Service
+ * @type {Pro}
+ */
 const IonicPro &#x3D; Pro.init(&#x27;359b3ec5&#x27;, {
   appVersion: &quot;1.4.0&quot;
 });

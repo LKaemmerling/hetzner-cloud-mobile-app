@@ -2,16 +2,19 @@ import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
 import {SshKeyApiProvider} from "../../../providers/ssh-key-api/ssh-key-api";
 
+/**
+ * Service that contains all storage methods for the ssh keys.
+ */
 @Injectable()
 export class SshKeysService {
   /**
-   *
+   * All ssh keys
    * @type {any[]}
    */
   public ssh_keys: Array<any> = [];
 
   /**
-   * 
+   * Constructor
    * @param {Storage} storage
    * @param {SshKeyApiProvider} sshKeyApProvider
    */
@@ -20,7 +23,7 @@ export class SshKeysService {
   }
 
   /**
-   *
+   * Load all ssh keys from the local storage
    */
   public loadSshKeys() {
     return this.storage.get('ssh_keys').then((val) => {
@@ -31,14 +34,14 @@ export class SshKeysService {
   }
 
   /**
-   *
+   * Save all ssh keys to the local storage
    */
   public saveSshKeys() {
     return this.storage.set('ssh_keys', this.ssh_keys);
   }
 
   /**
-   *
+   * Load all ssh keys from the api and save it to the local storage
    * @returns {Promise<void>}
    */
   public reloadSshKeys() {

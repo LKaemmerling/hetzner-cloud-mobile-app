@@ -13,23 +13,26 @@ import {TranslateService} from "@ngx-translate/core";
 import {NetworkProvider} from "../../../modules/hetzner-app/network/network";
 import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
+/**
+ * This page displays all informations about a given floating ip
+ */
 @Component({
   selector: 'page-floatingIP',
   templateUrl: 'floatingIP.html'
 })
 export class FloatingIPPage {
   /**
-   *
+   * The given floating IP
    */
   public floating_ip: any;
   /**
-   *
+   * The server that is connected with the floating ip - cloud be null
    * @type {Server}
    */
   public server: Server = null;
 
   /**
-   *
+   * Constructor
    * @param {LoadingController} loadingCtrl
    * @param {ModalController} modal
    * @param {NavController} navCtrl
@@ -59,7 +62,7 @@ export class FloatingIPPage {
   }
 
   /**
-   *
+   * Reload the server from the API
    * @param refresher
    */
   public refresh() {
@@ -71,7 +74,7 @@ export class FloatingIPPage {
   };
 
   /**
-   *
+   * Open the details of the server
    * @param {Server} server
    */
   openServer(server: Server) {
@@ -79,7 +82,7 @@ export class FloatingIPPage {
   }
 
   /**
-   *
+   * Open the edit modal for the floating ip
    */
   openEditFloatingIp() {
     if (this.networkProvider.has_connection) {
@@ -90,7 +93,7 @@ export class FloatingIPPage {
   }
 
   /**
-   *
+   * Open the assign modal
    */
   openAssignToServer() {
     if (this.networkProvider.has_connection) {
@@ -102,7 +105,7 @@ export class FloatingIPPage {
   }
 
   /**
-   *
+   * Open the ipv4 reverse dns change modal
    */
   changeIPv4ReverseDNSModal() {
     if (this.networkProvider.has_connection) {
@@ -115,7 +118,7 @@ export class FloatingIPPage {
   }
 
   /**
-   *
+   * Open the ipv6 reverse dns change modal
    */
   changeIPv6ReverseDNSModal() {
     if (this.networkProvider.has_connection) {
@@ -127,7 +130,7 @@ export class FloatingIPPage {
   }
 
   /**
-   *
+   * Delete the floating ip
    */
   delete() {
     if (this.networkProvider.has_connection) {
@@ -150,7 +153,7 @@ export class FloatingIPPage {
   }
 
   /**
-   *
+   * Unassign the floating ip from all servers
    */
   unassign() {
     if (this.networkProvider.has_connection) {

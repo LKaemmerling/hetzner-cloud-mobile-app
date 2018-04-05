@@ -1,21 +1,31 @@
 import {Component} from '@angular/core';
 import {NavParams, ViewController} from "ionic-angular";
-import {TranslateService} from "@ngx-translate/core";
-import {Storage} from "@ionic/storage";
-import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 
+/**
+ * This modal makes it possible to share a project
+ */
 @Component({
   selector: 'modal-shareProject',
   templateUrl: 'shareProject.html'
 })
 export class shareProjectModal {
+  /**
+   * This is the json string that will be encoded
+   */
   public project: string;
 
-
-  constructor(public viewCtrl: ViewController, public navparam: NavParams, protected translate: TranslateService, protected storage: Storage, public barcodeScanner: BarcodeScanner) {
-    this.project = JSON.stringify(navparam.get('project'))
+  /**
+   * Constructor
+   * @param {ViewController} viewCtrl
+   * @param {NavParams} navParam
+   */
+  constructor(protected viewCtrl: ViewController, protected navParam: NavParams) {
+    this.project = JSON.stringify(navParam.get('project'))
   }
 
+  /**
+   * Dismiss the modal
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }

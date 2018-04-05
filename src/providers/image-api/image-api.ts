@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 
 /**
- * This Provider contains all Methods for The Images at Hetzner
+ * This is the provider that performs the api calls to the images api.
  */
 @Injectable()
 export class ImageApiProvider extends HetznerApiProvider {
@@ -37,5 +37,4 @@ export class ImageApiProvider extends HetznerApiProvider {
   update(imageId: number, description: string) {
     return this._put('images/' + imageId, {description: description});
   }
-
 }

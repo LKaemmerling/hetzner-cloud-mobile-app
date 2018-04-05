@@ -59,15 +59,29 @@ import {NetworkProvider} from '../modules/hetzner-app/network/network';
 import {HetznerCloudDataModule} from "../modules/hetzner-cloud-data/hetzner-cloud-data.module";
 import {HetznerAppModule} from "../modules/hetzner-app/hetzner-app.module";
 
+/**
+ * Init the Ionic Pro Monitoring Service
+ * @type {Pro}
+ */
 const IonicPro = Pro.init('359b3ec5', {
   appVersion: "1.4.0"
 });
 
-
+/**
+ * This is the Ionic Pro Error Handler, that sends all errors to ionic pro
+ */
 @Injectable()
-export class MyErrorHandler implements ErrorHandler {
+export class IonicProErrorHandler implements ErrorHandler {
+  /**
+   * The ionic error handler
+   */
   ionicErrorHandler: IonicErrorHandler;
 
+  /**
+   * Constructor
+   * @param {Injector} injector
+   * @param {NetworkProvider} network
+   */
   constructor(protected injector: Injector, protected network: NetworkProvider) {
     try {
       this.ionicErrorHandler = injector.get(IonicErrorHandler);
@@ -77,6 +91,10 @@ export class MyErrorHandler implements ErrorHandler {
     }
   }
 
+  /**
+   * How to handle the error
+   * @param err
+   */
   handleError(err: any): void {
     if (this.network.has_connection == true) {
       IonicPro.monitoring.handleNewError(err);
@@ -88,6 +106,9 @@ export class MyErrorHandler implements ErrorHandler {
   }
 }
 
+/**
+ * This is the basic module that contains all functions from the app
+ */
 @NgModule({
   declarations: [
     HetznerCloudMobileApp,
@@ -186,7 +207,7 @@ export class MyErrorHandler implements ErrorHandler {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: MyErrorHandler},
+    {provide: ErrorHandler, useClass: IonicProErrorHandler},
     OneSignal,
     InAppBrowser,
     AppVersion,

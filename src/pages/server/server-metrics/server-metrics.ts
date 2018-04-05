@@ -5,31 +5,61 @@ import {BaseChartDirective} from "ng2-charts";
 import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
 /**
- * Generated class for the ServerMetricsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * This page displays all available metrics from the server
  */
-
 @Component({
   selector: 'page-server-metrics',
   templateUrl: 'server-metrics.html',
 })
 export class ServerMetricsPage {
-
-  public min:string = '';
-  public max:string = '';
-  public time_start:string = null;
-
+  /**
+   * Max Start date
+   * @type {string}
+   */
+  public min: string = '';
+  /**
+   * Max End Date
+   * @type {string}
+   */
+  public max: string = '';
+  /**
+   * Startpoint
+   * @type {null}
+   */
+  public time_start: string = null;
+  /**
+   * Endpoint
+   * @type {null}
+   */
   public time_end = null;
-  public server:Server;
-  public cpu_metrics:Array<any> = [];
-  public cpu_metrics_label:Array<any> = [];
-  public options:object = {
+  /**
+   * The server that contains the metrics
+   */
+  public server: Server;
+  /**
+   * The metrics for the cpu
+   * @type {any[]}
+   */
+  public cpu_metrics: Array<any> = [];
+  /**
+   * The labels
+   * @type {any[]}
+   */
+  public cpu_metrics_label: Array<any> = [];
+  /**
+   * Global Options for all metrics
+   * @type {{responsive: boolean; spanGaps: boolean}}
+   */
+  public options: object = {
     responsive: true,
     spanGaps: true,
   };
-  public mb_options:object = {
+
+  /**
+   * Objtions for all metrics
+   * @type {{responsive: boolean; spanGaps: boolean; scales: {yAxes: {ticks: {callback: (value, index, values) => string}}[]}}}
+   */
+  public mb_options: object = {
     responsive: true,
     spanGaps: true,
     scales: {
@@ -43,25 +73,60 @@ export class ServerMetricsPage {
       }]
     }
   };
+  /**
+   * Base Chart
+   */
   @ViewChildren(BaseChartDirective) chart: QueryList<BaseChartDirective>;
-  public disk_metrics:Array<any> = [];
-  public disk_labels:Array<any> = [];
-  public disk_bandwidth_metrics:Array<any> = [];
-  public disk_bandwidth_labels:Array<any> = [];
-  public network_pps_metrics:Array<any> = [];
-  public network_pps_labels:Array<any> = [];
-
-  public network_bandwidth_metrics:Array<any> = [];
-  public network_bandwidth_labels:Array<any> = [];
+  /**
+   * Metrics Disk
+   * @type {any[]}
+   */
+  public disk_metrics: Array<any> = [];
+  /**
+   * Labels Metrics Disk
+   * @type {any[]}
+   */
+  public disk_labels: Array<any> = [];
+  /**
+   * Metrics Bandwidth Disk
+   * @type {any[]}
+   */
+  public disk_bandwidth_metrics: Array<any> = [];
+  /**
+   * Labels Metrics Bandwidth Disk
+   * @type {any[]}
+   */
+  public disk_bandwidth_labels: Array<any> = [];
+  /**
+   * Metrics Network pps
+   * @type {any[]}
+   */
+  public network_pps_metrics: Array<any> = [];
 
   /**
-   *
+   * Labels Metrics Network pps
+   * @type {any[]}
+   */
+  public network_pps_labels: Array<any> = [];
+  /**
+   * Metrics Network Bandwidth
+   * @type {any[]}
+   */
+  public network_bandwidth_metrics: Array<any> = [];
+  /**
+   * Metrics Network Bandwidth Labels
+   * @type {any[]}
+   */
+  public network_bandwidth_labels: Array<any> = [];
+
+  /**
+   * Constructor
    * @param {NavController} navCtrl
    * @param {NavParams} navParams
    * @param {ServerApiProvider} serverApiProvider
    * @param {LoadingController} loadingCtrl
    */
-  constructor(public navCtrl: NavController, public navParams: NavParams, public serverApiProvider: ServerApiProvider,public loadingCtrl:LoadingController) {
+  constructor(protected navCtrl: NavController, protected navParams: NavParams, protected serverApiProvider: ServerApiProvider, protected loadingCtrl: LoadingController) {
     this.min = new Date(new Date().setDate(new Date().getDate() - 30)).toISOString();
     this.max = new Date().toISOString();
     this.time_start = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString();
@@ -71,7 +136,7 @@ export class ServerMetricsPage {
   }
 
   /**
-   *
+   * Load all charts
    * @param {boolean} reload
    */
   public load(reload = true) {
@@ -87,7 +152,7 @@ export class ServerMetricsPage {
                 _chart.ngOnChanges({} as SimpleChanges)
               });
               loader.dismiss();
-            },1000);
+            }, 1000);
           } else {
             loader.dismiss();
           }
@@ -98,7 +163,7 @@ export class ServerMetricsPage {
   }
 
   /**
-   *
+   * Get the CPU Metrics
    * @returns {Promise<any>}
    */
   public getCpuMetrics() {
@@ -117,7 +182,7 @@ export class ServerMetricsPage {
   }
 
   /**
-   *
+   * Get the Disk metrics
    * @returns {Promise<any>}
    */
   public getDiskMetrics() {
@@ -154,7 +219,7 @@ export class ServerMetricsPage {
   }
 
   /**
-   *
+   * Get the Network Metrics
    * @returns {Promise<any>}
    */
   public getNetworkMetrics() {
@@ -188,8 +253,9 @@ export class ServerMetricsPage {
       });
     });
   }
+
   /**
-   *
+   * Converte the unix timestamp into a readable date
    * @param UNIX_timestamp
    * @returns {string}
    */
@@ -208,7 +274,7 @@ export class ServerMetricsPage {
   }
 
 
-  /*
+  /**
    * Convert bytes into largest possible unit.
    * Takes an precision argument that defaults to 2.
    * Usage:
@@ -216,7 +282,7 @@ export class ServerMetricsPage {
    * Example:
    *   {{ 1024 |  fileSize}}
    *   formats to: 1 KB
-  */
+   **/
   transform(bytes: number = 0, precision: number = 2): string {
     if (isNaN(parseFloat(String(bytes))) || !isFinite(bytes)) return '?';
     let units = [
@@ -230,7 +296,7 @@ export class ServerMetricsPage {
 
     let unit = 0;
     bytes = parseFloat(String(bytes));
-    if(bytes < 0){
+    if (bytes < 0) {
       bytes = bytes * -1;
     }
     while (bytes >= 1024) {
@@ -239,11 +305,21 @@ export class ServerMetricsPage {
     }
     return bytes.toFixed(+precision) + ' ' + units[unit];
   }
+
+  /**
+   * Convert bytes into largest possible unit, but doesn't set the unit
+   * Takes an precision argument that defaults to 2.
+   * Usage:
+   *   bytes | fileSize:precision
+   * Example:
+   *   {{ 1024 |  fileSize}}
+   *   formats to: 1 KB
+   **/
   transformWOUnit(bytes: number = 0, precision: number = 2): string {
     if (isNaN(parseFloat(String(bytes))) || !isFinite(bytes)) return '?';
     let unit = 0;
     bytes = parseFloat(String(bytes));
-    if(bytes < 0){
+    if (bytes < 0) {
       bytes = bytes * -1;
     }
     while (bytes >= 1024) {

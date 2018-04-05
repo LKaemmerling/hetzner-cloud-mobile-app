@@ -8,10 +8,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 /**
- * Generated class for the HetznerStatusPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * This is the hetzner status page in the app
  */
 
 @Component({
@@ -19,10 +16,32 @@ import {NetworkProvider} from "../../modules/hetzner-app/network/network";
   templateUrl: 'hetzner-status.html',
 })
 export class HetznerStatusPage {
+  /**
+   * Contains all messages from the hetzner status api
+   */
   public messages;
+  /**
+   * Is there currently something loading?
+   * @type {boolean}
+   */
   public loading: boolean = false;
+  /**
+   * Is the loading done?
+   * @type {boolean}
+   */
   public loading_done: boolean = false;
 
+  /**
+   * Constructor
+   * @param {NavController} navCtrl
+   * @param {NavParams} navParams
+   * @param {StatusApiProvider} statusApi
+   * @param {Storage} storage
+   * @param {Platform} platform
+   * @param {InAppBrowser} browser
+   * @param {TranslateService} translate
+   * @param {NetworkProvider} network
+   */
   constructor(protected navCtrl: NavController,
               protected navParams: NavParams,
               protected statusApi: StatusApiProvider,
@@ -34,10 +53,16 @@ export class HetznerStatusPage {
     this.loadMessages();
   }
 
+  /**
+   * Open the status settings
+   */
   openSettings() {
     this.navCtrl.push(HetznerStatusSettingPage);
   }
 
+  /**
+   * Load all messages from the status api
+   */
   public loadMessages() {
     if (this.network.has_connection) {
       this.loading = true;
@@ -67,6 +92,10 @@ export class HetznerStatusPage {
     }
   }
 
+  /**
+   * Open the given url in the in-app-browser
+   * @param {string} url
+   */
   public openPage(url: string) {
     this.browser.create(url).show();
   }

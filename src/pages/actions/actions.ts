@@ -4,37 +4,34 @@ import {ActionsApiProvider} from "../../providers/actions-api/actions-api";
 import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
 /**
- * Generated class for the ActionsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * This page displays all actions from the selected project
  */
-
 @Component({
   selector: 'page-actions',
   templateUrl: 'actions.html',
 })
 export class ActionsPage {
   /**
-   *
+   * All actions
    */
   public actions: Array<any>;
   /**
-   *
+   * Is there currently something loading?
    * @type {boolean}
    */
   public loading: boolean = false;
   /**
-   *
+   * Is the loading done?
    * @type {boolean}
    */
   public loading_done: boolean = false;
 
   /**
-   *
+   * Constructor
    * @param {NavController} navCtrl
    * @param {NavParams} navParams
    * @param {ActionsApiProvider} actionsApi
+   * @param {NetworkProvider} network
    */
   constructor(protected navCtrl: NavController,
               protected navParams: NavParams,
@@ -44,7 +41,7 @@ export class ActionsPage {
   }
 
   /**
-   * Load the Actions frome the API
+   * Load the Actions from the API
    */
   loadActions() {
     this.loading = true;

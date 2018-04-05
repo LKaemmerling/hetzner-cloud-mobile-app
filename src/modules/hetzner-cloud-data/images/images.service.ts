@@ -3,16 +3,20 @@ import {Injectable} from '@angular/core';
 import {ImageApiProvider} from "../../../providers/image-api/image-api";
 import {Image} from "../servers/server";
 
+
+/**
+ * Service that contains all storage methods for the images.
+ */
 @Injectable()
 export class ImagesService {
   /**
-   *
+   * All images
    * @type {any[]}
    */
   public images: Array<any> = [];
 
   /**
-   *
+   * Constructor
    * @param {Storage} storage
    * @param {ImageApiProvider} imageApiProvider
    */
@@ -21,7 +25,7 @@ export class ImagesService {
   }
 
   /**
-   *
+   * Load all images from the storage
    */
   public loadImages() {
     return this.storage.get('images').then((val) => {
@@ -32,14 +36,14 @@ export class ImagesService {
   }
 
   /**
-   *
+   * Save all images to the storage.
    */
   public saveImages() {
     return this.storage.set('images', this.images);
   }
 
   /**
-   *
+   * Load all images from the api and store it locally.
    * @returns {Promise<void>}
    */
   public reloadImages() {

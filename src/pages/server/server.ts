@@ -17,18 +17,21 @@ import {consoleModal} from "./console/console";
 import {Server} from "../../modules/hetzner-cloud-data/servers/server";
 import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
+/**
+ * This page displays all information about the selected server
+ */
 @Component({
   selector: 'page-server',
   templateUrl: 'server.html'
 })
 export class ServerPage {
   /**
-   *
+   * The server that is visible in this page
    */
   public server: Server;
 
   /**
-   *
+   * Constructor
    * @param {LoadingController} loadingCtrl
    * @param {ModalController} modalCtrl
    * @param {NavController} navCtrl
@@ -54,7 +57,7 @@ export class ServerPage {
   }
 
   /**
-   *
+   * Reload the data for this specific server from the api
    */
   public refresh() {
     this.serverApiProvider.getServer(this.server.id).then((data) => {
