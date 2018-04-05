@@ -61,7 +61,7 @@
                 <button (click)="createBackup(server)" class="hc-button">{{
                   'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.CREATE_BACKUP' | translate}}
                 </button>
-                <br />
+                <br/>
                 <button (click)="backupSettingsModal(server)" class="hc-button" style="margin-top:5px;">{{
                   'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.BACKUP' | translate}}
                 </button>
@@ -99,9 +99,13 @@
           </ion-item>
         </div>
       </ion-list>
-      <p *ngIf="images.length == 0" class="message_box info">
-        {{ 'PAGE.IMAGES.TYPES.'+type.toUpperCase()+'.NO_'+ type.toUpperCase()|translate}}
-      </p>
+      <ion-card *ngIf="images.length == 0">
+        <ion-card-content>
+          <p class="message_box info">
+            {{ 'PAGE.IMAGES.TYPES.'+type.toUpperCase()+'.NO_'+ type.toUpperCase()|translate}}
+          </p>
+        </ion-card-content>
+      </ion-card>
     </div>
     <div *ngSwitchCase="'system'">
       <ion-card>
