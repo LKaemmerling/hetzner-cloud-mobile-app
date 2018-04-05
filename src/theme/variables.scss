@@ -47,7 +47,7 @@ $colors: (
   background-color: hsl(0, 0%, 96%) !important;
 }
 
-.menu, .segment {
+.menu, .segment, .segment-ios .segment-button.segment-activated {
   background: #ffffff !important;
 }
 

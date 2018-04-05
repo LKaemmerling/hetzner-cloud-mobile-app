@@ -47,7 +47,16 @@
 .segment-button.segment-activated {
   border-color: #d50c2d !important;
 }
-
+.menu, .segment, .segment-ios .segment-button{
+  background: #ffffff !important;
+}
+.segment-ios .segment-button{
+  border-color: #d50c2d !important;
+}
+.segment-ios .segment-button.segment-activated{
+  background: #d50c2d !important;
+  color: #ffffff !important;
+}
 .fab {
   contain: initial;
 }
