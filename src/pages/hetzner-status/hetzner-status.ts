@@ -97,6 +97,6 @@ export class HetznerStatusPage {
    * @param {string} url
    */
   public openPage(url: string) {
-    this.browser.create(url).show();
+    this.browser.create(url, '_system').show();
   }
 }
