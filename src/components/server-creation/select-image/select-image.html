@@ -1,0 +1,15 @@
+<!-- Generated template for the SelectDatacenterComponent component -->
+<div *ngFor="let item of images" [ngClass]="{'select-box--selected':selectedParent == item.id}" class="select-box">
+  <label class="select-box__top"><span [ngClass]="item.icon" *ngIf="item.icon != null"></span>
+    {{item.label}}</label>
+  <div class="select-box__bottom select-box__dropdown">
+    <div *ngFor="let option of item.options" (click)="selectItem(item.id,option.id)"
+         [ngClass]="{'child-selected':selectedChildren == option.id}">
+      <input name="datacenter" type="radio" id="datacenter2">
+      <label class="select-box__option server-location__datacenter"
+             data-test="select-location-datacenter">
+        {{ option.label }}
+      </label>
+    </div>
+  </div>
+</div>

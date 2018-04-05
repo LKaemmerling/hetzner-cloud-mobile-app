@@ -15,4 +15,8 @@ export class LocationApiProvider extends HetznerApiProvider {
   getLocations(searchTerm: string = null) {
     return this._get('locations' + (searchTerm == null ? '' : '?name=' + searchTerm))
   }
+
+  getDataCenters() {
+    return this._get('datacenters')
+  }
 }

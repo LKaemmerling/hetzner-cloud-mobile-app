@@ -7,15 +7,22 @@ import {SshKeysService} from "../../../modules/hetzner-cloud-data/ssh-keys/ssh-k
 import {ImagesService} from "../../../modules/hetzner-cloud-data/images/images.service";
 import {LocationsService} from "../../../modules/hetzner-cloud-data/locations/locations.service";
 import {ServerTypesService} from "../../../modules/hetzner-cloud-data/server-types/server-types.service";
+import {LocationApiProvider} from "../../../providers/location-api/location-api";
+import {Storage} from "@ionic/storage";
 
 /**
- * This modal makes it possible to add a new server
+ * This page makes it possible to add a new server
  */
 @Component({
-  selector: 'modal-addServer',
+  selector: 'page-addServer',
   templateUrl: 'addServer.html'
 })
 export class addServerModal {
+  /**
+   * Use the new v2 of the form or not
+   * @type {boolean}
+   */
+  experimental_server_creation_form: boolean = false;
   /**
    * The name of the new server
    * @type {string}
@@ -99,7 +106,8 @@ export class addServerModal {
               protected serverTypesService: ServerTypesService,
               protected imagesService: ImagesService,
               protected locationService: LocationsService,
-              protected sshKeysService: SshKeysService
+              protected sshKeysService: SshKeysService,
+              protected storage:Storage
   ) {
     this.__selected_image = this.navParams.get('selected_image');
     if (this.__selected_image != null) {
@@ -110,13 +118,16 @@ export class addServerModal {
     }
 
     this.locations = this.locationService.locations;
-
     this.server_types = serverTypesService.server_types;
 
 
     this.ssh_keys = sshKeysService.ssh_keys;
+    storage.get('experimental_server_creation_form').then(value => {
+      if (value != undefined) {
+        this.experimental_server_creation_form = value;
+      }
+    });
   }
-
   /**
    * Makes the api call and validates the payload
    */

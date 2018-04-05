@@ -1,0 +1,80 @@
+select-datacenter {
+  display: inline-block;
+  .select-box {
+    transition: box-shadow .15s;
+    position: relative;
+    display: inline-block;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    vertical-align: top;
+    border-radius: 3px;
+    min-width: 190px;
+    text-transform: capitalize;
+  }
+  .select-box__top {
+    padding: 20px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom: 1px solid #dddfe6;
+  }
+  .select-box__options {
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .select-box__bottom {
+    width: 100%;
+    text-align: center;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+  .select-box--selected .select-box__top, .select-box--selected:hover .select-box__top {
+    border-bottom-color: #ffffff !important;
+  }
+  .select-box--selected .select-box__option--selected, .child-selected, .select-box--selected .select-box__single, .select-box--selected .select-box__top, .select-box--selected:hover .select-box__option--selected, .select-box--selected:hover .select-box__single, .select-box--selected:hover .select-box__top {
+    background-color: #d50c2d;
+    border-color: #d50c2d;
+    color: #fff;
+  }
+  .select-box--selected .select-box__bottom, .select-box--selected .select-box__dropdown, .select-box--selected .select-box__option, .select-box--selected:hover .select-box__bottom, .select-box--selected:hover .select-box__dropdown, .select-box--selected:hover .select-box__option {
+    border-color: #d50c2d;
+  }
+  .select-box--selected, .select-box--selected:hover {
+    border-color: #d50c2d;
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, .1);
+  }
+  .os-icon {
+    background-color: transparent;
+    background-repeat: no-repeat;
+  }
+  .select-box--selected .os-icon {
+    fill: #fff !important;
+
+  }
+  .select-box input[type=checkbox], .select-box input[type=radio] {
+    display: none;
+  }
+  .select-box label {
+    display: block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    .flag-icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .select-box__option {
+    -ms-flex: 1;
+    flex: 1;
+    padding: 10px 0;
+    border-bottom: 1px solid #fff;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,104 @@
+select-type {
+  display: inline-block;
+  .select-box {
+    transition: box-shadow .15s;
+    position: relative;
+    display: inline-block;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    vertical-align: top;
+    border-radius: 3px;
+    min-width: 190px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    text-align: center;
+  }
+  .select-box__top {
+    padding: 20px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom: 1px solid #dddfe6;
+  }
+  .select-box__options {
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .select-box__bottom {
+    width: 100%;
+    text-align: center;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+  .select-box--selected .select-box__top, .select-box--selected:hover .select-box__top {
+    border-bottom-color: #ffffff !important;
+  }
+  .select-box--selected .select-box__option--selected, .child-selected, .select-box--selected .select-box__single, .select-box--selected .select-box__top, .select-box--selected:hover .select-box__option--selected, .select-box--selected:hover .select-box__single, .select-box--selected:hover .select-box__top {
+    background-color: #d50c2d;
+    border-color: #d50c2d;
+    color: #fff;
+  }
+  .select-box--selected .select-box__bottom, .select-box--selected .select-box__dropdown, .select-box--selected .select-box__option, .select-box--selected:hover .select-box__bottom, .select-box--selected:hover .select-box__dropdown, .select-box--selected:hover .select-box__option {
+    border-color: #d50c2d;
+  }
+  .server-type__specs tr td:first-child {
+    text-align: right;
+    padding-right: 10px;
+  }
+  .server-type__specs tr td:nth-child(2) {
+    text-align: left;
+  }
+  .select-box--selected, .select-box--selected:hover {
+    border-color: #d50c2d;
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, .1);
+  }
+  .server-type__price-hourly, .server-type__spec-description {
+    font-weight: 400;
+  }
+  .server-type__specs {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  .server-type__price-monthly-value {
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+  .select-box input[type=checkbox], .select-box input[type=radio] {
+    display: none;
+  }
+  .server-type__name {
+    font-size: .875rem;
+    font-family: Montserrat, Roboto, sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .server-type__price, .server-type__specs {
+    padding: 15px;
+  }
+  .select-box label {
+    display: block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    .flag-icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .select-box__option {
+    -ms-flex: 1;
+    flex: 1;
+    padding: 10px 0;
+    border-bottom: 1px solid #fff;
+    text-transform: uppercase;
+  }
+}
