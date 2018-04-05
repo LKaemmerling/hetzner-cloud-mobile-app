@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {SshKeysService} from "../../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
 
 /**
@@ -12,7 +12,8 @@ import {SshKeysService} from "../../../modules/hetzner-cloud-data/ssh-keys/ssh-k
   templateUrl: 'select-ssh-keys.html'
 })
 export class SelectSshKeyComponent {
-
+  @Input() selectedSshKeys: Array<any> = [];
+  @Output() selectedSshKeysChange = new EventEmitter<Array<any>>();
   selectedParent: Array<any> = [];
   ssh_keys: Array<any> = [];
 
@@ -28,5 +29,6 @@ export class SelectSshKeyComponent {
     } else {
       this.selectedParent.push(parent.id);
     }
+    this.selectedSshKeysChange.emit(this.selectedParent);
   }
 }

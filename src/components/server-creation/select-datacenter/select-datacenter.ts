@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {LocationApiProvider} from "../../../providers/location-api/location-api";
 
 /**
@@ -12,7 +12,8 @@ import {LocationApiProvider} from "../../../providers/location-api/location-api"
   templateUrl: 'select-datacenter.html'
 })
 export class SelectDatacenterComponent {
-
+  @Input() selectedDatacenter: number;
+  @Output() selectedDatacenterChange = new EventEmitter<number>();
   selectedParent: number;
   selectedChildren: number = null;
   datacenters: Array<any> = [];
@@ -53,6 +54,7 @@ export class SelectDatacenterComponent {
     if (parent.server_types.available.length > 0) {
       this.selectedParent = parent.id;
       this.selectedChildren = child.id;
+      this.selectedDatacenterChange.emit((child == null) ? parent.id : child.id);
     }
     // this.__selection = {parent: this.selectedParent, children: this.selectedChildren};
   }

@@ -163,7 +163,41 @@ export class addServerModal {
       loader.dismiss();
     });
   }
-
+  /**
+   * Makes the api call and validates the payload
+   */
+  createServer2() {
+    this.error = null;
+    if (this.server_type == null) {
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_TYPE';
+      return;
+    }
+    if (this.location == null) {
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_LOCATION';
+      return;
+    }
+    if (this.image == null) {
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_IMAGE';
+      return;
+    }
+    if (this.name == null || this.name.length < 3 || /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/g.test(this.name) == false) {
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_NAME';
+      return;
+    }
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    this.serverApiProvider.createServerWithDatacenter(this.name, this.server_type.id, this.location, this.start_after_create, this.image, this.ssh_key).then(() => {
+      this.dismiss();
+      loader.dismiss();
+      this.serverApiProvider.getServers().then((data) => {
+        this.serverService.servers = data['servers'];
+        this.serverService.saveServers();
+      });
+    }, (error) => {
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.NETWORK_ERROR';
+      loader.dismiss();
+    });
+  }
   /**
    * Dismiss the modal
    */

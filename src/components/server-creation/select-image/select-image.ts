@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ImagesService} from "../../../modules/hetzner-cloud-data/images/images.service";
 
 /**
@@ -12,7 +12,8 @@ import {ImagesService} from "../../../modules/hetzner-cloud-data/images/images.s
   templateUrl: 'select-image.html'
 })
 export class SelectImageComponent {
-
+  @Input() selectedImage: number;
+  @Output() selectedImageChange = new EventEmitter<number>();
   images: Array<any> = [];
   selectedParent: string;
   selectedChildren: string = null;
@@ -46,6 +47,7 @@ export class SelectImageComponent {
   selectItem(parent, child = null) {
     this.selectedParent = parent;
     this.selectedChildren = child;
+    this.selectedImageChange.emit((child == null) ? parent : child);
     // this.__selection = {parent: this.selectedParent, children: this.selectedChildren};
   }
 }

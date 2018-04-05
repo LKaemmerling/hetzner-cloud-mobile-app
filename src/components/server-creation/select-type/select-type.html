@@ -11,7 +11,7 @@
   <div [ngSwitch]="type">
     <div *ngSwitchCase="'local'">
       <div *ngFor="let item of server_types_local" [ngClass]="{'select-box--selected':selectedParent == item.id}"
-           (click)="selectItem(item.id)"
+           (click)="selectItem(item)"
            class="select-box">
         <div class="select-box__top server-type__price">
           <div class="server-type__name">{{ item.name }}</div>
@@ -50,7 +50,7 @@
     </div>
     <div *ngSwitchCase="'network'">
       <div *ngFor="let item of server_types_ceph" [ngClass]="{'select-box--selected':selectedParent == item.id}"
-           (click)="selectItem(item.id)"
+           (click)="selectItem(item)"
            class="select-box">
         <div class="select-box__top server-type__price">
           <div class="server-type__name">{{ item.name }}</div>

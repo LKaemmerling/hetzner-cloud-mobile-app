@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ServerTypesService} from "../../../modules/hetzner-cloud-data/server-types/server-types.service";
+import {ServerType} from "../../../modules/hetzner-cloud-data/servers/server";
 
 /**
  * Generated class for the SelectDatacenterComponent component.
@@ -12,7 +13,8 @@ import {ServerTypesService} from "../../../modules/hetzner-cloud-data/server-typ
   templateUrl: 'select-type.html'
 })
 export class SelectTypeComponent {
-
+  @Input() selectedType: ServerType;
+  @Output() selectedTypeChange = new EventEmitter<ServerType>();
   server_types_local: Array<any> = [];
   server_types_ceph: Array<any> = [];
   selectedParent: string;
@@ -30,7 +32,8 @@ export class SelectTypeComponent {
   }
 
   selectItem(parent) {
-    this.selectedParent = parent;
+    this.selectedParent = parent.id;
+    this.selectedTypeChange.emit(parent);
     // this.__selection = {parent: this.selectedParent, children: this.selectedChildren};
   }
 }

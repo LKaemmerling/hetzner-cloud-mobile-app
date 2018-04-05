@@ -48,7 +48,27 @@ export class ServerApiProvider extends HetznerApiProvider {
       ssh_keys: ssh_keys
     })
   }
-
+  /**
+   * Creates a new Server. Returns preliminary information about the Server as well as an action that covers progress of creation.
+   * @see https://docs.hetzner.cloud/#resources-servers-post
+   * @param {string} name
+   * @param {number} server_type_id
+   * @param {number} datacenter_id
+   * @param {boolean} start_after_create
+   * @param {number} image_id
+   * @param {Array<number>} ssh_keys
+   * @returns {Promise<any>}
+   */
+  createServerWithDatacenter(name: string, server_type_id: number, datacenter_id: number, start_after_create: boolean, image_id: number, ssh_keys: Array<number>) {
+    return this._post('servers', {
+      name: name,
+      server_type: server_type_id,
+      datacenter: datacenter_id,
+      start_after_create: start_after_create,
+      image: image_id,
+      ssh_keys: ssh_keys
+    })
+  }
   /**
    * Changes a Servername
    * @param {number} serverId
