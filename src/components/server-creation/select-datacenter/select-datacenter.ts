@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {LocationApiProvider} from "../../../providers/location-api/location-api";
 
 /**
@@ -13,8 +13,8 @@ import {LocationApiProvider} from "../../../providers/location-api/location-api"
 })
 export class SelectDatacenterComponent {
 
-  selectedParent: string;
-  selectedChildren: string = null;
+  selectedParent: number;
+  selectedChildren: number = null;
   datacenters: Array<any> = [];
 
   constructor(locationApi: LocationApiProvider) {
@@ -23,24 +23,25 @@ export class SelectDatacenterComponent {
         var found = false;
         this.datacenters.forEach((sdc) => {
           if (sdc.id == dc.location.id) {
-            sdc.options.push({id: dc['location'].id, label: dc.name});
+            sdc.options.push({id: dc['location'].id, label: dc.name, server_types: dc['server_types']});
             found = true;
           }
         });
         if (found == false) {
-          if (dc['server_types'].available.length > 0) {
-            this.datacenters.push({
-              id: dc['location'].id,
-              label: dc['location'].city,
-              icon: 'flag-icon flag-icon-squared flag-icon-' + dc['location'].country.toLowerCase(),
-              options: [
-                {
-                  id: dc.id,
-                  label: dc.name.replace(dc['location'].name + '-', '')
-                }
-              ]
-            });
-          }
+          // if (dc['server_types'].available.length > 0) {
+          this.datacenters.push({
+            id: dc['location'].id,
+            label: dc['location'].city,
+            icon: 'flag-icon flag-icon-' + dc['location'].country.toLowerCase(),
+            server_types: dc['server_types'],
+            options: [
+              {
+                id: dc.id,
+                label: dc.name.replace(dc['location'].name + '-', '')
+              }
+            ]
+          });
+          // }
         }
       });
     })
@@ -49,8 +50,10 @@ export class SelectDatacenterComponent {
   //@Output('?__selection') __selection = null;
 
   selectItem(parent, child = null) {
-    this.selectedParent = parent;
-    this.selectedChildren = child;
+    if (parent.server_types.available.length > 0) {
+      this.selectedParent = parent.id;
+      this.selectedChildren = child.id;
+    }
     // this.__selection = {parent: this.selectedParent, children: this.selectedChildren};
   }
 }

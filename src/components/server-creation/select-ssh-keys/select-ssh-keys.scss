@@ -1,4 +1,4 @@
-select-datacenter {
+select-ssh-keys {
   display: inline-block;
   .select-box {
     transition: box-shadow .15s;
@@ -13,18 +13,15 @@ select-datacenter {
     vertical-align: top;
     border-radius: 3px;
     min-width: 190px;
-    text-transform: capitalize;
-  }
-  .select-box--disabled {
-    opacity: .5;
-    border: 1px solid #dddfe6;
-    box-shadow: none;
   }
   .select-box__top {
     padding: 20px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom: 1px solid #dddfe6;
+    .fa-key {
+      color: #dddfe6;
+    }
   }
   .select-box__options {
     display: -ms-flexbox;

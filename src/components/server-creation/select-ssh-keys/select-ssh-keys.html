@@ -1,0 +1,6 @@
+<!-- Generated template for the SelectDatacenterComponent component -->
+<div *ngFor="let item of ssh_keys" [ngClass]="{'select-box--selected':selectedParent.indexOf(item.id) != -1}"
+     class="select-box" (click)="selectItem(item)">
+  <label class="select-box__top"><i class="fas fa-key"></i>
+    {{item.name}}</label>
+</div>

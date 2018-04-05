@@ -79,9 +79,16 @@
     <numeric-step-indicator step="3" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.TYPE"></numeric-step-indicator>
     <select-type></select-type>
   </ion-row>
-  <numeric-step-indicator step="4" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.ADITIONAL_FEATURES"></numeric-step-indicator>
-  <numeric-step-indicator step="5" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.SSH_KEYS"></numeric-step-indicator>
+  <ion-row>
+    <numeric-step-indicator step="4"
+                            lang_key="PAGE.SERVERS.MODAL.ADD.FORM.ADDITIONAL_FEATURES"></numeric-step-indicator>
 
+  </ion-row>
+  <ion-row>
+    <numeric-step-indicator step="5" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.SSH_KEYS"></numeric-step-indicator>
+    <select-ssh-keys></select-ssh-keys>
+  </ion-row>
   <button ion-button color="danger" (click)="createServer()">{{ 'ACTIONS.ORDER' | translate}}</button>
   <p class="message_box error" *ngIf="error != null">{{ error | translate }}</p>
+  <p class="message_box error">Currently this is read only!</p>
 </ion-content>

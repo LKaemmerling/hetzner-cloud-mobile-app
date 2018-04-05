@@ -11,6 +11,7 @@ import {SelectOnlyOneBoxComponent} from './select-only-one-box/select-only-one-b
 import {SelectDatacenterComponent} from './server-creation/select-datacenter/select-datacenter';
 import {SelectImageComponent} from "./server-creation/select-image/select-image";
 import {SelectTypeComponent} from "./server-creation/select-type/select-type";
+import {SelectSshKeyComponent} from "./server-creation/select-ssh-keys/select-ssh-keys";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {SelectTypeComponent} from "./server-creation/select-type/select-type";
     SelectOnlyOneBoxComponent,
     SelectDatacenterComponent,
     SelectImageComponent,
-    SelectTypeComponent
+    SelectTypeComponent,
+    SelectSshKeyComponent
   ],
   imports: [CommonModule, IonicModule, TranslateModule],
   exports: [
@@ -34,7 +36,8 @@ import {SelectTypeComponent} from "./server-creation/select-type/select-type";
     SelectOnlyOneBoxComponent,
     SelectDatacenterComponent,
     SelectImageComponent,
-    SelectTypeComponent
+    SelectTypeComponent,
+    SelectSshKeyComponent
   ]
 })
 export class ComponentsModule {

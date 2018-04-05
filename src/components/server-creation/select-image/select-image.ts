@@ -19,7 +19,7 @@ export class SelectImageComponent {
 
   //@Output('?__selection') __selection = null;
   constructor(imagesService: ImagesService) {
-    imagesService.images.forEach((image) => {
+    imagesService.getImagesByType('system').forEach((image) => {
       var found = false;
       this.images.forEach((i) => {
         if (i.label == image.os_flavor) {
