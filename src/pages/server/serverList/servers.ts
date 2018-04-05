@@ -193,12 +193,7 @@ export class ServersPage {
    */
   openCreateServerModal() {
     if (this.networkProvider.has_connection) {
-      let modal = this.modalCtrl.create(addServerModal);
-      modal.onDidDismiss(() => {
-        this.loadServers();
-      });
-
-      modal.present();
+      let modal = this.navCtrl.push(addServerModal);
     } else {
       this.networkProvider.displayNoNetworkNotice();
     }

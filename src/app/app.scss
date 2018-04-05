@@ -1,4 +1,24 @@
 // http://ionicframework.com/docs/theming/
+$flag-icon-css-path: '../';
+$flag-icon-rect-path: '/assets/flags/4x3';
+$flag-icon-square-path: '/assets/flags/1x1';
+@import "../../node_modules/flag-icon-css/sass/flag-icon.scss";
+.os-icon-ubuntu {
+  background-image: url(#{$flag-icon-css-path}/assets/os/ubuntu.svg);
+
+}
+
+.os-icon-fedora {
+  background-image: url(#{$flag-icon-css-path}/assets/os/fedora.svg);
+}
+
+.os-icon-debian {
+  background-image: url(#{$flag-icon-css-path}/assets/os/debian.svg);
+}
+
+.os-icon-centos {
+  background-image: url(#{$flag-icon-css-path}/assets/os/centos.svg);
+}
 
 // App Global Sass
 // --------------------------------------------------
@@ -47,16 +67,20 @@
 .segment-button.segment-activated {
   border-color: #d50c2d !important;
 }
-.menu, .segment, .segment-ios .segment-button{
+
+.menu, .segment, .segment-ios .segment-button {
   background: #ffffff !important;
 }
-.segment-ios .segment-button{
+
+.segment-ios .segment-button {
   border-color: #d50c2d !important;
 }
-.segment-ios .segment-button.segment-activated{
+
+.segment-ios .segment-button.segment-activated {
   background: #d50c2d !important;
   color: #ffffff !important;
 }
+
 .fab {
   contain: initial;
 }
@@ -196,4 +220,5 @@ ion-header ion-icon.back-button-icon.icon {
     }
   }
 }
+
 

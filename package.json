@@ -1,6 +1,6 @@
 {
   "name": "hetzner-cloud-app",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "author": "Lukas Kämmerling",
   "homepage": "https://lk-development.de/",
   "license": "MIT",
@@ -153,6 +153,7 @@
     "cordova-sqlite-storage": "^2.2.1",
     "dateformat": "^3.0.3",
     "emulator": "0.1.0",
+    "flag-icon-css": "^3.0.0",
     "ionic-angular": "3.9.2",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionic-tooltips": "^2.0.1",

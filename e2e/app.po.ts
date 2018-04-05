@@ -102,7 +102,7 @@ export class Page {
     browser.sleep(500);
     element(by.buttonText('OK')).click();
     browser.sleep(500);
-    element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/modal-addserver[1]/ion-content[1]/div[2]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-input[1]/input[1]')).sendKeys('E2E-Test-Server');
+    element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/page-addserver[1]/ion-content[1]/div[2]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-input[1]/input[1]')).sendKeys('E2E-Test-Server');
     browser.sleep(500);
     if (!start_up_on_creation) {
       element(by.id('toggle-40-0')).click();

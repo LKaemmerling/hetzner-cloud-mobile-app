@@ -64,7 +64,7 @@ import {HetznerAppModule} from "../modules/hetzner-app/hetzner-app.module";
  * @type {Pro}
  */
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.4.0"
+  appVersion: "1.5.0"
 });
 
 /**
