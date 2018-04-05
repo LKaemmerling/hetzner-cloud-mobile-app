@@ -4,24 +4,26 @@ import {LoadingController, NavController, NavParams, ViewController} from "ionic
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
-
+/**
+ * This makes it possible to rename a server
+ */
 @Component({
   selector: 'modal-editServer',
   templateUrl: 'editServer.html'
 })
 export class editServerModal {
   /**
-   *
+   * The server that should be edited
    */
   public server: Server;
   /**
-   *
+   * When there was an error this contains the message
    * @type {string}
    */
   public error: string = null;
 
   /**
-   *
+   * Constructor
    * @param {ProjectsService} project
    * @param {ViewController} viewCtrl
    * @param {ServerApiProvider} serverApiProvider
@@ -29,16 +31,16 @@ export class editServerModal {
    * @param {NavController} navCtrl
    * @param {LoadingController} loadingCtrl
    */
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController) {
+  constructor(protected project: ProjectsService, protected viewCtrl: ViewController, protected serverApiProvider: ServerApiProvider, protected navParams: NavParams, protected navCtrl: NavController, protected loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
   }
 
   /**
-   *
+   * Make the api call and validate the name
    */
   public updateServer() {
-    if (this.server.name == null || this.server.name == '') {
-      this.error = 'PAGE.SERVERS.MODAL.EDIT.ERRORS.REQUIRED_NAME';
+    if (this.server.name == null || this.server.name .length < 3 || /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/g.test(this.server.name) == false) {
+      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_NAME';
       return;
     }
     let loader = this.loadingCtrl.create();
@@ -51,7 +53,7 @@ export class editServerModal {
   }
 
   /**
-   *
+   * Dismiss the modal
    */
   public dismiss() {
     this.viewCtrl.dismiss();

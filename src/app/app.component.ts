@@ -11,7 +11,6 @@ import {ServersPage} from "../pages/server/serverList/servers";
 import {Storage} from "@ionic/storage";
 import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
 import {ImagesPage} from "../pages/images/images";
-import {ServersService} from "../modules/hetzner-cloud-data/servers/servers.service";
 import {OneSignal} from "@ionic-native/onesignal";
 import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 import {SettingsPage} from "../pages/settings/settings";
@@ -19,36 +18,34 @@ import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {TranslateService} from "@ngx-translate/core";
 import {ActionsPage} from "../pages/actions/actions";
 import {SshkeysPage} from "../pages/sshkeys/sshkeys";
-import {PricingService} from "../modules/hetzner-cloud-data/pricings/pricing.service";
 import {NetworkProvider} from "../modules/hetzner-app/network/network";
-import {SshKeysService} from "../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
-import {ImagesService} from "../modules/hetzner-cloud-data/images/images.service";
-import {LocationsService} from "../modules/hetzner-cloud-data/locations/locations.service";
-import {ServerTypesService} from "../modules/hetzner-cloud-data/server-types/server-types.service";
 import {HetznerCloudDataService} from "../modules/hetzner-cloud-data/hetzner-cloud-data.service";
 import {ConfigService} from "../modules/hetzner-app/config/config.service";
 
+/**
+ * This is the main component from the Hetzer Cloud Mobile App
+ */
 @Component({
   templateUrl: 'app.html'
 })
 export class HetznerCloudMobileApp {
   /**
-   *
+   * The Navigation
    */
   @ViewChild(Nav) nav: Nav;
   /**
-   *
+   * The first visible page
    * @type {HomePage}
    */
   rootPage: any = HomePage;
   /**
-   *
+   * The selected Language or main language
    * @type {string}
    */
   public lang: string = 'de';
 
   /**
-   *
+   * The structure of the menu
    * @type {({key: string; icon: string; page: HomePage; hidden: boolean} | {key: string; icon: string; page: ProjectsPage; hidden: boolean} | {key: string; icon: string; page: ServersPage; hidden: boolean} | {key: string; icon: string; page: FloatingIPsPage; hidden: boolean} | {key: string; icon: string; page: ImagesPage; hidden: boolean} | {key: string; icon: string; page: ActionsPage; hidden: boolean} | {key: string; icon: string; page: HetznerStatusPage; hidden: boolean} | {key: string; icon: string; page: SettingsPage; hidden: boolean})[]}
    */
   protected menu_entries: Array<object> = [
@@ -108,6 +105,20 @@ export class HetznerCloudMobileApp {
     }
   ];
 
+  /**
+   * Constructor
+   * @param {Platform} platform
+   * @param {StatusBar} statusBar
+   * @param {SplashScreen} splashScreen
+   * @param {Storage} storage
+   * @param {OneSignal} oneSignal
+   * @param {FingerprintAIO} fingerPrint
+   * @param {TranslateService} translate
+   * @param {NetworkProvider} network
+   * @param {HetznerCloudDataService} hetzerCloudData
+   * @param {ProjectsService} projects
+   * @param {ConfigService} config
+   */
   constructor(
     protected platform: Platform,
     protected statusBar: StatusBar,
@@ -167,7 +178,7 @@ export class HetznerCloudMobileApp {
   }
 
   /**
-   *
+   * Load the specific hetzner cloud data
    */
   private loadHetznerSpecificData() {
     this.hetzerCloudData.loadData().then(() => {
@@ -181,7 +192,7 @@ export class HetznerCloudMobileApp {
   }
 
   /**
-   *
+   * Load all needed for the localization
    */
   private loadLocalization() {
     this.translate.setDefaultLang(this.lang);
@@ -196,7 +207,7 @@ export class HetznerCloudMobileApp {
   }
 
   /**
-   *
+   * Load all OneSignal configurations
    */
   private loadOneSignal() {
     this.oneSignal.startInit(this.config.oneSignal.appId, this.config.oneSignal.googleProjectId);
@@ -204,7 +215,7 @@ export class HetznerCloudMobileApp {
   }
 
   /**
-   *
+   * Open a new page
    * @param menu
    */
   openPage(menu) {
@@ -212,14 +223,14 @@ export class HetznerCloudMobileApp {
   }
 
   /**
-   *
+   * Open the projects page
    */
   openProjectsPage() {
     this.nav.setRoot(ProjectsPage);
   }
 
   /**
-   *
+   * Open the about page
    */
   openAboutPage() {
     this.nav.setRoot(AboutPage);

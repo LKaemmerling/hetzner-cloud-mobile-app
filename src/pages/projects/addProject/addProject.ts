@@ -7,20 +7,55 @@ import {Storage} from "@ionic/storage";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {NetworkProvider} from "../../../modules/hetzner-app/network/network";
 
+/**
+ * Add Project modal
+ */
 @Component({
   selector: 'modal-addProject',
   templateUrl: 'addProject.html'
 })
 export class addProjectModal {
+  /**
+   * The new project that will be created
+   */
+  protected new_project: project;
+  /**
+   * the project name
+   * @type {string}
+   */
   public project_name: string;
+  /**
+   * the api key
+   * @type {string}
+   */
   public api_key: string;
+  /**
+   * if there is an error this would be displayed here
+   * @type {string}
+   */
   public error: string = null;
-  public image: string = '';
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public network: NetworkProvider, protected translate: TranslateService, protected storage: Storage, public barcodeScanner: BarcodeScanner) {
+  /**
+   * Constructor
+   * @param {ProjectsService} project
+   * @param {ViewController} viewCtrl
+   * @param {NetworkProvider} network
+   * @param {TranslateService} translate
+   * @param {Storage} storage
+   * @param {BarcodeScanner} barcodeScanner
+   */
+  constructor(protected project: ProjectsService,
+              protected viewCtrl: ViewController,
+              protected network: NetworkProvider,
+              protected translate: TranslateService,
+              protected storage: Storage,
+              protected barcodeScanner: BarcodeScanner) {
 
   }
 
+  /**
+   * Open the  qr-code scanner for easy read shared projects
+   */
   public scanProject() {
     this.barcodeScanner.scan().then((barcodeData) => {
       try {
@@ -36,6 +71,9 @@ export class addProjectModal {
     });
   }
 
+  /**
+   * Save the given project and validate it
+   */
   public saveProject() {
     if (this.project_name == null || this.project_name.length == 0) {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.REQUIRED_NAME';
@@ -45,12 +83,13 @@ export class addProjectModal {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.NAME_ALREADY_USED';
       return;
     }
-    ;
+
 
     this.network.quickTestApiKey(this.api_key).then(() => {
-      var _new = new project(this.project_name, this.api_key);
-      this.project.addProject(_new);
-      this.project.selectProject(_new);
+      this.new_project.name = this.project_name;
+      this.new_project.api_key = this.api_key;
+      this.project.addProject(this.new_project);
+      this.project.selectProject(this.new_project);
       this.project.saveProjects();
       this.dismiss();
     }, () => {
@@ -58,6 +97,9 @@ export class addProjectModal {
     });
   }
 
+  /**
+   * Dismiss the modal
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }

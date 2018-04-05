@@ -5,53 +5,61 @@ import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import RFB from '@novnc/novnc/core/rfb.js';
 import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
+/**
+ * Keytable from novnc
+ */
 var KeyTable = require('@novnc/novnc/core/input/keysym.js').default;
+/**
+ * Keysymbols from novnc
+ */
 var keysyms = require('@novnc/novnc/core/input/keysymdef.js').default;
+/**
+ * The Keyboard from novnc
+ */
 var Keyboard = require('@novnc/novnc/core/input/keyboard.js').default;
 
+/**
+ * This modal makes it possible to interact with your server trougth the vnc console
+ */
 @Component({
   selector: 'modal-console',
   templateUrl: 'console.html'
 })
 export class consoleModal {
   /**
-   *
+   * The server
    */
   public server: Server;
   /**
-   *
-   */
-  public payload;
-  /**
-   *
+   * The novonc object
    */
   public rfb;
   /**
-   *
+   * The Input
    */
   public input: string;
   /**
-   *
+   * The default keyboard input
    */
   protected defaultKeyboardinputLen: 100;
   /**
-   *
+   * Last keyboard input
    */
   protected lastKeyboardinput: string;
   /**
-   *
+   * Is it a touch keyboard?
    */
   protected touchKeyboard;
 
   /**
-   *
+   * Constructor
    * @param {ViewController} viewCtrl
    * @param {ServerApiProvider} serverApiProvider
    * @param {NavParams} navParams
    * @param {NavController} navCtrl
    * @param {LoadingController} loadingCtrl
    */
-  constructor(public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController) {
+  constructor(protected viewCtrl: ViewController, protected serverApiProvider: ServerApiProvider, protected navParams: NavParams, protected navCtrl: NavController, protected loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
     this.serverApiProvider.requestConsole(this.server.id).then((response) => {
       this.rfb = new RFB(document.getElementById('console_container'), response['wss_url'], {credentials: {password: response['password']}});
@@ -87,7 +95,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Thrown when there is something tipped or typed
    * @param keysym
    * @param code
    * @param down
@@ -99,7 +107,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   *  Displays the virtual keyboard
    */
   protected showVirtualKeyboard() {
     var input = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
@@ -117,7 +125,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Onblur Virtual Keyboard
    * @param event
    */
   protected onblurVirtualKeyboard(event) {
@@ -129,7 +137,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * On Focus Virtual Keyboard
    * @param event
    */
   protected onfocusVirtualKeyboard(event) {
@@ -141,7 +149,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Hide the Virtual Keyboard
    */
   protected hideVirtualKeyboard() {
     var input = document.getElementById('noVNC_keyboardinput');
@@ -152,7 +160,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Toggle the virtual keyboard
    */
   public keyboard() {
     if (document.getElementById('noVNC_keyboard_button')
@@ -165,7 +173,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * reset the keyboard to the default
    */
   protected resetKeyboard() {
     var kbi = <HTMLInputElement>document.getElementById('noVNC_keyboardinput');
@@ -174,7 +182,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * When a key in pressed
    * @param event
    */
   public keyInput(event) {
@@ -240,7 +248,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Send Crtl Alt Del to the server
    * @returns {boolean}
    */
   public sendCtrlAltDel() {
@@ -249,7 +257,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Dismiss the modal
    */
   public dismiss() {
     this.viewCtrl.dismiss();

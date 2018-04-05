@@ -12,50 +12,54 @@ import {ServerApiProvider} from "../../providers/server-api/server-api";
 import {backupSettingsModal} from "../server/backupSettings/backupSettings";
 import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
-
+/**
+ * This page displays all available images
+ */
 @Component({
   selector: 'page-images',
   templateUrl: 'images.html'
 })
-/**
- *
- */
 export class ImagesPage {
+
+  /**
+   * All available types
+   * @type {string[]}
+   */
   protected types: Array<string> = ['snapshot', 'backup', 'system'];
   /**
-   *
+   * The default visible segment
    * @type {string}
    */
-  public type: string = 'snapshot';
+  protected type: string = 'snapshot';
   /**
-   *
+   * All available images
    * @type {Image[]}
    */
-  public images: Array<Image> = [];
+  protected images: Array<Image> = [];
   /**
-   *
+   * Is the component in the loading process?
    * @type {boolean}
    */
-  public loading: boolean = false;
+  protected loading: boolean = false;
   /**
-   *
+   * Is the loading done?
    * @type {boolean}
    */
-  public loading_done: boolean = false;
+  protected loading_done: boolean = false;
   /**
-   *
+   * What are the visible servers in the backup section
    * @type {number[]}
    */
-  public visible: Array<boolean> = [];
+  protected visible: Array<boolean> = [];
 
   /**
-   *
+   * Is the backup creation done?
    * @type {boolean}
    */
-  public backup_done: boolean = false;
+  protected backup_done: boolean = false;
 
   /**
-   *
+   * Constructor
    * @param {ActionSheetController} actionSheetCtrl
    * @param {ModalController} modal
    * @param {NavController} navCtrl
@@ -85,17 +89,17 @@ export class ImagesPage {
   }
 
   /**
-   *
+   * Change the selected segment and load all images of this type
    */
-  public changeType() {
+  changeType() {
     this.images = this.imagesService.getImagesByType(this.type);
   }
 
   /**
-   *
+   * Toggle a the backup list for a specific server
    * @param {number} id
    */
-  public toggle(id: number) {
+  toggle(id: number) {
     if (this.visible[id] !== undefined) {
       this.visible[id] = !this.visible[id];
     } else {
@@ -104,10 +108,10 @@ export class ImagesPage {
   }
 
   /**
-   *
+   * Create a new backup of the server
    * @param {Server} server
    */
-  public createBackup(server: Server) {
+  createBackup(server: Server) {
     if (this.networkProvider.has_connection) {
       this.serverApiProvider.create_backup(server.id).then(() => {
         this.loadImages();
@@ -122,7 +126,7 @@ export class ImagesPage {
   /**
    * Open the Modal for the Backup Settings
    */
-  public backupSettingsModal(server) {
+  backupSettingsModal(server) {
     if (this.networkProvider.has_connection) {
       let modal = this.modalCtrl.create(backupSettingsModal, {server: server});
       modal.present();
@@ -132,9 +136,9 @@ export class ImagesPage {
   }
 
   /**
-   *
+   * Load all images new from the api
    */
-  public loadImages() {
+  loadImages() {
     this.loading = true;
     this.imagesService.reloadImages().then(() => {
       this.images = this.imagesService.getImagesByType(this.type);
@@ -145,10 +149,10 @@ export class ImagesPage {
   }
 
   /**
-   *
+   * Open the renaming of an image
    * @param image
    */
-  public openEdit(image) {
+  openEdit(image) {
     if (this.networkProvider.has_connection) {
       this.modal.create(editImageModal, {image: image}).present();
     } else {
@@ -157,10 +161,10 @@ export class ImagesPage {
   }
 
   /**
-   *
+   * Delete an image
    * @param {Image} image
    */
-  public delete(image: Image) {
+  delete(image: Image) {
     if (this.networkProvider.has_connection) {
       let _delete_confirmation: string = '';
       this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
@@ -177,10 +181,10 @@ export class ImagesPage {
   }
 
   /**
-   *
+   * Open all available actions for the image
    * @param {Image} image
    */
-  public openActionSheets(image: Image) {
+  openActionSheets(image: Image) {
     var actions;
     let _title: string = '';
     this.translate.get('PAGE.IMAGES.ACTIONS.TITLE', {imageDescription: image.description}).subscribe((text) => {

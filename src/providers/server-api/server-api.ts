@@ -1,12 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 
-/*
-  Generated class for the ServerApiProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+/**
+ * This is the provider that performs the api calls to the server api.
+ */
 @Injectable()
 export class ServerApiProvider extends HetznerApiProvider {
 
@@ -88,73 +85,166 @@ export class ServerApiProvider extends HetznerApiProvider {
     return this._post('servers/' + serverId + '/actions/poweron');
   }
 
+  /**
+   * Power off a server
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   powerOff(serverId: number) {
     return this._post('servers/' + serverId + '/actions/poweroff');
   }
 
+  /**
+   * Gracefully shutdown a server
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   shutdown(serverId: number) {
     return this._post('servers/' + serverId + '/actions/shutdown');
   }
 
+  /**
+   * Reset a server
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   reset(serverId: number) {
     return this._post('servers/' + serverId + '/actions/reset');
   }
 
+  /**
+   * Reboot a server
+   * @param serverId
+   * @returns {Promise<any>}
+   */
   reboot(serverId) {
     return this._post('servers/' + serverId + '/actions/reboot');
   }
 
+  /**
+   * Reset the root password of a server
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   resetPassword(serverId: number) {
     return this._post('servers/' + serverId + '/actions/reset_password');
   }
 
+  /**
+   * Enable the rescue mode
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   enable_rescue(serverId: number) {
     return this._post('servers/' + serverId + '/actions/enable_rescue');
   }
 
+  /**
+   * Disable the rescue mode
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   disable_rescue(serverId: number) {
     return this._post('servers/' + serverId + '/actions/disable_rescue');
   }
 
+  /**
+   * Disable the backups
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   disable_backups(serverId: number) {
     return this._post('servers/' + serverId + '/actions/disable_backup');
   }
 
+  /**
+   * Enable the backups
+   * @param {number} serverId
+   * @param {string} backup_window
+   * @returns {Promise<any>}
+   */
   enable_backups(serverId: number, backup_window: string) {
     return this._post('servers/' + serverId + '/actions/enable_backup', {
       backup_window: backup_window
     });
   }
 
+  /**
+   * Create a image from the given server
+   * @param {number} serverId
+   * @param {string} type
+   * @returns {Promise<any>}
+   */
   create_image(serverId: number, type: string = 'snapshot') {
     return this._post('servers/' + serverId + '/actions/create_image', {type: type});
   }
 
+  /**
+   * Create a snapshot for the given server
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   create_snapshot(serverId: number) {
     return this.create_image(serverId);
   }
 
+  /**
+   * Create a backup for the given server
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   create_backup(serverId: number) {
     return this.create_image(serverId, 'backup')
   }
 
+  /**
+   * Rebuild the server from an image
+   * @param {number} serverId
+   * @param {number} imageId
+   * @returns {Promise<any>}
+   */
   rebuild(serverId: number, imageId: number) {
     return this._post('servers/' + serverId + '/actions/rebuild', {image: imageId});
   }
 
+  /**
+   * Delete the server
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
   delete(serverId: number) {
     return this._delete('servers/' + serverId);
   }
 
+  /**
+   * Change the reverse DNS of a server
+   * @param {number} serverId
+   * @param {string} ip
+   * @param {string} dns_ptr
+   */
   changeReverseDNS(serverId: number, ip: string, dns_ptr: string = null) {
     return this._post('servers/' + serverId + '/actions/change_dns_ptr', {ip: ip, dns_ptr: dns_ptr})
   }
 
-  getMetrics(serverId: number, type: string, start: string, end: string, step:number = 86400) {
-    return this._get('servers/' + serverId + '/metrics?type=' + type + '&start=' + start + '&end=' + end+ '&step=' + step);
+  /**
+   * Get the metrics from the given server
+   * @param {number} serverId
+   * @param {string} type
+   * @param {string} start
+   * @param {string} end
+   * @param {number} step
+   * @returns {Promise<any>}
+   */
+  getMetrics(serverId: number, type: string, start: string, end: string, step: number = 86400) {
+    return this._get('servers/' + serverId + '/metrics?type=' + type + '&start=' + start + '&end=' + end + '&step=' + step);
   }
 
-  requestConsole(serverId: number){
+  /**
+   * Request a console
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
+  requestConsole(serverId: number) {
     return this._post('servers/' + serverId + '/actions/request_console');
   }
 }

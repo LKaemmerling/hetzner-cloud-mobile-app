@@ -5,22 +5,26 @@ import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects
 import {HomePage} from "../home/home";
 
 /**
- * Generated class for the DeleteAllDataPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * This page contains a button to remove all data stored from the app
  */
-
 @Component({
   selector: 'page-delete-all-data',
   templateUrl: 'delete-all-data.html',
 })
 export class DeleteAllDataPage {
-
-
-  constructor(public navCtrl: NavController, public storage: Storage, public projects: ProjectsService, public loadingCtrl: LoadingController) {
+  /**
+   * Constructor
+   * @param {NavController} navCtrl
+   * @param {Storage} storage
+   * @param {ProjectsService} projects
+   * @param {LoadingController} loadingCtrl
+   */
+  constructor(protected navCtrl: NavController, protected storage: Storage, protected projects: ProjectsService, protected loadingCtrl: LoadingController) {
   }
 
+  /**
+   * This Action delete all data from the storage
+   */
   deleteAll() {
     let loader = this.loadingCtrl.create();
     loader.present();

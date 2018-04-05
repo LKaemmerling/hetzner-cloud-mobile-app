@@ -14,7 +14,7 @@
   </p>
   <ion-list>
     <ion-item *ngFor="let category of categories">
-      <ion-label>{{ category.lang | translate }}</ion-label>
+      <ion-label color="dark">{{ category.lang | translate }}</ion-label>
       <ion-toggle color="secondary" [(ngModel)]="category.value" (ionChange)="save()"></ion-toggle>
     </ion-item>
 

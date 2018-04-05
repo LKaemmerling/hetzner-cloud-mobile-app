@@ -3,22 +3,42 @@ import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/proje
 import {project} from "../../../modules/hetzner-cloud-data/project/project";
 import {NavParams, ViewController} from "ionic-angular";
 import {TranslateService} from "@ngx-translate/core";
-import {Storage} from "@ionic/storage";
 
+/**
+ * This modal makes it possible to rename the selected project
+ */
 @Component({
   selector: 'modal-editProject',
   templateUrl: 'editProject.html'
 })
 export class editProjectModal {
+  /**
+   * the project that should be edited
+   */
   public project: project;
-  public api_key: string;
+  /**
+   * if there is an error this would be displayed here
+   * @type {string}
+   */
   public error: string = null;
-  public image: string = '';
 
-  constructor(public projectService: ProjectsService, public viewCtrl: ViewController, public navparams: NavParams, protected translate: TranslateService, protected storage: Storage) {
-    this.project = this.navparams.get('project');
+  /**
+   * Constructor
+   * @param {ProjectsService} projectService
+   * @param {ViewController} viewCtrl
+   * @param {NavParams} navParams
+   * @param {TranslateService} translate
+   */
+  constructor(protected projectService: ProjectsService,
+              protected viewCtrl: ViewController,
+              protected navParams: NavParams,
+              protected translate: TranslateService) {
+    this.project = this.navParams.get('project');
   }
 
+  /**
+   * Save the given project
+   */
   public saveProject() {
     if (this.project.name == null || this.project.name.length == 0) {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.REQUIRED_NAME';
@@ -35,6 +55,9 @@ export class editProjectModal {
 
   }
 
+  /**
+   * Dismiss the modal
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }

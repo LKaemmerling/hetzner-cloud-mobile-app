@@ -4,29 +4,32 @@ import {LoadingController, NavController, NavParams, ViewController} from "ionic
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
-
+/**
+ * With this component you can change the rescue mode settings
+ */
 @Component({
   selector: 'modal-rescueMode',
   templateUrl: 'rescueMode.html'
 })
 export class rescueModeModal {
   /**
-   *
+   * The server that should bechanges
+   * @type {Server}
    */
   public server: Server;
   /**
-   *
+   * The changed root password
    * @type {string}
    */
   public root_password: string = null;
   /**
-   *
+   * The root password for the rescue mode
    * @type {string}
    */
   public root_password_reset: string = null;
 
   /**
-   *
+   * Constructor
    * @param {ProjectsService} project
    * @param {ViewController} viewCtrl
    * @param {ServerApiProvider} serverApiProvider
@@ -34,12 +37,12 @@ export class rescueModeModal {
    * @param {NavController} navCtrl
    * @param {LoadingController} loadingCtrl
    */
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController) {
+  constructor(protected project: ProjectsService, protected viewCtrl: ViewController, protected serverApiProvider: ServerApiProvider, protected navParams: NavParams, protected navCtrl: NavController, protected loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
   }
 
   /**
-   *
+   * Activate the rescue mode
    */
   public rescueActivate() {
     var loader = this.loadingCtrl.create();
@@ -47,18 +50,18 @@ export class rescueModeModal {
     this.serverApiProvider.enable_rescue(this.server.id).then((data) => {
       this.root_password_reset = data['root_password'];
       loader.dismiss();
-     // this.dismiss();
+      // this.dismiss();
     });
   }
 
   /**
-   *
+   * Activate the rescue mode and reset the server
    */
   public rescueActivateAndReset() {
     var loader = this.loadingCtrl.create();
     loader.present();
     this.serverApiProvider.enable_rescue(this.server.id).then((data) => {
-      this.serverApiProvider.reboot(this.server.id).then(() => {
+      this.serverApiProvider.reset(this.server.id).then(() => {
         this.root_password_reset = data['root_password'];
         loader.dismiss();
         // this.dismiss();
@@ -67,7 +70,7 @@ export class rescueModeModal {
   }
 
   /**
-   *
+   * Reset the root Password
    */
   public resetRootpassword() {
     var loader = this.loadingCtrl.create();
@@ -80,7 +83,7 @@ export class rescueModeModal {
   }
 
   /**
-   *
+   * Dismiss the modal
    */
   public dismiss() {
     this.viewCtrl.dismiss();

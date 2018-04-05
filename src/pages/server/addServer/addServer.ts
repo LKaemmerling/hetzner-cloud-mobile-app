@@ -1,78 +1,86 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
 import {LoadingController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
-import {ServerTypeApiProvider} from "../../../providers/server-type-api/server-type-api";
-import {ImageApiProvider} from "../../../providers/image-api/image-api";
-import {LocationApiProvider} from "../../../providers/location-api/location-api";
 import {ServersService} from "../../../modules/hetzner-cloud-data/servers/servers.service";
-import {Location, ServerType} from "../../../modules/hetzner-cloud-data/servers/server";
+import {Image, Location, ServerType} from "../../../modules/hetzner-cloud-data/servers/server";
 import {SshKeysService} from "../../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
 import {ImagesService} from "../../../modules/hetzner-cloud-data/images/images.service";
 import {LocationsService} from "../../../modules/hetzner-cloud-data/locations/locations.service";
 import {ServerTypesService} from "../../../modules/hetzner-cloud-data/server-types/server-types.service";
 
+/**
+ * This modal makes it possible to add a new server
+ */
 @Component({
   selector: 'modal-addServer',
   templateUrl: 'addServer.html'
 })
 export class addServerModal {
   /**
-   *
+   * The name of the new server
+   * @type {string}
    */
-  public name: string;
+  name: string;
   /**
-   *
+   * The selected server type
+   * @type {ServerType}
    */
-  public server_type: ServerType;
+  server_type: ServerType;
   /**
-   *
+   * All available server types
+   * @type {ServerType[]}
    */
-  public server_types: Array<ServerType>;
+  server_types: Array<ServerType>;
   /**
-   *
+   * The selected location id
+   * @type {number}
    */
-  public location: number;
+  location: number;
   /**
-   *
+   * All available locations
+   * @type {Location[]}
    */
-  public locations: Array<Location>;
+  locations: Array<Location>;
   /**
-   *
+   * The selected ssh key id
+   * @type {number}
    */
-  public ssh_key: Array<any>;
+  ssh_key: Array<any>;
   /**
-   *
+   *  All available SSH Keys
+   *  @type {SshKey[]}
    */
-  public ssh_keys: Array<any>;
+  ssh_keys: Array<any>;
   /**
-   *
+   * ID of the selected image
+   * @type {number}
    */
-  public image: number;
+  image: number;
   /**
-   *
+   * List of all available images
+   * @type {Image[]}
    */
-  public images: Array<any>;
+  images: Array<Image>;
   /**
-   *
+   * Start the new server after the creation?
    * @type {boolean}
    */
-  public start_after_create: boolean = true;
+  start_after_create: boolean = true;
 
   /**
-   *
-   * @type {null}
+   * Error message when there is an error
+   * @type {string}
    */
-  public error: string = null;
+  error: string = null;
   /**
-   *
-   * @type {null}
+   * The currently selected image id
+   * @type {number}
    * @private
    */
-  public __selected_image: number = null;
+  __selected_image: number = null;
 
   /**
-   *
+   * Constructor
    * @param {ViewController} viewCtrl
    * @param {LoadingController} loadingCtrl
    * @param {ServerApiProvider} serverApiProvider
@@ -110,9 +118,9 @@ export class addServerModal {
   }
 
   /**
-   *
+   * Makes the api call and validates the payload
    */
-  public createServer() {
+  createServer() {
     this.error = null;
     if (this.server_type == null) {
       this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_TYPE';
@@ -146,9 +154,9 @@ export class addServerModal {
   }
 
   /**
-   *
+   * Dismiss the modal
    */
-  public dismiss() {
+  dismiss() {
     this.viewCtrl.dismiss();
   }
 }

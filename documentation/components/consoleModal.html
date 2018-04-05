@@ -146,6 +146,9 @@
                                     <a href="../components/ProjectsPage.html" >ProjectsPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ServerBasicInformationComponent.html" >ServerBasicInformationComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ServerMetricsPage.html" >ServerMetricsPage</a>
                                 </li>
                                 <li class="link">
@@ -240,6 +243,9 @@
                                     <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/FloatingIpsService.html" >FloatingIpsService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
                                 </li>
                                 <li class="link">
@@ -252,13 +258,13 @@
                                     <a href="../injectables/ImagesService.html" >ImagesService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/IonicProErrorHandler.html" >IonicProErrorHandler</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/LocationApiProvider.html" >LocationApiProvider</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocationsService.html" >LocationsService</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../injectables/MyErrorHandler.html" >MyErrorHandler</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/NetworkProvider.html" >NetworkProvider</a>
@@ -292,9 +298,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/StatusApiProvider.html" >StatusApiProvider</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../injectables/project.html" >project</a>
                                 </li>
                         </ul>
                     </li>
@@ -386,6 +389,9 @@
                                 <li class="link">
                                     <a href="../interfaces/Traffic.html" >Traffic</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/project.html" >project</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -405,6 +411,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/PriceReplacePipe.html" >PriceReplacePipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -580,6 +589,9 @@
                                            <a href="../components/ProjectsPage.html" >ProjectsPage</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ServerBasicInformationComponent.html" >ServerBasicInformationComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ServerMetricsPage.html" >ServerMetricsPage</a>
                                        </li>
                                        <li class="link">
@@ -674,6 +686,9 @@
                                            <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/FloatingIpsService.html" >FloatingIpsService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
                                        </li>
                                        <li class="link">
@@ -686,13 +701,13 @@
                                            <a href="../injectables/ImagesService.html" >ImagesService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/IonicProErrorHandler.html" >IonicProErrorHandler</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/LocationApiProvider.html" >LocationApiProvider</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocationsService.html" >LocationsService</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../injectables/MyErrorHandler.html" >MyErrorHandler</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/NetworkProvider.html" >NetworkProvider</a>
@@ -726,9 +741,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/StatusApiProvider.html" >StatusApiProvider</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../injectables/project.html" >project</a>
                                        </li>
                                </ul>
                            </li>
@@ -820,6 +832,9 @@
                                        <li class="link">
                                            <a href="../interfaces/Traffic.html" >Traffic</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/project.html" >project</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -839,6 +854,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/PriceReplacePipe.html" >PriceReplacePipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -918,6 +936,13 @@
     <code>src/pages/server/console/console.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This modal makes it possible to interact with your server trougth the vnc console</p>
+
+    </p>
 
 
 
@@ -982,22 +1007,6 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#loadingCtrl">loadingCtrl</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#navCtrl">navCtrl</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#navParams">navParams</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#payload">payload</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
                                 <a href="#rfb">rfb</a>
                             </li>
                             <li>
@@ -1005,16 +1014,8 @@
                                 <a href="#server">server</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#serverApiProvider">serverApiProvider</a>
-                            </li>
-                            <li>
                                     <span class="modifier">Protected</span>
                                 <a href="#touchKeyboard">touchKeyboard</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#viewCtrl">viewCtrl</a>
                             </li>
                         </ul>
                     </td>
@@ -1084,12 +1085,14 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/pages/server/console/console.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/pages/server/console/console.ts:52</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Constructor</p>
+    </div>
                                 <div>
                                         <b>Parameters :</b>
                                         <table class="params">
@@ -1203,12 +1206,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">src/pages/server/console/console.ts:248</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="262" class="link-to-prism">src/pages/server/console/console.ts:262</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Dismiss the modal</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1242,12 +1247,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/pages/server/console/console.ts:140</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/pages/server/console/console.ts:154</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Hide the Virtual Keyboard</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1281,12 +1288,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">src/pages/server/console/console.ts:151</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/pages/server/console/console.ts:165</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Toggle the virtual keyboard</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1318,12 +1327,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/pages/server/console/console.ts:89</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/pages/server/console/console.ts:103</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Thrown when there is something tipped or typed</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1405,12 +1416,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/pages/server/console/console.ts:174</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">src/pages/server/console/console.ts:188</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>When a key in pressed</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1472,12 +1485,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/pages/server/console/console.ts:117</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/pages/server/console/console.ts:131</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Onblur Virtual Keyboard</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1539,12 +1554,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/pages/server/console/console.ts:129</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/pages/server/console/console.ts:143</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>On Focus Virtual Keyboard</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1606,12 +1623,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/pages/server/console/console.ts:164</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/pages/server/console/console.ts:178</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>reset the keyboard to the default</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1645,12 +1664,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">src/pages/server/console/console.ts:240</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="254" class="link-to-prism">src/pages/server/console/console.ts:254</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Send Crtl Alt Del to the server</p>
+    </div>
     
                                 <div>
                                 </div>
@@ -1689,12 +1710,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/pages/server/console/console.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/pages/server/console/console.ts:112</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Displays the virtual keyboard</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1733,10 +1756,16 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/pages/server/console/console.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/pages/server/console/console.ts:44</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The default keyboard input</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1768,10 +1797,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/pages/server/console/console.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/pages/server/console/console.ts:40</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The Input</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1803,144 +1838,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/pages/server/console/console.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/pages/server/console/console.ts:48</a></div>
                                 </td>
                             </tr>
     
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="loadingCtrl"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                loadingCtrl
-                                </b>
-                                <a href="#loadingCtrl"><span class="fa fa-link"></span></a>
-                            </span>
+                            <div class="io-description"><p>Last keyboard input</p>
+    </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>loadingCtrl:     <code>LoadingController</code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code>LoadingController</code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/pages/server/console/console.ts:54</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="navCtrl"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                navCtrl
-                                </b>
-                                <a href="#navCtrl"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>navCtrl:     <code>NavController</code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code>NavController</code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/pages/server/console/console.ts:54</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="navParams"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                navParams
-                                </b>
-                                <a href="#navParams"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>navParams:     <code>NavParams</code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code>NavParams</code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/pages/server/console/console.ts:54</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="payload"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                payload
-                                </b>
-                                <a href="#payload"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>payload:     <code></code>
-    </code>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/pages/server/console/console.ts:24</a></div>
-                                </td>
-                            </tr>
-    
     
                 </tbody>
             </table>
@@ -1966,10 +1873,16 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/pages/server/console/console.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/pages/server/console/console.ts:36</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The novonc object</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -2001,45 +1914,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/pages/server/console/console.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/pages/server/console/console.ts:32</a></div>
                                 </td>
                             </tr>
     
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="serverApiProvider"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                serverApiProvider
-                                </b>
-                                <a href="#serverApiProvider"><span class="fa fa-link"></span></a>
-                            </span>
+                            <div class="io-description"><p>The server</p>
+    </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>serverApiProvider:     <code><a href="../injectables/ServerApiProvider.html" target="_self" >ServerApiProvider</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../injectables/ServerApiProvider.html" target="_self" >ServerApiProvider</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/pages/server/console/console.ts:54</a></div>
-                                </td>
-                            </tr>
-    
     
                 </tbody>
             </table>
@@ -2065,45 +1949,16 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/pages/server/console/console.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/pages/server/console/console.ts:52</a></div>
                                 </td>
                             </tr>
     
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="viewCtrl"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                viewCtrl
-                                </b>
-                                <a href="#viewCtrl"><span class="fa fa-link"></span></a>
-                            </span>
+                            <div class="io-description"><p>Is it a touch keyboard?</p>
+    </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>viewCtrl:     <code>ViewController</code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code>ViewController</code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/pages/server/console/console.ts:54</a></div>
-                                </td>
-                            </tr>
-    
     
                 </tbody>
             </table>
@@ -2120,53 +1975,61 @@ import {ServerApiProvider} from &quot;../../../providers/server-api/server-api&q
 import RFB from &#x27;@novnc/novnc/core/rfb.js&#x27;;
 import {Server} from &quot;../../../modules/hetzner-cloud-data/servers/server&quot;;
 
+/**
+ * Keytable from novnc
+ */
 var KeyTable &#x3D; require(&#x27;@novnc/novnc/core/input/keysym.js&#x27;).default;
+/**
+ * Keysymbols from novnc
+ */
 var keysyms &#x3D; require(&#x27;@novnc/novnc/core/input/keysymdef.js&#x27;).default;
+/**
+ * The Keyboard from novnc
+ */
 var Keyboard &#x3D; require(&#x27;@novnc/novnc/core/input/keyboard.js&#x27;).default;
 
+/**
+ * This modal makes it possible to interact with your server trougth the vnc console
+ */
 @Component({
   selector: &#x27;modal-console&#x27;,
   templateUrl: &#x27;console.html&#x27;
 })
 export class consoleModal {
   /**
-   *
+   * The server
    */
   public server: Server;
   /**
-   *
-   */
-  public payload;
-  /**
-   *
+   * The novonc object
    */
   public rfb;
   /**
-   *
+   * The Input
    */
   public input: string;
   /**
-   *
+   * The default keyboard input
    */
   protected defaultKeyboardinputLen: 100;
   /**
-   *
+   * Last keyboard input
    */
   protected lastKeyboardinput: string;
   /**
-   *
+   * Is it a touch keyboard?
    */
   protected touchKeyboard;
 
   /**
-   *
+   * Constructor
    * @param {ViewController} viewCtrl
    * @param {ServerApiProvider} serverApiProvider
    * @param {NavParams} navParams
    * @param {NavController} navCtrl
    * @param {LoadingController} loadingCtrl
    */
-  constructor(public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController) {
+  constructor(protected viewCtrl: ViewController, protected serverApiProvider: ServerApiProvider, protected navParams: NavParams, protected navCtrl: NavController, protected loadingCtrl: LoadingController) {
     this.server &#x3D; navParams.get(&#x27;server&#x27;);
     this.serverApiProvider.requestConsole(this.server.id).then((response) &#x3D;&gt; {
       this.rfb &#x3D; new RFB(document.getElementById(&#x27;console_container&#x27;), response[&#x27;wss_url&#x27;], {credentials: {password: response[&#x27;password&#x27;]}});
@@ -2187,6 +2050,12 @@ export class consoleModal {
         .addEventListener(&#x27;blur&#x27;, (event) &#x3D;&gt; {
           this.onblurVirtualKeyboard(event)
         });
+      document.getElementById(&#x27;console_container&#x27;).addEventListener(&#x27;click&#x27;, (event) &#x3D;&gt; {
+        this.keyboard();
+      });
+      document.getElementById(&#x27;console_container&#x27;).addEventListener(&#x27;touchstart&#x27;, (event) &#x3D;&gt; {
+        this.keyboard();
+      });
       this.touchKeyboard &#x3D; new Keyboard(document.getElementById(&#x27;noVNC_keyboardinput&#x27;));
       this.touchKeyboard.onkeyevent &#x3D; (keysym, code, down) &#x3D;&gt; {
         this.keyevent(keysym, code, down);
@@ -2196,7 +2065,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Thrown when there is something tipped or typed
    * @param keysym
    * @param code
    * @param down
@@ -2208,7 +2077,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   *  Displays the virtual keyboard
    */
   protected showVirtualKeyboard() {
     var input &#x3D; &lt;HTMLInputElement&gt;document.getElementById(&#x27;noVNC_keyboardinput&#x27;);
@@ -2226,7 +2095,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Onblur Virtual Keyboard
    * @param event
    */
   protected onblurVirtualKeyboard(event) {
@@ -2238,7 +2107,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * On Focus Virtual Keyboard
    * @param event
    */
   protected onfocusVirtualKeyboard(event) {
@@ -2250,7 +2119,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Hide the Virtual Keyboard
    */
   protected hideVirtualKeyboard() {
     var input &#x3D; document.getElementById(&#x27;noVNC_keyboardinput&#x27;);
@@ -2261,11 +2130,11 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Toggle the virtual keyboard
    */
   public keyboard() {
     if (document.getElementById(&#x27;noVNC_keyboard_button&#x27;)
-        .classList.contains(&quot;noVNC_selected&quot;)) {
+      .classList.contains(&quot;noVNC_selected&quot;)) {
       this.hideVirtualKeyboard();
     } else {
       this.showVirtualKeyboard();
@@ -2274,7 +2143,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * reset the keyboard to the default
    */
   protected resetKeyboard() {
     var kbi &#x3D; &lt;HTMLInputElement&gt;document.getElementById(&#x27;noVNC_keyboardinput&#x27;);
@@ -2283,7 +2152,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * When a key in pressed
    * @param event
    */
   public keyInput(event) {
@@ -2349,7 +2218,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Send Crtl Alt Del to the server
    * @returns {boolean}
    */
   public sendCtrlAltDel() {
@@ -2358,7 +2227,7 @@ export class consoleModal {
   }
 
   /**
-   *
+   * Dismiss the modal
    */
   public dismiss() {
     this.viewCtrl.dismiss();
@@ -2439,7 +2308,7 @@ export class consoleModal {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <ion-title> {{ \'PAGE.SERVERS.MODAL.CONSOLE.TITLE\' | translate}}</ion-title>  </ion-navbar></ion-header><ion-content>  <div class="console_container">    <div id="console_container">      <!-- Note that Google Chrome on Android doesn\'t respect any of these,     html attributes which attempt to disable text suggestions on the     on-screen keyboard. Let\'s hope Chrome implements the ime-mode     style for example -->      <textarea id="noVNC_keyboardinput" autocapitalize="off"                autocorrect="off" autocomplete="off" spellcheck="false"                mozactionhint="Enter" tabindex="-1" (change)="keyInput($event)"></textarea>    </div>    <div id="noVNC_status_bar">      <div id="noVNC_buttons" style="display:flex; justify-content: space-between; margin-top:-100px;">        <div style="width: 100%; background-color:#cccccc; border-top:#f53d3d solid 2px; z-index: 99;">          <div style="font-size:12px;" ion-row="">            <div ion-text=""  left="" col-6>              {{ \'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv4\' | translate}} {{ server.public_net.ipv4.ip }} <br/>              {{ \'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv6\' | translate}} {{ server.public_net.ipv6.ip }} <br/>            </div>            <div ion-text="" right="" col-6>              <em>{{ server.name }}</em><br/>              {{ \'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION\' | translate}} {{              server.datacenter.description}}<br/>            </div>          </div>          <div ion-row="">            <ion-buttons col-12="">              <button (click)="keyboard()" ion-button="" color="primary" id="noVNC_keyboard_button"><i                class="fas fa-keyboard"></i></button>              <button (click)="sendCtrlAltDel()" ion-button="" color="danger">Send Ctrl Alt Del</button>            </ion-buttons>          </div>        </div>      </div>    </div>  </div></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerCloudMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'modal-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerCloudMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'modal-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'consoleModal'};
 </script>

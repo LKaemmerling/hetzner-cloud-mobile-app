@@ -4,10 +4,7 @@ import {OneSignal} from "@ionic-native/onesignal";
 import {Storage} from "@ionic/storage";
 
 /**
- * Generated class for the HetznerStatusSettingPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * This is the hetzner status setting page, where you can en/disable notifications for some types of notifications
  */
 
 @Component({
@@ -15,7 +12,10 @@ import {Storage} from "@ionic/storage";
   templateUrl: 'hetzner-status-setting.html',
 })
 export class HetznerStatusSettingPage {
-
+  /**
+   * All available categories
+   * @type {{key: string; lang: string; value: boolean}[]}
+   */
   public categories = [
     {
       "key": "Allgemein",
@@ -58,11 +58,31 @@ export class HetznerStatusSettingPage {
       "value": false,
     }
   ];
-  public sound = true;
-  public vibrate = true;
+  /**
+   * Is the sound enabled?
+   * @type {boolean}
+   */
+  public sound: boolean = true;
+  /**
+   * Is vibration enabled?
+   * @type {boolean}
+   */
+  public vibrate: boolean = true;
+  /**
+   * Is this component currently sending?
+   * @type {boolean}
+   */
   public _send: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, protected oneSignal: OneSignal, protected storage: Storage, protected platform: Platform) {
+  /**
+   * Constructor
+   * @param {NavController} navCtrl
+   * @param {NavParams} navParams
+   * @param {OneSignal} oneSignal
+   * @param {Storage} storage
+   * @param {Platform} platform
+   */
+  constructor(protected navCtrl: NavController, protected navParams: NavParams, protected oneSignal: OneSignal, protected storage: Storage, protected platform: Platform) {
     this.storage.get('hetzner_status_settings').then((data) => {
       if (data != undefined && data != null) {
         this.categories = data;
@@ -80,6 +100,9 @@ export class HetznerStatusSettingPage {
     })
   }
 
+  /**
+   * Save the form and send all to onesignal and to the storage
+   */
   save() {
     this._send = false;
     let prompt = false;

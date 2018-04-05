@@ -3,30 +3,33 @@ import {project} from "./project";
 import {Injectable} from '@angular/core';
 import {NetworkProvider} from "../../hetzner-app/network/network";
 
-
+/**
+ * Service that contains all storage methods for the projects.
+ */
 @Injectable()
 export class ProjectsService {
   /**
-   *
+   * All projects
    * @type {any[]}
    */
   public projects: Array<project> = [];
   /**
-   *
+   * The currently selected project
    * @type {null}
    */
   public actual_project: project = null;
 
   /**
-   *
+   * Constructor
    * @param {Storage} storage
+   * @param {NetworkProvider} network
    */
   constructor(private storage: Storage, private network: NetworkProvider) {
     this.projects = [];
   }
 
   /**
-   *
+   * Load all projects from the local storage
    */
   public loadProjects() {
     return new Promise((resolve, reject) => {
@@ -54,7 +57,7 @@ export class ProjectsService {
   }
 
   /**
-   *
+   * Select a project as currently selected project
    * @param {project} project
    * @returns {() => Promise<void>}
    */
@@ -67,14 +70,14 @@ export class ProjectsService {
   }
 
   /**
-   *
+   * Save all projects to the storage
    */
   public saveProjects() {
     this.storage.set('projects', this.projects);
   }
 
   /**
-   *
+   * Add a new project to the storage
    * @param {project} project
    */
   public addProject(project: project) {
@@ -85,7 +88,7 @@ export class ProjectsService {
   }
 
   /**
-   *
+   * Remove a project from the storage
    * @param {project} project
    */
   public removeProject(project: project) {

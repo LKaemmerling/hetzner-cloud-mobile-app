@@ -1,18 +1,20 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
-import {Price, Pricing} from "./pricings";
+import {Pricing} from "./pricings";
 import {PricesApiProvider} from "../../../providers/pricing-api/pricing-api";
-
+/**
+ * Service that contains all storage methods for the prices.
+ */
 @Injectable()
 export class PricingService {
   /**
-   *
-   * @type {any[]}
+   * All available prices
+   * @type {Pricing}
    */
   public prices: Pricing = null;
 
   /**
-   *
+   * Constructor
    * @param {Storage} storage
    * @param {PricesApiProvider} pricingApiProvider
    */
@@ -21,12 +23,11 @@ export class PricingService {
   }
 
   /**
-   *
+   * Get a specific price
    * @param {string} identifier
    * @returns {any}
    */
   public getPrice(identifier: string) {
-    console.log(this.prices)
     if (this.prices == null) {
       return identifier;
     }
@@ -34,7 +35,7 @@ export class PricingService {
   }
 
   /**
-   *
+   * Load all prices from the local storage
    */
   public loadPrices() {
     return this.storage.get('prices').then((val) => {
@@ -45,14 +46,14 @@ export class PricingService {
   }
 
   /**
-   *
+   * Save all prices to the local storage
    */
   protected savePrices() {
     return this.storage.set('prices', this.prices);
   }
 
   /**
-   *
+   * Reload all prices from the api and save it to the local storage
    * @returns {Promise<void>}
    */
   public reloadPrices() {
@@ -63,6 +64,13 @@ export class PricingService {
     });
   }
 
+  /**
+   * Method of the easy access on object properties with the dot.string notation
+   * @param obj
+   * @param is
+   * @param {any} value
+   * @returns {any}
+   */
   private index(obj, is, value = undefined) {
     if (typeof is == 'string')
       return this.index(obj, is.split('.'), value);

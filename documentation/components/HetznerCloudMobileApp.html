@@ -146,6 +146,9 @@
                                     <a href="../components/ProjectsPage.html" >ProjectsPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ServerBasicInformationComponent.html" >ServerBasicInformationComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ServerMetricsPage.html" >ServerMetricsPage</a>
                                 </li>
                                 <li class="link">
@@ -240,6 +243,9 @@
                                     <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/FloatingIpsService.html" >FloatingIpsService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
                                 </li>
                                 <li class="link">
@@ -252,13 +258,13 @@
                                     <a href="../injectables/ImagesService.html" >ImagesService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/IonicProErrorHandler.html" >IonicProErrorHandler</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/LocationApiProvider.html" >LocationApiProvider</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LocationsService.html" >LocationsService</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../injectables/MyErrorHandler.html" >MyErrorHandler</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/NetworkProvider.html" >NetworkProvider</a>
@@ -292,9 +298,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/StatusApiProvider.html" >StatusApiProvider</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../injectables/project.html" >project</a>
                                 </li>
                         </ul>
                     </li>
@@ -386,6 +389,9 @@
                                 <li class="link">
                                     <a href="../interfaces/Traffic.html" >Traffic</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/project.html" >project</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -405,6 +411,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/PriceReplacePipe.html" >PriceReplacePipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -580,6 +589,9 @@
                                            <a href="../components/ProjectsPage.html" >ProjectsPage</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ServerBasicInformationComponent.html" >ServerBasicInformationComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ServerMetricsPage.html" >ServerMetricsPage</a>
                                        </li>
                                        <li class="link">
@@ -674,6 +686,9 @@
                                            <a href="../injectables/FloatingIpApiProvider.html" >FloatingIpApiProvider</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/FloatingIpsService.html" >FloatingIpsService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/HetznerApiProvider.html" >HetznerApiProvider</a>
                                        </li>
                                        <li class="link">
@@ -686,13 +701,13 @@
                                            <a href="../injectables/ImagesService.html" >ImagesService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/IonicProErrorHandler.html" >IonicProErrorHandler</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/LocationApiProvider.html" >LocationApiProvider</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LocationsService.html" >LocationsService</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../injectables/MyErrorHandler.html" >MyErrorHandler</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/NetworkProvider.html" >NetworkProvider</a>
@@ -726,9 +741,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/StatusApiProvider.html" >StatusApiProvider</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../injectables/project.html" >project</a>
                                        </li>
                                </ul>
                            </li>
@@ -820,6 +832,9 @@
                                        <li class="link">
                                            <a href="../interfaces/Traffic.html" >Traffic</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/project.html" >project</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -839,6 +854,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/PriceReplacePipe.html" >PriceReplacePipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/TruncatePipe.html" >TruncatePipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -918,6 +936,13 @@
     <code>src/app/app.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This is the main component from the Hetzer Cloud Mobile App</p>
+
+    </p>
 
 
 
@@ -1028,12 +1053,14 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/app.component.ts:109</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/app.component.ts:106</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Constructor</p>
+    </div>
                                 <div>
                                         <b>Parameters :</b>
                                         <table class="params">
@@ -1219,12 +1246,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">src/app/app.component.ts:172</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="183" class="link-to-prism">src/app/app.component.ts:183</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Load the specific hetzner cloud data</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1258,12 +1287,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/app/app.component.ts:186</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">src/app/app.component.ts:197</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Load all needed for the localization</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1297,12 +1328,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/app/app.component.ts:201</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="212" class="link-to-prism">src/app/app.component.ts:212</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Load all OneSignal configurations</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1334,12 +1367,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">src/app/app.component.ts:224</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">src/app/app.component.ts:235</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Open the about page</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1371,12 +1406,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">src/app/app.component.ts:210</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="221" class="link-to-prism">src/app/app.component.ts:221</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Open a new page</p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1436,12 +1473,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">src/app/app.component.ts:217</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">src/app/app.component.ts:228</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Open the projects page</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1491,10 +1530,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/app.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/app.component.ts:45</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The selected Language or main language</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1586,10 +1631,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/app.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/app.component.ts:51</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The structure of the menu</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1625,10 +1676,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/app.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/app.component.ts:35</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The Navigation</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1664,10 +1721,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/app.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/app.component.ts:40</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The first visible page</p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1690,7 +1753,6 @@ import {ServersPage} from &quot;../pages/server/serverList/servers&quot;;
 import {Storage} from &quot;@ionic/storage&quot;;
 import {FloatingIPsPage} from &quot;../pages/floatingIPs/floatingIPs&quot;;
 import {ImagesPage} from &quot;../pages/images/images&quot;;
-import {ServersService} from &quot;../modules/hetzner-cloud-data/servers/servers.service&quot;;
 import {OneSignal} from &quot;@ionic-native/onesignal&quot;;
 import {HetznerStatusPage} from &quot;../pages/hetzner-status/hetzner-status&quot;;
 import {SettingsPage} from &quot;../pages/settings/settings&quot;;
@@ -1698,36 +1760,34 @@ import {FingerprintAIO} from &quot;@ionic-native/fingerprint-aio&quot;;
 import {TranslateService} from &quot;@ngx-translate/core&quot;;
 import {ActionsPage} from &quot;../pages/actions/actions&quot;;
 import {SshkeysPage} from &quot;../pages/sshkeys/sshkeys&quot;;
-import {PricingService} from &quot;../modules/hetzner-cloud-data/pricings/pricing.service&quot;;
 import {NetworkProvider} from &quot;../modules/hetzner-app/network/network&quot;;
-import {SshKeysService} from &quot;../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service&quot;;
-import {ImagesService} from &quot;../modules/hetzner-cloud-data/images/images.service&quot;;
-import {LocationsService} from &quot;../modules/hetzner-cloud-data/locations/locations.service&quot;;
-import {ServerTypesService} from &quot;../modules/hetzner-cloud-data/server-types/server-types.service&quot;;
 import {HetznerCloudDataService} from &quot;../modules/hetzner-cloud-data/hetzner-cloud-data.service&quot;;
 import {ConfigService} from &quot;../modules/hetzner-app/config/config.service&quot;;
 
+/**
+ * This is the main component from the Hetzer Cloud Mobile App
+ */
 @Component({
   templateUrl: &#x27;app.html&#x27;
 })
 export class HetznerCloudMobileApp {
   /**
-   *
+   * The Navigation
    */
   @ViewChild(Nav) nav: Nav;
   /**
-   *
+   * The first visible page
    * @type {HomePage}
    */
   rootPage: any &#x3D; HomePage;
   /**
-   *
+   * The selected Language or main language
    * @type {string}
    */
   public lang: string &#x3D; &#x27;de&#x27;;
 
   /**
-   *
+   * The structure of the menu
    * @type {({key: string; icon: string; page: HomePage; hidden: boolean} | {key: string; icon: string; page: ProjectsPage; hidden: boolean} | {key: string; icon: string; page: ServersPage; hidden: boolean} | {key: string; icon: string; page: FloatingIPsPage; hidden: boolean} | {key: string; icon: string; page: ImagesPage; hidden: boolean} | {key: string; icon: string; page: ActionsPage; hidden: boolean} | {key: string; icon: string; page: HetznerStatusPage; hidden: boolean} | {key: string; icon: string; page: SettingsPage; hidden: boolean})[]}
    */
   protected menu_entries: Array&lt;object&gt; &#x3D; [
@@ -1787,6 +1847,20 @@ export class HetznerCloudMobileApp {
     }
   ];
 
+  /**
+   * Constructor
+   * @param {Platform} platform
+   * @param {StatusBar} statusBar
+   * @param {SplashScreen} splashScreen
+   * @param {Storage} storage
+   * @param {OneSignal} oneSignal
+   * @param {FingerprintAIO} fingerPrint
+   * @param {TranslateService} translate
+   * @param {NetworkProvider} network
+   * @param {HetznerCloudDataService} hetzerCloudData
+   * @param {ProjectsService} projects
+   * @param {ConfigService} config
+   */
   constructor(
     protected platform: Platform,
     protected statusBar: StatusBar,
@@ -1846,7 +1920,7 @@ export class HetznerCloudMobileApp {
   }
 
   /**
-   *
+   * Load the specific hetzner cloud data
    */
   private loadHetznerSpecificData() {
     this.hetzerCloudData.loadData().then(() &#x3D;&gt; {
@@ -1860,7 +1934,7 @@ export class HetznerCloudMobileApp {
   }
 
   /**
-   *
+   * Load all needed for the localization
    */
   private loadLocalization() {
     this.translate.setDefaultLang(this.lang);
@@ -1875,7 +1949,7 @@ export class HetznerCloudMobileApp {
   }
 
   /**
-   *
+   * Load all OneSignal configurations
    */
   private loadOneSignal() {
     this.oneSignal.startInit(this.config.oneSignal.appId, this.config.oneSignal.googleProjectId);
@@ -1883,7 +1957,7 @@ export class HetznerCloudMobileApp {
   }
 
   /**
-   *
+   * Open a new page
    * @param menu
    */
   openPage(menu) {
@@ -1891,14 +1965,14 @@ export class HetznerCloudMobileApp {
   }
 
   /**
-   *
+   * Open the projects page
    */
   openProjectsPage() {
     this.nav.setRoot(ProjectsPage);
   }
 
   /**
-   *
+   * Open the about page
    */
   openAboutPage() {
     this.nav.setRoot(AboutPage);
@@ -1915,7 +1989,7 @@ export class HetznerCloudMobileApp {
       &lt;ion-title&gt;Hetzner Cloud Mobile&lt;/ion-title&gt;
     &lt;/ion-toolbar&gt;
   &lt;/ion-header&gt;
-  &lt;ion-content&gt;
+  &lt;ion-content class&#x3D;&quot;menu&quot;&gt;
     &lt;ion-list&gt;
       &lt;button ion-item&#x3D;&quot;&quot; *ngFor&#x3D;&quot;let menu_entry of menu_entries;&quot; (click)&#x3D;&quot;openPage(menu_entry)&quot; menuClose&#x3D;&quot;&quot; class&#x3D;&quot;hidden&quot;
               [ngClass]&#x3D;&quot;{&#x27;visible&#x27;:(menu_entry.hidden &#x3D;&#x3D; true &amp;&amp; projects.actual_project !&#x3D; null) || menu_entry.hidden&#x3D;&#x3D;false}&quot;&gt;
@@ -1957,8 +2031,8 @@ export class HetznerCloudMobileApp {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-menu [content]="content">  <ion-header>    <ion-toolbar>      <ion-title>Hetzner Cloud Mobile</ion-title>    </ion-toolbar>  </ion-header>  <ion-content>    <ion-list>      <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose="" class="hidden"              [ngClass]="{\'visible\':(menu_entry.hidden == true && projects.actual_project != null) || menu_entry.hidden==false}">        <i [class]="\'fas fa-fw \'+menu_entry.icon"></i> {{ menu_entry.key | translate }}      </button>      <button ion-item (click)="openAboutPage()" menuClose=""              style="position: fixed; bottom:0; text-align: center;font-size:12px;">        {{ \'PAGE.ABOUT.TITLE\' | translate }}      </button>    </ion-list>  </ion-content></ion-menu><ion-nav id="nav" #content [root]="rootPage"></ion-nav></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerCloudMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'modal-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+        var COMPONENT_TEMPLATE = '<div><ion-menu [content]="content">  <ion-header>    <ion-toolbar>      <ion-title>Hetzner Cloud Mobile</ion-title>    </ion-toolbar>  </ion-header>  <ion-content class="menu">    <ion-list>      <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose="" class="hidden"              [ngClass]="{\'visible\':(menu_entry.hidden == true && projects.actual_project != null) || menu_entry.hidden==false}">        <i [class]="\'fas fa-fw \'+menu_entry.icon"></i> {{ menu_entry.key | translate }}      </button>      <button ion-item (click)="openAboutPage()" menuClose=""              style="position: fixed; bottom:0; text-align: center;font-size:12px;">        {{ \'PAGE.ABOUT.TITLE\' | translate }}      </button>    </ion-list>  </ion-content></ion-menu><ion-nav id="nav" #content [root]="rootPage"></ion-nav></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerCloudMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'modal-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HetznerCloudMobileApp'};
 </script>

@@ -11,6 +11,9 @@ import {PricesApiProvider} from "./pricing-api/pricing-api";
 import {HttpClientModule} from "@angular/common/http";
 import {HetznerAppModule} from "../modules/hetzner-app/hetzner-app.module";
 
+/**
+ * This module register all available hetzner apis.
+ */
 @NgModule({
   imports: [HttpClientModule, HetznerAppModule],
   providers: [

@@ -2,65 +2,76 @@ import {Component} from '@angular/core';
 import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
-import {ImageApiProvider} from "../../../providers/image-api/image-api";
-import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
+import {Image, Server} from "../../../modules/hetzner-cloud-data/servers/server";
+import {ImagesService} from "../../../modules/hetzner-cloud-data/images/images.service";
 
-
+/**
+ * With this modal it is possible to change the backup settings of the server
+ */
 @Component({
   selector: 'modal-backupSettings',
   templateUrl: 'backupSettings.html'
 })
 export class backupSettingsModal {
   /**
-   *
+   * The server for which you want to change the settings
+   * @type {Server}
    */
-  public server: Server;
+  protected server: Server;
   /**
-   *
+   * This contains the currently selected backup window
+   * @type {string}
    */
-  public backup_window: string;
+  protected backup_window: string;
   /**
-   *
+   * This contains all available images
+   * @type {Image}
    */
-  public images: Array<any>;
+  protected images: Array<Image>;
   /**
-   *
-   * @type {null}
+   * The selected image
+   * @type {Image}
    */
-  public image: any = null;
+  protected image: Image = null;
   /**
-   *
+   * Is the snapshot creation done?
    * @type {boolean}
    */
-  public create_snapshot_done: boolean = false;
+  protected create_snapshot_done: boolean = false;
   /**
-   *
+   * Is the backup creation done?
    * @type {boolean}
    */
-  public create_backup_done: boolean = false;
+  protected create_backup_done: boolean = false;
 
   /**
-   *
-   * @param {ProjectsService} project
-   * @param {ViewController} viewCtrl
-   * @param {ServerApiProvider} serverApiProvider
-   * @param {NavParams} navParams
-   * @param {NavController} navCtrl
-   * @param {ImageApiProvider} imageApiProvider
+   * Constructor
    * @param {LoadingController} loadingCtrl
+   * @param {NavController} navCtrl
+   * @param {ViewController} viewCtrl
+   * @param {ProjectsService} project
+   * @param {ServerApiProvider} serverApiProvider
+   * @param {ImagesService} imagesService
+   * @param {NavParams} navParams
    */
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public serverApiProvider: ServerApiProvider, public navParams: NavParams, public navCtrl: NavController, public imageApiProvider: ImageApiProvider, public loadingCtrl: LoadingController) {
+  constructor(
+    protected loadingCtrl: LoadingController,
+    protected navCtrl: NavController,
+    protected viewCtrl: ViewController,
+    protected project: ProjectsService,
+    protected serverApiProvider: ServerApiProvider,
+    protected imagesService: ImagesService,
+    protected navParams: NavParams,
+  ) {
     this.server = navParams.get('server');
     this.backup_window = this.server.backup_window;
-    this.imageApiProvider.getImages().then((data) => {
-      this.images = data['images'];
-    })
+    this.images = imagesService.images;
   }
 
   /**
-   *
+   * Disable the currently enabled backups
    */
-  public disable_backups() {
+  disable_backups() {
     var loader = this.loadingCtrl.create();
     loader.present();
     this.serverApiProvider.disable_backups(this.server.id).then(() => {
@@ -72,9 +83,9 @@ export class backupSettingsModal {
   }
 
   /**
-   *
+   * Enable the currently disabled backups
    */
-  public enable_backups() {
+  enable_backups() {
 
     if (this.backup_window != null) {
       var loader = this.loadingCtrl.create();
@@ -88,42 +99,44 @@ export class backupSettingsModal {
   }
 
   /**
-   *
+   * Create a new snapshot
    */
-  public create_snapshot() {
+  create_snapshot() {
     this.create_snapshot_done = false;
     var loader = this.loadingCtrl.create();
     loader.present();
     this.serverApiProvider.create_snapshot(this.server.id).then(() => {
-      this.imageApiProvider.getImages().then((data) => {
-        this.images = data['images'];
+        this.imagesService.reloadImages();
+
+        this.images = this.imagesService.images;
         loader.dismiss();
         this.create_snapshot_done = true;
-      });
-    });
+
+      }
+    );
 
   }
 
   /**
-   *
+   * Create a new backup
    */
-  public create_backup() {
+  create_backup() {
     this.create_backup_done = false;
     var loader = this.loadingCtrl.create();
     loader.present();
     this.serverApiProvider.create_backup(this.server.id).then(() => {
-      this.imageApiProvider.getImages().then((data) => {
-        this.images = data['images'];
-        loader.dismiss();
-        this.create_backup_done = true;
-      });
+      this.imagesService.reloadImages();
+
+      this.images = this.imagesService.images;
+      loader.dismiss();
+      this.create_backup_done = true;
     });
   }
 
   /**
-   *
+   * Rebuild the server from an image
    */
-  public rebuild_from_image() {
+  rebuild_from_image() {
     if (this.image != null) {
       var loader = this.loadingCtrl.create();
       loader.present();
@@ -135,10 +148,9 @@ export class backupSettingsModal {
   }
 
   /**
-   *
-   * @returns {Promise<any>}
+   * Dismiss the modal
    */
-  public dismiss() {
+  dismiss() {
     return this.viewCtrl.dismiss();
   }
 }

@@ -10,10 +10,12 @@ import {shareProjectModal} from "./shareProject/shareProject";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
 import {fadeIn, fadeOut} from "ng-animate";
 import {editProjectModal} from "./editProject/editProject";
-import {PricingService} from "../../modules/hetzner-cloud-data/pricings/pricing.service";
 import {HetznerCloudDataService} from "../../modules/hetzner-cloud-data/hetzner-cloud-data.service";
 import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
+/**
+ * This is the project page, where you can create, activate, share and delete projects
+ */
 @Component({
   selector: 'page-projects',
   templateUrl: 'projects.html',
@@ -31,18 +33,18 @@ import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 })
 export class ProjectsPage {
   /**
-   *
+   * All projects
    * @type {project[]}
    */
   public _projects: Array<project> = [];
   /**
-   *
+   * Contain all the visible submenus
    * @type {any[]}
    */
   public visible = [];
 
   /**
-   *
+   * Constructor
    * @param {ActionSheetController} actionSheetCtrl
    * @param {ModalController} modal
    * @param {HetznerCloudDataService} hetznerCloudDataService
@@ -67,7 +69,7 @@ export class ProjectsPage {
   }
 
   /**
-   *
+   * Open a submenu
    * @param menuId
    */
   openSubMenu(menuId) {
@@ -81,7 +83,7 @@ export class ProjectsPage {
   }
 
   /**
-   *
+   * Open a Edit modal with the given project
    * @param {project} project
    */
   openEditModal(project: project) {
@@ -93,7 +95,7 @@ export class ProjectsPage {
   }
 
   /**
-   *
+   * Open a modal for creating new projects
    */
   openCreateProjectModal() {
     if (this.network.has_connection) {
@@ -108,7 +110,7 @@ export class ProjectsPage {
   }
 
   /**
-   *
+   * Open the modal for sharing the given project with a qr-code
    * @param {project} project
    */
   public openShareModal(project: project) {
@@ -120,62 +122,7 @@ export class ProjectsPage {
   }
 
   /**
-   *
-   * @param {project} project
-   */
-  public openActionSheets(project: project) {
-    let _title: string = '';
-    this.translate.get('PAGE.PROJECTS.ACTIONS.TITLE', {projectName: project.name}).subscribe((text) => {
-      _title = text;
-    });
-    let _delete: string = '';
-    this.translate.get('ACTIONS.DELETE').subscribe(text => {
-      _delete = text;
-    });
-    let _activate: string = '';
-    this.translate.get('ACTIONS.ACTIVATE').subscribe(text => {
-      _activate = text;
-    });
-    let _cancel: string = '';
-    this.translate.get('ACTIONS.CANCEL').subscribe(text => {
-      _cancel = text;
-    });
-    let actionSheet = this.actionSheetCtrl.create({
-      title: _title,
-      cssClass: 'action-sheets-basic-page',
-      buttons: [
-        {
-          text: _delete,
-          role: 'destructive',
-          icon: 'trash',
-          cssClass: 'delete_project',
-          handler: () => {
-            this.delete(project);
-          }
-        },
-        {
-          text: _activate,
-          icon: 'checkmark',
-          cssClass: 'activate_project',
-          handler: () => {
-            this.selectProject(project);
-          }
-        },
-        {
-          text: _cancel,
-          role: 'cancel', // will always sort to be on the bottom
-          icon: 'close',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
-  }
-
-  /**
-   *
+   * Select a project so this is the new selected project
    * @param {project} project
    */
   selectProject(project: project) {
@@ -189,29 +136,7 @@ export class ProjectsPage {
   }
 
   /**
-   *
-   * @param event
-   */
-  search(event) {
-    // Reset items back to all of the items
-    this._projects = this.project.projects;
-
-    // set val to the value of the ev target
-    var val = event.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this._projects = this._projects.filter((item) => {
-        if (item == null) {
-          return false;
-        }
-        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
-
-  /**
-   *
+   * Delete a project
    * @param {project} project
    */
   public delete(project: project) {

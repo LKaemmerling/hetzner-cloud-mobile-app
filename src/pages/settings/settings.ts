@@ -8,10 +8,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {OneSignal} from "@ionic-native/onesignal";
 
 /**
- * Generated class for the SettingsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * This is the settings page, that contain all possible settings of the app
  */
 
 @Component({
@@ -35,13 +32,13 @@ export class SettingsPage {
    */
   public language: string = 'de';
   /**
-   *
+   * Is the compact server design used?
    * @type {boolean}
    */
   public compact_server_design: boolean = false;
 
   /**
-   *
+   * Constructor
    * @param {NavController} navCtrl
    * @param {NavParams} navParams
    * @param {AppVersion} appVersion
@@ -51,7 +48,14 @@ export class SettingsPage {
    * @param {TranslateService} translate
    * @param {OneSignal} oneSignal
    */
-  constructor(public navCtrl: NavController, public navParams: NavParams, public appVersion: AppVersion, public fingerprint: FingerprintAIO, public storage: Storage, public loadingCtrl: LoadingController, public translate: TranslateService, public oneSignal: OneSignal) {
+  constructor(protected navCtrl: NavController,
+              protected navParams: NavParams,
+              protected appVersion: AppVersion,
+              protected fingerprint: FingerprintAIO,
+              protected storage: Storage,
+              protected loadingCtrl: LoadingController,
+              protected translate: TranslateService,
+              protected oneSignal: OneSignal) {
     appVersion.getVersionNumber().then((_version) => {
       this.version = _version;
     });
@@ -81,14 +85,14 @@ export class SettingsPage {
   }
 
   /**
-   *
+   * Open the delete-all-data-page
    */
   openDeleteAllPage() {
     this.navCtrl.push(DeleteAllDataPage);
   }
 
   /**
-   *
+   * Change the language of the app
    */
   changeLanguage() {
     let loader = this.loadingCtrl.create();
@@ -104,7 +108,7 @@ export class SettingsPage {
   }
 
   /**
-   *
+   * Open the fingerprint auth
    */
   openFingerprint() {
     this.fingerprint.show({
@@ -125,7 +129,7 @@ export class SettingsPage {
   }
 
   /**
-   *
+   * Change and save the server design
    */
   changeServersDesign() {
     let loader = this.loadingCtrl.create();

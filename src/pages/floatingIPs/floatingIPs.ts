@@ -1,36 +1,38 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects.service";
 import {ActionSheetController, ModalController, NavController} from "ionic-angular";
-
 import {addFloatingIPModal} from "./addFloatingIp/addFloatingIP";
 import {FloatingIpApiProvider} from "../../providers/floating-ip-api/floating-ip-api";
 import {FloatingIPPage} from "./floatingIp/floatingIP";
 import {FloatingIpsService} from "../../modules/hetzner-cloud-data/floating-ips/floating-ips.service";
 import {NetworkProvider} from "../../modules/hetzner-app/network/network";
 
+/**
+ * This page lists all available floating ips
+ */
 @Component({
   selector: 'page-floatingIPs',
   templateUrl: 'floatingIPs.html'
 })
 export class FloatingIPsPage {
   /**
-   *
+   * All available floating ips
    * @type {any[]}
    */
-  public _floating_ips = [];
+  _floating_ips = [];
   /**
-   *
+   * Is the componet in the loading process?
    * @type {boolean}
    */
-  public loading: boolean = false;
+  loading: boolean = false;
   /**
-   *
+   * Is the loading done?
    * @type {boolean}
    */
-  public loading_done: boolean = false;
+  loading_done: boolean = false;
 
   /**
-   *
+   * Constructor
    * @param {ActionSheetController} actionSheetCtrl
    * @param {NavController} navCtrl
    * @param {ModalController} modal
@@ -48,12 +50,11 @@ export class FloatingIPsPage {
     protected floatingIpApiProvider: FloatingIpApiProvider,
     protected networkProvider: NetworkProvider
   ) {
-    this
-      ._floating_ips = this.floatingApiService.floating_ips;
+    this._floating_ips = this.floatingApiService.floating_ips;
   }
 
   /**
-   *
+   * Load all floating ips from the storage
    */
   loadFloatingIPs() {
     this.loading = true;
@@ -66,7 +67,7 @@ export class FloatingIPsPage {
   }
 
   /**
-   *
+   * Open the modal for adding a new floating ip
    */
   openAddFloatingIP() {
     if (this.networkProvider.has_connection) {
@@ -81,7 +82,7 @@ export class FloatingIPsPage {
   }
 
   /**
-   *
+   * Open the details page for the given floating ip
    * @param floatingIp
    */
   openFloatingIP(floatingIp) {
@@ -89,10 +90,10 @@ export class FloatingIPsPage {
   }
 
   /**
-   *
+   * Delete the given floating ip
    * @param floatingIp
    */
-  public delete(floatingIp) {
+  delete(floatingIp) {
     /** @TODO **/
     if (this.networkProvider.has_connection) {
       if (confirm('Möchten Sie diese Floating IP wirklich unwiderruflich löschen?')) {
@@ -106,10 +107,10 @@ export class FloatingIPsPage {
   }
 
   /**
-   *
+   * Open all available actions for the given floating ip
    * @param floatingIp
    */
-  public openActionSheets(floatingIp) {
+  openActionSheets(floatingIp) {
     /** @TODO **/
     var actions = {
       title: 'Aktionen für die Floating IP ' + floatingIp.name,

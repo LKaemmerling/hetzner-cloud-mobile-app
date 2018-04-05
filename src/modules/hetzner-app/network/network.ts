@@ -11,21 +11,23 @@ import {ConfigService} from "../config/config.service";
 @Injectable()
 export class NetworkProvider {
   /**
-   *
+   * Determine if the app has a network connection or not
    * @type {boolean}
    */
   public has_connection: boolean = false;
   /**
+   * The event listener for disconnecting to the network
    * @type {Observable<any>}
    */
   public onDisconnectListener: Observable<any>;
   /**
+   * The event listener for connection to the network
    * @type {Observable<any>}
    */
   public onConnectListener: Observable<any>;
 
   /**
-   *
+   * Constructor
    * @param {HttpClient} http
    * @param {Network} network
    * @param {TranslateService} translate
@@ -35,7 +37,7 @@ export class NetworkProvider {
   }
 
   /**
-   *
+   * Init all for the network needed
    */
   public init() {
     this.registerListener();
@@ -43,7 +45,7 @@ export class NetworkProvider {
   }
 
   /**
-   *
+   * Performs a basic get call against the hetzner api for checking the network connection
    */
   public checkIfConnectionIsAvailable() {
     this.http.get(this.config.api_url).subscribe(data => {
@@ -59,7 +61,7 @@ export class NetworkProvider {
   }
 
   /**
-   *
+   * Register all needed event listener
    */
   protected registerListener() {
     this.onDisconnectListener = this.network.onDisconnect()
@@ -74,7 +76,7 @@ export class NetworkProvider {
   }
 
   /**
-   *
+   * Displays a translated notice that there is a no connection to the network
    */
   public displayNoNetworkNotice() {
     this.translate.get('GLOBAL.NO_CONNECTION').subscribe((text) => {
@@ -83,11 +85,11 @@ export class NetworkProvider {
   }
 
   /**
-   *
-   * @param api_key
+   * This method quick test the given api key, if the given key is valid
+   * @param {string} api_key
    * @returns {Promise<any>}
    */
-  public quickTestApiKey(api_key) {
+  public quickTestApiKey(api_key: string) {
     return new Promise((resolve, reject) => {
       this.http.get(this.config.api_url + '/locations', {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key)

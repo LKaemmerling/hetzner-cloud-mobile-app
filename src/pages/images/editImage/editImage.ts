@@ -3,19 +3,35 @@ import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/proje
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ImageApiProvider} from "../../../providers/image-api/image-api";
 
-
+/**
+ * This modal makes it possible to edit a image
+ */
 @Component({
   selector: 'modal-editImage',
   templateUrl: 'editImage.html'
 })
 export class editImageModal {
+  /**
+   * The image
+   */
   public image: any;
 
-  constructor(public project: ProjectsService, public viewCtrl: ViewController, public imageApiProvider: ImageApiProvider, public navParams: NavParams, public navCtrl: NavController, public loadingCtrl: LoadingController) {
+  /**
+   * Constructor
+   * @param {ProjectsService} project
+   * @param {ViewController} viewCtrl
+   * @param {ImageApiProvider} imageApiProvider
+   * @param {NavParams} navParams
+   * @param {NavController} navCtrl
+   * @param {LoadingController} loadingCtrl
+   */
+  constructor(protected project: ProjectsService, protected viewCtrl: ViewController, protected imageApiProvider: ImageApiProvider, protected navParams: NavParams, protected navCtrl: NavController, protected loadingCtrl: LoadingController) {
     this.image = navParams.get('image');
   }
 
-
+  /**
+   * Update a image and make the api call
+   */
   public updateImage() {
     let loader = this.loadingCtrl.create();
     loader.present();
@@ -26,6 +42,9 @@ export class editImageModal {
 
   }
 
+  /**
+   * Dissmiss the modal
+   */
   public dismiss() {
     this.viewCtrl.dismiss();
   }

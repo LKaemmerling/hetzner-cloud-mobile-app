@@ -1,12 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 
-/*
-  Generated class for the ActionsApiProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+/**
+ * This is the provider that performs the api calls to the action api.
+ */
 @Injectable()
 export class ActionsApiProvider extends HetznerApiProvider {
 
