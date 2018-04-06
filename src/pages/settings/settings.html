@@ -45,10 +45,6 @@
       <ion-label text-wrap>{{ 'PAGE.SETTINGS.DESIGN.COMPACT_SERVERS' | translate }}</ion-label>
       <ion-toggle [(ngModel)]="compact_server_design" (ionChange)="changeServersDesign()"></ion-toggle>
     </ion-item>
-    <ion-item>
-      <ion-label text-wrap><em>EXPERIMENTAL:</em> New Server Creation Form</ion-label>
-      <ion-toggle [(ngModel)]="experimental_server_creation_form" (ionChange)="changeServerCreationForm()"></ion-toggle>
-    </ion-item>
   </ion-list>
   <button ion-button="" color="danger" (click)="openDeleteAllPage()">
     {{ 'PAGE.DELETE_ALL.TITLE' | translate }}

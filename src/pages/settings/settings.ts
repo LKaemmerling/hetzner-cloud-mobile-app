@@ -37,8 +37,6 @@ export class SettingsPage {
    */
   public compact_server_design: boolean = false;
 
-  public experimental_server_creation_form: boolean = false;
-
   /**
    * Constructor
    * @param {NavController} navCtrl
@@ -69,11 +67,6 @@ export class SettingsPage {
     storage.get('compact_server_design').then(value => {
       if (value != undefined) {
         this.compact_server_design = value;
-      }
-    });
-    storage.get('experimental_server_creation_form').then(value => {
-      if (value != undefined) {
-        this.experimental_server_creation_form = value;
       }
     });
     this.fingerprint.isAvailable().then(resp => {
@@ -143,15 +136,4 @@ export class SettingsPage {
     this.storage.set('compact_server_design', this.compact_server_design);
     loader.dismiss();
   }
-  /**
-   * Change and save the setting for the experimental_server_creation_form
-   */
-  changeServerCreationForm() {
-    let loader = this.loadingCtrl.create();
-    loader.present();
-    this.storage.set('experimental_server_creation_form', this.experimental_server_creation_form);
-    loader.dismiss();
-  }
-
-
 }

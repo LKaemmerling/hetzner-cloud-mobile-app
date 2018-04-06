@@ -5,62 +5,8 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content *ngIf="experimental_server_creation_form == false">
-  <ion-list>
-
-    <ion-item>
-      <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.NAME' | translate}}</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="name" required=""></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.TYPE' | translate}}</ion-label>
-      <ion-select [(ngModel)]="server_type" id="select_type" required="">
-        <ion-option *ngFor="let _server_type of server_types" [value]="_server_type" [id]="'type'+_server_type.id"
-                    [translate]="'PAGE.SERVERS.MODAL.ADD.FORM.PRICING'"
-                    [translateParams]="{typeName:_server_type.description, typePrice:_server_type.prices[0].price_monthly.gross | number:'1.2-2'}">
-        </ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.LOCATION' | translate}}</ion-label>
-      <ion-select [(ngModel)]="location" id="select_location" required="">
-        <ion-option *ngFor="let _location of locations" [value]="_location.id" [id]="'location'+_location.id">{{
-          _location.description }}
-        </ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.IMAGE' | translate}}</ion-label>
-      <ion-select [(ngModel)]="image" id="select_image">
-        <ion-option *ngFor="let _image of images" [value]="_image.id" required="">{{ _image.description }}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.SSH_KEYS' | translate}}</ion-label>
-      <ion-select [(ngModel)]="ssh_key" multiple="true" id="select_ssh_keys">
-        <ion-option *ngFor="let _ssh_key of ssh_keys" [value]="_ssh_key.id">{{ _ssh_key.name }}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>{{ 'PAGE.SERVERS.MODAL.ADD.FORM.START_AFTER_CREATION' | translate}}</ion-label>
-      <ion-toggle [(ngModel)]="start_after_create"></ion-toggle>
-    </ion-item>
-    <ion-item
-      *ngIf="server_type != null"><strong>{{server_type.description}}</strong><br/>
-      {{ 'PAGE.SERVERS.TYPE_DETAILS.CORES' | translate}} {{ server_type.cores }} <br/>{{
-      'PAGE.SERVERS.TYPE_DETAILS.MEMORY' | translate}}
-      {{ server_type.memory * 1024}} MB<br/>{{ 'PAGE.SERVERS.TYPE_DETAILS.DISK' | translate}}
-      {{ server_type.disk }} GB<br/>
-      {{ 'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE' | translate}} {{ server_type.storage_type }}
-    </ion-item>
-  </ion-list>
-  <button ion-button color="danger" (click)="createServer()">{{ 'ACTIONS.ORDER' | translate}}</button>
-  <p class="message_box error" *ngIf="error != null">{{ error | translate }}</p>
-</ion-content>
-
-<ion-content *ngIf="experimental_server_creation_form" padding="">
-  <ion-row style="margin-top:15px;">
+<ion-content>
+  <ion-row style="margin-top:30px;">
     <numeric-step-indicator step="1" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.LOCATION"></numeric-step-indicator>
     <select-datacenter [(selectedDatacenter)]="location"></select-datacenter>
   </ion-row>
