@@ -1,9 +1,6 @@
 <!-- Generated template for the ServerBasicInformationComponent component -->
-<div ion-item>
-  <server-status-indicator [status]="server.status" item-start=""></server-status-indicator>
-  <h2>{{ server.name }}
-
-  </h2>
+<div>
+  <h2><server-status-indicator [status]="server.status" style="padding-left:10px"></server-status-indicator>{{ server.name }}</h2>
   <p text-wrap="">{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{
     server.datacenter.name
     }}

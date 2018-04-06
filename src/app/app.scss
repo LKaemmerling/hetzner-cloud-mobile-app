@@ -16,6 +16,9 @@ $flag-icon-square-path: '/assets/flags/1x1';
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.statusbar-padding .scroll-content{
+  margin-top: 80px;
+}
 
 .message_box {
   margin: 10px 0px;
