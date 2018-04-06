@@ -45,7 +45,7 @@
       </ion-card>
     </div>
     <div *ngSwitchCase="'backup'">
-      <ion-list *ngIf="serversService.servers.length > 0" padding="">
+      <ion-list *ngIf="images.length > 0 && serversService.servers.length > 0" padding="">
         <div *ngFor="let server of serversService.getServersByEqualsNotData('backup_window',null)">
           <ion-item (click)="toggle(server.id)">
             <server-basic-information [server]="server"></server-basic-information>

@@ -24,7 +24,7 @@ export class SelectDatacenterComponent {
         var found = false;
         this.datacenters.forEach((sdc) => {
           if (sdc.id == dc.location.id) {
-            sdc.options.push({id: dc['location'].id, label: dc.name, server_types: dc['server_types']});
+            sdc.options.push({id: dc['location'].id, label: dc.name, server_types: dc.server_types});
             found = true;
           }
         });
@@ -38,7 +38,8 @@ export class SelectDatacenterComponent {
             options: [
               {
                 id: dc.id,
-                label: dc.name.replace(dc['location'].name + '-', '')
+                label: dc.name.replace(dc['location'].name + '-', ''),
+                server_types: dc.server_types
               }
             ]
           });

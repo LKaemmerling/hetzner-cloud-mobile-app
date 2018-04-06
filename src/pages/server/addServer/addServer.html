@@ -3,15 +3,8 @@
     <ion-title>
       {{ 'PAGE.SERVERS.MODAL.ADD.TITLE' | translate}}
     </ion-title>
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
-        <i class="fas fa-times" showWhen="android,windows"></i>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 <ion-content *ngIf="experimental_server_creation_form == false">
   <ion-list>
 
@@ -67,20 +60,17 @@
 </ion-content>
 
 <ion-content *ngIf="experimental_server_creation_form" padding="">
-  <ion-row>
+  <ion-row style="margin-top:15px;">
     <numeric-step-indicator step="1" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.LOCATION"></numeric-step-indicator>
     <select-datacenter [(selectedDatacenter)]="location"></select-datacenter>
-    {{ location }}
   </ion-row>
   <ion-row>
     <numeric-step-indicator step="2" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.IMAGE"></numeric-step-indicator>
     <select-image [(selectedImage)]="image"></select-image>
-    {{ image }}
   </ion-row>
   <ion-row>
     <numeric-step-indicator step="3" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.TYPE"></numeric-step-indicator>
     <select-type [(selectedType)]="server_type"></select-type>
-    {{ server_type }}
   </ion-row>
   <!--<ion-row>
     <numeric-step-indicator step="4"
@@ -93,7 +83,9 @@
   </ion-row>
   <ion-row>
     <numeric-step-indicator step="5" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.NAME"></numeric-step-indicator>
-    <ion-card><ion-input type="text" value="" [(ngModel)]="name" required=""></ion-input></ion-card>
+    <ion-card>
+      <ion-input type="text" value="" [(ngModel)]="name" required=""></ion-input>
+    </ion-card>
   </ion-row>
   <button ion-button color="danger" (click)="createServer2()">{{ 'ACTIONS.ORDER' | translate}}</button>
   <p class="message_box error" *ngIf="error != null">{{ error | translate }}</p>

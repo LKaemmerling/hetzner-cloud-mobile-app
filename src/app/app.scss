@@ -3,23 +3,6 @@ $flag-icon-css-path: '../';
 $flag-icon-rect-path: '/assets/flags/4x3';
 $flag-icon-square-path: '/assets/flags/1x1';
 @import "../../node_modules/flag-icon-css/sass/flag-icon.scss";
-.os-icon-ubuntu {
-  background-image: url(#{$flag-icon-css-path}/assets/os/ubuntu.svg);
-
-}
-
-.os-icon-fedora {
-  background-image: url(#{$flag-icon-css-path}/assets/os/fedora.svg);
-}
-
-.os-icon-debian {
-  background-image: url(#{$flag-icon-css-path}/assets/os/debian.svg);
-}
-
-.os-icon-centos {
-  background-image: url(#{$flag-icon-css-path}/assets/os/centos.svg);
-}
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -33,6 +16,9 @@ $flag-icon-square-path: '/assets/flags/1x1';
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.statusbar-padding .scroll-content{
+  margin-top: 80px;
+}
 
 .message_box {
   margin: 10px 0px;

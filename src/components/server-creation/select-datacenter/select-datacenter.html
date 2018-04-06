@@ -6,12 +6,22 @@
     {{item.label}}</label>
   <div class="select-box__bottom select-box__dropdown">
     <div *ngFor="let option of item.options" (click)="selectItem(item,option)"
-         [ngClass]="{'child-selected':selectedChildren == option.id}">
-      <input name="datacenter" type="radio" id="datacenter2">
-      <label class="select-box__option server-location__datacenter"
-             data-test="select-location-datacenter">
-        {{ option.label }}
-      </label>
+         [ngClass]="{'child-selected':selectedChildren == option.id,'select-box--disabled':option.server_types.available.length == 0}">
+      <div *ngIf="option.server_types.available.length == 0">
+        <label class="select-box__option server-location__datacenter"
+               data-test="select-location-datacenter"
+               tooltip="Standort wegen hoher Nachfrage kurzfristig nicht verfügbar."
+               positionH="right" arrow>
+          {{ option.label }}
+        </label>
+      </div>
+      <div *ngIf="option.server_types.available.length > 0">
+        <input name="datacenter" type="radio" id="datacenter2">
+        <label class="select-box__option server-location__datacenter"
+               data-test="select-location-datacenter">
+          {{ option.label }}
+        </label>
+      </div>
     </div>
   </div>
 </div>
