@@ -2,7 +2,7 @@
 <div *ngFor="let item of datacenters"
      [ngClass]="{'select-box--selected':selectedParent == item.id,'select-box--disabled':item.server_types.available.length == 0}"
      class="select-box">
-  <div class="select-box__top">
+  <div class="select-box__top" (click)="selectItem(item)">
     <span [ngClass]="item.icon" *ngIf="item.icon != null"></span>
     <label>{{item.label}}</label>
   </div>

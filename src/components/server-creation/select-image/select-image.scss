@@ -1,5 +1,6 @@
 select-image {
   display: inline-block;
+  width: 100%;
   .select-box {
     transition: box-shadow .15s;
     position: relative;
@@ -12,7 +13,8 @@ select-image {
     font-weight: 500;
     vertical-align: top;
     border-radius: 3px;
-    width: 45%;
+    width: 20%;
+    min-width:190px;
     text-transform: capitalize;
   }
   .select-box__top {
@@ -78,7 +80,9 @@ select-image {
     background-color: #8c8c8c;
     height: 70px;
     width: 69px;
-    margin-left: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   .select-box--selected .os-icon {
     background-color: white;
@@ -99,7 +103,6 @@ select-image {
     mask-image: url(#{$flag-icon-css-path}/assets/os/debian.svg);
 
     width: 58px;
-    margin-left: 30%;
   }
 
   .select-box__top .os-icon-centos {

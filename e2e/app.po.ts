@@ -78,36 +78,21 @@ export class Page {
     browser.sleep(500);
     element(by.className('fab')).click();
     browser.sleep(500);
-    element(by.id('select_type')).click();
+    element(by.buttonText(this.getLocal('ACTIONS.ORDER'))).click();
     browser.sleep(500);
-    element(by.xpath('//*[@id="alert-input-0-0"]/span[1]/div[2]')).click();
+    element(by.css('[data-test-type~="cx11"]')).click();
     browser.sleep(500);
-    element(by.buttonText('OK')).click();
+    element(by.buttonText(this.getLocal('ACTIONS.ORDER'))).click();
+    element(by.css('[data-test-datacenter~="Falkenstein_dc8"]')).click();
     browser.sleep(500);
-    element(by.id('select_location')).click();
+    element(by.buttonText(this.getLocal('ACTIONS.ORDER'))).click();
+    element(by.css('[data-test-image~="ubuntu_16.04"]')).click();
     browser.sleep(500);
-    element(by.xpath('//*[@id="alert-input-1-0"]/span[1]/div[2]')).click();
+    element(by.css('.ssh_key:first-child')).click();
     browser.sleep(500);
-    element(by.buttonText('OK')).click();
+    element(by.buttonText(this.getLocal('ACTIONS.ORDER'))).click();
+    element(by.css('#name input')).sendKeys('E2E-Test-Server');
     browser.sleep(500);
-    element(by.id('select_image')).click();
-    browser.sleep(500);
-    element(by.xpath('//*[@id="alert-input-2-0"]/span[1]/div[2]')).click();
-    browser.sleep(500);
-    element(by.buttonText('OK')).click();
-    browser.sleep(500);
-    element(by.id('select_ssh_keys')).click();
-    browser.sleep(500);
-    element(by.xpath('//*[@id="alert-input-3-0"]/span[1]/div[2]')).click();
-    browser.sleep(500);
-    element(by.buttonText('OK')).click();
-    browser.sleep(500);
-    element(by.xpath('/html[1]/body[1]/ion-app[1]/ion-modal[1]/div[1]/page-addserver[1]/ion-content[1]/div[2]/ion-list[1]/ion-item[1]/div[1]/div[1]/ion-input[1]/input[1]')).sendKeys('E2E-Test-Server');
-    browser.sleep(500);
-    if (!start_up_on_creation) {
-      element(by.id('toggle-40-0')).click();
-      browser.sleep(500);
-    }
     element(by.buttonText(this.getLocal('ACTIONS.ORDER'))).click();
 
     //consolePage.debug('Sorry the Server Creation could take up to 15 seconds');

@@ -53,6 +53,9 @@ export class SelectDatacenterComponent {
 
   selectItem(parent, child = null) {
     if (parent.server_types.available.length > 0) {
+      if(child == null){
+        child = parent.options[0];
+      }
       this.selectedParent = parent.id;
       this.selectedChildren = child.id;
       this.selectedDatacenterChange.emit((child == null) ? parent.id : child.id);

@@ -1,5 +1,6 @@
 select-type {
   display: inline-block;
+  width: 100%;
   .select-box {
     transition: box-shadow .15s;
     position: relative;
@@ -12,7 +13,8 @@ select-type {
     font-weight: 500;
     vertical-align: top;
     border-radius: 3px;
-    width: 45%;
+    width: 18%;
+    min-width:190px;
     text-transform: uppercase;
     margin-top: 5px;
     text-align: center;
