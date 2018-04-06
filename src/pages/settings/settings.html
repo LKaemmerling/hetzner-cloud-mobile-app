@@ -15,15 +15,15 @@
       {{ 'PAGE.SETTINGS.APP.TITLE' | translate }}
     </ion-list-header>
     <div ion-item="">
-      <ion-label>{{ 'PAGE.SETTINGS.APP.VERSION' | translate }}</ion-label>
+      <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.VERSION' | translate }}</ion-label>
       <span item-right>{{ version }}</span>
     </div>
     <div ion-item="">
-      <ion-label>{{ 'PAGE.SETTINGS.APP.LATEST_UPDATE.TITLE' | translate }}</ion-label>
+      <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.LATEST_UPDATE.TITLE' | translate }}</ion-label>
       <span item-right="">{{'PAGE.SETTINGS.APP.LATEST_UPDATE.TEXT' | translate |replacePrice }}</span>
     </div>
     <div ion-item="">
-      <ion-label>{{ 'PAGE.SETTINGS.APP.LANGUAGE' | translate }}</ion-label>
+      <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.LANGUAGE' | translate }}</ion-label>
       <ion-select [(ngModel)]="language" (ionChange)="changeLanguage()" id="language">
         <ion-option value="de">Deutsch</ion-option>
         <ion-option value="en">English</ion-option>
@@ -33,7 +33,7 @@
       {{ 'PAGE.SETTINGS.SECURITY.TITLE' | translate }}
     </ion-list-header>
     <ion-item *ngIf="finger_print >= 0">
-      <ion-label>{{ 'PAGE.SETTINGS.SECURITY.AUTH.TITLE' | translate }}</ion-label>
+      <ion-label text-wrap>{{ 'PAGE.SETTINGS.SECURITY.AUTH.TITLE' | translate }}</ion-label>
       <ion-toggle [(ngModel)]="finger_print" (ionChange)="openFingerprint()"></ion-toggle>
     </ion-item>
     <p ion-item="" class="message_box info" *ngIf="finger_print == -1" text-wrap=""
@@ -42,11 +42,11 @@
       Design
     </ion-list-header>
     <ion-item>
-      <ion-label>{{ 'PAGE.SETTINGS.DESIGN.COMPACT_SERVERS' | translate }}</ion-label>
+      <ion-label text-wrap>{{ 'PAGE.SETTINGS.DESIGN.COMPACT_SERVERS' | translate }}</ion-label>
       <ion-toggle [(ngModel)]="compact_server_design" (ionChange)="changeServersDesign()"></ion-toggle>
     </ion-item>
     <ion-item>
-      <ion-label><em>EXPERIMENTAL:</em> New Server Creation Form</ion-label>
+      <ion-label text-wrap><em>EXPERIMENTAL:</em> New Server Creation Form</ion-label>
       <ion-toggle [(ngModel)]="experimental_server_creation_form" (ionChange)="changeServerCreationForm()"></ion-toggle>
     </ion-item>
   </ion-list>
