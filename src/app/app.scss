@@ -3,23 +3,6 @@ $flag-icon-css-path: '../';
 $flag-icon-rect-path: '/assets/flags/4x3';
 $flag-icon-square-path: '/assets/flags/1x1';
 @import "../../node_modules/flag-icon-css/sass/flag-icon.scss";
-.os-icon-ubuntu {
-  background-image: url(#{$flag-icon-css-path}/assets/os/ubuntu.svg);
-
-}
-
-.os-icon-fedora {
-  background-image: url(#{$flag-icon-css-path}/assets/os/fedora.svg);
-}
-
-.os-icon-debian {
-  background-image: url(#{$flag-icon-css-path}/assets/os/debian.svg);
-}
-
-.os-icon-centos {
-  background-image: url(#{$flag-icon-css-path}/assets/os/centos.svg);
-}
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These

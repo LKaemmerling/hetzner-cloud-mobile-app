@@ -5,7 +5,6 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content *ngIf="experimental_server_creation_form == false">
   <ion-list>
 
@@ -64,17 +63,14 @@
   <ion-row style="margin-top:15px;">
     <numeric-step-indicator step="1" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.LOCATION"></numeric-step-indicator>
     <select-datacenter [(selectedDatacenter)]="location"></select-datacenter>
-    {{ location }}
   </ion-row>
   <ion-row>
     <numeric-step-indicator step="2" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.IMAGE"></numeric-step-indicator>
     <select-image [(selectedImage)]="image"></select-image>
-    {{ image }}
   </ion-row>
   <ion-row>
     <numeric-step-indicator step="3" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.TYPE"></numeric-step-indicator>
     <select-type [(selectedType)]="server_type"></select-type>
-    {{ server_type }}
   </ion-row>
   <!--<ion-row>
     <numeric-step-indicator step="4"
