@@ -86,11 +86,13 @@ export class addProjectModal {
 
 
     this.network.quickTestApiKey(this.api_key).then(() => {
+      this.new_project = {name: null, api_key: null};
       this.new_project.name = this.project_name;
       this.new_project.api_key = this.api_key;
       this.project.addProject(this.new_project);
       this.project.selectProject(this.new_project);
       this.project.saveProjects();
+      this.project.loadProjects();
       this.dismiss();
     }, () => {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.INVALID_KEY';

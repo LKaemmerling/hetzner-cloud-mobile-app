@@ -33,7 +33,7 @@ export class addServerModal {
    * @type {number}
    */
   location: number;
-  
+
   /**
    * The selected ssh key id
    * @type {number}
@@ -57,12 +57,6 @@ export class addServerModal {
    * @type {string}
    */
   error: string = null;
-  /**
-   * The currently selected image id
-   * @type {number}
-   * @private
-   */
-  __selected_image: number = null;
 
   /**
    * Constructor

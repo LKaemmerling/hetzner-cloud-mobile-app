@@ -65,11 +65,7 @@ select-image {
     -ms-user-select: none;
     user-select: none;
     text-align: center;
-    .flag-icon {
-      width: 50px;
-      height: 50px;
-      margin: 20px;
-    }
+    padding-top: 10px;
   }
   .select-box__option {
     -ms-flex: 1;
@@ -78,59 +74,38 @@ select-image {
     border-bottom: 1px solid #fff;
     text-transform: uppercase;
   }
-  .select-box__top .os-icon-ubuntu {
+  .select-box__top .os-icon {
     background-color: #8c8c8c;
-    -webkit-mask-image: url(#{$flag-icon-css-path}/assets/os/ubuntu.svg);
-    mask-image: url(#{$flag-icon-css-path}/assets/os/ubuntu.svg);
-    width: 49px !important;
-    height: 50px;
+    height: 70px;
+    width: 69px;
+    margin-left: 25%;
   }
-
-  .select-box--selected .os-icon-ubuntu {
+  .select-box--selected .os-icon {
     background-color: white;
+  }
+  .select-box__top .os-icon-ubuntu {
     -webkit-mask-image: url(#{$flag-icon-css-path}/assets/os/ubuntu.svg);
     mask-image: url(#{$flag-icon-css-path}/assets/os/ubuntu.svg);
   }
 
   .select-box__top .os-icon-fedora {
-    background-color: #8c8c8c;
     -webkit-mask-image: url(#{$flag-icon-css-path}/assets/os/fedora.svg);
     mask-image: url(#{$flag-icon-css-path}/assets/os/fedora.svg);
-    width: 50px;
-    height: 50px;
-  }
-
-  .select-box--selected .os-icon-fedora {
-    background-color: white;
-    -webkit-mask-image: url(#{$flag-icon-css-path}/assets/os/fedora.svg);
-    mask-image: url(#{$flag-icon-css-path}/assets/os/fedora.svg);
+    height: 68px;
   }
 
   .select-box__top .os-icon-debian {
-    background-color: #8c8c8c;
     -webkit-mask-image: url(#{$flag-icon-css-path}/assets/os/debian.svg);
     mask-image: url(#{$flag-icon-css-path}/assets/os/debian.svg);
-    width: 40px !important;
-    height: 50px !important;
-  }
 
-  .select-box--selected .os-icon-debian {
-    background-color: white;
-    -webkit-mask-image: url(#{$flag-icon-css-path}/assets/os/debian.svg);
-    mask-image: url(#{$flag-icon-css-path}/assets/os/debian.svg);
+    width: 58px;
+    margin-left: 30%;
   }
 
   .select-box__top .os-icon-centos {
-    background-color: #8c8c8c;
     -webkit-mask-image: url(#{$flag-icon-css-path}/assets/os/centos.svg);
     mask-image: url(#{$flag-icon-css-path}/assets/os/centos.svg);
-    width: 50px;
-    height: 50px;
+    height: 68px;
   }
 
-  .select-box--selected .os-icon-centos {
-    background-color: white;
-    -webkit-mask-image: url(#{$flag-icon-css-path}/assets/os/centos.svg);
-    mask-image: url(#{$flag-icon-css-path}/assets/os/centos.svg);
-  }
 }

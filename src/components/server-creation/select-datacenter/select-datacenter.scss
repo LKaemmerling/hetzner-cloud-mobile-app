@@ -25,6 +25,11 @@ select-datacenter {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom: 1px solid #dddfe6;
+    .flag-icon {
+      width: 50px;
+      height: 50px;
+      margin: 10px 0 0 25%;
+    }
   }
   .select-box__options {
     display: -ms-flexbox;
@@ -62,12 +67,8 @@ select-datacenter {
     -ms-user-select: none;
     user-select: none;
     text-align: center;
-    .flag-icon {
-      width: 50px;
-      height: 50px;
-      margin: 10px;
-    }
   }
+
   .select-box__option {
     -ms-flex: 1;
     flex: 1;
