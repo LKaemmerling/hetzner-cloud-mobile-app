@@ -2,13 +2,11 @@ import {Component} from '@angular/core';
 import {LoadingController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {ServersService} from "../../../modules/hetzner-cloud-data/servers/servers.service";
-import {Image, Location, ServerType} from "../../../modules/hetzner-cloud-data/servers/server";
+import {ServerType} from "../../../modules/hetzner-cloud-data/servers/server";
 import {SshKeysService} from "../../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
 import {ImagesService} from "../../../modules/hetzner-cloud-data/images/images.service";
 import {LocationsService} from "../../../modules/hetzner-cloud-data/locations/locations.service";
 import {ServerTypesService} from "../../../modules/hetzner-cloud-data/server-types/server-types.service";
-import {LocationApiProvider} from "../../../providers/location-api/location-api";
-import {Storage} from "@ionic/storage";
 
 /**
  * This page makes it possible to add a new server
@@ -18,11 +16,7 @@ import {Storage} from "@ionic/storage";
   templateUrl: 'addServer.html'
 })
 export class addServerModal {
-  /**
-   * Use the new v2 of the form or not
-   * @type {boolean}
-   */
-  experimental_server_creation_form: boolean = false;
+
   /**
    * The name of the new server
    * @type {string}
@@ -33,41 +27,25 @@ export class addServerModal {
    * @type {ServerType}
    */
   server_type: ServerType;
-  /**
-   * All available server types
-   * @type {ServerType[]}
-   */
-  server_types: Array<ServerType>;
+
   /**
    * The selected location id
    * @type {number}
    */
   location: number;
-  /**
-   * All available locations
-   * @type {Location[]}
-   */
-  locations: Array<Location>;
+  
   /**
    * The selected ssh key id
    * @type {number}
    */
   ssh_key: Array<any>;
-  /**
-   *  All available SSH Keys
-   *  @type {SshKey[]}
-   */
-  ssh_keys: Array<any>;
+
   /**
    * ID of the selected image
    * @type {number}
    */
   image: number;
-  /**
-   * List of all available images
-   * @type {Image[]}
-   */
-  images: Array<Image>;
+
   /**
    * Start the new server after the creation?
    * @type {boolean}
@@ -107,27 +85,10 @@ export class addServerModal {
               protected imagesService: ImagesService,
               protected locationService: LocationsService,
               protected sshKeysService: SshKeysService,
-              protected storage:Storage
   ) {
-    this.__selected_image = this.navParams.get('selected_image');
-    if (this.__selected_image != null) {
-      this.image = this.__selected_image;
-      this.images = imagesService.images;
-    } else {
-      this.images = imagesService.getImagesByType('system');
-    }
 
-    this.locations = this.locationService.locations;
-    this.server_types = serverTypesService.server_types;
-
-
-    this.ssh_keys = sshKeysService.ssh_keys;
-    storage.get('experimental_server_creation_form').then(value => {
-      if (value != undefined) {
-        this.experimental_server_creation_form = value;
-      }
-    });
   }
+
   /**
    * Makes the api call and validates the payload
    */
@@ -163,6 +124,7 @@ export class addServerModal {
       loader.dismiss();
     });
   }
+
   /**
    * Makes the api call and validates the payload
    */
@@ -198,6 +160,7 @@ export class addServerModal {
       loader.dismiss();
     });
   }
+
   /**
    * Dismiss the modal
    */

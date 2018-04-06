@@ -24,6 +24,9 @@
       </p>
     </ion-list>
   </ion-card>
+  <ion-fab bottom right>
+    <button ion-fab (click)="openCreateServerModal()"><i class="fas fa-plus"></i></button>
+  </ion-fab>
 </ion-content>
 <ion-content *ngIf="!compact_server_design">
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
