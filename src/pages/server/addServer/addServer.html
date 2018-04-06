@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
+    <ion-title data-test="title">
       {{ 'PAGE.SERVERS.MODAL.ADD.TITLE' | translate}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-row style="margin-top:30px;">
+  <ion-row>
     <numeric-step-indicator step="1" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.LOCATION"></numeric-step-indicator>
     <select-datacenter [(selectedDatacenter)]="location"></select-datacenter>
   </ion-row>
@@ -30,9 +30,9 @@
   <ion-row>
     <numeric-step-indicator step="5" lang_key="PAGE.SERVERS.MODAL.ADD.FORM.NAME"></numeric-step-indicator>
     <ion-card>
-      <ion-input type="text" value="" [(ngModel)]="name" required=""></ion-input>
+      <ion-input type="text" value="" [(ngModel)]="name" required="" id="name"></ion-input>
     </ion-card>
   </ion-row>
   <button ion-button color="danger" (click)="createServer2()">{{ 'ACTIONS.ORDER' | translate}}</button>
-  <p class="message_box error" *ngIf="error != null">{{ error | translate }}</p>
+  <p class="message_box error" id="error_box" *ngIf="error != null">{{ error | translate }}</p>
 </ion-content>

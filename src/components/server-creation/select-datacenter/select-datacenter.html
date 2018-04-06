@@ -2,11 +2,14 @@
 <div *ngFor="let item of datacenters"
      [ngClass]="{'select-box--selected':selectedParent == item.id,'select-box--disabled':item.server_types.available.length == 0}"
      class="select-box">
-  <label class="select-box__top"><span [ngClass]="item.icon" *ngIf="item.icon != null"></span>
-    {{item.label}}</label>
+  <div class="select-box__top" (click)="selectItem(item)">
+    <span [ngClass]="item.icon" *ngIf="item.icon != null"></span>
+    <label>{{item.label}}</label>
+  </div>
   <div class="select-box__bottom select-box__dropdown">
     <div *ngFor="let option of item.options" (click)="selectItem(item,option)"
-         [ngClass]="{'child-selected':selectedChildren == option.id,'select-box--disabled':option.server_types.available.length == 0}">
+         [ngClass]="{'child-selected':selectedChildren == option.id,'select-box--disabled':option.server_types.available.length == 0}"
+         [attr.data-test-datacenter]="item.label+'_'+option.label">
       <div *ngIf="option.server_types.available.length == 0">
         <label class="select-box__option server-location__datacenter"
                data-test="select-location-datacenter"

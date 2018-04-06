@@ -64,7 +64,10 @@ export class ProjectsPage {
     protected storage: Storage,
     protected network: NetworkProvider
   ) {
-    this._projects = project.projects;
+    this.project.loadProjects().then(() => {
+
+      this._projects = project.projects;
+    })
 
   }
 
@@ -101,7 +104,9 @@ export class ProjectsPage {
     if (this.network.has_connection) {
       let modal = this.modal.create(addProjectModal);
       modal.onDidDismiss(() => {
-        this._projects = this.project.projects;
+        this.project.loadProjects().then( () => {
+          this._projects = this.project.projects;
+        });
       });
       modal.present();
     } else {
@@ -116,6 +121,7 @@ export class ProjectsPage {
   public openShareModal(project: project) {
     let modal = this.modal.create(shareProjectModal, {project: project});
     modal.onDidDismiss(() => {
+      this.project.loadProjects();
       this._projects = this.project.projects;
     });
     modal.present();

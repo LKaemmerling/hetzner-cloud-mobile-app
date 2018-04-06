@@ -45,9 +45,12 @@ export class SelectImageComponent {
   }
 
   selectItem(parent, child = null) {
-    this.selectedParent = parent;
-    this.selectedChildren = child;
-    this.selectedImageChange.emit((child == null) ? parent : child);
+    this.selectedParent = parent.id;
+    if (child == null) {
+      child = parent.options[0];
+    }
+    this.selectedChildren = child.id;
+    this.selectedImageChange.emit((child == null) ? parent.id : child.id);
     // this.__selection = {parent: this.selectedParent, children: this.selectedChildren};
   }
 }
