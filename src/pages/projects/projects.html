@@ -6,14 +6,14 @@
     <ion-title>{{ 'PAGE.PROJECTS.TITLE' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content >
+<ion-content>
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
   <ion-row class="row">
     <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let _project of _projects; let i = index">
       <ion-card class="project"
                 [ngClass]="{'active-project' : project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)}"
-                [id]="'project_'+i"  [attr.data-project]="_project.name">
-        <ion-row class="project_header" text-center="">
+                [id]="'project_'+i"  [attr.data-project]="_project.name" >
+        <ion-row class="project_header" text-center="" (click)="openSubMenu('project_'+i+'_content')" class="project_menu" [attr.data-project-menupoint]="_project.name"  [attr.data-project-menu]="'menu_point_project_'+i">>
           <ion-col offset-9 col-3 style="max-height:20px;">
             <button ion-button="" clear="" color="light"
                     (click)="openSubMenu('project_'+i+'_content')" class="project_menu" [attr.data-project-menupoint]="_project.name"  [attr.data-project-menu]="'menu_point_project_'+i">

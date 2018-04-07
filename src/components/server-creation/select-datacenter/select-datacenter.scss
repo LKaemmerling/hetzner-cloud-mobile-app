@@ -14,9 +14,15 @@ select-datacenter {
     vertical-align: top;
     border-radius: 3px;
     width: 20%;
-    min-width:170px;
+    min-width:160px;
     text-transform: capitalize;
   }
+  .select-box--disabled {
+    opacity: .5;
+    border: 1px solid #dddfe6;
+    box-shadow: none;
+  }
+
   .select-box__top {
     padding: 20px;
     border-top-left-radius: 3px;

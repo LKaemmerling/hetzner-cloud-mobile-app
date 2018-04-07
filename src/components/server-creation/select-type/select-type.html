@@ -1,11 +1,11 @@
 <!-- Generated template for the SelectDatacenterComponent component -->
 <div>
-  <ion-segment [(ngModel)]="type">
-    <ion-segment-button value="local" color="danger">
-      Local Storage (NVME SSD)
+  <ion-segment [(ngModel)]="type" padding-left="" padding-right="" padding-bottom="">
+    <ion-segment-button value="local" color="danger" text-wrap="">
+      Local Storage
     </ion-segment-button>
-    <ion-segment-button value="network">
-      Network Storage (CEPH)
+    <ion-segment-button value="network" text-wrap="">
+      Network Storage
     </ion-segment-button>
   </ion-segment>
   <div [ngSwitch]="type">

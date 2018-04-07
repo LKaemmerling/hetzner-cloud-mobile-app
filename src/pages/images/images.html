@@ -11,17 +11,19 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment [(ngModel)]="type" (click)="changeType()">
-    <ion-segment-button value="snapshot" color="danger">
-      {{ 'PAGE.IMAGES.TYPES.SNAPSHOT.TITLE' |translate}}
-    </ion-segment-button>
-    <ion-segment-button value="backup">
-      {{ 'PAGE.IMAGES.TYPES.BACKUP.TITLE' |translate}}
-    </ion-segment-button>
-    <ion-segment-button value="system">
-      {{ 'PAGE.IMAGES.TYPES.SYSTEM.TITLE' |translate}}
-    </ion-segment-button>
-  </ion-segment>
+  <div padding="">
+    <ion-segment [(ngModel)]="type" (click)="changeType()">
+      <ion-segment-button value="snapshot" color="danger">
+        {{ 'PAGE.IMAGES.TYPES.SNAPSHOT.TITLE' |translate}}
+      </ion-segment-button>
+      <ion-segment-button value="backup">
+        {{ 'PAGE.IMAGES.TYPES.BACKUP.TITLE' |translate}}
+      </ion-segment-button>
+      <ion-segment-button value="system">
+        {{ 'PAGE.IMAGES.TYPES.SYSTEM.TITLE' |translate}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
   <div [ngSwitch]="type">
     <p *ngIf="backup_done === true" class="message_box success" text-wrap="">{{
       'PAGE.SERVERS.MODAL.BACKUPS.SUCCESS.BACKUP' | translate}}</p>
