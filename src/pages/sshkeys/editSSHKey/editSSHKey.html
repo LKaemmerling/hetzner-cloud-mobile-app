@@ -17,7 +17,7 @@
 
     <ion-item>
       <ion-label>{{ 'PAGE.SSH_KEYS.MODAL.EDIT.FORM.NAME' | translate}}</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="ssh_key.name" required=""></ion-input>
+      <ion-input type="text" value="" [(ngModel)]="ssh_key.name" required="" id="description"></ion-input>
     </ion-item>
   </ion-list>
   <button ion-button color="danger" (click)="updateSshKey()">{{ 'ACTIONS.SAVE' | translate}}</button>

@@ -36,6 +36,9 @@
       "TITLE": "SSH keys",
       "NO_SSH_KEYS": "Oh! Looks like you don't have any SSH keys.",
       "ADD_SSH_KEYS": "Adding SSH keys through the app is not recommended for security reasons. Please use the Hetzner Cloud Console for this.",
+      "ACTIONS": {
+        "TITLE": "Actions for ssh-key '{{sshKey}}'"
+      },
       "MODAL": {
         "EDIT": {
           "TITLE": "Edit SSH key",

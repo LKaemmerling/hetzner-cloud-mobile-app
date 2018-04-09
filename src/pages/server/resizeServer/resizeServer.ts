@@ -48,6 +48,8 @@ export class resizeServerModal {
    */
   constructor(protected project: ProjectsService, protected viewCtrl: ViewController, protected serverApiProvider: ServerApiProvider, protected navParams: NavParams, protected navCtrl: NavController, protected serverTypeApiProvider: ServerTypeApiProvider, protected loadingCtrl: LoadingController) {
     this.server = navParams.get('server');
+    this.server_type = this.server.server_type;
+    console.log(this.server.server_type);
     serverTypeApiProvider.getServerTypes().then((data) => {
       data['server_types'].forEach((type, key) => {
         if (type.storage_type == this.server.server_type.storage_type) {

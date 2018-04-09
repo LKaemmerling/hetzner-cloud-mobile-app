@@ -35,8 +35,7 @@
       <ion-card class="server" [id]="'server_'+i">
         <ion-row class="server_header" text-center="" (click)="openSubMenu('server_'+i+'_content')">
           <ion-col offset-9 col-3 style="max-height:20px;">
-            <button ion-button="" clear="" color="light"
-                    (click)="openSubMenu('server_'+i+'_content')" class="server_menu"
+            <button ion-button="" clear="" color="light" class="server_menu"
                     [attr.data-server]="server.name">
               <i class="fas fa-ellipsis-h fa-2x"></i>
             </button>

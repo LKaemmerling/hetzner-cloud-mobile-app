@@ -36,6 +36,9 @@
       "TITLE": "SSH-Schlüssel",
       "NO_SSH_KEYS": "Sie haben noch keinen SSH-Schlüssel hinterlegt",
       "ADD_SSH_KEYS": "Das Hinzufügen von SSH-Schlüsseln über die App wird aus Sicherheitsgründen nicht empfohlen. Nutzen Sie hierfür bitte die Hetzner Cloud Console.",
+      "ACTIONS": {
+        "TITLE": "Aktionen für den SSH-Key '{{sshKey}}'"
+      },
       "MODAL": {
         "EDIT": {
           "TITLE": "SSH-Key bearbeiten",
