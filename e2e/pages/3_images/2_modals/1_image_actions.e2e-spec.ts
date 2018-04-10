@@ -20,7 +20,7 @@ describe('[3][2] Images Actions', () => {
     expect(element(by.css('[aria-labelledby~="acst-hdr-0"]')).isDisplayed()).toBeTruthy();
     expect(element(by.partialButtonText(page.getLocal('ACTIONS.DELETE'))).isDisplayed()).toBeTruthy();
     expect(element(by.partialButtonText(page.getLocal('ACTIONS.EDIT'))).isDisplayed()).toBeTruthy();
-    expect(element(by.partialButtonText(page.getLocal('ACTIONS.CREATE_SERVER'))).isDisplayed()).toBeTruthy();
+    //expect(element(by.partialButtonText(page.getLocal('ACTIONS.CREATE_SERVER'))).isDisplayed()).toBeTruthy();
     expect(element(by.partialButtonText(page.getLocal('ACTIONS.CANCEL'))).isDisplayed()).toBeTruthy();
   });
   it('[2] click on snapshot and click cancel - nothing should happend', () => {
@@ -63,7 +63,7 @@ describe('[3][2] Images Actions', () => {
     expect(element(by.css('[aria-labelledby~="acst-hdr-0"]')).isDisplayed()).toBeTruthy();
     expect(element(by.partialButtonText(page.getLocal('ACTIONS.DELETE'))).isPresent()).toBeFalsy();
     expect(element(by.partialButtonText(page.getLocal('ACTIONS.EDIT'))).isPresent()).toBeFalsy();
-    expect(element(by.partialButtonText(page.getLocal('ACTIONS.CREATE_SERVER'))).isDisplayed()).toBeTruthy();
+    //expect(element(by.partialButtonText(page.getLocal('ACTIONS.CREATE_SERVER'))).isDisplayed()).toBeTruthy();
     expect(element(by.partialButtonText(page.getLocal('ACTIONS.CANCEL'))).isDisplayed()).toBeTruthy();
   });
 });
