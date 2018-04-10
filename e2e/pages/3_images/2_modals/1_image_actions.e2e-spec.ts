@@ -58,7 +58,7 @@ describe('[3][2] Images Actions', () => {
   it('[4] click on system image should display the actions', () => {
     element(by.css('[data-test~="button_3"]')).click();
     browser.sleep(500);
-    element(by.css('[[data-test-system-image~="1"]')).click();
+    element(by.css('[data-test-system-image~="0"]')).click();
     browser.sleep(500);
     expect(element(by.css('[aria-labelledby~="acst-hdr-0"]')).isDisplayed()).toBeTruthy();
     expect(element(by.partialButtonText(page.getLocal('ACTIONS.DELETE'))).isPresent()).toBeFalsy();
