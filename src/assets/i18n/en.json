@@ -216,12 +216,13 @@
             "DESCRIPTION": "Name:",
             "NETWORK_PROTOCOL": "Protocol:",
             "SERVER": "Server:",
+            "LOCATION": "Location:",
             "INFO": "A floating IP costs <<floating_ip.price_monthly.gross>> <<currency>> (including german VAT of <<vat_rate>>%)."
           },
           "ERRORS": {
             "REQUIRED_DESCRIPTION": "Please enter a name.",
             "REQUIRED_NETWORK_PROTOCOL": "Please choose a protocol.",
-            "REQUIRED_SERVER": "Please choose a server."
+            "REQUIRED_SERVER_OR_LOCATION": "Please choose a server or a location."
           }
         },
         "ASSIGN_TO_SERVER": {

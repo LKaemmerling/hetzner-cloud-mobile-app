@@ -13,20 +13,20 @@
 <ion-content>
   <ion-card>
     <ion-list>
-      <ion-item *ngFor="let _floating_ip of _floating_ips" (click)="openActionSheets(_floating_ip)">
+      <ion-item *ngFor="let _floating_ip of _floating_ips" (click)="openActionSheets(_floating_ip)" data-test="floating_ips" [attr.data-test-floating-ip]="_floating_ip.description">
         <div>
           <h2>{{ _floating_ip.description }}</h2>
           <p>{{ _floating_ip.ip }} - {{ _floating_ip.home_location.city }}</p>
         </div>
       </ion-item>
 
-      <p ion-item *ngIf="_floating_ips == null || _floating_ips.length == 0" text-wrap="" class="message_box info">
+      <p ion-item *ngIf="_floating_ips == null || _floating_ips.length == 0" text-wrap="" class="message_box info" id="no_floating_ips">
         {{ 'PAGE.FLOATING_IPS.NO_FLOATING_IPS' | translate}}
       </p>
     </ion-list>
   </ion-card>
   <ion-fab bottom right>
-    <button ion-fab color="primary" (click)="openAddFloatingIP()">
+    <button ion-fab color="primary" (click)="openAddFloatingIP()" id="add_floating_ip">
       <i class="fas fa-plus"></i>
     </button>
   </ion-fab>
