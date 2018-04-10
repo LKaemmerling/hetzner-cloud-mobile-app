@@ -6,6 +6,8 @@ import {FloatingIpApiProvider} from "../../providers/floating-ip-api/floating-ip
 import {FloatingIPPage} from "./floatingIp/floatingIP";
 import {FloatingIpsService} from "../../modules/hetzner-cloud-data/floating-ips/floating-ips.service";
 import {NetworkProvider} from "../../modules/hetzner-app/network/network";
+import {TranslateService} from "@ngx-translate/core";
+import {editFloatingIpModal} from "./editFloatingIp/editFloatingIp";
 
 /**
  * This page lists all available floating ips
@@ -36,8 +38,9 @@ export class FloatingIPsPage {
    * @param {ActionSheetController} actionSheetCtrl
    * @param {NavController} navCtrl
    * @param {ModalController} modal
-   * @param {ProjectsService} project
    * @param {FloatingIpsService} floatingApiService
+   * @param {TranslateService} translateService
+   * @param {ProjectsService} project
    * @param {FloatingIpApiProvider} floatingIpApiProvider
    * @param {NetworkProvider} networkProvider
    */
@@ -45,8 +48,9 @@ export class FloatingIPsPage {
     protected actionSheetCtrl: ActionSheetController,
     protected navCtrl: NavController,
     protected modal: ModalController,
-    protected project: ProjectsService,
     protected floatingApiService: FloatingIpsService,
+    protected translateService: TranslateService,
+    protected project: ProjectsService,
     protected floatingIpApiProvider: FloatingIpApiProvider,
     protected networkProvider: NetworkProvider
   ) {
@@ -59,7 +63,7 @@ export class FloatingIPsPage {
   loadFloatingIPs() {
     this.loading = true;
     this.floatingApiService.reloadFloatingIps().then((data) => {
-      this._floating_ips = data['floating_ips'];
+      this._floating_ips = this.floatingApiService.floating_ips;
       this.loading = false;
       this.loading_done = true;
       setTimeout(() => this.loading_done = false, 3000);
@@ -94,9 +98,13 @@ export class FloatingIPsPage {
    * @param floatingIp
    */
   delete(floatingIp) {
-    /** @TODO **/
+
     if (this.networkProvider.has_connection) {
-      if (confirm('Möchten Sie diese Floating IP wirklich unwiderruflich löschen?')) {
+      let confirmation = '';
+      this.translateService.get('ACTIONS.DELETE_CONFIRMATION').subscribe((text) => {
+        confirmation = text;
+      })
+      if (confirm(confirmation)) {
         this.floatingIpApiProvider.deleteFloatingIp(floatingIp.id).then((data) => {
           this.loadFloatingIPs();
         });
@@ -107,17 +115,48 @@ export class FloatingIPsPage {
   }
 
   /**
+   * Open the edit modal for the floating ip
+   */
+  openEditFloatingIp(floatingIp) {
+    if (this.networkProvider.has_connection) {
+      this.modal.create(editFloatingIpModal, {floating_ip: floatingIp}).present();
+    } else {
+      this.networkProvider.displayNoNetworkNotice();
+    }
+  }
+
+  /**
    * Open all available actions for the given floating ip
    * @param floatingIp
    */
   openActionSheets(floatingIp) {
-    /** @TODO **/
+    let _title: string = '';
+    this.translateService.get('PAGE.FLOATING_IPS.ACTIONS.TITLE', {floatingIpDescription: floatingIp.description}).subscribe((text) => {
+      _title = text;
+    });
+    let _delete: string = '';
+    this.translateService.get('ACTIONS.DELETE').subscribe(text => {
+      _delete = text;
+    });
+    let _edit: string = '';
+    this.translateService.get('ACTIONS.EDIT').subscribe(text => {
+      _edit = text;
+    });
+    let _cancel: string = '';
+    this.translateService.get('ACTIONS.CANCEL').subscribe(text => {
+      _cancel = text;
+    });
+    let _open_details: string = '';
+    this.translateService.get('ACTIONS.OPEN_DETAILS').subscribe(text => {
+      _open_details = text;
+    });
+
     var actions = {
-      title: 'Aktionen für die Floating IP ' + floatingIp.name,
+      title: _title,
       cssClass: 'action-sheets-basic-page',
       buttons: [
         {
-          text: 'Löschen',
+          text: _delete,
           role: 'destructive',
           icon: 'trash',
           handler: () => {
@@ -125,14 +164,21 @@ export class FloatingIPsPage {
           }
         },
         {
-          text: 'Edit',
-          icon: 'brush',
+          text: _open_details,
+          icon: 'information-circle',
           handler: () => {
             this.openFloatingIP(floatingIp);
           }
         },
         {
-          text: 'Abbrechen',
+          text: _edit,
+          icon: 'brush',
+          handler: () => {
+            this.openEditFloatingIp(floatingIp);
+          }
+        },
+        {
+          text: _cancel,
           role: 'cancel', // will always sort to be on the bottom
           icon: 'close',
           handler: () => {

@@ -16,19 +16,26 @@
   <ion-list>
     <ion-item>
       <ion-label fixed>{{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.DESCRIPTION' | translate | replacePrice}}</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="description" required=""></ion-input>
+      <ion-input type="text" value="" [(ngModel)]="description" required="" id="description"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>{{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.NETWORK_PROTOCOL' | translate}}</ion-label>
-      <ion-select [(ngModel)]="type" required="">
+      <ion-select [(ngModel)]="type" required="" interface="popover" id="type">
         <ion-option value="ipv4">IPv4</ion-option>
         <ion-option value="ipv6">IPv6</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
+      <ion-label>{{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.LOCATION' | translate}}</ion-label>
+      <ion-select [(ngModel)]="location" interface="popover" id="location">
+        <ion-option *ngFor="let location of locationService.locations" [value]="location">{{location.description}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
       <ion-label>{{ 'PAGE.FLOATING_IPS.MODAL.ADD.FORM.SERVER' | translate}}</ion-label>
-      <ion-select [(ngModel)]="server" required="">
+      <ion-select [(ngModel)]="server" interface="popover" id="server">
         <ion-option *ngFor="let _server of servers" [value]="_server">
           {{ _server.name }}
         </ion-option>
@@ -39,5 +46,5 @@
     </p>
   </ion-list>
   <button ion-button color="danger" (click)="createFloatingIP()">{{ 'ACTIONS.ORDER' | translate}}</button>
-  <p class="message_box error" *ngIf="error != null">{{ error | translate }}</p>
+  <p class="message_box error" *ngIf="error != null"  id="error_floating_ip">{{ error | translate }}</p>
 </ion-content>

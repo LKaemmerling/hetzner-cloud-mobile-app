@@ -4,6 +4,7 @@ import {SshKeyApiProvider} from "../../providers/ssh-key-api/ssh-key-api";
 import {editSSHKeyModal} from "./editSSHKey/editSSHKey";
 import {SshKeysService} from "../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
 import {NetworkProvider} from "../../modules/hetzner-app/network/network";
+import {TranslateService} from "@ngx-translate/core";
 
 /**
  * This page lists all ssh keys
@@ -37,6 +38,7 @@ export class SshkeysPage {
    * @param {NavController} navCtrl
    * @param {NavParams} navParams
    * @param {SshKeysService} sshKeysService
+   * @param {TranslateService} translate
    * @param {SshKeyApiProvider} sshKeyProvider
    * @param {NetworkProvider} networkProvider
    */
@@ -46,6 +48,7 @@ export class SshkeysPage {
     protected navCtrl: NavController,
     protected navParams: NavParams,
     protected sshKeysService: SshKeysService,
+    protected translate: TranslateService,
     protected sshKeyProvider: SshKeyApiProvider,
     protected networkProvider: NetworkProvider) {
     this._ssh_keys = this.sshKeysService.ssh_keys;
@@ -92,13 +95,29 @@ export class SshkeysPage {
    * @param ssh_key
    */
   public openActionSheets(ssh_key) {
-    /** @TODO **/
+    let _delete: string = '';
+    this.translate.get('ACTIONS.DELETE').subscribe(text => {
+      _delete = text;
+    });
+    let _edit: string = '';
+    this.translate.get('ACTIONS.EDIT').subscribe(text => {
+      _edit = text;
+    });
+    let _cancel: string = '';
+    this.translate.get('ACTIONS.CANCEL').subscribe(text => {
+      _cancel = text;
+    });
+    let _title: string = '';
+    this.translate.get('PAGE.SSH_KEYS.ACTIONS.TITLE', {sshKey: ssh_key.name}).subscribe((text) => {
+      _title = text;
+    });
+
     var actions = {
-      title: 'Aktionen für den SSH Key ' + ssh_key.name,
+      title: _title,
       cssClass: 'action-sheets-basic-page',
       buttons: [
         {
-          text: 'Löschen',
+          text: _delete,
           role: 'destructive',
           icon: 'trash',
           handler: () => {
@@ -106,7 +125,7 @@ export class SshkeysPage {
           }
         },
         {
-          text: 'Edit',
+          text: _edit,
           icon: 'brush',
           handler: () => {
             if (this.networkProvider.has_connection) {
@@ -117,7 +136,7 @@ export class SshkeysPage {
           }
         },
         {
-          text: 'Abbrechen',
+          text: _cancel,
           role: 'cancel', // will always sort to be on the bottom
           icon: 'close',
           handler: () => {

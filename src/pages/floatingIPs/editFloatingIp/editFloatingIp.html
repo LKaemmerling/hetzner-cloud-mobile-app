@@ -17,7 +17,7 @@
 
     <ion-item>
       <ion-label>{{ 'PAGE.FLOATING_IPS.MODAL.EDIT.FORM.DESCRIPTION' | translate}}</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="floatingIp.description" required=""></ion-input>
+      <ion-input type="text" value="" [(ngModel)]="floatingIp.description" required="" id="description"></ion-input>
     </ion-item>
   </ion-list>
   <button ion-button color="danger" (click)="updateIP()">{{ 'ACTIONS.SAVE' | translate}}</button>

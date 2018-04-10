@@ -36,6 +36,9 @@
       "TITLE": "SSH-Schlüssel",
       "NO_SSH_KEYS": "Sie haben noch keinen SSH-Schlüssel hinterlegt",
       "ADD_SSH_KEYS": "Das Hinzufügen von SSH-Schlüsseln über die App wird aus Sicherheitsgründen nicht empfohlen. Nutzen Sie hierfür bitte die Hetzner Cloud Console.",
+      "ACTIONS": {
+        "TITLE": "Aktionen für den SSH-Key '{{sshKey}}'"
+      },
       "MODAL": {
         "EDIT": {
           "TITLE": "SSH-Key bearbeiten",
@@ -192,6 +195,9 @@
     "FLOATING_IPS": {
       "TITLE": "Floating IPs",
       "NO_FLOATING_IPS": "Oh! Es sieht so aus als wären hier noch keine Floating IPs hinterlegt.",
+      "ACTIONS": {
+        "TITLE": "Aktionen für die Floating IP '{{floatingIpDescription}}'"
+      },
       "MODAL": {
         "DETAILS": {
           "INFORMATION": {
@@ -213,12 +219,13 @@
             "DESCRIPTION": "Bezeichnung:",
             "NETWORK_PROTOCOL": "Netzwerkprotokoll:",
             "SERVER": "Server:",
+            "LOCATION": "Heimatstandort:",
             "INFO": "Eine Floating IP kostet aktuell <<floating_ip.price_monthly.gross>> <<currency>> pro Monat. (inkl. <<vat_rate>> % USt.)."
           },
           "ERRORS": {
             "REQUIRED_DESCRIPTION": "Bitte geben Sie eine Bezeichnung ein.",
             "REQUIRED_NETWORK_PROTOCOL": "Bitte geben Sie ein Netzwerkprotokoll an.",
-            "REQUIRED_SERVER": "Bitte geben Sie einen Server an."
+            "REQUIRED_SERVER_OR_LOCATION": "Bitte geben Sie einen Server oder einen Standort an."
           }
         },
         "ASSIGN_TO_SERVER": {

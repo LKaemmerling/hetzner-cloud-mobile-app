@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
 import {LoadingController, ViewController} from "ionic-angular";
 import {FloatingIpApiProvider} from "../../../providers/floating-ip-api/floating-ip-api";
-import {ServerApiProvider} from "../../../providers/server-api/server-api";
 import {TranslateService} from "@ngx-translate/core";
-import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
+import {Location, Server} from "../../../modules/hetzner-cloud-data/servers/server";
 import {ServersService} from "../../../modules/hetzner-cloud-data/servers/servers.service";
+import {LocationsService} from "../../../modules/hetzner-cloud-data/locations/locations.service";
 
 /**
  * Add a new floating ip
@@ -25,6 +25,11 @@ export class addFloatingIPModal {
    * @type {Server}
    */
   public server: Server;
+  /**
+   * The location to that the ip points
+   * @type {Location}
+   */
+  public location: Location;
   /**
    * Give the ip a description
    * @type {string}
@@ -47,6 +52,7 @@ export class addFloatingIPModal {
    * @param {ViewController} viewCtrl
    * @param {ProjectsService} project
    * @param {FloatingIpApiProvider} floatingIpApiProvider
+   * @param {LocationsService} locationService
    * @param {ServersService} serverService
    * @param {TranslateService} translate
    */
@@ -55,6 +61,7 @@ export class addFloatingIPModal {
     protected viewCtrl: ViewController,
     protected project: ProjectsService,
     protected floatingIpApiProvider: FloatingIpApiProvider,
+    protected locationService: LocationsService,
     protected serverService: ServersService,
     protected translate: TranslateService) {
     this.servers = serverService.servers;
@@ -73,13 +80,13 @@ export class addFloatingIPModal {
       this.error = 'PAGE.FLOATING_IPS.MODAL.ADD.ERRORS.REQUIRED_NETWORK_PROTOCOL';
       return;
     }
-    if (this.server == null || this.server.id == 0) {
-      this.error = 'PAGE.FLOATING_IPS.MODAL.ADD.ERRORS.REQUIRED_SERVER';
+    if (this.location == null && this.server == null) {
+      this.error = 'PAGE.FLOATING_IPS.MODAL.ADD.ERRORS.REQUIRED_SERVER_OR_LOCATION';
       return;
     }
     let loader = this.loadingCtrl.create();
     loader.present();
-    this.floatingIpApiProvider.createFloatingIp(this.type, this.description, this.server.id).then((data) => {
+    this.floatingIpApiProvider.createFloatingIp(this.type, this.description, this.server == null ? null : this.server.id, this.location == null ? null : this.location.name).then((data) => {
       this.dismiss();
       loader.dismiss();
     });

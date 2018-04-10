@@ -22,10 +22,17 @@ export class FloatingIpApiProvider extends HetznerApiProvider {
    * @param {string} type
    * @param {string} description
    * @param {number} serverId
+   * @param {string} location
    * @returns {Promise<any>}
    */
-  createFloatingIp(type: string, description: string, serverId: number) {
-    return this._post('floating_ips', {type: type, server: serverId, description: description})
+  createFloatingIp(type: string, description: string, serverId: number, location: string = null) {
+    var payload;
+    if (location == null) {
+      payload = {type: type, serverId: serverId, description: description}
+    } else {
+      payload = {type: type, home_location: location, description: description}
+    }
+    return this._post('floating_ips', payload)
   }
 
   /**

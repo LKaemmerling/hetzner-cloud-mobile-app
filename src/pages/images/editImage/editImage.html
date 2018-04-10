@@ -17,7 +17,7 @@
 
     <ion-item>
       <ion-label>{{ 'PAGE.IMAGES.MODAL.EDIT.FORM.IMAGE_DESCRIPTION' | translate}}</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="image.description" required=""></ion-input>
+      <ion-input type="text" value="" [(ngModel)]="image.description" required="" id="description"></ion-input>
     </ion-item>
   </ion-list>
   <button ion-button color="danger" (click)="updateImage()">{{ 'ACTIONS.SAVE' | translate}}</button>
