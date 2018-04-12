@@ -88,4 +88,15 @@ export class FloatingIpApiProvider extends HetznerApiProvider {
   changeReverseDNS(floatingIpId: number, ip: string, dns_ptr: string = null) {
     return this._post('floating_ips/' + floatingIpId + '/actions/change_dns_ptr', {ip: ip, dns_ptr: dns_ptr})
   }
+
+  /**
+   * Changes the protection configuration of the Floating IP.
+   * @see https://docs.hetzner.cloud/#resources-floating-ip-actions-post-3
+   * @param {number} floatingIpId
+   * @param {boolean} _delete
+   * @returns {Promise<any>}
+   */
+  changeProtection(floatingIpId:number, _delete:boolean){
+    return this._post('floating_ips/' + floatingIpId + '/actions/change_protection', {delete: _delete})
+  }
 }

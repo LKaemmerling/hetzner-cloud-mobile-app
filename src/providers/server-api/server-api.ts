@@ -48,6 +48,7 @@ export class ServerApiProvider extends HetznerApiProvider {
       ssh_keys: ssh_keys
     })
   }
+
   /**
    * Creates a new Server. Returns preliminary information about the Server as well as an action that covers progress of creation.
    * @see https://docs.hetzner.cloud/#resources-servers-post
@@ -69,6 +70,7 @@ export class ServerApiProvider extends HetznerApiProvider {
       ssh_keys: ssh_keys
     })
   }
+
   /**
    * Changes a Servername
    * @param {number} serverId
@@ -266,5 +268,16 @@ export class ServerApiProvider extends HetznerApiProvider {
    */
   requestConsole(serverId: number) {
     return this._post('servers/' + serverId + '/actions/request_console');
+  }
+
+  /**
+   * Changes the protection configuration of the server.
+   * @param {number} serverId
+   * @param {boolean} _delete
+   * @param {boolean} _rebuild
+   * @returns {Promise<any>}
+   */
+  changeProtection(serverId: number, _delete: boolean, _rebuild: boolean) {
+    return this._post('servers/' + serverId + '/actions/change_protection', {delete: _delete, rebuild: _rebuild})
   }
 }

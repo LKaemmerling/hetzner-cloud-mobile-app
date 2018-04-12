@@ -19,6 +19,7 @@
       <ion-label>{{ 'PAGE.IMAGES.MODAL.EDIT.FORM.IMAGE_DESCRIPTION' | translate}}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="image.description" required="" id="description"></ion-input>
     </ion-item>
+    <change-protection [(protection)]="image.protection" *ngIf="image.type == 'snapshot'"></change-protection>
   </ion-list>
   <button ion-button color="danger" (click)="updateImage()">{{ 'ACTIONS.SAVE' | translate}}</button>
 </ion-content>

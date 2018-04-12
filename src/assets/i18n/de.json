@@ -3,7 +3,8 @@
     "DATE_FORMAT": "dd.mm.yyyy HH:MM:ss",
     "NO_CONNECTION": "Leider haben Sie aktuell kein Internet. Die Ansicht der App funktioniert weiterhin, allerdings sind alle Funktionen zum Interagieren mit Ihren Systemen solange deaktiviert wie Sie kein Internet haben.",
     "MISSING_OR_WRONG_PROJECT": "Ihr gewählter API-Key ist nicht mehr gültig oder Sie haben kein Projekt ausgewählt. Bitte wählen Sie nun ein Projekt aus.",
-    "FEATURE_NEEDS_CONNECTION": "Diese Funktion benötigt eine Internetverbindung. Bitte verbinden Sie sich mit dem Internet."
+    "FEATURE_NEEDS_CONNECTION": "Diese Funktion benötigt eine Internetverbindung. Bitte verbinden Sie sich mit dem Internet.",
+    "RESOURCE_LOCKED_FOR_DELETION": "Für diese Ressource wurde das Löschen gesperrt."
   },
   "ACTIONS": {
     "DELETE": "Löschen",
@@ -16,6 +17,14 @@
     "ORDER": "Kostenpflichtig bestellen",
     "SHARE": "Teilen",
     "OPEN_DETAILS": "Details"
+  },
+  "COMPONENT": {
+    "PROTECTION": {
+      "TITLE": "Sicherheitseinstellungen",
+      "DELETE": "Löschung gesperrt?",
+      "REBUILD": "Neuinstallierung gesperrt?",
+      "NOTICE": "Aktuell müssen beide Parameter denselben Wert haben."
+    }
   },
   "PAGE": {
     "HOME": {

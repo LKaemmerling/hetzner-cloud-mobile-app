@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../providers/server-api/server-api";
-import {Server} from "../../../modules/hetzner-cloud-data/servers/server";
+import {Protection, Server} from "../../../modules/hetzner-cloud-data/servers/server";
 
 /**
  * This makes it possible to rename a server
@@ -16,6 +16,7 @@ export class editServerModal {
    * The server that should be edited
    */
   public server: Server;
+
   /**
    * When there was an error this contains the message
    * @type {string}
@@ -39,15 +40,17 @@ export class editServerModal {
    * Make the api call and validate the name
    */
   public updateServer() {
-    if (this.server.name == null || this.server.name .length < 3 || /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/g.test(this.server.name) == false) {
+    if (this.server.name == null || this.server.name.length < 3 || /(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/g.test(this.server.name) == false) {
       this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_NAME';
       return;
     }
     let loader = this.loadingCtrl.create();
     loader.present();
     this.serverApiProvider.changeServerName(this.server.id, this.server.name).then(() => {
-      loader.dismiss();
-      this.dismiss();
+      this.serverApiProvider.changeProtection(this.server.id, this.server.protection.delete, this.server.protection.delete).then(() => {
+        loader.dismiss();
+        this.dismiss();
+      });
     });
 
   }

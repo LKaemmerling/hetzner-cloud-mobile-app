@@ -42,8 +42,11 @@ export class editFloatingIpModal {
     let loader = this.loadingCtrl.create();
     loader.present();
     this.floatingIpProvider.changeDescription(this.floatingIp.id, this.floatingIp.description).then(() => {
-      loader.dismiss();
-      this.dismiss();
+
+      this.floatingIpProvider.changeProtection(this.floatingIp.id,this.floatingIp.protection.delete).then(() => {
+        loader.dismiss();
+        this.dismiss();
+      });
     });
 
   }

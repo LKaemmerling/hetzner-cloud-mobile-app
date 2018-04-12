@@ -19,7 +19,7 @@
       <server-status-indicator [status]="server.status" item-right=""></server-status-indicator>
     </ion-item>
     <ion-item>
-      <div item-left="">
+      <div item-left="" class="inner-item">
         {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
       </div>
       <div item-right="">
@@ -113,7 +113,7 @@
       <i class="fas fa-angle-up"></i>
     </button>
     <ion-fab-list side="top">
-      <button ion-fab color="danger" (click)="delete()" id="delete_server">
+      <button ion-fab color="danger" (click)="delete()" id="delete_server" [disabled]="server.protection.delete">
         <div class="label" color="danger">{{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.DELETE' | translate}}</div>
         <i class="fas fa-trash"></i>
       </button>

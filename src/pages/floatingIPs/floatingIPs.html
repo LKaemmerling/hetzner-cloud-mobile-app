@@ -15,7 +15,7 @@
     <ion-list>
       <ion-item *ngFor="let _floating_ip of _floating_ips" (click)="openActionSheets(_floating_ip)" data-test="floating_ips" [attr.data-test-floating-ip]="_floating_ip.description">
         <div>
-          <h2>{{ _floating_ip.description }}</h2>
+          <h2>{{ _floating_ip.description }} <i class="fas fa-lock" *ngIf="_floating_ip.protection.delete"></i></h2>
           <p>{{ _floating_ip.ip }} - {{ _floating_ip.home_location.city }}</p>
         </div>
       </ion-item>

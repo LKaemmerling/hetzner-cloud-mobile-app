@@ -37,4 +37,14 @@ export class ImageApiProvider extends HetznerApiProvider {
   update(imageId: number, description: string) {
     return this._put('images/' + imageId, {description: description});
   }
+  /**
+   * Changes the protection configuration of the image. Can only be used on snapshots.
+   * @see https://docs.hetzner.cloud/#resources-image-actions-post
+   * @param {number} imageId
+   * @param {boolean} _delete
+   * @returns {Promise<any>}
+   */
+  changeProtection(imageId:number, _delete:boolean){
+    return this._post('images/' + imageId + '/actions/change_protection', {delete: _delete})
+  }
 }

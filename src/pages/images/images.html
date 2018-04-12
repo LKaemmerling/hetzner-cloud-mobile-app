@@ -33,7 +33,7 @@
           <ion-list *ngIf="images.length > 0">
             <ion-item *ngFor="let image of images" (click)="openActionSheets(image)" data-test="snapshot"
                       [attr.data-test-snapshot]="image.description">
-              <h2>{{ image.description }}</h2>
+              <h2>{{ image.description }} <i class="fas fa-lock" *ngIf="image.protection.delete"></i></h2>
               <p *ngIf="image.created_from != null" translate [translateParams]="{imageName: image.created_from.name}">
                 PAGE.IMAGES.CREATED_FROM</p>
               <div item-end>
@@ -86,7 +86,8 @@
                 <ion-item *ngFor="let image of imagesService.getBackupsByServer(server.id)">
                   <ion-row align-items-start>
                     <ion-col>
-                      <p>{{ image.created|date:"dd.MM.yyyy HH:mm" }}</p>
+                      <p>{{
+                        image.created|date:"dd.MM.yyyy HH:mm" }}</p>
                       <p>{{ image.disk_size }} GB</p>
                     </ion-col>
                     <ion-col>
@@ -114,7 +115,8 @@
       <ion-card>
         <ion-card-content>
           <ion-list *ngIf="images.length > 0">
-            <ion-item *ngFor="let image of images; let i = index" (click)="openActionSheets(image)" data-test="system" [attr.data-test-system-image]="i">
+            <ion-item *ngFor="let image of images; let i = index" (click)="openActionSheets(image)" data-test="system"
+                      [attr.data-test-system-image]="i">
               <h2>{{ image.description }}</h2>
               <p *ngIf="image.created_from != null" translate [translateParams]="{imageName: image.created_from.name}">
                 PAGE.IMAGES.CREATED_FROM</p>

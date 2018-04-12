@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ImageApiProvider} from "../../../providers/image-api/image-api";
+import {Image} from "../../../modules/hetzner-cloud-data/servers/server";
 
 /**
  * This modal makes it possible to edit a image
@@ -14,7 +15,7 @@ export class editImageModal {
   /**
    * The image
    */
-  public image: any;
+  public image: Image;
 
   /**
    * Constructor
@@ -36,8 +37,15 @@ export class editImageModal {
     let loader = this.loadingCtrl.create();
     loader.present();
     this.imageApiProvider.update(this.image.id, this.image.description).then(() => {
-      loader.dismiss();
-      this.dismiss();
+      if (this.image.type == 'snapshot') {
+        this.imageApiProvider.changeProtection(this.image.id, this.image.protection.delete).then(() => {
+          loader.dismiss();
+          this.dismiss();
+        });
+      } else {
+        loader.dismiss();
+        this.dismiss();
+      }
     });
 
   }

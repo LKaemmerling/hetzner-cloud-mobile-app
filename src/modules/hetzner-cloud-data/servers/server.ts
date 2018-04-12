@@ -108,6 +108,7 @@ export interface Image {
   os_flavor: string;
   os_version: string;
   rapid_deploy: boolean;
+  protection:Protection
 }
 
 export interface Iso {
@@ -134,6 +135,12 @@ export interface Server {
   outgoing_traffic: number;
   ingoing_traffic: number;
   included_traffic: number;
+  protection: Protection
+}
+
+export interface Protection {
+  delete: boolean;
+  rebuild: boolean;
 }
 
 

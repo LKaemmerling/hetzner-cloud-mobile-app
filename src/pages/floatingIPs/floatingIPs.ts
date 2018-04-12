@@ -150,42 +150,45 @@ export class FloatingIPsPage {
     this.translateService.get('ACTIONS.OPEN_DETAILS').subscribe(text => {
       _open_details = text;
     });
+    var buttons = [
+      {
+        text: _open_details,
+        icon: 'information-circle',
+        handler: () => {
+          this.openFloatingIP(floatingIp);
+        }
+      },
+      {
+        text: _edit,
+        icon: 'brush',
+        handler: () => {
+          this.openEditFloatingIp(floatingIp);
+        }
+      },
+      {
+        text: _cancel,
+        role: 'cancel', // will always sort to be on the bottom
+        icon: 'close',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }
+    ];
 
+    if (floatingIp.protection.delete == false) {
+      buttons.unshift({
+        text: _delete,
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          this.delete(floatingIp);
+        }
+      })
+    }
     var actions = {
       title: _title,
       cssClass: 'action-sheets-basic-page',
-      buttons: [
-        {
-          text: _delete,
-          role: 'destructive',
-          icon: 'trash',
-          handler: () => {
-            this.delete(floatingIp);
-          }
-        },
-        {
-          text: _open_details,
-          icon: 'information-circle',
-          handler: () => {
-            this.openFloatingIP(floatingIp);
-          }
-        },
-        {
-          text: _edit,
-          icon: 'brush',
-          handler: () => {
-            this.openEditFloatingIp(floatingIp);
-          }
-        },
-        {
-          text: _cancel,
-          role: 'cancel', // will always sort to be on the bottom
-          icon: 'close',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
+      buttons: buttons
     }
     let actionSheet = this.actionSheetCtrl.create(actions);
     actionSheet.present();

@@ -13,7 +13,8 @@
 <ion-content>
   <ion-card>
     <ion-list>
-      <ion-item *ngFor="let _ssh_key of _ssh_keys" (click)="openActionSheets(_ssh_key)" class="ssh_key" [attr.data-test]="_ssh_key.name">
+      <ion-item *ngFor="let _ssh_key of _ssh_keys" (click)="openActionSheets(_ssh_key)" class="ssh_key"
+                [attr.data-test]="_ssh_key.name">
         <div>
           <h2>{{ _ssh_key.name }}</h2>
           <p>{{ _ssh_key.fingerprint }}</p>
@@ -25,7 +26,7 @@
       </p>
     </ion-list>
   </ion-card>
- <p class="message_box info">
-   {{ 'PAGE.SSH_KEYS.ADD_SSH_KEYS' | translate}}
- </p>
+  <ion-card class="message_box info" style="">
+    {{ 'PAGE.SSH_KEYS.ADD_SSH_KEYS' | translate}}
+  </ion-card>
 </ion-content>

@@ -47,7 +47,8 @@
           </ion-col>
         </ion-row>
         <ion-card-content>
-          <p text-wrap="">{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{
+          <p text-wrap=""><i class="fas fa-lock" *ngIf="server.protection.delete"
+                             [tooltip]="'GLOBAL.RESOURCE_LOCKED_FOR_DELETION'|translate" positionV="bottom"></i> {{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{
             server.datacenter.name
             }}
             /
@@ -71,7 +72,7 @@
             </ion-col>
             <ion-col class="col" text-center="">
               <button clear="" color="danger" icon-start="" ion-button="" small="" (click)="delete(server)"
-                      class="delete_server">
+                      class="delete_server" [disabled]="server.protection.delete">
                 <i class="fa fa-fw fa-trash"></i> {{ 'ACTIONS.DELETE' | translate }}
               </button>
             </ion-col>
