@@ -16,7 +16,7 @@ export class ConfigService {
    * The currently used language
    * @type {string}
    */
-  public language = 'de';
+  public language = 'en';
   /**
    *
    * @type {string[]}

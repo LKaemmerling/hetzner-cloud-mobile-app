@@ -18,16 +18,10 @@ import {ConfigService} from "../../modules/hetzner-app/config/config.service";
 })
 export class SettingsPage {
   /**
-   * Contains the Version String of the app
-   * @type {string}
-   */
-  public version: string = 'DEV-VERSION';
-  /**
    * -1 if the finger print Auth isn't available, 0 if is available but not enabled, 1 if available and enabled
    * @type {number}
    */
   public finger_print: number = -1;
-
   /**
    * This stores the clicks on the version
    * @type {number}
