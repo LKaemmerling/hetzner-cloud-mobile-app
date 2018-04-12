@@ -16,7 +16,7 @@
     </ion-list-header>
     <div ion-item="" (click)="setUpDeveloperMode()">
       <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.VERSION' | translate }}</ion-label>
-      <span item-right>{{ version }}</span>
+      <span item-right>{{ config.version }}</span>
     </div>
     <div ion-item="" *ngIf="config.developer_mode">
       <ion-label text-wrap color="danger">DEVELOPER MODE ACTIVE</ion-label>
