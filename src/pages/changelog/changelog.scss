@@ -1,0 +1,37 @@
+page-changelog {
+  .content {
+    background-color: #252A30 !important;
+  }
+  .item {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .overlay {
+    z-index: 2;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+
+    .overlay-inner {
+      background-color: whitesmoke;
+      border-radius: 10px;
+      margin: 0 auto;
+      position: relative;
+      width: 30%;
+      min-width: 300px;
+      .icon {
+        height: 40px;
+        width: 40px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        background-color: #c9302c;
+        text-align: center;
+        color: white;
+        margin: 10px auto 5px auto;
+        padding-top: 10px;
+      }
+    }
+  }
+}

@@ -23,7 +23,7 @@
       "TITLE": "Security",
       "DELETE": "Deletion blocked?",
       "REBUILD": "Rebuild blocked?",
-      "NOTICE":"Currently, both parameters must have the same value."
+      "NOTICE": "Currently, both parameters must have the same value."
     }
   },
   "PAGE": {
@@ -35,6 +35,23 @@
     "ABOUT": {
       "TITLE": "About this App",
       "TEXT": "The developer of this App is Lukas Kämmerling. This App is in no way connected to the company \"Hetzner Online GmbH\", so unofficial. It only uses a webservice offered by the mentioned company. Only the configured projects are stored on this device. Deleting a configured project will only delete the local data. <strong>The API tokens are only used to communicate with the Hetzner Cloud API and not stored on any remote servers.</strong>"
+    },
+    "CHANGELOG": {
+      "TITLE": "Changes in 1.6.0",
+      "SLIDES": {
+        "SLIDE1": {
+          "TITLE": "Resource Protection",
+          "TEXT": "Protect your resources like servers, floating IPs or images from being deleted unintentionally!"
+        },
+        "SLIDE2": {
+          "TITLE": "Resource Protection",
+          "TEXT": "You can recognize a protected resource by the <i class='fas fa-lock'></i>."
+        },
+        "SLIDE3": {
+          "TITLE": "Bugfixes",
+          "TEXT": "Of course we fixed some bugs too!"
+        }
+      }
     },
     "DELETE_ALL": {
       "TITLE": "Delete all data",

@@ -10,6 +10,6 @@
   <ion-label>{{ 'COMPONENT.PROTECTION.REBUILD'|translate }}</ion-label>
   <ion-toggle [(ngModel)]="protection.delete" id="protection_rebuild"></ion-toggle>
 </ion-item>
-<p ion-item class="message_box info" *ngIf="protection.rebuild != undefined">
+<p ion-item class="message_box info" *ngIf="protection.rebuild != undefined" text-wrap="">
   {{ 'COMPONENT.PROTECTION.NOTICE'|translate }}
 </p>

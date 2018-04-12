@@ -36,6 +36,23 @@
       "TITLE": "Über diese App",
       "TEXT": "Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es wird die von der Hetzner Online GmbH bereitgestellte Schnittstelle verwendet. Auf Ihrem Gerät werden nur die Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese Lokal gelöscht. <strong>Ihre API Tokens verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der Hetzner Cloud API.</strong>"
     },
+    "CHANGELOG": {
+      "TITLE": "Neu in der Version 1.6.0",
+      "SLIDES": {
+        "SLIDE1": {
+          "TITLE": "Resource Protection",
+          "TEXT": "Schützen Sie Ihre Ressourcen wie Server, Floating IPs oder Images vor ungewolltem löschen!"
+        },
+        "SLIDE2": {
+          "TITLE": "Resource Protection",
+          "TEXT": "Sie können eine geschütze Ressource durch das <i class='fas fa-lock'></i> erkennen."
+        },
+        "SLIDE3": {
+          "TITLE": "Bugfixes",
+          "TEXT": "Es wurden auch kleinere Fehler behoben."
+        }
+      }
+    },
     "DELETE_ALL": {
       "TITLE": "Alle Daten löschen",
       "TEXT": "Möchten Sie alle Daten der App löschen? Sie müssen, sofern Sie die App weiterhin benutzen möchten, alle Projekte neu eingeben.",

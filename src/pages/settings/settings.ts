@@ -48,7 +48,6 @@ export class SettingsPage {
    * Constructor
    * @param {NavController} navCtrl
    * @param {NavParams} navParams
-   * @param {AppVersion} appVersion
    * @param {FingerprintAIO} fingerprint
    * @param {Storage} storage
    * @param {LoadingController} loadingCtrl
@@ -59,7 +58,6 @@ export class SettingsPage {
    */
   constructor(protected navCtrl: NavController,
               protected navParams: NavParams,
-              protected appVersion: AppVersion,
               protected fingerprint: FingerprintAIO,
               protected storage: Storage,
               protected loadingCtrl: LoadingController,
@@ -68,11 +66,7 @@ export class SettingsPage {
               protected toastController: ToastController,
               protected oneSignal: OneSignal
   ) {
-    appVersion.getVersionNumber().then(
-      (_version) => {
-        this.version = _version;
-      }
-    );
+
     storage.get('lang').then(value => {
       if (value != undefined) {
         this.language = value;

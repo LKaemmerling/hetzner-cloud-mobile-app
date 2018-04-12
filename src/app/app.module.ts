@@ -58,6 +58,7 @@ import {createTranslateLoader} from "../providers/translation/loader";
 import {NetworkProvider} from '../modules/hetzner-app/network/network';
 import {HetznerCloudDataModule} from "../modules/hetzner-cloud-data/hetzner-cloud-data.module";
 import {HetznerAppModule} from "../modules/hetzner-app/hetzner-app.module";
+import {ChangelogPage} from "../pages/changelog/changelog";
 
 /**
  * Init the Ionic Pro Monitoring Service
@@ -143,7 +144,8 @@ export class IonicProErrorHandler implements ErrorHandler {
     ActionsPage,
     consoleModal,
     SshkeysPage,
-    editSSHKeyModal
+    editSSHKeyModal,
+    ChangelogPage
   ],
   imports: [
     BrowserModule,
@@ -202,7 +204,8 @@ export class IonicProErrorHandler implements ErrorHandler {
     consoleModal,
     editProjectModal,
     SshkeysPage,
-    editSSHKeyModal
+    editSSHKeyModal,
+    ChangelogPage
   ],
   providers: [
     StatusBar,

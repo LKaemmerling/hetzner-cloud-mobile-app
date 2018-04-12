@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <i class="fas fa-bars fa-2x"></i>
+    </button>
+    <ion-title>
+      {{ 'PAGE.CHANGELOG.TITLE' | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides>
+    <ion-slide [style]="getStyleForSlide('slide1')" class="item">
+      <div class="overlay">
+        <div class="overlay-inner">
+          <div class="icon">
+            <i class="fas fa-lock"></i></div>
+          <div padding>
+            <h2 [innerHtml]="'PAGE.CHANGELOG.SLIDES.SLIDE1.TITLE'|translate"></h2>
+            <p [innerHtml]="'PAGE.CHANGELOG.SLIDES.SLIDE1.TEXT'|translate"></p>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide [style]="getStyleForSlide('slide2')" class="item">
+      <div class="overlay">
+        <div class="overlay-inner">
+          <div class="icon">
+            <i class="fas fa-lock"></i></div>
+          <div padding>
+            <h2 [innerHtml]="'PAGE.CHANGELOG.SLIDES.SLIDE2.TITLE'|translate"></h2>
+            <p [innerHtml]="'PAGE.CHANGELOG.SLIDES.SLIDE2.TEXT'|translate"></p>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide [style]="getStyleForSlide('slide3')" class="item">
+      <div class="overlay">
+        <div class="overlay-inner">
+          <div class="icon">
+            <i class="fas fa-bug"></i></div>
+          <div padding>
+            <h2 [innerHtml]="'PAGE.CHANGELOG.SLIDES.SLIDE3.TITLE'|translate"></h2>
+            <p [innerHtml]="'PAGE.CHANGELOG.SLIDES.SLIDE3.TEXT'|translate"></p>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
