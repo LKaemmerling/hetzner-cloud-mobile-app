@@ -104,7 +104,7 @@ export class ProjectsPage {
     if (this.network.has_connection) {
       let modal = this.modal.create(addProjectModal);
       modal.onDidDismiss(() => {
-        this.project.loadProjects().then( () => {
+        this.project.loadProjects().then(() => {
           this._projects = this.project.projects;
         });
       });
@@ -134,7 +134,7 @@ export class ProjectsPage {
   selectProject(project: project) {
     if (this.network.has_connection) {
       this.project.selectProject(project).then(() => {
-        this.hetznerCloudDataService.loadDataFromStorage();
+        this.hetznerCloudDataService.loadDataFromNetwork();
       });
     } else {
       this.network.displayNoNetworkNotice();

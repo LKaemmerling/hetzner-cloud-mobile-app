@@ -17,6 +17,14 @@
     "SHARE": "Teilen",
     "OPEN_DETAILS": "Details"
   },
+  "COMPONENT": {
+    "PROTECTION": {
+      "TITLE": "Sicherheitseinstellungen",
+      "DELETE": "Löschung gesperrt?",
+      "REBUILD": "Neuinstallierung gesperrt?",
+      "NOTICE":"Aktuell müssen beide Parameter denselben Wert haben."
+    }
+  },
   "PAGE": {
     "HOME": {
       "TITLE": "Startseite",

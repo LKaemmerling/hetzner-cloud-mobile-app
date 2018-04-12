@@ -17,6 +17,14 @@
     "SHARE": "Share",
     "OPEN_DETAILS": "Details"
   },
+  "COMPONENT": {
+    "PROTECTION": {
+      "TITLE": "Security",
+      "DELETE": "Deletion blocked?",
+      "REBUILD": "Rebuild blocked?",
+      "NOTICE":"Currently, both parameters must have the same value."
+    }
+  },
   "PAGE": {
     "HOME": {
       "TITLE": "Landingpage",

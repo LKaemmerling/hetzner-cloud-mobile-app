@@ -1,0 +1,15 @@
+<!-- Generated template for the ChangeProtectionComponent component -->
+<ion-item-divider>
+  {{ 'COMPONENT.PROTECTION.TITLE'|translate }}
+</ion-item-divider>
+<ion-item>
+  <ion-label>{{ 'COMPONENT.PROTECTION.DELETE'|translate }}</ion-label>
+  <ion-toggle [(ngModel)]="protection.delete" id="protection_delete"></ion-toggle>
+</ion-item>
+<ion-item *ngIf="protection.rebuild != undefined">
+  <ion-label>{{ 'COMPONENT.PROTECTION.REBUILD'|translate }}</ion-label>
+  <ion-toggle [(ngModel)]="protection.delete" id="protection_rebuild"></ion-toggle>
+</ion-item>
+<p ion-item class="message_box info" *ngIf="protection.rebuild != undefined">
+  {{ 'COMPONENT.PROTECTION.NOTICE'|translate }}
+</p>

@@ -13,6 +13,7 @@ import {SelectImageComponent} from "./server-creation/select-image/select-image"
 import {SelectTypeComponent} from "./server-creation/select-type/select-type";
 import {SelectSshKeyComponent} from "./server-creation/select-ssh-keys/select-ssh-keys";
 import {TooltipsModule} from "ionic-tooltips";
+import {ChangeProtectionComponent} from './change-protection/change-protection';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {TooltipsModule} from "ionic-tooltips";
     SelectDatacenterComponent,
     SelectImageComponent,
     SelectTypeComponent,
-    SelectSshKeyComponent
+    SelectSshKeyComponent,
+    ChangeProtectionComponent
   ],
   imports: [CommonModule, IonicModule, TranslateModule, TooltipsModule],
   exports: [
@@ -38,7 +40,8 @@ import {TooltipsModule} from "ionic-tooltips";
     SelectDatacenterComponent,
     SelectImageComponent,
     SelectTypeComponent,
-    SelectSshKeyComponent
+    SelectSshKeyComponent,
+    ChangeProtectionComponent
   ]
 })
 export class ComponentsModule {
