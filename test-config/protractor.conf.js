@@ -5,11 +5,11 @@
 var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 if (process.env.CI != undefined && ("" + process.env.CI) == "true") {
   var ChromeOptions = {
-    args: ['--no-sandbox', '--headless']
+    args: ['--no-sandbox', '--headless','--user-agent ="E2E-Test"']
   }
 } else {
   var ChromeOptions = {
-    args: ['--no-sandbox']
+    args: ['--no-sandbox','--user-agent ="E2E-Test"']
   }
 }
 var config = {

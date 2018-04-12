@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
-import {LoadingController, NavController, NavParams} from 'ionic-angular';
+import {LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {DeleteAllDataPage} from "../delete-all-data/delete-all-data";
 import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {Storage} from "@ionic/storage";
 import {TranslateService} from "@ngx-translate/core";
 import {OneSignal} from "@ionic-native/onesignal";
+import {ConfigService} from "../../modules/hetzner-app/config/config.service";
 
 /**
  * This is the settings page, that contain all possible settings of the app
@@ -26,6 +27,12 @@ export class SettingsPage {
    * @type {number}
    */
   public finger_print: number = -1;
+
+  /**
+   * This stores the clicks on the version
+   * @type {number}
+   */
+  private developer_mode_clicks = 0;
   /**
    * The Language Key
    * @type {string}
@@ -41,24 +48,25 @@ export class SettingsPage {
    * Constructor
    * @param {NavController} navCtrl
    * @param {NavParams} navParams
-   * @param {AppVersion} appVersion
    * @param {FingerprintAIO} fingerprint
    * @param {Storage} storage
    * @param {LoadingController} loadingCtrl
+   * @param {ConfigService} config
    * @param {TranslateService} translate
+   * @param {ToastController} toastController
    * @param {OneSignal} oneSignal
    */
   constructor(protected navCtrl: NavController,
               protected navParams: NavParams,
-              protected appVersion: AppVersion,
               protected fingerprint: FingerprintAIO,
               protected storage: Storage,
               protected loadingCtrl: LoadingController,
+              protected config: ConfigService,
               protected translate: TranslateService,
-              protected oneSignal: OneSignal) {
-    appVersion.getVersionNumber().then((_version) => {
-      this.version = _version;
-    });
+              protected toastController: ToastController,
+              protected oneSignal: OneSignal
+  ) {
+
     storage.get('lang').then(value => {
       if (value != undefined) {
         this.language = value;
@@ -135,5 +143,26 @@ export class SettingsPage {
     loader.present();
     this.storage.set('compact_server_design', this.compact_server_design);
     loader.dismiss();
+  }
+
+  /**
+   * Setup the developer mode.
+   */
+  setUpDeveloperMode() {
+    let steps = 7;
+    this.developer_mode_clicks++;
+
+    if (this.developer_mode_clicks >= steps) {
+      this.storage.set('developer_mode', true);
+      this.config.developer_mode = true;
+      this.toastController.create({message: 'Developer mode is now active', duration: 2000}).present();
+      return;
+    } else if (this.developer_mode_clicks > (steps - 3)) {
+      this.toastController.create({
+        message: 'Only ' + (steps - this.developer_mode_clicks) + ' more',
+        duration: 2000
+      }).present();
+      return;
+    }
   }
 }

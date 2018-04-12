@@ -21,6 +21,7 @@ import {SshkeysPage} from "../pages/sshkeys/sshkeys";
 import {NetworkProvider} from "../modules/hetzner-app/network/network";
 import {HetznerCloudDataService} from "../modules/hetzner-cloud-data/hetzner-cloud-data.service";
 import {ConfigService} from "../modules/hetzner-app/config/config.service";
+import {ChangelogPage} from "../pages/changelog/changelog";
 
 /**
  * This is the main component from the Hetzer Cloud Mobile App
@@ -43,6 +44,7 @@ export class HetznerCloudMobileApp {
    * @type {string}
    */
   public lang: string = 'de';
+
 
   /**
    * The structure of the menu
@@ -133,47 +135,50 @@ export class HetznerCloudMobileApp {
     protected config: ConfigService) {
     platform.ready().then(() => {
       this.network.init();
-      this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      storage.ready().then(() => {
-        statusBar.styleDefault();
-        this.loadOneSignal();
-        this.loadLocalization();
-        fingerPrint.isAvailable().then(res => {
-          storage.get('auth').then(val => {
-            if (val != undefined && val == 'enabled') {
-              fingerPrint.show({
-                clientId: 'Hetzner-Cloud-Mobile',
-                clientSecret: 'password', //Only necessary for Android
-                disableBackup: false,  //Only for Android(optional)
-                localizedFallbackTitle: 'Pin benutzen', //Only for iOS
-                localizedReason: 'Bitte authentifizieren Sie sich.' //Only for iOS
-              }).then(result => {
+      this.config.init().then(() => {
+        this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
+        // Okay, so the platform is ready and our plugins are available.
+        // Here you can do any higher level native things you might need.
+        storage.ready().then(() => {
+          statusBar.styleDefault();
+          this.loadOneSignal();
+          this.loadLocalization();
+          fingerPrint.isAvailable().then(res => {
+            storage.get('auth').then(val => {
+              if (val != undefined && val == 'enabled') {
+                fingerPrint.show({
+                  clientId: 'Hetzner-Cloud-Mobile',
+                  clientSecret: 'password', //Only necessary for Android
+                  disableBackup: false,  //Only for Android(optional)
+                  localizedFallbackTitle: 'Pin benutzen', //Only for iOS
+                  localizedReason: 'Bitte authentifizieren Sie sich.' //Only for iOS
+                }).then(result => {
+                  this.loadHetznerSpecificData();
+                }).catch(err => {
+                  alert('Authentifizierung fehlgeschlagen. App wird beendet');
+                  if (platform.is('ios') == false) {
+                    platform.exitApp();
+                  }
+                });
+              } else {
                 this.loadHetznerSpecificData();
-              }).catch(err => {
+              }
+            });
+          }).catch(reason => {
+            storage.get('auth').then(val => {
+              if (val != undefined && val == 'enabled') {
                 alert('Authentifizierung fehlgeschlagen. App wird beendet');
                 if (platform.is('ios') == false) {
                   platform.exitApp();
                 }
-              });
-            } else {
-              this.loadHetznerSpecificData();
-            }
-          });
-        }).catch(reason => {
-          storage.get('auth').then(val => {
-            if (val != undefined && val == 'enabled') {
-              alert('Authentifizierung fehlgeschlagen. App wird beendet');
-              if (platform.is('ios') == false) {
-                platform.exitApp();
+              } else {
+                this.loadHetznerSpecificData();
               }
-            } else {
-              this.loadHetznerSpecificData();
-            }
+            });
           });
         });
       });
+
     });
   }
 
@@ -183,6 +188,14 @@ export class HetznerCloudMobileApp {
   private loadHetznerSpecificData() {
     this.hetzerCloudData.loadData().then(() => {
       this.splashScreen.hide();
+      console.log(this.platform.userAgent());
+      if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
+        this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
+          if (val == undefined) {
+            this.nav.setRoot(ChangelogPage);
+          }
+        });
+      }
     }, () => {
       this.translate.get('GLOBAL.MISSING_OR_WRONG_PROJECT').subscribe((text) => {
         alert(text);
@@ -195,15 +208,10 @@ export class HetznerCloudMobileApp {
    * Load all needed for the localization
    */
   private loadLocalization() {
-    this.translate.setDefaultLang(this.lang);
-    this.translate.addLangs(['en', 'de']);
-    this.storage.get('lang').then(lang => {
-      if (lang != undefined && lang != null) {
-        this.translate.use(lang);
-      } else {
-        this.translate.use(this.lang);
-      }
-    });
+    this.translate.setDefaultLang('de');
+    this.translate.addLangs(this.config.available_languages);
+    console.log(this.config.language);
+    this.translate.use(this.config.language);
   }
 
   /**
