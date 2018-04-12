@@ -136,7 +136,7 @@ export class addServerModal {
       this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_IMAGE';
       return;
     }
-    if (this.name == null || this.name.length < 3 || /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/g.test(this.name) == false) {
+    if (this.name == null || this.name.length < 3 || /(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/g.test(this.name) == false) {
       this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_NAME';
       return;
     }

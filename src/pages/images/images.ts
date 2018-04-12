@@ -3,7 +3,6 @@ import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects
 import {ActionSheetController, ModalController, NavController} from "ionic-angular";
 import {ImageApiProvider} from "../../providers/image-api/image-api";
 import {editImageModal} from "./editImage/editImage";
-import {addServerModal} from "../server/addServer/addServer";
 import {TranslateService} from "@ngx-translate/core";
 import {ImagesService} from "../../modules/hetzner-cloud-data/images/images.service";
 import {Image, Server} from "../../modules/hetzner-cloud-data/servers/server";
@@ -211,13 +210,13 @@ export class ImagesPage {
         title: _title,
         cssClass: 'action-sheets-basic-page',
         buttons: [
-         /* {
-            text: _create_server,
-            icon: 'add',
-            handler: () => {
-              this.modal.create(addServerModal, {selected_image: image.id}).present();
-            }
-          },*/
+          /* {
+             text: _create_server,
+             icon: 'add',
+             handler: () => {
+               this.modal.create(addServerModal, {selected_image: image.id}).present();
+             }
+           },*/
           {
             text: _cancel,
             role: 'cancel', // will always sort to be on the bottom
@@ -229,41 +228,45 @@ export class ImagesPage {
         ]
       }
     } else {
+      let buttons = [
+        {
+          text: _edit,
+          icon: 'brush',
+          handler: () => {
+            this.openEdit(image);
+          }
+        },
+        /*{
+          text: _create_server,
+          icon: 'add',
+          handler: () => {
+            this.modal.create(addServerModal, {selected_image: image.id}).present();
+          }
+        },*/
+        {
+          text: _cancel,
+          role: 'cancel', // will always sort to be on the bottom
+          icon: 'close',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+      if (image.protection.delete == false) {
+        // Set the delete button only when it isn't protected
+        buttons.unshift({
+          text: _delete,
+          role: 'destructive',
+          icon: 'trash',
+          handler: () => {
+            this.delete(image);
+          }
+        })
+      }
       actions = {
         title: _title,
         cssClass: 'action-sheets-basic-page',
-        buttons: [
-          {
-            text: _delete,
-            role: 'destructive',
-            icon: 'trash',
-            handler: () => {
-              this.delete(image);
-            }
-          },
-          {
-            text: _edit,
-            icon: 'brush',
-            handler: () => {
-              this.openEdit(image);
-            }
-          },
-          /*{
-            text: _create_server,
-            icon: 'add',
-            handler: () => {
-              this.modal.create(addServerModal, {selected_image: image.id}).present();
-            }
-          },*/
-          {
-            text: _cancel,
-            role: 'cancel', // will always sort to be on the bottom
-            icon: 'close',
-            handler: () => {
-              console.log('Cancel clicked');
-            }
-          }
-        ]
+        buttons: buttons
       }
     }
     let actionSheet = this.actionSheetCtrl.create(actions);

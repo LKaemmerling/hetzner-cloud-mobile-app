@@ -59,7 +59,7 @@
           </ion-select>
         </ion-item>
       </ion-list>
-      <button ion-button="" color="danger" (click)="rebuild_from_image()">{{ 'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.REBUILD_FROM_IMAGE' | translate}}</button>
+      <button ion-button="" color="danger" (click)="rebuild_from_image()"  [disabled]="server.protection.delete">{{ 'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.REBUILD_FROM_IMAGE' | translate}}</button>
     </ion-card-content>
   </ion-card>
 </ion-content>

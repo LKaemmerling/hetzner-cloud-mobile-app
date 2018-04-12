@@ -40,7 +40,7 @@ export class editServerModal {
    * Make the api call and validate the name
    */
   public updateServer() {
-    if (this.server.name == null || this.server.name.length < 3 || /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/g.test(this.server.name) == false) {
+    if (this.server.name == null || this.server.name.length < 3 || /(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/g.test(this.server.name) == false) {
       this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_NAME';
       return;
     }
