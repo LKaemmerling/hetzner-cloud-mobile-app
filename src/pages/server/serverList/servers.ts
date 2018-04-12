@@ -101,10 +101,10 @@ export class ServersPage {
    * @param {string} menuId
    */
   openSubMenu(menuId: string) {
-    this.visible = [];
     if (this.visible[menuId] != undefined && this.visible[menuId] == 'active') {
-
+      this.visible = [];
     } else {
+      this.visible = [];
       this.visible[menuId] = 'active';
     }
   }

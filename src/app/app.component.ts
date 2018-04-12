@@ -133,6 +133,7 @@ export class HetznerCloudMobileApp {
     protected config: ConfigService) {
     platform.ready().then(() => {
       this.network.init();
+      this.config.init();
       this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -196,11 +197,20 @@ export class HetznerCloudMobileApp {
    */
   private loadLocalization() {
     this.translate.setDefaultLang(this.lang);
-    this.translate.addLangs(['en', 'de']);
+    let available_langs = ['en', 'de'];
+    this.translate.addLangs(available_langs);
+
     this.storage.get('lang').then(lang => {
       if (lang != undefined && lang != null) {
         this.translate.use(lang);
       } else {
+        if (window.Intl && typeof window.Intl === 'object') {
+          let language = navigator.language.substring(0, 2).toLowerCase();
+          if (available_langs.indexOf(language) != -1) {
+            this.lang = language;
+            console.log(language);
+          }
+        }
         this.translate.use(this.lang);
       }
     });
