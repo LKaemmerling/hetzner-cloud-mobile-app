@@ -21,7 +21,7 @@ $flag-icon-square-path: '/assets/flags/1x1';
 }
 
 .message_box {
-  margin: 10px 0px;
+  margin: 10px auto;
   padding: 12px;
 
   &.info {
@@ -207,4 +207,13 @@ ion-header ion-icon.back-button-icon.icon {
   }
 }
 
-
+.list-header-md {
+  margin-bottom: 1px;
+  margin-top: 13px;
+}
+.item-block{
+  border-bottom: 1px solid #dedede;
+}
+.item-inner{
+  border-bottom:0 !important;
+}
