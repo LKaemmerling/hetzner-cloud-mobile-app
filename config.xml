@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="105011" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="105011" version="1.5.1"
+<widget android-versionCode="106001" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="106001" version="1.6.0"
         xmlns="http://www.w3.org/ns/widgets">
   <name>Hetzner Cloud Mobile</name>
   <description>A mobile App for the Hetzner Cloud.</description>
