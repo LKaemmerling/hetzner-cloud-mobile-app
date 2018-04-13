@@ -135,7 +135,7 @@ export class HetznerCloudMobileApp {
     protected hetzerCloudData: HetznerCloudDataService,
     protected projects: ProjectsService,
     protected config: ConfigService,
-    protected device:Device) {
+    protected device: Device) {
     platform.ready().then(() => {
       this.network.init();
       this.config.init().then(() => {
@@ -194,7 +194,7 @@ export class HetznerCloudMobileApp {
       console.log(this.platform.userAgent());
       if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
         this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
-          if (val == undefined) {
+          if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
             this.nav.setRoot(ChangelogPage);
           }
         });
@@ -251,7 +251,7 @@ export class HetznerCloudMobileApp {
    * Open Support E-Mail
    */
   supportMail() {
-    window.open(`mailto:hc-mobile-support@lk-apps.co?body=OSVersion:`+this.device.platform+' '+this.device.version+'\r\n App Version:'+this.config.version+' \r\n Device:'+this.device.model+'\r\n ', '_system');
+    window.open(`mailto:hc-mobile-support@lk-apps.co?body=OSVersion:` + this.device.platform + ' ' + this.device.version + '\r\n App Version:' + this.config.version + ' \r\n Device:' + this.device.model + '\r\n ', '_system');
 
   }
 }
