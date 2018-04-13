@@ -12,11 +12,12 @@ export class ConfigService {
    * @type {string}
    */
   public version = '1.6.0-DEV-VERSION';
+  public build = '0000001';
   /**
    * The currently used language
    * @type {string}
    */
-  public language = 'en';
+  public language = 'de';
   /**
    *
    * @type {string[]}
@@ -74,6 +75,11 @@ export class ConfigService {
           this.appVersion.getVersionNumber().then(
             (_version) => {
               this.version = _version;
+            }
+          );
+          this.appVersion.getVersionCode().then(
+            (_version) => {
+              this.build = _version;
             }
           );
         });

@@ -10,10 +10,16 @@
               [ngClass]="{'visible':(menu_entry.hidden == true && projects.actual_project != null) || menu_entry.hidden==false}">
         <i [class]="'fas fa-fw '+menu_entry.icon"></i> {{ menu_entry.key | translate }}
       </button>
-      <button ion-item (click)="openAboutPage()" menuClose=""
-              style="position: fixed; bottom:0; text-align: center;font-size:12px;">
-        {{ 'PAGE.ABOUT.TITLE' | translate }}
-      </button>
+      <ion-item
+        style="position: fixed; bottom:0; text-align: center;font-size:12px;">
+        <button ion-item (click)="supportMail()" menuClose="">
+          {{ 'PAGE.HELP.TITLE' | translate }}
+        </button>
+        <button ion-item (click)="openAboutPage()" menuClose="">
+          {{ 'PAGE.ABOUT.TITLE' | translate }}
+        </button>
+      </ion-item>
+
     </ion-list>
   </ion-content>
 </ion-menu>

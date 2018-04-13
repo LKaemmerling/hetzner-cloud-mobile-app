@@ -36,6 +36,9 @@
       "TITLE": "Über diese App",
       "TEXT": "Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es wird die von der Hetzner Online GmbH bereitgestellte Schnittstelle verwendet. Auf Ihrem Gerät werden nur die Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese Lokal gelöscht. <strong>Ihre API Tokens verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der Hetzner Cloud API.</strong>"
     },
+    "HELP": {
+      "TITLE": "Hilfe"
+    },
     "CHANGELOG": {
       "TITLE": "Neu in der Version 1.6.0",
       "SLIDES": {

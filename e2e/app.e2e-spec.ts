@@ -6,7 +6,7 @@ describe('[0] Home Screen', () => {
   let page: Page;
   beforeAll(() => {
     browser.driver.manage().window().setSize(411, 731);
-    if(browser.params.global.lang == 'en'){
+    if (browser.params.global.lang == 'en') {
       page = new Page();
       page.navigateToMenuPoint('Einstellungen');
       browser.sleep(500);
