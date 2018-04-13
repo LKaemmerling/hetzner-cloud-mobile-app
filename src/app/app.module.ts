@@ -3,8 +3,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {HetznerCloudMobileApp} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {AboutPage} from '../pages/about/about';
-import {HomePage} from '../pages/home/home';
+import {AboutPage} from '../pages/AppPages/about/about';
+import {HomePage} from '../pages/AppPages/home/home';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {IonicStorageModule} from '@ionic/storage';
@@ -21,7 +21,7 @@ import {resizeServerModal} from "../pages/server/resizeServer/resizeServer";
 import {backupSettingsModal} from "../pages/server/backupSettings/backupSettings";
 import {addFloatingIPModal} from "../pages/floatingIPs/addFloatingIp/addFloatingIP";
 import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
-import {DeleteAllDataPage} from "../pages/delete-all-data/delete-all-data";
+import {DeleteAllDataPage} from "../pages/AppPages/delete-all-data/delete-all-data";
 import {PipesModule} from "../pipes/pipes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TooltipsModule} from "ionic-tooltips";
@@ -38,7 +38,7 @@ import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
 import {ChartsModule} from 'ng2-charts';
 import {ServerMetricsPage} from "../pages/server/server-metrics/server-metrics";
-import {SettingsPage} from "../pages/settings/settings";
+import {SettingsPage} from "../pages/AppPages/settings/settings";
 import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {ActionsPage} from "../pages/actions/actions";
@@ -58,7 +58,8 @@ import {createTranslateLoader} from "../providers/translation/loader";
 import {NetworkProvider} from '../modules/hetzner-app/network/network';
 import {HetznerCloudDataModule} from "../modules/hetzner-cloud-data/hetzner-cloud-data.module";
 import {HetznerAppModule} from "../modules/hetzner-app/hetzner-app.module";
-import {ChangelogPage} from "../pages/changelog/changelog";
+import {ChangelogPage} from "../pages/AppPages/changelog/changelog";
+import {AppPagesModule} from "../pages/AppPages/AppPages.module";
 
 /**
  * Init the Ionic Pro Monitoring Service
@@ -113,8 +114,6 @@ export class IonicProErrorHandler implements ErrorHandler {
 @NgModule({
   declarations: [
     HetznerCloudMobileApp,
-    AboutPage,
-    HomePage,
     ProjectsPage,
     addProjectModal,
     shareProjectModal,
@@ -129,7 +128,6 @@ export class IonicProErrorHandler implements ErrorHandler {
     backupSettingsModal,
     FloatingIPsPage,
     addFloatingIPModal,
-    DeleteAllDataPage,
     changeIPv4ReverseDNSModal,
     changeIPv6ReverseDNSModal,
     editFloatingIpModal,
@@ -140,12 +138,10 @@ export class IonicProErrorHandler implements ErrorHandler {
     HetznerStatusSettingPage,
     HetznerStatusPage,
     ServerMetricsPage,
-    SettingsPage,
     ActionsPage,
     consoleModal,
     SshkeysPage,
-    editSSHKeyModal,
-    ChangelogPage
+    editSSHKeyModal
   ],
   imports: [
     BrowserModule,
@@ -168,13 +164,12 @@ export class IonicProErrorHandler implements ErrorHandler {
     HetznerApiProviderModule,
     NgxQRCodeModule,
     BrowserAnimationsModule,
-    ComponentsModule
+    ComponentsModule,
+    AppPagesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     HetznerCloudMobileApp,
-    AboutPage,
-    HomePage,
     ProjectsPage,
     addProjectModal,
     shareProjectModal,
@@ -188,7 +183,6 @@ export class IonicProErrorHandler implements ErrorHandler {
     backupSettingsModal,
     FloatingIPsPage,
     addFloatingIPModal,
-    DeleteAllDataPage,
     changeIPv4ReverseDNSModal,
     changeIPv6ReverseDNSModal,
     editFloatingIpModal,
@@ -199,13 +193,11 @@ export class IonicProErrorHandler implements ErrorHandler {
     HetznerStatusSettingPage,
     HetznerStatusPage,
     ServerMetricsPage,
-    SettingsPage,
     ActionsPage,
     consoleModal,
     editProjectModal,
     SshkeysPage,
-    editSSHKeyModal,
-    ChangelogPage
+    editSSHKeyModal
   ],
   providers: [
     StatusBar,

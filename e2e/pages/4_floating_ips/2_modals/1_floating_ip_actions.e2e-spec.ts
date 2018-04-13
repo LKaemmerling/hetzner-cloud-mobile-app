@@ -33,7 +33,7 @@ describe('[5][2] Floating IP Actions', () => {
     expect(element(by.id('error_floating_ip')).getText()).toContain(page.getLocal('PAGE.FLOATING_IPS.MODAL.ADD.ERRORS.REQUIRED_NETWORK_PROTOCOL'));
 
     element(by.id('type')).click();
-    browser.sleep(500);
+    browser.sleep(1000);
     element(by.id('rb-16-0')).click();
     browser.sleep(1000);
     element(by.buttonText(page.getLocal('ACTIONS.ORDER'))).click();
