@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Device} from "@ionic-native/device";
+import {ConfigService} from "../../../modules/hetzner-app/config/config.service";
 
 /**
  * Generated class for the DeveloperPage page.
@@ -15,7 +16,8 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class DeveloperPage {
 
-  constructor() {
+
+  constructor(protected device:Device, protected config:ConfigService) {
   }
 
 

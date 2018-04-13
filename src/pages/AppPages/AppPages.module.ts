@@ -10,6 +10,7 @@ import {HetznerAppModule} from "../../modules/hetzner-app/hetzner-app.module";
 import {IonicStorageModule} from "@ionic/storage";
 import {PipesModule} from "../../pipes/pipes.module";
 import {DeleteAllDataPage} from "./delete-all-data/delete-all-data";
+import {Device} from "@ionic-native/device";
 
 @NgModule({
   declarations: [
@@ -27,13 +28,16 @@ import {DeleteAllDataPage} from "./delete-all-data/delete-all-data";
     IonicStorageModule,
     PipesModule
   ],
-  entryComponents:[
+  entryComponents: [
     AboutPage,
     DeveloperPage,
     ChangelogPage,
     SettingsPage,
     HomePage,
     DeleteAllDataPage
+  ],
+  providers: [
+    Device
   ]
 })
 export class AppPagesModule {
