@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ConfigService} from "../../modules/hetzner-app/config/config.service";
+import {ConfigService} from "../../../modules/hetzner-app/config/config.service";
 import {Platform} from "ionic-angular";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Storage} from "@ionic/storage";

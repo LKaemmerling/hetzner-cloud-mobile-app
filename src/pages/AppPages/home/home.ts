@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {ModalController, NavController} from 'ionic-angular';
-import {ProjectsService} from "../../modules/hetzner-cloud-data/project/projects.service";
-import {ProjectsPage} from "../projects/projects";
-import {addProjectModal} from "../projects/addProject/addProject";
+import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
+import {ProjectsPage} from "../../projects/projects";
+import {addProjectModal} from "../../projects/addProject/addProject";
 
 /**
  * This is the basic start screen

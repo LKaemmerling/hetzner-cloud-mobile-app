@@ -4,7 +4,7 @@ import {HomePage} from './home';
 import {IonicModule, LoadingController, ModalController, NavController, Platform} from 'ionic-angular/index';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {PlatformMock, SplashScreenMock, StatusBarMock} from '../../../test-config/mocks-ionic';
+import {PlatformMock, SplashScreenMock, StatusBarMock} from '../../../../test-config/mocks-ionic';
 import {HttpClientModule} from "@angular/common/http";
 import {LoadingControllerMock, ModalControllerMock, StorageMock} from "ionic-mocks";
 import {TranslateFakeLoader, TranslateLoader, TranslateModule} from "@ngx-translate/core";

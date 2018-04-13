@@ -6,7 +6,8 @@ import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {Storage} from "@ionic/storage";
 import {TranslateService} from "@ngx-translate/core";
 import {OneSignal} from "@ionic-native/onesignal";
-import {ConfigService} from "../../modules/hetzner-app/config/config.service";
+import {ConfigService} from "../../../modules/hetzner-app/config/config.service";
+import {DeveloperPage} from "../developer/developer";
 
 /**
  * This is the settings page, that contain all possible settings of the app
@@ -158,5 +159,9 @@ export class SettingsPage {
       }).present();
       return;
     }
+  }
+
+  openDeveloperMode() {
+    this.navCtrl.push(DeveloperPage);
   }
 }

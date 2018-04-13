@@ -19,7 +19,7 @@
       <span item-right>{{ config.version }}</span>
     </div>
     <div ion-item="" *ngIf="config.developer_mode">
-      <ion-label text-wrap color="danger">DEVELOPER MODE ACTIVE</ion-label>
+      <ion-label text-wrap color="danger" (click)="openDeveloperMode()">Developer Area</ion-label>
     </div>
     <div ion-item="">
       <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.LATEST_UPDATE.TITLE' | translate }}</ion-label>
