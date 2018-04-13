@@ -5,11 +5,11 @@
 var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 if (process.env.CI != undefined && ("" + process.env.CI) == "true") {
   var ChromeOptions = {
-    args: ['--no-sandbox', '--headless','--user-agent="E2E-Test"']
+    args: ['--no-sandbox', '--user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36 E2E-Test"', '--headless']
   }
 } else {
   var ChromeOptions = {
-    args: ['--no-sandbox','--user-agent="E2E-Test"']
+    args: ['--no-sandbox', '--user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36 E2E-Test"']
   }
 }
 var config = {
@@ -21,7 +21,6 @@ var config = {
   baseUrl: 'http://localhost:8001/'
 
 }
-console.log( process.env.LANG);
 exports.config = Object.assign({
   allScriptsTimeout: 50000,
   specs: [
