@@ -118,6 +118,7 @@
     "@ionic-native/app-version": "4.6.0",
     "@ionic-native/barcode-scanner": "4.6.0",
     "@ionic-native/core": "4.6.0",
+    "@ionic-native/device": "^4.7.0",
     "@ionic-native/fingerprint-aio": "4.6.0",
     "@ionic-native/in-app-browser": "4.6.0",
     "@ionic-native/keyboard": "4.6.0",

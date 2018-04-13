@@ -22,6 +22,7 @@ import {NetworkProvider} from "../modules/hetzner-app/network/network";
 import {HetznerCloudDataService} from "../modules/hetzner-cloud-data/hetzner-cloud-data.service";
 import {ConfigService} from "../modules/hetzner-app/config/config.service";
 import {ChangelogPage} from "../pages/AppPages/changelog/changelog";
+import {Device} from "@ionic-native/device";
 
 /**
  * This is the main component from the Hetzer Cloud Mobile App
@@ -120,6 +121,7 @@ export class HetznerCloudMobileApp {
    * @param {HetznerCloudDataService} hetzerCloudData
    * @param {ProjectsService} projects
    * @param {ConfigService} config
+   * @param {Device} device
    */
   constructor(
     protected platform: Platform,
@@ -132,7 +134,8 @@ export class HetznerCloudMobileApp {
     protected network: NetworkProvider,
     protected hetzerCloudData: HetznerCloudDataService,
     protected projects: ProjectsService,
-    protected config: ConfigService) {
+    protected config: ConfigService,
+    protected device: Device) {
     platform.ready().then(() => {
       this.network.init();
       this.config.init().then(() => {
@@ -191,7 +194,7 @@ export class HetznerCloudMobileApp {
       console.log(this.platform.userAgent());
       if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
         this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
-          if (val == undefined) {
+          if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
             this.nav.setRoot(ChangelogPage);
           }
         });
@@ -244,4 +247,11 @@ export class HetznerCloudMobileApp {
     this.nav.setRoot(AboutPage);
   }
 
+  /**
+   * Open Support E-Mail
+   */
+  supportMail() {
+    window.open(`mailto:hc-mobile-support@lk-apps.co?body=OSVersion:` + this.device.platform + ' ' + this.device.version + '\r\n App Version:' + this.config.version + ' \r\n Device:' + this.device.model + '\r\n ', '_system');
+
+  }
 }

@@ -149,13 +149,11 @@ export class ProjectsPage {
     this._projects = this.project.removeProject(project);
     if (this.project.projects == null || this.project.projects.length == 0) {
       this.project.selectProject(null).then(() => {
-        this.serversService.servers = [];
-        this.serversService.saveServers();
+        this.hetznerCloudDataService.loadDataFromNetwork();
       });
     } else {
       this.project.selectProject(this.project.projects[0]).then(() => {
-        this.serversService.servers = [];
-        this.serversService.saveServers();
+        this.hetznerCloudDataService.loadDataFromNetwork();
       });
     }
     this._projects = this.project.projects;

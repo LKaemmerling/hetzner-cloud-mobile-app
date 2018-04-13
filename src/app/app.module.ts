@@ -60,6 +60,7 @@ import {HetznerCloudDataModule} from "../modules/hetzner-cloud-data/hetzner-clou
 import {HetznerAppModule} from "../modules/hetzner-app/hetzner-app.module";
 import {ChangelogPage} from "../pages/AppPages/changelog/changelog";
 import {AppPagesModule} from "../pages/AppPages/AppPages.module";
+import {Device} from "@ionic-native/device";
 
 /**
  * Init the Ionic Pro Monitoring Service
@@ -209,7 +210,8 @@ export class IonicProErrorHandler implements ErrorHandler {
     FingerprintAIO,
     BarcodeScanner,
     Keyboard,
-    AppRate
+    AppRate,
+    Device
   ]
 })
 export class AppModule {
