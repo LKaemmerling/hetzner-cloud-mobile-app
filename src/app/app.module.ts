@@ -67,7 +67,7 @@ import {Device} from "@ionic-native/device";
  * @type {Pro}
  */
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.6.0"
+  appVersion: "1.7.0"
 });
 
 /**

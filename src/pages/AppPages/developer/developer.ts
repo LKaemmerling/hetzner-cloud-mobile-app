@@ -25,6 +25,7 @@ export class DeveloperPage {
 
   async performAutomaticUpdate() {
     const config = {
+      'appId': '359b3ec5',
       channel: 'Beta'
     };
     await Pro.deploy.init(config);
