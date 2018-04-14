@@ -63,5 +63,13 @@
         {{ config.version }} ({{config.build}})
       </div>
     </ion-item>
+    <ion-item>
+      <ion-label>Beta Update</ion-label>
+      <button ion-button="" color="danger" (click)="performAutomaticUpdate()">Perform Beta Update</button>
+    </ion-item>
+    <ion-item *ngIf="downloadProgress > 0">
+      <ion-label>Update Progress</ion-label>
+      {{ downloadProgress }}%
+    </ion-item>
   </ion-list>
 </ion-content>
