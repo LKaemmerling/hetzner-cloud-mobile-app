@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="107004" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="107004" version="1.7.0" xmlns="http://www.w3.org/ns/widgets">
+<widget android-versionCode="107005" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="107005" version="1.7.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Hetzner Cloud Mobile</name>
     <description>A mobile App for the Hetzner Cloud.</description>
     <author email="kontakt@lukas-kaemmerling.de" href="https://lk-development.de">LK-Development</author>
@@ -92,7 +92,6 @@
     </platform>
     <plugin name="cordova-sqlite-storage" spec="~2.2.0" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.1" />
-    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
@@ -110,4 +109,13 @@
     <allow-navigation href="http://192.168.178.87:8100" />
     <engine name="android" spec="6.4.0" />
     <plugin name="cordova-plugin-device" spec="^2.0.1" />
+    <plugin name="cordova-plugin-ionic" spec="^3.1.3">
+        <variable name="APP_ID" value="359b3ec5" />
+        <variable name="CHANNEL_NAME" value="Beta" />
+        <variable name="UPDATE_METHOD" value="none" />
+        <variable name="WARN_DEBUG" value="true" />
+        <variable name="UPDATE_API" value="https://api.ionicjs.com" />
+        <variable name="MAX_STORE" value="2" />
+    </plugin>
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
 </widget>
