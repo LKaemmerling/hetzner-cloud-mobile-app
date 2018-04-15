@@ -75,5 +75,13 @@
       <ion-label>Update Progress</ion-label>
       {{ downloadProgress }}%
     </ion-item>
+    <ion-item>
+      <div item-left="">
+       Logging
+      </div>
+      <div item-right="">
+        <button ion-button="" color="danger" (click)="performAutomaticUpdate()">Open Logs</button>
+      </div>
+    </ion-item>
   </ion-list>
 </ion-content>
