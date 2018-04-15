@@ -23,35 +23,37 @@ export class DeveloperPage {
 
   }
 
-  performAutomaticUpdate() {
+  async performAutomaticUpdate() {
     const config = {
       'appId': '359b3ec5',
       channel: 'Beta'
     };
-    Pro.deploy.init(config).then(() => {
-      /*
-     This code performs an entire Check, Download, Extract, Redirect flow for
-     you so you don't have to program the entire flow yourself. This should
-     work for a majority of use cases.
-   */
+    await Pro.deploy.init(config);
+    /*
+   This code performs an entire Check, Download, Extract, Redirect flow for
+   you so you don't have to program the entire flow yourself. This should
+   work for a majority of use cases.
+ */
 
-      try {
+    try {
 
-        Pro.deploy.checkAndApply(true, (progress) => {
+      const haveUpdate = await Pro.deploy.check();
+
+      if (haveUpdate) {
+        this.downloadProgress = 0;
+
+        await Pro.deploy.download((progress) => {
           this.downloadProgress = progress;
-        }).then((resp) => {
-          if (resp.update) {
-            alert('Update found!');
-          } else {
-            alert('Update not found!');
-          }
-        });
-
-
-      } catch (err) {
-        alert('Err!');
+        })
+        await Pro.deploy.extract();
+        await Pro.deploy.redirect();
       }
-    });
+
+
+    } catch (err) {
+      alert('Err!');
+    }
+
 
   }
 
