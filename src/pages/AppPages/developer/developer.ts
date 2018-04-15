@@ -23,34 +23,36 @@ export class DeveloperPage {
 
   }
 
-  async performAutomaticUpdate() {
+  performAutomaticUpdate() {
     const config = {
       'appId': '359b3ec5',
       channel: 'Beta'
     };
-    await Pro.deploy.init(config);
-    /*
-      This code performs an entire Check, Download, Extract, Redirect flow for
-      you so you don't have to program the entire flow yourself. This should
-      work for a majority of use cases.
-    */
+    Pro.deploy.init(config).then(() => {
+      /*
+     This code performs an entire Check, Download, Extract, Redirect flow for
+     you so you don't have to program the entire flow yourself. This should
+     work for a majority of use cases.
+   */
 
-    try {
-      const resp = await Pro.deploy.checkAndApply(true, (progress) => {
-        this.downloadProgress = progress;
-      });
+      try {
 
-      if (resp.update) {
-        // We found an update, and are in process of redirecting you since you put true!
-      } else {
-        // No update available
+        Pro.deploy.checkAndApply(true, (progress) => {
+          this.downloadProgress = progress;
+        }).then((resp) => {
+          if (resp.update) {
+            alert('Update found!');
+          } else {
+            alert('Update not found!');
+          }
+        });
+
+
+      } catch (err) {
+        alert('Err!');
       }
-    } catch (err) {
-      // We encountered an error.
-      // Here's how we would log it to Ionic Pro Monitoring while also catching:
+    });
 
-      // Pro.monitoring.exception(err);
-    }
   }
 
 }
