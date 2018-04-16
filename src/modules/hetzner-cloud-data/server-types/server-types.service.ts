@@ -1,6 +1,6 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
-import {ServerTypeApiProvider} from "../../../providers/server-type-api/server-type-api";
+import {ServerTypeApiProvider} from "../../hetzner-cloud-api/server-type-api/server-type-api";
 /**
  * Service that contains all storage methods for the server types.
  */

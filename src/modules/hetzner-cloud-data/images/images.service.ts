@@ -1,6 +1,6 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
-import {ImageApiProvider} from "../../../providers/image-api/image-api";
+import {ImageApiProvider} from "../../hetzner-cloud-api/image-api/image-api";
 import {Image} from "../servers/server";
 
 

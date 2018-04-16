@@ -1,7 +1,7 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
 import {Pricing} from "./pricings";
-import {PricesApiProvider} from "../../../providers/pricing-api/pricing-api";
+import {PricesApiProvider} from "../../hetzner-cloud-api/pricing-api/pricing-api";
 /**
  * Service that contains all storage methods for the prices.
  */

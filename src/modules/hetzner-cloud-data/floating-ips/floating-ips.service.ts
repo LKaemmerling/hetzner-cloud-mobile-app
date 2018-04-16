@@ -1,6 +1,6 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
-import {FloatingIpApiProvider} from "../../../providers/floating-ip-api/floating-ip-api";
+import {FloatingIpApiProvider} from "../../hetzner-cloud-api/floating-ip-api/floating-ip-api";
 
 /**
  * Service that contains all storage methods for the floating ips.

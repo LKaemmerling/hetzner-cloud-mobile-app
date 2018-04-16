@@ -1,6 +1,6 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
-import {SshKeyApiProvider} from "../../../providers/ssh-key-api/ssh-key-api";
+import {SshKeyApiProvider} from "../../hetzner-cloud-api/ssh-key-api/ssh-key-api";
 
 /**
  * Service that contains all storage methods for the ssh keys.

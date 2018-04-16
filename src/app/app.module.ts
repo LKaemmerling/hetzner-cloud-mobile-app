@@ -1,66 +1,54 @@
 import {ErrorHandler, Injectable, Injector, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
-import {HetznerCloudMobileApp} from './app.component';
+import {HetznerMobileApp} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {AboutPage} from '../pages/AppPages/about/about';
-import {HomePage} from '../pages/AppPages/home/home';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {IonicStorageModule} from '@ionic/storage';
-import {ProjectsPage} from "../pages/projects/projects";
-import {addProjectModal} from "../pages/projects/addProject/addProject";
-import {ServersPage} from "../pages/server/serverList/servers";
+import {ServersPage} from "../pages/cloud/server/serverList/servers";
 import {Pro} from '@ionic/pro';
-import {ServerPage} from "../pages/server/server";
-import {addServerModal} from "../pages/server/addServer/addServer";
-import {editServerModal} from "../pages/server/editServer/editServer";
-import {powerSettingsModal} from "../pages/server/powerSettings/powerSettings";
-import {rescueModeModal} from "../pages/server/rescueMode/rescueMode";
-import {resizeServerModal} from "../pages/server/resizeServer/resizeServer";
-import {backupSettingsModal} from "../pages/server/backupSettings/backupSettings";
-import {addFloatingIPModal} from "../pages/floatingIPs/addFloatingIp/addFloatingIP";
-import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
-import {DeleteAllDataPage} from "../pages/AppPages/delete-all-data/delete-all-data";
+import {ServerPage} from "../pages/cloud/server/server";
+import {addServerModal} from "../pages/cloud/server/addServer/addServer";
+import {editServerModal} from "../pages/cloud/server/editServer/editServer";
+import {powerSettingsModal} from "../pages/cloud/server/powerSettings/powerSettings";
+import {rescueModeModal} from "../pages/cloud/server/rescueMode/rescueMode";
+import {resizeServerModal} from "../pages/cloud/server/resizeServer/resizeServer";
+import {backupSettingsModal} from "../pages/cloud/server/backupSettings/backupSettings";
+import {addFloatingIPModal} from "../pages/cloud/floatingIPs/addFloatingIp/addFloatingIP";
+import {FloatingIPsPage} from "../pages/cloud/floatingIPs/floatingIPs";
 import {PipesModule} from "../pipes/pipes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TooltipsModule} from "ionic-tooltips";
-import {changeIPv4ReverseDNSModal} from "../pages/server/reverseDNS/ipv4/changeIPv4ReverseDNSModal";
-import {changeIPv6ReverseDNSModal} from "../pages/server/reverseDNS/ipv6/changeIPv6ReverseDNS";
-import {editFloatingIpModal} from "../pages/floatingIPs/editFloatingIp/editFloatingIp";
-import {FloatingIPPage} from "../pages/floatingIPs/floatingIp/floatingIP";
-import {ImagesPage} from "../pages/images/images";
-import {editImageModal} from "../pages/images/editImage/editImage";
-import {assignToServerModal} from "../pages/floatingIPs/assignToServer/assignToServer";
-import {HetznerStatusSettingPage} from "../pages/hetzner-status-setting/hetzner-status-setting";
+import {changeIPv4ReverseDNSModal} from "../pages/cloud/server/reverseDNS/ipv4/changeIPv4ReverseDNSModal";
+import {changeIPv6ReverseDNSModal} from "../pages/cloud/server/reverseDNS/ipv6/changeIPv6ReverseDNS";
+import {editFloatingIpModal} from "../pages/cloud/floatingIPs/editFloatingIp/editFloatingIp";
+import {FloatingIPPage} from "../pages/cloud/floatingIPs/floatingIp/floatingIP";
+import {assignToServerModal} from "../pages/cloud/floatingIPs/assignToServer/assignToServer";
+import {HetznerStatusSettingPage} from "../pages/global/hetzner-status-setting/hetzner-status-setting";
 import {OneSignal} from "@ionic-native/onesignal";
-import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
+import {HetznerStatusPage} from "../pages/global/hetzner-status/hetzner-status";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
 import {ChartsModule} from 'ng2-charts';
-import {ServerMetricsPage} from "../pages/server/server-metrics/server-metrics";
-import {SettingsPage} from "../pages/AppPages/settings/settings";
+import {ServerMetricsPage} from "../pages/cloud/server/server-metrics/server-metrics";
 import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
-import {ActionsPage} from "../pages/actions/actions";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {HetznerApiProviderModule} from "../providers/hetznerApiProvider.module";
+import {HetznerCloudApiProviderModule} from "../modules/hetzner-cloud-api/hetzner-cloud-api-provider.module";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
-import {shareProjectModal} from "../pages/projects/shareProject/shareProject";
 import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode/dist";
-import {ComponentsModule} from "../components/components.module";
-import {consoleModal} from "../pages/server/console/console";
+import {HetznerAppComponentsModule} from "../components/hetzner-app-components.module";
+import {consoleModal} from "../pages/cloud/server/console/console";
 import {Keyboard} from "@ionic-native/keyboard";
-import {editProjectModal} from "../pages/projects/editProject/editProject";
-import {SshkeysPage} from "../pages/sshkeys/sshkeys";
-import {editSSHKeyModal} from "../pages/sshkeys/editSSHKey/editSSHKey";
 import {AppRate} from "@ionic-native/app-rate";
 import {createTranslateLoader} from "../providers/translation/loader";
 import {NetworkProvider} from '../modules/hetzner-app/network/network';
 import {HetznerCloudDataModule} from "../modules/hetzner-cloud-data/hetzner-cloud-data.module";
 import {HetznerAppModule} from "../modules/hetzner-app/hetzner-app.module";
-import {ChangelogPage} from "../pages/AppPages/changelog/changelog";
-import {AppPagesModule} from "../pages/AppPages/AppPages.module";
+import {GlobalAppPagesModule} from "../pages/global/global-app-pages.module";
 import {Device} from "@ionic-native/device";
+import {CloudAppPagesModule} from "../pages/cloud/cloud-app-pages.module";
+import {RobotAppPagesModule} from "../pages/robot/robot-app-pages.module";
 
 /**
  * Init the Ionic Pro Monitoring Service
@@ -114,39 +102,11 @@ export class IonicProErrorHandler implements ErrorHandler {
  */
 @NgModule({
   declarations: [
-    HetznerCloudMobileApp,
-    ProjectsPage,
-    addProjectModal,
-    shareProjectModal,
-    editProjectModal,
-    ServersPage,
-    ServerPage,
-    addServerModal,
-    editServerModal,
-    powerSettingsModal,
-    rescueModeModal,
-    resizeServerModal,
-    backupSettingsModal,
-    FloatingIPsPage,
-    addFloatingIPModal,
-    changeIPv4ReverseDNSModal,
-    changeIPv6ReverseDNSModal,
-    editFloatingIpModal,
-    FloatingIPPage,
-    ImagesPage,
-    editImageModal,
-    assignToServerModal,
-    HetznerStatusSettingPage,
-    HetznerStatusPage,
-    ServerMetricsPage,
-    ActionsPage,
-    consoleModal,
-    SshkeysPage,
-    editSSHKeyModal
+    HetznerMobileApp,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(HetznerCloudMobileApp),
+    IonicModule.forRoot(HetznerMobileApp),
     HetznerAppModule,
     IonicStorageModule.forRoot(),
     HetznerCloudDataModule,
@@ -162,43 +122,17 @@ export class IonicProErrorHandler implements ErrorHandler {
         deps: [HttpClient]
       }
     }),
-    HetznerApiProviderModule,
+    HetznerCloudApiProviderModule,
     NgxQRCodeModule,
     BrowserAnimationsModule,
-    ComponentsModule,
-    AppPagesModule
+    HetznerAppComponentsModule,
+    GlobalAppPagesModule,
+    CloudAppPagesModule,
+    RobotAppPagesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    HetznerCloudMobileApp,
-    ProjectsPage,
-    addProjectModal,
-    shareProjectModal,
-    ServersPage,
-    ServerPage,
-    addServerModal,
-    editServerModal,
-    powerSettingsModal,
-    rescueModeModal,
-    resizeServerModal,
-    backupSettingsModal,
-    FloatingIPsPage,
-    addFloatingIPModal,
-    changeIPv4ReverseDNSModal,
-    changeIPv6ReverseDNSModal,
-    editFloatingIpModal,
-    FloatingIPPage,
-    ImagesPage,
-    editImageModal,
-    assignToServerModal,
-    HetznerStatusSettingPage,
-    HetznerStatusPage,
-    ServerMetricsPage,
-    ActionsPage,
-    consoleModal,
-    editProjectModal,
-    SshkeysPage,
-    editSSHKeyModal
+    HetznerMobileApp,
   ],
   providers: [
     StatusBar,
