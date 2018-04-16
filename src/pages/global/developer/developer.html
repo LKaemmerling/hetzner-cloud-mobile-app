@@ -66,5 +66,13 @@
     <ion-list-header>
       Feature Flags
     </ion-list-header>
+    <ion-item>
+      <div item-left="">
+        Robot Integration:
+      </div>
+      <div item-right="">
+        <ion-toggle [checked]="feature_flags['robot']" (ionChange)="toggleFlag('robot')"></ion-toggle>
+      </div>
+    </ion-item>
   </ion-list>
 </ion-content>

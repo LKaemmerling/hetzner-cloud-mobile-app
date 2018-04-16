@@ -4,7 +4,6 @@ import {TranslateModule} from "@ngx-translate/core";
 import {IonicStorageModule} from "@ionic/storage";
 import {HetznerAppModule} from "../../../modules/hetzner-app/hetzner-app.module";
 import {HetznerCloudDataModule} from "../../../modules/hetzner-cloud-data/hetzner-cloud-data.module";
-import {PipesModule} from "../../../pipes/pipes.module";
 import {ActionsPage} from "./actions";
 import {HetznerAppComponentsModule} from "../../../components/hetzner-app-components.module";
 
@@ -18,8 +17,7 @@ import {HetznerAppComponentsModule} from "../../../components/hetzner-app-compon
     TranslateModule,
     HetznerAppModule,
     HetznerCloudDataModule,
-    IonicStorageModule,
-    PipesModule
+    IonicStorageModule
   ],
   entryComponents: [
     ActionsPage

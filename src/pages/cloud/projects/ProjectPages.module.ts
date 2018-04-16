@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
-import {Device} from "@ionic-native/device";
 import {ProjectsPage} from "./projects";
 import {shareProjectModal} from "./shareProject/shareProject";
 import {editProjectModal} from "./editProject/editProject";
@@ -10,7 +9,6 @@ import {TranslateModule} from "@ngx-translate/core";
 import {IonicStorageModule} from "@ionic/storage";
 import {HetznerAppModule} from "../../../modules/hetzner-app/hetzner-app.module";
 import {HetznerCloudDataModule} from "../../../modules/hetzner-cloud-data/hetzner-cloud-data.module";
-import {PipesModule} from "../../../pipes/pipes.module";
 import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode/dist";
 
 @NgModule({
@@ -26,7 +24,6 @@ import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode/dist";
     HetznerAppModule,
     HetznerCloudDataModule,
     IonicStorageModule,
-    PipesModule,
     NgxQRCodeModule
   ],
   entryComponents: [

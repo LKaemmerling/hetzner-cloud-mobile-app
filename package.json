@@ -31,8 +31,8 @@
     "post-install": "webdriver-manager update --standalone",
     "prepush": "npm test",
     "commitmsg": "validate-commit-msg",
-    "compodoc": "./node_modules/.bin/compodoc src/ -p tsconfig.json -n Hetzner-Cloud-Mobile",
-    "watch:compodoc": "./node_modules/.bin/compodoc src/ -p tsconfig.json -n Hetzner-Cloud-Mobile -osw",
+    "compodoc": "./node_modules/.bin/compodoc src/ -p tsconfig.json -n Hetzner-Cloud-Mobile --theme='laravel'",
+    "watch:compodoc": "./node_modules/.bin/compodoc src/ -p tsconfig.json -n Hetzner-Cloud-Mobile -osw --theme='laravel'",
     "e2e:loc": "LANG='de' node test-config/protractor.server.js && LANG='de' node test-config/protractor.server.js"
   },
   "betterScripts": {

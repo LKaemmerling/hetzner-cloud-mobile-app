@@ -456,5 +456,19 @@
         }
       }
     }
+  },
+  "ROBOT": {
+    "PAGE": {
+      "ACCOUNTS": {
+        "TITLE": "Meine Zugänge",
+        "NO_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch kein Zugänge hinterlegt."
+      },
+      "SERVERS": {
+        "TITLE": "Meine Server"
+      },
+      "STORAGE_BOXES": {
+        "TITLE": "Meine Storage Boxen"
+      }
+    }
   }
 }

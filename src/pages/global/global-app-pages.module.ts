@@ -8,7 +8,6 @@ import {SettingsPage} from "./settings/settings";
 import {HomePage} from "./home/home";
 import {HetznerAppModule} from "../../modules/hetzner-app/hetzner-app.module";
 import {IonicStorageModule} from "@ionic/storage";
-import {PipesModule} from "../../pipes/pipes.module";
 import {DeleteAllDataPage} from "./delete-all-data/delete-all-data";
 import {Device} from "@ionic-native/device";
 import {CloudAppPagesModule} from "../cloud/cloud-app-pages.module";
@@ -35,7 +34,6 @@ import {HetznerAppComponentsModule} from "../../components/hetzner-app-component
     TranslateModule,
     HetznerAppModule,
     IonicStorageModule,
-    PipesModule,
     CloudAppPagesModule,
     HetznerAppComponentsModule
   ],

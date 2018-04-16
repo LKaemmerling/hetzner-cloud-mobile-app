@@ -25,9 +25,9 @@ describe('[0] Home Screen', () => {
     browser.sleep(500);
   });
 
-  it('[1] should have a title saying Hetzner Cloud Mobile', () => {
+  it('[1] should have a title saying Hetzner Mobile', () => {
     page.getTitle().then(title => {
-      expect(title).toEqual('Hetzner Cloud Mobile');
+      expect(title).toEqual('Hetzner Mobile');
       page.screenshot('home');
     });
   });

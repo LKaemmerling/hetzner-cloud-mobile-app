@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Nav, Platform} from 'ionic-angular';
+import {LoadingController, Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
@@ -23,6 +23,9 @@ import {HetznerCloudDataService} from "../modules/hetzner-cloud-data/hetzner-clo
 import {ConfigService} from "../modules/hetzner-app/config/config.service";
 import {ChangelogPage} from "../pages/global/changelog/changelog";
 import {Device} from "@ionic-native/device";
+import {AccountListPage} from "../pages/robot/account/list/account-list";
+import {HetznerRobotMenuService} from "../modules/hetzner-robot-data/hetzner-robot-menu.service";
+import {HetznerCloudMenuService} from "../modules/hetzner-cloud-data/hetzner-cloud-menu.service";
 
 /**
  * This is the main component from the Hetzer Cloud Mobile App
@@ -46,66 +49,10 @@ export class HetznerMobileApp {
    */
   public lang: string = 'de';
 
-  /**
-   * The structure of the menu
-   * @type {({key: string; icon: string; page: HomePage; hidden: boolean} | {key: string; icon: string; page: ProjectsPage; hidden: boolean} | {key: string; icon: string; page: ServersPage; hidden: boolean} | {key: string; icon: string; page: FloatingIPsPage; hidden: boolean} | {key: string; icon: string; page: ImagesPage; hidden: boolean} | {key: string; icon: string; page: ActionsPage; hidden: boolean} | {key: string; icon: string; page: HetznerStatusPage; hidden: boolean} | {key: string; icon: string; page: SettingsPage; hidden: boolean})[]}
-   */
-  protected menu_entries: Array<object> = [
-    {
-      key: 'PAGE.HOME.TITLE',
-      icon: 'fa-home',
-      page: HomePage,
-      hidden: false
-    },
-    {
-      key: 'PAGE.PROJECTS.TITLE',
-      icon: 'fa-lock',
-      page: ProjectsPage,
-      hidden: false
-    },
-    {
-      key: 'PAGE.SERVERS.TITLE',
-      icon: 'fa-server',
-      page: ServersPage,
-      hidden: true
-    },
-    {
-      key: 'PAGE.FLOATING_IPS.TITLE',
-      icon: 'fa-cloud',
-      page: FloatingIPsPage,
-      hidden: true
-    },
-    {
-      key: 'PAGE.IMAGES.TITLE',
-      icon: 'fa-puzzle-piece',
-      page: ImagesPage,
-      hidden: true
-    },
-    {
-      key: 'PAGE.SSH_KEYS.TITLE',
-      icon: 'fa-key',
-      page: SshkeysPage,
-      hidden: true
-    },
-    {
-      key: 'PAGE.ACTIONS.TITLE',
-      icon: 'fa-cog',
-      page: ActionsPage,
-      hidden: true
-    },
-    {
-      key: 'PAGE.STATUS.TITLE',
-      icon: 'fa-bell',
-      page: HetznerStatusPage,
-      hidden: false
-    },
-    {
-      key: 'PAGE.SETTINGS.TITLE',
-      icon: 'fa-cogs',
-      page: SettingsPage,
-      hidden: false
-    }
-  ];
+  public available_menus = []
+  protected menu = 'Cloud';
+
+  protected menu_entries;
 
   /**
    * Constructor
@@ -121,6 +68,9 @@ export class HetznerMobileApp {
    * @param {ProjectsService} projects
    * @param {ConfigService} config
    * @param {Device} device
+   * @param loadingCtrl
+   * @param hetznerCloudMenu
+   * @param hetznerRobotMenu
    */
   constructor(
     protected platform: Platform,
@@ -134,10 +84,18 @@ export class HetznerMobileApp {
     protected hetzerCloudData: HetznerCloudDataService,
     protected projects: ProjectsService,
     protected config: ConfigService,
-    protected device: Device) {
+    protected device: Device,
+    protected loadingCtrl: LoadingController,
+    protected hetznerCloudMenu: HetznerCloudMenuService,
+    protected hetznerRobotMenu: HetznerRobotMenuService) {
     platform.ready().then(() => {
       this.network.init();
       this.config.init().then(() => {
+        this.available_menus.push(this.hetznerCloudMenu);
+        if (this.config.getFeatureFlag('robot', false)) {
+          this.available_menus.push(this.hetznerRobotMenu);
+        }
+        this.changeMenu();
         this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
@@ -252,5 +210,22 @@ export class HetznerMobileApp {
   supportMail() {
     window.open(`mailto:hc-mobile-support@lk-apps.co?body=OSVersion:` + this.device.platform + ' ' + this.device.version + '\r\n App Version:' + this.config.version + ' \r\n Device:' + this.device.model + '\r\n ', '_system');
 
+  }
+
+  changeMenu(loading: boolean = true) {
+    var loader;
+    if (loading) {
+      loader = this.loadingCtrl.create();
+      loader.present();
+    }
+
+    this.available_menus.forEach((val) => {
+      if (val.text == this.menu) {
+        this.menu_entries = val.menu_entries;
+      }
+    });
+    if (loading) {
+      loader.dismiss();
+    }
   }
 }

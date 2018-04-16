@@ -42,6 +42,10 @@ export class ConfigService {
    */
   public developer_mode = false;
 
+  public feature_flags = {
+    robot: false
+  };
+
   /**
    * Constructor
    * @param {Storage} storage
@@ -59,19 +63,23 @@ export class ConfigService {
         if (val != undefined) {
           this.developer_mode = val;
         }
-        this.storage.get('lang').then(lang => {
-          if (lang != undefined && lang != null) {
-            this.language = lang;
-          } else {
-            if ((<any>window).Intl && typeof (<any>window).Intl === 'object') {
-              let language = navigator.language.substring(0, 2).toLowerCase();
-              if (this.available_languages.indexOf(language) != -1) {
-                this.language = language;
-                console.log(language);
+        this.storage.get('feature_flags').then(feature_flags => {
+          this.feature_flags = Object.assign(this.feature_flags, feature_flags);
+          this.storage.get('lang').then(lang => {
+            if (lang != undefined && lang != null) {
+              this.language = lang;
+            } else {
+              if ((<any>window).Intl && typeof (<any>window).Intl === 'object') {
+                let language = navigator.language.substring(0, 2).toLowerCase();
+                if (this.available_languages.indexOf(language) != -1) {
+                  this.language = language;
+                  console.log(language);
+                }
               }
             }
-          }
-          resolve();
+            resolve();
+          });
+
           this.appVersion.getVersionNumber().then(
             (_version) => {
               this.version = _version;
@@ -85,6 +93,20 @@ export class ConfigService {
         });
       });
     }));
+  }
 
+  getFeatureFlag(name: string = null, _default: any = null) {
+    if (name == null) {
+      return this.feature_flags;
+    }
+    if (this.feature_flags[name] !== undefined) {
+      return this.feature_flags[name];
+    }
+    return _default;
+  }
+
+  setFeatureFlag(name: string, value: any) {
+    this.feature_flags[name] = value;
+    this.storage.set('feature_flags', this.feature_flags);
   }
 }
