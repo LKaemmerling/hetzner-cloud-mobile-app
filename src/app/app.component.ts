@@ -4,24 +4,24 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
 import {ProjectsService} from "../modules/hetzner-cloud-data/project/projects.service";
-import {HomePage} from "../pages/AppPages/home/home";
-import {ProjectsPage} from "../pages/projects/projects";
-import {AboutPage} from "../pages/AppPages/about/about";
-import {ServersPage} from "../pages/server/serverList/servers";
+import {HomePage} from "../pages/global/home/home";
+import {ProjectsPage} from "../pages/cloud/projects/projects";
+import {AboutPage} from "../pages/global/about/about";
+import {ServersPage} from "../pages/cloud/server/serverList/servers";
 import {Storage} from "@ionic/storage";
-import {FloatingIPsPage} from "../pages/floatingIPs/floatingIPs";
-import {ImagesPage} from "../pages/images/images";
+import {FloatingIPsPage} from "../pages/cloud/floatingIPs/floatingIPs";
+import {ImagesPage} from "../pages/cloud/images/images";
 import {OneSignal} from "@ionic-native/onesignal";
-import {HetznerStatusPage} from "../pages/hetzner-status/hetzner-status";
-import {SettingsPage} from "../pages/AppPages/settings/settings";
+import {HetznerStatusPage} from "../pages/global/hetzner-status/hetzner-status";
+import {SettingsPage} from "../pages/global/settings/settings";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {TranslateService} from "@ngx-translate/core";
-import {ActionsPage} from "../pages/actions/actions";
-import {SshkeysPage} from "../pages/sshkeys/sshkeys";
+import {ActionsPage} from "../pages/cloud/actions/actions";
+import {SshkeysPage} from "../pages/cloud/sshkeys/sshkeys";
 import {NetworkProvider} from "../modules/hetzner-app/network/network";
 import {HetznerCloudDataService} from "../modules/hetzner-cloud-data/hetzner-cloud-data.service";
 import {ConfigService} from "../modules/hetzner-app/config/config.service";
-import {ChangelogPage} from "../pages/AppPages/changelog/changelog";
+import {ChangelogPage} from "../pages/global/changelog/changelog";
 import {Device} from "@ionic-native/device";
 
 /**
@@ -30,7 +30,7 @@ import {Device} from "@ionic-native/device";
 @Component({
   templateUrl: 'app.html'
 })
-export class HetznerCloudMobileApp {
+export class HetznerMobileApp {
   /**
    * The Navigation
    */
@@ -45,7 +45,6 @@ export class HetznerCloudMobileApp {
    * @type {string}
    */
   public lang: string = 'de';
-
 
   /**
    * The structure of the menu

@@ -1,6 +1,6 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
-import {LocationApiProvider} from "../../../providers/location-api/location-api";
+import {LocationApiProvider} from "../../hetzner-cloud-api/location-api/location-api";
 
 
 /**

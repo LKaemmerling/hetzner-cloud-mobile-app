@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {LocationApiProvider} from "../../../providers/location-api/location-api";
+import {LocationApiProvider} from "../../../modules/hetzner-cloud-api/location-api/location-api";
 
 /**
  * Generated class for the SelectDatacenterComponent component.
