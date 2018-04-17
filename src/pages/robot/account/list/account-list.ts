@@ -47,7 +47,7 @@ export class AccountListPage {
    * @param {ModalController} modal
    * @param {HetznerCloudDataService} hetznerCloudDataService
    * @param {ProjectsService} project
-   * @param {ServersService} serversService
+   * @param {StorageBoxService} serversService
    * @param {TranslateService} translate
    * @param {Storage} storage
    * @param {NetworkProvider} network

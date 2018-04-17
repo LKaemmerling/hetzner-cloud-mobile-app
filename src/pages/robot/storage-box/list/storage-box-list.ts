@@ -12,13 +12,14 @@ import {NetworkProvider} from "../../../../modules/hetzner-app/network/network";
 import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
 import {ServersService} from "../../../../modules/hetzner-robot-data/servers/servers.service";
 import {Server} from "../../../../modules/hetzner-cloud-data/servers/server";
+import {StorageBoxService} from "../../../../modules/hetzner-robot-data/storage-box/storage-box.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
  */
 @Component({
-  selector: 'page-server-list',
-  templateUrl: 'server-list.html',
+  selector: 'page-storage-box-list',
+  templateUrl: 'storage-box-list.html',
   animations: [
     trigger('animate', [
       state('active', style({
@@ -31,12 +32,12 @@ import {Server} from "../../../../modules/hetzner-cloud-data/servers/server";
       transition('active => *', useAnimation(fadeOut, {params: {timing: 0, delay: 0}}))])
   ],
 })
-export class ServerListPage {
+export class StorageBoxListPage {
   /**
    * All available servers
    * @type {any[]}
    */
-  public servers: Array<any> = [];
+  public storage_boxes: Array<any> = [];
   /**
    * All available servers - filtered
    * @type {any[]}
@@ -59,11 +60,7 @@ export class ServerListPage {
    * @type {any[]}
    */
   public visible: Array<string> = [];
-  /**
-   * Is the compact server design enabled or not?
-   * @type {boolean}
-   */
-  public compact_server_design: boolean = false;
+
 
   /**
    * Constructor
@@ -80,19 +77,12 @@ export class ServerListPage {
     protected actionSheetCtrl: ActionSheetController,
     protected modal: ModalController,
     protected hetznerRobotData: HetznerRobotDataService,
-    protected serversService: ServersService,
+    protected storageBoxService: StorageBoxService,
     protected translate: TranslateService,
     protected storage: Storage,
-    protected network: NetworkProvider,
-    protected serverApi: ServerApiProvider
+    protected network: NetworkProvider
   ) {
-    this.servers = this._search = this.serversService.servers;
-    console.log(this.servers);
-    storage.get('compact_server_design').then((val) => {
-      if (val != undefined) {
-        this.compact_server_design = val;
-      }
-    });
+    this.storage_boxes = this._search = this.storageBoxService.storage_boxes;
 
   }
 
@@ -107,6 +97,7 @@ export class ServerListPage {
       this.visible = [];
       this.visible[menuId] = 'active';
     }
+
   }
 
   /**
@@ -114,9 +105,9 @@ export class ServerListPage {
    */
   public loadServers() {
     this.loading = true;
-    this.serversService.reloadServers().then(() => {
-      this.servers = this.serversService.servers;
-      this._search = this.servers;
+    this.storageBoxService.reloadStorageBoxes().then(() => {
+      this.storage_boxes = this.storageBoxService.storage_boxes;
+      this._search = this.storage_boxes;
       this.loading = false;
       this.loading_done = true;
       setTimeout(() => this.loading_done = false, 5000);
@@ -141,17 +132,17 @@ export class ServerListPage {
    */
   search(ev) {
     // Reset items back to all of the items
-    this._search = this.servers;
+    this._search = this.storage_boxes;
 // set val to the value of the ev target
     var val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this._search = this.servers.filter((item) => {
+      this._search = this.storage_boxes.filter((item) => {
         if (item == null) {
           return false;
         }
-        return (item.server.server_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.storagebox.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }

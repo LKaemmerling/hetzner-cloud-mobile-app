@@ -3,62 +3,36 @@
     <button ion-button menuToggle>
       <i class="fas fa-bars fa-2x"></i>
     </button>
-    <ion-title>{{ 'ROBOT.PAGE.SERVERS.TITLE' | translate}}</ion-title>
+    <ion-title>{{ 'ROBOT.PAGE.STORAGE_BOXES.TITLE' | translate}}</ion-title>
     <ion-buttons end>
       <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content *ngIf="compact_server_design">
-  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
-  <ion-card>
-    <ion-list>
-
-      <button ion-item *ngFor="let server of _search ; let i = index" (click)="openDetailsPage(server)"
-              [id]="server.server_name">
-        <h2>{{ server.server.server_name }}
-        </h2>
-        <p>
-          {{server.server.product}} / {{
-          server.server.dc
-          }}
-          /
-          {{ server.server.server_ip }}</p>
-      </button>
-      <p ion-item *ngIf="_search == null || _search.length == 0" class="message_box info" text-wrap=""
-         [innerHTML]="'ROBOT.PAGE.SERVERS.NO_SERVERS' | translate">
-      </p>
-    </ion-list>
-  </ion-card>
-</ion-content>
-<ion-content *ngIf="!compact_server_design">
+<ion-content>
   <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
   <ion-row class="row">
-    <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let server of _search; let i = index">
+    <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let storagebox of _search; let i = index">
       <ion-card class="server" [id]="'server_'+i">
-        <ion-row class="server_header" text-center="" (click)="openSubMenu('server_'+i+'_content')">
+        <ion-row class="server_header" text-center="" (click)="openSubMenu('storagebox_'+i+'_content')">
           <ion-col offset-9 col-3 style="max-height:20px;">
             <button ion-button="" clear="" color="light" class="server_menu"
-                    [attr.data-server]="server.server.server_name">
+                    [attr.data-storagebox]="storagebox.storagebox.name">
               <i class="fas fa-ellipsis-h fa-2x"></i>
             </button>
           </ion-col>
           <ion-col col-12 align-items-start>
-            <h2>{{ server.server.server_name }}
+            <h2>{{ storagebox.storagebox.name }}
             </h2>
           </ion-col>
         </ion-row>
         <ion-card-content>
-          <p text-wrap="">{{server.server.product}} / {{
-            server.server.dc
-            }}
-            /
-            {{ server.server.server_ip }}</p>
+          <p text-wrap="">{{storagebox.storagebox.product}}</p>
 
         </ion-card-content>
-        <ion-card-content [id]="'server_'+i+'_content'" style="display:none;"
-                          [@animate]="visible['server_'+i+'_content']">
+        <ion-card-content [id]="'storagebox_'+i+'_content'" style="display:none;"
+                          [@animate]="visible['storagebox_'+i+'_content']">
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="primary" icon-start="" ion-button="" small=""
@@ -86,7 +60,7 @@
       <ion-card *ngIf="_search == null || _search.length == 0" id="no_servers">
         <ion-card-content>
           <p class="message_box info" text-wrap=""
-             [innerHTML]="'ROBOT.PAGE.SERVERS.NO_SERVERS' | translate"></p>
+             [innerHTML]="'ROBOT.PAGE.STORAGE_BOXES.NO_STORAGE_BOXES' | translate"></p>
         </ion-card-content>
       </ion-card>
     </ion-col>

@@ -24,6 +24,9 @@ export class DeveloperPage {
   }
 
   toggleFlag(name: string) {
+    if(this.feature_flags[name] == false){
+      alert('This feature could be unstable! Use it on your own risk!')
+    }
     this.config.setFeatureFlag(name, !this.feature_flags[name]);
     this.feature_flags = this.config.getFeatureFlag();
   }

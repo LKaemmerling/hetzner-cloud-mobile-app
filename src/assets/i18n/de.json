@@ -16,7 +16,8 @@
     "SAVE": "Speichern",
     "ORDER": "Kostenpflichtig bestellen",
     "SHARE": "Teilen",
-    "OPEN_DETAILS": "Details"
+    "OPEN_DETAILS": "Details",
+    "CANCELLATION": "Stornierung"
   },
   "COMPONENT": {
     "PROTECTION": {
@@ -376,7 +377,7 @@
             "REBUILD": "Bei einem Rebuild wird Ihr Server ausgeschaltet und die Festplatte mit dem ausgewählten Image überschrieben.<br/>Alle bestehenden Daten auf der Festplatte werden überschrieben!"
           },
           "ACTIONS": {
-            "CREATE_BACKUP": "Jetzt Backup kostenpflichtig erstellen!",
+            "CREATE_BACKUP": "Manuelles Backup starten",
             "DISABLE_BACKUP": "Backup deaktivieren",
             "CREATE_SNAPSHOT": "Jetzt Snapshot kostenpflichtig erstellen!",
             "REBUILD_FROM_IMAGE": "Rebuild"
@@ -488,7 +489,8 @@
         "NO_SERVERS": "Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden."
       },
       "STORAGE_BOXES": {
-        "TITLE": "Meine Storage Boxen"
+        "TITLE": "Meine Storage Boxen",
+        "NO_STORAGE_BOXES": "Oh! Es sieht so aus als wäre hier noch keine Storage Box erstellt worden."
       }
     }
   }

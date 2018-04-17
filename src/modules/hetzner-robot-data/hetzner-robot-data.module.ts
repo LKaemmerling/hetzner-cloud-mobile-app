@@ -3,6 +3,7 @@ import {AccountService} from "./accounts/account.service";
 import {HetznerRobotDataService} from "./hetzner-robot-data.service";
 import {HetznerRobotMenuService} from "./hetzner-robot-menu.service";
 import {ServersService} from "./servers/servers.service";
+import {StorageBoxService} from "./storage-box/storage-box.service";
 
 
 /**
@@ -13,6 +14,7 @@ import {ServersService} from "./servers/servers.service";
   providers: [
     AccountService,
     ServersService,
+    StorageBoxService,
     HetznerRobotDataService,
     HetznerRobotMenuService
   ]

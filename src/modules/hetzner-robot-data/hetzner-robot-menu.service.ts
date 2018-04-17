@@ -14,6 +14,7 @@ import {AccountService} from "./accounts/account.service";
 import {Platform} from "ionic-angular";
 import {HetznerRobotDataService} from "./hetzner-robot-data.service";
 import {ServerListPage} from "../../pages/robot/server/list/server-list";
+import {StorageBoxListPage} from "../../pages/robot/storage-box/list/storage-box-list";
 
 /**
  * Service that centralised all methods for the storage
@@ -50,7 +51,7 @@ export class HetznerRobotMenuService {
     {
       key: 'ROBOT.PAGE.STORAGE_BOXES.TITLE',
       icon: 'fa-hdd',
-      page: HomePage,
+      page: StorageBoxListPage,
       protected: true,
       hidden: true
     },

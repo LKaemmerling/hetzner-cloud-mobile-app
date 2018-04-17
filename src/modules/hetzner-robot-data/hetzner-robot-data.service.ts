@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {NetworkProvider} from "../hetzner-app/network/network";
 import {AccountService} from "./accounts/account.service";
 import {ServersService} from "./servers/servers.service";
+import {StorageBoxService} from "./storage-box/storage-box.service";
 
 /**
  * Service that centralised all methods for the storage
@@ -19,6 +20,7 @@ export class HetznerRobotDataService {
     protected network: NetworkProvider,
     protected accountService: AccountService,
     protected serversService: ServersService,
+    protected storageBoxService: StorageBoxService,
     protected storage: Storage) {
 
   }
@@ -28,6 +30,7 @@ export class HetznerRobotDataService {
    */
   public loadDataFromNetwork() {
     this.serversService.reloadServers();
+    this.storageBoxService.reloadStorageBoxes();
   }
 
   /**
@@ -35,6 +38,7 @@ export class HetznerRobotDataService {
    */
   public loadDataFromStorage() {
     this.serversService.loadServers();
+    this.storageBoxService.loadStorageBoxes();
   }
 
   /**
