@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Storage} from "@ionic/storage";
 import {AppVersion} from "@ionic-native/app-version";
+import {Platform} from "ionic-angular";
 
 /**
  * This service contain all configuration for the app, like the api_url or other tings.
@@ -56,7 +57,10 @@ export class ConfigService {
    * @param {Storage} storage
    * @param {AppVersion} appVersion
    */
-  constructor(protected storage: Storage, public appVersion: AppVersion) {
+  constructor(protected storage: Storage, public appVersion: AppVersion, protected platform: Platform) {
+    if (platform.is('ios') || platform.is('android')) {
+      this.robot_api_url = 'https://robot-ws.your-server.de';
+    }
   }
 
   /**
