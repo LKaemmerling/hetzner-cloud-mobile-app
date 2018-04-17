@@ -12,6 +12,8 @@ import {AccountListPage} from "../../pages/robot/account/list/account-list";
 import {ProjectsService} from "../hetzner-cloud-data/project/projects.service";
 import {AccountService} from "./accounts/account.service";
 import {Platform} from "ionic-angular";
+import {HetznerRobotDataService} from "./hetzner-robot-data.service";
+import {ServerListPage} from "../../pages/robot/server/list/server-list";
 
 /**
  * Service that centralised all methods for the storage
@@ -41,7 +43,7 @@ export class HetznerRobotMenuService {
     {
       key: 'ROBOT.PAGE.SERVERS.TITLE',
       icon: 'fa-server',
-      page: HomePage,
+      page: ServerListPage,
       protected: true,
       hidden: true
     },
@@ -68,13 +70,14 @@ export class HetznerRobotMenuService {
     }
   ]
 
-  constructor(protected accountService: AccountService, platform: Platform) {
+  constructor(protected accountService: AccountService, platform: Platform, protected hetznerRobotDataService: HetznerRobotDataService) {
     platform.ready().then(() => {
       this.accountService.loadAccounts().then(() => {
         var tmp = [];
         this.menu_entries.forEach((menu_entry) => {
           menu_entry.hidden = (menu_entry.protected) ? this.validate(menu_entry) : false;
           tmp.push(menu_entry);
+          console.log(menu_entry);
         })
         this.menu_entries = tmp;
       })
@@ -88,5 +91,9 @@ export class HetznerRobotMenuService {
     } else {
       return menu_entry.hidden;
     }
+  }
+
+  public init() {
+    return this.hetznerRobotDataService.loadData();
   }
 }

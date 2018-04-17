@@ -6,10 +6,12 @@ import {HetznerAppModule} from "../../../modules/hetzner-app/hetzner-app.module"
 import {HetznerCloudDataModule} from "../../../modules/hetzner-cloud-data/hetzner-cloud-data.module";
 import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode/dist";
 import {AccountListPage} from "./list/account-list";
+import {addAccountModal} from "./add/addAccount";
 
 @NgModule({
   declarations: [
-    AccountListPage
+    AccountListPage,
+    addAccountModal
   ],
   imports: [
     IonicPageModule,
@@ -20,7 +22,8 @@ import {AccountListPage} from "./list/account-list";
     NgxQRCodeModule
   ],
   entryComponents: [
-    AccountListPage
+    AccountListPage,
+    addAccountModal
   ]
 })
 export class AccountPagesModule {

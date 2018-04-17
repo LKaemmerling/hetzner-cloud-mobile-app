@@ -30,6 +30,7 @@ import {Device} from "@ionic-native/device";
 import {CloudAppPagesModule} from "../pages/cloud/cloud-app-pages.module";
 import {RobotAppPagesModule} from "../pages/robot/robot-app-pages.module";
 import {HetznerRobotDataModule} from "../modules/hetzner-robot-data/hetzner-robot-data.module";
+import {HetznerRobotApiModule} from "../modules/hetzner-robot-api/hetzner-robot-api.module";
 
 /**
  * Init the Ionic Pro Monitoring Service
@@ -104,12 +105,13 @@ export class IonicProErrorHandler implements ErrorHandler {
       }
     }),
     HetznerCloudApiProviderModule,
+    HetznerRobotApiModule,
     NgxQRCodeModule,
     BrowserAnimationsModule,
     HetznerAppComponentsModule,
     GlobalAppPagesModule,
     CloudAppPagesModule,
-    RobotAppPagesModule
+    RobotAppPagesModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

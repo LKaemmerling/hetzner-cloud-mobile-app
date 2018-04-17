@@ -2,6 +2,7 @@ import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
 import {NetworkProvider} from "../hetzner-app/network/network";
 import {AccountService} from "./accounts/account.service";
+import {ServersService} from "./servers/servers.service";
 
 /**
  * Service that centralised all methods for the storage
@@ -17,6 +18,7 @@ export class HetznerRobotDataService {
   constructor(
     protected network: NetworkProvider,
     protected accountService: AccountService,
+    protected serversService: ServersService,
     protected storage: Storage) {
 
   }
@@ -25,14 +27,14 @@ export class HetznerRobotDataService {
    * Load all available data from the api (network)
    */
   public loadDataFromNetwork() {
-
+    this.serversService.reloadServers();
   }
 
   /**
    * Load all available data from the local storage
    */
   public loadDataFromStorage() {
-
+    this.serversService.loadServers();
   }
 
   /**

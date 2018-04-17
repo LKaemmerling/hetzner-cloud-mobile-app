@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {AccountService} from "./accounts/account.service";
 import {HetznerRobotDataService} from "./hetzner-robot-data.service";
 import {HetznerRobotMenuService} from "./hetzner-robot-menu.service";
+import {ServersService} from "./servers/servers.service";
 
 
 /**
@@ -11,6 +12,7 @@ import {HetznerRobotMenuService} from "./hetzner-robot-menu.service";
   imports: [],
   providers: [
     AccountService,
+    ServersService,
     HetznerRobotDataService,
     HetznerRobotMenuService
   ]

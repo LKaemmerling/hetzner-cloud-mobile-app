@@ -8,15 +8,17 @@ import {Account} from "../../../../modules/hetzner-robot-data/accounts/account";
 import {HetznerRobotDataService} from "../../../../modules/hetzner-robot-data/hetzner-robot-data.service";
 import {AccountService} from "../../../../modules/hetzner-robot-data/accounts/account.service";
 import {NetworkProvider} from "../../../../modules/hetzner-app/network/network";
-import {addAccountModal} from "../add/addAccount";
+
 import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
+import {ServersService} from "../../../../modules/hetzner-robot-data/servers/servers.service";
+import {Server} from "../../../../modules/hetzner-cloud-data/servers/server";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
  */
 @Component({
-  selector: 'page-account-list',
-  templateUrl: 'account-list.html',
+  selector: 'page-server-list',
+  templateUrl: 'server-list.html',
   animations: [
     trigger('animate', [
       state('active', style({
@@ -29,17 +31,39 @@ import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-ap
       transition('active => *', useAnimation(fadeOut, {params: {timing: 0, delay: 0}}))])
   ],
 })
-export class AccountListPage {
+export class ServerListPage {
   /**
-   * All projects
-   * @type {project[]}
-   */
-  public _accounts: Array<Account> = [];
-  /**
-   * Contain all the visible submenus
+   * All available servers
    * @type {any[]}
    */
-  public visible = [];
+  public servers: Array<Server> = [];
+  /**
+   * All available servers - filtered
+   * @type {any[]}
+   *
+   */
+  public _search: Array<Server> = [];
+
+  /**
+   * Is the component in the loading process?
+   * @type {boolean}
+   */
+  public loading: boolean = false;
+  /**
+   * Is the loading done?
+   * @type {boolean}
+   */
+  public loading_done: boolean = false;
+  /**
+   * All visible submenus
+   * @type {any[]}
+   */
+  public visible: Array<string> = [];
+  /**
+   * Is the compact server design enabled or not?
+   * @type {boolean}
+   */
+  public compact_server_design: boolean = false;
 
   /**
    * Constructor
@@ -56,19 +80,19 @@ export class AccountListPage {
     protected actionSheetCtrl: ActionSheetController,
     protected modal: ModalController,
     protected hetznerRobotData: HetznerRobotDataService,
-    protected accountService: AccountService,
+    protected serversService: ServersService,
     protected translate: TranslateService,
     protected storage: Storage,
     protected network: NetworkProvider,
     protected serverApi: ServerApiProvider
   ) {
-    this.accountService.loadAccounts().then(() => {
-
-      this._accounts = accountService.accounts;
-      this.serverApi.getServers().then((val) => {
-        console.log(val);
-      })
-    })
+    this.servers = this._search = this.serversService.servers;
+    console.log(this.servers);
+    storage.get('compact_server_design').then((val) => {
+      if (val != undefined) {
+        this.compact_server_design = val;
+      }
+    });
 
   }
 
@@ -84,48 +108,5 @@ export class AccountListPage {
       this.visible[menuId] = 'active';
     }
 
-  }
-
-
-  /**
-   * Select a project so this is the new selected project
-   * @param {Account} account
-   */
-  selectAccount(account: Account) {
-    if (this.network.has_connection) {
-      this.accountService.selectAccount(account).then(() => {
-        this.hetznerRobotData.loadDataFromNetwork();
-      });
-    } else {
-      this.network.displayNoNetworkNotice();
-    }
-  }
-
-  /**
-   * Delete a project
-   * @param {project} project
-   */
-  public delete(account: Account) {
-    this._accounts = this.accountService.removeAccount(account);
-    if (this.accountService.accounts == null || this.accountService.accounts.length == 0) {
-      this.accountService.selectAccount(null).then(() => {
-        this.hetznerRobotData.loadDataFromNetwork();
-      });
-    } else {
-      this.accountService.selectAccount(this.accountService.accounts[0]).then(() => {
-        this.hetznerRobotData.loadDataFromNetwork();
-      });
-    }
-    this._accounts = this.accountService.accounts;
-  }
-
-  openAddModal() {
-    let modal = this.modal.create(addAccountModal);
-    modal.onDidDismiss(() => {
-      this.accountService.loadAccounts().then(() => {
-        this._accounts = this.accountService.accounts;
-      })
-    });
-    modal.present();
   }
 }

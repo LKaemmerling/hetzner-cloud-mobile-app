@@ -68,9 +68,6 @@ export class HetznerMobileApp {
    * @param {ProjectsService} projects
    * @param {ConfigService} config
    * @param {Device} device
-   * @param loadingCtrl
-   * @param hetznerCloudMenu
-   * @param hetznerRobotMenu
    */
   constructor(
     protected platform: Platform,
@@ -88,14 +85,18 @@ export class HetznerMobileApp {
     protected loadingCtrl: LoadingController,
     protected hetznerCloudMenu: HetznerCloudMenuService,
     protected hetznerRobotMenu: HetznerRobotMenuService) {
+    this.available_menus.push(this.hetznerCloudMenu);
+    this.available_menus.push(this.hetznerRobotMenu);
+
     platform.ready().then(() => {
+      this.storage.get('current_menu').then((val) => {
+        if (val != undefined) {
+          this.menu = val;
+          this.changeMenu();
+        }
+      });
       this.network.init();
       this.config.init().then(() => {
-        this.available_menus.push(this.hetznerCloudMenu);
-        if (this.config.getFeatureFlag('robot', false)) {
-          this.available_menus.push(this.hetznerRobotMenu);
-        }
-        this.changeMenu();
         this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
@@ -212,20 +213,16 @@ export class HetznerMobileApp {
 
   }
 
-  changeMenu(loading: boolean = true) {
-    var loader;
-    if (loading) {
-      loader = this.loadingCtrl.create();
-      loader.present();
-    }
-
+  changeMenu() {
+    let loader = this.loadingCtrl.create();
+    loader.present();
     this.available_menus.forEach((val) => {
       if (val.text == this.menu) {
         this.menu_entries = val.menu_entries;
+        this.storage.set('current_menu', val.text);
+        val.init();
       }
     });
-    if (loading) {
-      loader.dismiss();
-    }
+    loader.dismiss();
   }
 }

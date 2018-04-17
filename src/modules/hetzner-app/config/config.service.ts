@@ -29,6 +29,11 @@ export class ConfigService {
    */
   public api_url: string = 'https://api.hetzner.cloud/v1';
   /**
+   * The basic url for all robot api call
+   * @type {string}
+   */
+  public robot_api_url: string = 'http://localhost:8100/robot';
+  /**
    * This contains all configuration for the One Signal Push Notification service
    * @type any
    */

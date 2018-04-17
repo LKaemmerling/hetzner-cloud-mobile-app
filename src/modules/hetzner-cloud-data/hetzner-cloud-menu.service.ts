@@ -10,6 +10,7 @@ import {SshkeysPage} from "../../pages/cloud/sshkeys/sshkeys";
 import {ProjectsPage} from "../../pages/cloud/projects/projects";
 import {ProjectsService} from "./project/projects.service";
 import {Platform} from "ionic-angular";
+import {HetznerCloudDataService} from "./hetzner-cloud-data.service";
 
 /**
  * Service that centralised all methods for the storage
@@ -86,7 +87,7 @@ export class HetznerCloudMenuService {
     }
   ]
 
-  constructor(protected projects: ProjectsService, platform: Platform) {
+  constructor(protected projects: ProjectsService, platform: Platform, protected  hetznerClouDataService: HetznerCloudDataService) {
     platform.ready().then(() => {
       this.projects.loadProjects().then(() => {
         var tmp = [];
@@ -108,5 +109,9 @@ export class HetznerCloudMenuService {
     } else {
       return menu_entry.hidden;
     }
+  }
+
+  public init() {
+    return this.hetznerClouDataService.loadData();
   }
 }
