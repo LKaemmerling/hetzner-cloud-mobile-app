@@ -8,10 +8,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HetznerAppComponentsModule} from "../../../components/hetzner-app-components.module";
 import {TooltipsModule} from "ionic-tooltips";
 import {HetznerRobotDataModule} from "../../../modules/hetzner-robot-data/hetzner-robot-data.module";
+import {ServerDetailPage} from "./details/server-detail";
 
 @NgModule({
   declarations: [
-    ServerListPage
+    ServerListPage,
+    ServerDetailPage
   ],
   imports: [
     HetznerAppComponentsModule,
@@ -24,7 +26,8 @@ import {HetznerRobotDataModule} from "../../../modules/hetzner-robot-data/hetzne
     TooltipsModule
   ],
   entryComponents: [
-    ServerListPage
+    ServerListPage,
+    ServerDetailPage
   ]
 })
 export class ServerPagesModule {
