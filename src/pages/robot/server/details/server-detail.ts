@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActionSheetController, ModalController, NavParams} from "ionic-angular";
+import {ActionSheetController, LoadingController, ModalController, NavParams} from "ionic-angular";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
 import {fadeIn, fadeOut} from "ng-animate";
 import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
@@ -33,25 +33,22 @@ export class ServerDetailPage {
    * Is the component in the loading process?
    * @type {boolean}
    */
-  public loading: boolean = false;
-  /**
-   * Is the loading done?
-   * @type {boolean}
-   */
-  public loading_done: boolean = false;
-  /**
-   * All visible submenus
-   * @type {any[]}
-   */
-  public visible: Array<string> = [];
+  public loader: any;
 
   /**
    * Constructor
    * @param NavParams
    */
-  constructor(NavParams: NavParams, serverApi: ServerApiProvider) {
-    serverApi.getServer(NavParams.get('server_ip')).then((val) => {
+  constructor(protected NavParams: NavParams, protected serverApi: ServerApiProvider, protected loadingCtrl: LoadingController) {
+
+  }
+
+  ngOnInit() {
+    this.loader = this.loadingCtrl.create();
+    this.loader.present();
+    this.serverApi.getServer(this.NavParams.get('server_ip')).then((val) => {
       this.server = val['server'];
+      this.loader.dismiss();
     })
   }
 
