@@ -12,7 +12,7 @@ export class ConfigService {
    * The current version String
    * @type {string}
    */
-  public version = '1.7.0-DEV-VERSION';
+  public version = '1.7.1-DEV-VERSION';
   public build = '0000001';
   /**
    * The currently used language

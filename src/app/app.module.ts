@@ -37,7 +37,7 @@ import {HetznerRobotApiModule} from "../modules/hetzner-robot-api/hetzner-robot-
  * @type {Pro}
  */
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "2.0.0"
+  appVersion: "1.7.1"
 });
 
 /**
