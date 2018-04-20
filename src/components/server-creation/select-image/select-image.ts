@@ -13,14 +13,22 @@ import {ImagesService} from "../../../modules/hetzner-cloud-data/images/images.s
 })
 export class SelectImageComponent {
   @Input() selectedImage: number;
+  @Input() selectedSnapshot: any = null;
   @Output() selectedImageChange = new EventEmitter<number>();
+
+  type: string = 'system';
   images: Array<any> = [];
+  snapshots: Array<any> = [];
+  backups: Array<any> = [];
   selectedParent: string;
   selectedChildren: string = null;
 
   //@Output('?__selection') __selection = null;
-  constructor(imagesService: ImagesService) {
-    imagesService.getImagesByType('system').forEach((image) => {
+  constructor(protected imagesService: ImagesService) {
+  }
+
+  ngOnInit() {
+    this.imagesService.getImagesByType('system').forEach((image) => {
       var found = false;
       this.images.forEach((i) => {
         if (i.label == image.os_flavor) {
@@ -42,6 +50,23 @@ export class SelectImageComponent {
         });
       }
     })
+    this.imagesService.getImagesByType('snapshot').forEach((image) => {
+      this.snapshots.push({
+        id: image.id,
+        label: image.description
+      });
+    })
+    this.imagesService.getImagesByType('backups').forEach((image) => {
+      this.snapshots.push({
+        id: image.id,
+        label: image.description
+      });
+    })
+    if (this.selectedSnapshot != null) {
+      this.type = this.selectedSnapshot.type;
+      console.log(this.selectedSnapshot);
+      this.selectItem(this.selectedSnapshot, this.selectedSnapshot);
+    }
   }
 
   selectItem(parent, child = null) {

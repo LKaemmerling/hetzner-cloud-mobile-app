@@ -14,7 +14,7 @@ select-image {
     vertical-align: top;
     border-radius: 3px;
     width: 20%;
-    min-width:160px;
+    min-width: 160px;
     text-transform: capitalize;
   }
   .select-box__top {
@@ -110,5 +110,14 @@ select-image {
     mask-image: url(#{$flag-icon-css-path}/assets/os/centos.svg);
     height: 68px;
   }
+  .snapshot {
 
+    .select-box__top {
+      height: 70px;
+      font-size: 15px;
+      padding: 25px 10px 10px;
+      border-bottom: 0 !important;
+    }
+
+  }
 }

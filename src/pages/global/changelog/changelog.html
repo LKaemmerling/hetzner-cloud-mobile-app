@@ -1,12 +1,13 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <i class="fas fa-bars fa-2x"></i>
-    </button>
-    <ion-title>
-      {{ 'PAGE.CHANGELOG.TITLE' | translate }}
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-title>{{ 'PAGE.CHANGELOG.TITLE' | translate }}</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
+        <i class="fas fa-times" showWhen="android,windows"></i>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
@@ -15,7 +16,7 @@
       <div class="overlay">
         <div class="overlay-inner">
           <div class="icon">
-            <i class="fas fa-lock"></i></div>
+            <i class="fas fa-server"></i></div>
           <div padding>
             <h2 [innerHtml]="'PAGE.CHANGELOG.SLIDES.SLIDE1.TITLE'|translate"></h2>
             <p [innerHtml]="'PAGE.CHANGELOG.SLIDES.SLIDE1.TEXT'|translate"></p>
@@ -23,11 +24,11 @@
         </div>
       </div>
     </ion-slide>
-    <ion-slide [style]="getStyleForSlide('slide2')" class="item">
+    <ion-slide [style]="getStyleForSlide('slide3')" class="item">
       <div class="overlay">
         <div class="overlay-inner">
           <div class="icon">
-            <i class="fas fa-lock"></i></div>
+            <i class="fas fa-question"></i></div>
           <div padding>
             <h2 [innerHtml]="'PAGE.CHANGELOG.SLIDES.SLIDE2.TITLE'|translate"></h2>
             <p [innerHtml]="'PAGE.CHANGELOG.SLIDES.SLIDE2.TEXT'|translate"></p>

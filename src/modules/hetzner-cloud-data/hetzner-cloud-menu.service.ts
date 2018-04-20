@@ -89,19 +89,21 @@ export class HetznerCloudMenuService {
 
   constructor(protected projects: ProjectsService, platform: Platform, protected  hetznerClouDataService: HetznerCloudDataService) {
     platform.ready().then(() => {
-      this.projects.loadProjects().then(() => {
-        var tmp = [];
-        this.menu_entries.forEach((menu_entry) => {
-          menu_entry.hidden = (menu_entry.protected) ? this.validate(menu_entry) : false;
-          tmp.push(menu_entry);
-        })
-        this.menu_entries = tmp;
-      })
-
+      this.generateMenu();
     })
 
   }
+  public generateMenu(){
+    this.projects.loadProjects().then(() => {
+      var tmp = [];
+      this.menu_entries.forEach((menu_entry) => {
+        menu_entry.hidden = (menu_entry.protected) ? this.validate(menu_entry) : false;
+        tmp.push(menu_entry);
+      })
+      this.menu_entries = tmp;
+    })
 
+  }
   public validate(menu_entry) {
     if (menu_entry.protected == true) {
       console.log(this.projects.actual_project);
@@ -114,4 +116,5 @@ export class HetznerCloudMenuService {
   public init() {
     return this.hetznerClouDataService.loadData();
   }
+
 }
