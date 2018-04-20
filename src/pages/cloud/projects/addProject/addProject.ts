@@ -6,6 +6,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {Storage} from "@ionic/storage";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {NetworkProvider} from "../../../../modules/hetzner-app/network/network";
+import {HetznerCloudMenuService} from "../../../../modules/hetzner-cloud-data/hetzner-cloud-menu.service";
 
 /**
  * Add Project modal
@@ -49,7 +50,8 @@ export class addProjectModal {
               protected network: NetworkProvider,
               protected translate: TranslateService,
               protected storage: Storage,
-              protected barcodeScanner: BarcodeScanner) {
+              protected barcodeScanner: BarcodeScanner,
+              protected cloudMenuService:HetznerCloudMenuService) {
 
   }
 
@@ -93,6 +95,7 @@ export class addProjectModal {
       this.project.selectProject(this.new_project);
       this.project.saveProjects();
       this.project.loadProjects();
+      this.cloudMenuService.generateMenu();
       this.dismiss();
     }, () => {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.INVALID_KEY';

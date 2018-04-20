@@ -10,6 +10,7 @@ import {ServersService} from "../../../modules/hetzner-cloud-data/servers/server
 import {ServerApiProvider} from "../../../modules/hetzner-cloud-api/server-api/server-api";
 import {backupSettingsModal} from "../server/backupSettings/backupSettings";
 import {NetworkProvider} from "../../../modules/hetzner-app/network/network";
+import {addServerModal} from "../server/addServer/addServer";
 
 /**
  * This page displays all available images
@@ -210,13 +211,13 @@ export class ImagesPage {
         title: _title,
         cssClass: 'action-sheets-basic-page',
         buttons: [
-          /* {
-             text: _create_server,
-             icon: 'add',
-             handler: () => {
-               this.modal.create(addServerModal, {selected_image: image.id}).present();
-             }
-           },*/
+          {
+            text: _create_server,
+            icon: 'add',
+            handler: () => {
+              this.navCtrl.push(addServerModal, {selected_image: image});
+            }
+          },
           {
             text: _cancel,
             role: 'cancel', // will always sort to be on the bottom
@@ -236,13 +237,13 @@ export class ImagesPage {
             this.openEdit(image);
           }
         },
-        /*{
+        {
           text: _create_server,
           icon: 'add',
           handler: () => {
-            this.modal.create(addServerModal, {selected_image: image.id}).present();
+            this.navCtrl.push(addServerModal, {selected_image: image});
           }
-        },*/
+        },
         {
           text: _cancel,
           role: 'cancel', // will always sort to be on the bottom

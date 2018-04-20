@@ -92,8 +92,8 @@ export class HetznerMobileApp {
       this.storage.get('current_menu').then((val) => {
         if (val != undefined) {
           this.menu = val;
-          this.changeMenu();
         }
+        this.changeMenu();
       });
       this.network.init();
       this.config.init().then(() => {
