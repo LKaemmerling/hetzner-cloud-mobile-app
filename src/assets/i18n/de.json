@@ -41,15 +41,15 @@
       "TITLE": "Hilfe"
     },
     "CHANGELOG": {
-      "TITLE": "Neu in der Version 1.6.0",
+      "TITLE": "Neu in der Version 1.7.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Resource Protection",
-          "TEXT": "Schützen Sie Ihre Ressourcen wie Server, Floating IPs oder Images vor ungewolltem löschen!"
+          "TITLE": "Server über einem Snapshot erstellen",
+          "TEXT": "Es ist nun wieder möglich Server über Snapshots zu erstellen! Gehen Sie dazu einfach auf Ihre Snapshots und wählen 'Neuen Server erstellen' aus"
         },
         "SLIDE2": {
-          "TITLE": "Resource Protection",
-          "TEXT": "Sie können eine geschütze Ressource durch das <i class='fas fa-lock'></i> erkennen."
+          "TITLE": "E-Mail Support",
+          "TEXT": "Sie haben ein Problem mit der App? Sie können uns nun direkt per E-Mail über den Punkt 'Hilfe' erreichen!"
         },
         "SLIDE3": {
           "TITLE": "Bugfixes",
