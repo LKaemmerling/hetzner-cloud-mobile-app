@@ -96,7 +96,7 @@ export class HetznerMobileApp {
           statusBar.styleDefault();
           this.loadOneSignal();
           this.loadLocalization();
-          fingerPrint.isAvailable().then(res => {
+          /*fingerPrint.isAvailable().then(res => {
             storage.get('auth').then(val => {
               if (val != undefined && val == 'enabled') {
                 fingerPrint.show({
@@ -125,10 +125,11 @@ export class HetznerMobileApp {
                   platform.exitApp();
                 }
               } else {
-                this.loadHetznerSpecificData();
+    this.loadHetznerSpecificData();
               }
             });
-          });
+          });*/
+          this.loadHetznerSpecificData();
         });
       });
 
