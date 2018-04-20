@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {ModalController, NavController} from 'ionic-angular';
 import {ChangelogPage} from "../changelog/changelog";
 
 /**
@@ -14,13 +14,13 @@ export class AboutPage {
    * Changelog
    * @param {NavController} nav
    */
-  constructor(protected nav: NavController) {
+  constructor(protected modal: ModalController) {
   }
 
   /**
    * Open the Changelog Page
    */
   openChangelogPage() {
-    this.nav.push(ChangelogPage);
+    this.modal.create(ChangelogPage).present();
   }
 }

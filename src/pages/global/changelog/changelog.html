@@ -1,12 +1,13 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <i class="fas fa-bars fa-2x"></i>
-    </button>
-    <ion-title>
-      {{ 'PAGE.CHANGELOG.TITLE' | translate }}
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-title>{{ 'PAGE.CHANGELOG.TITLE' | translate }}</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
+        <i class="fas fa-times" showWhen="android,windows"></i>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
