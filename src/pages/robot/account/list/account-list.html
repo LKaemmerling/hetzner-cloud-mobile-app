@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <i class="fas fa-bars fa-2x"></i>
+    </button>
+    <ion-title>{{ 'ROBOT.PAGE.ACCOUNTS.TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  <ion-row class="row">
+    <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let _account of _accounts; let i = index">
+      <ion-card class="project"
+                [ngClass]="{'active-project' : accountService.actual_account != null && (_account.username == accountService.actual_account.username)}"
+                [id]="'project_'+i" [attr.data-project]="_account.name">
+        <ion-row class="project_header" text-center="" (click)="openSubMenu('account_'+i+'_content')">
+          <ion-col offset-9 col-3 style="max-height:20px;">
+            <button ion-button="" clear="" color="light"
+                    class="project_menu" [attr.data-project-menupoint]="_account.name"
+                    [attr.data-account-menu]="'menu_point_account_'+i">
+              <i class="fas fa-ellipsis-h fa-2x"></i>
+            </button>
+          </ion-col>
+          <ion-col col-12 align-items-start>
+            <h2>{{ _account.name }}
+            </h2>
+          </ion-col>
+        </ion-row>
+        <ion-card-content [id]="'account_'+i+'_content'" style="display:none;"
+                          [@animate]="visible['account_'+i+'_content']">
+          <ion-row class="row">
+            <ion-col class="col" text-center="">
+              <button clear="" color="secondary" icon-start="" ion-button="" small="" (click)="selectAccount(_account)"
+                      class="activate_project"
+                      [disabled]="accountService.actual_account != null && (_account.username == accountService.actual_account.username)">
+                <i class="fas fa-fw fa-check"></i> {{ 'ACTIONS.ACTIVATE' | translate }}
+              </button>
+            </ion-col>
+            <ion-col class="col" text-center="">
+              <button clear="" color="primary" icon-start="" ion-button="" small="">
+                <i class="fa fa-fw fa-share"></i> {{ 'ACTIONS.SHARE' | translate }}
+              </button>
+            </ion-col>
+            <ion-col class="col" text-center="">
+              <button clear="" color="warning" icon-start="" ion-button="" small=""
+                      [attr.data-account-menupoint-edit]="_account.name">
+                <i class="fa fa-fw fa-pencil-alt"></i> {{ 'ACTIONS.EDIT' | translate }}
+              </button>
+            </ion-col>
+            <ion-col class="col" text-center="">
+              <button clear="" color="danger" icon-start="" ion-button="" small="" (click)="delete(_account)"
+                      class="delete_project">
+                <i class="fa fa-fw fa-trash"></i> {{ 'ACTIONS.DELETE' | translate }}
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12>
+      <ion-card *ngIf="accountService.accounts == null || accountService.accounts.length == 0" id="no_accounts">
+        <ion-card-content>
+          <p class="message_box info" text-wrap=""
+             [innerHTML]="'ROBOT.PAGE.ACCOUNTS.NO_ACCOUNTS' | translate"></p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-fab bottom right>
+    <button ion-fab color="secondary" (click)="openAddModal()">
+      <i class="fas fa-plus"></i>
+    </button>
+  </ion-fab>
+
+</ion-content>

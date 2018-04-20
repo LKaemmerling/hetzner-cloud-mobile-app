@@ -8,6 +8,7 @@ import {LocationsService} from "./locations/locations.service";
 import {ServerTypesService} from "./server-types/server-types.service";
 import {HetznerCloudDataService} from "./hetzner-cloud-data.service";
 import {FloatingIpsService} from "./floating-ips/floating-ips.service";
+import {HetznerCloudMenuService} from "./hetzner-cloud-menu.service";
 
 /**
  * This module register all services for the data handling of the hetzner cloud app.
@@ -15,6 +16,7 @@ import {FloatingIpsService} from "./floating-ips/floating-ips.service";
 @NgModule({
   imports: [],
   providers: [
+    HetznerCloudMenuService,
     HetznerCloudDataService,
     ServersService,
     ProjectsService,

@@ -46,6 +46,8 @@ export class addServerModal {
    */
   image: number;
 
+
+  selected_snapshot:any = null;
   /**
    * Start the new server after the creation?
    * @type {boolean}
@@ -80,49 +82,14 @@ export class addServerModal {
               protected locationService: LocationsService,
               protected sshKeysService: SshKeysService,
   ) {
-
+    this.selected_snapshot = this.navParams.get('selected_image');
+    console.log(this.selected_snapshot);
   }
 
   /**
    * Makes the api call and validates the payload
    */
   createServer() {
-    this.error = null;
-    if (this.server_type == null) {
-      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_TYPE';
-      return;
-    }
-    if (this.location == null) {
-      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_LOCATION';
-      return;
-    }
-    if (this.image == null) {
-      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_IMAGE';
-      return;
-    }
-    if (this.name == null || this.name.length < 3 || /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/g.test(this.name) == false) {
-      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_NAME';
-      return;
-    }
-    let loader = this.loadingCtrl.create();
-    loader.present();
-    this.serverApiProvider.createServer(this.name, this.server_type.id, this.location, this.start_after_create, this.image, this.ssh_key).then(() => {
-      this.dismiss();
-      loader.dismiss();
-      this.serverApiProvider.getServers().then((data) => {
-        this.serverService.servers = data['servers'];
-        this.serverService.saveServers();
-      });
-    }, (error) => {
-      this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.NETWORK_ERROR';
-      loader.dismiss();
-    });
-  }
-
-  /**
-   * Makes the api call and validates the payload
-   */
-  createServer2() {
     this.error = null;
     if (this.server_type == null) {
       this.error = 'PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_TYPE';

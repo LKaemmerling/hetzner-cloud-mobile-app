@@ -4,7 +4,6 @@ import {TranslateModule} from "@ngx-translate/core";
 import {IonicStorageModule} from "@ionic/storage";
 import {HetznerAppModule} from "../../../modules/hetzner-app/hetzner-app.module";
 import {HetznerCloudDataModule} from "../../../modules/hetzner-cloud-data/hetzner-cloud-data.module";
-import {PipesModule} from "../../../pipes/pipes.module";
 import {HetznerAppComponentsModule} from "../../../components/hetzner-app-components.module";
 import {changeIPv6ReverseDNSModal} from "./reverseDNS/ipv6/changeIPv6ReverseDNS";
 import {rescueModeModal} from "./rescueMode/rescueMode";
@@ -44,7 +43,6 @@ import {ChartsModule} from "ng2-charts";
     HetznerAppModule,
     HetznerCloudDataModule,
     IonicStorageModule,
-    PipesModule,
     BrowserAnimationsModule,
     ChartsModule,
     TooltipsModule

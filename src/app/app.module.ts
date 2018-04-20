@@ -6,31 +6,12 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {IonicStorageModule} from '@ionic/storage';
-import {ServersPage} from "../pages/cloud/server/serverList/servers";
 import {Pro} from '@ionic/pro';
-import {ServerPage} from "../pages/cloud/server/server";
-import {addServerModal} from "../pages/cloud/server/addServer/addServer";
-import {editServerModal} from "../pages/cloud/server/editServer/editServer";
-import {powerSettingsModal} from "../pages/cloud/server/powerSettings/powerSettings";
-import {rescueModeModal} from "../pages/cloud/server/rescueMode/rescueMode";
-import {resizeServerModal} from "../pages/cloud/server/resizeServer/resizeServer";
-import {backupSettingsModal} from "../pages/cloud/server/backupSettings/backupSettings";
-import {addFloatingIPModal} from "../pages/cloud/floatingIPs/addFloatingIp/addFloatingIP";
-import {FloatingIPsPage} from "../pages/cloud/floatingIPs/floatingIPs";
-import {PipesModule} from "../pipes/pipes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TooltipsModule} from "ionic-tooltips";
-import {changeIPv4ReverseDNSModal} from "../pages/cloud/server/reverseDNS/ipv4/changeIPv4ReverseDNSModal";
-import {changeIPv6ReverseDNSModal} from "../pages/cloud/server/reverseDNS/ipv6/changeIPv6ReverseDNS";
-import {editFloatingIpModal} from "../pages/cloud/floatingIPs/editFloatingIp/editFloatingIp";
-import {FloatingIPPage} from "../pages/cloud/floatingIPs/floatingIp/floatingIP";
-import {assignToServerModal} from "../pages/cloud/floatingIPs/assignToServer/assignToServer";
-import {HetznerStatusSettingPage} from "../pages/global/hetzner-status-setting/hetzner-status-setting";
 import {OneSignal} from "@ionic-native/onesignal";
-import {HetznerStatusPage} from "../pages/global/hetzner-status/hetzner-status";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
 import {ChartsModule} from 'ng2-charts';
-import {ServerMetricsPage} from "../pages/cloud/server/server-metrics/server-metrics";
 import {AppVersion} from "@ionic-native/app-version";
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -38,7 +19,6 @@ import {HetznerCloudApiProviderModule} from "../modules/hetzner-cloud-api/hetzne
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode/dist";
 import {HetznerAppComponentsModule} from "../components/hetzner-app-components.module";
-import {consoleModal} from "../pages/cloud/server/console/console";
 import {Keyboard} from "@ionic-native/keyboard";
 import {AppRate} from "@ionic-native/app-rate";
 import {createTranslateLoader} from "../providers/translation/loader";
@@ -49,13 +29,15 @@ import {GlobalAppPagesModule} from "../pages/global/global-app-pages.module";
 import {Device} from "@ionic-native/device";
 import {CloudAppPagesModule} from "../pages/cloud/cloud-app-pages.module";
 import {RobotAppPagesModule} from "../pages/robot/robot-app-pages.module";
+import {HetznerRobotDataModule} from "../modules/hetzner-robot-data/hetzner-robot-data.module";
+import {HetznerRobotApiModule} from "../modules/hetzner-robot-api/hetzner-robot-api.module";
 
 /**
  * Init the Ionic Pro Monitoring Service
  * @type {Pro}
  */
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: "1.7.0"
+  appVersion: "2.0.0"
 });
 
 /**
@@ -110,8 +92,8 @@ export class IonicProErrorHandler implements ErrorHandler {
     HetznerAppModule,
     IonicStorageModule.forRoot(),
     HetznerCloudDataModule,
+    HetznerRobotDataModule,
     HttpClientModule,
-    PipesModule,
     BrowserAnimationsModule,
     TooltipsModule,
     ChartsModule,
@@ -123,12 +105,13 @@ export class IonicProErrorHandler implements ErrorHandler {
       }
     }),
     HetznerCloudApiProviderModule,
+    HetznerRobotApiModule,
     NgxQRCodeModule,
     BrowserAnimationsModule,
     HetznerAppComponentsModule,
     GlobalAppPagesModule,
     CloudAppPagesModule,
-    RobotAppPagesModule
+    RobotAppPagesModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -40,15 +40,15 @@
       "TITLE": "Help"
     },
     "CHANGELOG": {
-      "TITLE": "Changes in 1.6.0",
+      "TITLE": "Changes in 1.7.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Resource Protection",
-          "TEXT": "Protect your resources like servers, floating IPs or images from being deleted unintentionally!"
+          "TITLE": "Create a server from a snapshot",
+          "TEXT": "It is now possible again to create servers via snapshots! Simply go to your snapshots and select 'Create a new server'."
         },
         "SLIDE2": {
-          "TITLE": "Resource Protection",
-          "TEXT": "You can recognize a protected resource by the <i class='fas fa-lock'></i>."
+          "TITLE": "E-Mail Support",
+          "TEXT": "You have a problem with these app? Just write us per mail, you can do this directly with this app under the new 'Help' button."
         },
         "SLIDE3": {
           "TITLE": "Bugfixes",

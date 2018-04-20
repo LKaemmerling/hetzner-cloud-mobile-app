@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ProjectsService} from "../../../modules/hetzner-cloud-data/project/projects.service";
-import {ActionSheetController, ModalController} from "ionic-angular";
+import {ActionSheetController, LoadingController, ModalController} from "ionic-angular";
 import {addProjectModal} from "./addProject/addProject";
 import {project} from "../../../modules/hetzner-cloud-data/project/project";
 import {TranslateService} from "@ngx-translate/core";
@@ -12,6 +12,7 @@ import {fadeIn, fadeOut} from "ng-animate";
 import {editProjectModal} from "./editProject/editProject";
 import {HetznerCloudDataService} from "../../../modules/hetzner-cloud-data/hetzner-cloud-data.service";
 import {NetworkProvider} from "../../../modules/hetzner-app/network/network";
+import {HetznerCloudMenuService} from "../../../modules/hetzner-cloud-data/hetzner-cloud-menu.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -62,7 +63,9 @@ export class ProjectsPage {
     protected serversService: ServersService,
     protected translate: TranslateService,
     protected storage: Storage,
-    protected network: NetworkProvider
+    protected network: NetworkProvider,
+    protected cloudMenuService: HetznerCloudMenuService,
+    protected loadingCtrl: LoadingController
   ) {
     this.project.loadProjects().then(() => {
 
@@ -150,6 +153,11 @@ export class ProjectsPage {
     if (this.project.projects == null || this.project.projects.length == 0) {
       this.project.selectProject(null).then(() => {
         this.hetznerCloudDataService.loadDataFromNetwork();
+        this.cloudMenuService.generateMenu();
+        this._projects = this.project.projects;
+        let t = this.loadingCtrl.create();
+        t.present();
+        window.setTimeout(() => window.location.reload(true), 1000);
       });
     } else {
       this.project.selectProject(this.project.projects[0]).then(() => {

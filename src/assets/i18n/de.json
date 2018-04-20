@@ -16,7 +16,8 @@
     "SAVE": "Speichern",
     "ORDER": "Kostenpflichtig bestellen",
     "SHARE": "Teilen",
-    "OPEN_DETAILS": "Details"
+    "OPEN_DETAILS": "Details",
+    "CANCELLATION": "Stornierung"
   },
   "COMPONENT": {
     "PROTECTION": {
@@ -40,15 +41,15 @@
       "TITLE": "Hilfe"
     },
     "CHANGELOG": {
-      "TITLE": "Neu in der Version 1.6.0",
+      "TITLE": "Neu in der Version 1.7.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Resource Protection",
-          "TEXT": "Schützen Sie Ihre Ressourcen wie Server, Floating IPs oder Images vor ungewolltem löschen!"
+          "TITLE": "Server über einem Snapshot erstellen",
+          "TEXT": "Es ist nun wieder möglich Server über Snapshots zu erstellen! Gehen Sie dazu einfach auf Ihre Snapshots und wählen 'Neuen Server erstellen' aus"
         },
         "SLIDE2": {
-          "TITLE": "Resource Protection",
-          "TEXT": "Sie können eine geschütze Ressource durch das <i class='fas fa-lock'></i> erkennen."
+          "TITLE": "E-Mail Support",
+          "TEXT": "Sie haben ein Problem mit der App? Sie können uns nun direkt per E-Mail über den Punkt 'Hilfe' erreichen!"
         },
         "SLIDE3": {
           "TITLE": "Bugfixes",
@@ -376,7 +377,7 @@
             "REBUILD": "Bei einem Rebuild wird Ihr Server ausgeschaltet und die Festplatte mit dem ausgewählten Image überschrieben.<br/>Alle bestehenden Daten auf der Festplatte werden überschrieben!"
           },
           "ACTIONS": {
-            "CREATE_BACKUP": "Jetzt Backup kostenpflichtig erstellen!",
+            "CREATE_BACKUP": "Manuelles Backup starten",
             "DISABLE_BACKUP": "Backup deaktivieren",
             "CREATE_SNAPSHOT": "Jetzt Snapshot kostenpflichtig erstellen!",
             "REBUILD_FROM_IMAGE": "Rebuild"
@@ -454,6 +455,42 @@
             }
           }
         }
+      }
+    }
+  },
+  "ROBOT": {
+    "PAGE": {
+      "ACCOUNTS": {
+        "TITLE": "Meine Zugänge",
+        "NO_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch kein Zugänge hinterlegt.",
+        "MODAL": {
+          "ADD": {
+            "TITLE": "Account hinzufügen",
+            "FORM": {
+              "ACCOUNT_NAME": "Zugangsbezeichnung:",
+              "USER_NAME": "Username:",
+              "PASSWORD": "Passwort:",
+              "TOOLTIP": {
+                "PROJECT_NAME": "Die Projektbezeichnung können Sie frei wählen. Es empfiehlt sich die Projektbezeichnung des Projektes aus der Hetzner Cloud Console zu verwenden.",
+                "API_TOKEN": "Den API Token können Sie unter dem Menüpunkt 'Zugänge' der Hetzner Cloud Console erstellen."
+              }
+            },
+            "ERRORS": {
+              "INVALID_KEY": "Leider ist der eingegebene API-Token ungültig.",
+              "REQUIRED_NAME": "Bitte geben Sie eine Projektbezeichnung ein.",
+              "NAME_ALREADY_USED": "Sie haben bereits ein Projekt mit dieser Bezeichnung!",
+              "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
+            }
+          }
+        }
+      },
+      "SERVERS": {
+        "TITLE": "Meine Server",
+        "NO_SERVERS": "Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden."
+      },
+      "STORAGE_BOXES": {
+        "TITLE": "Meine Storage Boxen",
+        "NO_STORAGE_BOXES": "Oh! Es sieht so aus als wäre hier noch keine Storage Box erstellt worden."
       }
     }
   }

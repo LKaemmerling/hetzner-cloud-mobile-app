@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Storage} from "@ionic/storage";
 import {AppVersion} from "@ionic-native/app-version";
+import {Platform} from "ionic-angular";
 
 /**
  * This service contain all configuration for the app, like the api_url or other tings.
@@ -11,7 +12,7 @@ export class ConfigService {
    * The current version String
    * @type {string}
    */
-  public version = '1.6.0-DEV-VERSION';
+  public version = '1.7.0-DEV-VERSION';
   public build = '0000001';
   /**
    * The currently used language
@@ -29,6 +30,11 @@ export class ConfigService {
    */
   public api_url: string = 'https://api.hetzner.cloud/v1';
   /**
+   * The basic url for all robot api call
+   * @type {string}
+   */
+  public robot_api_url: string = 'http://localhost:8100/robot';
+  /**
    * This contains all configuration for the One Signal Push Notification service
    * @type any
    */
@@ -42,12 +48,19 @@ export class ConfigService {
    */
   public developer_mode = false;
 
+  public feature_flags = {
+    robot: false
+  };
+
   /**
    * Constructor
    * @param {Storage} storage
    * @param {AppVersion} appVersion
    */
-  constructor(protected storage: Storage, public appVersion: AppVersion) {
+  constructor(protected storage: Storage, public appVersion: AppVersion, protected platform: Platform) {
+    if (platform.is('ios') || platform.is('android')) {
+      this.robot_api_url = 'https://robot-ws.your-server.de';
+    }
   }
 
   /**
@@ -59,19 +72,23 @@ export class ConfigService {
         if (val != undefined) {
           this.developer_mode = val;
         }
-        this.storage.get('lang').then(lang => {
-          if (lang != undefined && lang != null) {
-            this.language = lang;
-          } else {
-            if ((<any>window).Intl && typeof (<any>window).Intl === 'object') {
-              let language = navigator.language.substring(0, 2).toLowerCase();
-              if (this.available_languages.indexOf(language) != -1) {
-                this.language = language;
-                console.log(language);
+        this.storage.get('feature_flags').then(feature_flags => {
+          this.feature_flags = Object.assign(this.feature_flags, feature_flags);
+          this.storage.get('lang').then(lang => {
+            if (lang != undefined && lang != null) {
+              this.language = lang;
+            } else {
+              if ((<any>window).Intl && typeof (<any>window).Intl === 'object') {
+                let language = navigator.language.substring(0, 2).toLowerCase();
+                if (this.available_languages.indexOf(language) != -1) {
+                  this.language = language;
+                  console.log(language);
+                }
               }
             }
-          }
-          resolve();
+            resolve();
+          });
+
           this.appVersion.getVersionNumber().then(
             (_version) => {
               this.version = _version;
@@ -85,6 +102,20 @@ export class ConfigService {
         });
       });
     }));
+  }
 
+  getFeatureFlag(name: string = null, _default: any = null) {
+    if (name == null) {
+      return this.feature_flags;
+    }
+    if (this.feature_flags[name] !== undefined) {
+      return this.feature_flags[name];
+    }
+    return _default;
+  }
+
+  setFeatureFlag(name: string, value: any) {
+    this.feature_flags[name] = value;
+    this.storage.set('feature_flags', this.feature_flags);
   }
 }

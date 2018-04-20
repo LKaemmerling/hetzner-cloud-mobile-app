@@ -1,13 +1,20 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Hetzner Cloud Mobile</ion-title>
+      <ion-title>Hetzner Mobile</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="menu">
+    <ion-segment [(ngModel)]="menu" color="secondary" (ionChange)="changeMenu()"
+                 *ngIf="config.getFeatureFlag('robot',false)">
+      <ion-segment-button *ngFor="let menu of available_menus;" [value]="menu.text">
+        <i [class]="menu.icon"></i> {{menu.text}}
+      </ion-segment-button>
+    </ion-segment>
     <ion-list>
-      <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose="" class="hidden"
-              [ngClass]="{'visible':(menu_entry.hidden == true && projects.actual_project != null) || menu_entry.hidden==false}">
+      <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose=""
+              class="visible"
+              [ngClass]="{'force-hidden':menu_entry.hidden}">
         <i [class]="'fas fa-fw '+menu_entry.icon"></i> {{ menu_entry.key | translate }}
       </button>
       <ion-item

@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {PricingService} from "../../modules/hetzner-cloud-data/pricings/pricing.service";
+import {PricingService} from "../../../hetzner-cloud-data/pricings/pricing.service";
 import {isNumeric} from "rxjs/util/isNumeric";
 import {TranslateService} from "@ngx-translate/core";
 import {Storage} from "@ionic/storage";

@@ -4,5 +4,11 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "proxies": [
+    {
+      "path": "/robot",
+      "proxyUrl": "https://robot-ws.your-server.de"
+    }
+  ]
 }

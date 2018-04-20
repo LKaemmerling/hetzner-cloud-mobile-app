@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ProjectsService} from "../../../../modules/hetzner-cloud-data/project/projects.service";
 import {LoadingController, NavController, NavParams, ViewController} from "ionic-angular";
 import {ServerApiProvider} from "../../../../modules/hetzner-cloud-api/server-api/server-api";
-import {Protection, Server} from "../../../../modules/hetzner-cloud-data/servers/server";
+import {Server} from "../../../../modules/hetzner-cloud-data/servers/server";
 
 /**
  * This makes it possible to rename a server
