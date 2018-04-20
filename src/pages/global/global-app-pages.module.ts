@@ -43,7 +43,9 @@ import {HetznerAppComponentsModule} from "../../components/hetzner-app-component
     ChangelogPage,
     SettingsPage,
     HomePage,
-    DeleteAllDataPage
+    DeleteAllDataPage,
+    HetznerStatusPage,
+    HetznerStatusSettingPage
   ],
   providers: [
     Device,
