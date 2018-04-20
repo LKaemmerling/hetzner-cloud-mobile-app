@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActionSheetController, ModalController} from "ionic-angular";
+import {ActionSheetController, ModalController, NavController} from "ionic-angular";
 import {TranslateService} from "@ngx-translate/core";
 import {Storage} from "@ionic/storage";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
@@ -12,6 +12,7 @@ import {NetworkProvider} from "../../../../modules/hetzner-app/network/network";
 import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
 import {ServersService} from "../../../../modules/hetzner-robot-data/servers/servers.service";
 import {Server} from "../../../../modules/hetzner-cloud-data/servers/server";
+import {ServerDetailPage} from "../details/server-detail";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -78,7 +79,7 @@ export class ServerListPage {
    */
   constructor(
     protected actionSheetCtrl: ActionSheetController,
-    protected modal: ModalController,
+    protected navCtrl: NavController,
     protected hetznerRobotData: HetznerRobotDataService,
     protected serversService: ServersService,
     protected translate: TranslateService,
@@ -133,6 +134,10 @@ export class ServerListPage {
     if (refresher !== null) {
       refresher.complete();
     }
+  }
+
+  openDetailsPage(server_ip:string) {
+    this.navCtrl.push(ServerDetailPage, {server_ip:server_ip})
   }
 
   /**

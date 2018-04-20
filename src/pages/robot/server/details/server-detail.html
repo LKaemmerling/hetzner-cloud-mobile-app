@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <i class="fas fa-bars fa-2x"></i>
+    </button>
+    <ion-title id="server_detail_name" *ngIf="server != null">{{server.server_name}}</ion-title>
+    <ion-buttons end>
+      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="server != null">
+
+  <ion-list style="margin-top: 60px;">
+    <ion-list-header>
+      {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.TITLE' | translate}}
+    </ion-list-header>
+    <ion-item>
+      <div item-left="" class="inner-item">
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+      </div>
+      <div item-right="">
+        {{ server.product}} ({{server.traffic}})
+      </div>
+    </ion-item>
+    <ion-item>
+      <div item-left="" class="inner-item">
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+      </div>
+      <div item-right="">
+        {{ server.dc}}
+      </div>
+    </ion-item>
+    <ion-list-header>
+      {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TITLE' | translate}}
+    </ion-list-header>
+    <ion-item>
+      <div item-left="" class="inner-item">
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+      </div>
+      <div item-right="">
+        {{ server.server_ip}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <div item-left="" class="inner-item">
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+      </div>
+      <div item-right="">
+        {{ server.traffic }} {{ server.flatrate ? 'Flat':'Pay' }}
+      </div>
+    </ion-item>
+    <ion-list-header>
+      {{ 'PAGE.SERVERS.MODAL.DETAILS.PAYMENT.TITLE' | translate}}
+    </ion-list-header>
+    <ion-item>
+      <div item-left="" class="inner-item">
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+      </div>
+      <div item-right="">
+        {{ server.paid_until }}
+      </div>
+    </ion-item>
+    <ion-item *ngIf="server.cancelled">
+      <div item-left="" class="inner-item">
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+      </div>
+      <div item-right="">
+        Cancelled
+      </div>
+
+    </ion-item>
+  </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab color="primary" id="server_actions">
+      <i class="fas fa-angle-up"></i>
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab color="danger" (click)="delete()" id="delete_server">
+        <div class="label" color="danger">{{ 'ACTIONS.CANCELLATION' | translate}}</div>
+        <i class="fas fa-trash"></i>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
