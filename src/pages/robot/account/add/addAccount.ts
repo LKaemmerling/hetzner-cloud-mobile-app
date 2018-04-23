@@ -8,6 +8,7 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {NetworkProvider} from "../../../../modules/hetzner-app/network/network";
 import {AccountService} from "../../../../modules/hetzner-robot-data/accounts/account.service";
 import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
+import {HetznerRobotMenuService} from "../../../../modules/hetzner-robot-data/hetzner-robot-menu.service";
 
 /**
  * Add Project modal
@@ -53,8 +54,7 @@ export class addAccountModal {
               protected network: NetworkProvider,
               protected translate: TranslateService,
               protected storage: Storage,
-              protected barcodeScanner: BarcodeScanner,
-              protected serverApi: ServerApiProvider) {
+              protected barcodeScanner: BarcodeScanner) {
 
   }
 
@@ -75,9 +75,6 @@ export class addAccountModal {
     var new_account = {name: this.name, username: this.username, password: this.password};
     this.accountService.addAccount(new_account);
     this.accountService.saveAccounts();
-    this.serverApi.getServers().then((val) => {
-      console.log(val);
-    })
     this.dismiss();
 
   }

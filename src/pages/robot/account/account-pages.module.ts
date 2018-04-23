@@ -3,10 +3,11 @@ import {IonicPageModule} from 'ionic-angular';
 import {TranslateModule} from "@ngx-translate/core";
 import {IonicStorageModule} from "@ionic/storage";
 import {HetznerAppModule} from "../../../modules/hetzner-app/hetzner-app.module";
-import {HetznerCloudDataModule} from "../../../modules/hetzner-cloud-data/hetzner-cloud-data.module";
 import {NgxQRCodeModule} from "@lkdevelopment/ngx-qrcode/dist";
 import {AccountListPage} from "./list/account-list";
 import {addAccountModal} from "./add/addAccount";
+import {HetznerRobotDataModule} from "../../../modules/hetzner-robot-data/hetzner-robot-data.module";
+import {HetznerRobotApiModule} from "../../../modules/hetzner-robot-api/hetzner-robot-api.module";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {addAccountModal} from "./add/addAccount";
     IonicPageModule,
     TranslateModule,
     HetznerAppModule,
-    HetznerCloudDataModule,
+    HetznerRobotDataModule,
+    HetznerRobotApiModule,
     IonicStorageModule,
     NgxQRCodeModule
   ],

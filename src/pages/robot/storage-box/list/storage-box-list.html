@@ -23,12 +23,13 @@
             </button>
           </ion-col>
           <ion-col col-12 align-items-start>
-            <h2>{{ storagebox.storagebox.name }}
+            <h2>{{ storagebox.storagebox.name.length > 0 ?storagebox.storagebox.name : '#'+storagebox.storagebox.id }}
             </h2>
           </ion-col>
         </ion-row>
         <ion-card-content>
-          <p text-wrap="">{{storagebox.storagebox.product}}</p>
+          <p text-wrap="">{{ storagebox.storagebox.name.length > 0 ? '#'+storagebox.storagebox.id: '' }}
+            {{storagebox.storagebox.product}}</p>
 
         </ion-card-content>
         <ion-card-content [id]="'storagebox_'+i+'_content'" style="display:none;"

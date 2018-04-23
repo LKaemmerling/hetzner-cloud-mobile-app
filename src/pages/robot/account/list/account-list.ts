@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, forwardRef, Inject} from '@angular/core';
 import {ActionSheetController, ModalController} from "ionic-angular";
 import {TranslateService} from "@ngx-translate/core";
 import {Storage} from "@ionic/storage";
@@ -10,6 +10,7 @@ import {AccountService} from "../../../../modules/hetzner-robot-data/accounts/ac
 import {NetworkProvider} from "../../../../modules/hetzner-app/network/network";
 import {addAccountModal} from "../add/addAccount";
 import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
+import {HetznerRobotMenuService} from "../../../../modules/hetzner-robot-data/hetzner-robot-menu.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -45,17 +46,19 @@ export class AccountListPage {
    * Constructor
    * @param {ActionSheetController} actionSheetCtrl
    * @param {ModalController} modal
-   * @param {HetznerCloudDataService} hetznerCloudDataService
-   * @param {ProjectsService} project
-   * @param {StorageBoxService} serversService
+   * @param {HetznerRobotDataService} hetznerRobotData
+   * @param {HetznerRobotMenuService} hetznerRobotMenuService
+   * @param {AccountService} accountService
    * @param {TranslateService} translate
    * @param {Storage} storage
    * @param {NetworkProvider} network
+   * @param {ServerApiProvider} serverApi
    */
   constructor(
     protected actionSheetCtrl: ActionSheetController,
     protected modal: ModalController,
     protected hetznerRobotData: HetznerRobotDataService,
+    @Inject(forwardRef(() => HetznerRobotMenuService)) protected hetznerRobotMenuService:  HetznerRobotMenuService,
     protected accountService: AccountService,
     protected translate: TranslateService,
     protected storage: Storage,
@@ -95,6 +98,7 @@ export class AccountListPage {
     if (this.network.has_connection) {
       this.accountService.selectAccount(account).then(() => {
         this.hetznerRobotData.loadDataFromNetwork();
+        this.hetznerRobotMenuService.generateMenu();
       });
     } else {
       this.network.displayNoNetworkNotice();
@@ -116,6 +120,7 @@ export class AccountListPage {
         this.hetznerRobotData.loadDataFromNetwork();
       });
     }
+    this.hetznerRobotMenuService.generateMenu();
     this._accounts = this.accountService.accounts;
   }
 

@@ -7,16 +7,15 @@ import {StorageBoxService} from "./storage-box/storage-box.service";
 
 
 /**
- * This module register all services for the data handling of the hetzner cloud app.
+ * This module register all services for the data handling of the he app.
  */
 @NgModule({
-  imports: [],
   providers: [
+    HetznerRobotDataService,
+    HetznerRobotMenuService,
     AccountService,
     ServersService,
     StorageBoxService,
-    HetznerRobotDataService,
-    HetznerRobotMenuService
   ]
 })
 export class HetznerRobotDataModule {

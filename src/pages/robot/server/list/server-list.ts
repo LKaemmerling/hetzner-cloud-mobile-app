@@ -88,7 +88,6 @@ export class ServerListPage {
     protected serverApi: ServerApiProvider
   ) {
     this.servers = this._search = this.serversService.servers;
-    console.log(this.servers);
     storage.get('compact_server_design').then((val) => {
       if (val != undefined) {
         this.compact_server_design = val;

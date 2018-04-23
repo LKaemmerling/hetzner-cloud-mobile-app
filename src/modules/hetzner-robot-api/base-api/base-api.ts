@@ -106,7 +106,6 @@ export abstract class BaseApiProvider {
    * @returns {HttpHeaders}
    */
   private getHeaders() {
-    console.log(this.accountService.actual_account);
     if (this.accountService.actual_account == null) {
       return new HttpHeaders();
     }
@@ -124,8 +123,9 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (this.accountService.actual_account != null) {
-      if (request.url.indexOf('robot') != -1) {
+    if (request.url.indexOf('robot') != -1) {
+      if (this.accountService.actual_account != null) {
+
 
         request = request.clone({
           setHeaders: {
@@ -133,9 +133,12 @@ export class TokenInterceptor implements HttpInterceptor {
             'Test-Header': 'Na_Super'
           }
         });
-        console.log(request);
+        return next.handle(request);
       }
+      throw new Error('No account');
+    } else {
+      return next.handle(request);
     }
-    return next.handle(request);
+
   }
 }

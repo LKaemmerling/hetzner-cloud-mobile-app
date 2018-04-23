@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {AccountPagesModule} from "./account/AccountPages.module";
+import {AccountPagesModule} from "./account/account-pages.module";
 import {ServerPagesModule} from "./server/server-pages.module";
 import {StorageBoxPagesModule} from "./storage-box/storage-box-pages.module";
 

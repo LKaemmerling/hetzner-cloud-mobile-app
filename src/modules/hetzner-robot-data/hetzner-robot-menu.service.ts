@@ -1,15 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HomePage} from "../../pages/global/home/home";
-import {ServersPage} from "../../pages/cloud/server/serverList/servers";
-import {ActionsPage} from "../../pages/cloud/actions/actions";
-import {FloatingIPsPage} from "../../pages/cloud/floatingIPs/floatingIPs";
 import {HetznerStatusPage} from "../../pages/global/hetzner-status/hetzner-status";
 import {SettingsPage} from "../../pages/global/settings/settings";
-import {ImagesPage} from "../../pages/cloud/images/images";
-import {SshkeysPage} from "../../pages/cloud/sshkeys/sshkeys";
-import {ProjectsPage} from "../../pages/cloud/projects/projects";
 import {AccountListPage} from "../../pages/robot/account/list/account-list";
-import {ProjectsService} from "../hetzner-cloud-data/project/projects.service";
 import {AccountService} from "./accounts/account.service";
 import {Platform} from "ionic-angular";
 import {HetznerRobotDataService} from "./hetzner-robot-data.service";
@@ -17,7 +10,7 @@ import {ServerListPage} from "../../pages/robot/server/list/server-list";
 import {StorageBoxListPage} from "../../pages/robot/storage-box/list/storage-box-list";
 
 /**
- * Service that centralised all methods for the storage
+ * Service that centralised all methods for the hetzner robot menu
  */
 @Injectable()
 export class HetznerRobotMenuService {
@@ -71,22 +64,23 @@ export class HetznerRobotMenuService {
     }
   ]
 
-  constructor(protected accountService: AccountService, platform: Platform, protected hetznerRobotDataService: HetznerRobotDataService) {
-    platform.ready().then(() => {
-      this.accountService.loadAccounts().then(() => {
-        var tmp = [];
-        this.menu_entries.forEach((menu_entry) => {
-          menu_entry.hidden = (menu_entry.protected) ? this.validate(menu_entry) : false;
-          tmp.push(menu_entry);
-          console.log(menu_entry);
-        })
-        this.menu_entries = tmp;
-      })
+  constructor(protected accountService: AccountService, protected platform: Platform, public hetznerRobotDataService: HetznerRobotDataService) {
+    this.generateMenu();
 
-    })
   }
 
-  public validate(menu_entry) {
+  generateMenu() {
+    this.accountService.loadAccounts().then(() => {
+      var tmp = [];
+      this.menu_entries.forEach((menu_entry) => {
+        menu_entry.hidden = (menu_entry.protected) ? this.validate(menu_entry) : false;
+        tmp.push(menu_entry);
+      })
+      this.menu_entries = tmp;
+    });
+  }
+
+  validate(menu_entry) {
     if (menu_entry.protected == true) {
       return this.accountService.actual_account == null;
     } else {
@@ -94,7 +88,7 @@ export class HetznerRobotMenuService {
     }
   }
 
-  public init() {
+  init() {
     return this.hetznerRobotDataService.loadData();
   }
 }

@@ -69,13 +69,17 @@ export class IonicProErrorHandler implements ErrorHandler {
    * @param err
    */
   handleError(err: any): void {
-    if (this.network.has_connection == true) {
-      IonicPro.monitoring.handleNewError(err);
+    if (err.toString().indexOf('No account') == -1 && err.toString().indexOf('cordova') == -1) {
+      if (this.network.has_connection == true) {
+
+        IonicPro.monitoring.handleNewError(err);
+      }
+
+
+      // Remove this if you want to disable Ionic's auto exception handling
+      // in development mode.
+      this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
     }
-    // Remove this if you want to disable Ionic's auto exception handling
-    // in development mode.
-    this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
-    console.log(err);
   }
 }
 
@@ -93,6 +97,8 @@ export class IonicProErrorHandler implements ErrorHandler {
     IonicStorageModule.forRoot(),
     HetznerCloudDataModule,
     HetznerRobotDataModule,
+    HetznerCloudApiProviderModule,
+    HetznerRobotApiModule,
     HttpClientModule,
     BrowserAnimationsModule,
     TooltipsModule,
@@ -104,8 +110,6 @@ export class IonicProErrorHandler implements ErrorHandler {
         deps: [HttpClient]
       }
     }),
-    HetznerCloudApiProviderModule,
-    HetznerRobotApiModule,
     NgxQRCodeModule,
     BrowserAnimationsModule,
     HetznerAppComponentsModule,

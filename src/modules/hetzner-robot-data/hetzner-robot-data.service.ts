@@ -14,6 +14,8 @@ export class HetznerRobotDataService {
    * Constructor
    * @param {NetworkProvider} network
    * @param {AccountService} accountService
+   * @param {ServersService} serversService
+   * @param {StorageBoxService} storageBoxService
    * @param {Storage} storage
    */
   constructor(
@@ -49,7 +51,9 @@ export class HetznerRobotDataService {
     return new Promise((resolve, reject) => {
       this.accountService.loadAccounts().then(() => {
         if (this.network.has_connection == true) {
-          this.loadDataFromNetwork();
+          if (this.accountService.actual_account != null) {
+            this.loadDataFromNetwork();
+          }
           this.storage.set('robot_last_reload', 'date::' + Date.now().toString())
         } else {
           this.loadDataFromStorage();
