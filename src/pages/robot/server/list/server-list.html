@@ -17,14 +17,12 @@
 
       <button ion-item *ngFor="let server of _search ; let i = index" (click)="openDetailsPage(server.server.server_ip)"
               [id]="server.server_name">
-        <h2>{{ server.server.server_name }}
+        <h2>{{ server.server.server_name.length > 0 ? server.server.server_name : server.server.product }}
         </h2>
         <p>
-          {{server.server.product}} / {{
+          {{server.server.server_ip}} / {{
           server.server.dc
-          }}
-          /
-          {{ server.server.server_ip }}</p>
+          }}{{ server.server.server_name.length > 0 ? ' / '+server.server.product : '' }}</p>
       </button>
       <p ion-item *ngIf="_search == null || _search.length == 0" class="message_box info" text-wrap=""
          [innerHTML]="'ROBOT.PAGE.SERVERS.NO_SERVERS' | translate">
@@ -45,16 +43,14 @@
             </button>
           </ion-col>
           <ion-col col-12 align-items-start>
-            <h2>{{ server.server.server_name }}
+            <h2>{{ server.server.server_name.length > 0 ? server.server.server_name : server.server.product }}
             </h2>
           </ion-col>
         </ion-row>
         <ion-card-content>
-          <p text-wrap="">{{server.server.product}} / {{
+          <p text-wrap="">{{server.server.server_ip}} / {{
             server.server.dc
-            }}
-            /
-            {{ server.server.server_ip }}</p>
+            }}{{ server.server.server_name.length > 0 ? ' / '+server.server.product : '' }}</p>
 
         </ion-card-content>
         <ion-card-content [id]="'server_'+i+'_content'" style="display:none;"
