@@ -31,12 +31,12 @@
   "PAGE": {
     "HOME": {
       "TITLE": "Startseite",
-      "TEXT": "<h2>Willkommen auf der Hetzner Mobile App.</h2> <p>Diese App ist eine inoffizielle App für diverse Dienste der Hetzner GmbH, zum Beispiel die Hetzner Cloud oder aber der Hetzner Robot. Über diese App können Sie viele der aus der Hetzner Cloud Console oder dem Hetzner Robot bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p>",
+      "TEXT": "<h2>Willkommen auf der Mein Hetzner App.</h2> <p>Diese App ist eine inoffizielle App für diverse Dienste der Hetzner GmbH, zum Beispiel die Hetzner Cloud oder aber der Hetzner Robot. Über diese App können Sie viele der aus der Hetzner Cloud Console oder dem Hetzner Robot bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p>",
       "ADD_PROJECT_BUTTON": "Jetzt erstes Projekt hinzufügen!"
     },
     "ABOUT": {
       "TITLE": "Über diese App",
-      "TEXT": "Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es wird die von der Hetzner Online GmbH bereitgestellte Schnittstelle verwendet. Auf Ihrem Gerät werden nur die Daten der Accounts bzw. Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese lokal gelöscht. Die lokale Löschung impliziert nicht das Kündigen der Services.<strong>Ihre Zugangsdaten verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der entsprechenden Hetzner API.</strong>"
+      "TEXT": "Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es werden die von der Hetzner Online GmbH bereitgestellten Schnittstellen verwendet. Auf Ihrem Gerät werden nur die Daten der Accounts bzw. Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese lokal gelöscht. Die lokale Löschung impliziert nicht das Kündigen der Services.<strong>Ihre Zugangsdaten verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der entsprechenden Hetzner API.</strong>"
     },
     "HELP": {
       "TITLE": "Hilfe"
