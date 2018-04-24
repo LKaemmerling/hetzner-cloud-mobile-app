@@ -484,9 +484,39 @@
         "TITLE": "Meine Server",
         "NO_SERVERS": "Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden."
       },
+      "SERVER_DETAILS": {
+        "INFORMATION": {
+          "TITLE": "Informationen",
+          "PRODUCT": "Produkt:",
+          "LOCATION": "Standort:"
+        },
+        "NETWORK": {
+          "TITLE": "Netzwerk",
+          "IP": "IP-Adresse:",
+          "TRAFFIC": "Inklusiv Traffic:"
+        },
+        "PAYMENT": {
+          "TITLE": "Zahlung",
+          "UNTIL": "Bezahlt bis",
+          "CANCELLED": "Der Server wurde bereits zur Kündigung vorgemerkt."
+        },
+        "ACTIONS": {
+          "POWER": "Power Einstellungen",
+          "BOOT_CONFIGURATION": "Boot Konfiguration",
+          "RDNS_SETTINGS": "Reverse DNS",
+          "RESCUE": "Rescue Modus",
+          "FIREWALL": "Firewall"
+        }
+      },
       "STORAGE_BOXES": {
         "TITLE": "Meine Storage Boxen",
         "NO_STORAGE_BOXES": "Oh! Es sieht so aus als wäre hier noch keine Storage Box erstellt worden."
+      },
+      "SHOP": {
+        "TITLE": "Bestellung"
+      },
+      "SERVER_MARKET": {
+        "TITLE": "Serverbörse"
       }
     }
   }

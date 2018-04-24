@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <i class="fas fa-bars fa-2x"></i>
     </button>
-    <ion-title id="server_detail_name" *ngIf="server != null">{{server.server_name}}</ion-title>
+    <ion-title id="server_detail_name" *ngIf="server != null">{{ server.server_name.length > 0 ? server.server_name : server.product }}</ion-title>
     <ion-buttons end>
       <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
     </ion-buttons>
@@ -14,11 +14,11 @@
 
   <ion-list style="margin-top: 60px;">
     <ion-list-header>
-      {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.TITLE' | translate}}
+      {{ 'ROBOT.PAGE.SERVER_DETAILS.INFORMATION.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
       <div item-left="" class="inner-item">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+        {{ 'ROBOT.PAGE.SERVER_DETAILS.INFORMATION.PRODUCT' | translate}}
       </div>
       <div item-right="">
         {{ server.product}} ({{server.traffic}})
@@ -26,18 +26,18 @@
     </ion-item>
     <ion-item>
       <div item-left="" class="inner-item">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+        {{ 'ROBOT.PAGE.SERVER_DETAILS.INFORMATION.LOCATION' | translate}}
       </div>
       <div item-right="">
         {{ server.dc}}
       </div>
     </ion-item>
     <ion-list-header>
-      {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TITLE' | translate}}
+      {{ 'ROBOT.PAGE.SERVER_DETAILS.NETWORK.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
       <div item-left="" class="inner-item">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+        {{ 'ROBOT.PAGE.SERVER_DETAILS.NETWORK.IP' | translate}}
       </div>
       <div item-right="">
         {{ server.server_ip}}
@@ -45,18 +45,18 @@
     </ion-item>
     <ion-item>
       <div item-left="" class="inner-item">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+        {{ 'ROBOT.PAGE.SERVER_DETAILS.NETWORK.TRAFFIC' | translate}}
       </div>
       <div item-right="">
         {{ server.traffic }} {{ server.flatrate ? 'Flat':'Pay' }}
       </div>
     </ion-item>
     <ion-list-header>
-      {{ 'PAGE.SERVERS.MODAL.DETAILS.PAYMENT.TITLE' | translate}}
+      {{ 'ROBOT.PAGE.SERVER_DETAILS.PAYMENT.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
       <div item-left="" class="inner-item">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+        {{ 'ROBOT.PAGE.SERVER_DETAILS.PAYMENT.UNTIL' | translate}}
       </div>
       <div item-right="">
         {{ server.paid_until }}
@@ -64,7 +64,7 @@
     </ion-item>
     <ion-item *ngIf="server.cancelled">
       <div item-left="" class="inner-item">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
+        {{ 'ROBOT.PAGE.SERVER_DETAILS.PAYMENT.CANCELLED' | translate}}
       </div>
       <div item-right="">
         Cancelled
@@ -77,9 +77,33 @@
       <i class="fas fa-angle-up"></i>
     </button>
     <ion-fab-list side="top">
-      <button ion-fab color="danger" (click)="delete()" id="delete_server">
+      <button ion-fab color="danger" (click)="delete()" id="delete_server" disabled>
         <div class="label" color="danger">{{ 'ACTIONS.CANCELLATION' | translate}}</div>
         <i class="fas fa-trash"></i>
+      </button>
+      <button ion-fab color="danger" (click)="powerSettingsModal()" id="power_settings" disabled>
+        <div class="label" color="danger">{{ 'ROBOT.PAGE.SERVER_DETAILS.ACTIONS.POWER' | translate}}</div>
+        <i class="fas fa-power-off"></i>
+      </button>
+      <button ion-fab color="danger" (click)="backupSettingsModal()" disabled>
+        <div class="label" color="light">{{ 'ROBOT.PAGE.SERVER_DETAILS.ACTIONS.BOOT_CONFIGURATION' | translate}}</div>
+        <i class="fas fa-hdd"></i>
+      </button>
+      <button ion-fab color="danger" (click)="powerSettingsModal()" id="rdns" disabled>
+        <div class="label" color="danger">{{ 'ROBOT.PAGE.SERVER_DETAILS.ACTIONS.RDNS_SETTINGS' | translate}}</div>
+        <i class="fas fa-random"></i>
+      </button>
+      <button ion-fab (click)="openEditModal()" color="secondary" id="rename_server" disabled>
+        <div class="label" color="secondary">{{ 'ACTIONS.EDIT' | translate}}</div>
+        <i class="fas fa-pencil-alt"></i>
+      </button>
+      <button ion-fab color="light" (click)="rescueModeModal()" disabled>
+        <div class="label" color="light">{{ 'ROBOT.PAGE.SERVER_DETAILS.ACTIONS.RESCUE' | translate}}</div>
+        <ion-icon name="help-buoy"></ion-icon>
+      </button>
+      <button ion-fab color="light" (click)="rescueModeModal()" disabled>
+        <div class="label" color="light">{{ 'ROBOT.PAGE.SERVER_DETAILS.ACTIONS.FIREWALL' | translate}}</div>
+        <i class="fas fa-fire"></i>
       </button>
     </ion-fab-list>
   </ion-fab>

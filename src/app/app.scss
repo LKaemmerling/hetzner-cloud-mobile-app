@@ -79,6 +79,25 @@ $flag-icon-square-path: '/assets/flags/1x1';
   color: #ffffff !important;
 }
 
+.ios {
+  .menu-segment {
+    .segment-button {
+      border: 0;
+    }
+    .hetzner-robot-icon {
+      margin-top:8px;
+    }
+    .segment-activated {
+      color: #ffffff !important;
+      .hetzner-robot-icon {
+        -webkit-mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
+        mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
+        background-color: #ffffff;
+      }
+    }
+  }
+}
+
 .fab {
   contain: initial;
 }
@@ -90,9 +109,11 @@ $flag-icon-square-path: '/assets/flags/1x1';
 .hidden {
   display: none;
 }
+
 .force-hidden {
   display: none !important;
 }
+
 .visible {
   display: block;
 }
@@ -233,3 +254,5 @@ ion-header ion-icon.back-button-icon.icon {
 .item-inner {
   border-bottom: 0 !important;
 }
+
+

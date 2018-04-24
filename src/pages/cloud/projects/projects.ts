@@ -64,7 +64,7 @@ export class ProjectsPage {
     protected translate: TranslateService,
     protected storage: Storage,
     protected network: NetworkProvider,
-    protected cloudMenuService: ,
+    protected cloudMenuService: HetznerCloudMenuService,
     protected loadingCtrl: LoadingController
   ) {
     this.project.loadProjects().then(() => {
