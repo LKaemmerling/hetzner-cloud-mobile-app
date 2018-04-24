@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * Generated class for the SelectDatacenterComponent component.
@@ -7,20 +7,19 @@ import {Component, Input} from '@angular/core';
  * Components.
  */
 @Component({
-  selector: 'select-only-one-box',
-  templateUrl: 'select-only-one-box.html'
+    selector: 'select-only-one-box',
+    templateUrl: 'select-only-one-box.html',
 })
 export class SelectOnlyOneBoxComponent {
+    @Input() items: Array<any>;
+    selectedParent: string;
+    selectedChildren: string = null;
 
-  @Input() items: Array<any>;
-  selectedParent: string;
-  selectedChildren: string = null;
+    //@Output('?__selection') __selection = null;
 
-  //@Output('?__selection') __selection = null;
-
-  selectItem(parent, child = null) {
-    this.selectedParent = parent;
-    this.selectedChildren = child;
-    // this.__selection = {parent: this.selectedParent, children: this.selectedChildren};
-  }
+    selectItem(parent, child = null) {
+        this.selectedParent = parent;
+        this.selectedChildren = child;
+        // this.__selection = {parent: this.selectedParent, children: this.selectedChildren};
+    }
 }
