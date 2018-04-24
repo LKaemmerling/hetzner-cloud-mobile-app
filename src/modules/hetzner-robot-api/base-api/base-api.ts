@@ -1,6 +1,5 @@
 import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ProjectsService} from "../../hetzner-cloud-data/project/projects.service";
 import {ConfigService} from "../../hetzner-app/config/config.service";
 import {AccountService} from "../../hetzner-robot-data/accounts/account.service";
 import {Observable} from "rxjs/Observable";
@@ -13,7 +12,7 @@ export abstract class BaseApiProvider {
   /**
    * Constructor
    * @param {HttpClient} http
-   * @param {ProjectsService} projectService
+   * @param {AccountService} accountService
    * @param {ConfigService} configService
    */
   constructor(protected http: HttpClient, protected accountService: AccountService, protected configService: ConfigService) {
@@ -46,7 +45,7 @@ export abstract class BaseApiProvider {
    * @returns {Promise<any>}
    * @private
    */
-  _post(method: string, body: object = {}) {
+  _post(method: string, body) {
     return new Promise((resolve, reject = null) => {
       this.http.post(this.configService.robot_api_url + '/' + method, body, {
         headers: this.getHeaders(),
@@ -67,7 +66,7 @@ export abstract class BaseApiProvider {
    * @returns {Promise<any>}
    * @private
    */
-  _put(method: string, body: object) {
+  _put(method: string, body) {
     return new Promise((resolve, reject = null) => {
       this.http.put(this.configService.robot_api_url + '/' + method, body, {
         headers: this.getHeaders(),

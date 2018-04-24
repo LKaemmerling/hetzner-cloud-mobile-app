@@ -8,7 +8,7 @@ import {Platform} from "ionic-angular";
 import {HetznerRobotDataService} from "./hetzner-robot-data.service";
 import {ServerListPage} from "../../pages/robot/server/list/server-list";
 import {StorageBoxListPage} from "../../pages/robot/storage-box/list/storage-box-list";
-import {AboutPage} from "../../pages/global/about/about";
+import {SshKeyListPage} from "../../pages/robot/sshkeys/list/ssh-key-list";
 
 /**
  * Service that centralised all methods for the hetzner robot menu
@@ -52,7 +52,7 @@ export class HetznerRobotMenuService {
     {
       key: 'ROBOT.PAGE.SSH_KEYS.TITLE',
       icon: 'fa-key',
-      page: AboutPage,
+      page: SshKeyListPage,
       protected: true,
       hidden: true
     },

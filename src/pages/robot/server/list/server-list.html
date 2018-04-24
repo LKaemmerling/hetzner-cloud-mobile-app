@@ -64,7 +64,7 @@
             </ion-col>
             <ion-col class="col" text-center="">
               <button clear="" color="secondary" icon-start="" ion-button="" small=""
-                      class="edit_server" disabled>
+                      class="edit_server" (click)="openEditModal(server.server)">
                 <i class="fa fa-fw fa-edit"></i> {{ 'ACTIONS.EDIT' | translate }}
               </button>
             </ion-col>

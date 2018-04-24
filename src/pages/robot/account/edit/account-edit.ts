@@ -1,39 +1,26 @@
 import {Component} from '@angular/core';
-import {ProjectsService} from "../../../../modules/hetzner-cloud-data/project/projects.service";
-import {project} from "../../../../modules/hetzner-cloud-data/project/project";
-import {ViewController} from "ionic-angular";
+import {NavParams, ViewController} from "ionic-angular";
 import {TranslateService} from "@ngx-translate/core";
 import {Storage} from "@ionic/storage";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {NetworkProvider} from "../../../../modules/hetzner-app/network/network";
 import {AccountService} from "../../../../modules/hetzner-robot-data/accounts/account.service";
-import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
-import {HetznerRobotMenuService} from "../../../../modules/hetzner-robot-data/hetzner-robot-menu.service";
 
 /**
  * Add Project modal
  */
 @Component({
-  selector: 'modal-addAccount',
-  templateUrl: 'addAccount.html'
+  selector: 'modal-account-edit',
+  templateUrl: 'account-edit.html'
 })
-export class addAccountModal {
+export class AccountEditModal {
 
   /**
-   * the name of the account
-   * @type {string}
+   * The Account
+   * @type {account}
    */
-  public name: string;
-  /**
-   * username
-   * @type {string}
-   */
-  public username: string;
-  /**
-   * the password
-   * @type {string}
-   */
-  public password: string;
+  public account: Account;
+
   /**
    * if there is an error this would be displayed here
    * @type {string}
@@ -42,7 +29,7 @@ export class addAccountModal {
 
   /**
    * Constructor
-   * @param {ProjectsService} project
+   * @param {AccountService} accountService
    * @param {ViewController} viewCtrl
    * @param {NetworkProvider} network
    * @param {TranslateService} translate
@@ -54,7 +41,9 @@ export class addAccountModal {
               protected network: NetworkProvider,
               protected translate: TranslateService,
               protected storage: Storage,
-              protected barcodeScanner: BarcodeScanner) {
+              protected barcodeScanner: BarcodeScanner,
+              protected navParams: NavParams) {
+    this.account = this.navParams.get('account');
 
   }
 
@@ -63,7 +52,7 @@ export class addAccountModal {
    * Save the given project and validate it
    */
   public saveAccount() {
-    if (this.name == null || this.name.length == 0) {
+    if (this.account.name == null || this.account.name.length == 0) {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.REQUIRED_NAME';
       return;
     }
@@ -71,9 +60,6 @@ export class addAccountModal {
       this.error = 'PAGE.PROJECTS.MODAL.ADD.ERRORS.NAME_ALREADY_USED';
       return;
     }*/
-
-    var new_account = {name: this.name, username: this.username, password: this.password};
-    this.accountService.addAccount(new_account);
     this.accountService.saveAccounts();
     this.dismiss();
 

@@ -4,6 +4,7 @@ import {NetworkProvider} from "../hetzner-app/network/network";
 import {AccountService} from "./accounts/account.service";
 import {ServersService} from "./servers/servers.service";
 import {StorageBoxService} from "./storage-box/storage-box.service";
+import {SshKeysService} from "./ssh-keys/ssh-keys.service";
 
 /**
  * Service that centralised all methods for the storage
@@ -23,6 +24,7 @@ export class HetznerRobotDataService {
     protected accountService: AccountService,
     protected serversService: ServersService,
     protected storageBoxService: StorageBoxService,
+    protected sshKeysService: SshKeysService,
     protected storage: Storage) {
 
   }
@@ -33,6 +35,7 @@ export class HetznerRobotDataService {
   public loadDataFromNetwork() {
     this.serversService.reloadServers();
     this.storageBoxService.reloadStorageBoxes();
+    this.sshKeysService.reloadSshKeys()
   }
 
   /**
@@ -41,6 +44,7 @@ export class HetznerRobotDataService {
   public loadDataFromStorage() {
     this.serversService.loadServers();
     this.storageBoxService.loadStorageBoxes();
+    this.sshKeysService.loadSSHKeys()
   }
 
   /**

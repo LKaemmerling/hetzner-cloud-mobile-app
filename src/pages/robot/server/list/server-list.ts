@@ -4,15 +4,13 @@ import {TranslateService} from "@ngx-translate/core";
 import {Storage} from "@ionic/storage";
 import {state, style, transition, trigger, useAnimation} from "@angular/animations";
 import {fadeIn, fadeOut} from "ng-animate";
-import {Account} from "../../../../modules/hetzner-robot-data/accounts/account";
 import {HetznerRobotDataService} from "../../../../modules/hetzner-robot-data/hetzner-robot-data.service";
-import {AccountService} from "../../../../modules/hetzner-robot-data/accounts/account.service";
 import {NetworkProvider} from "../../../../modules/hetzner-app/network/network";
 
 import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
 import {ServersService} from "../../../../modules/hetzner-robot-data/servers/servers.service";
-import {Server} from "../../../../modules/hetzner-cloud-data/servers/server";
 import {ServerDetailPage} from "../details/server-detail";
+import {ServerEditModal} from "../edit/server-edit";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -85,7 +83,8 @@ export class ServerListPage {
     protected translate: TranslateService,
     protected storage: Storage,
     protected network: NetworkProvider,
-    protected serverApi: ServerApiProvider
+    protected serverApi: ServerApiProvider,
+    protected modal: ModalController
   ) {
     this.servers = this._search = this.serversService.servers;
     storage.get('compact_server_design').then((val) => {
@@ -135,8 +134,16 @@ export class ServerListPage {
     }
   }
 
-  openDetailsPage(server_ip:string) {
-    this.navCtrl.push(ServerDetailPage, {server_ip:server_ip})
+  openDetailsPage(server_ip: string) {
+    this.navCtrl.push(ServerDetailPage, {server_ip: server_ip})
+  }
+
+  openEditModal(server) {
+    let modal = this.modal.create(ServerEditModal, {server: server});
+    modal.onDidDismiss(() => {
+      this.loadServers();
+    });
+    modal.present();
   }
 
   /**

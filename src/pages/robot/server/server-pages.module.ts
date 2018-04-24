@@ -9,11 +9,13 @@ import {HetznerAppComponentsModule} from "../../../components/hetzner-app-compon
 import {TooltipsModule} from "ionic-tooltips";
 import {HetznerRobotDataModule} from "../../../modules/hetzner-robot-data/hetzner-robot-data.module";
 import {ServerDetailPage} from "./details/server-detail";
+import {ServerEditModal} from "./edit/server-edit";
 
 @NgModule({
   declarations: [
     ServerListPage,
-    ServerDetailPage
+    ServerDetailPage,
+    ServerEditModal,
   ],
   imports: [
     HetznerAppComponentsModule,
@@ -27,7 +29,8 @@ import {ServerDetailPage} from "./details/server-detail";
   ],
   entryComponents: [
     ServerListPage,
-    ServerDetailPage
+    ServerDetailPage,
+    ServerEditModal,
   ]
 })
 export class ServerPagesModule {

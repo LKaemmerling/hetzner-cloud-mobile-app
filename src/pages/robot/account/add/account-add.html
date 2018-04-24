@@ -28,6 +28,11 @@
       <ion-label stacked>{{ 'ROBOT.PAGE.ACCOUNTS.MODAL.ADD.FORM.PASSWORD' | translate }}</ion-label>
       <ion-input type="password" [(ngModel)]="password" required=""></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>{{ 'ROBOT.PAGE.ACCOUNTS.MODAL.ADD.FORM.CAN_ORDER' | translate }}</ion-label>
+      <ion-toggle [(ngModel)]="can_order"></ion-toggle>
+    </ion-item>
   </ion-list>
   <button ion-button color="danger" (click)="saveAccount()">{{ 'ACTIONS.SAVE' | translate }}</button>
+  <p class="message_box info"  text-wrap="">{{ 'ROBOT.PAGE.ACCOUNTS.MODAL.ADD.INFORMATION' | translate }}</p>
 </ion-content>

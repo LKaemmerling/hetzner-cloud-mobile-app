@@ -43,7 +43,7 @@
             </ion-col>
             <ion-col class="col" text-center="">
               <button clear="" color="warning" icon-start="" ion-button="" small=""
-                      [attr.data-account-menupoint-edit]="_account.name">
+                      [attr.data-account-menupoint-edit]="_account.name" (click)="openEditModal(_account)">
                 <i class="fa fa-fw fa-pencil-alt"></i> {{ 'ACTIONS.EDIT' | translate }}
               </button>
             </ion-col>

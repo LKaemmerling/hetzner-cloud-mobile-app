@@ -8,9 +8,10 @@ import {Account} from "../../../../modules/hetzner-robot-data/accounts/account";
 import {HetznerRobotDataService} from "../../../../modules/hetzner-robot-data/hetzner-robot-data.service";
 import {AccountService} from "../../../../modules/hetzner-robot-data/accounts/account.service";
 import {NetworkProvider} from "../../../../modules/hetzner-app/network/network";
-import {addAccountModal} from "../add/addAccount";
 import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
 import {HetznerRobotMenuService} from "../../../../modules/hetzner-robot-data/hetzner-robot-menu.service";
+import {AccountAddModal} from "../add/account-add";
+import {AccountEditModal} from "../edit/account-edit";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -58,7 +59,7 @@ export class AccountListPage {
     protected actionSheetCtrl: ActionSheetController,
     protected modal: ModalController,
     protected hetznerRobotData: HetznerRobotDataService,
-    @Inject(forwardRef(() => HetznerRobotMenuService)) protected hetznerRobotMenuService:  HetznerRobotMenuService,
+    @Inject(forwardRef(() => HetznerRobotMenuService)) protected hetznerRobotMenuService: HetznerRobotMenuService,
     protected accountService: AccountService,
     protected translate: TranslateService,
     protected storage: Storage,
@@ -107,7 +108,7 @@ export class AccountListPage {
 
   /**
    * Delete a project
-   * @param {project} project
+   * @param {Account} account
    */
   public delete(account: Account) {
     this._accounts = this.accountService.removeAccount(account);
@@ -125,7 +126,17 @@ export class AccountListPage {
   }
 
   openAddModal() {
-    let modal = this.modal.create(addAccountModal);
+    let modal = this.modal.create(AccountAddModal);
+    modal.onDidDismiss(() => {
+      this.accountService.loadAccounts().then(() => {
+        this._accounts = this.accountService.accounts;
+      })
+    });
+    modal.present();
+  }
+
+  openEditModal(account: Account) {
+    let modal = this.modal.create(AccountEditModal, {account: account});
     modal.onDidDismiss(() => {
       this.accountService.loadAccounts().then(() => {
         this._accounts = this.accountService.accounts;

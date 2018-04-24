@@ -28,7 +28,7 @@ export class ServerApiProvider extends BaseApiProvider {
   }
 
   update(serverIp: string, server_name: string) {
-    return this._post('server/' + serverIp, {server_name: server_name})
+    return this._post('server/' + serverIp, "server_name=" + server_name)
   }
 
   getCancellationData(serverIp: string) {
@@ -36,17 +36,14 @@ export class ServerApiProvider extends BaseApiProvider {
   }
 
   /**
-   * 
+   *
    * @param {string} serverIp
    * @param {string} cancellation_date
    * @param {string} cancellation_reason
    * @returns {Promise<any>}
    */
   cancel(serverIp: string, cancellation_date: string, cancellation_reason: string = null) {
-    return this._post('server/' + serverIp, {
-      cancellation_date: cancellation_date,
-      cancellation_reason: cancellation_reason
-    })
+    return this._post('server/' + serverIp, "cancellation_date=" + cancellation_date + "&cancellation_reason=" + cancellation_reason)
   }
 
   /**

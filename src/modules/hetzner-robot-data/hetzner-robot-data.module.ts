@@ -4,6 +4,7 @@ import {HetznerRobotDataService} from "./hetzner-robot-data.service";
 import {HetznerRobotMenuService} from "./hetzner-robot-menu.service";
 import {ServersService} from "./servers/servers.service";
 import {StorageBoxService} from "./storage-box/storage-box.service";
+import {SshKeysService} from "./ssh-keys/ssh-keys.service";
 
 
 /**
@@ -16,6 +17,7 @@ import {StorageBoxService} from "./storage-box/storage-box.service";
     AccountService,
     ServersService,
     StorageBoxService,
+    SshKeysService
   ]
 })
 export class HetznerRobotDataModule {
