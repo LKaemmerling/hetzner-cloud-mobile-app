@@ -31,7 +31,7 @@
   "PAGE": {
     "HOME": {
       "TITLE": "Startseite",
-      "TEXT": "<h2>Willkommen auf der Mein Hetzner App.</h2> <p>Diese App ist eine inoffizielle App für diverse Dienste der Hetzner GmbH, zum Beispiel die Hetzner Cloud oder aber der Hetzner Robot. Über diese App können Sie viele der aus der Hetzner Cloud Console oder dem Hetzner Robot bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p>",
+      "TEXT": "<h2>Willkommen auf der Mein Hetzner App.</h2> <p>Diese App ist eine inoffizielle App für diverse Dienste der Hetzner GmbH, zum Beispiel die Hetzner Cloud oder aber der Hetzner Robot. Über diese App können Sie viele der aus der Hetzner Cloud Console oder dem Hetzner Robot bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p> <p class='message_box info' text-wrap=''>Klicken Sie auf das Menü um Projekte der Hetzner Cloud oder Accounts des Hetzner Robots hinzuzufügen!</p>",
       "ADD_PROJECT_BUTTON": "Jetzt erstes Projekt hinzufügen!"
     },
     "ABOUT": {
