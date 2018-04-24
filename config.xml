@@ -119,4 +119,5 @@
         <variable name="MAX_STORE" value="2" />
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <plugin name="cordova-plugin-ignore-lint-translation" spec="^0.0.1" />
 </widget>
