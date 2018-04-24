@@ -1,5 +1,6 @@
 {
   "GLOBAL": {
+    "NAME": "Mein Hetzner",
     "DATE_FORMAT": "dd.mm.yyyy HH:MM:ss",
     "NO_CONNECTION": "Leider haben Sie aktuell kein Internet. Die Ansicht der App funktioniert weiterhin, allerdings sind alle Funktionen zum Interagieren mit Ihren Systemen solange deaktiviert wie Sie kein Internet haben.",
     "MISSING_OR_WRONG_PROJECT": "Ihr gewählter API-Key ist nicht mehr gültig oder Sie haben kein Projekt ausgewählt. Bitte wählen Sie nun ein Projekt aus.",
@@ -30,26 +31,26 @@
   "PAGE": {
     "HOME": {
       "TITLE": "Startseite",
-      "TEXT": "<h2>Willkommen auf der Hetzner Cloud Mobile App.</h2> <p>Diese App ist eine inoffizielle App für die Hetzner Cloud. Über diese App können Sie viele der aus der Hetzner Cloud Console bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p>",
+      "TEXT": "<h2>Willkommen auf der Hetzner Mobile App.</h2> <p>Diese App ist eine inoffizielle App für diverse Dienste der Hetzner GmbH, zum Beispiel die Hetzner Cloud oder aber der Hetzner Robot. Über diese App können Sie viele der aus der Hetzner Cloud Console oder dem Hetzner Robot bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p>",
       "ADD_PROJECT_BUTTON": "Jetzt erstes Projekt hinzufügen!"
     },
     "ABOUT": {
       "TITLE": "Über diese App",
-      "TEXT": "Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es wird die von der Hetzner Online GmbH bereitgestellte Schnittstelle verwendet. Auf Ihrem Gerät werden nur die Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese Lokal gelöscht. <strong>Ihre API Tokens verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der Hetzner Cloud API.</strong>"
+      "TEXT": "Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es wird die von der Hetzner Online GmbH bereitgestellte Schnittstelle verwendet. Auf Ihrem Gerät werden nur die Daten der Accounts bzw. Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese lokal gelöscht. Die lokale Löschung impliziert nicht das Kündigen der Services.<strong>Ihre Zugangsdaten verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der entsprechenden Hetzner API.</strong>"
     },
     "HELP": {
       "TITLE": "Hilfe"
     },
     "CHANGELOG": {
-      "TITLE": "Neu in der Version 1.7.0",
+      "TITLE": "Neu in der Version 2.0.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Server über einem Snapshot erstellen",
-          "TEXT": "Es ist nun wieder möglich Server über Snapshots zu erstellen! Gehen Sie dazu einfach auf Ihre Snapshots und wählen 'Neuen Server erstellen' aus"
+          "TITLE": "Hetzner Robot",
+          "TEXT": "Die App unterstützt nun nicht mehr nur die Hetzner Cloud! Sie können nun diverse Funktionen aus dem Hetzner Robot über die App benutzen."
         },
         "SLIDE2": {
-          "TITLE": "E-Mail Support",
-          "TEXT": "Sie haben ein Problem mit der App? Sie können uns nun direkt per E-Mail über den Punkt 'Hilfe' erreichen!"
+          "TITLE": "Neuer Name | Neues Logo",
+          "TEXT": "Wir sind nun als 'Mein Hetzner' zu finden!"
         },
         "SLIDE3": {
           "TITLE": "Bugfixes",

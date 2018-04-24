@@ -83,6 +83,9 @@ $flag-icon-square-path: '/assets/flags/1x1';
   .menu-segment {
     .segment-button {
       border: 0;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      border-radius: 0px;
     }
     .hetzner-robot-icon {
       margin-top:8px;
