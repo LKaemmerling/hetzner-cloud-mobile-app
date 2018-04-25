@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -861,6 +867,12 @@
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                        </li>
                                        <li class="link">
@@ -1349,23 +1361,22 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component, Input} from &#x27;@angular/core&#x27;;
-import {Server} from &quot;../../modules/hetzner-cloud-data/servers/server&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import { Server } from &#x27;../../modules/hetzner-cloud-data/servers/server&#x27;;
 
 /**
  * The component shows all basic information about a server into two lines.
  */
 @Component({
-  selector: &#x27;server-basic-information&#x27;,
-  templateUrl: &#x27;server-basic-information.html&#x27;
+    selector: &#x27;server-basic-information&#x27;,
+    templateUrl: &#x27;server-basic-information.html&#x27;,
 })
 export class ServerBasicInformationComponent {
-  /**
-   * The specific server
-   * @type {Server}
-   */
-  @Input() server: Server;
-
+    /**
+     * The specific server
+     * @type {Server}
+     */
+    @Input() server: Server;
 }
 </code></pre>
     </div>
@@ -1407,7 +1418,7 @@ export class ServerBasicInformationComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><!-- Generated template for the ServerBasicInformationComponent component --><div>  <h2><server-status-indicator [status]="server.status" style="padding-left:10px"></server-status-indicator>{{ server.name }}</h2>  <p text-wrap="">{{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{    server.datacenter.name    }}    /    {{ server.public_net.ipv4.ip }} </p></div></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ServerBasicInformationComponent'};
 </script>

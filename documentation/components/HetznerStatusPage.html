@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1511,7 +1523,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/pages/global/hetzner-status/hetzner-status.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/pages/global/hetzner-status/hetzner-status.ts:68</a></div>
                                 </td>
                             </tr>
     
@@ -1552,7 +1564,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/pages/global/hetzner-status/hetzner-status.ts:99</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/pages/global/hetzner-status/hetzner-status.ts:102</a></div>
                                 </td>
                             </tr>
     
@@ -1623,7 +1635,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/pages/global/hetzner-status/hetzner-status.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/pages/global/hetzner-status/hetzner-status.ts:61</a></div>
                                 </td>
                             </tr>
     
@@ -1780,107 +1792,110 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {NavController, NavParams, Platform} from &#x27;ionic-angular&#x27;;
-import {Storage} from &quot;@ionic/storage&quot;;
-import {HetznerStatusSettingPage} from &quot;../hetzner-status-setting/hetzner-status-setting&quot;;
-import {StatusApiProvider} from &quot;../../../modules/hetzner-cloud-api/status-api/status-api&quot;;
-import {InAppBrowser} from &quot;@ionic-native/in-app-browser&quot;;
-import {TranslateService} from &quot;@ngx-translate/core&quot;;
-import {NetworkProvider} from &quot;../../../modules/hetzner-app/network/network&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { NavController, NavParams, Platform } from &#x27;ionic-angular&#x27;;
+import { Storage } from &#x27;@ionic/storage&#x27;;
+import { HetznerStatusSettingPage } from &#x27;../hetzner-status-setting/hetzner-status-setting&#x27;;
+import { StatusApiProvider } from &#x27;../../../modules/hetzner-cloud-api/status-api/status-api&#x27;;
+import { InAppBrowser } from &#x27;@ionic-native/in-app-browser&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { NetworkProvider } from &#x27;../../../modules/hetzner-app/network/network&#x27;;
 
 /**
  * This is the hetzner status page in the app
  */
 
 @Component({
-  selector: &#x27;page-hetzner-status&#x27;,
-  templateUrl: &#x27;hetzner-status.html&#x27;,
+    selector: &#x27;page-hetzner-status&#x27;,
+    templateUrl: &#x27;hetzner-status.html&#x27;,
 })
 export class HetznerStatusPage {
-  /**
-   * Contains all messages from the hetzner status api
-   */
-  public messages;
-  /**
-   * Is there currently something loading?
-   * @type {boolean}
-   */
-  public loading: boolean &#x3D; false;
-  /**
-   * Is the loading done?
-   * @type {boolean}
-   */
-  public loading_done: boolean &#x3D; false;
+    /**
+     * Contains all messages from the hetzner status api
+     */
+    public messages;
+    /**
+     * Is there currently something loading?
+     * @type {boolean}
+     */
+    public loading: boolean &#x3D; false;
+    /**
+     * Is the loading done?
+     * @type {boolean}
+     */
+    public loading_done: boolean &#x3D; false;
 
-  /**
-   * Constructor
-   * @param {NavController} navCtrl
-   * @param {NavParams} navParams
-   * @param {StatusApiProvider} statusApi
-   * @param {Storage} storage
-   * @param {Platform} platform
-   * @param {InAppBrowser} browser
-   * @param {TranslateService} translate
-   * @param {NetworkProvider} network
-   */
-  constructor(protected navCtrl: NavController,
-              protected navParams: NavParams,
-              protected statusApi: StatusApiProvider,
-              protected storage: Storage,
-              protected platform: Platform,
-              protected browser: InAppBrowser,
-              protected translate: TranslateService,
-              protected network: NetworkProvider) {
-    this.loadMessages();
-  }
-
-  /**
-   * Open the status settings
-   */
-  openSettings() {
-    this.navCtrl.push(HetznerStatusSettingPage);
-  }
-
-  /**
-   * Load all messages from the status api
-   */
-  public loadMessages() {
-    if (this.network.has_connection) {
-      this.loading &#x3D; true;
-      this.storage.get(&#x27;lang&#x27;).then(value &#x3D;&gt; {
-        let lang &#x3D; &#x27;de&#x27;;
-        if (value !&#x3D; undefined) {
-          lang &#x3D; value;
-        }
-        this.statusApi.getStatus(lang).then((data) &#x3D;&gt; {
-          this.messages &#x3D; data;
-          this.loading &#x3D; false;
-          this.loading_done &#x3D; true;
-          setTimeout(() &#x3D;&gt; this.loading_done &#x3D; false, 3000);
-        }, (error) &#x3D;&gt; {
-          if (error.error instanceof ErrorEvent) {
-            // A client-side or network error occurred. Handle it accordingly.
-            alert(&#x27;An error occurred:&#x27; + error.error.message);
-          } else {
-            // The backend returned an unsuccessful response code.
-            // The response body may contain clues as to what went wrong,
-            alert(
-              &#x60;Backend returned code ${error.status}, &#x60; +
-              &#x60;body was: ${error.error}&#x60;);
-          }
-        });
-      });
+    /**
+     * Constructor
+     * @param {NavController} navCtrl
+     * @param {NavParams} navParams
+     * @param {StatusApiProvider} statusApi
+     * @param {Storage} storage
+     * @param {Platform} platform
+     * @param {InAppBrowser} browser
+     * @param {TranslateService} translate
+     * @param {NetworkProvider} network
+     */
+    constructor(
+        protected navCtrl: NavController,
+        protected navParams: NavParams,
+        protected statusApi: StatusApiProvider,
+        protected storage: Storage,
+        protected platform: Platform,
+        protected browser: InAppBrowser,
+        protected translate: TranslateService,
+        protected network: NetworkProvider
+    ) {
+        this.loadMessages();
     }
-  }
 
-  /**
-   * Open the given url in the in-app-browser
-   * @param {string} url
-   */
-  public openPage(url: string) {
-    this.browser.create(url, &#x27;_system&#x27;).show();
-  }
+    /**
+     * Open the status settings
+     */
+    openSettings() {
+        this.navCtrl.push(HetznerStatusSettingPage);
+    }
+
+    /**
+     * Load all messages from the status api
+     */
+    public loadMessages() {
+        if (this.network.has_connection) {
+            this.loading &#x3D; true;
+            this.storage.get(&#x27;lang&#x27;).then(value &#x3D;&gt; {
+                let lang &#x3D; &#x27;de&#x27;;
+                if (value !&#x3D; undefined) {
+                    lang &#x3D; value;
+                }
+                this.statusApi.getStatus(lang).then(
+                    data &#x3D;&gt; {
+                        this.messages &#x3D; data;
+                        this.loading &#x3D; false;
+                        this.loading_done &#x3D; true;
+                        setTimeout(() &#x3D;&gt; (this.loading_done &#x3D; false), 3000);
+                    },
+                    error &#x3D;&gt; {
+                        if (error.error instanceof ErrorEvent) {
+                            // A client-side or network error occurred. Handle it accordingly.
+                            alert(&#x27;An error occurred:&#x27; + error.error.message);
+                        } else {
+                            // The backend returned an unsuccessful response code.
+                            // The response body may contain clues as to what went wrong,
+                            alert(&#x60;Backend returned code ${error.status}, &#x60; + &#x60;body was: ${error.error}&#x60;);
+                        }
+                    }
+                );
+            });
+        }
+    }
+
+    /**
+     * Open the given url in the in-app-browser
+     * @param {string} url
+     */
+    public openPage(url: string) {
+        this.browser.create(url, &#x27;_system&#x27;).show();
+    }
 }
 </code></pre>
     </div>
@@ -1958,7 +1973,7 @@ export class HetznerStatusPage {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>      {{ \'PAGE.STATUS.TITLE\' | translate }}    </ion-title>    <ion-buttons end>      <loading-indicator (action)="loadMessages()" [loading]="loading"                         [loading_done]="loading_done"></loading-indicator>      <button ion-button (click)="openSettings()">        <i class="fas fa-ellipsis-v"></i>      </button>    </ion-buttons>  </ion-navbar></ion-header><ion-content padding>  <p class="message_box error" *ngIf="!network.has_connection"> {{ \'GLOBAL.FEATURE_NEEDS_CONNECTION\' | translate}}</p>  <div *ngIf="network.has_connection">    <ion-card *ngFor="let message of messages">      <ion-card-header text-wrap>        {{ message.title }}        <ion-icon name="link" item-start (click)="openPage(message.permalink)"></ion-icon>      </ion-card-header>      <ion-card-content>        <p [innerHTML]="message.text + \'<br /><br /><strong>\'+message.date_time+\'</strong>\'" text-wrap=""></p>        <ion-list *ngIf="message.children.length > 0">          <ion-item-group *ngFor="let child of message.children">            <ion-item-divider color="light" text-wrap="">{{ child.title }}              <ion-icon name="link" item-start (click)="openPage(child.permalink)"></ion-icon>            </ion-item-divider>            <ion-item>              <p [innerHTML]="child.text + \'<br /><br /><strong>\'+child.date_time+\'</strong>\'" text-wrap=""></p>            </ion-item>          </ion-item-group>        </ion-list>      </ion-card-content>    </ion-card>  </div></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HetznerStatusPage'};
 </script>

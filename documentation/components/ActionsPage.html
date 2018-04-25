@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -861,6 +867,12 @@
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                        </li>
                                        <li class="link">
@@ -1453,7 +1465,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/pages/cloud/actions/actions.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/pages/cloud/actions/actions.ts:48</a></div>
                                 </td>
                             </tr>
     
@@ -1616,60 +1628,62 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {NavController, NavParams} from &#x27;ionic-angular&#x27;;
-import {ActionsApiProvider} from &quot;../../../modules/hetzner-cloud-api/actions-api/actions-api&quot;;
-import {NetworkProvider} from &quot;../../../modules/hetzner-app/network/network&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { NavController, NavParams } from &#x27;ionic-angular&#x27;;
+import { ActionsApiProvider } from &#x27;../../../modules/hetzner-cloud-api/actions-api/actions-api&#x27;;
+import { NetworkProvider } from &#x27;../../../modules/hetzner-app/network/network&#x27;;
 
 /**
  * This page displays all actions from the selected project
  */
 @Component({
-  selector: &#x27;page-actions&#x27;,
-  templateUrl: &#x27;actions.html&#x27;,
+    selector: &#x27;page-actions&#x27;,
+    templateUrl: &#x27;actions.html&#x27;,
 })
 export class ActionsPage {
-  /**
-   * All actions
-   */
-  public actions: Array&lt;any&gt;;
-  /**
-   * Is there currently something loading?
-   * @type {boolean}
-   */
-  public loading: boolean &#x3D; false;
-  /**
-   * Is the loading done?
-   * @type {boolean}
-   */
-  public loading_done: boolean &#x3D; false;
+    /**
+     * All actions
+     */
+    public actions: Array&lt;any&gt;;
+    /**
+     * Is there currently something loading?
+     * @type {boolean}
+     */
+    public loading: boolean &#x3D; false;
+    /**
+     * Is the loading done?
+     * @type {boolean}
+     */
+    public loading_done: boolean &#x3D; false;
 
-  /**
-   * Constructor
-   * @param {NavController} navCtrl
-   * @param {NavParams} navParams
-   * @param {ActionsApiProvider} actionsApi
-   * @param {NetworkProvider} network
-   */
-  constructor(protected navCtrl: NavController,
-              protected navParams: NavParams,
-              protected actionsApi: ActionsApiProvider,
-              protected network: NetworkProvider) {
-    this.loadActions();
-  }
+    /**
+     * Constructor
+     * @param {NavController} navCtrl
+     * @param {NavParams} navParams
+     * @param {ActionsApiProvider} actionsApi
+     * @param {NetworkProvider} network
+     */
+    constructor(
+        protected navCtrl: NavController,
+        protected navParams: NavParams,
+        protected actionsApi: ActionsApiProvider,
+        protected network: NetworkProvider
+    ) {
+        this.loadActions();
+    }
 
-  /**
-   * Load the Actions from the API
-   */
-  loadActions() {
-    this.loading &#x3D; true;
-    this.actionsApi.getActions().then((data) &#x3D;&gt; {
-      this.actions &#x3D; data[&#x27;actions&#x27;];
-      this.loading &#x3D; false;
-      this.loading_done &#x3D; true;
-      setTimeout(() &#x3D;&gt; this.loading_done &#x3D; false, 3000);
-    })
-  }
+    /**
+     * Load the Actions from the API
+     */
+    loadActions() {
+        this.loading &#x3D; true;
+        this.actionsApi.getActions().then(data &#x3D;&gt; {
+            this.actions &#x3D; data[&#x27;actions&#x27;];
+            this.loading &#x3D; false;
+            this.loading_done &#x3D; true;
+            setTimeout(() &#x3D;&gt; (this.loading_done &#x3D; false), 3000);
+        });
+    }
 }
 </code></pre>
     </div>
@@ -1735,7 +1749,7 @@ export class ActionsPage {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>{{ \'PAGE.ACTIONS.TITLE\' | translate}}</ion-title>    <ion-buttons end>      <button ion-button right="" (click)="loadActions()">        <i class="fas fa-sync fa-1x" [ngClass]="{\'fa-spin\':loading}" *ngIf="loading_done == false"></i>        <i class="fas fa-check fa-1x" ion-text color="secondary" *ngIf="loading_done == true"></i>      </button>    </ion-buttons>  </ion-navbar></ion-header><ion-content>  <p class="message_box error" *ngIf="!network.has_connection"> {{ \'GLOBAL.FEATURE_NEEDS_CONNECTION\' | translate}}</p>  <ion-card *ngIf="network.has_connection">    <ion-list *ngFor="let action of actions">      <ion-item>        <h3 [translate]="\'PAGE.ACTIONS.COMMANDS.\'+(action.command.toUpperCase())"            [translateParams]="{subject:action.resources[0].id}"></h3>        <ion-note>{{ \'PAGE.ACTIONS.STATUS\' |translate }}          <span *ngIf="action.status == \'running\'" ion-text="" color="primary"><i            class="fas fa-spin fa-spinner fa-pulse"></i> {{ action.progress}}%</span>          <span *ngIf="action.status == \'success\'" ion-text="" color="secondary"><i class="fas fa-check"></i></span>          <span *ngIf="action.status == \'error\'" ion-text="" color="danger"><i class="fas fa-times"></i></span>        </ion-note>        <ion-note item-end><strong>{{ action.started|date:"dd.mm.yyyy HH:mm" }}</strong></ion-note>      </ion-item>    </ion-list>  </ion-card></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ActionsPage'};
 </script>

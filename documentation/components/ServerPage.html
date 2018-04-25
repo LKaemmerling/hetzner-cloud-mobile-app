@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1630,7 +1642,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/pages/cloud/server/server.ts:144</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/pages/cloud/server/server.ts:143</a></div>
                                 </td>
                             </tr>
     
@@ -1671,7 +1683,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">src/pages/cloud/server/server.ts:167</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/pages/cloud/server/server.ts:166</a></div>
                                 </td>
                             </tr>
     
@@ -1712,7 +1724,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/pages/cloud/server/server.ts:178</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">src/pages/cloud/server/server.ts:177</a></div>
                                 </td>
                             </tr>
     
@@ -1753,7 +1765,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/pages/cloud/server/server.ts:156</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">src/pages/cloud/server/server.ts:155</a></div>
                                 </td>
                             </tr>
     
@@ -2029,206 +2041,204 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {LoadingController, ModalController, NavController, NavParams} from &#x27;ionic-angular&#x27;;
-import {ProjectsService} from &quot;../../../modules/hetzner-cloud-data/project/projects.service&quot;;
-import {editServerModal} from &quot;./editServer/editServer&quot;;
-import {powerSettingsModal} from &quot;./powerSettings/powerSettings&quot;;
-import {rescueModeModal} from &quot;./rescueMode/rescueMode&quot;;
-import {resizeServerModal} from &quot;./resizeServer/resizeServer&quot;;
-import {backupSettingsModal} from &quot;./backupSettings/backupSettings&quot;;
-import {ServerApiProvider} from &quot;../../../modules/hetzner-cloud-api/server-api/server-api&quot;;
-import {changeIPv4ReverseDNSModal} from &quot;./reverseDNS/ipv4/changeIPv4ReverseDNSModal&quot;;
-import {changeIPv6ReverseDNSModal} from &quot;./reverseDNS/ipv6/changeIPv6ReverseDNS&quot;;
-import {ServersService} from &quot;../../../modules/hetzner-cloud-data/servers/servers.service&quot;;
-import {ServersPage} from &quot;./serverList/servers&quot;;
-import {ServerMetricsPage} from &quot;./server-metrics/server-metrics&quot;;
-import {TranslateService} from &quot;@ngx-translate/core&quot;;
-import {consoleModal} from &quot;./console/console&quot;;
-import {Server} from &quot;../../../modules/hetzner-cloud-data/servers/server&quot;;
-import {NetworkProvider} from &quot;../../../modules/hetzner-app/network/network&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { LoadingController, ModalController, NavController, NavParams } from &#x27;ionic-angular&#x27;;
+import { ProjectsService } from &#x27;../../../modules/hetzner-cloud-data/project/projects.service&#x27;;
+import { editServerModal } from &#x27;./editServer/editServer&#x27;;
+import { powerSettingsModal } from &#x27;./powerSettings/powerSettings&#x27;;
+import { rescueModeModal } from &#x27;./rescueMode/rescueMode&#x27;;
+import { resizeServerModal } from &#x27;./resizeServer/resizeServer&#x27;;
+import { backupSettingsModal } from &#x27;./backupSettings/backupSettings&#x27;;
+import { ServerApiProvider } from &#x27;../../../modules/hetzner-cloud-api/server-api/server-api&#x27;;
+import { changeIPv4ReverseDNSModal } from &#x27;./reverseDNS/ipv4/changeIPv4ReverseDNSModal&#x27;;
+import { changeIPv6ReverseDNSModal } from &#x27;./reverseDNS/ipv6/changeIPv6ReverseDNS&#x27;;
+import { ServersService } from &#x27;../../../modules/hetzner-cloud-data/servers/servers.service&#x27;;
+import { ServersPage } from &#x27;./serverList/servers&#x27;;
+import { ServerMetricsPage } from &#x27;./server-metrics/server-metrics&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { consoleModal } from &#x27;./console/console&#x27;;
+import { Server } from &#x27;../../../modules/hetzner-cloud-data/servers/server&#x27;;
+import { NetworkProvider } from &#x27;../../../modules/hetzner-app/network/network&#x27;;
 
 /**
  * This page displays all information about the selected server
  */
 @Component({
-  selector: &#x27;page-server&#x27;,
-  templateUrl: &#x27;server.html&#x27;
+    selector: &#x27;page-server&#x27;,
+    templateUrl: &#x27;server.html&#x27;,
 })
 export class ServerPage {
-  /**
-   * The server that is visible in this page
-   */
-  public server: Server;
+    /**
+     * The server that is visible in this page
+     */
+    public server: Server;
 
-  /**
-   * Constructor
-   * @param {LoadingController} loadingCtrl
-   * @param {ModalController} modalCtrl
-   * @param {NavController} navCtrl
-   * @param {NavParams} navParams
-   * @param {ProjectsService} project
-   * @param {ServersService} serverService
-   * @param {TranslateService} translate
-   * @param {NetworkProvider} networkProvider
-   * @param {ServerApiProvider} serverApiProvider
-   */
-  constructor(
-    protected loadingCtrl: LoadingController,
-    protected modalCtrl: ModalController,
-    protected navCtrl: NavController,
-    protected navParams: NavParams,
-    protected project: ProjectsService,
-    protected serverService: ServersService,
-    protected translate: TranslateService,
-    protected networkProvider: NetworkProvider,
-    protected serverApiProvider: ServerApiProvider
-  ) {
-    this.server &#x3D; navParams.get(&#x27;server&#x27;);
-  }
-
-  /**
-   * Reload the data for this specific server from the api
-   */
-  public refresh() {
-    this.serverApiProvider.getServer(this.server.id).then((data) &#x3D;&gt; {
-      this.server &#x3D; data[&#x27;server&#x27;];
-    });
-  }
-
-  /**
-   * Open the Edit Server Modal
-   */
-  public openEditModal() {
-    if (this.networkProvider.has_connection) {
-      let modal &#x3D; this.modalCtrl.create(editServerModal, {server: this.server});
-      modal.present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
+    /**
+     * Constructor
+     * @param {LoadingController} loadingCtrl
+     * @param {ModalController} modalCtrl
+     * @param {NavController} navCtrl
+     * @param {NavParams} navParams
+     * @param {ProjectsService} project
+     * @param {ServersService} serverService
+     * @param {TranslateService} translate
+     * @param {NetworkProvider} networkProvider
+     * @param {ServerApiProvider} serverApiProvider
+     */
+    constructor(
+        protected loadingCtrl: LoadingController,
+        protected modalCtrl: ModalController,
+        protected navCtrl: NavController,
+        protected navParams: NavParams,
+        protected project: ProjectsService,
+        protected serverService: ServersService,
+        protected translate: TranslateService,
+        protected networkProvider: NetworkProvider,
+        protected serverApiProvider: ServerApiProvider
+    ) {
+        this.server &#x3D; navParams.get(&#x27;server&#x27;);
     }
-  }
 
-  /**
-   * Open the Power Settings Modal
-   */
-  public powerSettingsModal() {
-    if (this.networkProvider.has_connection) {
-      let modal &#x3D; this.modalCtrl.create(powerSettingsModal, {server: this.server});
-      modal.present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
-    }
-  }
-
-  /**
-   * Open Rescue Mode Modal
-   */
-  public rescueModeModal() {
-    if (this.networkProvider.has_connection) {
-      let modal &#x3D; this.modalCtrl.create(rescueModeModal, {server: this.server});
-      modal.present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
-    }
-  }
-
-  /**
-   * Open the Modal for Server Upgrades
-   */
-  public resizeModal() {
-    if (this.networkProvider.has_connection) {
-      let modal &#x3D; this.modalCtrl.create(resizeServerModal, {server: this.server});
-      modal.present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
-    }
-  }
-
-  /**
-   * Open the Modal for the Backup Settings
-   */
-  public backupSettingsModal() {
-    if (this.networkProvider.has_connection) {
-      let modal &#x3D; this.modalCtrl.create(backupSettingsModal, {server: this.server});
-      modal.present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
-    }
-  }
-
-  /**
-   * Open the Modal for the IPv4 Reverse DNS Changes
-   */
-  public changeIPv4ReverseDNSModal() {
-    if (this.networkProvider.has_connection) {
-      let modal &#x3D; this.modalCtrl.create(changeIPv4ReverseDNSModal, {server: this.server});
-      modal.present();
-
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
-    }
-  }
-
-  /**
-   * Open the Modal for the IPv6 Reverse DNS Changes
-   */
-  public changeIPv6ReverseDNSModal() {
-    if (this.networkProvider.has_connection) {
-      let modal &#x3D; this.modalCtrl.create(changeIPv6ReverseDNSModal, {server: this.server});
-      modal.present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
-    }
-  }
-
-  /**
-   * Open the Page for the Server Metrics
-   */
-  public metricsPage() {
-    if (this.networkProvider.has_connection) {
-      this.navCtrl.push(ServerMetricsPage, {server: this.server});
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
-    }
-  }
-
-  /**
-   * Open the Page for the VNC Console
-   */
-  public consolePage() {
-    if (this.networkProvider.has_connection) {
-      this.navCtrl.push(consoleModal, {server: this.server});
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
-    }
-  }
-
-  /**
-   * Ask for Confirmation of Server Deletion
-   */
-  public delete() {
-    if (this.networkProvider.has_connection) {
-      let _delete: string &#x3D; &#x27;&#x27;;
-      this.translate.get(&#x27;ACTIONS.DELETE_CONFIRMATION&#x27;).subscribe(text &#x3D;&gt; {
-        _delete &#x3D; text;
-      });
-      if (confirm(_delete)) {
-        var loader &#x3D; this.loadingCtrl.create();
-        loader.present();
-        this.serverApiProvider.delete(this.server.id).then((data) &#x3D;&gt; {
-          loader.dismiss();
-          this.serverApiProvider.getServers().then((data) &#x3D;&gt; {
-            this.serverService.servers &#x3D; data[&#x27;servers&#x27;];
-            this.serverService.saveServers();
-            this.navCtrl.setRoot(ServersPage);
-          });
+    /**
+     * Reload the data for this specific server from the api
+     */
+    public refresh() {
+        this.serverApiProvider.getServer(this.server.id).then(data &#x3D;&gt; {
+            this.server &#x3D; data[&#x27;server&#x27;];
         });
-
-      }
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
     }
-  }
+
+    /**
+     * Open the Edit Server Modal
+     */
+    public openEditModal() {
+        if (this.networkProvider.has_connection) {
+            let modal &#x3D; this.modalCtrl.create(editServerModal, { server: this.server });
+            modal.present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Open the Power Settings Modal
+     */
+    public powerSettingsModal() {
+        if (this.networkProvider.has_connection) {
+            let modal &#x3D; this.modalCtrl.create(powerSettingsModal, { server: this.server });
+            modal.present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Open Rescue Mode Modal
+     */
+    public rescueModeModal() {
+        if (this.networkProvider.has_connection) {
+            let modal &#x3D; this.modalCtrl.create(rescueModeModal, { server: this.server });
+            modal.present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Open the Modal for Server Upgrades
+     */
+    public resizeModal() {
+        if (this.networkProvider.has_connection) {
+            let modal &#x3D; this.modalCtrl.create(resizeServerModal, { server: this.server });
+            modal.present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Open the Modal for the Backup Settings
+     */
+    public backupSettingsModal() {
+        if (this.networkProvider.has_connection) {
+            let modal &#x3D; this.modalCtrl.create(backupSettingsModal, { server: this.server });
+            modal.present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Open the Modal for the IPv4 Reverse DNS Changes
+     */
+    public changeIPv4ReverseDNSModal() {
+        if (this.networkProvider.has_connection) {
+            let modal &#x3D; this.modalCtrl.create(changeIPv4ReverseDNSModal, { server: this.server });
+            modal.present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Open the Modal for the IPv6 Reverse DNS Changes
+     */
+    public changeIPv6ReverseDNSModal() {
+        if (this.networkProvider.has_connection) {
+            let modal &#x3D; this.modalCtrl.create(changeIPv6ReverseDNSModal, { server: this.server });
+            modal.present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Open the Page for the Server Metrics
+     */
+    public metricsPage() {
+        if (this.networkProvider.has_connection) {
+            this.navCtrl.push(ServerMetricsPage, { server: this.server });
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Open the Page for the VNC Console
+     */
+    public consolePage() {
+        if (this.networkProvider.has_connection) {
+            this.navCtrl.push(consoleModal, { server: this.server });
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Ask for Confirmation of Server Deletion
+     */
+    public delete() {
+        if (this.networkProvider.has_connection) {
+            let _delete: string &#x3D; &#x27;&#x27;;
+            this.translate.get(&#x27;ACTIONS.DELETE_CONFIRMATION&#x27;).subscribe(text &#x3D;&gt; {
+                _delete &#x3D; text;
+            });
+            if (confirm(_delete)) {
+                var loader &#x3D; this.loadingCtrl.create();
+                loader.present();
+                this.serverApiProvider.delete(this.server.id).then(data &#x3D;&gt; {
+                    loader.dismiss();
+                    this.serverApiProvider.getServers().then(data &#x3D;&gt; {
+                        this.serverService.servers &#x3D; data[&#x27;servers&#x27;];
+                        this.serverService.saveServers();
+                        this.navCtrl.setRoot(ServersPage);
+                    });
+                });
+            }
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
 }
 </code></pre>
     </div>
@@ -2411,7 +2421,7 @@ export class ServerPage {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <ion-title id="server_detail_name">{{server.name}}</ion-title>    <ion-buttons end>      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>    </ion-buttons>  </ion-navbar></ion-header><ion-content>  <ion-list style="margin-bottom: 60px;">    <ion-list-header>      {{ \'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.TITLE\' | translate}}    </ion-list-header>    <ion-item>      <span item-left>{{ \'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STATUS\' | translate}}</span>      <server-status-indicator [status]="server.status" item-right=""></server-status-indicator>    </ion-item>    <ion-item>      <div item-left="" class="inner-item">        {{ \'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION\' | translate}}      </div>      <div item-right="">        {{ server.datacenter.description}}      </div>    </ion-item>    <ion-item *ngIf="server.image != null">      <div item-left="">        {{ \'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.IMAGE\' | translate}}      </div>      <div item-right="">        {{ server.image.description}}      </div>    </ion-item>    <ion-list-header>      {{ \'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TITLE\' | translate}}    </ion-list-header>    <ion-item>      <div item-left="">        {{ \'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv4\' | translate}}      </div>      <div item-right="">        <span tooltip="{{ server.public_net.ipv4.dns_ptr}}" positionV="top" arrow>{{ server.public_net.ipv4.ip}}</span>        <i class="fas fa-pencil-alt" (click)="changeIPv4ReverseDNSModal()"></i>      </div>    </ion-item>    <ion-item>      <div item-left="">        {{ \'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv6\' | translate}}      </div>      <div item-right="">        {{ server.public_net.ipv6.ip}}        <i class="fas fa-pencil-alt" (click)="changeIPv6ReverseDNSModal()"></i>      </div>    </ion-item>    <ion-item *ngIf="server.outgoing_traffic != null">      <div item-left="">        {{ \'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.OUTGOING\' | translate}}      </div>      <div item-right="">        {{ server.outgoing_traffic | fileSize}}      </div>    </ion-item>    <ion-item *ngIf="server.ingoing_traffic != null">      <div item-left="">        {{ \'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.INGOING\' | translate}}      </div>      <div item-right="">        {{ server.ingoing_traffic | fileSize}}      </div>    </ion-item>    <ion-list-header>      {{ \'PAGE.SERVERS.TYPE_DETAILS.TITLE\' | translate}}    </ion-list-header>    <ion-item>      <div item-left="">        {{ \'PAGE.SERVERS.TYPE_DETAILS.CORES\' | translate}}      </div>      <div item-right="">        {{ server.server_type.cores}}      </div>    </ion-item>    <ion-item>      <div item-left="">        {{ \'PAGE.SERVERS.TYPE_DETAILS.MEMORY\' | translate}}      </div>      <div item-right="" id="server_type_memory">        {{ server.server_type.memory * 1024  }} MB      </div>    </ion-item>    <ion-item>      <div item-left="">        {{ \'PAGE.SERVERS.TYPE_DETAILS.DISK\' | translate}}      </div>      <div item-right="">        {{ server.server_type.disk}} GB      </div>    </ion-item>    <ion-item>      <div item-left="">        {{ \'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE\' | translate}}      </div>      <div item-right="">        {{ \'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STORAGE_TYPE.\'+server.server_type.storage_type.toUpperCase() |        translate}}      </div>    </ion-item>  </ion-list>  <ion-fab right bottom>    <button ion-fab color="primary" id="server_actions">      <i class="fas fa-angle-up"></i>    </button>    <ion-fab-list side="top">      <button ion-fab color="danger" (click)="delete()" id="delete_server" [disabled]="server.protection.delete">        <div class="label" color="danger">{{ \'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.DELETE\' | translate}}</div>        <i class="fas fa-trash"></i>      </button>      <button ion-fab color="danger" (click)="powerSettingsModal()" id="power_settings">        <div class="label" color="danger">{{ \'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.POWER\' | translate}}</div>        <i class="fas fa-power-off"></i>      </button>      <button ion-fab (click)="openEditModal()" color="secondary" id="rename_server">        <div class="label" color="secondary">{{ \'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.EDIT\' | translate}}</div>        <i class="fas fa-pencil-alt"></i>      </button>      <button ion-fab color="secondary" (click)="resizeModal()" id="upgrade_server">        <div class="label" color="secondary">{{ \'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.UPGRADE\' | translate}}</div>        <i class="fas fa-expand"></i>      </button>      <button ion-fab color="light" (click)="backupSettingsModal()">        <div class="label" color="light">{{ \'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.BACKUP\' | translate}}</div>        <i class="fas fa-hdd"></i>      </button>      <button ion-fab color="light" (click)="rescueModeModal()">        <div class="label" color="light">{{ \'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.RESCUE\' | translate}}</div>        <ion-icon name="help-buoy"></ion-icon>      </button>      <button ion-fab color="light" (click)="metricsPage()">        <div class="label" color="light">{{ \'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.METRICS\' | translate}}</div>        <i class="fas fa-chart-area"></i>      </button>      <button ion-fab color="light" (click)="consolePage()">        <div class="label" color="light">{{ \'PAGE.SERVERS.MODAL.DETAILS.ACTIONS.CONSOLE\' | translate}}</div>        <i class="fas fa-terminal"></i>      </button>    </ion-fab-list>  </ion-fab></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ServerPage'};
 </script>

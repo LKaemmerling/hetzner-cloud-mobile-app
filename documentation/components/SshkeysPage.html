@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html"  data-type="entity-link" class="active" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html"  data-type="entity-link" class="active" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1515,7 +1527,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/pages/cloud/sshkeys/sshkeys.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/pages/cloud/sshkeys/sshkeys.ts:82</a></div>
                                 </td>
                             </tr>
     
@@ -1584,7 +1596,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/pages/cloud/sshkeys/sshkeys.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/pages/cloud/sshkeys/sshkeys.ts:74</a></div>
                                 </td>
                             </tr>
     
@@ -1623,7 +1635,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/pages/cloud/sshkeys/sshkeys.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/pages/cloud/sshkeys/sshkeys.ts:61</a></div>
                                 </td>
                             </tr>
     
@@ -1664,7 +1676,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/pages/cloud/sshkeys/sshkeys.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/pages/cloud/sshkeys/sshkeys.ts:98</a></div>
                                 </td>
                             </tr>
     
@@ -1860,156 +1872,157 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {ActionSheetController, ModalController, NavController, NavParams} from &#x27;ionic-angular&#x27;;
-import {SshKeyApiProvider} from &quot;../../../modules/hetzner-cloud-api/ssh-key-api/ssh-key-api&quot;;
-import {editSSHKeyModal} from &quot;./editSSHKey/editSSHKey&quot;;
-import {SshKeysService} from &quot;../../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service&quot;;
-import {NetworkProvider} from &quot;../../../modules/hetzner-app/network/network&quot;;
-import {TranslateService} from &quot;@ngx-translate/core&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { ActionSheetController, ModalController, NavController, NavParams } from &#x27;ionic-angular&#x27;;
+import { SshKeyApiProvider } from &#x27;../../../modules/hetzner-cloud-api/ssh-key-api/ssh-key-api&#x27;;
+import { editSSHKeyModal } from &#x27;./editSSHKey/editSSHKey&#x27;;
+import { SshKeysService } from &#x27;../../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service&#x27;;
+import { NetworkProvider } from &#x27;../../../modules/hetzner-app/network/network&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
 
 /**
  * This page lists all ssh keys
  */
 
 @Component({
-  selector: &#x27;page-sshkeys&#x27;,
-  templateUrl: &#x27;sshkeys.html&#x27;,
+    selector: &#x27;page-sshkeys&#x27;,
+    templateUrl: &#x27;sshkeys.html&#x27;,
 })
 export class SshkeysPage {
-  /**
-   * All available ssh keys
-   * @type {any[]}
-   */
-  public _ssh_keys: Array&lt;any&gt; &#x3D; [];
-  /**
-   * Is the component in the loading process?
-   * @type {boolean}
-   */
-  public loading: boolean &#x3D; false;
-  /**
-   * Is the loading done?
-   * @type {boolean}
-   */
-  public loading_done: boolean &#x3D; false;
+    /**
+     * All available ssh keys
+     * @type {any[]}
+     */
+    public _ssh_keys: Array&lt;any&gt; &#x3D; [];
+    /**
+     * Is the component in the loading process?
+     * @type {boolean}
+     */
+    public loading: boolean &#x3D; false;
+    /**
+     * Is the loading done?
+     * @type {boolean}
+     */
+    public loading_done: boolean &#x3D; false;
 
-  /**
-   * Constructor
-   * @param {ActionSheetController} actionSheetCtrl
-   * @param {ModalController} modalCtrl
-   * @param {NavController} navCtrl
-   * @param {NavParams} navParams
-   * @param {SshKeysService} sshKeysService
-   * @param {TranslateService} translate
-   * @param {SshKeyApiProvider} sshKeyProvider
-   * @param {NetworkProvider} networkProvider
-   */
-  constructor(
-    protected actionSheetCtrl: ActionSheetController,
-    protected modalCtrl: ModalController,
-    protected navCtrl: NavController,
-    protected navParams: NavParams,
-    protected sshKeysService: SshKeysService,
-    protected translate: TranslateService,
-    protected sshKeyProvider: SshKeyApiProvider,
-    protected networkProvider: NetworkProvider) {
-    this._ssh_keys &#x3D; this.sshKeysService.ssh_keys;
-  }
+    /**
+     * Constructor
+     * @param {ActionSheetController} actionSheetCtrl
+     * @param {ModalController} modalCtrl
+     * @param {NavController} navCtrl
+     * @param {NavParams} navParams
+     * @param {SshKeysService} sshKeysService
+     * @param {TranslateService} translate
+     * @param {SshKeyApiProvider} sshKeyProvider
+     * @param {NetworkProvider} networkProvider
+     */
+    constructor(
+        protected actionSheetCtrl: ActionSheetController,
+        protected modalCtrl: ModalController,
+        protected navCtrl: NavController,
+        protected navParams: NavParams,
+        protected sshKeysService: SshKeysService,
+        protected translate: TranslateService,
+        protected sshKeyProvider: SshKeyApiProvider,
+        protected networkProvider: NetworkProvider
+    ) {
+        this._ssh_keys &#x3D; this.sshKeysService.ssh_keys;
+    }
 
-  /**
-   * Load all ssh keys from the service
-   */
-  loadSSHKeys() {
-    this.loading &#x3D; true;
-    this.sshKeysService.reloadSshKeys().then(() &#x3D;&gt; {
-      this._ssh_keys &#x3D; this.sshKeysService.ssh_keys;
-      this.loading &#x3D; false;
-      this.loading_done &#x3D; true;
-      setTimeout(() &#x3D;&gt; this.loading_done &#x3D; false, 3000);
-    });
-  }
-
-  /**
-   * Event fires when the view will be enterd
-   */
-  public ionViewWillEnter() {
-    this.loadSSHKeys();
-  }
-
-  /**
-   * Delete the given ssh key
-   * @param ssh_key
-   */
-  public delete(ssh_key) {
-    if (this.networkProvider.has_connection) {
-      if (confirm(&#x27;Möchten Sie diesen SSH-Key wirklich unwiderruflich löschen?&#x27;)) {
-        this.sshKeyProvider.delete(ssh_key.id).then((data) &#x3D;&gt; {
-          this.loadSSHKeys();
+    /**
+     * Load all ssh keys from the service
+     */
+    loadSSHKeys() {
+        this.loading &#x3D; true;
+        this.sshKeysService.reloadSshKeys().then(() &#x3D;&gt; {
+            this._ssh_keys &#x3D; this.sshKeysService.ssh_keys;
+            this.loading &#x3D; false;
+            this.loading_done &#x3D; true;
+            setTimeout(() &#x3D;&gt; (this.loading_done &#x3D; false), 3000);
         });
-      }
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
     }
-  }
 
-  /**
-   * Open the actions for the ssh key
-   * @param ssh_key
-   */
-  public openActionSheets(ssh_key) {
-    let _delete: string &#x3D; &#x27;&#x27;;
-    this.translate.get(&#x27;ACTIONS.DELETE&#x27;).subscribe(text &#x3D;&gt; {
-      _delete &#x3D; text;
-    });
-    let _edit: string &#x3D; &#x27;&#x27;;
-    this.translate.get(&#x27;ACTIONS.EDIT&#x27;).subscribe(text &#x3D;&gt; {
-      _edit &#x3D; text;
-    });
-    let _cancel: string &#x3D; &#x27;&#x27;;
-    this.translate.get(&#x27;ACTIONS.CANCEL&#x27;).subscribe(text &#x3D;&gt; {
-      _cancel &#x3D; text;
-    });
-    let _title: string &#x3D; &#x27;&#x27;;
-    this.translate.get(&#x27;PAGE.SSH_KEYS.ACTIONS.TITLE&#x27;, {sshKey: ssh_key.name}).subscribe((text) &#x3D;&gt; {
-      _title &#x3D; text;
-    });
+    /**
+     * Event fires when the view will be enterd
+     */
+    public ionViewWillEnter() {
+        this.loadSSHKeys();
+    }
 
-    var actions &#x3D; {
-      title: _title,
-      cssClass: &#x27;action-sheets-basic-page&#x27;,
-      buttons: [
-        {
-          text: _delete,
-          role: &#x27;destructive&#x27;,
-          icon: &#x27;trash&#x27;,
-          handler: () &#x3D;&gt; {
-            this.delete(ssh_key);
-          }
-        },
-        {
-          text: _edit,
-          icon: &#x27;brush&#x27;,
-          handler: () &#x3D;&gt; {
-            if (this.networkProvider.has_connection) {
-              this.modalCtrl.create(editSSHKeyModal, {ssh_key: ssh_key}).present();
-            } else {
-              this.networkProvider.displayNoNetworkNotice();
+    /**
+     * Delete the given ssh key
+     * @param ssh_key
+     */
+    public delete(ssh_key) {
+        if (this.networkProvider.has_connection) {
+            if (confirm(&#x27;Möchten Sie diesen SSH-Key wirklich unwiderruflich löschen?&#x27;)) {
+                this.sshKeyProvider.delete(ssh_key.id).then(data &#x3D;&gt; {
+                    this.loadSSHKeys();
+                });
             }
-          }
-        },
-        {
-          text: _cancel,
-          role: &#x27;cancel&#x27;, // will always sort to be on the bottom
-          icon: &#x27;close&#x27;,
-          handler: () &#x3D;&gt; {
-            console.log(&#x27;Cancel clicked&#x27;);
-          }
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
         }
-      ]
     }
-    let actionSheet &#x3D; this.actionSheetCtrl.create(actions);
-    actionSheet.present();
-  }
+
+    /**
+     * Open the actions for the ssh key
+     * @param ssh_key
+     */
+    public openActionSheets(ssh_key) {
+        let _delete: string &#x3D; &#x27;&#x27;;
+        this.translate.get(&#x27;ACTIONS.DELETE&#x27;).subscribe(text &#x3D;&gt; {
+            _delete &#x3D; text;
+        });
+        let _edit: string &#x3D; &#x27;&#x27;;
+        this.translate.get(&#x27;ACTIONS.EDIT&#x27;).subscribe(text &#x3D;&gt; {
+            _edit &#x3D; text;
+        });
+        let _cancel: string &#x3D; &#x27;&#x27;;
+        this.translate.get(&#x27;ACTIONS.CANCEL&#x27;).subscribe(text &#x3D;&gt; {
+            _cancel &#x3D; text;
+        });
+        let _title: string &#x3D; &#x27;&#x27;;
+        this.translate.get(&#x27;PAGE.SSH_KEYS.ACTIONS.TITLE&#x27;, { sshKey: ssh_key.name }).subscribe(text &#x3D;&gt; {
+            _title &#x3D; text;
+        });
+
+        var actions &#x3D; {
+            title: _title,
+            cssClass: &#x27;action-sheets-basic-page&#x27;,
+            buttons: [
+                {
+                    text: _delete,
+                    role: &#x27;destructive&#x27;,
+                    icon: &#x27;trash&#x27;,
+                    handler: () &#x3D;&gt; {
+                        this.delete(ssh_key);
+                    },
+                },
+                {
+                    text: _edit,
+                    icon: &#x27;brush&#x27;,
+                    handler: () &#x3D;&gt; {
+                        if (this.networkProvider.has_connection) {
+                            this.modalCtrl.create(editSSHKeyModal, { ssh_key: ssh_key }).present();
+                        } else {
+                            this.networkProvider.displayNoNetworkNotice();
+                        }
+                    },
+                },
+                {
+                    text: _cancel,
+                    role: &#x27;cancel&#x27;, // will always sort to be on the bottom
+                    icon: &#x27;close&#x27;,
+                    handler: () &#x3D;&gt; {
+                        console.log(&#x27;Cancel clicked&#x27;);
+                    },
+                },
+            ],
+        };
+        let actionSheet &#x3D; this.actionSheetCtrl.create(actions);
+        actionSheet.present();
+    }
 }
 </code></pre>
     </div>
@@ -2074,7 +2087,7 @@ export class SshkeysPage {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>{{ \'PAGE.SSH_KEYS.TITLE\' | translate}}</ion-title>    <ion-buttons end>      <loading-indicator (action)="loadSSHKeys()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>    </ion-buttons>  </ion-navbar></ion-header><ion-content>  <ion-card>    <ion-list>      <ion-item *ngFor="let _ssh_key of _ssh_keys" (click)="openActionSheets(_ssh_key)" class="ssh_key"                [attr.data-test]="_ssh_key.name">        <div>          <h2>{{ _ssh_key.name }}</h2>          <p>{{ _ssh_key.fingerprint }}</p>        </div>      </ion-item>      <p ion-item *ngIf="_ssh_keys == null || _ssh_keys.length == 0" text-wrap="" class="message_box info">        {{ \'PAGE.SSH_KEYS.NO_SSH_KEYS\' | translate}}      </p>    </ion-list>  </ion-card>  <ion-card class="message_box info" style="">    {{ \'PAGE.SSH_KEYS.ADD_SSH_KEYS\' | translate}}  </ion-card></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SshkeysPage'};
 </script>

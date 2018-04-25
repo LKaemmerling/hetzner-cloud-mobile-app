@@ -1,23 +1,22 @@
 import {Component} from '@angular/core';
 import {LoadingController, ModalController, NavParams} from 'ionic-angular';
 import {fadeIn, fadeOut} from 'ng-animate';
-import {ServerApiProvider} from '../../../../modules/hetzner-robot-api/server-api/server-api';
-import {StorageBoxEditModal} from "../../storage-box/edit/storage-box-edit";
+import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
+import {StorageBoxEditModal} from "../edit/storage-box-edit";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
  */
 @Component({
-  selector: 'page-server-detail',
-  templateUrl: 'server-detail.html',
-
+  selector: 'page-storage-box-details',
+  templateUrl: 'storage-box-details.html',
 })
-export class ServerDetailPage {
+export class StorageBoxDetailPage {
   /**
    * All available servers
    * @type {any[]}
    */
-  public server: any;
+  public storagebox: any;
 
   /**
    * Is the component in the loading process?
@@ -26,26 +25,28 @@ export class ServerDetailPage {
   public loader: any;
 
   /**
-   * Constructor
-   * @param NavParams
+   * Contstructor
+   * @param {NavParams} NavParams
+   * @param {StorageBoxApiProvider} storageBoxApi
+   * @param {LoadingController} loadingCtrl
    */
   constructor(
     protected NavParams: NavParams,
-    protected serverApi: ServerApiProvider,
+    protected storageBoxApi: StorageBoxApiProvider,
     protected loadingCtrl: LoadingController,
     protected modalCtrl: ModalController
   ) {
   }
 
   ngOnInit() {
-    this.loadServer();
+    this.loadStorageBox();
   }
 
-  loadServer() {
+  loadStorageBox() {
     this.loader = this.loadingCtrl.create();
     this.loader.present();
-    this.serverApi.getServer(this.NavParams.get('server_ip')).then(val => {
-      this.server = val['server'];
+    this.storageBoxApi.getStorageBox(this.NavParams.get('storage_box_id')).then(val => {
+      this.storagebox = val['storagebox'];
       this.loader.dismiss();
     });
   }
@@ -54,9 +55,9 @@ export class ServerDetailPage {
    *
    */
   openEditModal() {
-    let modal = this.modalCtrl.create(StorageBoxEditModal, {server: this.server});
+    let modal = this.modalCtrl.create(StorageBoxEditModal, {storage_box: this.storagebox});
     modal.onDidDismiss(() => {
-      this.loadServer();
+      this.loadStorageBox();
     });
     modal.present();
   }

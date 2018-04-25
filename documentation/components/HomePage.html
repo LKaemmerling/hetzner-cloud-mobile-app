@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -861,6 +867,12 @@
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                        </li>
                                        <li class="link">
@@ -1421,7 +1433,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/pages/global/home/home.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/pages/global/home/home.ts:30</a></div>
                                 </td>
                             </tr>
     
@@ -1445,41 +1457,42 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {ModalController, NavController} from &#x27;ionic-angular&#x27;;
-import {ProjectsService} from &quot;../../../modules/hetzner-cloud-data/project/projects.service&quot;;
-import {ProjectsPage} from &quot;../../cloud/projects/projects&quot;;
-import {addProjectModal} from &quot;../../cloud/projects/addProject/addProject&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { ModalController, NavController } from &#x27;ionic-angular&#x27;;
+import { ProjectsService } from &#x27;../../../modules/hetzner-cloud-data/project/projects.service&#x27;;
+import { ProjectsPage } from &#x27;../../cloud/projects/projects&#x27;;
+import { addProjectModal } from &#x27;../../cloud/projects/addProject/addProject&#x27;;
 
 /**
  * This is the basic start screen
  */
 @Component({
-  selector: &#x27;page-home&#x27;,
-  templateUrl: &#x27;home.html&#x27;
+    selector: &#x27;page-home&#x27;,
+    templateUrl: &#x27;home.html&#x27;,
 })
 export class HomePage {
-  /**
-   * Constructor
-   * @param {NavController} navCtrl
-   * @param {ProjectsService} project
-   * @param {ModalController} modal
-   */
-  constructor(protected navCtrl: NavController, protected project: ProjectsService, protected modal: ModalController) {
+    /**
+     * Constructor
+     * @param {NavController} navCtrl
+     * @param {ProjectsService} project
+     * @param {ModalController} modal
+     */
+    constructor(
+        protected navCtrl: NavController,
+        protected project: ProjectsService,
+        protected modal: ModalController
+    ) {}
 
-  }
-
-  /**
-   * This open the create project modal
-   */
-  public openCreateProject() {
-
-    let modal &#x3D; this.modal.create(addProjectModal);
-    modal.onDidDismiss(() &#x3D;&gt; {
-      this.navCtrl.setRoot(ProjectsPage);
-    });
-    modal.present();
-  }
+    /**
+     * This open the create project modal
+     */
+    public openCreateProject() {
+        let modal &#x3D; this.modal.create(addProjectModal);
+        modal.onDidDismiss(() &#x3D;&gt; {
+            this.navCtrl.setRoot(ProjectsPage);
+        });
+        modal.present();
+    }
 }
 </code></pre>
     </div>
@@ -1496,11 +1509,11 @@ export class HomePage {
 
 &lt;ion-content padding&gt;
   &lt;p [innerHTML]&#x3D;&quot;&#x27;PAGE.HOME.TEXT&#x27; | translate | replacePrice&quot;&gt;&lt;/p&gt;
-  &lt;div *ngIf&#x3D;&quot;project.projects &#x3D;&#x3D; null || project.projects.length &#x3D;&#x3D; 0&quot;&gt;
+  &lt;!--&lt;div *ngIf&#x3D;&quot;project.projects &#x3D;&#x3D; null || project.projects.length &#x3D;&#x3D; 0&quot;&gt;
     &lt;button ion-button&#x3D;&quot;&quot; block color&#x3D;&quot;danger&quot; (click)&#x3D;&quot;openCreateProject()&quot;&gt;{{ &#x27;PAGE.HOME.ADD_PROJECT_BUTTON&#x27; |
       translate}}
     &lt;/button&gt;
-  &lt;/div&gt;
+  &lt;/div&gt;--&gt;
 &lt;/ion-content&gt;
 </code></pre>
     </div>
@@ -1528,8 +1541,8 @@ export class HomePage {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>{{ \'PAGE.HOME.TITLE\' | translate }}</ion-title>  </ion-navbar></ion-header><ion-content padding>  <p [innerHTML]="\'PAGE.HOME.TEXT\' | translate | replacePrice"></p>  <div *ngIf="project.projects == null || project.projects.length == 0">    <button ion-button="" block color="danger" (click)="openCreateProject()">{{ \'PAGE.HOME.ADD_PROJECT_BUTTON\' |      translate}}    </button>  </div></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>{{ \'PAGE.HOME.TITLE\' | translate }}</ion-title>  </ion-navbar></ion-header><ion-content padding>  <p [innerHTML]="\'PAGE.HOME.TEXT\' | translate | replacePrice"></p>  <!--<div *ngIf="project.projects == null || project.projects.length == 0">    <button ion-button="" block color="danger" (click)="openCreateProject()">{{ \'PAGE.HOME.ADD_PROJECT_BUTTON\' |      translate}}    </button>  </div>--></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HomePage'};
 </script>

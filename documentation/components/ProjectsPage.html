@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -861,6 +867,12 @@
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                        </li>
                                        <li class="link">
@@ -1359,7 +1371,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/pages/cloud/projects/projects.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/pages/cloud/projects/projects.ts:52</a></div>
                                 </td>
                             </tr>
     
@@ -1540,7 +1552,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">src/pages/cloud/projects/projects.ts:151</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">src/pages/cloud/projects/projects.ts:155</a></div>
                                 </td>
                             </tr>
     
@@ -1611,7 +1623,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/pages/cloud/projects/projects.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/pages/cloud/projects/projects.ts:110</a></div>
                                 </td>
                             </tr>
     
@@ -1650,7 +1662,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/pages/cloud/projects/projects.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/pages/cloud/projects/projects.ts:99</a></div>
                                 </td>
                             </tr>
     
@@ -1723,7 +1735,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/pages/cloud/projects/projects.ts:124</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/pages/cloud/projects/projects.ts:128</a></div>
                                 </td>
                             </tr>
     
@@ -1794,7 +1806,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/pages/cloud/projects/projects.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/pages/cloud/projects/projects.ts:86</a></div>
                                 </td>
                             </tr>
     
@@ -1861,7 +1873,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/pages/cloud/projects/projects.ts:137</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/pages/cloud/projects/projects.ts:141</a></div>
                                 </td>
                             </tr>
     
@@ -1950,7 +1962,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/pages/cloud/projects/projects.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/pages/cloud/projects/projects.ts:47</a></div>
                                 </td>
                             </tr>
     
@@ -1996,7 +2008,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/pages/cloud/projects/projects.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/pages/cloud/projects/projects.ts:52</a></div>
                                 </td>
                             </tr>
     
@@ -2015,174 +2027,178 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {ProjectsService} from &quot;../../../modules/hetzner-cloud-data/project/projects.service&quot;;
-import {ActionSheetController, LoadingController, ModalController} from &quot;ionic-angular&quot;;
-import {addProjectModal} from &quot;./addProject/addProject&quot;;
-import {project} from &quot;../../../modules/hetzner-cloud-data/project/project&quot;;
-import {TranslateService} from &quot;@ngx-translate/core&quot;;
-import {ServersService} from &quot;../../../modules/hetzner-cloud-data/servers/servers.service&quot;;
-import {Storage} from &quot;@ionic/storage&quot;;
-import {shareProjectModal} from &quot;./shareProject/shareProject&quot;;
-import {state, style, transition, trigger, useAnimation} from &quot;@angular/animations&quot;;
-import {fadeIn, fadeOut} from &quot;ng-animate&quot;;
-import {editProjectModal} from &quot;./editProject/editProject&quot;;
-import {HetznerCloudDataService} from &quot;../../../modules/hetzner-cloud-data/hetzner-cloud-data.service&quot;;
-import {NetworkProvider} from &quot;../../../modules/hetzner-app/network/network&quot;;
-import {HetznerCloudMenuService} from &quot;../../../modules/hetzner-cloud-data/hetzner-cloud-menu.service&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { ProjectsService } from &#x27;../../../modules/hetzner-cloud-data/project/projects.service&#x27;;
+import { ActionSheetController, LoadingController, ModalController } from &#x27;ionic-angular&#x27;;
+import { addProjectModal } from &#x27;./addProject/addProject&#x27;;
+import { project } from &#x27;../../../modules/hetzner-cloud-data/project/project&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { ServersService } from &#x27;../../../modules/hetzner-cloud-data/servers/servers.service&#x27;;
+import { Storage } from &#x27;@ionic/storage&#x27;;
+import { shareProjectModal } from &#x27;./shareProject/shareProject&#x27;;
+import { state, style, transition, trigger, useAnimation } from &#x27;@angular/animations&#x27;;
+import { fadeIn, fadeOut } from &#x27;ng-animate&#x27;;
+import { editProjectModal } from &#x27;./editProject/editProject&#x27;;
+import { HetznerCloudDataService } from &#x27;../../../modules/hetzner-cloud-data/hetzner-cloud-data.service&#x27;;
+import { NetworkProvider } from &#x27;../../../modules/hetzner-app/network/network&#x27;;
+import { HetznerCloudMenuService } from &#x27;../../../modules/hetzner-cloud-data/hetzner-cloud-menu.service&#x27;;
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
  */
 @Component({
-  selector: &#x27;page-projects&#x27;,
-  templateUrl: &#x27;projects.html&#x27;,
-  animations: [
-    trigger(&#x27;animate&#x27;, [
-      state(&#x27;active&#x27;, style({
-        display: &#x27;block&#x27;,
-      })),
-      state(&#x27;*&#x27;, style({
-        display: &#x27;none&#x27;,
-      })),
-      transition(&#x27;* &#x3D;&gt; active&#x27;, useAnimation(fadeIn, {params: {timing: 0.3, delay: 0}})),
-      transition(&#x27;active &#x3D;&gt; *&#x27;, useAnimation(fadeOut, {params: {timing: 0, delay: 0}}))])
-  ],
+    selector: &#x27;page-projects&#x27;,
+    templateUrl: &#x27;projects.html&#x27;,
+    animations: [
+        trigger(&#x27;animate&#x27;, [
+            state(
+                &#x27;active&#x27;,
+                style({
+                    display: &#x27;block&#x27;,
+                })
+            ),
+            state(
+                &#x27;*&#x27;,
+                style({
+                    display: &#x27;none&#x27;,
+                })
+            ),
+            transition(&#x27;* &#x3D;&gt; active&#x27;, useAnimation(fadeIn, { params: { timing: 0.3, delay: 0 } })),
+            transition(&#x27;active &#x3D;&gt; *&#x27;, useAnimation(fadeOut, { params: { timing: 0, delay: 0 } })),
+        ]),
+    ],
 })
 export class ProjectsPage {
-  /**
-   * All projects
-   * @type {project[]}
-   */
-  public _projects: Array&lt;project&gt; &#x3D; [];
-  /**
-   * Contain all the visible submenus
-   * @type {any[]}
-   */
-  public visible &#x3D; [];
+    /**
+     * All projects
+     * @type {project[]}
+     */
+    public _projects: Array&lt;project&gt; &#x3D; [];
+    /**
+     * Contain all the visible submenus
+     * @type {any[]}
+     */
+    public visible &#x3D; [];
 
-  /**
-   * Constructor
-   * @param {ActionSheetController} actionSheetCtrl
-   * @param {ModalController} modal
-   * @param {HetznerCloudDataService} hetznerCloudDataService
-   * @param {ProjectsService} project
-   * @param {ServersService} serversService
-   * @param {TranslateService} translate
-   * @param {Storage} storage
-   * @param {NetworkProvider} network
-   */
-  constructor(
-    protected actionSheetCtrl: ActionSheetController,
-    protected modal: ModalController,
-    protected hetznerCloudDataService: HetznerCloudDataService,
-    protected project: ProjectsService,
-    protected serversService: ServersService,
-    protected translate: TranslateService,
-    protected storage: Storage,
-    protected network: NetworkProvider,
-    protected cloudMenuService: HetznerCloudMenuService,
-    protected loadingCtrl: LoadingController
-  ) {
-    this.project.loadProjects().then(() &#x3D;&gt; {
-
-      this._projects &#x3D; project.projects;
-    })
-
-  }
-
-  /**
-   * Open a submenu
-   * @param menuId
-   */
-  openSubMenu(menuId) {
-    if (this.visible[menuId] !&#x3D; undefined &amp;&amp; this.visible[menuId] &#x3D;&#x3D; &#x27;active&#x27;) {
-      this.visible &#x3D; [];
-    } else {
-      this.visible &#x3D; [];
-      this.visible[menuId] &#x3D; &#x27;active&#x27;;
-    }
-
-  }
-
-  /**
-   * Open a Edit modal with the given project
-   * @param {project} project
-   */
-  openEditModal(project: project) {
-    let modal &#x3D; this.modal.create(editProjectModal, {project: project});
-    modal.onDidDismiss(() &#x3D;&gt; {
-      this._projects &#x3D; this.project.projects;
-    });
-    modal.present();
-  }
-
-  /**
-   * Open a modal for creating new projects
-   */
-  openCreateProjectModal() {
-    if (this.network.has_connection) {
-      let modal &#x3D; this.modal.create(addProjectModal);
-      modal.onDidDismiss(() &#x3D;&gt; {
+    /**
+     * Constructor
+     * @param {ActionSheetController} actionSheetCtrl
+     * @param {ModalController} modal
+     * @param {HetznerCloudDataService} hetznerCloudDataService
+     * @param {ProjectsService} project
+     * @param {ServersService} serversService
+     * @param {TranslateService} translate
+     * @param {Storage} storage
+     * @param {NetworkProvider} network
+     */
+    constructor(
+        protected actionSheetCtrl: ActionSheetController,
+        protected modal: ModalController,
+        protected hetznerCloudDataService: HetznerCloudDataService,
+        protected project: ProjectsService,
+        protected serversService: ServersService,
+        protected translate: TranslateService,
+        protected storage: Storage,
+        protected network: NetworkProvider,
+        protected cloudMenuService: HetznerCloudMenuService,
+        protected loadingCtrl: LoadingController
+    ) {
         this.project.loadProjects().then(() &#x3D;&gt; {
-          this._projects &#x3D; this.project.projects;
+            this._projects &#x3D; project.projects;
         });
-      });
-      modal.present();
-    } else {
-      this.network.displayNoNetworkNotice();
     }
-  }
 
-  /**
-   * Open the modal for sharing the given project with a qr-code
-   * @param {project} project
-   */
-  public openShareModal(project: project) {
-    let modal &#x3D; this.modal.create(shareProjectModal, {project: project});
-    modal.onDidDismiss(() &#x3D;&gt; {
-      this.project.loadProjects();
-      this._projects &#x3D; this.project.projects;
-    });
-    modal.present();
-  }
-
-  /**
-   * Select a project so this is the new selected project
-   * @param {project} project
-   */
-  selectProject(project: project) {
-    if (this.network.has_connection) {
-      this.project.selectProject(project).then(() &#x3D;&gt; {
-        this.hetznerCloudDataService.loadDataFromNetwork();
-      });
-    } else {
-      this.network.displayNoNetworkNotice();
+    /**
+     * Open a submenu
+     * @param menuId
+     */
+    openSubMenu(menuId) {
+        if (this.visible[menuId] !&#x3D; undefined &amp;&amp; this.visible[menuId] &#x3D;&#x3D; &#x27;active&#x27;) {
+            this.visible &#x3D; [];
+        } else {
+            this.visible &#x3D; [];
+            this.visible[menuId] &#x3D; &#x27;active&#x27;;
+        }
     }
-  }
 
-  /**
-   * Delete a project
-   * @param {project} project
-   */
-  public delete(project: project) {
-    this._projects &#x3D; this.project.removeProject(project);
-    if (this.project.projects &#x3D;&#x3D; null || this.project.projects.length &#x3D;&#x3D; 0) {
-      this.project.selectProject(null).then(() &#x3D;&gt; {
-        this.hetznerCloudDataService.loadDataFromNetwork();
-        this.cloudMenuService.generateMenu();
+    /**
+     * Open a Edit modal with the given project
+     * @param {project} project
+     */
+    openEditModal(project: project) {
+        let modal &#x3D; this.modal.create(editProjectModal, { project: project });
+        modal.onDidDismiss(() &#x3D;&gt; {
+            this._projects &#x3D; this.project.projects;
+        });
+        modal.present();
+    }
+
+    /**
+     * Open a modal for creating new projects
+     */
+    openCreateProjectModal() {
+        if (this.network.has_connection) {
+            let modal &#x3D; this.modal.create(addProjectModal);
+            modal.onDidDismiss(() &#x3D;&gt; {
+                this.project.loadProjects().then(() &#x3D;&gt; {
+                    this._projects &#x3D; this.project.projects;
+                });
+            });
+            modal.present();
+        } else {
+            this.network.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Open the modal for sharing the given project with a qr-code
+     * @param {project} project
+     */
+    public openShareModal(project: project) {
+        let modal &#x3D; this.modal.create(shareProjectModal, { project: project });
+        modal.onDidDismiss(() &#x3D;&gt; {
+            this.project.loadProjects();
+            this._projects &#x3D; this.project.projects;
+        });
+        modal.present();
+    }
+
+    /**
+     * Select a project so this is the new selected project
+     * @param {project} project
+     */
+    selectProject(project: project) {
+        if (this.network.has_connection) {
+            this.project.selectProject(project).then(() &#x3D;&gt; {
+                this.hetznerCloudDataService.loadDataFromNetwork();
+            });
+        } else {
+            this.network.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Delete a project
+     * @param {project} project
+     */
+    public delete(project: project) {
+        this._projects &#x3D; this.project.removeProject(project);
+        if (this.project.projects &#x3D;&#x3D; null || this.project.projects.length &#x3D;&#x3D; 0) {
+            this.project.selectProject(null).then(() &#x3D;&gt; {
+                this.hetznerCloudDataService.loadDataFromNetwork();
+                this.cloudMenuService.generateMenu();
+                this._projects &#x3D; this.project.projects;
+                let t &#x3D; this.loadingCtrl.create();
+                t.present();
+                window.setTimeout(() &#x3D;&gt; window.location.reload(true), 1000);
+            });
+        } else {
+            this.project.selectProject(this.project.projects[0]).then(() &#x3D;&gt; {
+                this.hetznerCloudDataService.loadDataFromNetwork();
+            });
+        }
         this._projects &#x3D; this.project.projects;
-        let t &#x3D; this.loadingCtrl.create();
-        t.present();
-        window.setTimeout(() &#x3D;&gt; window.location.reload(true), 1000);
-      });
-    } else {
-      this.project.selectProject(this.project.projects[0]).then(() &#x3D;&gt; {
-        this.hetznerCloudDataService.loadDataFromNetwork();
-      });
     }
-    this._projects &#x3D; this.project.projects;
-  }
 }
 </code></pre>
     </div>
@@ -2285,7 +2301,7 @@ export class ProjectsPage {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>{{ \'PAGE.PROJECTS.TITLE\' | translate }}</ion-title>  </ion-navbar></ion-header><ion-content>  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>  <ion-row class="row">    <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let _project of _projects; let i = index">      <ion-card class="project"                [ngClass]="{\'active-project\' : project.actual_project != null && (_project.api_key == project.actual_project.api_key)}"                [id]="\'project_\'+i"  [attr.data-project]="_project.name" >        <ion-row class="project_header" text-center="" (click)="openSubMenu(\'project_\'+i+\'_content\')">          <ion-col offset-9 col-3 style="max-height:20px;">            <button ion-button="" clear="" color="light"                   class="project_menu" [attr.data-project-menupoint]="_project.name"  [attr.data-project-menu]="\'menu_point_project_\'+i">              <i class="fas fa-ellipsis-h fa-2x"></i>            </button>          </ion-col>          <ion-col col-12 align-items-start>            <h2>{{ _project.name }}            </h2>          </ion-col>        </ion-row>        <ion-card-content [id]="\'project_\'+i+\'_content\'" style="display:none;" [@animate]="visible[\'project_\'+i+\'_content\']">          <ion-row class="row">            <ion-col class="col" text-center="">              <button clear="" color="secondary" icon-start="" ion-button="" small="" (click)="selectProject(_project)" class="activate_project"                      [disabled]="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)">                <i class="fas fa-fw fa-check"></i> {{ \'ACTIONS.ACTIVATE\' | translate }}              </button>            </ion-col>            <ion-col class="col" text-center="">              <button clear="" color="primary" icon-start="" ion-button="" small="" (click)="openShareModal(_project)">                <i class="fa fa-fw fa-share"></i> {{ \'ACTIONS.SHARE\' | translate }}              </button>            </ion-col>            <ion-col class="col" text-center="">              <button clear="" color="warning" icon-start="" ion-button="" small="" (click)="openEditModal(_project)" [attr.data-project-menupoint-edit]="_project.name">                <i class="fa fa-fw fa-pencil-alt"></i> {{ \'ACTIONS.EDIT\' | translate }}              </button>            </ion-col>            <ion-col class="col" text-center="">              <button clear="" color="danger" icon-start="" ion-button="" small="" (click)="delete(_project)" class="delete_project">                <i class="fa fa-fw fa-trash"></i> {{ \'ACTIONS.DELETE\' | translate }}              </button>            </ion-col>          </ion-row>        </ion-card-content>      </ion-card>    </ion-col>    <ion-col col-12>      <ion-card *ngIf="project.projects == null || project.projects.length == 0" id="no_projects">        <ion-card-content>          <p class="message_box info" text-wrap=""             [innerHTML]="\'PAGE.PROJECTS.NO_PROJECT\' | translate"></p>        </ion-card-content>      </ion-card>    </ion-col>  </ion-row>  <ion-fab bottom right>    <button ion-fab color="secondary" (click)="openCreateProjectModal()">      <i class="fas fa-plus"></i>    </button>  </ion-fab></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ProjectsPage'};
 </script>

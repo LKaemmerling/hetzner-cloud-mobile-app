@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1516,7 +1528,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/pages/cloud/server/backupSettings/backupSettings.ts:123</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/pages/cloud/server/backupSettings/backupSettings.ts:118</a></div>
                                 </td>
                             </tr>
     
@@ -1555,7 +1567,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/pages/cloud/server/backupSettings/backupSettings.ts:104</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/pages/cloud/server/backupSettings/backupSettings.ts:102</a></div>
                                 </td>
                             </tr>
     
@@ -1633,7 +1645,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/pages/cloud/server/backupSettings/backupSettings.ts:153</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/pages/cloud/server/backupSettings/backupSettings.ts:148</a></div>
                                 </td>
                             </tr>
     
@@ -1672,7 +1684,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/pages/cloud/server/backupSettings/backupSettings.ts:88</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/pages/cloud/server/backupSettings/backupSettings.ts:87</a></div>
                                 </td>
                             </tr>
     
@@ -1711,7 +1723,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/pages/cloud/server/backupSettings/backupSettings.ts:139</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/pages/cloud/server/backupSettings/backupSettings.ts:134</a></div>
                                 </td>
                             </tr>
     
@@ -2002,161 +2014,156 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {ProjectsService} from &quot;../../../../modules/hetzner-cloud-data/project/projects.service&quot;;
-import {LoadingController, NavController, NavParams, ViewController} from &quot;ionic-angular&quot;;
-import {ServerApiProvider} from &quot;../../../../modules/hetzner-cloud-api/server-api/server-api&quot;;
-import {Image, Server} from &quot;../../../../modules/hetzner-cloud-data/servers/server&quot;;
-import {ImagesService} from &quot;../../../../modules/hetzner-cloud-data/images/images.service&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { ProjectsService } from &#x27;../../../../modules/hetzner-cloud-data/project/projects.service&#x27;;
+import { LoadingController, NavController, NavParams, ViewController } from &#x27;ionic-angular&#x27;;
+import { ServerApiProvider } from &#x27;../../../../modules/hetzner-cloud-api/server-api/server-api&#x27;;
+import { Image, Server } from &#x27;../../../../modules/hetzner-cloud-data/servers/server&#x27;;
+import { ImagesService } from &#x27;../../../../modules/hetzner-cloud-data/images/images.service&#x27;;
 
 /**
  * With this modal it is possible to change the backup settings of the server
  */
 @Component({
-  selector: &#x27;modal-backupSettings&#x27;,
-  templateUrl: &#x27;backupSettings.html&#x27;
+    selector: &#x27;modal-backupSettings&#x27;,
+    templateUrl: &#x27;backupSettings.html&#x27;,
 })
 export class backupSettingsModal {
-  /**
-   * The server for which you want to change the settings
-   * @type {Server}
-   */
-  protected server: Server;
-  /**
-   * This contains the currently selected backup window
-   * @type {string}
-   */
-  protected backup_window: string;
-  /**
-   * This contains all available images
-   * @type {Image}
-   */
-  protected images: Array&lt;Image&gt;;
-  /**
-   * The selected image
-   * @type {Image}
-   */
-  protected image: Image &#x3D; null;
-  /**
-   * Is the snapshot creation done?
-   * @type {boolean}
-   */
-  protected create_snapshot_done: boolean &#x3D; false;
-  /**
-   * Is the backup creation done?
-   * @type {boolean}
-   */
-  protected create_backup_done: boolean &#x3D; false;
+    /**
+     * The server for which you want to change the settings
+     * @type {Server}
+     */
+    protected server: Server;
+    /**
+     * This contains the currently selected backup window
+     * @type {string}
+     */
+    protected backup_window: string;
+    /**
+     * This contains all available images
+     * @type {Image}
+     */
+    protected images: Array&lt;Image&gt;;
+    /**
+     * The selected image
+     * @type {Image}
+     */
+    protected image: Image &#x3D; null;
+    /**
+     * Is the snapshot creation done?
+     * @type {boolean}
+     */
+    protected create_snapshot_done: boolean &#x3D; false;
+    /**
+     * Is the backup creation done?
+     * @type {boolean}
+     */
+    protected create_backup_done: boolean &#x3D; false;
 
-  /**
-   * Constructor
-   * @param {LoadingController} loadingCtrl
-   * @param {NavController} navCtrl
-   * @param {ViewController} viewCtrl
-   * @param {ProjectsService} project
-   * @param {ServerApiProvider} serverApiProvider
-   * @param {ImagesService} imagesService
-   * @param {NavParams} navParams
-   */
-  constructor(
-    protected loadingCtrl: LoadingController,
-    protected navCtrl: NavController,
-    protected viewCtrl: ViewController,
-    protected project: ProjectsService,
-    protected serverApiProvider: ServerApiProvider,
-    protected imagesService: ImagesService,
-    protected navParams: NavParams,
-  ) {
-    this.server &#x3D; navParams.get(&#x27;server&#x27;);
-    this.backup_window &#x3D; this.server.backup_window;
-    this.images &#x3D; imagesService.images;
-  }
-
-  /**
-   * Disable the currently enabled backups
-   */
-  disable_backups() {
-    var loader &#x3D; this.loadingCtrl.create();
-    loader.present();
-    this.serverApiProvider.disable_backups(this.server.id).then(() &#x3D;&gt; {
-      this.server.backup_window &#x3D; null;
-      loader.dismiss();
-      this.dismiss();
-    });
-
-  }
-
-  /**
-   * Enable the currently disabled backups
-   */
-  enable_backups() {
-
-    if (this.backup_window !&#x3D; null) {
-      var loader &#x3D; this.loadingCtrl.create();
-      loader.present();
-      this.serverApiProvider.enable_backups(this.server.id, this.backup_window).then(() &#x3D;&gt; {
-        this.server.backup_window &#x3D; this.backup_window;
-        loader.dismiss();
-      });
+    /**
+     * Constructor
+     * @param {LoadingController} loadingCtrl
+     * @param {NavController} navCtrl
+     * @param {ViewController} viewCtrl
+     * @param {ProjectsService} project
+     * @param {ServerApiProvider} serverApiProvider
+     * @param {ImagesService} imagesService
+     * @param {NavParams} navParams
+     */
+    constructor(
+        protected loadingCtrl: LoadingController,
+        protected navCtrl: NavController,
+        protected viewCtrl: ViewController,
+        protected project: ProjectsService,
+        protected serverApiProvider: ServerApiProvider,
+        protected imagesService: ImagesService,
+        protected navParams: NavParams
+    ) {
+        this.server &#x3D; navParams.get(&#x27;server&#x27;);
+        this.backup_window &#x3D; this.server.backup_window;
+        this.images &#x3D; imagesService.images;
     }
-    this.dismiss();
-  }
 
-  /**
-   * Create a new snapshot
-   */
-  create_snapshot() {
-    this.create_snapshot_done &#x3D; false;
-    var loader &#x3D; this.loadingCtrl.create();
-    loader.present();
-    this.serverApiProvider.create_snapshot(this.server.id).then(() &#x3D;&gt; {
-        this.imagesService.reloadImages();
-
-        this.images &#x3D; this.imagesService.images;
-        loader.dismiss();
-        this.create_snapshot_done &#x3D; true;
-
-      }
-    );
-
-  }
-
-  /**
-   * Create a new backup
-   */
-  create_backup() {
-    this.create_backup_done &#x3D; false;
-    var loader &#x3D; this.loadingCtrl.create();
-    loader.present();
-    this.serverApiProvider.create_backup(this.server.id).then(() &#x3D;&gt; {
-      this.imagesService.reloadImages();
-
-      this.images &#x3D; this.imagesService.images;
-      loader.dismiss();
-      this.create_backup_done &#x3D; true;
-    });
-  }
-
-  /**
-   * Rebuild the server from an image
-   */
-  rebuild_from_image() {
-    if (this.image !&#x3D; null) {
-      var loader &#x3D; this.loadingCtrl.create();
-      loader.present();
-      this.serverApiProvider.rebuild(this.server.id, this.image.id).then(() &#x3D;&gt; {
-        loader.dismiss();
-      });
+    /**
+     * Disable the currently enabled backups
+     */
+    disable_backups() {
+        var loader &#x3D; this.loadingCtrl.create();
+        loader.present();
+        this.serverApiProvider.disable_backups(this.server.id).then(() &#x3D;&gt; {
+            this.server.backup_window &#x3D; null;
+            loader.dismiss();
+            this.dismiss();
+        });
     }
-    this.dismiss();
-  }
 
-  /**
-   * Dismiss the modal
-   */
-  dismiss() {
-    return this.viewCtrl.dismiss();
-  }
+    /**
+     * Enable the currently disabled backups
+     */
+    enable_backups() {
+        if (this.backup_window !&#x3D; null) {
+            var loader &#x3D; this.loadingCtrl.create();
+            loader.present();
+            this.serverApiProvider.enable_backups(this.server.id, this.backup_window).then(() &#x3D;&gt; {
+                this.server.backup_window &#x3D; this.backup_window;
+                loader.dismiss();
+            });
+        }
+        this.dismiss();
+    }
+
+    /**
+     * Create a new snapshot
+     */
+    create_snapshot() {
+        this.create_snapshot_done &#x3D; false;
+        var loader &#x3D; this.loadingCtrl.create();
+        loader.present();
+        this.serverApiProvider.create_snapshot(this.server.id).then(() &#x3D;&gt; {
+            this.imagesService.reloadImages();
+
+            this.images &#x3D; this.imagesService.images;
+            loader.dismiss();
+            this.create_snapshot_done &#x3D; true;
+        });
+    }
+
+    /**
+     * Create a new backup
+     */
+    create_backup() {
+        this.create_backup_done &#x3D; false;
+        var loader &#x3D; this.loadingCtrl.create();
+        loader.present();
+        this.serverApiProvider.create_backup(this.server.id).then(() &#x3D;&gt; {
+            this.imagesService.reloadImages();
+
+            this.images &#x3D; this.imagesService.images;
+            loader.dismiss();
+            this.create_backup_done &#x3D; true;
+        });
+    }
+
+    /**
+     * Rebuild the server from an image
+     */
+    rebuild_from_image() {
+        if (this.image !&#x3D; null) {
+            var loader &#x3D; this.loadingCtrl.create();
+            loader.present();
+            this.serverApiProvider.rebuild(this.server.id, this.image.id).then(() &#x3D;&gt; {
+                loader.dismiss();
+            });
+        }
+        this.dismiss();
+    }
+
+    /**
+     * Dismiss the modal
+     */
+    dismiss() {
+        return this.viewCtrl.dismiss();
+    }
 }
 </code></pre>
     </div>
@@ -2254,7 +2261,7 @@ export class backupSettingsModal {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-title>      {{ \'PAGE.SERVERS.MODAL.BACKUPS.TITLE\' | translate}}    </ion-title>    <ion-buttons start>      <button ion-button (click)="dismiss()">        <span ion-text showWhen="ios" class="text-white">{{ \'ACTIONS.CANCEL\' | translate}}</span>        <i class="fas fa-times" showWhen="android,windows"></i>      </button>    </ion-buttons>  </ion-toolbar></ion-header><ion-content>  <ion-card>    <ion-card-content>      <p [innerHTML]="\'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.BACKUPS\' | translate | replacePrice" text-wrap=""></p>      <p *ngIf="create_backup_done === true" class="message_box success" text-wrap="">{{ \'PAGE.SERVERS.MODAL.BACKUPS.SUCCESS.BACKUP\' | translate}}</p>      <button ion-button="" color="danger" (click)="create_backup()" *ngIf="server.backup_window != null">{{ \'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.CREATE_BACKUP\' | translate}}      </button>      <button (click)="disable_backups()" ion-button color="danger" *ngIf="server.backup_window != null">{{ \'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.DISABLE_BACKUP\' | translate}}      </button>      <ion-list *ngIf="server.backup_window == null">        <ion-item>          <ion-label>{{ \'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.LABEL\' | translate}}</ion-label>          <ion-select [(ngModel)]="backup_window" required="">            <ion-option value="22-02">{{ \'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.22_02\' | translate}}</ion-option>            <ion-option value="02-06">{{ \'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.02_06\' | translate}}</ion-option>            <ion-option value="06-10">{{ \'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.06_10\' | translate}}</ion-option>            <ion-option value="10-14">{{ \'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.10_14\' | translate}}</ion-option>            <ion-option value="14-18">{{ \'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.14_18\' | translate}}</ion-option>            <ion-option value="18-22">{{ \'PAGE.SERVERS.MODAL.BACKUPS.FORM.BACKUP_TIME.18_22\' | translate}}</ion-option>          </ion-select>        </ion-item>      </ion-list>      <button ion-button="" color="danger" (click)="enable_backups()" *ngIf="server.backup_window == null">{{ \'ACTIONS.ORDER\' | translate}}</button>    </ion-card-content>  </ion-card>  <ion-card>    <ion-card-content>      <p [innerHTML]="\'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.SNAPSHOTS\' | translate | replacePrice" text-wrap=""></p>      <p *ngIf="create_snapshot_done === true" class="message_box success" text-wrap="">{{ \'PAGE.SERVERS.MODAL.BACKUPS.SUCCESS.SNAPSHOT\' | translate}}</p>      <button ion-button="" color="danger" (click)="create_snapshot()">{{ \'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.CREATE_SNAPSHOT\' | translate}}</button>    </ion-card-content>  </ion-card>  <ion-card>    <ion-card-content>      <p  [innerHTML]="\'PAGE.SERVERS.MODAL.BACKUPS.DESCRIPTION.REBUILD\' | translate" text-wrap=""></p>      <ion-list>        <ion-item>          <ion-label>{{ \'PAGE.SERVERS.MODAL.BACKUPS.FORM.IMAGE\' | translate}}</ion-label>          <ion-select [(ngModel)]="image" required="">            <ion-option *ngFor="let _image of images" [value]="image">              {{ _image.description }} (Typ: {{ _image.type }})            </ion-option>          </ion-select>        </ion-item>      </ion-list>      <button ion-button="" color="danger" (click)="rebuild_from_image()"  [disabled]="server.protection.delete">{{ \'PAGE.SERVERS.MODAL.BACKUPS.ACTIONS.REBUILD_FROM_IMAGE\' | translate}}</button>    </ion-card-content>  </ion-card></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'backupSettingsModal'};
 </script>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      {{ 'ROBOT.PAGE.SERVERS.MODAL.EDIT.TITLE' | translate}}
+      {{ 'ROBOT.PAGE.STORAGE_BOXES.MODAL.EDIT.TITLE' | translate}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -16,9 +16,9 @@
   <ion-list>
 
     <ion-item>
-      <ion-label>{{ 'ROBOT.PAGE.SERVERS.MODAL.EDIT.FORM.NAME' | translate}}</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="server.server_name" required="" id="description"></ion-input>
+      <ion-label>{{ 'ROBOT.PAGE.STORAGE_BOXES.MODAL.EDIT.FORM.NAME' | translate}}</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="storage_box.name" required="" id="description"></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button color="danger" (click)="updateServer()">{{ 'ACTIONS.SAVE' | translate}}</button>
+  <button ion-button color="danger" (click)="updateStorageBox()">{{ 'ACTIONS.SAVE' | translate}}</button>
 </ion-content>

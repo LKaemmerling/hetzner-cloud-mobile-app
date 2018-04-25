@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1504,7 +1516,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/pages/cloud/server/resizeServer/resizeServer.ts:88</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/pages/cloud/server/resizeServer/resizeServer.ts:98</a></div>
                                 </td>
                             </tr>
     
@@ -1545,7 +1557,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/pages/cloud/server/resizeServer/resizeServer.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/pages/cloud/server/resizeServer/resizeServer.ts:73</a></div>
                                 </td>
                             </tr>
     
@@ -1795,96 +1807,106 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {ProjectsService} from &quot;../../../../modules/hetzner-cloud-data/project/projects.service&quot;;
-import {LoadingController, NavController, NavParams, ViewController} from &quot;ionic-angular&quot;;
-import {ServerApiProvider} from &quot;../../../../modules/hetzner-cloud-api/server-api/server-api&quot;;
-import {ServerTypeApiProvider} from &quot;../../../../modules/hetzner-cloud-api/server-type-api/server-type-api&quot;;
-import {Server, ServerType} from &quot;../../../../modules/hetzner-cloud-data/servers/server&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { ProjectsService } from &#x27;../../../../modules/hetzner-cloud-data/project/projects.service&#x27;;
+import { LoadingController, NavController, NavParams, ViewController } from &#x27;ionic-angular&#x27;;
+import { ServerApiProvider } from &#x27;../../../../modules/hetzner-cloud-api/server-api/server-api&#x27;;
+import { ServerTypeApiProvider } from &#x27;../../../../modules/hetzner-cloud-api/server-type-api/server-type-api&#x27;;
+import { Server, ServerType } from &#x27;../../../../modules/hetzner-cloud-data/servers/server&#x27;;
 
 /**
  * With this modal you can resize a server
  */
 @Component({
-  selector: &#x27;modal-resizeServer&#x27;,
-  templateUrl: &#x27;resizeServer.html&#x27;
+    selector: &#x27;modal-resizeServer&#x27;,
+    templateUrl: &#x27;resizeServer.html&#x27;,
 })
 export class resizeServerModal {
-  /**
-   * The server that should be resized
-   */
-  public server: Server;
-  /**
-   * All available server types
-   * @type {any[]}
-   */
-  public server_types: Array&lt;ServerType&gt; &#x3D; [];
-  /**
-   * The new server type
-   */
-  public server_type: ServerType;
-  /**
-   * Determine if the disk should be upgraded as well or not
-   */
-  public upgrade_disk: boolean &#x3D; false;
-  /**
-   * If there is an error, this contains the message
-   * @type {string}
-   */
-  public error: string &#x3D; null;
+    /**
+     * The server that should be resized
+     */
+    public server: Server;
+    /**
+     * All available server types
+     * @type {any[]}
+     */
+    public server_types: Array&lt;ServerType&gt; &#x3D; [];
+    /**
+     * The new server type
+     */
+    public server_type: ServerType;
+    /**
+     * Determine if the disk should be upgraded as well or not
+     */
+    public upgrade_disk: boolean &#x3D; false;
+    /**
+     * If there is an error, this contains the message
+     * @type {string}
+     */
+    public error: string &#x3D; null;
 
-  /**
-   * Constructor
-   * @param {ProjectsService} project
-   * @param {ViewController} viewCtrl
-   * @param {ServerApiProvider} serverApiProvider
-   * @param {NavParams} navParams
-   * @param {NavController} navCtrl
-   * @param {ServerTypeApiProvider} serverTypeApiProvider
-   * @param {LoadingController} loadingCtrl
-   */
-  constructor(protected project: ProjectsService, protected viewCtrl: ViewController, protected serverApiProvider: ServerApiProvider, protected navParams: NavParams, protected navCtrl: NavController, protected serverTypeApiProvider: ServerTypeApiProvider, protected loadingCtrl: LoadingController) {
-    this.server &#x3D; navParams.get(&#x27;server&#x27;);
-    this.server_type &#x3D; this.server.server_type;
-    console.log(this.server.server_type);
-    serverTypeApiProvider.getServerTypes().then((data) &#x3D;&gt; {
-      data[&#x27;server_types&#x27;].forEach((type, key) &#x3D;&gt; {
-        if (type.storage_type &#x3D;&#x3D; this.server.server_type.storage_type) {
-          this.server_types.push(type);
+    /**
+     * Constructor
+     * @param {ProjectsService} project
+     * @param {ViewController} viewCtrl
+     * @param {ServerApiProvider} serverApiProvider
+     * @param {NavParams} navParams
+     * @param {NavController} navCtrl
+     * @param {ServerTypeApiProvider} serverTypeApiProvider
+     * @param {LoadingController} loadingCtrl
+     */
+    constructor(
+        protected project: ProjectsService,
+        protected viewCtrl: ViewController,
+        protected serverApiProvider: ServerApiProvider,
+        protected navParams: NavParams,
+        protected navCtrl: NavController,
+        protected serverTypeApiProvider: ServerTypeApiProvider,
+        protected loadingCtrl: LoadingController
+    ) {
+        this.server &#x3D; navParams.get(&#x27;server&#x27;);
+        this.server_type &#x3D; this.server.server_type;
+        console.log(this.server.server_type);
+        serverTypeApiProvider.getServerTypes().then(data &#x3D;&gt; {
+            data[&#x27;server_types&#x27;].forEach((type, key) &#x3D;&gt; {
+                if (type.storage_type &#x3D;&#x3D; this.server.server_type.storage_type) {
+                    this.server_types.push(type);
+                }
+            });
+        });
+    }
+
+    /**
+     * Make the api call and validate the payload
+     */
+    public resizeServer() {
+        if (this.server_type &#x3D;&#x3D; null) {
+            this.error &#x3D; &#x27;PAGE.SERVERS.MODAL.UPGRADE.ERRORS.REQUIRED_TYPE&#x27;;
+            return;
         }
-      });
-    })
-  }
+        var loader &#x3D; this.loadingCtrl.create();
+        loader.present();
+        if (this.upgrade_disk &#x3D;&#x3D; null || this.upgrade_disk &#x3D;&#x3D; undefined) {
+            this.upgrade_disk &#x3D; false;
+        }
+        this.serverApiProvider.changeServerType(this.server.id, this.server_type.id, this.upgrade_disk).then(
+            data &#x3D;&gt; {
+                loader.dismiss();
+            },
+            error &#x3D;&gt; {
+                this.error &#x3D; &#x27;PAGE.SERVERS.MODAL.UPGRADE.ERRORS.NETWORK_ERROR&#x27;;
+            }
+        );
 
-  /**
-   * Make the api call and validate the payload
-   */
-  public resizeServer() {
-
-    if (this.server_type &#x3D;&#x3D; null) {
-      this.error &#x3D; &#x27;PAGE.SERVERS.MODAL.UPGRADE.ERRORS.REQUIRED_TYPE&#x27;;
-      return;
+        this.dismiss();
     }
-    var loader &#x3D; this.loadingCtrl.create();
-    loader.present();
-    if (this.upgrade_disk &#x3D;&#x3D; null || this.upgrade_disk &#x3D;&#x3D; undefined) {
-      this.upgrade_disk &#x3D; false;
+
+    /**
+     * Dismiss the modal
+     */
+    public dismiss() {
+        this.viewCtrl.dismiss();
     }
-    this.serverApiProvider.changeServerType(this.server.id, this.server_type.id, this.upgrade_disk).then((data) &#x3D;&gt; {
-      loader.dismiss();
-    }, (error) &#x3D;&gt; {
-      this.error &#x3D; &#x27;PAGE.SERVERS.MODAL.UPGRADE.ERRORS.NETWORK_ERROR&#x27;;
-    });
-
-    this.dismiss();
-  }
-
-  /**
-   * Dismiss the modal
-   */
-  public dismiss() {
-    this.viewCtrl.dismiss();
-  }
 }
 </code></pre>
     </div>
@@ -1969,7 +1991,7 @@ export class resizeServerModal {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-title>      {{ \'PAGE.SERVERS.MODAL.UPGRADE.TITLE\' | translate}}    </ion-title>    <ion-buttons start>      <button ion-button (click)="dismiss()">        <span ion-text showWhen="ios" class="text-white">{{ \'ACTIONS.CANCEL\' | translate}}</span>        <i class="fas fa-times" showWhen="android,windows"></i>      </button>    </ion-buttons>  </ion-toolbar></ion-header><ion-content>  <ion-card>    <ion-card-content>      <p [innerHTML]="\'PAGE.SERVERS.MODAL.UPGRADE.DESCRIPTION\' | translate">      </p>      <ion-list>        <ion-item>          <ion-label>{{ \'PAGE.SERVERS.MODAL.UPGRADE.FORM.TYPE\' | translate}}</ion-label>          <ion-select [(ngModel)]="server_type" required="">            <ion-option *ngFor="let _server_type of server_types" [value]="_server_type" required=""                        [translate]="\'PAGE.SERVERS.MODAL.UPGRADE.FORM.PRICING\'"                        [translateParams]="{typeName:_server_type.description, typePrice:_server_type.prices[0].price_monthly.gross | number:\'1.2-2\'}"  [id]="\'type\'+_server_type.id" ></ion-option>          </ion-select>        </ion-item>        <ion-item>          <ion-label>{{ \'PAGE.SERVERS.MODAL.UPGRADE.FORM.RESIZE_DISK\' | translate}}</ion-label>          <ion-toggle [(ngModel)]="upgrade_disk"></ion-toggle>        </ion-item>        <p ion-item *ngIf="server.status !== \'off\'" text-wrap="" class="message_box error">{{\'PAGE.SERVERS.MODAL.UPGRADE.ERRORS.REQUIRED_SHUTDOWN\'          |translate}}</p>        <ion-item          *ngIf="server_type != null" text-wrap=""><strong>{{server_type.description}}</strong><br/>          {{ \'PAGE.SERVERS.TYPE_DETAILS.CORES\' | translate}} {{ server_type.cores }} <br/>{{          \'PAGE.SERVERS.TYPE_DETAILS.MEMORY\' | translate}}          {{ server_type.memory * 1024}} MB<br/>{{ \'PAGE.SERVERS.TYPE_DETAILS.DISK\' | translate}}          {{ server_type.disk }} GB<br/>          {{ \'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE\' | translate}} {{ server_type.storage_type }}        </ion-item>      </ion-list>      <button ion-button color="danger" (click)="resizeServer()" [disabled]="(server.status != \'off\')">        {{ \'ACTIONS.ORDER\' | translate}}      </button>      <p class="message_box error" *ngIf="error != null">{{ error | translate }}</p>    </ion-card-content>  </ion-card></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'resizeServerModal'};
 </script>

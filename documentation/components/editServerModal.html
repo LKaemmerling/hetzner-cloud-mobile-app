@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1480,7 +1492,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/pages/cloud/server/editServer/editServer.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/pages/cloud/server/editServer/editServer.ts:75</a></div>
                                 </td>
                             </tr>
     
@@ -1521,7 +1533,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/pages/cloud/server/editServer/editServer.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/pages/cloud/server/editServer/editServer.ts:49</a></div>
                                 </td>
                             </tr>
     
@@ -1638,69 +1650,83 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {ProjectsService} from &quot;../../../../modules/hetzner-cloud-data/project/projects.service&quot;;
-import {LoadingController, NavController, NavParams, ViewController} from &quot;ionic-angular&quot;;
-import {ServerApiProvider} from &quot;../../../../modules/hetzner-cloud-api/server-api/server-api&quot;;
-import {Server} from &quot;../../../../modules/hetzner-cloud-data/servers/server&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { ProjectsService } from &#x27;../../../../modules/hetzner-cloud-data/project/projects.service&#x27;;
+import { LoadingController, NavController, NavParams, ViewController } from &#x27;ionic-angular&#x27;;
+import { ServerApiProvider } from &#x27;../../../../modules/hetzner-cloud-api/server-api/server-api&#x27;;
+import { Server } from &#x27;../../../../modules/hetzner-cloud-data/servers/server&#x27;;
 
 /**
  * This makes it possible to rename a server
  */
 @Component({
-  selector: &#x27;modal-editServer&#x27;,
-  templateUrl: &#x27;editServer.html&#x27;
+    selector: &#x27;modal-editServer&#x27;,
+    templateUrl: &#x27;editServer.html&#x27;,
 })
 export class editServerModal {
-  /**
-   * The server that should be edited
-   */
-  public server: Server;
+    /**
+     * The server that should be edited
+     */
+    public server: Server;
 
-  /**
-   * When there was an error this contains the message
-   * @type {string}
-   */
-  public error: string &#x3D; null;
+    /**
+     * When there was an error this contains the message
+     * @type {string}
+     */
+    public error: string &#x3D; null;
 
-  /**
-   * Constructor
-   * @param {ProjectsService} project
-   * @param {ViewController} viewCtrl
-   * @param {ServerApiProvider} serverApiProvider
-   * @param {NavParams} navParams
-   * @param {NavController} navCtrl
-   * @param {LoadingController} loadingCtrl
-   */
-  constructor(protected project: ProjectsService, protected viewCtrl: ViewController, protected serverApiProvider: ServerApiProvider, protected navParams: NavParams, protected navCtrl: NavController, protected loadingCtrl: LoadingController) {
-    this.server &#x3D; navParams.get(&#x27;server&#x27;);
-  }
-
-  /**
-   * Make the api call and validate the name
-   */
-  public updateServer() {
-    if (this.server.name &#x3D;&#x3D; null || this.server.name.length &lt; 3 || /(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/g.test(this.server.name) &#x3D;&#x3D; false) {
-      this.error &#x3D; &#x27;PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_NAME&#x27;;
-      return;
+    /**
+     * Constructor
+     * @param {ProjectsService} project
+     * @param {ViewController} viewCtrl
+     * @param {ServerApiProvider} serverApiProvider
+     * @param {NavParams} navParams
+     * @param {NavController} navCtrl
+     * @param {LoadingController} loadingCtrl
+     */
+    constructor(
+        protected project: ProjectsService,
+        protected viewCtrl: ViewController,
+        protected serverApiProvider: ServerApiProvider,
+        protected navParams: NavParams,
+        protected navCtrl: NavController,
+        protected loadingCtrl: LoadingController
+    ) {
+        this.server &#x3D; navParams.get(&#x27;server&#x27;);
     }
-    let loader &#x3D; this.loadingCtrl.create();
-    loader.present();
-    this.serverApiProvider.changeServerName(this.server.id, this.server.name).then(() &#x3D;&gt; {
-      this.serverApiProvider.changeProtection(this.server.id, this.server.protection.delete, this.server.protection.delete).then(() &#x3D;&gt; {
-        loader.dismiss();
-        this.dismiss();
-      });
-    });
 
-  }
+    /**
+     * Make the api call and validate the name
+     */
+    public updateServer() {
+        if (
+            this.server.name &#x3D;&#x3D; null ||
+            this.server.name.length &lt; 3 ||
+            /(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/g.test(
+                this.server.name
+            ) &#x3D;&#x3D; false
+        ) {
+            this.error &#x3D; &#x27;PAGE.SERVERS.MODAL.ADD.ERRORS.REQUIRED_NAME&#x27;;
+            return;
+        }
+        let loader &#x3D; this.loadingCtrl.create();
+        loader.present();
+        this.serverApiProvider.changeServerName(this.server.id, this.server.name).then(() &#x3D;&gt; {
+            this.serverApiProvider
+                .changeProtection(this.server.id, this.server.protection.delete, this.server.protection.delete)
+                .then(() &#x3D;&gt; {
+                    loader.dismiss();
+                    this.dismiss();
+                });
+        });
+    }
 
-  /**
-   * Dismiss the modal
-   */
-  public dismiss() {
-    this.viewCtrl.dismiss();
-  }
+    /**
+     * Dismiss the modal
+     */
+    public dismiss() {
+        this.viewCtrl.dismiss();
+    }
 }
 </code></pre>
     </div>
@@ -1760,7 +1786,7 @@ export class editServerModal {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-title>      {{ \'PAGE.SERVERS.MODAL.EDIT.TITLE\' | translate}}    </ion-title>    <ion-buttons start>      <button ion-button (click)="dismiss()">        <span ion-text showWhen="ios" class="text-white">{{ \'ACTIONS.CANCEL\' | translate}}</span>        <i class="fas fa-times" showWhen="android,windows"></i>      </button>    </ion-buttons>  </ion-toolbar></ion-header><ion-content>  <ion-list>    <ion-item>      <ion-label> {{ \'PAGE.SERVERS.MODAL.EDIT.FORM.NAME\' | translate}}</ion-label>      <ion-input type="text" value="" [(ngModel)]="server.name" required="" id="server_name"></ion-input>    </ion-item>    <change-protection [(protection)]="server.protection"></change-protection>  </ion-list>  <button ion-button color="danger" (click)="updateServer()" id="save">{{ \'ACTIONS.SAVE\' | translate}}</button>  <p class="message_box error" *ngIf="error != null">{{ error |translate }}</p></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'editServerModal'};
 </script>

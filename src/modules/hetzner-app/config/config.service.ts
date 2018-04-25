@@ -49,7 +49,7 @@ export class ConfigService {
   public developer_mode = false;
 
   public feature_flags = {
-    robot: false
+    robot: true
   };
 
   /**

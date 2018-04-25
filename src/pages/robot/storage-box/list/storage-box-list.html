@@ -18,7 +18,7 @@
         <ion-row class="server_header" text-center="" (click)="openSubMenu('storagebox_'+i+'_content')">
           <ion-col offset-9 col-3 style="max-height:20px;">
             <button ion-button="" clear="" color="light" class="server_menu"
-                    [attr.data-storagebox]="storagebox.storagebox.name">
+                    [attr.data-storagebox]="storagebox.storagebox.storagebox_name">
               <i class="fas fa-ellipsis-h fa-2x"></i>
             </button>
           </ion-col>
@@ -37,20 +37,14 @@
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="primary" icon-start="" ion-button="" small=""
-                      class="open_server" disabled>
+                      class="open_server" (click)="openDetailsPage(storagebox.storagebox.id)">
                 <i class="fa fa-fw fa-info"></i> {{ 'ACTIONS.OPEN_DETAILS' | translate }}
               </button>
             </ion-col>
             <ion-col class="col" text-center="">
               <button clear="" color="secondary" icon-start="" ion-button="" small=""
-                      class="edit_server" disabled>
+                      class="edit_server" (click)="openEditModal(storagebox.storagebox)">
                 <i class="fa fa-fw fa-edit"></i> {{ 'ACTIONS.EDIT' | translate }}
-              </button>
-            </ion-col>
-            <ion-col class="col" text-center="">
-              <button clear="" color="danger" icon-start="" ion-button="" small=""
-                      class="delete_server" disabled>
-                <i class="fa fa-fw fa-trash"></i> {{ 'ACTIONS.CANCELLATION' | translate }}
               </button>
             </ion-col>
           </ion-row>

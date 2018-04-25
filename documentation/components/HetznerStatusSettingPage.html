@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1469,7 +1481,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/pages/global/hetzner-status-setting/hetzner-status-setting.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/pages/global/hetzner-status-setting/hetzner-status-setting.ts:112</a></div>
                                 </td>
                             </tr>
     
@@ -1563,47 +1575,47 @@
                         <tr>
                             <td class="col-md-4">
                                 <i>Default value : </i><code>[
-        {
-          &quot;key&quot;: &quot;Allgemein&quot;,
-          &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.GENERAL&quot;,
-          &quot;value&quot;: false,
-        },
-        {
-          &quot;key&quot;: &quot;Basis Infrastruktur&quot;,
-          &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.BASIC_INFRASTRUCTURE&quot;,
-          &quot;value&quot;: false,
-        },
-        {
-          &quot;key&quot;: &quot;Erweiterte Infrastruktur&quot;,
-          &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.ADVANCED_INFRASTRUCTURE&quot;,
-          &quot;value&quot;: false,
-        },
-        {
-          &quot;key&quot;: &quot;Netzwerk&quot;,
-          &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.NETWORK&quot;,
-          &quot;value&quot;: false,
-        },
-        {
-          &quot;key&quot;: &quot;Webhosting und Managed Server&quot;,
-          &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.WEB_HOSTING_AND_MANAGED_SERVER&quot;,
-          &quot;value&quot;: false,
-        },
-        {
-          &quot;key&quot;: &quot;Domain Registration Robot&quot;,
-          &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.DOMAIN_REGISTRATION_ROBOT&quot;,
-          &quot;value&quot;: false,
-        },
-        {
-          &quot;key&quot;: &quot;vServer&quot;,
-          &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.V_SERVER&quot;,
-          &quot;value&quot;: false,
-        },
-        {
-          &quot;key&quot;: &quot;Cloud&quot;,
-          &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.CLOUD&quot;,
-          &quot;value&quot;: false,
-        }
-      ]</code>
+            {
+                key: &#x27;Allgemein&#x27;,
+                lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.GENERAL&#x27;,
+                value: false,
+            },
+            {
+                key: &#x27;Basis Infrastruktur&#x27;,
+                lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.BASIC_INFRASTRUCTURE&#x27;,
+                value: false,
+            },
+            {
+                key: &#x27;Erweiterte Infrastruktur&#x27;,
+                lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.ADVANCED_INFRASTRUCTURE&#x27;,
+                value: false,
+            },
+            {
+                key: &#x27;Netzwerk&#x27;,
+                lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.NETWORK&#x27;,
+                value: false,
+            },
+            {
+                key: &#x27;Webhosting und Managed Server&#x27;,
+                lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.WEB_HOSTING_AND_MANAGED_SERVER&#x27;,
+                value: false,
+            },
+            {
+                key: &#x27;Domain Registration Robot&#x27;,
+                lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.DOMAIN_REGISTRATION_ROBOT&#x27;,
+                value: false,
+            },
+            {
+                key: &#x27;vServer&#x27;,
+                lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.V_SERVER&#x27;,
+                value: false,
+            },
+            {
+                key: &#x27;Cloud&#x27;,
+                lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.CLOUD&#x27;,
+                value: false,
+            },
+        ]</code>
                             </td>
                         </tr>
                             <tr>
@@ -1719,135 +1731,141 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {NavController, NavParams, Platform} from &#x27;ionic-angular&#x27;;
-import {OneSignal} from &quot;@ionic-native/onesignal&quot;;
-import {Storage} from &quot;@ionic/storage&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { NavController, NavParams, Platform } from &#x27;ionic-angular&#x27;;
+import { OneSignal } from &#x27;@ionic-native/onesignal&#x27;;
+import { Storage } from &#x27;@ionic/storage&#x27;;
 
 /**
  * This is the hetzner status setting page, where you can en/disable notifications for some types of notifications
  */
 
 @Component({
-  selector: &#x27;page-hetzner-status-setting&#x27;,
-  templateUrl: &#x27;hetzner-status-setting.html&#x27;,
+    selector: &#x27;page-hetzner-status-setting&#x27;,
+    templateUrl: &#x27;hetzner-status-setting.html&#x27;,
 })
 export class HetznerStatusSettingPage {
-  /**
-   * All available categories
-   * @type {{key: string; lang: string; value: boolean}[]}
-   */
-  public categories &#x3D; [
-    {
-      &quot;key&quot;: &quot;Allgemein&quot;,
-      &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.GENERAL&quot;,
-      &quot;value&quot;: false,
-    },
-    {
-      &quot;key&quot;: &quot;Basis Infrastruktur&quot;,
-      &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.BASIC_INFRASTRUCTURE&quot;,
-      &quot;value&quot;: false,
-    },
-    {
-      &quot;key&quot;: &quot;Erweiterte Infrastruktur&quot;,
-      &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.ADVANCED_INFRASTRUCTURE&quot;,
-      &quot;value&quot;: false,
-    },
-    {
-      &quot;key&quot;: &quot;Netzwerk&quot;,
-      &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.NETWORK&quot;,
-      &quot;value&quot;: false,
-    },
-    {
-      &quot;key&quot;: &quot;Webhosting und Managed Server&quot;,
-      &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.WEB_HOSTING_AND_MANAGED_SERVER&quot;,
-      &quot;value&quot;: false,
-    },
-    {
-      &quot;key&quot;: &quot;Domain Registration Robot&quot;,
-      &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.DOMAIN_REGISTRATION_ROBOT&quot;,
-      &quot;value&quot;: false,
-    },
-    {
-      &quot;key&quot;: &quot;vServer&quot;,
-      &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.V_SERVER&quot;,
-      &quot;value&quot;: false,
-    },
-    {
-      &quot;key&quot;: &quot;Cloud&quot;,
-      &quot;lang&quot;: &quot;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.CLOUD&quot;,
-      &quot;value&quot;: false,
-    }
-  ];
-  /**
-   * Is the sound enabled?
-   * @type {boolean}
-   */
-  public sound: boolean &#x3D; true;
-  /**
-   * Is vibration enabled?
-   * @type {boolean}
-   */
-  public vibrate: boolean &#x3D; true;
-  /**
-   * Is this component currently sending?
-   * @type {boolean}
-   */
-  public _send: boolean;
+    /**
+     * All available categories
+     * @type {{key: string; lang: string; value: boolean}[]}
+     */
+    public categories &#x3D; [
+        {
+            key: &#x27;Allgemein&#x27;,
+            lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.GENERAL&#x27;,
+            value: false,
+        },
+        {
+            key: &#x27;Basis Infrastruktur&#x27;,
+            lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.BASIC_INFRASTRUCTURE&#x27;,
+            value: false,
+        },
+        {
+            key: &#x27;Erweiterte Infrastruktur&#x27;,
+            lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.ADVANCED_INFRASTRUCTURE&#x27;,
+            value: false,
+        },
+        {
+            key: &#x27;Netzwerk&#x27;,
+            lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.NETWORK&#x27;,
+            value: false,
+        },
+        {
+            key: &#x27;Webhosting und Managed Server&#x27;,
+            lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.WEB_HOSTING_AND_MANAGED_SERVER&#x27;,
+            value: false,
+        },
+        {
+            key: &#x27;Domain Registration Robot&#x27;,
+            lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.DOMAIN_REGISTRATION_ROBOT&#x27;,
+            value: false,
+        },
+        {
+            key: &#x27;vServer&#x27;,
+            lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.V_SERVER&#x27;,
+            value: false,
+        },
+        {
+            key: &#x27;Cloud&#x27;,
+            lang: &#x27;PAGE.STATUS.MODAL.SETTINGS.CATEGORY.CLOUD&#x27;,
+            value: false,
+        },
+    ];
+    /**
+     * Is the sound enabled?
+     * @type {boolean}
+     */
+    public sound: boolean &#x3D; true;
+    /**
+     * Is vibration enabled?
+     * @type {boolean}
+     */
+    public vibrate: boolean &#x3D; true;
+    /**
+     * Is this component currently sending?
+     * @type {boolean}
+     */
+    public _send: boolean;
 
-  /**
-   * Constructor
-   * @param {NavController} navCtrl
-   * @param {NavParams} navParams
-   * @param {OneSignal} oneSignal
-   * @param {Storage} storage
-   * @param {Platform} platform
-   */
-  constructor(protected navCtrl: NavController, protected navParams: NavParams, protected oneSignal: OneSignal, protected storage: Storage, protected platform: Platform) {
-    this.storage.get(&#x27;hetzner_status_settings&#x27;).then((data) &#x3D;&gt; {
-      if (data !&#x3D; undefined &amp;&amp; data !&#x3D; null) {
-        this.categories &#x3D; data;
-      }
-    })
-    this.storage.get(&#x27;hetzner_status_settings_sound&#x27;).then((data) &#x3D;&gt; {
-      if (data !&#x3D; undefined &amp;&amp; data !&#x3D; null) {
-        this.sound &#x3D; data;
-      }
-    })
-    this.storage.get(&#x27;hetzner_status_settings_vibrate&#x27;).then((data) &#x3D;&gt; {
-      if (data !&#x3D; undefined &amp;&amp; data !&#x3D; null) {
-        this.vibrate &#x3D; data;
-      }
-    })
-  }
-
-  /**
-   * Save the form and send all to onesignal and to the storage
-   */
-  save() {
-    this._send &#x3D; false;
-    let prompt &#x3D; false;
-    this.oneSignal.enableSound(this.sound);
-    this.oneSignal.enableVibrate(this.vibrate);
-    this.categories.forEach((value, key) &#x3D;&gt; {
-      this.oneSignal.sendTag(value.key, &quot;&quot; + value.value);
-      if (value.value &#x3D;&#x3D; true) {
-        prompt &#x3D; true;
-      }
-    });
-    this.storage.get(&#x27;lang&#x27;).then(value &#x3D;&gt; {
-      if (value !&#x3D; undefined) {
-        this.oneSignal.sendTag(&#x27;lang&#x27;, &quot;&quot; + value);
-      }
-    });
-    this._send &#x3D; true;
-    if (prompt &amp;&amp; this.platform.is(&#x27;ios&#x27;)) {
-      this.oneSignal.promptForPushNotificationsWithUserResponse();
+    /**
+     * Constructor
+     * @param {NavController} navCtrl
+     * @param {NavParams} navParams
+     * @param {OneSignal} oneSignal
+     * @param {Storage} storage
+     * @param {Platform} platform
+     */
+    constructor(
+        protected navCtrl: NavController,
+        protected navParams: NavParams,
+        protected oneSignal: OneSignal,
+        protected storage: Storage,
+        protected platform: Platform
+    ) {
+        this.storage.get(&#x27;hetzner_status_settings&#x27;).then(data &#x3D;&gt; {
+            if (data !&#x3D; undefined &amp;&amp; data !&#x3D; null) {
+                this.categories &#x3D; data;
+            }
+        });
+        this.storage.get(&#x27;hetzner_status_settings_sound&#x27;).then(data &#x3D;&gt; {
+            if (data !&#x3D; undefined &amp;&amp; data !&#x3D; null) {
+                this.sound &#x3D; data;
+            }
+        });
+        this.storage.get(&#x27;hetzner_status_settings_vibrate&#x27;).then(data &#x3D;&gt; {
+            if (data !&#x3D; undefined &amp;&amp; data !&#x3D; null) {
+                this.vibrate &#x3D; data;
+            }
+        });
     }
-    this.storage.set(&#x27;hetzner_status_settings&#x27;, this.categories);
-    this.storage.set(&#x27;hetzner_status_settings_sound&#x27;, this.sound);
-    this.storage.set(&#x27;hetzner_status_settings_vibrate&#x27;, this.vibrate);
-  }
+
+    /**
+     * Save the form and send all to onesignal and to the storage
+     */
+    save() {
+        this._send &#x3D; false;
+        let prompt &#x3D; false;
+        this.oneSignal.enableSound(this.sound);
+        this.oneSignal.enableVibrate(this.vibrate);
+        this.categories.forEach((value, key) &#x3D;&gt; {
+            this.oneSignal.sendTag(value.key, &#x27;&#x27; + value.value);
+            if (value.value &#x3D;&#x3D; true) {
+                prompt &#x3D; true;
+            }
+        });
+        this.storage.get(&#x27;lang&#x27;).then(value &#x3D;&gt; {
+            if (value !&#x3D; undefined) {
+                this.oneSignal.sendTag(&#x27;lang&#x27;, &#x27;&#x27; + value);
+            }
+        });
+        this._send &#x3D; true;
+        if (prompt &amp;&amp; this.platform.is(&#x27;ios&#x27;)) {
+            this.oneSignal.promptForPushNotificationsWithUserResponse();
+        }
+        this.storage.set(&#x27;hetzner_status_settings&#x27;, this.categories);
+        this.storage.set(&#x27;hetzner_status_settings_sound&#x27;, this.sound);
+        this.storage.set(&#x27;hetzner_status_settings_vibrate&#x27;, this.vibrate);
+    }
 }
 </code></pre>
     </div>
@@ -1912,7 +1930,7 @@ export class HetznerStatusSettingPage {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>      {{ \'PAGE.STATUS.MODAL.SETTINGS.TITLE\' | translate }}    </ion-title>  </ion-navbar></ion-header><ion-content padding>  <p [innerHTML]="\'PAGE.STATUS.MODAL.SETTINGS.TEXT\' | translate" text-wrap="">  </p>  <ion-list>    <ion-item *ngFor="let category of categories">      <ion-label color="dark">{{ category.lang | translate }}</ion-label>      <ion-toggle color="secondary" [(ngModel)]="category.value" (ionChange)="save()"></ion-toggle>    </ion-item>  <ion-list-header>{{ \'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.TITLE\' | translate}}</ion-list-header>    <ion-item>      <ion-label>{{ \'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.SOUND\' | translate}}</ion-label>      <ion-toggle color="secondary" [(ngModel)]="sound" (ionChange)="save()"></ion-toggle>    </ion-item>    <ion-item>      <ion-label>{{ \'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.VIBRATE\' | translate}}</ion-label>      <ion-toggle color="secondary" [(ngModel)]="vibrate" (ionChange)="save()"></ion-toggle>    </ion-item>  </ion-list>  <p class="message_box success" *ngIf="_send == true" text-wrap="" [innerHTML]="\'PAGE.STATUS.MODAL.SETTINGS.SAVE_SUCCESS\' | translate"></p></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HetznerStatusSettingPage'};
 </script>

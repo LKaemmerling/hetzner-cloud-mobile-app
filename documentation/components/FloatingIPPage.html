@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1570,7 +1582,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:123</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:121</a></div>
                                 </td>
                             </tr>
     
@@ -1609,7 +1621,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:132</a></div>
                                 </td>
                             </tr>
     
@@ -1648,7 +1660,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:99</a></div>
                                 </td>
                             </tr>
     
@@ -1687,7 +1699,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:88</a></div>
                                 </td>
                             </tr>
     
@@ -1726,7 +1738,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:81</a></div>
                                 </td>
                             </tr>
     
@@ -1799,7 +1811,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:68</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:69</a></div>
                                 </td>
                             </tr>
     
@@ -1838,7 +1850,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:158</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIp/floatingIP.ts:154</a></div>
                                 </td>
                             </tr>
     
@@ -1955,182 +1967,178 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 
-import {LoadingController, ModalController, NavController, NavParams} from &quot;ionic-angular&quot;;
-import {ProjectsService} from &quot;../../../../modules/hetzner-cloud-data/project/projects.service&quot;;
-import {FloatingIpApiProvider} from &quot;../../../../modules/hetzner-cloud-api/floating-ip-api/floating-ip-api&quot;;
-import {editFloatingIpModal} from &quot;../editFloatingIp/editFloatingIp&quot;;
-import {ServerApiProvider} from &quot;../../../../modules/hetzner-cloud-api/server-api/server-api&quot;;
-import {ServerPage} from &quot;../../server/server&quot;;
-import {FloatingIPsPage} from &quot;../floatingIPs&quot;;
-import {changeIPv4ReverseDNSModal} from &quot;../../server/reverseDNS/ipv4/changeIPv4ReverseDNSModal&quot;;
-import {assignToServerModal} from &quot;../assignToServer/assignToServer&quot;;
-import {TranslateService} from &quot;@ngx-translate/core&quot;;
-import {NetworkProvider} from &quot;../../../../modules/hetzner-app/network/network&quot;;
-import {Server} from &quot;../../../../modules/hetzner-cloud-data/servers/server&quot;;
+import { LoadingController, ModalController, NavController, NavParams } from &#x27;ionic-angular&#x27;;
+import { ProjectsService } from &#x27;../../../../modules/hetzner-cloud-data/project/projects.service&#x27;;
+import { FloatingIpApiProvider } from &#x27;../../../../modules/hetzner-cloud-api/floating-ip-api/floating-ip-api&#x27;;
+import { editFloatingIpModal } from &#x27;../editFloatingIp/editFloatingIp&#x27;;
+import { ServerApiProvider } from &#x27;../../../../modules/hetzner-cloud-api/server-api/server-api&#x27;;
+import { ServerPage } from &#x27;../../server/server&#x27;;
+import { FloatingIPsPage } from &#x27;../floatingIPs&#x27;;
+import { changeIPv4ReverseDNSModal } from &#x27;../../server/reverseDNS/ipv4/changeIPv4ReverseDNSModal&#x27;;
+import { assignToServerModal } from &#x27;../assignToServer/assignToServer&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { NetworkProvider } from &#x27;../../../../modules/hetzner-app/network/network&#x27;;
+import { Server } from &#x27;../../../../modules/hetzner-cloud-data/servers/server&#x27;;
 
 /**
  * This page displays all informations about a given floating ip
  */
 @Component({
-  selector: &#x27;page-floatingIP&#x27;,
-  templateUrl: &#x27;floatingIP.html&#x27;
+    selector: &#x27;page-floatingIP&#x27;,
+    templateUrl: &#x27;floatingIP.html&#x27;,
 })
 export class FloatingIPPage {
-  /**
-   * The given floating IP
-   */
-  public floating_ip: any;
-  /**
-   * The server that is connected with the floating ip - cloud be null
-   * @type {Server}
-   */
-  public server: Server &#x3D; null;
+    /**
+     * The given floating IP
+     */
+    public floating_ip: any;
+    /**
+     * The server that is connected with the floating ip - cloud be null
+     * @type {Server}
+     */
+    public server: Server &#x3D; null;
 
-  /**
-   * Constructor
-   * @param {LoadingController} loadingCtrl
-   * @param {ModalController} modal
-   * @param {NavController} navCtrl
-   * @param {ProjectsService} project
-   * @param {NavParams} navParams
-   * @param {TranslateService} translate
-   * @param {FloatingIpApiProvider} floatingIpApiProvider
-   * @param {ServerApiProvider} serverApiProvider
-   * @param {NetworkProvider} networkProvider
-   */
-  constructor(
-    protected loadingCtrl: LoadingController,
-    protected modal: ModalController,
-    protected navCtrl: NavController,
-    protected project: ProjectsService,
-    protected navParams: NavParams,
-    protected translate: TranslateService,
-    protected floatingIpApiProvider: FloatingIpApiProvider,
-    protected serverApiProvider: ServerApiProvider,
-    protected networkProvider: NetworkProvider) {
-    this.floating_ip &#x3D; navParams.get(&#x27;floating_ip&#x27;);
-    if (this.floating_ip.server !&#x3D;&#x3D; null) {
-      this.serverApiProvider.getServer(this.floating_ip.server).then((data) &#x3D;&gt; {
-        this.server &#x3D; data[&#x27;server&#x27;]
-      });
-    }
-  }
-
-  /**
-   * Reload the server from the API
-   * @param refresher
-   */
-  public refresh() {
-    if (this.floating_ip.server !&#x3D;&#x3D; null) {
-      this.serverApiProvider.getServer(this.floating_ip.server).then((data) &#x3D;&gt; {
-        this.server &#x3D; data[&#x27;server&#x27;]
-      });
-    }
-  };
-
-  /**
-   * Open the details of the server
-   * @param {Server} server
-   */
-  openServer(server: Server) {
-    this.navCtrl.push(ServerPage, {server: server});
-  }
-
-  /**
-   * Open the edit modal for the floating ip
-   */
-  openEditFloatingIp() {
-    if (this.networkProvider.has_connection) {
-      this.modal.create(editFloatingIpModal, {floating_ip: this.floating_ip}).present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
-    }
-  }
-
-  /**
-   * Open the assign modal
-   */
-  openAssignToServer() {
-    if (this.networkProvider.has_connection) {
-      this.modal.create(assignToServerModal, {floating_ip: this.floating_ip}).present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
+    /**
+     * Constructor
+     * @param {LoadingController} loadingCtrl
+     * @param {ModalController} modal
+     * @param {NavController} navCtrl
+     * @param {ProjectsService} project
+     * @param {NavParams} navParams
+     * @param {TranslateService} translate
+     * @param {FloatingIpApiProvider} floatingIpApiProvider
+     * @param {ServerApiProvider} serverApiProvider
+     * @param {NetworkProvider} networkProvider
+     */
+    constructor(
+        protected loadingCtrl: LoadingController,
+        protected modal: ModalController,
+        protected navCtrl: NavController,
+        protected project: ProjectsService,
+        protected navParams: NavParams,
+        protected translate: TranslateService,
+        protected floatingIpApiProvider: FloatingIpApiProvider,
+        protected serverApiProvider: ServerApiProvider,
+        protected networkProvider: NetworkProvider
+    ) {
+        this.floating_ip &#x3D; navParams.get(&#x27;floating_ip&#x27;);
+        if (this.floating_ip.server !&#x3D;&#x3D; null) {
+            this.serverApiProvider.getServer(this.floating_ip.server).then(data &#x3D;&gt; {
+                this.server &#x3D; data[&#x27;server&#x27;];
+            });
+        }
     }
 
-  }
-
-  /**
-   * Open the ipv4 reverse dns change modal
-   */
-  changeIPv4ReverseDNSModal() {
-    if (this.networkProvider.has_connection) {
-
-      this.modal.create(changeIPv4ReverseDNSModal, {server: this.server}).present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
+    /**
+     * Reload the server from the API
+     * @param refresher
+     */
+    public refresh() {
+        if (this.floating_ip.server !&#x3D;&#x3D; null) {
+            this.serverApiProvider.getServer(this.floating_ip.server).then(data &#x3D;&gt; {
+                this.server &#x3D; data[&#x27;server&#x27;];
+            });
+        }
     }
 
-  }
-
-  /**
-   * Open the ipv6 reverse dns change modal
-   */
-  changeIPv6ReverseDNSModal() {
-    if (this.networkProvider.has_connection) {
-
-      this.modal.create(this.changeIPv6ReverseDNSModal(), {server: this.server}).present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
+    /**
+     * Open the details of the server
+     * @param {Server} server
+     */
+    openServer(server: Server) {
+        this.navCtrl.push(ServerPage, { server: server });
     }
-  }
 
-  /**
-   * Delete the floating ip
-   */
-  delete() {
-    if (this.networkProvider.has_connection) {
-
-      let _delete_confirmation: string &#x3D; &#x27;&#x27;;
-      this.translate.get(&#x27;ACTIONS.DELETE_CONFIRMATION&#x27;).subscribe(text &#x3D;&gt; {
-        _delete_confirmation &#x3D; text;
-      });
-      if (confirm(_delete_confirmation)) {
-        let loader &#x3D; this.loadingCtrl.create();
-        loader.present();
-        this.floatingIpApiProvider.deleteFloatingIp(this.floating_ip.id).then((data) &#x3D;&gt; {
-          loader.dismiss();
-          this.navCtrl.setRoot(FloatingIPsPage);
-        });
-      }
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
+    /**
+     * Open the edit modal for the floating ip
+     */
+    openEditFloatingIp() {
+        if (this.networkProvider.has_connection) {
+            this.modal.create(editFloatingIpModal, { floating_ip: this.floating_ip }).present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
     }
-  }
 
-  /**
-   * Unassign the floating ip from all servers
-   */
-  unassign() {
-    if (this.networkProvider.has_connection) {
-
-      let _delete_confirmation: string &#x3D; &#x27;&#x27;;
-      this.translate.get(&#x27;PAGE.FLOATING_IPS.MODAL.DETAILS.ACTIONS.DELETE_ASSIGNMENT_CONFIRMATION&#x27;).subscribe(text &#x3D;&gt; {
-        _delete_confirmation &#x3D; text;
-      });
-      if (confirm(_delete_confirmation)) {
-        let loader &#x3D; this.loadingCtrl.create();
-        loader.present();
-        this.floatingIpApiProvider.unassign(this.floating_ip.id).then((data) &#x3D;&gt; {
-          loader.dismiss();
-        });
-      }
-
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
+    /**
+     * Open the assign modal
+     */
+    openAssignToServer() {
+        if (this.networkProvider.has_connection) {
+            this.modal.create(assignToServerModal, { floating_ip: this.floating_ip }).present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
     }
-  }
+
+    /**
+     * Open the ipv4 reverse dns change modal
+     */
+    changeIPv4ReverseDNSModal() {
+        if (this.networkProvider.has_connection) {
+            this.modal.create(changeIPv4ReverseDNSModal, { server: this.server }).present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Open the ipv6 reverse dns change modal
+     */
+    changeIPv6ReverseDNSModal() {
+        if (this.networkProvider.has_connection) {
+            this.modal.create(this.changeIPv6ReverseDNSModal(), { server: this.server }).present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Delete the floating ip
+     */
+    delete() {
+        if (this.networkProvider.has_connection) {
+            let _delete_confirmation: string &#x3D; &#x27;&#x27;;
+            this.translate.get(&#x27;ACTIONS.DELETE_CONFIRMATION&#x27;).subscribe(text &#x3D;&gt; {
+                _delete_confirmation &#x3D; text;
+            });
+            if (confirm(_delete_confirmation)) {
+                let loader &#x3D; this.loadingCtrl.create();
+                loader.present();
+                this.floatingIpApiProvider.deleteFloatingIp(this.floating_ip.id).then(data &#x3D;&gt; {
+                    loader.dismiss();
+                    this.navCtrl.setRoot(FloatingIPsPage);
+                });
+            }
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
+
+    /**
+     * Unassign the floating ip from all servers
+     */
+    unassign() {
+        if (this.networkProvider.has_connection) {
+            let _delete_confirmation: string &#x3D; &#x27;&#x27;;
+            this.translate
+                .get(&#x27;PAGE.FLOATING_IPS.MODAL.DETAILS.ACTIONS.DELETE_ASSIGNMENT_CONFIRMATION&#x27;)
+                .subscribe(text &#x3D;&gt; {
+                    _delete_confirmation &#x3D; text;
+                });
+            if (confirm(_delete_confirmation)) {
+                let loader &#x3D; this.loadingCtrl.create();
+                loader.present();
+                this.floatingIpApiProvider.unassign(this.floating_ip.id).then(data &#x3D;&gt; {
+                    loader.dismiss();
+                });
+            }
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
+    }
 }
 </code></pre>
     </div>
@@ -2239,7 +2247,7 @@ export class FloatingIPPage {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <ion-title>{{floating_ip.description}}</ion-title>    <ion-buttons end>      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>    </ion-buttons>  </ion-navbar></ion-header><ion-content>  <ion-list inset>    <ion-list-header>      {{ \'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.TITLE\' | translate}}    </ion-list-header>    <ion-item *ngIf="floating_ip.type == \'ipv4\'">      <div item-left="">        {{ \'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.IPv4\' | translate}}      </div>      <div item-right="">        {{ floating_ip.ip }}        <i class="fas fa-pencil-alt" (click)="changeIPv4ReverseDNSModal()"></i>      </div>    </ion-item>    <ion-item *ngIf="floating_ip.type == \'ipv6\'">      <div item-left="">        {{ \'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.ipv6\' | translate}}      </div>      <div item-right="">        {{ floating_ip.ip }}        <i class="fas fa-pencil-alt" (click)="changeIPv6ReverseDNSModal()"></i>      </div>    </ion-item>    <ion-item>      <div item-left="">        {{ \'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.LOCATION\' | translate}}      </div>      <div item-end>        {{ floating_ip.home_location.description}}      </div>    </ion-item>    <ion-item>      <div item-left="">        {{ \'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.ASSIGNED_TO\' | translate}}      </div>      <div item-end>        <span *ngIf="floating_ip.server == null">-</span>        <span *ngIf="floating_ip.server != null && server != null"><a (click)="openServer(server)">{{ server.name }}</a></span>        <i class="fas fa-pencil-alt" (click)="openAssignToServer()"></i>      </div>    </ion-item>  </ion-list>  <ion-fab right bottom>    <button ion-fab color="primary">      <i class="fas fa-angle-up"></i>    </button>    <ion-fab-list side="top">      <button ion-fab color="danger" (click)="delete()">        <div class="label" color="secondary">{{ \'ACTIONS.DELETE\' | translate}}</div>        <i class="fas fa-trash"></i>      </button>      <button ion-fab (click)="openEditFloatingIp()" color="secondary">        <div class="label" color="secondary">{{ \'PAGE.FLOATING_IPS.MODAL.DETAILS.INFORMATION.EDIT\' | translate}}</div>        <i class="fas fa-pencil-alt"></i>      </button>      <button ion-fab color="danger" *ngIf="floating_ip.server != null && server != null" (click)="unassign()">        <div class="label" color="secondary">{{ \'PAGE.FLOATING_IPS.MODAL.DETAILS.ACTIONS.DELETE_ASSIGNMENT\' | translate}}</div>        <i class="fas fa-cloud"></i>      </button>      <button ion-fab color="light">        <div class="label" color="light" (click)="openAssignToServer()">{{ \'PAGE.FLOATING_IPS.MODAL.DETAILS.ACTIONS.EDIT_ASSIGNMENT\' | translate}}</div>        <i class="fas fa-cloud"></i>      </button>    </ion-fab-list>  </ion-fab></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FloatingIPPage'};
 </script>

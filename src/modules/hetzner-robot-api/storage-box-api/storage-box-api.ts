@@ -19,12 +19,21 @@ export class StorageBoxApiProvider extends BaseApiProvider {
 
   /**
    * Returns a specific Server object. The Server must exist inside the account
-   * @see https://robot.your-server.de/doc/webservice/en.html#get-server-server-ip
-   * @param {string} serverIp
+   * @see https://robot.your-server.de/doc/webservice/de.html#get-storagebox-storagebox-id
+   * @param {number} boxId
    * @returns {Promise<any>}
    */
   getStorageBox(boxId: number) {
     return this._get('storagebox/' + boxId)
   }
 
+  /**
+   * @see https://robot.your-server.de/doc/webservice/de.html#post-storagebox-storagebox-id
+   * @param {number} boxId
+   * @param {string} name
+   * @returns {Promise<any>}
+   */
+  update(boxId: number, name: string) {
+    return this._post('storagebox/' + boxId, "storagebox_name=" + name);
+  }
 }

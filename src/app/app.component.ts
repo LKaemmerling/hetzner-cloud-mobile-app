@@ -41,6 +41,7 @@ export class HetznerMobileApp {
     public lang: string = 'de';
 
     public available_menus = [];
+
     protected menu = 'Cloud';
 
     protected menu_entries;

@@ -56,7 +56,7 @@ export class HetznerRobotMenuService {
       protected: true,
       hidden: true
     },
-    {
+   /* {
       key: 'ROBOT.PAGE.SHOP.TITLE',
       icon: 'fa-shopping-cart fa-flip-horizontal',
       page: HetznerStatusPage,
@@ -69,7 +69,7 @@ export class HetznerRobotMenuService {
       page: HetznerStatusPage,
       protected: true,
       hidden: true
-    },
+    },*/
     {
       key: 'PAGE.STATUS.TITLE',
       icon: 'fa-bell',

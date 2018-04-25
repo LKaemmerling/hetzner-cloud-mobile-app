@@ -485,7 +485,15 @@
       },
       "SERVERS": {
         "TITLE": "Meine Server",
-        "NO_SERVERS": "Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden."
+        "NO_SERVERS": "Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden.",
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "Server bearbeiten",
+            "FORM": {
+              "NAME": "Bezeichnung"
+            }
+          }
+        }
       },
       "SERVER_DETAILS": {
         "INFORMATION": {
@@ -513,7 +521,15 @@
       },
       "STORAGE_BOXES": {
         "TITLE": "Meine Storage Boxen",
-        "NO_STORAGE_BOXES": "Oh! Es sieht so aus als wäre hier noch keine Storage Box erstellt worden."
+        "NO_STORAGE_BOXES": "Oh! Es sieht so aus als wäre hier noch keine Storage Box erstellt worden.",
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "Storage Box bearbeiten",
+            "FORM": {
+              "NAME": "Bezeichnung"
+            }
+          }
+        }
       },
       "SHOP": {
         "TITLE": "Bestellung"

@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1532,7 +1544,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/pages/global/settings/settings.ts:99</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/pages/global/settings/settings.ts:100</a></div>
                                 </td>
                             </tr>
     
@@ -1571,7 +1583,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/pages/global/settings/settings.ts:136</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/pages/global/settings/settings.ts:140</a></div>
                                 </td>
                             </tr>
     
@@ -1610,7 +1622,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/pages/global/settings/settings.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/pages/global/settings/settings.ts:93</a></div>
                                 </td>
                             </tr>
     
@@ -1649,7 +1661,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/pages/global/settings/settings.ts:164</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/pages/global/settings/settings.ts:170</a></div>
                                 </td>
                             </tr>
     
@@ -1686,7 +1698,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/pages/global/settings/settings.ts:115</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/pages/global/settings/settings.ts:116</a></div>
                                 </td>
                             </tr>
     
@@ -1725,7 +1737,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/pages/global/settings/settings.ts:146</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">src/pages/global/settings/settings.ts:150</a></div>
                                 </td>
                             </tr>
     
@@ -1939,172 +1951,178 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {LoadingController, NavController, NavParams, ToastController} from &#x27;ionic-angular&#x27;;
-import {DeleteAllDataPage} from &quot;../delete-all-data/delete-all-data&quot;;
-import {AppVersion} from &quot;@ionic-native/app-version&quot;;
-import {FingerprintAIO} from &quot;@ionic-native/fingerprint-aio&quot;;
-import {Storage} from &quot;@ionic/storage&quot;;
-import {TranslateService} from &quot;@ngx-translate/core&quot;;
-import {OneSignal} from &quot;@ionic-native/onesignal&quot;;
-import {ConfigService} from &quot;../../../modules/hetzner-app/config/config.service&quot;;
-import {DeveloperPage} from &quot;../developer/developer&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { LoadingController, NavController, NavParams, ToastController } from &#x27;ionic-angular&#x27;;
+import { DeleteAllDataPage } from &#x27;../delete-all-data/delete-all-data&#x27;;
+import { AppVersion } from &#x27;@ionic-native/app-version&#x27;;
+import { FingerprintAIO } from &#x27;@ionic-native/fingerprint-aio&#x27;;
+import { Storage } from &#x27;@ionic/storage&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { OneSignal } from &#x27;@ionic-native/onesignal&#x27;;
+import { ConfigService } from &#x27;../../../modules/hetzner-app/config/config.service&#x27;;
+import { DeveloperPage } from &#x27;../developer/developer&#x27;;
 
 /**
  * This is the settings page, that contain all possible settings of the app
  */
 
 @Component({
-  selector: &#x27;page-settings&#x27;,
-  templateUrl: &#x27;settings.html&#x27;,
+    selector: &#x27;page-settings&#x27;,
+    templateUrl: &#x27;settings.html&#x27;,
 })
 export class SettingsPage {
-  /**
-   * -1 if the finger print Auth isn&#x27;t available, 0 if is available but not enabled, 1 if available and enabled
-   * @type {number}
-   */
-  public finger_print: number &#x3D; -1;
-  /**
-   * This stores the clicks on the version
-   * @type {number}
-   */
-  private developer_mode_clicks &#x3D; 0;
-  /**
-   * The Language Key
-   * @type {string}
-   */
-  public language: string &#x3D; &#x27;de&#x27;;
-  /**
-   * Is the compact server design used?
-   * @type {boolean}
-   */
-  public compact_server_design: boolean &#x3D; false;
+    /**
+     * -1 if the finger print Auth isn&#x27;t available, 0 if is available but not enabled, 1 if available and enabled
+     * @type {number}
+     */
+    public finger_print: number &#x3D; -1;
+    /**
+     * This stores the clicks on the version
+     * @type {number}
+     */
+    private developer_mode_clicks &#x3D; 0;
+    /**
+     * The Language Key
+     * @type {string}
+     */
+    public language: string &#x3D; &#x27;de&#x27;;
+    /**
+     * Is the compact server design used?
+     * @type {boolean}
+     */
+    public compact_server_design: boolean &#x3D; false;
 
-  /**
-   * Constructor
-   * @param {NavController} navCtrl
-   * @param {NavParams} navParams
-   * @param {FingerprintAIO} fingerprint
-   * @param {Storage} storage
-   * @param {LoadingController} loadingCtrl
-   * @param {ConfigService} config
-   * @param {TranslateService} translate
-   * @param {ToastController} toastController
-   * @param {OneSignal} oneSignal
-   */
-  constructor(protected navCtrl: NavController,
-              protected navParams: NavParams,
-              protected fingerprint: FingerprintAIO,
-              protected storage: Storage,
-              protected loadingCtrl: LoadingController,
-              protected config: ConfigService,
-              protected translate: TranslateService,
-              protected toastController: ToastController,
-              protected oneSignal: OneSignal
-  ) {
-
-    storage.get(&#x27;lang&#x27;).then(value &#x3D;&gt; {
-      if (value !&#x3D; undefined) {
-        this.language &#x3D; value;
-      }
-    });
-    storage.get(&#x27;compact_server_design&#x27;).then(value &#x3D;&gt; {
-      if (value !&#x3D; undefined) {
-        this.compact_server_design &#x3D; value;
-      }
-    });
-    this.fingerprint.isAvailable().then(resp &#x3D;&gt; {
-
-      this.finger_print &#x3D; 0;
-      storage.get(&#x27;auth&#x27;).then((value &#x3D;&gt; {
-        if (value !&#x3D; undefined &amp;&amp; value &#x3D;&#x3D; &#x27;enabled&#x27;) {
-          this.finger_print &#x3D; 1;
-        } else {
-          this.finger_print &#x3D; 0;
-        }
-      }))
-
-    }).then(() &#x3D;&gt; this.finger_print &#x3D; -1);
-  }
-
-  /**
-   * Open the delete-all-data-page
-   */
-  openDeleteAllPage() {
-    this.navCtrl.push(DeleteAllDataPage);
-  }
-
-  /**
-   * Change the language of the app
-   */
-  changeLanguage() {
-    let loader &#x3D; this.loadingCtrl.create();
-    loader.present();
-    this.storage.set(&#x27;lang&#x27;, this.language);
-    this.translate.use(this.language);
-    this.storage.get(&#x27;hetzner_status_settings&#x27;).then((data) &#x3D;&gt; {
-      if (data !&#x3D; undefined &amp;&amp; data !&#x3D; null) {
-        this.oneSignal.sendTag(&#x27;lang&#x27;, this.language);
-      }
-    });
-    loader.dismiss();
-  }
-
-  /**
-   * Open the fingerprint auth
-   */
-  openFingerprint() {
-    this.fingerprint.show({
-      clientId: &#x27;Hetzner-Cloud-Mobile&#x27;,
-      clientSecret: &#x27;password&#x27;, //Only necessary for Android
-      disableBackup: false,  //Only for Android(optional)
-      localizedFallbackTitle: &#x27;Use Pin&#x27;, //Only for iOS
-      localizedReason: &#x27;Please authenticate&#x27; //Only for iOS
-    }).then(result &#x3D;&gt; {
-      var auth &#x3D; &#x27;disabled&#x27;;
-      if (this.finger_print &#x3D;&#x3D; 1) {
-        auth &#x3D; &#x27;enabled&#x27;;
-      }
-      this.storage.set(&#x27;auth&#x27;, auth);
-    }).catch(err &#x3D;&gt; {
-      alert(&#x27;Error: &#x27; + err);
-    });
-  }
-
-  /**
-   * Change and save the server design
-   */
-  changeServersDesign() {
-    let loader &#x3D; this.loadingCtrl.create();
-    loader.present();
-    this.storage.set(&#x27;compact_server_design&#x27;, this.compact_server_design);
-    loader.dismiss();
-  }
-
-  /**
-   * Setup the developer mode.
-   */
-  setUpDeveloperMode() {
-    let steps &#x3D; 7;
-    this.developer_mode_clicks++;
-
-    if (this.developer_mode_clicks &gt;&#x3D; steps) {
-      this.storage.set(&#x27;developer_mode&#x27;, true);
-      this.config.developer_mode &#x3D; true;
-      this.toastController.create({message: &#x27;Developer mode is now active&#x27;, duration: 2000}).present();
-      return;
-    } else if (this.developer_mode_clicks &gt; (steps - 3)) {
-      this.toastController.create({
-        message: &#x27;Only &#x27; + (steps - this.developer_mode_clicks) + &#x27; more&#x27;,
-        duration: 2000
-      }).present();
-      return;
+    /**
+     * Constructor
+     * @param {NavController} navCtrl
+     * @param {NavParams} navParams
+     * @param {FingerprintAIO} fingerprint
+     * @param {Storage} storage
+     * @param {LoadingController} loadingCtrl
+     * @param {ConfigService} config
+     * @param {TranslateService} translate
+     * @param {ToastController} toastController
+     * @param {OneSignal} oneSignal
+     */
+    constructor(
+        protected navCtrl: NavController,
+        protected navParams: NavParams,
+        protected fingerprint: FingerprintAIO,
+        protected storage: Storage,
+        protected loadingCtrl: LoadingController,
+        protected config: ConfigService,
+        protected translate: TranslateService,
+        protected toastController: ToastController,
+        protected oneSignal: OneSignal
+    ) {
+        storage.get(&#x27;lang&#x27;).then(value &#x3D;&gt; {
+            if (value !&#x3D; undefined) {
+                this.language &#x3D; value;
+            }
+        });
+        storage.get(&#x27;compact_server_design&#x27;).then(value &#x3D;&gt; {
+            if (value !&#x3D; undefined) {
+                this.compact_server_design &#x3D; value;
+            }
+        });
+        this.fingerprint
+            .isAvailable()
+            .then(resp &#x3D;&gt; {
+                this.finger_print &#x3D; 0;
+                storage.get(&#x27;auth&#x27;).then(value &#x3D;&gt; {
+                    if (value !&#x3D; undefined &amp;&amp; value &#x3D;&#x3D; &#x27;enabled&#x27;) {
+                        this.finger_print &#x3D; 1;
+                    } else {
+                        this.finger_print &#x3D; 0;
+                    }
+                });
+            })
+            .then(() &#x3D;&gt; (this.finger_print &#x3D; -1));
     }
-  }
 
-  openDeveloperMode() {
-    this.navCtrl.push(DeveloperPage);
-  }
+    /**
+     * Open the delete-all-data-page
+     */
+    openDeleteAllPage() {
+        this.navCtrl.push(DeleteAllDataPage);
+    }
+
+    /**
+     * Change the language of the app
+     */
+    changeLanguage() {
+        let loader &#x3D; this.loadingCtrl.create();
+        loader.present();
+        this.storage.set(&#x27;lang&#x27;, this.language);
+        this.translate.use(this.language);
+        this.storage.get(&#x27;hetzner_status_settings&#x27;).then(data &#x3D;&gt; {
+            if (data !&#x3D; undefined &amp;&amp; data !&#x3D; null) {
+                this.oneSignal.sendTag(&#x27;lang&#x27;, this.language);
+            }
+        });
+        loader.dismiss();
+    }
+
+    /**
+     * Open the fingerprint auth
+     */
+    openFingerprint() {
+        this.fingerprint
+            .show({
+                clientId: &#x27;Hetzner-Cloud-Mobile&#x27;,
+                clientSecret: &#x27;password&#x27;, //Only necessary for Android
+                disableBackup: false, //Only for Android(optional)
+                localizedFallbackTitle: &#x27;Use Pin&#x27;, //Only for iOS
+                localizedReason: &#x27;Please authenticate&#x27;, //Only for iOS
+            })
+            .then(result &#x3D;&gt; {
+                var auth &#x3D; &#x27;disabled&#x27;;
+                if (this.finger_print &#x3D;&#x3D; 1) {
+                    auth &#x3D; &#x27;enabled&#x27;;
+                }
+                this.storage.set(&#x27;auth&#x27;, auth);
+            })
+            .catch(err &#x3D;&gt; {
+                alert(&#x27;Error: &#x27; + err);
+            });
+    }
+
+    /**
+     * Change and save the server design
+     */
+    changeServersDesign() {
+        let loader &#x3D; this.loadingCtrl.create();
+        loader.present();
+        this.storage.set(&#x27;compact_server_design&#x27;, this.compact_server_design);
+        loader.dismiss();
+    }
+
+    /**
+     * Setup the developer mode.
+     */
+    setUpDeveloperMode() {
+        let steps &#x3D; 7;
+        this.developer_mode_clicks++;
+
+        if (this.developer_mode_clicks &gt;&#x3D; steps) {
+            this.storage.set(&#x27;developer_mode&#x27;, true);
+            this.config.developer_mode &#x3D; true;
+            this.toastController.create({ message: &#x27;Developer mode is now active&#x27;, duration: 2000 }).present();
+            return;
+        } else if (this.developer_mode_clicks &gt; steps - 3) {
+            this.toastController
+                .create({
+                    message: &#x27;Only &#x27; + (steps - this.developer_mode_clicks) + &#x27; more&#x27;,
+                    duration: 2000,
+                })
+                .present();
+            return;
+        }
+    }
+
+    openDeveloperMode() {
+        this.navCtrl.push(DeveloperPage);
+    }
 }
 </code></pre>
     </div>
@@ -2192,7 +2210,7 @@ export class SettingsPage {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>      {{ \'PAGE.SETTINGS.TITLE\' | translate }}    </ion-title>  </ion-navbar></ion-header><ion-content padding>  <ion-list>    <ion-list-header>      {{ \'PAGE.SETTINGS.APP.TITLE\' | translate }}    </ion-list-header>    <div ion-item="" (click)="setUpDeveloperMode()">      <ion-label text-wrap>{{ \'PAGE.SETTINGS.APP.VERSION\' | translate }}</ion-label>      <span item-right>{{ config.version }}</span>    </div>    <div ion-item="" *ngIf="config.developer_mode">      <ion-label text-wrap color="danger" (click)="openDeveloperMode()">Developer Area</ion-label>    </div>    <div ion-item="">      <ion-label text-wrap>{{ \'PAGE.SETTINGS.APP.LATEST_UPDATE.TITLE\' | translate }}</ion-label>      <span item-right="">{{\'PAGE.SETTINGS.APP.LATEST_UPDATE.TEXT\' | translate |replacePrice }}</span>    </div>    <div ion-item="">      <ion-label text-wrap>{{ \'PAGE.SETTINGS.APP.LANGUAGE\' | translate }}</ion-label>      <ion-select [(ngModel)]="language" (ionChange)="changeLanguage()" id="language">        <ion-option value="de">Deutsch</ion-option>        <ion-option value="en">English</ion-option>      </ion-select>    </div>    <ion-list-header>      {{ \'PAGE.SETTINGS.SECURITY.TITLE\' | translate }}    </ion-list-header>    <ion-item *ngIf="finger_print >= 0">      <ion-label text-wrap>{{ \'PAGE.SETTINGS.SECURITY.AUTH.TITLE\' | translate }}</ion-label>      <ion-toggle [(ngModel)]="finger_print" (ionChange)="openFingerprint()"></ion-toggle>    </ion-item>    <p ion-item="" class="message_box info" *ngIf="finger_print == -1" text-wrap=""       [innerHTML]="\'PAGE.SETTINGS.SECURITY.AUTH.NOT_AVAILABLE\' | translate "></p>    <ion-list-header>      Design    </ion-list-header>    <ion-item>      <ion-label text-wrap>{{ \'PAGE.SETTINGS.DESIGN.COMPACT_SERVERS\' | translate }}</ion-label>      <ion-toggle [(ngModel)]="compact_server_design" (ionChange)="changeServersDesign()"></ion-toggle>    </ion-item>  </ion-list>  <button ion-button="" color="danger" (click)="openDeleteAllPage()">    {{ \'PAGE.DELETE_ALL.TITLE\' | translate }}  </button></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SettingsPage'};
 </script>

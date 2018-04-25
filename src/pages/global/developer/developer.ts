@@ -40,7 +40,6 @@ export class DeveloperPage {
     removeDeveloperMode() {
         this.storage.set('developer_mode', false);
         this.config.developer_mode = false;
-        this.config.setFeatureFlag('robot', false);
         this.nav.setRoot(SettingsPage);
     }
 }

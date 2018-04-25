@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1479,46 +1491,46 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {ErrorHandler, Injectable, Injector, NgModule} from &#x27;@angular/core&#x27;;
-import {BrowserModule} from &#x27;@angular/platform-browser&#x27;;
-import {IonicApp, IonicErrorHandler, IonicModule} from &#x27;ionic-angular&#x27;;
-import {HetznerMobileApp} from &#x27;./app.component&#x27;;
-import {HttpClient, HttpClientModule} from &#x27;@angular/common/http&#x27;;
-import {StatusBar} from &#x27;@ionic-native/status-bar&#x27;;
-import {SplashScreen} from &#x27;@ionic-native/splash-screen&#x27;;
-import {IonicStorageModule} from &#x27;@ionic/storage&#x27;;
-import {Pro} from &#x27;@ionic/pro&#x27;;
-import {BrowserAnimationsModule} from &quot;@angular/platform-browser/animations&quot;;
-import {TooltipsModule} from &quot;ionic-tooltips&quot;;
-import {OneSignal} from &quot;@ionic-native/onesignal&quot;;
-import {InAppBrowser} from &quot;@ionic-native/in-app-browser&quot;;
-import {ChartsModule} from &#x27;ng2-charts&#x27;;
-import {AppVersion} from &quot;@ionic-native/app-version&quot;;
-import {FingerprintAIO} from &quot;@ionic-native/fingerprint-aio&quot;;
-import {TranslateLoader, TranslateModule} from &#x27;@ngx-translate/core&#x27;;
-import {HetznerCloudApiProviderModule} from &quot;../modules/hetzner-cloud-api/hetzner-cloud-api-provider.module&quot;;
-import {BarcodeScanner} from &quot;@ionic-native/barcode-scanner&quot;;
-import {NgxQRCodeModule} from &quot;@lkdevelopment/ngx-qrcode/dist&quot;;
-import {HetznerAppComponentsModule} from &quot;../components/hetzner-app-components.module&quot;;
-import {Keyboard} from &quot;@ionic-native/keyboard&quot;;
-import {AppRate} from &quot;@ionic-native/app-rate&quot;;
-import {createTranslateLoader} from &quot;../providers/translation/loader&quot;;
-import {NetworkProvider} from &#x27;../modules/hetzner-app/network/network&#x27;;
-import {HetznerCloudDataModule} from &quot;../modules/hetzner-cloud-data/hetzner-cloud-data.module&quot;;
-import {HetznerAppModule} from &quot;../modules/hetzner-app/hetzner-app.module&quot;;
-import {GlobalAppPagesModule} from &quot;../pages/global/global-app-pages.module&quot;;
-import {Device} from &quot;@ionic-native/device&quot;;
-import {CloudAppPagesModule} from &quot;../pages/cloud/cloud-app-pages.module&quot;;
-import {RobotAppPagesModule} from &quot;../pages/robot/robot-app-pages.module&quot;;
-import {HetznerRobotDataModule} from &quot;../modules/hetzner-robot-data/hetzner-robot-data.module&quot;;
-import {HetznerRobotApiModule} from &quot;../modules/hetzner-robot-api/hetzner-robot-api.module&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { ErrorHandler, Injectable, Injector, NgModule } from &#x27;@angular/core&#x27;;
+import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
+import { IonicApp, IonicErrorHandler, IonicModule } from &#x27;ionic-angular&#x27;;
+import { HetznerMobileApp } from &#x27;./app.component&#x27;;
+import { HttpClient, HttpClientModule } from &#x27;@angular/common/http&#x27;;
+import { StatusBar } from &#x27;@ionic-native/status-bar&#x27;;
+import { SplashScreen } from &#x27;@ionic-native/splash-screen&#x27;;
+import { IonicStorageModule } from &#x27;@ionic/storage&#x27;;
+import { Pro } from &#x27;@ionic/pro&#x27;;
+import { BrowserAnimationsModule } from &#x27;@angular/platform-browser/animations&#x27;;
+import { TooltipsModule } from &#x27;ionic-tooltips&#x27;;
+import { OneSignal } from &#x27;@ionic-native/onesignal&#x27;;
+import { InAppBrowser } from &#x27;@ionic-native/in-app-browser&#x27;;
+import { ChartsModule } from &#x27;ng2-charts&#x27;;
+import { AppVersion } from &#x27;@ionic-native/app-version&#x27;;
+import { FingerprintAIO } from &#x27;@ionic-native/fingerprint-aio&#x27;;
+import { TranslateLoader, TranslateModule } from &#x27;@ngx-translate/core&#x27;;
+import { HetznerCloudApiProviderModule } from &#x27;../modules/hetzner-cloud-api/hetzner-cloud-api-provider.module&#x27;;
+import { BarcodeScanner } from &#x27;@ionic-native/barcode-scanner&#x27;;
+import { NgxQRCodeModule } from &#x27;@lkdevelopment/ngx-qrcode/dist&#x27;;
+import { HetznerAppComponentsModule } from &#x27;../components/hetzner-app-components.module&#x27;;
+import { Keyboard } from &#x27;@ionic-native/keyboard&#x27;;
+import { AppRate } from &#x27;@ionic-native/app-rate&#x27;;
+import { createTranslateLoader } from &#x27;../providers/translation/loader&#x27;;
+import { NetworkProvider } from &#x27;../modules/hetzner-app/network/network&#x27;;
+import { HetznerCloudDataModule } from &#x27;../modules/hetzner-cloud-data/hetzner-cloud-data.module&#x27;;
+import { HetznerAppModule } from &#x27;../modules/hetzner-app/hetzner-app.module&#x27;;
+import { GlobalAppPagesModule } from &#x27;../pages/global/global-app-pages.module&#x27;;
+import { Device } from &#x27;@ionic-native/device&#x27;;
+import { CloudAppPagesModule } from &#x27;../pages/cloud/cloud-app-pages.module&#x27;;
+import { RobotAppPagesModule } from &#x27;../pages/robot/robot-app-pages.module&#x27;;
+import { HetznerRobotDataModule } from &#x27;../modules/hetzner-robot-data/hetzner-robot-data.module&#x27;;
+import { HetznerRobotApiModule } from &#x27;../modules/hetzner-robot-api/hetzner-robot-api.module&#x27;;
 
 /**
  * Init the Ionic Pro Monitoring Service
  * @type {Pro}
  */
 const IonicPro &#x3D; Pro.init(&#x27;359b3ec5&#x27;, {
-  appVersion: &quot;2.0.0&quot;
+    appVersion: &#x27;2.0.0&#x27;,
 });
 
 /**
@@ -1526,99 +1538,91 @@ const IonicPro &#x3D; Pro.init(&#x27;359b3ec5&#x27;, {
  */
 @Injectable()
 export class IonicProErrorHandler implements ErrorHandler {
-  /**
-   * The ionic error handler
-   */
-  ionicErrorHandler: IonicErrorHandler;
+    /**
+     * The ionic error handler
+     */
+    ionicErrorHandler: IonicErrorHandler;
 
-  /**
-   * Constructor
-   * @param {Injector} injector
-   * @param {NetworkProvider} network
-   */
-  constructor(protected injector: Injector, protected network: NetworkProvider) {
-    try {
-      this.ionicErrorHandler &#x3D; injector.get(IonicErrorHandler);
-    } catch (e) {
-      // Unable to get the IonicErrorHandler provider, ensure
-      // IonicErrorHandler has been added to the providers list below
+    /**
+     * Constructor
+     * @param {Injector} injector
+     * @param {NetworkProvider} network
+     */
+    constructor(protected injector: Injector, protected network: NetworkProvider) {
+        try {
+            this.ionicErrorHandler &#x3D; injector.get(IonicErrorHandler);
+        } catch (e) {
+            // Unable to get the IonicErrorHandler provider, ensure
+            // IonicErrorHandler has been added to the providers list below
+        }
     }
-  }
 
-  /**
-   * How to handle the error
-   * @param err
-   */
-  handleError(err: any): void {
-    if (err.toString().indexOf(&#x27;No account&#x27;) &#x3D;&#x3D; -1 &amp;&amp; err.toString().indexOf(&#x27;cordova&#x27;) &#x3D;&#x3D; -1) {
-      if (this.network.has_connection &#x3D;&#x3D; true) {
+    /**
+     * How to handle the error
+     * @param err
+     */
+    handleError(err: any): void {
+        if (err.toString().indexOf(&#x27;No account&#x27;) &#x3D;&#x3D; -1 &amp;&amp; err.toString().indexOf(&#x27;cordova&#x27;) &#x3D;&#x3D; -1) {
+            if (this.network.has_connection &#x3D;&#x3D; true) {
+                IonicPro.monitoring.handleNewError(err);
+            }
 
-        IonicPro.monitoring.handleNewError(err);
-      }
-
-
-      // Remove this if you want to disable Ionic&#x27;s auto exception handling
-      // in development mode.
-      this.ionicErrorHandler &amp;&amp; this.ionicErrorHandler.handleError(err);
+            // Remove this if you want to disable Ionic&#x27;s auto exception handling
+            // in development mode.
+            this.ionicErrorHandler &amp;&amp; this.ionicErrorHandler.handleError(err);
+        }
     }
-  }
 }
 
 /**
  * This is the basic module that contains all functions from the app
  */
 @NgModule({
-  declarations: [
-    HetznerMobileApp,
-  ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(HetznerMobileApp),
-    HetznerAppModule,
-    IonicStorageModule.forRoot(),
-    HetznerCloudDataModule,
-    HetznerRobotDataModule,
-    HetznerCloudApiProviderModule,
-    HetznerRobotApiModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    TooltipsModule,
-    ChartsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
-    NgxQRCodeModule,
-    BrowserAnimationsModule,
-    HetznerAppComponentsModule,
-    GlobalAppPagesModule,
-    CloudAppPagesModule,
-    RobotAppPagesModule,
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    HetznerMobileApp,
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicProErrorHandler},
-    OneSignal,
-    InAppBrowser,
-    AppVersion,
-    FingerprintAIO,
-    BarcodeScanner,
-    Keyboard,
-    AppRate,
-    Device
-  ]
+    declarations: [HetznerMobileApp],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(HetznerMobileApp),
+        HetznerAppModule,
+        IonicStorageModule.forRoot(),
+        HetznerCloudDataModule,
+        HetznerRobotDataModule,
+        HetznerCloudApiProviderModule,
+        HetznerRobotApiModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        TooltipsModule,
+        ChartsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient],
+            },
+        }),
+        NgxQRCodeModule,
+        BrowserAnimationsModule,
+        HetznerAppComponentsModule,
+        GlobalAppPagesModule,
+        CloudAppPagesModule,
+        RobotAppPagesModule,
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [HetznerMobileApp],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        { provide: ErrorHandler, useClass: IonicProErrorHandler },
+        OneSignal,
+        InAppBrowser,
+        AppVersion,
+        FingerprintAIO,
+        BarcodeScanner,
+        Keyboard,
+        AppRate,
+        Device,
+    ],
 })
-export class AppModule {
-}
-
+export class AppModule {}
 </code></pre>
     </div>
 

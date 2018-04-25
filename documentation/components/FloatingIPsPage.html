@@ -264,6 +264,12 @@
                                     <a href="../components/SshkeysPage.html" >SshkeysPage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
                                 </li>
                                 <li class="link">
@@ -859,6 +865,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SshkeysPage.html" >SshkeysPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxDetailPage.html" >StorageBoxDetailPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/StorageBoxEditModal.html" >StorageBoxEditModal</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/StorageBoxListPage.html" >StorageBoxListPage</a>
@@ -1619,7 +1631,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIPs.ts:132</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIPs.ts:131</a></div>
                                 </td>
                             </tr>
     
@@ -1725,7 +1737,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIPs.ts:120</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/pages/cloud/floatingIPs/floatingIPs.ts:119</a></div>
                                 </td>
                             </tr>
     
@@ -1985,201 +1997,202 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
-import {ProjectsService} from &quot;../../../modules/hetzner-cloud-data/project/projects.service&quot;;
-import {ActionSheetController, ModalController, NavController} from &quot;ionic-angular&quot;;
-import {addFloatingIPModal} from &quot;./addFloatingIp/addFloatingIP&quot;;
-import {FloatingIpApiProvider} from &quot;../../../modules/hetzner-cloud-api/floating-ip-api/floating-ip-api&quot;;
-import {FloatingIPPage} from &quot;./floatingIp/floatingIP&quot;;
-import {FloatingIpsService} from &quot;../../../modules/hetzner-cloud-data/floating-ips/floating-ips.service&quot;;
-import {NetworkProvider} from &quot;../../../modules/hetzner-app/network/network&quot;;
-import {TranslateService} from &quot;@ngx-translate/core&quot;;
-import {editFloatingIpModal} from &quot;./editFloatingIp/editFloatingIp&quot;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { ProjectsService } from &#x27;../../../modules/hetzner-cloud-data/project/projects.service&#x27;;
+import { ActionSheetController, ModalController, NavController } from &#x27;ionic-angular&#x27;;
+import { addFloatingIPModal } from &#x27;./addFloatingIp/addFloatingIP&#x27;;
+import { FloatingIpApiProvider } from &#x27;../../../modules/hetzner-cloud-api/floating-ip-api/floating-ip-api&#x27;;
+import { FloatingIPPage } from &#x27;./floatingIp/floatingIP&#x27;;
+import { FloatingIpsService } from &#x27;../../../modules/hetzner-cloud-data/floating-ips/floating-ips.service&#x27;;
+import { NetworkProvider } from &#x27;../../../modules/hetzner-app/network/network&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { editFloatingIpModal } from &#x27;./editFloatingIp/editFloatingIp&#x27;;
 
 /**
  * This page lists all available floating ips
  */
 @Component({
-  selector: &#x27;page-floatingIPs&#x27;,
-  templateUrl: &#x27;floatingIPs.html&#x27;
+    selector: &#x27;page-floatingIPs&#x27;,
+    templateUrl: &#x27;floatingIPs.html&#x27;,
 })
 export class FloatingIPsPage {
-  /**
-   * All available floating ips
-   * @type {any[]}
-   */
-  _floating_ips &#x3D; [];
-  /**
-   * Is the componet in the loading process?
-   * @type {boolean}
-   */
-  loading: boolean &#x3D; false;
-  /**
-   * Is the loading done?
-   * @type {boolean}
-   */
-  loading_done: boolean &#x3D; false;
+    /**
+     * All available floating ips
+     * @type {any[]}
+     */
+    _floating_ips &#x3D; [];
+    /**
+     * Is the componet in the loading process?
+     * @type {boolean}
+     */
+    loading: boolean &#x3D; false;
+    /**
+     * Is the loading done?
+     * @type {boolean}
+     */
+    loading_done: boolean &#x3D; false;
 
-  /**
-   * Constructor
-   * @param {ActionSheetController} actionSheetCtrl
-   * @param {NavController} navCtrl
-   * @param {ModalController} modal
-   * @param {FloatingIpsService} floatingApiService
-   * @param {TranslateService} translateService
-   * @param {ProjectsService} project
-   * @param {FloatingIpApiProvider} floatingIpApiProvider
-   * @param {NetworkProvider} networkProvider
-   */
-  constructor(
-    protected actionSheetCtrl: ActionSheetController,
-    protected navCtrl: NavController,
-    protected modal: ModalController,
-    protected floatingApiService: FloatingIpsService,
-    protected translateService: TranslateService,
-    protected project: ProjectsService,
-    protected floatingIpApiProvider: FloatingIpApiProvider,
-    protected networkProvider: NetworkProvider
-  ) {
-    this._floating_ips &#x3D; this.floatingApiService.floating_ips;
-  }
-
-  /**
-   * Load all floating ips from the storage
-   */
-  loadFloatingIPs() {
-    this.loading &#x3D; true;
-    this.floatingApiService.reloadFloatingIps().then((data) &#x3D;&gt; {
-      this._floating_ips &#x3D; this.floatingApiService.floating_ips;
-      this.loading &#x3D; false;
-      this.loading_done &#x3D; true;
-      setTimeout(() &#x3D;&gt; this.loading_done &#x3D; false, 3000);
-    });
-  }
-
-  /**
-   * Open the modal for adding a new floating ip
-   */
-  openAddFloatingIP() {
-    if (this.networkProvider.has_connection) {
-      let modal &#x3D; this.modal.create(addFloatingIPModal);
-      modal.onDidDismiss(() &#x3D;&gt; {
-        this.loadFloatingIPs();
-      });
-      modal.present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
+    /**
+     * Constructor
+     * @param {ActionSheetController} actionSheetCtrl
+     * @param {NavController} navCtrl
+     * @param {ModalController} modal
+     * @param {FloatingIpsService} floatingApiService
+     * @param {TranslateService} translateService
+     * @param {ProjectsService} project
+     * @param {FloatingIpApiProvider} floatingIpApiProvider
+     * @param {NetworkProvider} networkProvider
+     */
+    constructor(
+        protected actionSheetCtrl: ActionSheetController,
+        protected navCtrl: NavController,
+        protected modal: ModalController,
+        protected floatingApiService: FloatingIpsService,
+        protected translateService: TranslateService,
+        protected project: ProjectsService,
+        protected floatingIpApiProvider: FloatingIpApiProvider,
+        protected networkProvider: NetworkProvider
+    ) {
+        this._floating_ips &#x3D; this.floatingApiService.floating_ips;
     }
-  }
 
-  /**
-   * Open the details page for the given floating ip
-   * @param floatingIp
-   */
-  openFloatingIP(floatingIp) {
-    this.navCtrl.push(FloatingIPPage, {floating_ip: floatingIp});
-  }
-
-  /**
-   * Delete the given floating ip
-   * @param floatingIp
-   */
-  delete(floatingIp) {
-
-    if (this.networkProvider.has_connection) {
-      let confirmation &#x3D; &#x27;&#x27;;
-      this.translateService.get(&#x27;ACTIONS.DELETE_CONFIRMATION&#x27;).subscribe((text) &#x3D;&gt; {
-        confirmation &#x3D; text;
-      })
-      if (confirm(confirmation)) {
-        this.floatingIpApiProvider.deleteFloatingIp(floatingIp.id).then((data) &#x3D;&gt; {
-          this.loadFloatingIPs();
+    /**
+     * Load all floating ips from the storage
+     */
+    loadFloatingIPs() {
+        this.loading &#x3D; true;
+        this.floatingApiService.reloadFloatingIps().then(data &#x3D;&gt; {
+            this._floating_ips &#x3D; this.floatingApiService.floating_ips;
+            this.loading &#x3D; false;
+            this.loading_done &#x3D; true;
+            setTimeout(() &#x3D;&gt; (this.loading_done &#x3D; false), 3000);
         });
-      }
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
     }
-  }
 
-  /**
-   * Open the edit modal for the floating ip
-   */
-  openEditFloatingIp(floatingIp) {
-    if (this.networkProvider.has_connection) {
-      this.modal.create(editFloatingIpModal, {floating_ip: floatingIp}).present();
-    } else {
-      this.networkProvider.displayNoNetworkNotice();
+    /**
+     * Open the modal for adding a new floating ip
+     */
+    openAddFloatingIP() {
+        if (this.networkProvider.has_connection) {
+            let modal &#x3D; this.modal.create(addFloatingIPModal);
+            modal.onDidDismiss(() &#x3D;&gt; {
+                this.loadFloatingIPs();
+            });
+            modal.present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
     }
-  }
 
-  /**
-   * Open all available actions for the given floating ip
-   * @param floatingIp
-   */
-  openActionSheets(floatingIp) {
-    let _title: string &#x3D; &#x27;&#x27;;
-    this.translateService.get(&#x27;PAGE.FLOATING_IPS.ACTIONS.TITLE&#x27;, {floatingIpDescription: floatingIp.description}).subscribe((text) &#x3D;&gt; {
-      _title &#x3D; text;
-    });
-    let _delete: string &#x3D; &#x27;&#x27;;
-    this.translateService.get(&#x27;ACTIONS.DELETE&#x27;).subscribe(text &#x3D;&gt; {
-      _delete &#x3D; text;
-    });
-    let _edit: string &#x3D; &#x27;&#x27;;
-    this.translateService.get(&#x27;ACTIONS.EDIT&#x27;).subscribe(text &#x3D;&gt; {
-      _edit &#x3D; text;
-    });
-    let _cancel: string &#x3D; &#x27;&#x27;;
-    this.translateService.get(&#x27;ACTIONS.CANCEL&#x27;).subscribe(text &#x3D;&gt; {
-      _cancel &#x3D; text;
-    });
-    let _open_details: string &#x3D; &#x27;&#x27;;
-    this.translateService.get(&#x27;ACTIONS.OPEN_DETAILS&#x27;).subscribe(text &#x3D;&gt; {
-      _open_details &#x3D; text;
-    });
-    var buttons &#x3D; [
-      {
-        text: _open_details,
-        icon: &#x27;information-circle&#x27;,
-        handler: () &#x3D;&gt; {
-          this.openFloatingIP(floatingIp);
-        }
-      },
-      {
-        text: _edit,
-        icon: &#x27;brush&#x27;,
-        handler: () &#x3D;&gt; {
-          this.openEditFloatingIp(floatingIp);
-        }
-      },
-      {
-        text: _cancel,
-        role: &#x27;cancel&#x27;, // will always sort to be on the bottom
-        icon: &#x27;close&#x27;,
-        handler: () &#x3D;&gt; {
-          console.log(&#x27;Cancel clicked&#x27;);
-        }
-      }
-    ];
+    /**
+     * Open the details page for the given floating ip
+     * @param floatingIp
+     */
+    openFloatingIP(floatingIp) {
+        this.navCtrl.push(FloatingIPPage, { floating_ip: floatingIp });
+    }
 
-    if (floatingIp.protection.delete &#x3D;&#x3D; false) {
-      buttons.unshift({
-        text: _delete,
-        role: &#x27;destructive&#x27;,
-        icon: &#x27;trash&#x27;,
-        handler: () &#x3D;&gt; {
-          this.delete(floatingIp);
+    /**
+     * Delete the given floating ip
+     * @param floatingIp
+     */
+    delete(floatingIp) {
+        if (this.networkProvider.has_connection) {
+            let confirmation &#x3D; &#x27;&#x27;;
+            this.translateService.get(&#x27;ACTIONS.DELETE_CONFIRMATION&#x27;).subscribe(text &#x3D;&gt; {
+                confirmation &#x3D; text;
+            });
+            if (confirm(confirmation)) {
+                this.floatingIpApiProvider.deleteFloatingIp(floatingIp.id).then(data &#x3D;&gt; {
+                    this.loadFloatingIPs();
+                });
+            }
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
         }
-      })
     }
-    var actions &#x3D; {
-      title: _title,
-      cssClass: &#x27;action-sheets-basic-page&#x27;,
-      buttons: buttons
+
+    /**
+     * Open the edit modal for the floating ip
+     */
+    openEditFloatingIp(floatingIp) {
+        if (this.networkProvider.has_connection) {
+            this.modal.create(editFloatingIpModal, { floating_ip: floatingIp }).present();
+        } else {
+            this.networkProvider.displayNoNetworkNotice();
+        }
     }
-    let actionSheet &#x3D; this.actionSheetCtrl.create(actions);
-    actionSheet.present();
-  }
+
+    /**
+     * Open all available actions for the given floating ip
+     * @param floatingIp
+     */
+    openActionSheets(floatingIp) {
+        let _title: string &#x3D; &#x27;&#x27;;
+        this.translateService
+            .get(&#x27;PAGE.FLOATING_IPS.ACTIONS.TITLE&#x27;, { floatingIpDescription: floatingIp.description })
+            .subscribe(text &#x3D;&gt; {
+                _title &#x3D; text;
+            });
+        let _delete: string &#x3D; &#x27;&#x27;;
+        this.translateService.get(&#x27;ACTIONS.DELETE&#x27;).subscribe(text &#x3D;&gt; {
+            _delete &#x3D; text;
+        });
+        let _edit: string &#x3D; &#x27;&#x27;;
+        this.translateService.get(&#x27;ACTIONS.EDIT&#x27;).subscribe(text &#x3D;&gt; {
+            _edit &#x3D; text;
+        });
+        let _cancel: string &#x3D; &#x27;&#x27;;
+        this.translateService.get(&#x27;ACTIONS.CANCEL&#x27;).subscribe(text &#x3D;&gt; {
+            _cancel &#x3D; text;
+        });
+        let _open_details: string &#x3D; &#x27;&#x27;;
+        this.translateService.get(&#x27;ACTIONS.OPEN_DETAILS&#x27;).subscribe(text &#x3D;&gt; {
+            _open_details &#x3D; text;
+        });
+        var buttons &#x3D; [
+            {
+                text: _open_details,
+                icon: &#x27;information-circle&#x27;,
+                handler: () &#x3D;&gt; {
+                    this.openFloatingIP(floatingIp);
+                },
+            },
+            {
+                text: _edit,
+                icon: &#x27;brush&#x27;,
+                handler: () &#x3D;&gt; {
+                    this.openEditFloatingIp(floatingIp);
+                },
+            },
+            {
+                text: _cancel,
+                role: &#x27;cancel&#x27;, // will always sort to be on the bottom
+                icon: &#x27;close&#x27;,
+                handler: () &#x3D;&gt; {
+                    console.log(&#x27;Cancel clicked&#x27;);
+                },
+            },
+        ];
+
+        if (floatingIp.protection.delete &#x3D;&#x3D; false) {
+            buttons.unshift({
+                text: _delete,
+                role: &#x27;destructive&#x27;,
+                icon: &#x27;trash&#x27;,
+                handler: () &#x3D;&gt; {
+                    this.delete(floatingIp);
+                },
+            });
+        }
+        var actions &#x3D; {
+            title: _title,
+            cssClass: &#x27;action-sheets-basic-page&#x27;,
+            buttons: buttons,
+        };
+        let actionSheet &#x3D; this.actionSheetCtrl.create(actions);
+        actionSheet.present();
+    }
 }
 </code></pre>
     </div>
@@ -2245,7 +2258,7 @@ export class FloatingIPsPage {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>    <button ion-button menuToggle>      <i class="fas fa-bars fa-2x"></i>    </button>    <ion-title>{{ \'PAGE.FLOATING_IPS.TITLE\' | translate}}</ion-title>    <ion-buttons end>      <loading-indicator (action)="loadFloatingIPs()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>    </ion-buttons>  </ion-navbar></ion-header><ion-content>  <ion-card>    <ion-list>      <ion-item *ngFor="let _floating_ip of _floating_ips" (click)="openActionSheets(_floating_ip)" data-test="floating_ips" [attr.data-test-floating-ip]="_floating_ip.description">        <div>          <h2>{{ _floating_ip.description }} <i class="fas fa-lock" *ngIf="_floating_ip.protection.delete"></i></h2>          <p>{{ _floating_ip.ip }} - {{ _floating_ip.home_location.city }}</p>        </div>      </ion-item>      <p ion-item *ngIf="_floating_ips == null || _floating_ips.length == 0" text-wrap="" class="message_box info" id="no_floating_ips">        {{ \'PAGE.FLOATING_IPS.NO_FLOATING_IPS\' | translate}}      </p>    </ion-list>  </ion-card>  <ion-fab bottom right>    <button ion-fab color="primary" (click)="openAddFloatingIP()" id="add_floating_ip">      <i class="fas fa-plus"></i>    </button>  </ion-fab></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountAddModal', 'selector': 'modal-account-add'},{'name': 'AccountEditModal', 'selector': 'modal-account-edit'},{'name': 'AccountListPage', 'selector': 'page-account-list'},{'name': 'ActionsPage', 'selector': 'page-actions'},{'name': 'ChangeProtectionComponent', 'selector': 'change-protection'},{'name': 'ChangelogPage', 'selector': 'page-changelog'},{'name': 'DeleteAllDataPage', 'selector': 'page-delete-all-data'},{'name': 'DeveloperPage', 'selector': 'page-developer'},{'name': 'FloatingIPPage', 'selector': 'page-floatingIP'},{'name': 'FloatingIPsPage', 'selector': 'page-floatingIPs'},{'name': 'HetznerMobileApp', 'selector': ''},{'name': 'HetznerStatusPage', 'selector': 'page-hetzner-status'},{'name': 'HetznerStatusSettingPage', 'selector': 'page-hetzner-status-setting'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagesPage', 'selector': 'page-images'},{'name': 'LoadingIndicatorComponent', 'selector': 'loading-indicator'},{'name': 'NumericStepIndicatorComponent', 'selector': 'numeric-step-indicator'},{'name': 'ProjectsPage', 'selector': 'page-projects'},{'name': 'SelectBoxComponent', 'selector': 'clickable-select-box'},{'name': 'SelectDatacenterComponent', 'selector': 'select-datacenter'},{'name': 'SelectImageComponent', 'selector': 'select-image'},{'name': 'SelectOnlyOneBoxComponent', 'selector': 'select-only-one-box'},{'name': 'SelectSshKeyComponent', 'selector': 'select-ssh-keys'},{'name': 'SelectTypeComponent', 'selector': 'select-type'},{'name': 'ServerBasicInformationComponent', 'selector': 'server-basic-information'},{'name': 'ServerDetailPage', 'selector': 'page-server-detail'},{'name': 'ServerEditModal', 'selector': 'modal-server-edit'},{'name': 'ServerListPage', 'selector': 'page-server-list'},{'name': 'ServerMetricsPage', 'selector': 'page-server-metrics'},{'name': 'ServerPage', 'selector': 'page-server'},{'name': 'ServerStatusIndicatorComponent', 'selector': 'server-status-indicator'},{'name': 'ServersPage', 'selector': 'page-servers'},{'name': 'SettingsPage', 'selector': 'page-settings'},{'name': 'SshKeyEditModal', 'selector': 'modal-ssh-key-edit'},{'name': 'SshKeyListPage', 'selector': 'page-ssh-key-list'},{'name': 'SshkeysPage', 'selector': 'page-sshkeys'},{'name': 'StorageBoxDetailPage', 'selector': 'page-storage-box-details'},{'name': 'StorageBoxEditModal', 'selector': 'modal-storage-box-edit'},{'name': 'StorageBoxListPage', 'selector': 'page-storage-box-list'},{'name': 'addFloatingIPModal', 'selector': 'modal-addFloatingIP'},{'name': 'addProjectModal', 'selector': 'modal-addProject'},{'name': 'addServerModal', 'selector': 'page-addServer'},{'name': 'assignToServerModal', 'selector': 'modal-assignToServer'},{'name': 'backupSettingsModal', 'selector': 'modal-backupSettings'},{'name': 'changeIPv4ReverseDNSModal', 'selector': 'modal-changeIPv4ReverseDNS'},{'name': 'changeIPv6ReverseDNSModal', 'selector': 'modal-changeIPv6ReverseDNS'},{'name': 'consoleModal', 'selector': 'modal-console'},{'name': 'editFloatingIpModal', 'selector': 'modal-editFloatingIp'},{'name': 'editImageModal', 'selector': 'modal-editImage'},{'name': 'editProjectModal', 'selector': 'modal-editProject'},{'name': 'editSSHKeyModal', 'selector': 'modal-editSSHKey'},{'name': 'editServerModal', 'selector': 'modal-editServer'},{'name': 'powerSettingsModal', 'selector': 'modal-powerSettings'},{'name': 'rescueModeModal', 'selector': 'modal-rescueMode'},{'name': 'resizeServerModal', 'selector': 'modal-resizeServer'},{'name': 'shareProjectModal', 'selector': 'modal-shareProject'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FloatingIPsPage'};
 </script>
