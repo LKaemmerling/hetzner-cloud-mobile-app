@@ -50,7 +50,7 @@ export class SshKeysService {
    */
   public reloadSshKeys() {
     return this.sshKeyApi.all().then((data) => {
-      this.ssh_keys = data;
+      this.ssh_keys = Object.create(data);
       this.saveSshKeys();
     });
   }

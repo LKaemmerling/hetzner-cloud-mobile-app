@@ -49,10 +49,10 @@ export class ServersService {
   public reloadServers() {
     return new Promise((resolve, reject = null) => {
       this.serverApiProvider.getServers().then((data) => {
-        this.servers = data;
+        this.servers = Object.create(data);
         this.saveServers();
         resolve();
-      },(error) => {
+      }, (error) => {
         reject(error);
       });
     });

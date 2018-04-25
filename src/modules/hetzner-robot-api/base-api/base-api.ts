@@ -28,7 +28,7 @@ export abstract class BaseApiProvider {
     return new Promise((resolve, reject = null) => {
       this.http.get(this.configService.robot_api_url + '/' + method, null, this.getHeaders(),
       ).then(data => {
-        resolve(data.data);
+        resolve(Object.create(data.data));
       }).catch(err => {
         if (reject != null) {
           reject(this.parseErrorMessage(err));
@@ -48,7 +48,7 @@ export abstract class BaseApiProvider {
     return new Promise((resolve, reject = null) => {
       this.http.post(this.configService.robot_api_url + '/' + method, body, this.getHeaders(),
       ).then(data => {
-        resolve(data.data);
+        resolve(Object.create(data.data));
       }).catch(err => {
         if (reject != null) {
           reject(this.parseErrorMessage(err));
@@ -68,7 +68,7 @@ export abstract class BaseApiProvider {
     return new Promise((resolve, reject = null) => {
       this.http.put(this.configService.robot_api_url + '/' + method, body, this.getHeaders(),
       ).then(data => {
-        resolve(data.data);
+        resolve(Object.create(data.data));
       }).catch(err => {
         if (reject != null) {
           reject(this.parseErrorMessage(err));
@@ -87,7 +87,7 @@ export abstract class BaseApiProvider {
     return new Promise((resolve, reject = null) => {
       this.http.delete(this.configService.robot_api_url + '/' + method, null, this.getHeaders(),
       ).then(data => {
-        resolve(data.data);
+        resolve(Object.create(data.data));
       }).catch(err => {
         if (reject != null) {
           reject(this.parseErrorMessage(err));
