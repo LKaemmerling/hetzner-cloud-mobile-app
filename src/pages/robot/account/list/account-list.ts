@@ -8,11 +8,11 @@ import {Account} from '../../../../modules/hetzner-robot-data/accounts/account';
 import {HetznerRobotDataService} from '../../../../modules/hetzner-robot-data/hetzner-robot-data.service';
 import {AccountService} from '../../../../modules/hetzner-robot-data/accounts/account.service';
 import {NetworkProvider} from '../../../../modules/hetzner-app/network/network';
-import {ServerApiProvider} from '../../../../modules/hetzner-robot-api/server-api/server-api.provider';
 import {HetznerRobotMenuService} from '../../../../modules/hetzner-robot-data/hetzner-robot-menu.service';
 import {AccountAddModal} from '../add/account-add';
 import {AccountEditModal} from '../edit/account-edit';
 import {AccountShareModal} from "../share/account-share";
+import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects

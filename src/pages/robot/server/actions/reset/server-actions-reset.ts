@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ViewController} from 'ionic-angular';
-import {ServerApiProvider} from '../../../../../modules/hetzner-robot-api/server-api/server-api.provider';
+import {ServerApiProvider} from '../../../../../modules/hetzner-robot-api/server-api/server-api';
 
 /**
  * This modal makes it possible to edit a ssh key

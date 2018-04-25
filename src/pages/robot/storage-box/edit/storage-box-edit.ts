@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { LoadingController, NavController, NavParams, ViewController } from 'ionic-angular';
-import { ServerApiProvider } from '../../../../modules/hetzner-robot-api/server-api/server-api.provider';
 import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
 
 /**
