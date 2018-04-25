@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {ProjectsService} from "../../hetzner-cloud-data/project/projects.service";
 import {ConfigService} from "../../hetzner-app/config/config.service";
+
 /**
  * This is the basic provider, that is the parent of all other api providers
  */
@@ -108,6 +109,7 @@ export abstract class HetznerApiProvider {
     }
     return new HttpHeaders()
       .set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key)
-      .set('Accept', 'application/json');
+      .set('Accept', 'application/json')
+      .set('App-Version', this.configService.version);
   }
 }

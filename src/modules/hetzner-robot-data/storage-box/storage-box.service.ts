@@ -1,8 +1,8 @@
 import {Storage} from "@ionic/storage";
 import {Injectable} from '@angular/core';
 
-import {ServerApiProvider} from "../../hetzner-robot-api/server-api/server-api";
-import {StorageBoxApiProvider} from "../../hetzner-robot-api/storage-box-api/storage-box-api";
+import {ServerApiProvider} from "../../hetzner-robot-api/server-api/server-api.provider";
+import {StorageBoxApiProvider} from "../../hetzner-robot-api/storage-box-api/storage-box-api.class";
 
 /**
  * Service that contains all storage methods for the servers.

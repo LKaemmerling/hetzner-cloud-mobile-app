@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, ModalController, NavParams} from 'ionic-angular';
 import {fadeIn, fadeOut} from 'ng-animate';
-import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
+import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api.class";
 import {StorageBoxEditModal} from "../edit/storage-box-edit";
 
 /**

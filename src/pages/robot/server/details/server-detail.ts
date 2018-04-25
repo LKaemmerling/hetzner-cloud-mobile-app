@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, ModalController, NavParams} from 'ionic-angular';
 import {fadeIn, fadeOut} from 'ng-animate';
-import {ServerApiProvider} from '../../../../modules/hetzner-robot-api/server-api/server-api';
+import {ServerApiProvider} from '../../../../modules/hetzner-robot-api/server-api/server-api.provider';
 import {StorageBoxEditModal} from "../../storage-box/edit/storage-box-edit";
 import {ServerEditModal} from "../edit/server-edit";
 import {ServerActionsResetModal} from "../actions/reset/server-actions-reset";

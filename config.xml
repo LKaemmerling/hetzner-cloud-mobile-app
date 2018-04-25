@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="2000010" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="2000010" version="2.0.0" xmlns="http://www.w3.org/ns/widgets">
+<widget android-versionCode="2000011" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="2000011" version="2.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Hetzner</name>
     <description>A mobile app for all Hetzner services.</description>
     <author email="kontakt@lukas-kaemmerling.de" href="https://lk-development.de">LK-Development</author>

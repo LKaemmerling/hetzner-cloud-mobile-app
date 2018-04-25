@@ -31,7 +31,7 @@ export abstract class BaseApiProvider {
         resolve(data.data);
       }).catch(err => {
         if (reject != null) {
-          reject(err);
+          reject(this.parseErrorMessage(err));
         }
       });
     });
@@ -51,7 +51,7 @@ export abstract class BaseApiProvider {
         resolve(data.data);
       }).catch(err => {
         if (reject != null) {
-          reject(err);
+          reject(this.parseErrorMessage(err));
         }
       });
     });
@@ -71,7 +71,7 @@ export abstract class BaseApiProvider {
         resolve(data.data);
       }).catch(err => {
         if (reject != null) {
-          reject(err);
+          reject(this.parseErrorMessage(err));
         }
       });
     });
@@ -90,7 +90,7 @@ export abstract class BaseApiProvider {
         resolve(data.data);
       }).catch(err => {
         if (reject != null) {
-          reject(err);
+          reject(this.parseErrorMessage(err));
         }
       });
     });
@@ -101,13 +101,23 @@ export abstract class BaseApiProvider {
    * @returns {HttpHeaders}
    */
   private getHeaders() {
-    this.http.useBasicAuth(this.accountService.actual_account.username, this.accountService.actual_account.password);
+
     if (this.accountService.actual_account == null) {
       return {};
     }
 
+    this.http.useBasicAuth(this.accountService.actual_account.username, this.accountService.actual_account.password);
     return {
-      "Content-Type": "application/x-www-form-urlencoded"
+      "Content-Type": "application/x-www-form-urlencoded",
+      "App-Version": this.configService.version
     };
+  }
+
+  protected parseErrorMessage(error) {
+    let _error = {message: ''};
+    if (error.message == undefined) {
+      _error.message = error.error;
+    }
+    return _error;
   }
 }
