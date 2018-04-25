@@ -33,7 +33,7 @@ export class ConfigService {
    * The basic url for all robot api call
    * @type {string}
    */
-  public robot_api_url: string = 'http://localhost:8100/robot';
+  public robot_api_url: string = 'https://robot-ws.your-server.de';
   /**
    * This contains all configuration for the One Signal Push Notification service
    * @type any
@@ -58,9 +58,6 @@ export class ConfigService {
    * @param {AppVersion} appVersion
    */
   constructor(protected storage: Storage, public appVersion: AppVersion, protected platform: Platform) {
-    if (platform.is('ios') || platform.is('android')) {
-      this.robot_api_url = 'https://robot-ws.your-server.de';
-    }
   }
 
   /**
@@ -68,6 +65,9 @@ export class ConfigService {
    */
   public init() {
     return new Promise((resolve => {
+      if (this.platform.is('ios') == false && this.platform.is('android') == false) {
+        this.robot_api_url = 'http://localhost:8100/robot';
+      }
       this.storage.get('developer_mode').then(val => {
         if (val != undefined) {
           this.developer_mode = val;
