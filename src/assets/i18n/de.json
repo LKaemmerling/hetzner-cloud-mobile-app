@@ -493,6 +493,15 @@
             "FORM": {
               "NAME": "Bezeichnung"
             }
+          },
+          "RESET":{
+            "TITLE": "Reset",
+            "TYPES": {
+              "SW": "STRG+ALT+ENTF an den Server senden",
+              "HW":"Automatischen Hardware-Reset auslösen",
+              "MAN":"Manuellen Hardware-Reset beauftragen"
+            },
+            "NO_TYPES": "Dieser Server unterstützt keinen Reset."
           }
         }
       },
@@ -513,7 +522,7 @@
           "CANCELLED": "Der Server wurde bereits zur Kündigung vorgemerkt."
         },
         "ACTIONS": {
-          "POWER": "Power Einstellungen",
+          "POWER": "Reset",
           "BOOT_CONFIGURATION": "Boot Konfiguration",
           "RDNS_SETTINGS": "Reverse DNS",
           "RESCUE": "Rescue Modus",

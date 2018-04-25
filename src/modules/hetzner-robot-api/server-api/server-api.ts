@@ -31,6 +31,11 @@ export class ServerApiProvider extends BaseApiProvider {
     return this._post('server/' + serverIp, "server_name=" + server_name)
   }
 
+  /**
+   *
+   * @param {string} serverIp
+   * @returns {Promise<any>}
+   */
   getCancellationData(serverIp: string) {
     return this._get('server/' + serverIp + '/cancellation')
   }
@@ -53,5 +58,13 @@ export class ServerApiProvider extends BaseApiProvider {
    */
   removeCancellation(serverIp: string) {
     return this._delete('server/' + serverIp + '/cancellation')
+  }
+
+  resetOptions(serverIp: string) {
+    return this._get('reset/' + serverIp)
+  }
+
+  reset(serverIp: string, type: string) {
+    return this._post('reset/' + serverIp, "type=" + type);
   }
 }

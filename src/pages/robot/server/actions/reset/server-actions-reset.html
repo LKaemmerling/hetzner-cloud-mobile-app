@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ 'ROBOT.PAGE.SERVERS.MODAL.RESET.TITLE' | translate}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
+        <i class="fas fa-times" showWhen="android,windows"></i>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list radio-group [(ngModel)]="option">
+    <ion-item *ngIf="options.indexOf('sw') != -1">
+      <ion-label>{{'ROBOT.PAGE.SERVERS.MODAL.RESET.TYPES.SW' | translate}}</ion-label>
+      <ion-radio value="sw"></ion-radio>
+    </ion-item>
+
+    <ion-item *ngIf="options.indexOf('hw') != -1">
+      <ion-label>{{'ROBOT.PAGE.SERVERS.MODAL.RESET.TYPES.HW' | translate}}</ion-label>
+      <ion-radio value="hw"></ion-radio>
+    </ion-item>
+    <ion-item *ngIf="options.indexOf('man') != -1">
+      <ion-label>{{'ROBOT.PAGE.SERVERS.MODAL.RESET.TYPES.MAN' | translate}}</ion-label>
+      <ion-radio value="man" ></ion-radio>
+    </ion-item>
+  </ion-list>
+  <button ion-button color="danger" (click)="sendReset()">{{ 'ACTIONS.SAVE' | translate}}</button>
+  <p class="message_box  error" *ngIf="options.length == 0">{{
+    'ROBOT.PAGE.SERVERS.MODAL.RESET.NO_TYPES' | translate}}</p>
+</ion-content>

@@ -3,6 +3,8 @@ import {LoadingController, ModalController, NavParams} from 'ionic-angular';
 import {fadeIn, fadeOut} from 'ng-animate';
 import {ServerApiProvider} from '../../../../modules/hetzner-robot-api/server-api/server-api';
 import {StorageBoxEditModal} from "../../storage-box/edit/storage-box-edit";
+import {ServerEditModal} from "../edit/server-edit";
+import {ServerActionsResetModal} from "../actions/reset/server-actions-reset";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -54,7 +56,15 @@ export class ServerDetailPage {
    *
    */
   openEditModal() {
-    let modal = this.modalCtrl.create(StorageBoxEditModal, {server: this.server});
+    let modal = this.modalCtrl.create(ServerEditModal, {server: this.server});
+    modal.onDidDismiss(() => {
+      this.loadServer();
+    });
+    modal.present();
+  }
+
+  openResetModal(){
+    let modal = this.modalCtrl.create(ServerActionsResetModal, {server: this.server});
     modal.onDidDismiss(() => {
       this.loadServer();
     });
