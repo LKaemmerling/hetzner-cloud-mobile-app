@@ -176,6 +176,7 @@ export class HetznerMobileApp {
     this.translate.setDefaultLang('de');
     this.translate.addLangs(this.config.available_languages);
     this.translate.use(this.config.language);
+    this.platform.setLang(this.config.language, true);
     this.translate.get("ACTIONS.BACK").subscribe((val) => {
       this.ionicConfig.set('backButtonText', val);
     })
