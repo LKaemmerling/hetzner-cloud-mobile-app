@@ -481,6 +481,10 @@
               "NAME_ALREADY_USED": "Sie haben bereits ein Projekt mit dieser Bezeichnung!",
               "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
             }
+          },
+          "SHARE": {
+            "TITLE": "Account teilen",
+            "MESSAGE": "Mit dieser Funktion können Sie einfach Accounts zwischen Ihren Geräten teilen, ohne dauerhaft die Zugangsdaten eingeben zu müssen. Scannen Sie einfach diesen QR-Code bei Erstellung eines neuen Accounts."
           }
         }
       },
