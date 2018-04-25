@@ -531,6 +531,29 @@
           }
         }
       },
+      "STORAGE_BOX_DETAILS": {
+        "INFORMATION": {
+          "TITLE": "Informationen",
+          "PRODUCT": "Produkt:",
+          "STORAGE_USAGE": "Speichernutzung:"
+        },
+        "NETWORK": {
+          "TITLE": "Netzwerk",
+          "SERVER": "Server:",
+          "WEBDAV": "WebDAV aktiv?",
+          "SAMBA": "Samba aktiv?",
+          "ZFS": "ZFS aktiv?"
+        },
+        "PAYMENT": {
+          "TITLE": "Zahlung",
+          "UNTIL": "Bezahlt bis",
+          "CANCELLED": "Der Server wurde bereits zur Kündigung vorgemerkt."
+        },
+        "ACTIONS": {
+          "SNAPSHOTS": "Snapshots",
+          "SUB_ACCOUNTS": "Sub Accounts"
+        }
+      },
       "SHOP": {
         "TITLE": "Bestellung"
       },

@@ -24,6 +24,14 @@
         {{ storagebox.product}}
       </div>
     </ion-item>
+    <ion-item>
+      <div item-left="" class="inner-item">
+        {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.INFORMATION.STORAGE_USAGE' | translate}}
+      </div>
+      <div item-right="">
+        {{ storagebox.disk_usage * 1024 * 1024 | fileSize }}/{{ storagebox.disk_quota * 1024 * 1024 | fileSize }}
+      </div>
+    </ion-item>
     <ion-list-header>
       {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.TITLE' | translate}}
     </ion-list-header>
