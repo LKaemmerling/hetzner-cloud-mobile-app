@@ -494,12 +494,13 @@
               "NAME": "Bezeichnung"
             }
           },
-          "RESET":{
+          "RESET": {
             "TITLE": "Reset",
             "TYPES": {
               "SW": "STRG+ALT+ENTF an den Server senden",
-              "HW":"Automatischen Hardware-Reset auslösen",
-              "MAN":"Manuellen Hardware-Reset beauftragen"
+              "HW": "Automatischen Hardware-Reset auslösen",
+              "MAN": "Manuellen Hardware-Reset beauftragen",
+              "WOL": "WOL-Signal an den Server senden"
             },
             "NO_TYPES": "Dieser Server unterstützt keinen Reset."
           }

@@ -67,4 +67,12 @@ export class ServerApiProvider extends BaseApiProvider {
   reset(serverIp: string, type: string) {
     return this._post('reset/' + serverIp, "type=" + type);
   }
+
+  wolOptions(serverIp: string) {
+    return this._get('wol/' + serverIp)
+  }
+
+  wol(serverIp: string) {
+    return this._post('wol/' + serverIp)
+  }
 }

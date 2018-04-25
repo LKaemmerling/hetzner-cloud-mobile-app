@@ -25,7 +25,11 @@
     </ion-item>
     <ion-item *ngIf="options.indexOf('man') != -1">
       <ion-label>{{'ROBOT.PAGE.SERVERS.MODAL.RESET.TYPES.MAN' | translate}}</ion-label>
-      <ion-radio value="man" ></ion-radio>
+      <ion-radio value="man"></ion-radio>
+    </ion-item>
+    <ion-item *ngIf="wol == true">
+      <ion-label>{{'ROBOT.PAGE.SERVERS.MODAL.RESET.TYPES.WOL' | translate}}</ion-label>
+      <ion-radio value="wol"></ion-radio>
     </ion-item>
   </ion-list>
   <button ion-button color="danger" (click)="sendReset()">{{ 'ACTIONS.SAVE' | translate}}</button>

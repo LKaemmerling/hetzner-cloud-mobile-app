@@ -19,6 +19,8 @@ export class ServerActionsResetModal {
 
   public option: string;
 
+  public wol: boolean = false;
+
   /**
    * Constructor
    * @param {ViewController} viewCtrl
@@ -38,17 +40,29 @@ export class ServerActionsResetModal {
     this.serverApi.resetOptions(this.server.server_ip).then((resp) => {
       this.options = resp['reset'].type;
     });
+    this.serverApi.wolOptions(this.server.server_ip).then(resp => {
+      this.wol = true;
+    }, null)
   }
+
   /**
    * Rename the current ssh key
    */
   public sendReset() {
     let loader = this.loadingCtrl.create();
     loader.present();
-    this.serverApi.reset(this.server.server_ip, this.option).then(() => {
-      loader.dismiss();
-      this.dismiss();
-    });
+    if (this.option == "wol") {
+      this.serverApi.wol(this.server.server_ip).then(() => {
+        loader.dismiss();
+        this.dismiss();
+      });
+    } else {
+      this.serverApi.reset(this.server.server_ip, this.option).then(() => {
+        loader.dismiss();
+        this.dismiss();
+      });
+    }
+
   }
 
   /**

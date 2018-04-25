@@ -45,7 +45,7 @@ export abstract class BaseApiProvider {
    * @returns {Promise<any>}
    * @private
    */
-  _post(method: string, body) {
+  _post(method: string, body = null) {
     return new Promise((resolve, reject = null) => {
       this.http.post(this.configService.robot_api_url + '/' + method, body, {
         headers: this.getHeaders(),
