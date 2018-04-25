@@ -41,7 +41,7 @@ export class PriceReplacePipe implements PipeTransform {
         if (price.startsWith('date::')) {
           price = new Date(Number(price.replace('date::', '')));
           var format = '';
-          this.translate.get('GLOBAL.DATE_FORMAT').subscribe(text => {
+          this.translate.get('GLOBAL.DATE_TIME_FORMAT').subscribe(text => {
             format = text;
           });
           price = dateFormat(price, format);

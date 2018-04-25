@@ -75,7 +75,7 @@
         {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.PAYMENT.UNTIL' | translate}}
       </div>
       <div item-right="">
-        {{ storagebox.paid_until }}
+        {{ storagebox.paid_until | date:('GLOBAL.DATE_FORMAT' | translate) }}
       </div>
     </ion-item>
     <ion-item *ngIf="storagebox.cancelled">

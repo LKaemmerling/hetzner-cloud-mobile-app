@@ -3,7 +3,9 @@
     <button ion-button menuToggle>
       <i class="fas fa-bars fa-2x"></i>
     </button>
-    <ion-title id="server_detail_name" *ngIf="server != null">{{ server.server_name.length > 0 ? server.server_name : server.product }}</ion-title>
+    <ion-title id="server_detail_name" *ngIf="server != null">{{ server.server_name.length > 0 ? server.server_name :
+      server.product }}
+    </ion-title>
     <ion-buttons end>
       <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
     </ion-buttons>
@@ -59,7 +61,7 @@
         {{ 'ROBOT.PAGE.SERVER_DETAILS.PAYMENT.UNTIL' | translate}}
       </div>
       <div item-right="">
-        {{ server.paid_until }}
+        {{ server.paid_until | date:('GLOBAL.DATE_FORMAT' | translate) }}
       </div>
     </ion-item>
     <ion-item *ngIf="server.cancelled">
