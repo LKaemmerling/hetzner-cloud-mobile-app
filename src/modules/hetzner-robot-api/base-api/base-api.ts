@@ -1,8 +1,8 @@
-import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {ConfigService} from "../../hetzner-app/config/config.service";
 import {AccountService} from "../../hetzner-robot-data/accounts/account.service";
-import {Observable} from "rxjs/Observable";
+import {HTTP} from "@ionic-native/http";
 
 /**
  * This is the basic provider, that is the parent of all other api providers
@@ -15,7 +15,7 @@ export abstract class BaseApiProvider {
    * @param {AccountService} accountService
    * @param {ConfigService} configService
    */
-  constructor(protected http: HttpClient, protected accountService: AccountService, protected configService: ConfigService) {
+  constructor(protected http: HTTP, protected accountService: AccountService, protected configService: ConfigService) {
   }
 
   /**
@@ -26,11 +26,10 @@ export abstract class BaseApiProvider {
    */
   _get(method: string) {
     return new Promise((resolve, reject = null) => {
-      this.http.get(this.configService.robot_api_url + '/' + method, {
-        headers: this.getHeaders(),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
+      this.http.get(this.configService.robot_api_url + '/' + method, null, this.getHeaders(),
+      ).then(data => {
+        resolve(data.data);
+      }).catch(err => {
         if (reject != null) {
           reject(err);
         }
@@ -47,11 +46,10 @@ export abstract class BaseApiProvider {
    */
   _post(method: string, body = null) {
     return new Promise((resolve, reject = null) => {
-      this.http.post(this.configService.robot_api_url + '/' + method, body, {
-        headers: this.getHeaders(),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
+      this.http.post(this.configService.robot_api_url + '/' + method, body, this.getHeaders(),
+      ).then(data => {
+        resolve(data.data);
+      }).catch(err => {
         if (reject != null) {
           reject(err);
         }
@@ -68,11 +66,10 @@ export abstract class BaseApiProvider {
    */
   _put(method: string, body) {
     return new Promise((resolve, reject = null) => {
-      this.http.put(this.configService.robot_api_url + '/' + method, body, {
-        headers: this.getHeaders(),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
+      this.http.put(this.configService.robot_api_url + '/' + method, body, this.getHeaders(),
+      ).then(data => {
+        resolve(data.data);
+      }).catch(err => {
         if (reject != null) {
           reject(err);
         }
@@ -88,11 +85,10 @@ export abstract class BaseApiProvider {
    */
   _delete(method: string) {
     return new Promise((resolve, reject = null) => {
-      this.http.delete(this.configService.robot_api_url + '/' + method, {
-        headers: this.getHeaders(),
-      }).subscribe(data => {
-        resolve(data);
-      }, err => {
+      this.http.delete(this.configService.robot_api_url + '/' + method, null, this.getHeaders(),
+      ).then(data => {
+        resolve(data.data);
+      }).catch(err => {
         if (reject != null) {
           reject(err);
         }
@@ -105,39 +101,13 @@ export abstract class BaseApiProvider {
    * @returns {HttpHeaders}
    */
   private getHeaders() {
+    this.http.useBasicAuth(this.accountService.actual_account.username, this.accountService.actual_account.password);
     if (this.accountService.actual_account == null) {
-      return new HttpHeaders();
-    }
-    return new HttpHeaders()
-      .set("authorization", "basic " + btoa(this.accountService.actual_account.username + ":" + this.accountService.actual_account.password))
-      .set("Content-Type", "application/x-www-form-urlencoded");
-  }
-}
-
-@Injectable()
-export class TokenInterceptor implements HttpInterceptor {
-
-  constructor(public accountService: AccountService) {
-  }
-
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    if (request.url.indexOf('robot') != -1) {
-      if (this.accountService.actual_account != null) {
-
-
-        request = request.clone({
-          setHeaders: {
-            Authorization: "basic " + btoa(this.accountService.actual_account.username + ":" + this.accountService.actual_account.password),
-            'Test-Header': 'Na_Super'
-          }
-        });
-        return next.handle(request);
-      }
-      throw new Error('No account');
-    } else {
-      return next.handle(request);
+      return {};
     }
 
+    return {
+      "Content-Type": "application/x-www-form-urlencoded"
+    };
   }
 }
