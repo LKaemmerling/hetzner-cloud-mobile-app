@@ -19,7 +19,9 @@
     "ORDER": "Kostenpflichtig bestellen",
     "SHARE": "Teilen",
     "OPEN_DETAILS": "Details",
-    "CANCELLATION": "Stornierung"
+    "CANCELLATION": "Stornierung",
+    "BACK": "Zurück",
+    "SEARCH": "Suche"
   },
   "COMPONENT": {
     "PROTECTION": {

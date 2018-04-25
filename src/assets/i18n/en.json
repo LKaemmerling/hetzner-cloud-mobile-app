@@ -18,7 +18,9 @@
     "SAVE": "Save",
     "ORDER": "Buy now",
     "SHARE": "Share",
-    "OPEN_DETAILS": "Details"
+    "OPEN_DETAILS": "Details",
+    "BACK": "Back",
+    "SEARCH":"Search"
   },
   "COMPONENT": {
     "PROTECTION": {

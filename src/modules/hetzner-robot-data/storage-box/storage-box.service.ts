@@ -47,9 +47,14 @@ export class StorageBoxService {
    * @returns {Promise<void>}
    */
   public reloadStorageBoxes() {
-    return this.storageBoxApi.getStorageBoxes().then((data) => {
-      this.storage_boxes = data;
-      this.saveStorageBoxes();
+    return new Promise((resolve, reject = null) => {
+      this.storageBoxApi.getStorageBoxes().then((data) => {
+        this.storage_boxes = data;
+        this.saveStorageBoxes();
+        resolve();
+      }, (error) => {
+        reject(error);
+      });
     });
   }
 

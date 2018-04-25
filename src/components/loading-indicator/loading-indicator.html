@@ -1,8 +1,9 @@
 <!-- Generated template for the LoadingIndicatorComponent component -->
 <button ion-button right="" (click)="callAction()" clear="" *ngIf="network_available === true">
-  <i class="fas fa-sync fa-1x" [ngClass]="{'fa-spin':loading}" *ngIf="loading_done == false"></i>
+  <i class="fas fa-sync fa-1x" [ngClass]="{'fa-spin':loading}"
+     *ngIf="loading_done == false && (error_message == undefined || error_message == null || error_message.length == 0)"></i>
   <i class="fas fa-check fa-1x" *ngIf="loading_done == true"></i>
-  <i class="fas fa-times fa-1x" *ngIf="loading_error != null && loading_error == true "></i>
+  <i class="fas fa-times fa-1x" *ngIf="error_message != null && loading_error == true "></i>
 </button>
 <button ion-button="" right="" (click)="network.displayNoNetworkNotice()" *ngIf="network_available === false" clear=""
         class="fa-stack fa-1x">

@@ -5,13 +5,14 @@
     </button>
     <ion-title>{{ 'ROBOT.PAGE.SERVERS.TITLE' | translate}}</ion-title>
     <ion-buttons end>
-      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
+      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done" [error_message]="error"
+                         [loading_error]="error.length > 0"></loading-indicator>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content *ngIf="compact_server_design">
-  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="search($event)" [placeholder]="'ACTIONS.SEARCH' | translate"></ion-searchbar>
   <ion-card>
     <ion-list>
 
@@ -31,7 +32,7 @@
   </ion-card>
 </ion-content>
 <ion-content *ngIf="!compact_server_design">
-  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="search($event)" [placeholder]="'ACTIONS.SEARCH' | translate"></ion-searchbar>
   <ion-row class="row">
     <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let server of _search; let i = index">
       <ion-card class="server" [id]="'server_'+i">
@@ -43,8 +44,7 @@
             </button>
           </ion-col>
           <ion-col col-12 align-items-start>
-            <h2>{{ server.server.server_name.length > 0 ? server.server.server_name : server.server.product }}
-            </h2>
+            <h2>{{ server.server.server_name.length > 0 ? server.server.server_name : server.server.product }}</h2>
           </ion-col>
         </ion-row>
         <ion-card-content>

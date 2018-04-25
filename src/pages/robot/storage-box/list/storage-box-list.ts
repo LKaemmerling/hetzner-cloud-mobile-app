@@ -64,7 +64,11 @@ export class StorageBoxListPage {
    * @type {any[]}
    */
   public visible: Array<string> = [];
-
+  /**
+   * Is the loading done?
+   * @type {boolean}
+   */
+  public error: string = "";
   /**
    * Constructor
    * @param {ActionSheetController} actionSheetCtrl
@@ -113,6 +117,9 @@ export class StorageBoxListPage {
       this.loading = false;
       this.loading_done = true;
       setTimeout(() => (this.loading_done = false), 5000);
+    }, (error) => {
+      this.loading = false;
+      this.error = error.message.toString();
     });
   }
 
