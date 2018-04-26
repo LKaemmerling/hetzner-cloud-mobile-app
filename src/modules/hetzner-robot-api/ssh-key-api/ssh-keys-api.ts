@@ -35,7 +35,7 @@ export class SshKeysApiProvider extends BaseApiProvider {
    */
   update(fingerprint: string, name: string) {
 
-    return this._post('key/' + fingerprint, "name="+name)
+    return this._post('key/' + fingerprint, {name: name})
   }
 
   /**

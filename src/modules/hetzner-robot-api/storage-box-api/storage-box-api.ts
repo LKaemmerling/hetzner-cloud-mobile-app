@@ -34,6 +34,6 @@ export class StorageBoxApiProvider extends BaseApiProvider {
    * @returns {Promise<any>}
    */
   update(boxId: number, name: string) {
-    return this._post('storagebox/' + boxId, "storagebox_name=" + name);
+    return this._post('storagebox/' + boxId, {storagebox_name: name});
   }
 }
