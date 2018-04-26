@@ -6,7 +6,7 @@
     <ion-title>{{ 'ROBOT.PAGE.STORAGE_BOXES.TITLE' | translate}}</ion-title>
     <ion-buttons end>
       <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done" [error_message]="error"
-                         [loading_error]="error.length > 0"></loading-indicator>
+                         [loading_error]="error != undefined && error.length > 0"></loading-indicator>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
