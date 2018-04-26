@@ -3,7 +3,6 @@ import {Injectable} from '@angular/core';
 import {ConfigService} from "../../hetzner-app/config/config.service";
 import {AccountService} from "../../hetzner-robot-data/accounts/account.service";
 import {Observable} from "rxjs/Observable";
-import {HTTP} from "@ionic-native/http";
 
 /**
  * This is the basic provider, that is the parent of all other api providers
@@ -16,7 +15,7 @@ export abstract class BaseApiProvider {
    * @param {AccountService} accountService
    * @param {ConfigService} configService
    */
-  constructor(protected http: HTTP, protected accountService: AccountService, protected configService: ConfigService) {
+  constructor(protected http: HttpClient, protected accountService: AccountService, protected configService: ConfigService) {
   }
 
   /**
@@ -27,14 +26,16 @@ export abstract class BaseApiProvider {
    */
   _get(method: string) {
     return new Promise((resolve, reject = null) => {
-      this.http.get(this.configService.robot_api_url + '/' + method, null, this.getHeaders(),
-      ).then(data => {
-        resolve(Object.create(data));
-      }).catch( err => {
-        if (reject != null) {
-          reject(err);
-        }
-      });
+      this.http.get(this.configService.robot_api_url + '/' + method, {
+        headers: this.getHeaders()
+      }).subscribe(
+        data => {
+          resolve(Object.create(data));
+        }, err => {
+          if (reject != null) {
+            reject(err);
+          }
+        });
     });
   }
 
@@ -47,14 +48,16 @@ export abstract class BaseApiProvider {
    */
   _post(method: string, body = null) {
     return new Promise((resolve, reject = null) => {
-      this.http.post(this.configService.robot_api_url + '/' + method, body, this.getHeaders(),
-      ).then(data => {
-        resolve(Object.create(data));
-      }).catch( err => {
-        if (reject != null) {
-          reject(err);
-        }
-      });
+      this.http.post(this.configService.robot_api_url + '/' + method, body, {
+        headers: this.getHeaders()
+      }).subscribe(
+        data => {
+          resolve(Object.create(data));
+        }, err => {
+          if (reject != null) {
+            reject(err);
+          }
+        });
     });
   }
 
@@ -67,14 +70,16 @@ export abstract class BaseApiProvider {
    */
   _put(method: string, body) {
     return new Promise((resolve, reject = null) => {
-      this.http.put(this.configService.robot_api_url + '/' + method, body, this.getHeaders(),
-      ).then(data => {
-        resolve(Object.create(data));
-      }).catch( err => {
-        if (reject != null) {
-          reject(err);
-        }
-      });
+      this.http.put(this.configService.robot_api_url + '/' + method, body, {
+        headers: this.getHeaders()
+      }).subscribe(
+        data => {
+          resolve(Object.create(data));
+        }, err => {
+          if (reject != null) {
+            reject(err);
+          }
+        });
     });
   }
 
@@ -86,14 +91,16 @@ export abstract class BaseApiProvider {
    */
   _delete(method: string) {
     return new Promise((resolve, reject = null) => {
-      this.http.delete(this.configService.robot_api_url + '/' + method, null, this.getHeaders(),
-      ).then(data => {
-        resolve(Object.create(data));
-      }).catch( err => {
-        if (reject != null) {
-          reject(err);
-        }
-      });
+      this.http.delete(this.configService.robot_api_url + '/' + method, {
+        headers: this.getHeaders()
+      }).subscribe(
+        data => {
+          resolve(Object.create(data));
+        }, err => {
+          if (reject != null) {
+            reject(err);
+          }
+        });
     });
   }
 
