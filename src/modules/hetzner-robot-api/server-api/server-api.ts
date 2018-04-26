@@ -28,7 +28,7 @@ export class ServerApiProvider extends BaseApiProvider {
   }
 
   update(serverIp: string, server_name: string) {
-    return this._post('server/' + serverIp, "server_name=" + server_name)
+    return this._post('server/' + serverIp, {server_name: server_name})
   }
 
   /**
@@ -65,7 +65,7 @@ export class ServerApiProvider extends BaseApiProvider {
   }
 
   reset(serverIp: string, type: string) {
-    return this._post('reset/' + serverIp, "type=" + type);
+    return this._post('reset/' + serverIp, {type: type});
   }
 
   wolOptions(serverIp: string) {

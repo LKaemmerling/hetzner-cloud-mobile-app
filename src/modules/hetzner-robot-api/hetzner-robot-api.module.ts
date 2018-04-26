@@ -5,6 +5,7 @@ import {ServerApiProvider} from "./server-api/server-api";
 import {StorageBoxApiProvider} from "./storage-box-api/storage-box-api";
 import {SshKeysApiProvider} from "../hetzner-robot-api/ssh-key-api/ssh-keys-api";
 import {HTTP} from "@ionic-native/http";
+import {TokenInterceptor} from "./base-api/base-api";
 
 
 /**
@@ -16,7 +17,12 @@ import {HTTP} from "@ionic-native/http";
     HTTP,
     ServerApiProvider,
     StorageBoxApiProvider,
-    SshKeysApiProvider
+    SshKeysApiProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ]
 })
 export class HetznerRobotApiModule {

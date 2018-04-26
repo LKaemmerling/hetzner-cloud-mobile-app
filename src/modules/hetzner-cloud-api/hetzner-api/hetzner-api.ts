@@ -109,7 +109,6 @@ export abstract class HetznerApiProvider {
     }
     return new HttpHeaders()
       .set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key)
-      .set('Accept', 'application/json')
-      .set('App-Version', this.configService.version);
+      .set('Accept', 'application/json');
   }
 }
