@@ -1,7 +1,8 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {ConfigService} from "../../hetzner-app/config/config.service";
 import {AccountService} from "../../hetzner-robot-data/accounts/account.service";
+import {Observable} from "rxjs/Observable";
 import {HTTP} from "@ionic-native/http";
 
 /**
@@ -28,10 +29,10 @@ export abstract class BaseApiProvider {
     return new Promise((resolve, reject = null) => {
       this.http.get(this.configService.robot_api_url + '/' + method, null, this.getHeaders(),
       ).then(data => {
-        resolve(JSON.parse(data.data));
-      }).catch(err => {
+        resolve(Object.create(data));
+      }).catch( err => {
         if (reject != null) {
-          reject(this.parseErrorMessage(err));
+          reject(err);
         }
       });
     });
@@ -48,10 +49,10 @@ export abstract class BaseApiProvider {
     return new Promise((resolve, reject = null) => {
       this.http.post(this.configService.robot_api_url + '/' + method, body, this.getHeaders(),
       ).then(data => {
-        resolve(JSON.parse(data.data));
-      }).catch(err => {
+        resolve(Object.create(data));
+      }).catch( err => {
         if (reject != null) {
-          reject(this.parseErrorMessage(err));
+          reject(err);
         }
       });
     });
@@ -68,10 +69,10 @@ export abstract class BaseApiProvider {
     return new Promise((resolve, reject = null) => {
       this.http.put(this.configService.robot_api_url + '/' + method, body, this.getHeaders(),
       ).then(data => {
-        resolve(JSON.parse(data.data));
-      }).catch(err => {
+        resolve(Object.create(data));
+      }).catch( err => {
         if (reject != null) {
-          reject(this.parseErrorMessage(err));
+          reject(err);
         }
       });
     });
@@ -87,11 +88,10 @@ export abstract class BaseApiProvider {
     return new Promise((resolve, reject = null) => {
       this.http.delete(this.configService.robot_api_url + '/' + method, null, this.getHeaders(),
       ).then(data => {
-
-        resolve(JSON.parse(data.data));
-      }).catch(err => {
+        resolve(Object.create(data));
+      }).catch( err => {
         if (reject != null) {
-          reject(this.parseErrorMessage(err));
+          reject(err);
         }
       });
     });
@@ -102,21 +102,40 @@ export abstract class BaseApiProvider {
    * @returns {HttpHeaders}
    */
   private getHeaders() {
-
     if (this.accountService.actual_account == null) {
       return {};
     }
 
-    this.http.useBasicAuth(this.accountService.actual_account.username, this.accountService.actual_account.password);
-    return {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "App-Version": this.configService.version
-    };
+    return new HttpHeaders()
+      .set("authorization", "basic " + btoa(this.accountService.actual_account.username + ":" + this.accountService.actual_account.password))
+      .set("Content-Type", "application/x-www-form-urlencoded");
+  }
+}
+
+@Injectable()
+export class TokenInterceptor implements HttpInterceptor {
+
+  constructor(public accountService: AccountService) {
   }
 
-  protected parseErrorMessage(error) {
-    let _error = {message: ''};
-    _error.message = error.error;
-    return _error;
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    if (request.url.indexOf('robot') != -1) {
+      if (this.accountService.actual_account != null) {
+
+
+        request = request.clone({
+          setHeaders: {
+            Authorization: "basic " + btoa(this.accountService.actual_account.username + ":" + this.accountService.actual_account.password),
+            'Test-Header': 'Na_Super'
+          }
+        });
+        return next.handle(request);
+      }
+      throw new Error('No account');
+    } else {
+      return next.handle(request);
+    }
+
   }
 }
