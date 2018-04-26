@@ -119,7 +119,7 @@ export class StorageBoxListPage {
       setTimeout(() => (this.loading_done = false), 5000);
     }, (error) => {
       this.loading = false;
-      this.error = error.message.toString();
+      this.error = error.message;
     });
   }
 
