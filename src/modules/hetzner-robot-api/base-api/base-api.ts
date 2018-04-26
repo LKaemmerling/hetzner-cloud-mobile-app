@@ -87,7 +87,7 @@ export abstract class BaseApiProvider {
     return new Promise((resolve, reject = null) => {
       this.http.delete(this.configService.robot_api_url + '/' + method, null, this.getHeaders(),
       ).then(data => {
-        resolve(Object.create(data.data));
+        resolve(JSON.parse(data.data));
       }).catch(err => {
         if (reject != null) {
           reject(this.parseErrorMessage(err));
