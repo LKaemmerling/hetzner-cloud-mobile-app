@@ -19,6 +19,7 @@
     "ORDER": "Buy now",
     "SHARE": "Share",
     "OPEN_DETAILS": "Details",
+    "CANCELLATION": "Stornierung",
     "BACK": "Back",
     "SEARCH":"Search"
   },
@@ -44,7 +45,7 @@
       "TITLE": "Help"
     },
     "CHANGELOG": {
-      "TITLE": "Changes in 1.7.0",
+      "TITLE": "Changes in 2.0.0",
       "SLIDES": {
         "SLIDE1": {
           "TITLE": "Create a server from a snapshot",
@@ -228,6 +229,9 @@
     "FLOATING_IPS": {
       "TITLE": "Floating IPs",
       "NO_FLOATING_IPS": "Oh! Looks like you don't have any floating IPs.",
+      "ACTIONS": {
+        "TITLE": "Actions for floating ip '{{floatingIpDescription}}'"
+      },
       "MODAL": {
         "DETAILS": {
           "INFORMATION": {
@@ -447,6 +451,140 @@
               "IP": "IP:",
               "REVERSE_DNS": "Reverse DNS:",
               "ADD": "Add entry"
+            }
+          }
+        }
+      }
+    }
+  },
+  "ROBOT": {
+    "PAGE": {
+      "ACCOUNTS": {
+        "TITLE": "Meine Zugänge",
+        "NO_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch kein Zugänge hinterlegt.",
+        "MODAL": {
+          "ADD": {
+            "TITLE": "Zugang hinzufügen",
+            "SCAN": "Scan Account QR-Code",
+            "FORM": {
+              "ACCOUNT_NAME": "Zugangsbezeichnung:",
+              "USER_NAME": "Nutzername:",
+              "PASSWORD": "Passwort:",
+              "CAN_ORDER": "Sind Bestellungen erlaubt?"
+            },
+            "INFORMATION": "Für den Webservice muss ein eigener Benutzer angelegt werden, sie finden diese Option im Robot unter dem Menüpunkt 'Einstellungen'. Dort können Sie auch auswählen, ob über den Webservice Bestellungen möglich sein sollen.",
+            "ERRORS": {
+              "INVALID_KEY": "Leider ist der eingegebene API-Token ungültig.",
+              "REQUIRED_NAME": "Bitte geben Sie eine Projektbezeichnung ein.",
+              "NAME_ALREADY_USED": "Sie haben bereits ein Projekt mit dieser Bezeichnung!",
+              "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
+            }
+          },
+          "SHARE": {
+            "TITLE": "Account teilen",
+            "MESSAGE": "Mit dieser Funktion können Sie einfach Accounts zwischen Ihren Geräten teilen, ohne dauerhaft die Zugangsdaten eingeben zu müssen. Scannen Sie einfach diesen QR-Code bei Erstellung eines neuen Accounts."
+          }
+        }
+      },
+      "SERVERS": {
+        "TITLE": "Meine Server",
+        "NO_SERVERS": "Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden.",
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "Server bearbeiten",
+            "FORM": {
+              "NAME": "Bezeichnung"
+            }
+          },
+          "RESET": {
+            "TITLE": "Reset",
+            "TYPES": {
+              "SW": "STRG+ALT+ENTF an den Server senden",
+              "HW": "Automatischen Hardware-Reset auslösen",
+              "MAN": "Manuellen Hardware-Reset beauftragen",
+              "WOL": "WOL-Signal an den Server senden"
+            },
+            "NO_TYPES": "Dieser Server unterstützt keinen Reset."
+          }
+        }
+      },
+      "SERVER_DETAILS": {
+        "INFORMATION": {
+          "TITLE": "Informationen",
+          "PRODUCT": "Produkt:",
+          "LOCATION": "Standort:"
+        },
+        "NETWORK": {
+          "TITLE": "Netzwerk",
+          "IP": "IP-Adresse:",
+          "TRAFFIC": "Inklusiv Traffic:"
+        },
+        "PAYMENT": {
+          "TITLE": "Zahlung",
+          "UNTIL": "Bezahlt bis",
+          "CANCELLED": "Der Server wurde bereits zur Kündigung vorgemerkt."
+        },
+        "ACTIONS": {
+          "POWER": "Reset",
+          "BOOT_CONFIGURATION": "Boot Konfiguration",
+          "RDNS_SETTINGS": "Reverse DNS",
+          "RESCUE": "Rescue Modus",
+          "FIREWALL": "Firewall"
+        }
+      },
+      "STORAGE_BOXES": {
+        "TITLE": "Meine Storage Boxen",
+        "NO_STORAGE_BOXES": "Oh! Es sieht so aus als wäre hier noch keine Storage Box erstellt worden.",
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "Storage Box bearbeiten",
+            "FORM": {
+              "NAME": "Bezeichnung"
+            }
+          }
+        }
+      },
+      "STORAGE_BOX_DETAILS": {
+        "INFORMATION": {
+          "TITLE": "Informationen",
+          "PRODUCT": "Produkt:",
+          "STORAGE_USAGE": "Speichernutzung:"
+        },
+        "NETWORK": {
+          "TITLE": "Netzwerk",
+          "SERVER": "Server:",
+          "WEBDAV": "WebDAV aktiv?",
+          "SAMBA": "Samba aktiv?",
+          "ZFS": "ZFS aktiv?"
+        },
+        "PAYMENT": {
+          "TITLE": "Zahlung",
+          "UNTIL": "Bezahlt bis",
+          "CANCELLED": "Der Server wurde bereits zur Kündigung vorgemerkt."
+        },
+        "ACTIONS": {
+          "SNAPSHOTS": "Snapshots",
+          "SUB_ACCOUNTS": "Sub Accounts"
+        }
+      },
+      "SHOP": {
+        "TITLE": "Bestellung"
+      },
+      "SERVER_MARKET": {
+        "TITLE": "Serverbörse"
+      },
+      "SSH_KEYS": {
+        "TITLE": "SSH-Schlüssel",
+        "NO_SSH_KEYS": "Sie haben noch keinen SSH-Schlüssel hinterlegt",
+        "ADD_SSH_KEYS": "Das Hinzufügen von SSH-Schlüsseln über die App wird aus Sicherheitsgründen nicht empfohlen. Nutzen Sie hierfür bitte den Hetzner Robot.",
+        "ACTIONS": {
+          "TITLE": "Aktionen für den SSH-Key '{{sshKey}}'"
+        },
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "SSH-Key bearbeiten",
+            "FORM": {
+              "NAME": "Bezeichnung"
             }
           }
         }
