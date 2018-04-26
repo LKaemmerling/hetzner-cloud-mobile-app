@@ -51,6 +51,11 @@ export class ConfigService {
   public feature_flags = {
     robot: true
   };
+  /**
+   *
+   * @type {boolean}
+   */
+  public runs_on_device = false;
 
   /**
    * Constructor
@@ -67,6 +72,9 @@ export class ConfigService {
     return new Promise((resolve => {
       if (this.platform.is('ios') == false && this.platform.is('android') == false) {
         this.robot_api_url = 'http://localhost:8100/robot';
+        this.runs_on_device = false;
+      } else {
+        this.runs_on_device = true;
       }
       this.storage.get('developer_mode').then(val => {
         if (val != undefined) {
