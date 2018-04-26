@@ -81,7 +81,11 @@ export class SshKeyListPage {
      */
     public delete(ssh_key) {
         if (this.networkProvider.has_connection) {
-            if (confirm('Möchten Sie diesen SSH-Key wirklich unwiderruflich löschen?')) {
+          let delete_confirmation = '';
+          this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
+            delete_confirmation = text;
+          });
+            if (confirm(delete_confirmation)) {
                 this.sshKeyProvider.delete(ssh_key.fingerprint).then(data => {
                     this.loadSSHKeys();
                 });

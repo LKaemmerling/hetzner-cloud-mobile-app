@@ -115,9 +115,7 @@ export abstract class BaseApiProvider {
 
   protected parseErrorMessage(error) {
     let _error = {message: ''};
-    if (error.message == undefined) {
-      _error.message = error.error;
-    }
+    _error.message = error.error;
     return _error;
   }
 }
