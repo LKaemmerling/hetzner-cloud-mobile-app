@@ -166,7 +166,7 @@
     "jimp": "^0.2.28",
     "ng-animate": "^0.3.1",
     "ng2-charts": "^1.6.0",
-    "onesignal-cordova-plugin": "2.3.1",
+    "onesignal-cordova-plugin": "^2.3.1",
     "parse-url": "^3.0.2",
     "phonegap-plugin-barcodescanner": "^7.1.0",
     "pretty-bytes": "^4.0.2",
