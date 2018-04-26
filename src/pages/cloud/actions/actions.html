@@ -26,7 +26,7 @@
           <span *ngIf="action.status == 'success'" ion-text="" color="secondary"><i class="fas fa-check"></i></span>
           <span *ngIf="action.status == 'error'" ion-text="" color="danger"><i class="fas fa-times"></i></span>
         </ion-note>
-        <ion-note item-end><strong>{{ action.started|date:"dd.mm.yyyy HH:mm" }}</strong></ion-note>
+        <ion-note item-end><strong>{{ action.started|date: ('GLOBAL.DATE_TIME_FORMAT' | translate) }}</strong></ion-note>
       </ion-item>
     </ion-list>
   </ion-card>
