@@ -54,7 +54,7 @@ export class LoadingIndicatorComponent {
    * This fires the event, if the reload button is pressed
    */
   callAction() {
-    if (this.error_message.length > 0) {
+    if (this.error_message != undefined && this.error_message.length > 0) {
       alert(this.error_message);
     } else {
       this.action.next('clicked');
