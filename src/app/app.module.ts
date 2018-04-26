@@ -78,6 +78,7 @@ export class IonicProErrorHandler implements ErrorHandler {
       // Remove this if you want to disable Ionic's auto exception handling
       // in development mode.
       this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+      alert(err.toString());
     }
   }
 }
