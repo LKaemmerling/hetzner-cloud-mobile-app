@@ -613,7 +613,7 @@
             "COMMENT": "Kommentar",
             "WEB_DAV": "WebDAV erlauben",
             "SAMBA": "Samba erlauben",
-            "READONLY": "Schreibgeschützt"
+            "READONLY": "Schreibschutz?"
           }
         },
         "EDIT": {

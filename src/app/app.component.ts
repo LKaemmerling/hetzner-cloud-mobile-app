@@ -159,14 +159,7 @@ export class HetznerMobileApp {
             }
           });
         }
-      },
-      () => {
-        this.translate.get('GLOBAL.MISSING_OR_WRONG_PROJECT').subscribe(text => {
-          alert(text);
-        });
-        this.nav.setRoot(ProjectsPage);
-      }
-    );
+      });
   }
 
   /**
