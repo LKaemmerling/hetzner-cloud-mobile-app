@@ -10,6 +10,7 @@ import {Pro} from '@ionic/pro';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TooltipsModule} from 'ionic-tooltips';
 import {OneSignal} from '@ionic-native/onesignal';
+import {AppCenterAnalytics} from '@ionic-native/app-center-analytics';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {ChartsModule} from 'ng2-charts';
 import {AppVersion} from '@ionic-native/app-version';
@@ -128,7 +129,8 @@ export class IonicProErrorHandler implements ErrorHandler {
     Keyboard,
     AppRate,
     Device,
-    HTTP
+    HTTP,
+    AppCenterAnalytics
   ],
 })
 export class AppModule {

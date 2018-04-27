@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Storage} from "@ionic/storage";
 import {AppVersion} from "@ionic-native/app-version";
 import {Platform} from "ionic-angular";
+import {AppCenterAnalytics} from "@ionic-native/app-center-analytics";
 
 /**
  * This service contain all configuration for the app, like the api_url or other tings.
@@ -48,6 +49,11 @@ export class ConfigService {
    */
   public developer_mode = false;
 
+  /**
+   *
+   * @type {boolean}
+   */
+  public analytics = true;
   public feature_flags = {
     robot: true
   };
@@ -62,7 +68,7 @@ export class ConfigService {
    * @param {Storage} storage
    * @param {AppVersion} appVersion
    */
-  constructor(protected storage: Storage, public appVersion: AppVersion, protected platform: Platform) {
+  constructor(protected storage: Storage, public appVersion: AppVersion, protected platform: Platform, protected appCenterAnalytics: AppCenterAnalytics) {
   }
 
   /**
@@ -80,23 +86,28 @@ export class ConfigService {
         if (val != undefined) {
           this.developer_mode = val;
         }
-        this.storage.get('feature_flags').then(feature_flags => {
-          this.feature_flags = Object.assign(this.feature_flags, feature_flags);
-          this.storage.get('lang').then(lang => {
-            if (lang != undefined && lang != null) {
-              this.language = lang;
-            } else {
-              if ((<any>window).Intl && typeof (<any>window).Intl === 'object') {
-                let language = navigator.language.substring(0, 2).toLowerCase();
-                if (this.available_languages.indexOf(language) != -1) {
-                  this.language = language;
-                  console.log(language);
+        this.storage.get('analytics').then(val => {
+          if (val != undefined) {
+            this.analytics = val;
+          }
+          this.appCenterAnalytics.setEnabled(this.analytics);
+          this.storage.get('feature_flags').then(feature_flags => {
+            this.feature_flags = Object.assign(this.feature_flags, feature_flags);
+            this.storage.get('lang').then(lang => {
+              if (lang != undefined && lang != null) {
+                this.language = lang;
+              } else {
+                if ((<any>window).Intl && typeof (<any>window).Intl === 'object') {
+                  let language = navigator.language.substring(0, 2).toLowerCase();
+                  if (this.available_languages.indexOf(language) != -1) {
+                    this.language = language;
+                    console.log(language);
+                  }
                 }
               }
-            }
-            resolve();
+              resolve();
+            });
           });
-
           this.appVersion.getVersionNumber().then(
             (_version) => {
               this.version = _version;

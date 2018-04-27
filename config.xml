@@ -22,7 +22,10 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="APPCENTER_ANALYTICS_ENABLE_IN_JS" value="true" />
+    <preference name="APPCENTER_CRASHES_ALWAYS_SEND" value="false" />
     <platform name="android">
+      <preference name="APP_SECRET" value="c9ef4504-2003-4bba-8792-735331ca56bd" />
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/launcher/mipmap-xxxhdpi/ic_launcher.png" />
         <icon density="mdpi" src="resources/android/launcher/mipmap-xxxhdpi/ic_launcher.png" />
@@ -89,6 +92,7 @@
         <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
             <string>To push scan QR-Codes Generated from other instances of the app</string>
         </edit-config>
+      <preference name="APP_SECRET" value="1d39280d-58d5-4c5b-80e4-f44e0577bdbe" />
     </platform>
     <plugin name="cordova-sqlite-storage" spec="~2.2.0" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.1" />

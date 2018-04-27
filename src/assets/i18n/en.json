@@ -88,6 +88,7 @@
         "TITLE": "App information",
         "VERSION": "Version:",
         "LANGUAGE": "Language:",
+        "ANALYTICS": "Analytics:",
         "LATEST_UPDATE": {
           "TITLE": "Last update:",
           "TEXT": "<<latest_update>>"

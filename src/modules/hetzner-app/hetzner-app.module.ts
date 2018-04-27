@@ -6,6 +6,7 @@ import {Storage} from "@ionic/storage";
 import {TruncatePipe} from "./pipes/truncate/truncate";
 import {PriceReplacePipe} from "./pipes/price-replace/price-replace";
 import {FileSizePipe} from "./pipes/file-size/file-size";
+import {AppCenterAnalytics} from "@ionic-native/app-center-analytics";
 
 /**
  * This module register all provider for the basic usage of the app.
@@ -17,7 +18,7 @@ import {FileSizePipe} from "./pipes/file-size/file-size";
     TruncatePipe
   ],
   imports: [],
-  providers: [Network, NetworkProvider, ConfigService],
+  providers: [Network, NetworkProvider, ConfigService,AppCenterAnalytics],
   exports: [
     FileSizePipe,
     PriceReplacePipe,
