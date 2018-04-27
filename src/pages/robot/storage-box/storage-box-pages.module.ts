@@ -10,6 +10,7 @@ import {HetznerRobotDataModule} from '../../../modules/hetzner-robot-data/hetzne
 import {StorageBoxListPage} from './list/storage-box-list';
 import {StorageBoxEditModal} from "./edit/storage-box-edit";
 import {StorageBoxDetailPage} from "./details/storage-box-details";
+import {SubAccountPagesModule} from "./details/sub-accounts/sub-account-pages.module";
 
 @NgModule({
   declarations: [StorageBoxListPage, StorageBoxEditModal, StorageBoxDetailPage],
@@ -22,6 +23,7 @@ import {StorageBoxDetailPage} from "./details/storage-box-details";
     IonicStorageModule,
     BrowserAnimationsModule,
     TooltipsModule,
+    SubAccountPagesModule
   ],
   entryComponents: [StorageBoxListPage, StorageBoxEditModal, StorageBoxDetailPage],
 })

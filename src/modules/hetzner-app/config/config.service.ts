@@ -68,7 +68,7 @@ export class ConfigService {
    * @param {Storage} storage
    * @param {AppVersion} appVersion
    */
-  constructor(protected storage: Storage, public appVersion: AppVersion, protected platform: Platform, protected appCenterAnalytics: AppCenterAnalytics) {
+  constructor(protected storage: Storage, public appVersion: AppVersion, protected platform: Platform) {
   }
 
   /**
@@ -90,7 +90,6 @@ export class ConfigService {
           if (val != undefined) {
             this.analytics = val;
           }
-          this.appCenterAnalytics.setEnabled(this.analytics).then(() => alert('Enabled'), () => alert('error'));
           this.storage.get('feature_flags').then(feature_flags => {
             this.feature_flags = Object.assign(this.feature_flags, feature_flags);
             this.storage.get('lang').then(lang => {
@@ -101,7 +100,6 @@ export class ConfigService {
                   let language = navigator.language.substring(0, 2).toLowerCase();
                   if (this.available_languages.indexOf(language) != -1) {
                     this.language = language;
-                    console.log(language);
                   }
                 }
               }

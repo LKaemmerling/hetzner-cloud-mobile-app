@@ -36,4 +36,40 @@ export class StorageBoxApiProvider extends BaseApiProvider {
   update(boxId: number, name: string) {
     return this._post('storagebox/' + boxId, {storagebox_name: name});
   }
+
+  snapshots(boxId: number) {
+    return this._get('storagebox/' + boxId + '/snapshot')
+  }
+
+  createSnapshot(boxId: number) {
+    return this._post('storagebox/' + boxId + '/snapshot')
+  }
+
+  deleteSnapshot(boxId: number, name: string) {
+    return this._delete('storagebox/' + boxId + '/snapshot/' + name)
+  }
+
+  commentSnapshot(boxId: number, name: string, comment: string) {
+    return this._post('storagebox/' + boxId + '/snapshot/' + name + '/comment', {comment: comment})
+  }
+
+  subaccounts(boxId: number) {
+    return this._get('storagebox/' + boxId + '/subaccount')
+  }
+
+  createSubaccount(boxId: number, homedirectory: string, samba: boolean, webdav: boolean, readonly: boolean = false, comment: string = '') {
+    return this._post('storagebox/' + boxId + '/subaccount', {homedirectory: homedirectory})
+  }
+
+  editSubaccount(boxId: number, userName: string, homedirectory: string) {
+    return this._put('storagebox/' + boxId + '/subaccount/' + userName, {homedirectory: homedirectory})
+  }
+
+  deleteSubaccount(boxId: number, userName: string) {
+    return this._delete('storagebox/' + boxId + '/subaccount/' + userName)
+  }
+
+  resetPasswordOnSubaccount(boxId: number, userName: string) {
+    return this._post('storagebox/' + boxId + '/subaccount/' + userName + "/password")
+  }
 }

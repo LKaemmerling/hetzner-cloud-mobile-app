@@ -96,11 +96,11 @@
       <!--<button ion-fab color="danger" (click)="backupSettingsModal()" disabled>
         <div class="label" color="light">{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.ACTIONS.SNAPSHOTS' | translate}}</div>
         <i class="fas fa-hdd"></i>
-      </button>
-      <button ion-fab color="danger" (click)="powerSettingsModal()" id="rdns" disabled>
-        <div class="label" color="danger">{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.ACTIONS.SUB_ACCOUNTS' | translate}}</div>
-        <i class="fas fa-user"></i>
       </button>-->
+      <button ion-fab color="primary" (click)="openSubAccountsPage()" id="sub_accounts">
+        <div class="label" color="secondary">{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.ACTIONS.SUB_ACCOUNTS' | translate}}</div>
+        <i class="fas fa-user"></i>
+      </button>
       <button ion-fab (click)="openEditModal()" color="secondary" id="rename_storage_box">
         <div class="label" color="secondary">{{ 'ACTIONS.EDIT' | translate}}</div>
         <i class="fas fa-pencil-alt"></i>

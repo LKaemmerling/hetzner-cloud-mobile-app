@@ -1844,13 +1844,13 @@
 <path fill="none" stroke="#000000" d="M6740,-198.308C6740,-218.1455 6740,-247 6740,-247 6740,-247 5426.1973,-247 5426.1973,-247"/>
 <polygon fill="#000000" stroke="#000000" points="5426.1973,-243.5001 5416.1973,-247 5426.1973,-250.5001 5426.1973,-243.5001"/>
 </g>
-<!-- StorageBoxDetailPage -->
+<!-- StorageBoxSubAccountsListPage -->
 <g id="node123" class="node">
 <title>StorageBoxDetailPage</title>
 <polygon fill="#ffffb3" stroke="#000000" points="7121.5198,-198 6978.4802,-198 6978.4802,-162 7121.5198,-162 7121.5198,-198"/>
 <text text-anchor="middle" x="7050" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">StorageBoxDetailPage</text>
 </g>
-<!-- StorageBoxDetailPage&#45;&gt;StorageBoxPagesModule -->
+<!-- StorageBoxSubAccountsListPage&#45;&gt;StorageBoxPagesModule -->
 <g id="edge151" class="edge">
 <title>StorageBoxDetailPage&#45;&gt;StorageBoxPagesModule</title>
 <path fill="none" stroke="#000000" d="M7050,-198.0263C7050,-222.9773 7050,-265 7050,-265 7050,-265 5426.186,-265 5426.186,-265"/>

@@ -556,7 +556,9 @@
           "SERVER": "Server:",
           "WEBDAV": "WebDAV aktiv?",
           "SAMBA": "Samba aktiv?",
-          "ZFS": "ZFS aktiv?"
+          "ZFS": "ZFS aktiv?",
+          "READONLY": "Schreibgeschützt?",
+          "HOME": "Basisverzeichnis"
         },
         "PAYMENT": {
           "TITLE": "Zahlung",
@@ -587,6 +589,20 @@
             "FORM": {
               "NAME": "Bezeichnung"
             }
+          }
+        }
+      },
+      "SUB_ACCOUNTS": {
+        "LIST": {
+          "NO_SUB_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch keine Subaccount erstellt worden.",
+          "ACTIONS": {
+            "TITLE": "Subaccount \"{{subAccount}}\" bearbeiten",
+            "RESET_PASSWORD": "Passwort zurücksetzen",
+            "CONFIRM_RESET_PASSWORD": "Möchten Sie wirklich das Password für den Subaccount \"{{subAccount}}\" zurücksetzen?"
+          },
+          "MESSAGES": {
+            "DELETE": "Der Subaccount \"{{subAccount}}\" wurde erfolgreich gelöscht.",
+            "RESET_PASSWORD": "Das Passwort für den Subaccount \"{{subAccount}}\" wurde erfolgreich geändert: {{password}}"
           }
         }
       }

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <i class="fas fa-bars fa-2x"></i>
+    </button>
+    <ion-title id="server_detail_name" *ngIf="storagebox != null">{{ storagebox.name.length > 0 ? storagebox.name :
+      storagebox.product }} - Sub-Accounts
+    </ion-title>
+    <ion-buttons end>
+      <loading-indicator (action)="loadSubAccounts()" [loading]="loading"
+                         [loading_done]="loading_done"></loading-indicator>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <p class="message_box success" *ngIf="success.length > 0">
+      {{success}}
+    </p>
+    <ion-list *ngIf="subAccounts != null">
+
+      <button ion-item *ngFor="let subaccount of subAccounts; let i = index"
+              [id]="subaccount.subaccount.username" (click)="openActions(subaccount.subaccount)">
+        <h2>{{ subaccount.subaccount.comment.length > 0 ? (subaccount.subaccount.comment+"
+          ("+subaccount.subaccount.username+")") : subaccount.subaccount.username
+          }}
+        </h2>
+        <p>{{ subaccount.subaccount.server }} /{{ subaccount.subaccount.homedirectory }}</p>
+        <table>
+          <thead>
+          <th>{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.WEBDAV' | translate}}</th>
+          <th>{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.SAMBA' | translate}}</th>
+          <th>{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.READONLY' | translate}}</th>
+          </thead>
+          <tr>
+            <td><i class="fas"
+                   [ngClass]="{'fa-check':subaccount.subaccount.webdav,'fa-times':!subaccount.subaccount.webdav}"></i>
+            </td>
+            <td><i class="fas"
+                   [ngClass]="{'fa-check':subaccount.subaccount.samba,'fa-times':!subaccount.subaccount.samba}"></i>
+            </td>
+            <td><i class="fas"
+                   [ngClass]="{'fa-check':subaccount.subaccount.readonly,'fa-times':!subaccount.subaccount.readonly}"></i>
+            </td>
+          </tr>
+        </table>
+      </button>
+    </ion-list>
+    <p ion-item *ngIf="subAccounts == null || subAccounts.length == 0" class="message_box info" text-wrap=""
+       [innerHTML]="'ROBOT.PAGE.SUB_ACCOUNTS.LIST.NO_SUB_ACCOUNTS' | translate">
+    </p>
+
+  </ion-card>
+  <ion-fab bottom right>
+    <button ion-fab (click)="alert('Not implemented yet')"><i class="fas fa-plus"></i></button>
+  </ion-fab>
+</ion-content>

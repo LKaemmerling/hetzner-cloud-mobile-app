@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {LoadingController, ModalController, NavParams} from 'ionic-angular';
+import {LoadingController, ModalController, NavController, NavParams} from 'ionic-angular';
 import {fadeIn, fadeOut} from 'ng-animate';
 import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
 import {StorageBoxEditModal} from "../edit/storage-box-edit";
+import {StorageBoxSubAccountsListPage} from "./sub-accounts/list/sub-accounts-list";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -34,7 +35,8 @@ export class StorageBoxDetailPage {
     protected NavParams: NavParams,
     protected storageBoxApi: StorageBoxApiProvider,
     protected loadingCtrl: LoadingController,
-    protected modalCtrl: ModalController
+    protected modalCtrl: ModalController,
+    protected navCtrl: NavController
   ) {
   }
 
@@ -60,5 +62,9 @@ export class StorageBoxDetailPage {
       this.loadStorageBox();
     });
     modal.present();
+  }
+
+  openSubAccountsPage() {
+    this.navCtrl.push(StorageBoxSubAccountsListPage, {storage_box: this.storagebox});
   }
 }
