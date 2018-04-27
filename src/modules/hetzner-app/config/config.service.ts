@@ -90,7 +90,7 @@ export class ConfigService {
           if (val != undefined) {
             this.analytics = val;
           }
-          this.appCenterAnalytics.setEnabled(this.analytics);
+          this.appCenterAnalytics.setEnabled(this.analytics).then(() => alert('Enabled'), () => alert('error'));
           this.storage.get('feature_flags').then(feature_flags => {
             this.feature_flags = Object.assign(this.feature_flags, feature_flags);
             this.storage.get('lang').then(lang => {
