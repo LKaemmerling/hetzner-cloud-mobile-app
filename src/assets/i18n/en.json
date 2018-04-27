@@ -19,7 +19,7 @@
     "ORDER": "Buy now",
     "SHARE": "Share",
     "OPEN_DETAILS": "Details",
-    "CANCELLATION": "Stornierung",
+    "CANCELLATION": "Termination",
     "BACK": "Back",
     "SEARCH":"Search"
   },
@@ -34,12 +34,12 @@
   "PAGE": {
     "HOME": {
       "TITLE": "Landingpage",
-      "TEXT": "<h2>Welcome to the Hetzner Cloud Mobile App</h2> <p>This is an unofficial app for the Hetzner Cloud. Using this app you can use many features available in the Hetzner cloud interface directly on your smartphone. You'll also get an overview of all your servers.</p>",
+      "TEXT": "<h2>Welcome to the \"My Hetzner\" App</h2> <p>This app is an unofficial app for various services of Hetzner GmbH, for example, the Hetzner cloud or the Hetzner Robot. With this app, you can run many of the functions known from the Hetzner Cloud Console or the Hetzner Robot on your smartphone and have an overview of your servers at any time.</p> <p class='message_box info' text-wrap=''>Click on the menu to add projects of Hetzner Cloud or accounts of Hetzner Robots!</p>",
       "ADD_PROJECT_BUTTON": "Add your first project now!"
     },
     "ABOUT": {
       "TITLE": "About this App",
-      "TEXT": "The developer of this App is Lukas Kämmerling. This App is in no way connected to the company \"Hetzner Online GmbH\", so unofficial. It only uses a webservice offered by the mentioned company. Only the configured projects are stored on this device. Deleting a configured project will only delete the local data. <strong>The API tokens are only used to communicate with the Hetzner Cloud API and not stored on any remote servers.</strong>"
+      "TEXT": "The developer of this App is Lukas Kämmerling. This App is in no way connected to the company \"Hetzner Online GmbH\", so unofficial. It only uses a webservice offered by the mentioned company. Only the configured projects or accounts are stored on this device. Deleting a configured project or project will only delete the local data. Local deletion does not imply termination of services. <strong>Your access data will never leave your device, apart from the retrieval at the appropriate Hetzner API.</strong>"
     },
     "HELP": {
       "TITLE": "Help"
@@ -48,12 +48,12 @@
       "TITLE": "Changes in 2.0.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Create a server from a snapshot",
-          "TEXT": "It is now possible again to create servers via snapshots! Simply go to your snapshots and select 'Create a new server'."
+          "TITLE": "Hetzner Robot",
+          "TEXT": "The app now not only supports the Hetzner cloud! You can now use various functions from the Hetzner Robot via the app."
         },
         "SLIDE2": {
-          "TITLE": "E-Mail Support",
-          "TEXT": "You have a problem with these app? Just write us per mail, you can do this directly with this app under the new 'Help' button."
+          "TITLE": "New Name | New Icon",
+          "TEXT": "You can found is now as \"My Hetzner\" with our new icon."
         },
         "SLIDE3": {
           "TITLE": "Bugfixes",
@@ -460,107 +460,106 @@
   "ROBOT": {
     "PAGE": {
       "ACCOUNTS": {
-        "TITLE": "Meine Zugänge",
-        "NO_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch kein Zugänge hinterlegt.",
+        "TITLE": "My accounts",
+        "NO_ACCOUNTS": "Oh! It looks like there is no access here.",
         "MODAL": {
           "ADD": {
-            "TITLE": "Zugang hinzufügen",
+            "TITLE": "Add Account",
             "SCAN": "Scan Account QR-Code",
             "FORM": {
-              "ACCOUNT_NAME": "Zugangsbezeichnung:",
-              "USER_NAME": "Nutzername:",
-              "PASSWORD": "Passwort:",
-              "CAN_ORDER": "Sind Bestellungen erlaubt?"
+              "ACCOUNT_NAME": "Name:",
+              "USER_NAME": "Username:",
+              "PASSWORD": "Password:",
+              "CAN_ORDER": "Orders allowed?"
             },
-            "INFORMATION": "Für den Webservice muss ein eigener Benutzer angelegt werden, sie finden diese Option im Robot unter dem Menüpunkt 'Einstellungen'. Dort können Sie auch auswählen, ob über den Webservice Bestellungen möglich sein sollen.",
+            "INFORMATION": "A separate user has to be created for the web service, you will find this option in the Robot under the menu item 'Settings'. There you can also select whether orders should be possible via the web service.",
             "ERRORS": {
-              "INVALID_KEY": "Leider ist der eingegebene API-Token ungültig.",
-              "REQUIRED_NAME": "Bitte geben Sie eine Projektbezeichnung ein.",
-              "NAME_ALREADY_USED": "Sie haben bereits ein Projekt mit dieser Bezeichnung!",
+              "REQUIRED_NAME": "Please enter an account name.",
+              "NAME_ALREADY_USED": "You already have an account with this name",
               "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
             }
           },
           "SHARE": {
-            "TITLE": "Account teilen",
-            "MESSAGE": "Mit dieser Funktion können Sie einfach Accounts zwischen Ihren Geräten teilen, ohne dauerhaft die Zugangsdaten eingeben zu müssen. Scannen Sie einfach diesen QR-Code bei Erstellung eines neuen Accounts."
+            "TITLE": "Share account",
+            "MESSAGE": "With this feature you can easily share accounts between your devices without having to enter the credentials permanently. Just scan this QR code when creating a new account."
           }
         }
       },
       "SERVERS": {
-        "TITLE": "Meine Server",
-        "NO_SERVERS": "Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden.",
+        "TITLE": "My servers",
+        "NO_SERVERS": "Oh! Looks like you don't have any servers.",
         "MODAL": {
           "EDIT": {
-            "TITLE": "Server bearbeiten",
+            "TITLE": "Edit server",
             "FORM": {
-              "NAME": "Bezeichnung"
+              "NAME": "Name"
             }
           },
           "RESET": {
             "TITLE": "Reset",
             "TYPES": {
-              "SW": "STRG+ALT+ENTF an den Server senden",
-              "HW": "Automatischen Hardware-Reset auslösen",
-              "MAN": "Manuellen Hardware-Reset beauftragen",
-              "WOL": "WOL-Signal an den Server senden"
+              "SW": "Send STRG+ALT+ENTF to the server",
+              "HW": "Trigger automatic hardware reset",
+              "MAN": "Order manual hardware reset",
+              "WOL": "Send WOL signal to the server"
             },
-            "NO_TYPES": "Dieser Server unterstützt keinen Reset."
+            "NO_TYPES": "This server does not support a reset."
           }
         }
       },
       "SERVER_DETAILS": {
         "INFORMATION": {
-          "TITLE": "Informationen",
-          "PRODUCT": "Produkt:",
-          "LOCATION": "Standort:"
+          "TITLE": "Information",
+          "PRODUCT": "Product:",
+          "LOCATION": "Location:"
         },
         "NETWORK": {
-          "TITLE": "Netzwerk",
-          "IP": "IP-Adresse:",
-          "TRAFFIC": "Inklusiv Traffic:"
+          "TITLE": "Network",
+          "IP": "Ip address:",
+          "TRAFFIC": "Free traffic:"
         },
         "PAYMENT": {
-          "TITLE": "Zahlung",
-          "UNTIL": "Bezahlt bis",
-          "CANCELLED": "Der Server wurde bereits zur Kündigung vorgemerkt."
+          "TITLE": "Payment",
+          "UNTIL": "Payed until",
+          "CANCELLED": "The server has already been marked for termination."
         },
         "ACTIONS": {
           "POWER": "Reset",
-          "BOOT_CONFIGURATION": "Boot Konfiguration",
+          "BOOT_CONFIGURATION": "Boot configuration",
           "RDNS_SETTINGS": "Reverse DNS",
-          "RESCUE": "Rescue Modus",
+          "RESCUE": "Rescue mode",
           "FIREWALL": "Firewall"
         }
       },
       "STORAGE_BOXES": {
-        "TITLE": "Meine Storage Boxen",
-        "NO_STORAGE_BOXES": "Oh! Es sieht so aus als wäre hier noch keine Storage Box erstellt worden.",
+        "TITLE": "Storage boxes",
+        "NO_STORAGE_BOXES": "Oh! Looks like you don't have any storage boxes.",
         "MODAL": {
           "EDIT": {
-            "TITLE": "Storage Box bearbeiten",
+            "TITLE": "Edit storage box",
             "FORM": {
-              "NAME": "Bezeichnung"
+              "NAME": "Name"
             }
           }
         }
       },
       "STORAGE_BOX_DETAILS": {
         "INFORMATION": {
-          "TITLE": "Informationen",
-          "PRODUCT": "Produkt:",
-          "STORAGE_USAGE": "Speichernutzung:"
+          "TITLE": "Informations",
+          "PRODUCT": "Product:",
+          "STORAGE_USAGE": "Diskusage:"
         },
         "NETWORK": {
-          "TITLE": "Netzwerk",
+          "TITLE": "Network",
           "SERVER": "Server:",
-          "WEBDAV": "WebDAV aktiv?",
-          "SAMBA": "Samba aktiv?",
-          "ZFS": "ZFS aktiv?"
+          "WEBDAV": "WebDAV active?",
+          "SAMBA": "Samba active?",
+          "ZFS": "ZFS active?"
         },
         "PAYMENT": {
-          "TITLE": "Zahlung",
-          "UNTIL": "Bezahlt bis",
-          "CANCELLED": "Der Server wurde bereits zur Kündigung vorgemerkt."
+          "TITLE": "Payment",
+          "UNTIL": "Payed until",
+          "CANCELLED": "The storage box has already been marked for termination."
         },
         "ACTIONS": {
           "SNAPSHOTS": "Snapshots",
@@ -574,17 +573,17 @@
         "TITLE": "Serverbörse"
       },
       "SSH_KEYS": {
-        "TITLE": "SSH-Schlüssel",
-        "NO_SSH_KEYS": "Sie haben noch keinen SSH-Schlüssel hinterlegt",
-        "ADD_SSH_KEYS": "Das Hinzufügen von SSH-Schlüsseln über die App wird aus Sicherheitsgründen nicht empfohlen. Nutzen Sie hierfür bitte den Hetzner Robot.",
+        "TITLE": "SSH keys",
+        "NO_SSH_KEYS": "Oh! Looks like you don't have any ssh keys.",
+        "ADD_SSH_KEYS": "Adding SSH keys through the app is not recommended for security reasons. Please use the Hetzner Robot for this.",
         "ACTIONS": {
-          "TITLE": "Aktionen für den SSH-Key '{{sshKey}}'"
+          "TITLE": "Actions for the ssh key '{{sshKey}}'"
         },
         "MODAL": {
           "EDIT": {
-            "TITLE": "SSH-Key bearbeiten",
+            "TITLE": "Edit ssh key",
             "FORM": {
-              "NAME": "Bezeichnung"
+              "NAME": "Name"
             }
           }
         }
