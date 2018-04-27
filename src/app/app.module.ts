@@ -80,7 +80,9 @@ export class IonicProErrorHandler implements ErrorHandler {
       // in development mode.
       this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
     }
+    console.log(err);
   }
+
 }
 
 /**

@@ -58,11 +58,23 @@ export class StorageBoxApiProvider extends BaseApiProvider {
   }
 
   createSubaccount(boxId: number, homedirectory: string, samba: boolean, webdav: boolean, readonly: boolean = false, comment: string = '') {
-    return this._post('storagebox/' + boxId + '/subaccount', {homedirectory: homedirectory})
+    return this._post('storagebox/' + boxId + '/subaccount', {
+      homedirectory: homedirectory,
+      samba: samba,
+      webdav: webdav,
+      readonly: readonly,
+      comment: comment
+    })
   }
 
-  editSubaccount(boxId: number, userName: string, homedirectory: string) {
-    return this._put('storagebox/' + boxId + '/subaccount/' + userName, {homedirectory: homedirectory})
+  editSubaccount(boxId: number, userName: string, homedirectory: string, samba: boolean, webdav: boolean, readonly: boolean = false, comment: string = '') {
+    return this._put('storagebox/' + boxId + '/subaccount/' + userName, {
+      homedirectory: homedirectory,
+      samba: samba,
+      webdav: webdav,
+      readonly: readonly,
+      comment: comment
+    })
   }
 
   deleteSubaccount(boxId: number, userName: string) {

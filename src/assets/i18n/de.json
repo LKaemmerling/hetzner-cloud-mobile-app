@@ -604,6 +604,20 @@
             "DELETE": "Der Subaccount \"{{subAccount}}\" wurde erfolgreich gelöscht.",
             "RESET_PASSWORD": "Das Passwort für den Subaccount \"{{subAccount}}\" wurde erfolgreich geändert: {{password}}"
           }
+        },
+        "ADD": {
+          "TITLE": "Neuen Sub-Account erstellen",
+          "ERROR": "Es trat ein Fehler auf. Mögliche Ursache: Der als  \"Basis Verzeichnis\" angebene Ordnerpfad muss existieren.",
+          "FORM": {
+            "HOME_DIRECTORY": "Basis Verzeichnis",
+            "COMMENT": "Kommentar",
+            "WEB_DAV": "WebDAV erlauben",
+            "SAMBA": "Samba erlauben",
+            "READONLY": "Schreibgeschützt"
+          }
+        },
+        "EDIT": {
+          "TITLE": "Subaccount bearbeiten"
         }
       }
     }

@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
-import {ActionSheetController, LoadingController, NavParams} from 'ionic-angular';
+import {ActionSheetController, LoadingController, ModalController, NavParams} from 'ionic-angular';
 import {fadeIn, fadeOut} from 'ng-animate';
 import {StorageBoxApiProvider} from "../../../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
 import {TranslateService} from "@ngx-translate/core";
+import {StorageBoxSubAccountAddModal} from "../add/sub-account-add";
+import {StorageBoxSubAccountEditModal} from "../edit/sub-account-edit";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -52,7 +54,8 @@ export class StorageBoxSubAccountsListPage {
     protected storageBoxApi: StorageBoxApiProvider,
     protected loadingCtrl: LoadingController,
     protected actionCtrl: ActionSheetController,
-    protected translateService: TranslateService
+    protected translateService: TranslateService,
+    protected modalCtrl: ModalController
   ) {
     this.storagebox = this.NavParams.get('storage_box');
 
@@ -75,13 +78,21 @@ export class StorageBoxSubAccountsListPage {
     });
   }
 
+  openCreateSubAccountModal() {
+    let modal = this.modalCtrl.create(StorageBoxSubAccountAddModal, {storage_box: this.storagebox});
+    modal.onDidDismiss(() => {
+      this.loadSubAccounts();
+    });
+    modal.present();
+  }
+
   /**
    *
    */
   openActions(subaccount) {
     let _title: string = '';
     this.translateService
-      .get('ROBOT.PAGE.SUB_ACCOUNTS.LIST.ACTIONS.TITLE', {subAccount: subaccount.comment.length > 0 ? (subaccount.comment + " (" + subaccount.username + ")") : subaccount.username})
+      .get('ROBOT.PAGE.SUB_ACCOUNTS.LIST.ACTIONS.TITLE', {subAccount: (subaccount.comment != null && subaccount.comment.length > 0) ? (subaccount.comment + " (" + subaccount.username + ")") : subaccount.username})
       .subscribe(text => {
         _title = text;
       });
@@ -107,7 +118,14 @@ export class StorageBoxSubAccountsListPage {
         text: _edit,
         icon: 'brush',
         handler: () => {
-          alert('Not implemented yet')
+          let modal = this.modalCtrl.create(StorageBoxSubAccountEditModal, {
+            storage_box: this.storagebox,
+            sub_account: subaccount
+          });
+          modal.onDidDismiss(() => {
+            this.loadSubAccounts();
+          });
+          modal.present();
         },
       },
       {
@@ -154,13 +172,13 @@ export class StorageBoxSubAccountsListPage {
       this.storageBoxApi.deleteSubaccount(this.storagebox.id, subaccount.username).then(data => {
         this.loadSubAccounts();
         let message = '';
-        this.translateService.get('ROBOT.PAGE.SUB_ACCOUNTS.LIST.MESSAGES.DELETE', {subAccount: subaccount.comment.length > 0 ? (subaccount.comment + " (" + subaccount.username + ")") : subaccount.username}).subscribe(text => {
+        this.translateService.get('ROBOT.PAGE.SUB_ACCOUNTS.LIST.MESSAGES.DELETE', {subAccount: (subaccount.comment != null && subaccount.comment.length > 0) ? (subaccount.comment + " (" + subaccount.username + ")") : subaccount.username}).subscribe(text => {
           message = text;
         });
         this.success = message;
         loader.dismiss();
         setTimeout(() => (this.success = ''), 10000);
-      },  (error) => {
+      }, (error) => {
         loader.dismiss();
         this.loading = false;
         this.error = error.message;
@@ -170,7 +188,7 @@ export class StorageBoxSubAccountsListPage {
 
   protected _password_reset(subaccount) {
     let confirmation = '';
-    this.translateService.get('ROBOT.PAGE.SUB_ACCOUNTS.LIST.ACTIONS.CONFIRM_RESET_PASSWORD',{subAccount: subaccount.comment.length > 0 ? (subaccount.comment + " (" + subaccount.username + ")") : subaccount.username}).subscribe(text => {
+    this.translateService.get('ROBOT.PAGE.SUB_ACCOUNTS.LIST.ACTIONS.CONFIRM_RESET_PASSWORD', {subAccount: subaccount.comment.length > 0 ? (subaccount.comment + " (" + subaccount.username + ")") : subaccount.username}).subscribe(text => {
       confirmation = text;
     });
     if (confirm(confirmation)) {
@@ -187,7 +205,7 @@ export class StorageBoxSubAccountsListPage {
         this.success = message;
         loader.dismiss();
         setTimeout(() => (this.success = ''), 10000);
-      },  (error) => {
+      }, (error) => {
         loader.dismiss();
         this.loading = false;
         this.error = error.message;

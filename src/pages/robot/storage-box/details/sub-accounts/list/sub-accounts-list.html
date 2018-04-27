@@ -21,9 +21,8 @@
     <ion-list *ngIf="subAccounts != null">
 
       <button ion-item *ngFor="let subaccount of subAccounts; let i = index"
-              [id]="subaccount.subaccount.username" (click)="openActions(subaccount.subaccount)">
-        <h2>{{ subaccount.subaccount.comment.length > 0 ? (subaccount.subaccount.comment+"
-          ("+subaccount.subaccount.username+")") : subaccount.subaccount.username
+              [id]="subaccount.subaccount.username" (click)="openActions(subaccount.subaccount)" style="margin-bottom:5px;">
+        <h2>{{ (subaccount.subaccount.comment != null && subaccount.subaccount.comment.length > 0) ? (subaccount.subaccount.comment+"("+subaccount.subaccount.username+")") : subaccount.subaccount.username
           }}
         </h2>
         <p>{{ subaccount.subaccount.server }} /{{ subaccount.subaccount.homedirectory }}</p>
@@ -53,6 +52,6 @@
 
   </ion-card>
   <ion-fab bottom right>
-    <button ion-fab (click)="alert('Not implemented yet')"><i class="fas fa-plus"></i></button>
+    <button ion-fab (click)="openCreateSubAccountModal()"><i class="fas fa-plus"></i></button>
   </ion-fab>
 </ion-content>
