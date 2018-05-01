@@ -138,7 +138,7 @@ export class HetznerMobileApp {
                 }
               });
             });
-          //this.loadHetznerSpecificData();
+          this.loadHetznerSpecificData();
         });
       });
     });
@@ -150,8 +150,6 @@ export class HetznerMobileApp {
   private loadHetznerSpecificData() {
     this.hetzerCloudData.loadData().then(
       () => {
-        this.splashScreen.hide();
-        console.log(this.platform.userAgent());
         if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
           this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
             if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
@@ -159,6 +157,7 @@ export class HetznerMobileApp {
             }
           });
         }
+        this.splashScreen.hide();
       });
   }
 

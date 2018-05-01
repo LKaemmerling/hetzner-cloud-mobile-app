@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Storage} from "@ionic/storage";
 import {AppVersion} from "@ionic-native/app-version";
 import {Platform} from "ionic-angular";
-import {AppCenterAnalytics} from "@ionic-native/app-center-analytics";
 
 /**
  * This service contain all configuration for the app, like the api_url or other tings.
