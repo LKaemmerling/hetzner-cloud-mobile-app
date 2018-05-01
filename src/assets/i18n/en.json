@@ -180,7 +180,7 @@
             "INVALID_KEY": "Unfortunately the API token entered is incorrect.",
             "REQUIRED_NAME": "Please enter a project name.",
             "NAME_ALREADY_USED": "You already have a project with this name.",
-            "SCAN_ERROR": "There was a error while scanning the image."
+            "SCAN_ERROR": "There was an error while scanning the image."
           }
         },
         "EDIT": {
@@ -366,7 +366,7 @@
           "DESCRIPTION": {
             "RESCUE_MODE": "You can switch to the rescue system by rebooting your server via network after activation. The rescue system will stay activated for 60 minutes. Rebooting your server while booted in rescue mode will switch back to your normal operating system.<br/><br/>",
             "RESET_ROOT_PASSWORD": "'Power Reset' resets your server ungraceful. This can cause data loss..",
-            "NEW_CREDENTIALS": " <strong>Credentials</strong><br/>User: root<br/>Password: {{root_password_reset}}"
+            "NEW_CREDENTIALS": "<strong>Credentials</strong><br/>User: root<br/>Password: {{root_password_reset}}"
           },
           "ACTIONS": {
             "ACTIVATE": "Activate rescue mode",
@@ -477,7 +477,7 @@
             "ERRORS": {
               "REQUIRED_NAME": "Please enter an account name.",
               "NAME_ALREADY_USED": "You already have an account with this name",
-              "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler.",
+              "SCAN_ERROR": "There was an error while scanning the image.",
               "INVALID_KEY": "The entered API token is not valid."
             }
           },
