@@ -23,6 +23,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
+      <preference name="android-minSdkVersion" value="23"/>
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/launcher/mipmap-xxxhdpi/ic_launcher.png" />
         <icon density="mdpi" src="resources/android/launcher/mipmap-xxxhdpi/ic_launcher.png" />
