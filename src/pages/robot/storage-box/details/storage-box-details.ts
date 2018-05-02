@@ -4,6 +4,7 @@ import {fadeIn, fadeOut} from 'ng-animate';
 import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
 import {StorageBoxEditModal} from "../edit/storage-box-edit";
 import {StorageBoxSubAccountsListPage} from "./sub-accounts/list/sub-accounts-list";
+import {StorageBoxSnapshotsListPage} from "./snapshots/list/snapshots-list";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -66,5 +67,8 @@ export class StorageBoxDetailPage {
 
   openSubAccountsPage() {
     this.navCtrl.push(StorageBoxSubAccountsListPage, {storage_box: this.storagebox});
+  }
+  openSnapshotsPage(){
+    this.navCtrl.push(StorageBoxSnapshotsListPage, {storage_box: this.storagebox});
   }
 }
