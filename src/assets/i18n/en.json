@@ -105,31 +105,6 @@
         "COMPACT_SERVERS": "Enable compact Server Design?"
       }
     },
-    "STATUS": {
-      "TITLE": "Hetzner Status",
-      "MODAL": {
-        "SETTINGS": {
-          "TITLE": "Hetzner Status - Settings",
-          "TEXT": "This app is able to send push notifications from Hetzner Status. You can enable notification categories individually.",
-          "SAVE_SUCCESS": "Settings saved successfully",
-          "NOTIFICATION_SETTINGS": {
-            "TITLE": "Notification Settings",
-            "SOUND": "Activate Sound",
-            "VIBRATE": "Activate Vibration"
-          },
-          "CATEGORY": {
-            "GENERAL": "General",
-            "BASIC_INFRASTRUCTURE": "Basic Infrastructure",
-            "ADVANCED_INFRASTRUCTURE": "Advanced Infrastructure",
-            "NETWORK": "Network",
-            "WEB_HOSTING_AND_MANAGED_SERVER": "Web hosting and Managed Server",
-            "DOMAIN_REGISTRATION_ROBOT": "Domain Registration Robot",
-            "V_SERVER": "vServer",
-            "CLOUD": "Cloud"
-          }
-        }
-      }
-    },
     "ACTIONS": {
       "TITLE": "Actions",
       "STATUS": "status",
@@ -155,6 +130,31 @@
         "ASSIGN_FLOATING_IP": "Floating IP to Server {{subject}} assigned",
         "UNASSIGN_FLOATING_IP": "Floating IP {{subject}} unassigned",
         "REQUEST_CONSOLE": "VNC Session for Server {{subject}} created"
+      }
+    },
+    "STATUS": {
+      "TITLE": "Hetzner Status",
+      "MODAL": {
+        "SETTINGS": {
+          "TITLE": "Hetzner Status - Settings",
+          "TEXT": "This app is able to send push notifications from Hetzner Status. You can enable notification categories individually.",
+          "SAVE_SUCCESS": "Settings saved successfully",
+          "NOTIFICATION_SETTINGS": {
+            "TITLE": "Notification Settings",
+            "SOUND": "Activate Sound",
+            "VIBRATE": "Activate Vibration"
+          },
+          "CATEGORY": {
+            "GENERAL": "General",
+            "BASIC_INFRASTRUCTURE": "Basic Infrastructure",
+            "ADVANCED_INFRASTRUCTURE": "Advanced Infrastructure",
+            "NETWORK": "Network",
+            "WEB_HOSTING_AND_MANAGED_SERVER": "Web hosting and Managed Server",
+            "DOMAIN_REGISTRATION_ROBOT": "Domain Registration Robot",
+            "V_SERVER": "vServer",
+            "CLOUD": "Cloud"
+          }
+        }
       }
     },
     "PROJECTS": {
@@ -437,6 +437,11 @@
             "DISK_BANDWIDTH": "Disk-Throughput:",
             "NETWORK_PPS": "Network-PPS:",
             "NETWORK_BANDWIDTH": "Network-Bankwidth:"
+          },
+          "ERRORS": {
+            "REQUIRED_TYPE": "Please choose a type.",
+            "REQUIRED_SHUTDOWN": "Please shut down the server before upgrading.",
+            "NETWORK_ERROR": "Error while processing the request. Please try again."
           }
         },
         "REVERSE_DNS": {
