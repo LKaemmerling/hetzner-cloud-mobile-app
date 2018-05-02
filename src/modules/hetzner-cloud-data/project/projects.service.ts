@@ -38,7 +38,7 @@ export class ProjectsService {
           this.projects = val;
         }
         this.storage.get('actual_project').then((val) => {
-          if (val !== undefined) {
+          if (val !== undefined && val !== null) {
             this.network.quickTestApiKey(val.api_key).then(() => {
               this.actual_project = val;
               resolve();

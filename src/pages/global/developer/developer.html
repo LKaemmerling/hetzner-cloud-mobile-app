@@ -67,12 +67,13 @@
       Feature Flags
     </ion-list-header>
     <ion-item>
-      <div item-left="">
-        <em>UNSTABLE</em> Robot Integration:
-      </div>
-      <div item-right="">
-        <ion-toggle [checked]="feature_flags['robot']" (ionChange)="toggleFlag('robot')"></ion-toggle>
-      </div>
+      Nothing here!
+    </ion-item>
+    <ion-list-header>
+      Remove Developer Mode
+    </ion-list-header>
+    <ion-item>
+      <button ion-button="" color="danger" (click)="removeDeveloperMode()">Remove Developer Mode</button>
     </ion-item>
   </ion-list>
 </ion-content>

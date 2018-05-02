@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ 'ROBOT.PAGE.ACCOUNTS.MODAL.ADD.TITLE' | translate }}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
+        <i class="fas fa-times" showWhen="android,windows"></i>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p *ngIf="error !== null" class="message_box error" text-wrap="">{{ error | translate }}</p>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>{{ 'ROBOT.PAGE.ACCOUNTS.MODAL.ADD.FORM.ACCOUNT_NAME' | translate }}</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="name" required=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>{{ 'ROBOT.PAGE.ACCOUNTS.MODAL.ADD.FORM.USER_NAME' | translate }}</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="username" required=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>{{ 'ROBOT.PAGE.ACCOUNTS.MODAL.ADD.FORM.PASSWORD' | translate }}</ion-label>
+      <ion-input type="password" [(ngModel)]="password" required=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'ROBOT.PAGE.ACCOUNTS.MODAL.ADD.FORM.CAN_ORDER' | translate }}</ion-label>
+      <ion-toggle [(ngModel)]="can_order"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <button ion-button color="danger" (click)="saveAccount()">{{ 'ACTIONS.SAVE' | translate }}</button>
+  <button ion-button color="secondary" (click)="scanAccount()">{{ 'ROBOT.PAGE.ACCOUNTS.MODAL.ADD.SCAN' | translate }}</button>
+  <p class="message_box info"  text-wrap="">{{ 'ROBOT.PAGE.ACCOUNTS.MODAL.ADD.INFORMATION' | translate }}</p>
+</ion-content>

@@ -87,7 +87,7 @@ export class HetznerCloudMenuService {
     }
   ]
 
-  constructor(protected projects: ProjectsService, platform: Platform, protected  hetznerClouDataService: HetznerCloudDataService) {
+  constructor(protected projects: ProjectsService, platform: Platform, protected  hetznerCloudDataService: HetznerCloudDataService) {
     platform.ready().then(() => {
       this.generateMenu();
     })
@@ -114,7 +114,7 @@ export class HetznerCloudMenuService {
   }
 
   public init() {
-    return this.hetznerClouDataService.loadData();
+    return this.hetznerCloudDataService.loadData();
   }
 
 }

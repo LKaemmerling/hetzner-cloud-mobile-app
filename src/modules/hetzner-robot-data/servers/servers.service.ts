@@ -47,9 +47,14 @@ export class ServersService {
    * @returns {Promise<void>}
    */
   public reloadServers() {
-    return this.serverApiProvider.getServers().then((data) => {
-      this.servers = data;
-      this.saveServers();
+    return new Promise((resolve, reject = null) => {
+      this.serverApiProvider.getServers().then((data) => {
+        this.servers = data;
+        this.saveServers();
+        resolve();
+      }, (error) => {
+        reject(error);
+      });
     });
   }
 

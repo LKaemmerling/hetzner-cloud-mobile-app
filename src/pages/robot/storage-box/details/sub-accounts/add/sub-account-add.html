@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ 'ROBOT.PAGE.SUB_ACCOUNTS.ADD.TITLE' | translate}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
+        <i class="fas fa-times" showWhen="android,windows"></i>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label>{{ 'ROBOT.PAGE.SUB_ACCOUNTS.ADD.FORM.HOME_DIRECTORY' | translate}}</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="homedirectory" required="" id="homedirectory"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'ROBOT.PAGE.SUB_ACCOUNTS.ADD.FORM.COMMENT' | translate}}</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="comment" id="comment"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'ROBOT.PAGE.SUB_ACCOUNTS.ADD.FORM.WEB_DAV' | translate}}</ion-label>
+      <ion-toggle [(ngModel)]="webdav"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'ROBOT.PAGE.SUB_ACCOUNTS.ADD.FORM.SAMBA' | translate}}</ion-label>
+      <ion-toggle [(ngModel)]="samba"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'ROBOT.PAGE.SUB_ACCOUNTS.ADD.FORM.READONLY' | translate}}</ion-label>
+      <ion-toggle [(ngModel)]="readonly"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <p class="message_box error" *ngIf="error">
+    {{ 'ROBOT.PAGE.SUB_ACCOUNTS.ADD.ERROR' | translate}}
+  </p>
+  <button ion-button color="danger" (click)="createSubAccount()">{{ 'ACTIONS.SAVE' | translate}}</button>
+</ion-content>

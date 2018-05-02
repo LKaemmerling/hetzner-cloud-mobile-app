@@ -1,0 +1,20 @@
+page-sub-accounts-list {
+ table{
+   th,td {
+     padding:5px;
+     text-align: center;
+     .fa-check{
+       color:green;
+     }
+     .fa-times{
+       color:#ff0000;
+     }
+   }
+   th{
+     border-bottom:#8c8c8c 1px solid;
+   }
+ }
+
+
+
+}

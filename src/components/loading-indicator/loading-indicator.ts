@@ -1,13 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {NetworkProvider} from "../../modules/hetzner-app/network/network";
-import {TranslateService} from "@ngx-translate/core";
+import {NetworkProvider} from '../../modules/hetzner-app/network/network';
+import {TranslateService} from '@ngx-translate/core';
 
 /**
  * Shows all network actions. If there is a load or an error.
  */
 @Component({
   selector: 'loading-indicator',
-  templateUrl: 'loading-indicator.html'
+  templateUrl: 'loading-indicator.html',
 })
 export class LoadingIndicatorComponent {
   /**
@@ -54,8 +54,10 @@ export class LoadingIndicatorComponent {
    * This fires the event, if the reload button is pressed
    */
   callAction() {
-    this.action.next('clicked');
+    if (this.error_message != undefined && this.error_message.length > 0) {
+      alert(this.error_message);
+    } else {
+      this.action.next('clicked');
+    }
   }
-
-
 }

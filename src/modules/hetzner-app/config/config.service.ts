@@ -12,7 +12,7 @@ export class ConfigService {
    * The current version String
    * @type {string}
    */
-  public version = '1.7.1-DEV-VERSION';
+  public version = '2.0.0-DEV-VERSION';
   public build = '0000001';
   /**
    * The currently used language
@@ -33,7 +33,7 @@ export class ConfigService {
    * The basic url for all robot api call
    * @type {string}
    */
-  public robot_api_url: string = 'http://localhost:8100/robot';
+  public robot_api_url: string = 'https://robot-ws.your-server.de';
   /**
    * This contains all configuration for the One Signal Push Notification service
    * @type any
@@ -48,9 +48,19 @@ export class ConfigService {
    */
   public developer_mode = false;
 
+  /**
+   *
+   * @type {boolean}
+   */
+  public analytics = true;
   public feature_flags = {
-    robot: false
+    robot: true
   };
+  /**
+   *
+   * @type {boolean}
+   */
+  public runs_on_device = false;
 
   /**
    * Constructor
@@ -58,9 +68,6 @@ export class ConfigService {
    * @param {AppVersion} appVersion
    */
   constructor(protected storage: Storage, public appVersion: AppVersion, protected platform: Platform) {
-    if (platform.is('ios') || platform.is('android')) {
-      this.robot_api_url = 'https://robot-ws.your-server.de';
-    }
   }
 
   /**
@@ -68,27 +75,36 @@ export class ConfigService {
    */
   public init() {
     return new Promise((resolve => {
+      if (this.platform.is('ios') == false && this.platform.is('android') == false) {
+        this.robot_api_url = 'http://localhost:8100/robot';
+        this.runs_on_device = false;
+      } else {
+        this.runs_on_device = true;
+      }
       this.storage.get('developer_mode').then(val => {
         if (val != undefined) {
           this.developer_mode = val;
         }
-        this.storage.get('feature_flags').then(feature_flags => {
-          this.feature_flags = Object.assign(this.feature_flags, feature_flags);
-          this.storage.get('lang').then(lang => {
-            if (lang != undefined && lang != null) {
-              this.language = lang;
-            } else {
-              if ((<any>window).Intl && typeof (<any>window).Intl === 'object') {
-                let language = navigator.language.substring(0, 2).toLowerCase();
-                if (this.available_languages.indexOf(language) != -1) {
-                  this.language = language;
-                  console.log(language);
+        this.storage.get('analytics').then(val => {
+          if (val != undefined) {
+            this.analytics = val;
+          }
+          this.storage.get('feature_flags').then(feature_flags => {
+            this.feature_flags = Object.assign(this.feature_flags, feature_flags);
+            this.storage.get('lang').then(lang => {
+              if (lang != undefined && lang != null) {
+                this.language = lang;
+              } else {
+                if ((<any>window).Intl && typeof (<any>window).Intl === 'object') {
+                  let language = navigator.language.substring(0, 2).toLowerCase();
+                  if (this.available_languages.indexOf(language) != -1) {
+                    this.language = language;
+                  }
                 }
               }
-            }
-            resolve();
+              resolve();
+            });
           });
-
           this.appVersion.getVersionNumber().then(
             (_version) => {
               this.version = _version;

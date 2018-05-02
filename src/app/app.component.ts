@@ -1,28 +1,28 @@
 import {Component, ViewChild} from '@angular/core';
-import {LoadingController, ModalController, Nav, Platform} from 'ionic-angular';
+import {Config, LoadingController, ModalController, Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {ProjectsService} from "../modules/hetzner-cloud-data/project/projects.service";
-import {HomePage} from "../pages/global/home/home";
-import {ProjectsPage} from "../pages/cloud/projects/projects";
-import {AboutPage} from "../pages/global/about/about";
-import {Storage} from "@ionic/storage";
-import {OneSignal} from "@ionic-native/onesignal";
-import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
-import {TranslateService} from "@ngx-translate/core";
-import {NetworkProvider} from "../modules/hetzner-app/network/network";
-import {HetznerCloudDataService} from "../modules/hetzner-cloud-data/hetzner-cloud-data.service";
-import {ConfigService} from "../modules/hetzner-app/config/config.service";
-import {ChangelogPage} from "../pages/global/changelog/changelog";
-import {Device} from "@ionic-native/device";
-import {HetznerRobotMenuService} from "../modules/hetzner-robot-data/hetzner-robot-menu.service";
-import {HetznerCloudMenuService} from "../modules/hetzner-cloud-data/hetzner-cloud-menu.service";
+import {ProjectsService} from '../modules/hetzner-cloud-data/project/projects.service';
+import {HomePage} from '../pages/global/home/home';
+import {ProjectsPage} from '../pages/cloud/projects/projects';
+import {AboutPage} from '../pages/global/about/about';
+import {Storage} from '@ionic/storage';
+import {OneSignal} from '@ionic-native/onesignal';
+import {FingerprintAIO} from '@ionic-native/fingerprint-aio';
+import {TranslateService} from '@ngx-translate/core';
+import {NetworkProvider} from '../modules/hetzner-app/network/network';
+import {HetznerCloudDataService} from '../modules/hetzner-cloud-data/hetzner-cloud-data.service';
+import {ConfigService} from '../modules/hetzner-app/config/config.service';
+import {ChangelogPage} from '../pages/global/changelog/changelog';
+import {Device} from '@ionic-native/device';
+import {HetznerRobotMenuService} from '../modules/hetzner-robot-data/hetzner-robot-menu.service';
+import {HetznerCloudMenuService} from '../modules/hetzner-cloud-data/hetzner-cloud-menu.service';
 
 /**
  * This is the main component from the Hetzer Cloud Mobile App
  */
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
 })
 export class HetznerMobileApp {
   /**
@@ -40,7 +40,8 @@ export class HetznerMobileApp {
    */
   public lang: string = 'de';
 
-  public available_menus = []
+  public available_menus = [];
+
   protected menu = 'Cloud';
 
   protected menu_entries;
@@ -73,15 +74,17 @@ export class HetznerMobileApp {
     protected projects: ProjectsService,
     protected config: ConfigService,
     protected device: Device,
+    protected ionicConfig: Config,
     protected loadingCtrl: LoadingController,
     protected hetznerCloudMenu: HetznerCloudMenuService,
     protected hetznerRobotMenu: HetznerRobotMenuService,
-    protected modalCtrl: ModalController) {
+    protected modalCtrl: ModalController
+  ) {
     this.available_menus.push(this.hetznerCloudMenu);
     this.available_menus.push(this.hetznerRobotMenu);
 
     platform.ready().then(() => {
-      this.storage.get('current_menu').then((val) => {
+      this.storage.get('current_menu').then(val => {
         if (val != undefined) {
           this.menu = val;
         }
@@ -96,43 +99,48 @@ export class HetznerMobileApp {
           statusBar.styleDefault();
           this.loadOneSignal();
           this.loadLocalization();
-          fingerPrint.isAvailable().then(res => {
-            storage.get('auth').then(val => {
-              if (val != undefined && val == 'enabled') {
-                fingerPrint.show({
-                  clientId: 'Hetzner-Cloud-Mobile',
-                  clientSecret: 'password', //Only necessary for Android
-                  disableBackup: false,  //Only for Android(optional)
-                  localizedFallbackTitle: 'Pin benutzen', //Only for iOS
-                  localizedReason: 'Bitte authentifizieren Sie sich.' //Only for iOS
-                }).then(result => {
+          fingerPrint
+            .isAvailable()
+            .then(res => {
+              storage.get('auth').then(val => {
+                if (val != undefined && val == 'enabled') {
+                  fingerPrint
+                    .show({
+                      clientId: 'Hetzner-Cloud-Mobile',
+                      clientSecret: 'password', //Only necessary for Android
+                      disableBackup: false, //Only for Android(optional)
+                      localizedFallbackTitle: 'Pin benutzen', //Only for iOS
+                      localizedReason: 'Bitte authentifizieren Sie sich.', //Only for iOS
+                    })
+                    .then(result => {
+                      this.loadHetznerSpecificData();
+                    })
+                    .catch(err => {
+                      alert('Authentifizierung fehlgeschlagen. App wird beendet');
+                      if (platform.is('ios') == false) {
+                        platform.exitApp();
+                      }
+                    });
+                } else {
                   this.loadHetznerSpecificData();
-                }).catch(err => {
+                }
+              });
+            })
+            .catch(reason => {
+              storage.get('auth').then(val => {
+                if (val != undefined && val == 'enabled') {
                   alert('Authentifizierung fehlgeschlagen. App wird beendet');
                   if (platform.is('ios') == false) {
                     platform.exitApp();
                   }
-                });
-              } else {
-                this.loadHetznerSpecificData();
-              }
-            });
-          }).catch(reason => {
-            storage.get('auth').then(val => {
-              if (val != undefined && val == 'enabled') {
-                alert('Authentifizierung fehlgeschlagen. App wird beendet');
-                if (platform.is('ios') == false) {
-                  platform.exitApp();
+                } else {
+                  this.loadHetznerSpecificData();
                 }
-              } else {
-    this.loadHetznerSpecificData();
-              }
+              });
             });
-          });
-          //this.loadHetznerSpecificData();
+          this.loadHetznerSpecificData();
         });
       });
-
     });
   }
 
@@ -140,22 +148,17 @@ export class HetznerMobileApp {
    * Load the specific hetzner cloud data
    */
   private loadHetznerSpecificData() {
-    this.hetzerCloudData.loadData().then(() => {
-      this.splashScreen.hide();
-      console.log(this.platform.userAgent());
-      if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
-        this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
-          if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
-            this.modalCtrl.create(ChangelogPage).present();
-          }
-        });
-      }
-    }, () => {
-      this.translate.get('GLOBAL.MISSING_OR_WRONG_PROJECT').subscribe((text) => {
-        alert(text);
+    this.hetzerCloudData.loadData().then(
+      () => {
+        if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
+          this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
+            if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
+              this.modalCtrl.create(ChangelogPage).present();
+            }
+          });
+        }
+        this.splashScreen.hide();
       });
-      this.nav.setRoot(ProjectsPage);
-    });
   }
 
   /**
@@ -164,8 +167,12 @@ export class HetznerMobileApp {
   private loadLocalization() {
     this.translate.setDefaultLang('de');
     this.translate.addLangs(this.config.available_languages);
-    console.log(this.config.language);
     this.translate.use(this.config.language);
+    this.platform.setLang(this.config.language, true);
+    this.translate.get("ACTIONS.BACK").subscribe((val) => {
+      this.ionicConfig.set('backButtonText', val);
+    })
+
   }
 
   /**
@@ -202,14 +209,24 @@ export class HetznerMobileApp {
    * Open Support E-Mail
    */
   supportMail() {
-    window.open(`mailto:hc-mobile-support@lk-apps.co?body=OSVersion:` + this.device.platform + ' ' + this.device.version + '\r\n App Version:' + this.config.version + ' \r\n Device:' + this.device.model + '\r\n ', '_system');
-
+    window.open(
+      `mailto:hc-mobile-support@lk-apps.co?body=OSVersion:` +
+      this.device.platform +
+      ' ' +
+      this.device.version +
+      '\r\n App Version:' +
+      this.config.version +
+      ' \r\n Device:' +
+      this.device.model +
+      '\r\n ',
+      '_system'
+    );
   }
 
   changeMenu() {
     let loader = this.loadingCtrl.create();
     loader.present();
-    this.available_menus.forEach((val) => {
+    this.available_menus.forEach(val => {
       if (val.text == this.menu) {
         this.menu_entries = val.menu_entries;
         this.storage.set('current_menu', val.text);

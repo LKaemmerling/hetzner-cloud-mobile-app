@@ -1,6 +1,8 @@
 {
   "GLOBAL": {
-    "DATE_FORMAT": "yyyy-mm-dd HH:MM:ss",
+    "NAME": "My Hetzner",
+    "DATE_TIME_FORMAT": "yyyy-MM-dd HH:mm:ss",
+    "DATE_FORMAT": "yyyy-MM-dd",
     "NO_CONNECTION": "Unfortunately, you currently have no internet. The view of the app will continue to work, but all features to interact with your systems will be disabled as long as you have no Internet.",
     "MISSING_OR_WRONG_PROJECT": "Your chosen API key is no longer valid or you have not selected a project. Please select a project now.",
     "FEATURE_NEEDS_CONNECTION": "This feature requires an internet connection. Please connect to the internet.",
@@ -17,7 +19,9 @@
     "ORDER": "Buy now",
     "SHARE": "Share",
     "OPEN_DETAILS": "Details",
-    "CANCELLATION": "Cancellation"
+    "CANCELLATION": "Termination",
+    "BACK": "Back",
+    "SEARCH": "Search"
   },
   "COMPONENT": {
     "PROTECTION": {
@@ -30,26 +34,26 @@
   "PAGE": {
     "HOME": {
       "TITLE": "Landingpage",
-      "TEXT": "<h2>Welcome to the Hetzner Cloud Mobile App</h2> <p>This is an unofficial app for the Hetzner Cloud. Using this app you can use many features available in the Hetzner cloud interface directly on your smartphone. You'll also get an overview of all your servers.</p>",
+      "TEXT": "<h2>Welcome to the \"My Hetzner\" App</h2> <p>This app is an unofficial app for various services of Hetzner GmbH, for example, the Hetzner cloud or the Hetzner Robot. With this app, you can run many of the functions known from the Hetzner Cloud Console or the Hetzner Robot on your smartphone and have an overview of your servers at any time.</p> <p class='message_box info' text-wrap=''>Click on the menu to add projects of Hetzner Cloud or accounts of Hetzner Robots!</p>",
       "ADD_PROJECT_BUTTON": "Add your first project now!"
     },
     "ABOUT": {
       "TITLE": "About this App",
-      "TEXT": "The developer of this App is Lukas Kämmerling. This App is in no way connected to the company \"Hetzner Online GmbH\", so unofficial. It only uses a webservice offered by the mentioned company. Only the configured projects are stored on this device. Deleting a configured project will only delete the local data. <strong>The API tokens are only used to communicate with the Hetzner Cloud API and not stored on any remote servers.</strong>"
+      "TEXT": "The developer of this App is Lukas Kämmerling. This App is in no way connected to the company \"Hetzner Online GmbH\", so unofficial. It only uses a webservice offered by the mentioned company. Only the configured projects or accounts are stored on this device. Deleting a configured project or project will only delete the local data. Local deletion does not imply termination of services. <strong>Your access data will never leave your device, apart from the retrieval at the appropriate Hetzner API.</strong>"
     },
     "HELP": {
       "TITLE": "Help"
     },
     "CHANGELOG": {
-      "TITLE": "Changes in 1.7.0",
+      "TITLE": "Changes in 2.0.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Create a server from a snapshot",
-          "TEXT": "It is now possible again to create servers via snapshots! Simply go to your snapshots and select 'Create a new server'."
+          "TITLE": "Hetzner Robot",
+          "TEXT": "The app now not only supports the Hetzner cloud! You can now use various functions from the Hetzner Robot via the app."
         },
         "SLIDE2": {
-          "TITLE": "E-Mail Support",
-          "TEXT": "You have a problem with these app? Just write us per mail, you can do this directly with this app under the new 'Help' button."
+          "TITLE": "New Name | New Icon",
+          "TEXT": "You can found is now as \"My Hetzner\" with our new icon."
         },
         "SLIDE3": {
           "TITLE": "Bugfixes",
@@ -84,6 +88,7 @@
         "TITLE": "App information",
         "VERSION": "Version:",
         "LANGUAGE": "Language:",
+        "ANALYTICS": "Analytics:",
         "LATEST_UPDATE": {
           "TITLE": "Last update:",
           "TEXT": "<<latest_update>>"
@@ -175,7 +180,7 @@
             "INVALID_KEY": "Unfortunately the API token entered is incorrect.",
             "REQUIRED_NAME": "Please enter a project name.",
             "NAME_ALREADY_USED": "You already have a project with this name.",
-            "SCAN_ERROR": "There was a error while scanning the image."
+            "SCAN_ERROR": "There was an error while scanning the image."
           }
         },
         "EDIT": {
@@ -226,7 +231,7 @@
       "TITLE": "Floating IPs",
       "NO_FLOATING_IPS": "Oh! Looks like you don't have any floating IPs.",
       "ACTIONS": {
-        "TITLE": "Actions for floating IP '{{floatingIpDescription}}'"
+        "TITLE": "Actions for floating ip '{{floatingIpDescription}}'"
       },
       "MODAL": {
         "DETAILS": {
@@ -361,7 +366,7 @@
           "DESCRIPTION": {
             "RESCUE_MODE": "You can switch to the rescue system by rebooting your server via network after activation. The rescue system will stay activated for 60 minutes. Rebooting your server while booted in rescue mode will switch back to your normal operating system.<br/><br/>",
             "RESET_ROOT_PASSWORD": "'Power Reset' resets your server ungraceful. This can cause data loss..",
-            "NEW_CREDENTIALS": "  <strong>Credentials</strong><br/>User: root<br/>Password: {{root_password_reset}}"
+            "NEW_CREDENTIALS": "<strong>Credentials</strong><br/>User: root<br/>Password: {{root_password_reset}}"
           },
           "ACTIONS": {
             "ACTIVATE": "Activate rescue mode",
@@ -461,36 +466,164 @@
   "ROBOT": {
     "PAGE": {
       "ACCOUNTS": {
-        "TITLE": "My Accounts",
-        "NO_ACCOUNTS": "Oh! Looks like you don't have any projects.",
+        "TITLE": "My accounts",
+        "NO_ACCOUNTS": "Oh! It looks like there is no access here.",
         "MODAL": {
           "ADD": {
-            "TITLE": "Add account",
+            "TITLE": "Add Account",
+            "SCAN": "Scan Account QR-Code",
             "FORM": {
-              "ACCOUNT_NAME": "Account Name:",
-              "USER_NAME": "Login:",
+              "ACCOUNT_NAME": "Name:",
+              "USER_NAME": "Username:",
               "PASSWORD": "Password:",
-              "TOOLTIP": {
-                "PROJECT_NAME": "You can freely choose the project name. It is recommended to use the project name of the project from the Hetzner Cloud Console.",
-                "API_TOKEN": "You can create the API token under the menu item 'Access' in the Hetzner Cloud Console."
-              }
+              "CAN_ORDER": "Orders allowed?"
             },
+            "INFORMATION": "A separate user has to be created for the web service, you will find this option in the Robot under the menu item 'Settings'. There you can also select whether orders should be possible via the web service.",
             "ERRORS": {
-              "INVALID_KEY": "The entered API token is not valid.",
-              "REQUIRED_NAME": "Please enter a project name.",
-              "NAME_ALREADY_USED": "You already have a project with this name.",
-              "SCAN_ERROR": "There was an error while scanning the image."
+              "REQUIRED_NAME": "Please enter an account name.",
+              "NAME_ALREADY_USED": "You already have an account with this name",
+              "SCAN_ERROR": "There was an error while scanning the image.",
+              "INVALID_KEY": "The entered API token is not valid."
             }
+          },
+          "SHARE": {
+            "TITLE": "Share account",
+            "MESSAGE": "With this feature you can easily share accounts between your devices without having to enter the credentials permanently. Just scan this QR code when creating a new account."
           }
         }
       },
       "SERVERS": {
-        "TITLE": "My Servers",
-        "NO_SERVERS": "Oh! Looks like you don't have any servers."
+        "TITLE": "My servers",
+        "NO_SERVERS": "Oh! Looks like you don't have any servers.",
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "Edit server",
+            "FORM": {
+              "NAME": "Name"
+            }
+          },
+          "RESET": {
+            "TITLE": "Reset",
+            "TYPES": {
+              "SW": "Send STRG+ALT+ENTF to the server",
+              "HW": "Trigger automatic hardware reset",
+              "MAN": "Order manual hardware reset",
+              "WOL": "Send WOL signal to the server"
+            },
+            "NO_TYPES": "This server does not support a reset."
+          }
+        }
+      },
+      "SERVER_DETAILS": {
+        "INFORMATION": {
+          "TITLE": "Information",
+          "PRODUCT": "Product:",
+          "LOCATION": "Location:"
+        },
+        "NETWORK": {
+          "TITLE": "Network",
+          "IP": "Ip address:",
+          "TRAFFIC": "Free traffic:"
+        },
+        "PAYMENT": {
+          "TITLE": "Payment",
+          "UNTIL": "Payed until",
+          "CANCELLED": "The server has already been marked for termination."
+        },
+        "ACTIONS": {
+          "POWER": "Reset",
+          "BOOT_CONFIGURATION": "Boot configuration",
+          "RDNS_SETTINGS": "Reverse DNS",
+          "RESCUE": "Rescue mode",
+          "FIREWALL": "Firewall"
+        }
       },
       "STORAGE_BOXES": {
-        "TITLE": "My Storage Boxes",
-        "NO_STORAGE_BOXES": "Oh! Looks like you don't have any storage boxes."
+        "TITLE": "Storage boxes",
+        "NO_STORAGE_BOXES": "Oh! Looks like you don't have any storage boxes.",
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "Edit storage box",
+            "FORM": {
+              "NAME": "Name"
+            }
+          }
+        }
+      },
+      "STORAGE_BOX_DETAILS": {
+        "INFORMATION": {
+          "TITLE": "Informations",
+          "PRODUCT": "Product:",
+          "STORAGE_USAGE": "Diskusage:"
+        },
+        "NETWORK": {
+          "TITLE": "Network",
+          "SERVER": "Server:",
+          "WEBDAV": "WebDAV active?",
+          "SAMBA": "Samba active?",
+          "ZFS": "ZFS active?",
+          "READONLY": "Read-only?",
+          "HOME": "Home directory"
+        },
+        "PAYMENT": {
+          "TITLE": "Payment",
+          "UNTIL": "Payed until",
+          "CANCELLED": "The storage box has already been marked for termination."
+        },
+        "ACTIONS": {
+          "SNAPSHOTS": "Snapshots",
+          "SUB_ACCOUNTS": "Sub Accounts"
+        }
+      },
+      "SHOP": {
+        "TITLE": "Bestellung"
+      },
+      "SERVER_MARKET": {
+        "TITLE": "Serverbörse"
+      },
+      "SSH_KEYS": {
+        "TITLE": "SSH keys",
+        "NO_SSH_KEYS": "Oh! Looks like you don't have any ssh keys.",
+        "ADD_SSH_KEYS": "Adding SSH keys through the app is not recommended for security reasons. Please use the Hetzner Robot for this.",
+        "ACTIONS": {
+          "TITLE": "Actions for the ssh key '{{sshKey}}'"
+        },
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "Edit ssh key",
+            "FORM": {
+              "NAME": "Name"
+            }
+          }
+        }
+      },
+      "SUB_ACCOUNTS": {
+        "LIST": {
+          "NO_SUB_ACCOUNTS": "Oh! Looks like you don't have any sub accounts.",
+          "ACTIONS": {
+            "TITLE": "Edit sub account \"{{subAccount}}\"",
+            "RESET_PASSWORD": "Reset password",
+            "CONFIRM_RESET_PASSWORD": "Do you really want to reset the password for sub account \"{{subAccount}}\"?"
+          },
+          "MESSAGES": {
+            "DELETE": "Sub account \"{{subAccount}}\" successfully deleted.",
+            "RESET_PASSWORD": "Password for sub account \"{{subAccount}}\" successfully changed to \"{{password}}\"."
+          }
+        },
+        "ADD": {
+          "TITLE": "Create new sub account",
+          "ERROR": "An error occurred. Keep in mind that the folder entered as \"home directory\" needs to exist.",
+          "FORM": {
+            "HOME_DIRECTORY": "Home directory",
+            "COMMENT": "Comment",
+            "WEB_DAV": "Enable WebDAV",
+            "SAMBA": "Enable Samba",
+            "READONLY": "Read-only?"
+          }
+        },
+        "EDIT": {
+          "TITLE": "Edit sub account"
+        }
       }
     }
   }

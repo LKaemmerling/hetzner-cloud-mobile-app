@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ 'ROBOT.PAGE.ACCOUNTS.MODAL.SHARE.TITLE' | translate }}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text showWhen="ios" class="text-white">{{ 'ACTIONS.CANCEL' | translate}}</span>
+        <i class="fas fa-times" showWhen="android,windows"></i>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p class="message_box info" text-wrap="">{{ 'ROBOT.PAGE.ACCOUNTS.MODAL.SHARE.MESSAGE' | translate }}</p>
+  <ion-row>
+    <ion-col col-xl-4 offset-xl-4 col-sm-12 col-md-4 offset-md-4 col-lg-4 offset-lg-4>
+      <ngx-qrcode
+        [qrc-value]="account"></ngx-qrcode>
+    </ion-col>
+  </ion-row>
+</ion-content>

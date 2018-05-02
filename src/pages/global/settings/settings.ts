@@ -1,13 +1,12 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
-import {DeleteAllDataPage} from "../delete-all-data/delete-all-data";
-import {AppVersion} from "@ionic-native/app-version";
-import {FingerprintAIO} from "@ionic-native/fingerprint-aio";
-import {Storage} from "@ionic/storage";
-import {TranslateService} from "@ngx-translate/core";
-import {OneSignal} from "@ionic-native/onesignal";
-import {ConfigService} from "../../../modules/hetzner-app/config/config.service";
-import {DeveloperPage} from "../developer/developer";
+import {DeleteAllDataPage} from '../delete-all-data/delete-all-data';
+import {FingerprintAIO} from '@ionic-native/fingerprint-aio';
+import {Storage} from '@ionic/storage';
+import {TranslateService} from '@ngx-translate/core';
+import {OneSignal} from '@ionic-native/onesignal';
+import {ConfigService} from '../../../modules/hetzner-app/config/config.service';
+import {DeveloperPage} from '../developer/developer';
 
 /**
  * This is the settings page, that contain all possible settings of the app
@@ -23,6 +22,11 @@ export class SettingsPage {
    * @type {number}
    */
   public finger_print: number = -1;
+  /**
+   *
+   * @type {boolean}
+   */
+  public analytics: boolean = true;
   /**
    * This stores the clicks on the version
    * @type {number}
@@ -51,17 +55,17 @@ export class SettingsPage {
    * @param {ToastController} toastController
    * @param {OneSignal} oneSignal
    */
-  constructor(protected navCtrl: NavController,
-              protected navParams: NavParams,
-              protected fingerprint: FingerprintAIO,
-              protected storage: Storage,
-              protected loadingCtrl: LoadingController,
-              protected config: ConfigService,
-              protected translate: TranslateService,
-              protected toastController: ToastController,
-              protected oneSignal: OneSignal
+  constructor(
+    protected navCtrl: NavController,
+    protected navParams: NavParams,
+    protected fingerprint: FingerprintAIO,
+    protected storage: Storage,
+    protected loadingCtrl: LoadingController,
+    protected config: ConfigService,
+    protected translate: TranslateService,
+    protected toastController: ToastController,
+    protected oneSignal: OneSignal
   ) {
-
     storage.get('lang').then(value => {
       if (value != undefined) {
         this.language = value;
@@ -72,18 +76,20 @@ export class SettingsPage {
         this.compact_server_design = value;
       }
     });
-    this.fingerprint.isAvailable().then(resp => {
-
-      this.finger_print = 0;
-      storage.get('auth').then((value => {
-        if (value != undefined && value == 'enabled') {
-          this.finger_print = 1;
-        } else {
-          this.finger_print = 0;
-        }
-      }))
-
-    }).then(() => this.finger_print = -1);
+    this.analytics = this.config.analytics;
+    this.fingerprint
+      .isAvailable()
+      .then(resp => {
+        this.finger_print = 0;
+        storage.get('auth').then(value => {
+          if (value != undefined && value == 'enabled') {
+            this.finger_print = 1;
+          } else {
+            this.finger_print = 0;
+          }
+        });
+      })
+      .then(() => (this.finger_print = -1));
   }
 
   /**
@@ -101,7 +107,7 @@ export class SettingsPage {
     loader.present();
     this.storage.set('lang', this.language);
     this.translate.use(this.language);
-    this.storage.get('hetzner_status_settings').then((data) => {
+    this.storage.get('hetzner_status_settings').then(data => {
       if (data != undefined && data != null) {
         this.oneSignal.sendTag('lang', this.language);
       }
@@ -109,25 +115,32 @@ export class SettingsPage {
     loader.dismiss();
   }
 
+  changeAnalytics() {
+    this.storage.set('analytics', this.analytics);
+  }
+
   /**
    * Open the fingerprint auth
    */
   openFingerprint() {
-    this.fingerprint.show({
-      clientId: 'Hetzner-Cloud-Mobile',
-      clientSecret: 'password', //Only necessary for Android
-      disableBackup: false,  //Only for Android(optional)
-      localizedFallbackTitle: 'Use Pin', //Only for iOS
-      localizedReason: 'Please authenticate' //Only for iOS
-    }).then(result => {
-      var auth = 'disabled';
-      if (this.finger_print == 1) {
-        auth = 'enabled';
-      }
-      this.storage.set('auth', auth);
-    }).catch(err => {
-      alert('Error: ' + err);
-    });
+    this.fingerprint
+      .show({
+        clientId: 'Hetzner-Cloud-Mobile',
+        clientSecret: 'password', //Only necessary for Android
+        disableBackup: false, //Only for Android(optional)
+        localizedFallbackTitle: 'Use Pin', //Only for iOS
+        localizedReason: 'Please authenticate', //Only for iOS
+      })
+      .then(result => {
+        var auth = 'disabled';
+        if (this.finger_print == 1) {
+          auth = 'enabled';
+        }
+        this.storage.set('auth', auth);
+      })
+      .catch(err => {
+        alert('Error: ' + err);
+      });
   }
 
   /**
@@ -152,11 +165,13 @@ export class SettingsPage {
       this.config.developer_mode = true;
       this.toastController.create({message: 'Developer mode is now active', duration: 2000}).present();
       return;
-    } else if (this.developer_mode_clicks > (steps - 3)) {
-      this.toastController.create({
-        message: 'Only ' + (steps - this.developer_mode_clicks) + ' more',
-        duration: 2000
-      }).present();
+    } else if (this.developer_mode_clicks > steps - 3) {
+      this.toastController
+        .create({
+          message: 'Only ' + (steps - this.developer_mode_clicks) + ' more',
+          duration: 2000,
+        })
+        .present();
       return;
     }
   }

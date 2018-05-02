@@ -7,7 +7,6 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
   <ion-row class="row">
     <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let _account of _accounts; let i = index">
       <ion-card class="project"
@@ -37,13 +36,13 @@
               </button>
             </ion-col>
             <ion-col class="col" text-center="">
-              <button clear="" color="primary" icon-start="" ion-button="" small="">
+              <button clear="" color="primary" icon-start="" ion-button="" small="" (click)="openShareModal(_account)">
                 <i class="fa fa-fw fa-share"></i> {{ 'ACTIONS.SHARE' | translate }}
               </button>
             </ion-col>
             <ion-col class="col" text-center="">
               <button clear="" color="warning" icon-start="" ion-button="" small=""
-                      [attr.data-account-menupoint-edit]="_account.name">
+                      [attr.data-account-menupoint-edit]="_account.name" (click)="openEditModal(_account)">
                 <i class="fa fa-fw fa-pencil-alt"></i> {{ 'ACTIONS.EDIT' | translate }}
               </button>
             </ion-col>

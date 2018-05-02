@@ -5,26 +5,25 @@
     </button>
     <ion-title>{{ 'ROBOT.PAGE.SERVERS.TITLE' | translate}}</ion-title>
     <ion-buttons end>
-      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
+      <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done" [error_message]="error"
+                         [loading_error]="error != undefined && error.length > 0"></loading-indicator>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content *ngIf="compact_server_design">
-  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="search($event)" [placeholder]="'ACTIONS.SEARCH' | translate"></ion-searchbar>
   <ion-card>
     <ion-list>
 
-      <button ion-item *ngFor="let server of _search ; let i = index" (click)="openDetailsPage(server)"
+      <button ion-item *ngFor="let server of _search ; let i = index" (click)="openDetailsPage(server.server.server_ip)"
               [id]="server.server_name">
-        <h2>{{ server.server.server_name }}
+        <h2>{{ server.server.server_name.length > 0 ? server.server.server_name : server.server.product }}
         </h2>
         <p>
-          {{server.server.product}} / {{
+          {{server.server.server_ip}} / {{
           server.server.dc
-          }}
-          /
-          {{ server.server.server_ip }}</p>
+          }}{{ server.server.server_name.length > 0 ? ' / '+server.server.product : '' }}</p>
       </button>
       <p ion-item *ngIf="_search == null || _search.length == 0" class="message_box info" text-wrap=""
          [innerHTML]="'ROBOT.PAGE.SERVERS.NO_SERVERS' | translate">
@@ -33,7 +32,7 @@
   </ion-card>
 </ion-content>
 <ion-content *ngIf="!compact_server_design">
-  <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="search($event)" [placeholder]="'ACTIONS.SEARCH' | translate"></ion-searchbar>
   <ion-row class="row">
     <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let server of _search; let i = index">
       <ion-card class="server" [id]="'server_'+i">
@@ -45,16 +44,13 @@
             </button>
           </ion-col>
           <ion-col col-12 align-items-start>
-            <h2>{{ server.server.server_name }}
-            </h2>
+            <h2>{{ server.server.server_name.length > 0 ? server.server.server_name : server.server.product }}</h2>
           </ion-col>
         </ion-row>
         <ion-card-content>
-          <p text-wrap="">{{server.server.product}} / {{
+          <p text-wrap="">{{server.server.server_ip}} / {{
             server.server.dc
-            }}
-            /
-            {{ server.server.server_ip }}</p>
+            }}{{ server.server.server_name.length > 0 ? ' / '+server.server.product : '' }}</p>
 
         </ion-card-content>
         <ion-card-content [id]="'server_'+i+'_content'" style="display:none;"
@@ -62,22 +58,22 @@
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="primary" icon-start="" ion-button="" small=""
-                      class="open_server" disabled>
+                      class="open_server" (click)="openDetailsPage(server.server.server_ip)">
                 <i class="fa fa-fw fa-info"></i> {{ 'ACTIONS.OPEN_DETAILS' | translate }}
               </button>
             </ion-col>
             <ion-col class="col" text-center="">
               <button clear="" color="secondary" icon-start="" ion-button="" small=""
-                      class="edit_server" disabled>
+                      class="edit_server" (click)="openEditModal(server.server)">
                 <i class="fa fa-fw fa-edit"></i> {{ 'ACTIONS.EDIT' | translate }}
               </button>
             </ion-col>
-            <ion-col class="col" text-center="">
+            <!--<ion-col class="col" text-center="">
               <button clear="" color="danger" icon-start="" ion-button="" small=""
                       class="delete_server" disabled>
                 <i class="fa fa-fw fa-trash"></i> {{ 'ACTIONS.CANCELLATION' | translate }}
               </button>
-            </ion-col>
+            </ion-col>-->
           </ion-row>
         </ion-card-content>
       </ion-card>

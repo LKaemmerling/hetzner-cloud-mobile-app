@@ -1,13 +1,12 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Hetzner Mobile</ion-title>
+      <ion-title>{{ 'GLOBAL.NAME' | translate}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="menu">
-    <ion-segment [(ngModel)]="menu" color="secondary" (ionChange)="changeMenu()"
-                 *ngIf="config.getFeatureFlag('robot',false)">
-      <ion-segment-button *ngFor="let menu of available_menus;" [value]="menu.text">
+    <ion-segment [(ngModel)]="menu" color="secondary" (ionChange)="changeMenu()" class="menu-segment">
+      <ion-segment-button *ngFor="let menu of available_menus;" [value]="menu.text" class="menu-segment-button">
         <i [class]="menu.icon"></i> {{menu.text}}
       </ion-segment-button>
     </ion-segment>

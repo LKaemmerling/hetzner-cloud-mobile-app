@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {ActionSheetController, ModalController, NavController, NavParams} from 'ionic-angular';
-import {SshKeyApiProvider} from "../../../modules/hetzner-cloud-api/ssh-key-api/ssh-key-api";
-import {editSSHKeyModal} from "./editSSHKey/editSSHKey";
-import {SshKeysService} from "../../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service";
-import {NetworkProvider} from "../../../modules/hetzner-app/network/network";
-import {TranslateService} from "@ngx-translate/core";
+import {SshKeyApiProvider} from '../../../modules/hetzner-cloud-api/ssh-key-api/ssh-key-api';
+import {editSSHKeyModal} from './editSSHKey/editSSHKey';
+import {SshKeysService} from '../../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service';
+import {NetworkProvider} from '../../../modules/hetzner-app/network/network';
+import {TranslateService} from '@ngx-translate/core';
 
 /**
  * This page lists all ssh keys
@@ -50,7 +50,8 @@ export class SshkeysPage {
     protected sshKeysService: SshKeysService,
     protected translate: TranslateService,
     protected sshKeyProvider: SshKeyApiProvider,
-    protected networkProvider: NetworkProvider) {
+    protected networkProvider: NetworkProvider
+  ) {
     this._ssh_keys = this.sshKeysService.ssh_keys;
   }
 
@@ -63,7 +64,7 @@ export class SshkeysPage {
       this._ssh_keys = this.sshKeysService.ssh_keys;
       this.loading = false;
       this.loading_done = true;
-      setTimeout(() => this.loading_done = false, 3000);
+      setTimeout(() => (this.loading_done = false), 3000);
     });
   }
 
@@ -80,8 +81,12 @@ export class SshkeysPage {
    */
   public delete(ssh_key) {
     if (this.networkProvider.has_connection) {
-      if (confirm('Möchten Sie diesen SSH-Key wirklich unwiderruflich löschen?')) {
-        this.sshKeyProvider.delete(ssh_key.id).then((data) => {
+      let delete_confirmation = '';
+      this.translate.get('ACTIONS.DELETE_CONFIRMATION').subscribe(text => {
+        delete_confirmation = text;
+      });
+      if (confirm(delete_confirmation)) {
+        this.sshKeyProvider.delete(ssh_key.id).then(data => {
           this.loadSSHKeys();
         });
       }
@@ -108,7 +113,7 @@ export class SshkeysPage {
       _cancel = text;
     });
     let _title: string = '';
-    this.translate.get('PAGE.SSH_KEYS.ACTIONS.TITLE', {sshKey: ssh_key.name}).subscribe((text) => {
+    this.translate.get('PAGE.SSH_KEYS.ACTIONS.TITLE', {sshKey: ssh_key.name}).subscribe(text => {
       _title = text;
     });
 
@@ -122,7 +127,7 @@ export class SshkeysPage {
           icon: 'trash',
           handler: () => {
             this.delete(ssh_key);
-          }
+          },
         },
         {
           text: _edit,
@@ -133,7 +138,7 @@ export class SshkeysPage {
             } else {
               this.networkProvider.displayNoNetworkNotice();
             }
-          }
+          },
         },
         {
           text: _cancel,
@@ -141,10 +146,10 @@ export class SshkeysPage {
           icon: 'close',
           handler: () => {
             console.log('Cancel clicked');
-          }
-        }
-      ]
-    }
+          },
+        },
+      ],
+    };
     let actionSheet = this.actionSheetCtrl.create(actions);
     actionSheet.present();
   }

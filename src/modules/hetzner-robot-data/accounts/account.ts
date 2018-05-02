@@ -18,4 +18,9 @@ export interface Account {
    */
   password: string;
 
+  /**
+   * @type {boolean}
+   */
+  can_order:boolean;
+
 }

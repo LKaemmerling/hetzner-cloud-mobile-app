@@ -1,6 +1,8 @@
 {
   "GLOBAL": {
-    "DATE_FORMAT": "dd.mm.yyyy HH:MM:ss",
+    "NAME": "Mein Hetzner",
+    "DATE_TIME_FORMAT": "dd.MM.yyyy HH:mm:ss",
+    "DATE_FORMAT": "dd.MM.yyyy",
     "NO_CONNECTION": "Leider haben Sie aktuell kein Internet. Die Ansicht der App funktioniert weiterhin, allerdings sind alle Funktionen zum Interagieren mit Ihren Systemen solange deaktiviert wie Sie kein Internet haben.",
     "MISSING_OR_WRONG_PROJECT": "Ihr gewählter API-Key ist nicht mehr gültig oder Sie haben kein Projekt ausgewählt. Bitte wählen Sie nun ein Projekt aus.",
     "FEATURE_NEEDS_CONNECTION": "Diese Funktion benötigt eine Internetverbindung. Bitte verbinden Sie sich mit dem Internet.",
@@ -17,7 +19,9 @@
     "ORDER": "Kostenpflichtig bestellen",
     "SHARE": "Teilen",
     "OPEN_DETAILS": "Details",
-    "CANCELLATION": "Stornierung"
+    "CANCELLATION": "Stornierung",
+    "BACK": "Zurück",
+    "SEARCH": "Suche"
   },
   "COMPONENT": {
     "PROTECTION": {
@@ -30,26 +34,26 @@
   "PAGE": {
     "HOME": {
       "TITLE": "Startseite",
-      "TEXT": "<h2>Willkommen auf der Hetzner Cloud Mobile App.</h2> <p>Diese App ist eine inoffizielle App für die Hetzner Cloud. Über diese App können Sie viele der aus der Hetzner Cloud Console bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p>",
+      "TEXT": "<h2>Willkommen auf der \"Mein Hetzner App\".</h2> <p>Diese App ist eine inoffizielle App für diverse Dienste der Hetzner GmbH, zum Beispiel die Hetzner Cloud oder aber der Hetzner Robot. Über diese App können Sie viele der aus der Hetzner Cloud Console oder dem Hetzner Robot bekannten Funktionen auf Ihrem Smartphone ausführen und haben jederzeit einen Überblick über Ihre Server.</p> <p class='message_box info' text-wrap=''>Klicken Sie auf das Menü um Projekte der Hetzner Cloud oder Accounts des Hetzner Robots hinzuzufügen!</p>",
       "ADD_PROJECT_BUTTON": "Jetzt erstes Projekt hinzufügen!"
     },
     "ABOUT": {
       "TITLE": "Über diese App",
-      "TEXT": "Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es wird die von der Hetzner Online GmbH bereitgestellte Schnittstelle verwendet. Auf Ihrem Gerät werden nur die Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese Lokal gelöscht. <strong>Ihre API Tokens verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der Hetzner Cloud API.</strong>"
+      "TEXT": "Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es werden die von der Hetzner Online GmbH bereitgestellten Schnittstellen verwendet. Auf Ihrem Gerät werden nur die Daten der Accounts bzw. Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese lokal gelöscht. Die lokale Löschung impliziert nicht das Kündigen der Services.<strong>Ihre Zugangsdaten verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der entsprechenden Hetzner API.</strong>"
     },
     "HELP": {
       "TITLE": "Hilfe"
     },
     "CHANGELOG": {
-      "TITLE": "Neu in der Version 1.7.0",
+      "TITLE": "Neu in der Version 2.0.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Server über einem Snapshot erstellen",
-          "TEXT": "Es ist nun wieder möglich Server über Snapshots zu erstellen! Gehen Sie dazu einfach auf Ihre Snapshots und wählen 'Neuen Server erstellen' aus"
+          "TITLE": "Hetzner Robot",
+          "TEXT": "Die App unterstützt nun nicht mehr nur die Hetzner Cloud! Sie können nun diverse Funktionen aus dem Hetzner Robot über die App benutzen."
         },
         "SLIDE2": {
-          "TITLE": "E-Mail Support",
-          "TEXT": "Sie haben ein Problem mit der App? Sie können uns nun direkt per E-Mail über den Punkt 'Hilfe' erreichen!"
+          "TITLE": "Neuer Name | Neues Logo",
+          "TEXT": "Wir sind nun als 'Mein Hetzner' zu finden!"
         },
         "SLIDE3": {
           "TITLE": "Bugfixes",
@@ -84,6 +88,7 @@
         "TITLE": "App Informationen",
         "VERSION": "Version:",
         "LANGUAGE": "Sprache:",
+        "ANALYTICS": "Analytics",
         "LATEST_UPDATE": {
           "TITLE": "Letzte Aktualisierung:",
           "TEXT": "<<latest_update>>"
@@ -98,6 +103,31 @@
       },
       "DESIGN": {
         "COMPACT_SERVERS": "Kompaktes Server Design aktivieren?"
+      }
+    },
+    "STATUS": {
+      "TITLE": "Hetzner Status",
+      "MODAL": {
+        "SETTINGS": {
+          "TITLE": "Hetzner Status - Einstellungen",
+          "TEXT": "Sie können über diese App auch Status Benachrichtigungen von der Hetzner-Status Seite erhalten. Bitte wählen Sie dazu die unten stehenden Kategorien aus, von denen Sie Push Nachrichten erhalten möchten. Auf der vorherigen Seite  werden immer alle Meldungen angezeigt.",
+          "SAVE_SUCCESS": "Die Einstellungen wurden erfolgreich gespeichert.",
+          "NOTIFICATION_SETTINGS": {
+            "TITLE": "Benachrichtigungseinstellungen",
+            "SOUND": "Sound aktivieren",
+            "VIBRATE": "Vibration aktivieren"
+          },
+          "CATEGORY": {
+            "GENERAL": "Allgemein",
+            "BASIC_INFRASTRUCTURE": "Basis Infrastruktur",
+            "ADVANCED_INFRASTRUCTURE": "Erweiterte Infrastruktur",
+            "NETWORK": "Netzwerk",
+            "WEB_HOSTING_AND_MANAGED_SERVER": "Webhosting und Managed Server",
+            "DOMAIN_REGISTRATION_ROBOT": "Domain Registration Robot",
+            "V_SERVER": "vServer",
+            "CLOUD": "Cloud"
+          }
+        }
       }
     },
     "ACTIONS": {
@@ -125,31 +155,6 @@
         "ASSIGN_FLOATING_IP": "Floating IP dem Server {{subject}} zugewiesen",
         "UNASSIGN_FLOATING_IP": "Floating IP {{subject}} Zuweisung aufgehoben",
         "REQUEST_CONSOLE": "VNC Session für den Server {{subject}} erstellt"
-      }
-    },
-    "STATUS": {
-      "TITLE": "Hetzner Status",
-      "MODAL": {
-        "SETTINGS": {
-          "TITLE": "Hetzner Status - Einstellungen",
-          "TEXT": "Sie können über diese App auch Status Benachrichtigungen von der Hetzner-Status Seite erhalten. Bitte wählen Sie dazu die unten stehenden Kategorien aus, von denen Sie Push Nachrichten erhalten möchten. Auf der vorherigen Seite  werden immer alle Meldungen angezeigt.",
-          "SAVE_SUCCESS": "Die Einstellungen wurden erfolgreich gespeichert.",
-          "NOTIFICATION_SETTINGS": {
-            "TITLE": "Benachrichtigungseinstellungen",
-            "SOUND": "Sound aktivieren",
-            "VIBRATE": "Vibration aktivieren"
-          },
-          "CATEGORY": {
-            "GENERAL": "Allgemein",
-            "BASIC_INFRASTRUCTURE": "Basis Infrastruktur",
-            "ADVANCED_INFRASTRUCTURE": "Erweiterte Infrastruktur",
-            "NETWORK": "Netzwerk",
-            "WEB_HOSTING_AND_MANAGED_SERVER": "Webhosting und Managed Server",
-            "DOMAIN_REGISTRATION_ROBOT": "Domain Registration Robot",
-            "V_SERVER": "vServer",
-            "CLOUD": "Cloud"
-          }
-        }
       }
     },
     "PROJECTS": {
@@ -432,11 +437,6 @@
             "DISK_BANDWIDTH": "Festplatten-Durchsatz:",
             "NETWORK_PPS": "Netzwerk-PPS:",
             "NETWORK_BANDWIDTH": "Netzwerkbandbreite:"
-          },
-          "ERRORS": {
-            "REQUIRED_TYPE": "Bitte geben Sie einen Typen an.",
-            "REQUIRED_SHUTDOWN": "Der Server muss ausgeschaltet sein, damit ein Upgrade durchgeführt werden kann.",
-            "NETWORK_ERROR": "Leider gab es bei der Anfrage einen Fehler. Probieren Sie es bitte erneut."
           }
         },
         "REVERSE_DNS": {
@@ -465,32 +465,160 @@
         "NO_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch kein Zugänge hinterlegt.",
         "MODAL": {
           "ADD": {
-            "TITLE": "Account hinzufügen",
+            "TITLE": "Zugang hinzufügen",
+            "SCAN": "Zugangs QR-Code scannen",
             "FORM": {
               "ACCOUNT_NAME": "Zugangsbezeichnung:",
-              "USER_NAME": "Username:",
+              "USER_NAME": "Nutzername:",
               "PASSWORD": "Passwort:",
-              "TOOLTIP": {
-                "PROJECT_NAME": "Die Projektbezeichnung können Sie frei wählen. Es empfiehlt sich die Projektbezeichnung des Projektes aus der Hetzner Cloud Console zu verwenden.",
-                "API_TOKEN": "Den API Token können Sie unter dem Menüpunkt 'Zugänge' der Hetzner Cloud Console erstellen."
-              }
+              "CAN_ORDER": "Sind Bestellungen erlaubt?"
             },
+            "INFORMATION": "Für den Webservice muss ein eigener Benutzer angelegt werden, sie finden diese Option im Robot unter dem Menüpunkt 'Einstellungen'. Dort können Sie auch auswählen, ob über den Webservice Bestellungen möglich sein sollen.",
             "ERRORS": {
               "INVALID_KEY": "Leider ist der eingegebene API-Token ungültig.",
               "REQUIRED_NAME": "Bitte geben Sie eine Projektbezeichnung ein.",
               "NAME_ALREADY_USED": "Sie haben bereits ein Projekt mit dieser Bezeichnung!",
               "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
             }
+          },
+          "SHARE": {
+            "TITLE": "Account teilen",
+            "MESSAGE": "Mit dieser Funktion können Sie einfach Accounts zwischen Ihren Geräten teilen, ohne dauerhaft die Zugangsdaten eingeben zu müssen. Scannen Sie einfach diesen QR-Code bei Erstellung eines neuen Accounts."
           }
         }
       },
       "SERVERS": {
         "TITLE": "Meine Server",
-        "NO_SERVERS": "Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden."
+        "NO_SERVERS": "Oh! Es sieht so aus als wäre hier noch kein Server erstellt worden.",
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "Server bearbeiten",
+            "FORM": {
+              "NAME": "Bezeichnung"
+            }
+          },
+          "RESET": {
+            "TITLE": "Reset",
+            "TYPES": {
+              "SW": "STRG+ALT+ENTF an den Server senden",
+              "HW": "Automatischen Hardware-Reset auslösen",
+              "MAN": "Manuellen Hardware-Reset beauftragen",
+              "WOL": "WOL-Signal an den Server senden"
+            },
+            "NO_TYPES": "Dieser Server unterstützt keinen Reset."
+          }
+        }
+      },
+      "SERVER_DETAILS": {
+        "INFORMATION": {
+          "TITLE": "Informationen",
+          "PRODUCT": "Produkt:",
+          "LOCATION": "Standort:"
+        },
+        "NETWORK": {
+          "TITLE": "Netzwerk",
+          "IP": "IP-Adresse:",
+          "TRAFFIC": "Inklusiv Traffic:"
+        },
+        "PAYMENT": {
+          "TITLE": "Zahlung",
+          "UNTIL": "Bezahlt bis",
+          "CANCELLED": "Der Server wurde bereits zur Kündigung vorgemerkt."
+        },
+        "ACTIONS": {
+          "POWER": "Reset",
+          "BOOT_CONFIGURATION": "Boot Konfiguration",
+          "RDNS_SETTINGS": "Reverse DNS",
+          "RESCUE": "Rescue Modus",
+          "FIREWALL": "Firewall"
+        }
       },
       "STORAGE_BOXES": {
         "TITLE": "Meine Storage Boxen",
-        "NO_STORAGE_BOXES": "Oh! Es sieht so aus als wäre hier noch keine Storage Box erstellt worden."
+        "NO_STORAGE_BOXES": "Oh! Es sieht so aus als wäre hier noch keine Storage Box erstellt worden.",
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "Storage Box bearbeiten",
+            "FORM": {
+              "NAME": "Bezeichnung"
+            }
+          }
+        }
+      },
+      "STORAGE_BOX_DETAILS": {
+        "INFORMATION": {
+          "TITLE": "Informationen",
+          "PRODUCT": "Produkt:",
+          "STORAGE_USAGE": "Speichernutzung:"
+        },
+        "NETWORK": {
+          "TITLE": "Netzwerk",
+          "SERVER": "Server:",
+          "WEBDAV": "WebDAV aktiv?",
+          "SAMBA": "Samba aktiv?",
+          "ZFS": "ZFS aktiv?",
+          "READONLY": "Schreibgeschützt?",
+          "HOME": "Basisverzeichnis"
+        },
+        "PAYMENT": {
+          "TITLE": "Zahlung",
+          "UNTIL": "Bezahlt bis",
+          "CANCELLED": "Der Server wurde bereits zur Kündigung vorgemerkt."
+        },
+        "ACTIONS": {
+          "SNAPSHOTS": "Snapshots",
+          "SUB_ACCOUNTS": "Sub Accounts"
+        }
+      },
+      "SHOP": {
+        "TITLE": "Bestellung"
+      },
+      "SERVER_MARKET": {
+        "TITLE": "Serverbörse"
+      },
+      "SSH_KEYS": {
+        "TITLE": "SSH-Schlüssel",
+        "NO_SSH_KEYS": "Sie haben noch keinen SSH-Schlüssel hinterlegt",
+        "ADD_SSH_KEYS": "Das Hinzufügen von SSH-Schlüsseln über die App wird aus Sicherheitsgründen nicht empfohlen. Nutzen Sie hierfür bitte den Hetzner Robot.",
+        "ACTIONS": {
+          "TITLE": "Aktionen für den SSH-Key '{{sshKey}}'"
+        },
+        "MODAL": {
+          "EDIT": {
+            "TITLE": "SSH-Key bearbeiten",
+            "FORM": {
+              "NAME": "Bezeichnung"
+            }
+          }
+        }
+      },
+      "SUB_ACCOUNTS": {
+        "LIST": {
+          "NO_SUB_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch keine Subaccount erstellt worden.",
+          "ACTIONS": {
+            "TITLE": "Subaccount \"{{subAccount}}\" bearbeiten",
+            "RESET_PASSWORD": "Passwort zurücksetzen",
+            "CONFIRM_RESET_PASSWORD": "Möchten Sie wirklich das Password für den Subaccount \"{{subAccount}}\" zurücksetzen?"
+          },
+          "MESSAGES": {
+            "DELETE": "Der Subaccount \"{{subAccount}}\" wurde erfolgreich gelöscht.",
+            "RESET_PASSWORD": "Das Passwort für den Subaccount \"{{subAccount}}\" wurde erfolgreich geändert: {{password}}"
+          }
+        },
+        "ADD": {
+          "TITLE": "Neuen Sub-Account erstellen",
+          "ERROR": "Es trat ein Fehler auf. Mögliche Ursache: Der als  \"Basis Verzeichnis\" angebene Ordnerpfad muss existieren.",
+          "FORM": {
+            "HOME_DIRECTORY": "Basis Verzeichnis",
+            "COMMENT": "Kommentar",
+            "WEB_DAV": "WebDAV erlauben",
+            "SAMBA": "Samba erlauben",
+            "READONLY": "Schreibschutz?"
+          }
+        },
+        "EDIT": {
+          "TITLE": "Subaccount bearbeiten"
+        }
       }
     }
   }
