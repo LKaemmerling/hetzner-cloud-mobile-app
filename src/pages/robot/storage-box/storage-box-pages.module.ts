@@ -11,6 +11,7 @@ import {StorageBoxListPage} from './list/storage-box-list';
 import {StorageBoxEditModal} from "./edit/storage-box-edit";
 import {StorageBoxDetailPage} from "./details/storage-box-details";
 import {SubAccountPagesModule} from "./details/sub-accounts/sub-account-pages.module";
+import {SnapshotsPagesModule} from "./details/snapshots/snapshots-pages.module.ts";
 
 @NgModule({
   declarations: [StorageBoxListPage, StorageBoxEditModal, StorageBoxDetailPage],
@@ -23,7 +24,8 @@ import {SubAccountPagesModule} from "./details/sub-accounts/sub-account-pages.mo
     IonicStorageModule,
     BrowserAnimationsModule,
     TooltipsModule,
-    SubAccountPagesModule
+    SubAccountPagesModule,
+    SnapshotsPagesModule
   ],
   entryComponents: [StorageBoxListPage, StorageBoxEditModal, StorageBoxDetailPage],
 })

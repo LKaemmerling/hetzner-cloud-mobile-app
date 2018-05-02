@@ -624,6 +624,23 @@
         "EDIT": {
           "TITLE": "Edit sub account"
         }
+      },
+      "SNAPSHOTS": {
+        "LIST": {
+          "NO_SNAPSHOTS": "Oh!  Looks like you don't have any snapshots.",
+          "ACTIONS": {
+            "TITLE": "Edit snapshot \"{{snapshot}}\""
+          },
+          "MESSAGES": {
+            "DELETE": "Snapshot \"{{snapshot}}\" successfully deleted."
+          }
+        },
+        "EDIT": {
+          "TITLE": "Edit snapshot",
+          "FORM": {
+            "COMMENT": "Comment"
+          }
+        }
       }
     }
   }

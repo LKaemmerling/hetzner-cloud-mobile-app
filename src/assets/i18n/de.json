@@ -594,7 +594,7 @@
       },
       "SUB_ACCOUNTS": {
         "LIST": {
-          "NO_SUB_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch keine Subaccount erstellt worden.",
+          "NO_SUB_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch kein Subaccount erstellt worden.",
           "ACTIONS": {
             "TITLE": "Subaccount \"{{subAccount}}\" bearbeiten",
             "RESET_PASSWORD": "Passwort zurücksetzen",
@@ -618,6 +618,23 @@
         },
         "EDIT": {
           "TITLE": "Subaccount bearbeiten"
+        }
+      },
+      "SNAPSHOTS": {
+        "LIST": {
+          "NO_SNAPSHOTS": "Oh! Es sieht so aus als wäre hier noch kein Snapshot erstellt worden.",
+          "ACTIONS": {
+            "TITLE": "Snapshot \"{{snapshot}}\" bearbeiten"
+          },
+          "MESSAGES": {
+            "DELETE": "Der Snapshot \"{{snapshot}}\" wurde erfolgreich gelöscht."
+          }
+        },
+        "EDIT": {
+          "TITLE": "Snapshot bearbeiten",
+          "FORM": {
+            "COMMENT": "Kommentar"
+          }
         }
       }
     }
