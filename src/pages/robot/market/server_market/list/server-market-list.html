@@ -22,7 +22,7 @@
                   [attr.data-test]="market_entry.product.name" (click)="openOrder(market_entry.product)">
           <div>
             <h2>{{ market_entry.product.cpu }}</h2>
-            <p text-wrap="">{{ market_entry.product.description.join(' | ') }}</p>
+            <p text-wrap="">{{ market_entry.product.description.join(' | ').replace(market_entry.product.cpu+' | ','') }}</p>
             <p text-wrap="">Datacenter: {{ market_entry.product.datacenter}} <br /> Traffic: {{ market_entry.product.traffic }} <br /> <strong>Setup: {{market_entry.product.price_setup_vat | number:'1.2-2'}} &euro;</strong></p>
           </div>
           <div item-end="" text-right=""><span class="price">{{market_entry.product.price_vat | number:'1.2-2'}} &euro;</span><br />{{ market_entry.product.fixed_price ? 'Fixprice':('Next Reduce:'+(market_entry.product.next_reduce |  formatMinutes))}}</div>

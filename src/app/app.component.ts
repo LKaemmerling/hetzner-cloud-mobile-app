@@ -141,14 +141,14 @@ export class HetznerMobileApp {
           this.loadHetznerSpecificData();
         });
       });
+      setTimeout(() => this.splashScreen.hide(), 500);
     });
   }
-
   /**
    * Load the specific hetzner cloud data
    */
-  private loadHetznerSpecificData() {
-    this.hetzerCloudData.loadData().then(
+  async loadHetznerSpecificData() {
+    await this.hetzerCloudData.loadData().then(
       () => {
         if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
           this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
@@ -158,17 +158,18 @@ export class HetznerMobileApp {
           });
         }
       });
+    //this.splashScreen.hide();
   }
 
   /**
    * Load all needed for the localization
    */
-  private loadLocalization() {
-    this.translate.setDefaultLang('de');
-    this.translate.addLangs(this.config.available_languages);
-    this.translate.use(this.config.language);
-    this.platform.setLang(this.config.language, true);
-    this.translate.get("ACTIONS.BACK").subscribe((val) => {
+  async loadLocalization() {
+    await this.translate.setDefaultLang('de');
+    await this.translate.addLangs(this.config.available_languages);
+    await  this.translate.use(this.config.language);
+    await this.platform.setLang(this.config.language, true);
+    await this.translate.get("ACTIONS.BACK").subscribe((val) => {
       this.ionicConfig.set('backButtonText', val);
     })
 
