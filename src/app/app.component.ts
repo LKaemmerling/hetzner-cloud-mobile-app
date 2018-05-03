@@ -157,7 +157,6 @@ export class HetznerMobileApp {
             }
           });
         }
-        this.splashScreen.hide();
       });
   }
 

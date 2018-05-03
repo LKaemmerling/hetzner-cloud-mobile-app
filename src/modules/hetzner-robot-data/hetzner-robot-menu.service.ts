@@ -9,6 +9,7 @@ import {HetznerRobotDataService} from "./hetzner-robot-data.service";
 import {ServerListPage} from "../../pages/robot/server/list/server-list";
 import {StorageBoxListPage} from "../../pages/robot/storage-box/list/storage-box-list";
 import {SshKeyListPage} from "../../pages/robot/sshkeys/list/ssh-key-list";
+import {ServerMarketListPage} from "../../pages/robot/market/server_market/list/server-market-list";
 
 /**
  * Service that centralised all methods for the hetzner robot menu
@@ -56,20 +57,22 @@ export class HetznerRobotMenuService {
       protected: true,
       hidden: true
     },
-   /* {
+    /*{
       key: 'ROBOT.PAGE.SHOP.TITLE',
       icon: 'fa-shopping-cart fa-flip-horizontal',
       page: HetznerStatusPage,
       protected: true,
-      hidden: true
-    },
+      hidden: false,
+      needs_order: true,
+    },*/
     {
       key: 'ROBOT.PAGE.SERVER_MARKET.TITLE',
       icon: 'fa-shopping-cart',
-      page: HetznerStatusPage,
+      page: ServerMarketListPage,
       protected: true,
-      hidden: true
-    },*/
+      hidden: false,
+      needs_order: true,
+    },
     {
       key: 'PAGE.STATUS.TITLE',
       icon: 'fa-bell',
@@ -104,6 +107,15 @@ export class HetznerRobotMenuService {
 
   validate(menu_entry) {
     if (menu_entry.protected == true) {
+      if (menu_entry.needs_order != undefined) {
+        if (this.accountService.actual_account != null) {
+          if (this.accountService.actual_account.can_order == true) {
+            return false;
+          } else {
+            return true;
+          }
+        }
+      }
       return this.accountService.actual_account == null;
     } else {
       return menu_entry.hidden;
