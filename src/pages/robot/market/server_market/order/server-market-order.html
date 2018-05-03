@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <i class="fas fa-bars fa-2x"></i>
+    </button>
+    <ion-title>{{ 'ROBOT.PAGE.ORDER_SERVER_MARKET.TITLE' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="loading != false">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ 'ROBOT.PAGE.ORDER_SERVER_MARKET.ORDER.TITLE' | translate}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        1 x <strong> Dedicated Root Server {{ product.name }}</strong><br/>
+        <ul>
+          <li *ngFor="let descripti of product.description">{{ descripti}}</li>
+          <li>{{ 'ROBOT.PAGE.ORDER_SERVER_MARKET.ORDER.LOCATION' | translate}} {{ product.datacenter}}</li>
+        </ul>
+        <span class="price">{{product.price_vat | number:'1.2-2'}} &euro;</span> {{ 'ROBOT.PAGE.ORDER_SERVER_MARKET.ORDER.MONTHLY_COSTS' | translate}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="ssh_keys.length > 0">
+      <ion-card-header>
+        <ion-card-title>{{ 'ROBOT.PAGE.ORDER_SERVER_MARKET.ACCESS.TITLE' | translate}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="message_box info" [innerHTML]="'ROBOT.PAGE.ORDER_SERVER_MARKET.ACCESS.DESCRIPTION' | translate">
+
+        </p>
+        <ion-item>
+          <ion-label stacked="">SSH-Keys</ion-label>
+          <ion-select [(ngModel)]="selected_keys" multiple="true">
+            <ion-option *ngFor="let ssh_key of ssh_keys" [value]="ssh_key.key.fingerprint">{{ ssh_key.key.name}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <p class="message_box info" *ngIf="config.getFeatureFlag('robot_orders_test',false) == true">STOP! Bestellungen werden <strong>NICHT</strong> versendet!</p>
+    <button ion-button="" color="danger" class="order_button" (click)="doOrder()" [disabled]="(order_success == -1)"><i
+      class="fas fa-spinner fa-spin" *ngIf="(order_success == -1)"></i> {{ 'ACTIONS.ORDER' | translate }}
+    </button>
+  </div>
+  <div *ngIf="loading == false && order_success == 0">
+    <p class="message_box info"><i class="fas fa-spinner fa-spin"></i> {{
+      'ROBOT.PAGE.ORDER_SERVER_MARKET.PLEASE_WAIT_WHILE_LOADING' | translate }}</p>
+  </div>
+  <div *ngIf="order_success == 1">
+    <p class="message_box success"><i class="fas fa-check"></i> {{
+      'ROBOT.PAGE.ORDER_SERVER_MARKET.ORDER_SUCCESS' | translate }}</p>
+  </div>
+</ion-content>
+

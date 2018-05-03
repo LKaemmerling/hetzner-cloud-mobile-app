@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {SshKeysService} from "../../../../../modules/hetzner-robot-data/ssh-keys/ssh-keys.service";
 import {NetworkProvider} from "../../../../../modules/hetzner-app/network/network";
 import {MarketApiProvider} from "../../../../../modules/hetzner-robot-api/market-api/market-api";
+import {ServerMarketOrderPage} from "../order/server-market-order";
 
 /**
  * This page lists all ssh keys
@@ -13,7 +14,7 @@ import {MarketApiProvider} from "../../../../../modules/hetzner-robot-api/market
   selector: 'page-server-market-list',
   templateUrl: 'server-market-list.html',
 })
-export class ServerMarketList {
+export class ServerMarketListPage {
   /**
    * All available ssh keys
    * @type {any[]}
@@ -101,8 +102,6 @@ export class ServerMarketList {
 
 
   public openOrder(market_entry) {
-    if(confirm('Are you sure that you want a ' + market_entry.name + ' ?')){
-      alert('OK!');
-    }
+    this.navCtrl.push(ServerMarketOrderPage,{'product_id':market_entry.id})
   }
 }

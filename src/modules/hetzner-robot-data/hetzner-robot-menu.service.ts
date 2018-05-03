@@ -9,7 +9,7 @@ import {HetznerRobotDataService} from "./hetzner-robot-data.service";
 import {ServerListPage} from "../../pages/robot/server/list/server-list";
 import {StorageBoxListPage} from "../../pages/robot/storage-box/list/storage-box-list";
 import {SshKeyListPage} from "../../pages/robot/sshkeys/list/ssh-key-list";
-import {ServerMarketList} from "../../pages/robot/market/server_market/list/server-market-list";
+import {ServerMarketListPage} from "../../pages/robot/market/server_market/list/server-market-list";
 
 /**
  * Service that centralised all methods for the hetzner robot menu
@@ -57,18 +57,18 @@ export class HetznerRobotMenuService {
       protected: true,
       hidden: true
     },
-    {
+    /*{
       key: 'ROBOT.PAGE.SHOP.TITLE',
       icon: 'fa-shopping-cart fa-flip-horizontal',
       page: HetznerStatusPage,
       protected: true,
       hidden: false,
       needs_order: true,
-    },
+    },*/
     {
       key: 'ROBOT.PAGE.SERVER_MARKET.TITLE',
       icon: 'fa-shopping-cart',
-      page: ServerMarketList,
+      page: ServerMarketListPage,
       protected: true,
       hidden: false,
       needs_order: true,

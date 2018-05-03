@@ -34,17 +34,32 @@ export class MarketApiProvider extends BaseApiProvider {
   market(search: string = null) {
     return this._get('order/server_market/product?search='+search);
   }
-
-  orderMarket(product_id: string, authorized_key: Array<any>, password: string, dist: string = '', arch: string = '', lang: string = '', comment: string = '', test: boolean = false) {
-    return this._post("order/server_market/transaction", {
+  marketProduct(product_id:string){
+    return this._get('order/server_market/product/'+product_id);
+  }
+  orderMarket(product_id: string, authorized_key: Array<any>, dist: string = '', arch: string = '', lang: string = '', comment: string = '', test: boolean = false) {
+    let payload = {
       product_id: product_id,
-      authorized_key: authorized_key,
-      password: password,
       dist: dist,
       arch: arch,
       lang: lang,
       comment: comment,
       test: test
-    });
+    };
+    if(authorized_key.length > 0){
+     payload['authorized_key'] = authorized_key;
+    } else {
+      payload['password'] = this.makePass();
+    }
+    return this._post("order/server_market/transaction", payload);
+  }
+  makePass() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 16; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
   }
 }

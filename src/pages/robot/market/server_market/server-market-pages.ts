@@ -9,10 +9,11 @@ import {HetznerAppComponentsModule} from '../../../../components/hetzner-app-com
 import {TooltipsModule} from 'ionic-tooltips';
 import {HetznerRobotDataModule} from '../../../../modules/hetzner-robot-data/hetzner-robot-data.module';
 
-import {ServerMarketList} from "./list/server-market-list";
+import {ServerMarketListPage} from "./list/server-market-list";
+import {ServerMarketOrderPage} from "./order/server-market-order";
 
 @NgModule({
-  declarations: [ServerMarketList],
+  declarations: [ServerMarketListPage,ServerMarketOrderPage],
   imports: [
     HetznerAppComponentsModule,
     IonicPageModule,
@@ -23,7 +24,7 @@ import {ServerMarketList} from "./list/server-market-list";
     BrowserAnimationsModule,
     TooltipsModule
   ],
-  entryComponents: [ServerMarketList],
+  entryComponents: [ServerMarketListPage,ServerMarketOrderPage],
 })
 export class ServerMarketPagesModule {
 }
