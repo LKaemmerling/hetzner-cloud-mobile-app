@@ -18,7 +18,7 @@ export class ConfigService {
    * The currently used language
    * @type {string}
    */
-  public language = 'de';
+  public language = 'en';
   /**
    *
    * @type {string[]}
@@ -100,6 +100,8 @@ export class ConfigService {
                   let language = navigator.language.substring(0, 2).toLowerCase();
                   if (this.available_languages.indexOf(language) != -1) {
                     this.language = language;
+                  } else {
+                    this.language = 'en';
                   }
                 }
               }
