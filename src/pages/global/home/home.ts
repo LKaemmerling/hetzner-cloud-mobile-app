@@ -22,16 +22,9 @@ export class HomePage {
   constructor(
     protected navCtrl: NavController,
     protected project: ProjectsService,
-    protected modal: ModalController,
-    protected splashScreen: SplashScreen
+    protected modal: ModalController
   ) {
   }
-
-  public ionViewDidLoad() {
-    this.splashScreen.hide();
-  }
-
-
   /**
    * This open the create project modal
    */
