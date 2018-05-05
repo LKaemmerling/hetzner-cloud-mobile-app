@@ -579,24 +579,23 @@
         "TITLE": "Bestellung"
       },
       "SERVER_MARKET": {
-        "TITLE": "Serverbörse",
-        "PLEASE_WAIT_WHILE_LOADING": "Bitte waren Sie, während wir die aktuellen Angebote aus der Serverbörse laden.",
-        "NO_SERVERS": "Leider gibt es aktuell keine Angebote in der Serverbörse."
+        "TITLE": "Server Market",
+        "PLEASE_WAIT_WHILE_LOADING": "Please wait, while we load the offers from the server market.",
+        "NO_SERVERS": "Oh! Currently there are no offers on the server market."
       },
       "ORDER_SERVER_MARKET": {
-        "TITLE": "Serverbörse - Bestellung",
-        "PLEASE_WAIT_WHILE_LOADING": "Bitte waren Sie, während wir das Angebot aus der Serverbörse laden.",
-        "NO_SERVERS": "Leider gibt es aktuell keine Angebote in der Serverbörse.",
-        "ORDER_SUCCESS":"Die Bestellung war erfolgreich. Der Server wird Ihnen in Kürze bereitgestellt.",
-        "CONFIRMATION":"Möchten Sie diese Serverbörse Bestellung wirklich durchführen?",
+        "TITLE": "Server Market - Order",
+        "PLEASE_WAIT_WHILE_LOADING": "Please wait while we load your offer from the server market.",
+        "ORDER_SUCCESS":"Your order was successfully. You should get an E-Mail in a couple of minutes.",
+        "CONFIRMATION":"Are you sure that you want to make this order?",
         "ORDER":{
-          "TITLE":"Ihre Bestellung",
-          "LOCATION":"Standort:",
-          "MONTHLY_COSTS":"monatliche Kosten"
+          "TITLE":"Your Order",
+          "LOCATION":"Location:",
+          "MONTHLY_COSTS":"monthly costs"
         },
         "ACCESS":{
-          "TITLE":"Server-Zugangsdaten",
-          "DESCRIPTION":"Bitte wählen Sie aus, wie Sie auf den neuen Server zugreifen möchten.<br/>Wenn Sie hier keinen SSH-Key auswählen wird Ihnen ein zufällig generiertes Passwort automatisch via E-Mail zugeschickt.<br/>"
+          "TITLE":"Server-Access",
+          "DESCRIPTION":"Please choose how you want to access the new server.<br/>If you enter an SSH key here, an automatic password will be automatically sent by e-mail. <br/>"
         }
       },
       "SSH_KEYS": {
