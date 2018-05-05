@@ -2,7 +2,6 @@
 <widget android-versionCode="2001002" id="de.lkdevelopment.hetzner" ios-CFBundleVersion="2001002" version="2.1.0"
         xmlns="http://www.w3.org/ns/widgets">
   <name>My Hetzner</name>
-  <name short="HiCdv">Hetzner</name>
   <description>A mobile app for all Hetzner services.</description>
   <author email="kontakt@lukas-kaemmerling.de" href="https://lk-development.de">LK-Development</author>
   <content src="index.html"/>
