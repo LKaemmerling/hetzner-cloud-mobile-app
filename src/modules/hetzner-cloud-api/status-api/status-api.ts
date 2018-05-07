@@ -21,6 +21,10 @@ export class StatusApiProvider extends HetznerApiProvider {
     return this._get('hetzner-status/' + lang)
   }
 
+  hasIpIssues(ip: string) {
+    return this._get('traceing/' + ip + '/issues');
+  }
+
   /**
    * Performs a GET Request against the Hetzner API
    * @param {string} method

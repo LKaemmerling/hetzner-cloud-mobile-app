@@ -92,6 +92,13 @@
         "LATEST_UPDATE": {
           "TITLE": "Letzte Aktualisierung:",
           "TEXT": "<<latest_update>>"
+        },
+        "FEATURES": {
+          "CLOUD": {
+            "STATUS": {
+              "TITLE": "Aktuellen Serverstatus abfragen?"
+            }
+          }
         }
       },
       "SECURITY": {
@@ -582,16 +589,16 @@
         "TITLE": "Serverbörse - Bestellung",
         "PLEASE_WAIT_WHILE_LOADING": "Bitte waren Sie, während wir das Angebot aus der Serverbörse laden.",
         "NO_SERVERS": "Leider gibt es aktuell keine Angebote in der Serverbörse.",
-        "ORDER_SUCCESS":"Die Bestellung war erfolgreich. Der Server wird Ihnen in Kürze bereitgestellt.",
-        "CONFIRMATION":"Möchten Sie diese Serverbörse Bestellung wirklich durchführen?",
-        "ORDER":{
-          "TITLE":"Ihre Bestellung",
-          "LOCATION":"Standort:",
-          "MONTHLY_COSTS":"monatliche Kosten"
+        "ORDER_SUCCESS": "Die Bestellung war erfolgreich. Der Server wird Ihnen in Kürze bereitgestellt.",
+        "CONFIRMATION": "Möchten Sie diese Serverbörse Bestellung wirklich durchführen?",
+        "ORDER": {
+          "TITLE": "Ihre Bestellung",
+          "LOCATION": "Standort:",
+          "MONTHLY_COSTS": "monatliche Kosten"
         },
-        "ACCESS":{
-          "TITLE":"Server-Zugangsdaten",
-          "DESCRIPTION":"Bitte wählen Sie aus, wie Sie auf den neuen Server zugreifen möchten.<br/>Wenn Sie hier keinen SSH-Key auswählen wird Ihnen ein zufällig generiertes Passwort automatisch via E-Mail zugeschickt.<br/>"
+        "ACCESS": {
+          "TITLE": "Server-Zugangsdaten",
+          "DESCRIPTION": "Bitte wählen Sie aus, wie Sie auf den neuen Server zugreifen möchten.<br/>Wenn Sie hier keinen SSH-Key auswählen wird Ihnen ein zufällig generiertes Passwort automatisch via E-Mail zugeschickt.<br/>"
         }
       },
       "SSH_KEYS": {

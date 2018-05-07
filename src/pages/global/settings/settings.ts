@@ -43,6 +43,8 @@ export class SettingsPage {
    */
   public compact_server_design: boolean = false;
 
+  public cloud_status: boolean = false;
+
   /**
    * Constructor
    * @param {NavController} navCtrl
@@ -77,6 +79,7 @@ export class SettingsPage {
       }
     });
     this.analytics = this.config.analytics;
+    this.cloud_status = this.config.getFeatureFlag('cloud_status', false);
     this.fingerprint
       .isAvailable()
       .then(resp => {
@@ -178,5 +181,9 @@ export class SettingsPage {
 
   openDeveloperMode() {
     this.navCtrl.push(DeveloperPage);
+  }
+
+  changeCloudStatus() {
+    this.config.setFeatureFlag('cloud_status', this.cloud_status);
   }
 }

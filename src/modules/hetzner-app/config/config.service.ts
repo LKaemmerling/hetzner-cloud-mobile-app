@@ -55,7 +55,8 @@ export class ConfigService {
   public analytics = true;
   public feature_flags = {
     robot: true,
-    robot_orders_test:true
+    robot_orders_test:true,
+    cloud_status:false
   };
   /**
    *

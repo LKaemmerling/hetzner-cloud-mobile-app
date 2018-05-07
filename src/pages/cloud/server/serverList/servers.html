@@ -41,8 +41,7 @@
             </button>
           </ion-col>
           <ion-col col-12 align-items-start>
-            <h2>{{ server.name }}
-              <server-status-indicator [status]="server.status"></server-status-indicator>
+            <h2>{{ server.name }}<server-status-indicator [server]="server"></server-status-indicator>
             </h2>
           </ion-col>
         </ion-row>
