@@ -39,7 +39,7 @@ import {HTTP} from "@ionic-native/http";
  * @type {Pro}
  */
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: '2.0.0',
+  appVersion: '2.1.0',
 });
 
 /**
