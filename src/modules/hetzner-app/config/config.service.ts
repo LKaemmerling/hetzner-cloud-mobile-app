@@ -120,6 +120,7 @@ export class ConfigService {
             }
           );
         });
+        this.platform.setUserAgent("My Hetzner" + this.version + ' Build ' + this.build);
       });
     }));
   }

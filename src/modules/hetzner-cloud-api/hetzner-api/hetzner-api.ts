@@ -104,10 +104,13 @@ export abstract class HetznerApiProvider {
    * @returns {HttpHeaders}
    */
   private getHeaders() {
+
     if (this.projectService.actual_project == null) {
-      return new HttpHeaders();
+      return new HttpHeaders()
+        .set('User-Agent', "My Hetzner" + this.configService.version + ' Build ' + this.configService.build);
     }
     return new HttpHeaders()
+      .set('User-Agent', "My Hetzner" + this.configService.version + ' Build ' + this.configService.build)
       .set('Authorization', 'Bearer ' + this.projectService.actual_project.api_key)
       .set('Accept', 'application/json');
   }
