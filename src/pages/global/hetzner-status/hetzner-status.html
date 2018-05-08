@@ -28,8 +28,8 @@
 
         <p [innerHTML]="message['description_'+config.language]" text-wrap=""></p>
         <p [innerHTML]="message['affected_'+config.language]" text-wrap=""></p>
-        <p [innerHTML]="message['start_'+config.language]" text-wrap=""></p>
-        <p [innerHTML]="message['end_'+config.language]" text-wrap=""
+        <p [innerHTML]="message['start']" text-wrap=""></p>
+        <p [innerHTML]="message['end']" text-wrap=""
            *ngIf="message['end_'+config.language] != null"></p>
         <ion-list *ngIf="message.children.length > 0">
 
