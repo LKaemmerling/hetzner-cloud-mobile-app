@@ -17,8 +17,8 @@ export class StatusApiProvider extends HetznerApiProvider {
    * @see https://hetzner-status.lkdev.co/api/hetzner-status
    * @returns {Promise<any>}
    */
-  getStatus(lang: string = 'de') {
-    return this._get('hetzner-status/' + lang)
+  getStatus() {
+    return this._get('v2/messages')
   }
 
   hasIpIssues(ip: string) {

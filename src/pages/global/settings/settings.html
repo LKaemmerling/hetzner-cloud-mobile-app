@@ -32,8 +32,14 @@
         <ion-option value="en">English</ion-option>
       </ion-select>
     </div>
+    <ion-list-header>
+      Cloud Features
+    </ion-list-header>
     <ion-item>
-      <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.FEATURES.CLOUD.STATUS.TITLE' | translate }}</ion-label>
+      <ion-label text-wrap [tooltip]="'PAGE.SETTINGS.APP.FEATURES.CLOUD.STATUS.DESCRIPTION' | translate" arrow
+                 positionV="top"><i
+        class="fas fa-info-circle" ></i> {{ 'PAGE.SETTINGS.APP.FEATURES.CLOUD.STATUS.TITLE' | translate }}
+      </ion-label>
       <ion-toggle [(ngModel)]="cloud_status" (ionChange)="changeCloudStatus()"></ion-toggle>
     </ion-item>
     <!--<ion-item>

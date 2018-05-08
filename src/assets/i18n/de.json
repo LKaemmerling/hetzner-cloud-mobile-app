@@ -96,7 +96,8 @@
         "FEATURES": {
           "CLOUD": {
             "STATUS": {
-              "TITLE": "Aktuellen Serverstatus abfragen?"
+              "TITLE": "Aktuellen Serverstatus abfragen?",
+              "DESCRIPTION": "Um diesen Service bieten zu können, wird die IP Adresse des Servers an unseren Hetzner Status Service gesendet, dort wird ein Traceroute auf die IP gemacht. Dadurch wird der aktuelle Cloud Node ermittelt, welcher dann mit den bestehenden Hetzner Status Meldungen verglichen wird. Dieses Feature ist standardmäßig inaktiv."
             }
           }
         }

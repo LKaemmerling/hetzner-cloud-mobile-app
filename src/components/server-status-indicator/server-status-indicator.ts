@@ -17,7 +17,7 @@ export class ServerStatusIndicatorComponent {
    */
   @Input() server: Server;
   protected hasIssue: number;
-
+  protected issue:any;
   constructor(protected config: ConfigService, protected statusService: StatusApiProvider) {
   }
 
@@ -25,11 +25,14 @@ export class ServerStatusIndicatorComponent {
     if (this.config.getFeatureFlag('cloud_status') == true) {
       this.hasIssue = -2;
       this.statusService.hasIpIssues(this.server.public_net.ipv4.ip).then((result) => {
+        console.log(result);
         if ((<any> result).length > 0) {
           this.hasIssue = 1;
+          this.issue = result[0];
         } else {
           this.hasIssue = 0;
         }
+        console.log(this.hasIssue);
       },() => {
         this.hasIssue == -1;
       });

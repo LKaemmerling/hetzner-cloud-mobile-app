@@ -92,6 +92,14 @@
         "LATEST_UPDATE": {
           "TITLE": "Last update:",
           "TEXT": "<<latest_update>>"
+        },
+        "FEATURES": {
+          "CLOUD": {
+            "STATUS": {
+              "TITLE": "Query current server status?",
+              "DESCRIPTION": "In order to provide this service, the IP address of the server is sent to our Hetzner Status Service, where a traceroute is made to the IP. This will determine the current cloud node, which will then be compared to the existing Hetzner status messages. This feature is by default inactive."
+            }
+          }
         }
       },
       "SECURITY": {
