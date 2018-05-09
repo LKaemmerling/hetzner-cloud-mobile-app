@@ -119,6 +119,7 @@
     "@ionic-native/app-version": "4.6.0",
     "@ionic-native/barcode-scanner": "4.6.0",
     "@ionic-native/core": "4.6.0",
+    "@ionic-native/deeplinks": "^4.7.0",
     "@ionic-native/device": "^4.7.0",
     "@ionic-native/fingerprint-aio": "4.6.0",
     "@ionic-native/http": "^4.7.0",
@@ -163,6 +164,7 @@
     "emulator": "0.1.0",
     "flag-icon-css": "^3.0.0",
     "ionic-angular": "3.9.2",
+    "ionic-plugin-deeplinks": "^1.0.15",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionic-tooltips": "^2.0.1",
     "ionicons": "3.0.0",
@@ -232,7 +234,25 @@
         "UPDATE_API": "https://api.ionicjs.com",
         "MAX_STORE": "2"
       },
-      "cordova-plugin-splashscreen": {}
+      "cordova-plugin-splashscreen": {},
+      "ionic-plugin-deeplinks": {
+        "URL_SCHEME": "my-hetzner",
+        "DEEPLINK_SCHEME": "https",
+        "DEEPLINK_HOST": "my-hetzner.app",
+        "ANDROID_PATH_PREFIX": "/",
+        "ANDROID_2_PATH_PREFIX": "/",
+        "ANDROID_3_PATH_PREFIX": "/",
+        "ANDROID_4_PATH_PREFIX": "/",
+        "ANDROID_5_PATH_PREFIX": "/",
+        "DEEPLINK_2_SCHEME": "https",
+        "DEEPLINK_2_HOST": "hetzner.app",
+        "DEEPLINK_3_SCHEME": " ",
+        "DEEPLINK_3_HOST": " ",
+        "DEEPLINK_4_SCHEME": " ",
+        "DEEPLINK_4_HOST": " ",
+        "DEEPLINK_5_SCHEME": " ",
+        "DEEPLINK_5_HOST": " "
+      }
     },
     "platforms": [
       "android"
