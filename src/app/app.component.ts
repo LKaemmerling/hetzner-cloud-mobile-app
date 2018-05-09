@@ -167,7 +167,7 @@ export class HetznerMobileApp {
   }
 
   /**
-   * 
+   *
    */
   public branchInit() {
     // only on devices
