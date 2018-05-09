@@ -93,6 +93,7 @@ export class HetznerMobileApp {
         }
         this.changeMenu();
       });
+      this.branchInit();
       this.network.init();
       this.config.init().then(() => {
         this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
@@ -165,16 +166,39 @@ export class HetznerMobileApp {
     //this.splashScreen.hide();
   }
 
-  async loadDeeplinks() {
-    this.deeplinks.routeWithNavController(this.nav, {
-      '/about-us': AboutPage,
-      '/universal-links-test': AboutPage,
-      '/status/:statusId': HetznerStatusPage
-    }).subscribe((match) => {
-      console.log('Successfully routed', match);
-    }, (nomatch) => {
-      console.warn('Unmatched Route', nomatch);
+  /**
+   * 
+   */
+  public branchInit() {
+    // only on devices
+    if (!this.platform.is("cordova")) {
+      return;
+    }
+    const Branch = window["Branch"];
+    Branch.disabledTracking(false);
+    // for better Android matching
+    Branch.setCookieBasedMatching("cordova.app.link");
+    Branch.initSession().then(data => {
+      if (data.$deeplink_path) {
+        this.routeLink(data.page);
+      }
     });
+  };
+
+  /**
+   *
+   * @param {string} path
+   */
+  protected routeLink(path: string) {
+    let page: any = null;
+    switch (path) {
+      case "status":
+        page = HetznerStatusPage;
+        break;
+    }
+    if (page != null) {
+      this.nav.push(page);
+    }
   }
 
   /**
