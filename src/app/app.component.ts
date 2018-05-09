@@ -17,7 +17,6 @@ import {ChangelogPage} from '../pages/global/changelog/changelog';
 import {Device} from '@ionic-native/device';
 import {HetznerRobotMenuService} from '../modules/hetzner-robot-data/hetzner-robot-menu.service';
 import {HetznerCloudMenuService} from '../modules/hetzner-cloud-data/hetzner-cloud-menu.service';
-import {Deeplinks} from "@ionic-native/deeplinks";
 import {HetznerStatusPage} from "../pages/global/hetzner-status/hetzner-status";
 
 /**
@@ -41,6 +40,8 @@ export class HetznerMobileApp {
    * @type {string}
    */
   public lang: string = 'de';
+
+  protected loader;
 
   public available_menus = [];
 
@@ -80,13 +81,19 @@ export class HetznerMobileApp {
     protected loadingCtrl: LoadingController,
     protected hetznerCloudMenu: HetznerCloudMenuService,
     protected hetznerRobotMenu: HetznerRobotMenuService,
-    protected modalCtrl: ModalController,
-    protected deeplinks: Deeplinks
+    protected modalCtrl: ModalController
   ) {
     this.available_menus.push(this.hetznerCloudMenu);
     this.available_menus.push(this.hetznerRobotMenu);
-
+    platform.resume.subscribe(() => {
+      this.loader = this.loadingCtrl.create();
+      this.loader.present();
+      this.branchInit();
+      this.loader.dismissAll();
+    });
     platform.ready().then(() => {
+      this.loader = this.loadingCtrl.create();
+      this.loader.present();
       this.storage.get('current_menu').then(val => {
         if (val != undefined) {
           this.menu = val;
@@ -118,6 +125,7 @@ export class HetznerMobileApp {
                     })
                     .then(result => {
                       this.loadHetznerSpecificData();
+                      this.loader.dismiss();
                     })
                     .catch(err => {
                       alert('Authentifizierung fehlgeschlagen. App wird beendet');
@@ -127,6 +135,7 @@ export class HetznerMobileApp {
                     });
                 } else {
                   this.loadHetznerSpecificData();
+                  this.loader.dismiss();
                 }
               });
             })
@@ -139,10 +148,12 @@ export class HetznerMobileApp {
                   }
                 } else {
                   this.loadHetznerSpecificData();
+                  this.loader.dismiss();
                 }
               });
             });
           this.loadHetznerSpecificData();
+          this.loader.dismiss();
         });
       });
       setTimeout(() => this.splashScreen.hide(), 500);
@@ -174,13 +185,14 @@ export class HetznerMobileApp {
     if (!this.platform.is("cordova")) {
       return;
     }
-    const Branch = window["Branch"];
-    Branch.disabledTracking(false);
+    let Branch = window["Branch"];
+    //Branch.disableTracking(true);
     // for better Android matching
-    Branch.setCookieBasedMatching("cordova.app.link");
+    Branch.setCookieBasedMatching("my-hetzner.app.link");
     Branch.initSession().then(data => {
-      if (data.$deeplink_path) {
-        this.routeLink(data.page);
+      if (data.page) {
+        console.log(data);
+        this.routeLink(data.page, (data.params) ? data.params : null);
       }
     });
   };
@@ -189,15 +201,18 @@ export class HetznerMobileApp {
    *
    * @param {string} path
    */
-  protected routeLink(path: string) {
+  protected routeLink(path: string, params = null) {
     let page: any = null;
     switch (path) {
       case "status":
         page = HetznerStatusPage;
         break;
+      case "about":
+        page = AboutPage;
+        break;
     }
     if (page != null) {
-      this.nav.push(page);
+      this.nav.push(page, JSON.parse(params));
     }
   }
 
@@ -264,8 +279,6 @@ export class HetznerMobileApp {
   }
 
   changeMenu() {
-    let loader = this.loadingCtrl.create();
-    loader.present();
     this.available_menus.forEach(val => {
       if (val.text == this.menu) {
         this.menu_entries = val.menu_entries;
@@ -273,6 +286,5 @@ export class HetznerMobileApp {
         val.init();
       }
     });
-    loader.dismiss();
   }
 }

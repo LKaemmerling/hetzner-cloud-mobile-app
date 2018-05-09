@@ -3,7 +3,7 @@
     <name>My Hetzner</name>
     <description>A mobile app for all Hetzner services.</description>
     <author email="kontakt@lukas-kaemmerling.de" href="https://lk-development.de">LK-Development</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.178.31:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -97,7 +97,6 @@
     <access origin="https://api.hetzner.cloud" />
     <access origin="https://robot-ws.your-server.de" />
     <allow-navigation href="http://192.168.178.87:8100" />
-    <engine name="android" spec="6.4.0" />
     <allow-navigation href="http://192.168.178.31:8100" />
     <plugin name="cordova-plugin-app-version" spec="~0.1.9" />
     <plugin name="cordova-sqlite-storage" spec="^2.2.0" />
@@ -120,17 +119,12 @@
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="~5.0.2" />
     <plugin name="cordova-plugin-advanced-http" spec="^1.11.1" />
-    <plugin name="ionic-plugin-deeplinks" spec="~1.0.15">
-        <variable name="URL_SCHEME" value="my-hetzner" />
-        <variable name="DEEPLINK_SCHEME" value="https" />
-        <variable name="DEEPLINK_HOST" value="my-hetzner.app" />
-        <variable name="ANDROID_PATH_PREFIX" value="/" />
-    </plugin>
-  <plugin name="branch-cordova-sdk" spec="^2.6.0" />
-  <branch-config>
-    <branch-key value="key_live_kfF6vchvcTLGv1odl3rP4laoyDnjDEPp" />
-    <uri-scheme value="my-hetzner" />
-    <link-domain value="my-hetzner.app.link" />
-    <ios-team-release value="C327VNYB93" />
-  </branch-config>
+    <plugin name="branch-cordova-sdk" spec="^3.0.0" />
+    <branch-config>
+        <branch-key value="key_live_kfF6vchvcTLGv1odl3rP4laoyDnjDEPp" />
+        <uri-scheme value="my-hetzner" />
+        <link-domain value="my-hetzner.app.link" />
+        <ios-team-release value="C327VNYB93" />
+    </branch-config>
+    <engine name="android" spec="^6.4.0" />
 </widget>

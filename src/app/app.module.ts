@@ -10,7 +10,6 @@ import {Pro} from '@ionic/pro';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TooltipsModule} from 'ionic-tooltips';
 import {OneSignal} from '@ionic-native/onesignal';
-import {AppCenterAnalytics} from '@ionic-native/app-center-analytics';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {ChartsModule} from 'ng2-charts';
 import {AppVersion} from '@ionic-native/app-version';
@@ -33,7 +32,6 @@ import {RobotAppPagesModule} from '../pages/robot/robot-app-pages.module';
 import {HetznerRobotDataModule} from '../modules/hetzner-robot-data/hetzner-robot-data.module';
 import {HetznerRobotApiModule} from '../modules/hetzner-robot-api/hetzner-robot-api.module';
 import {HTTP} from "@ionic-native/http";
-import {Deeplinks} from "@ionic-native/deeplinks";
 
 /**
  * Init the Ionic Pro Monitoring Service
@@ -132,8 +130,7 @@ export class IonicProErrorHandler implements ErrorHandler {
     Keyboard,
     AppRate,
     Device,
-    HTTP,
-    Deeplinks
+    HTTP
   ],
 })
 export class AppModule {

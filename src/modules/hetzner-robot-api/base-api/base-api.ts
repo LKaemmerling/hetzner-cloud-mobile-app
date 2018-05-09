@@ -188,11 +188,6 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    request = request.clone({
-      setHeaders: {
-        "User-Agent": "My Hetzner" + this.configService.version + ' Build ' + this.configService.build
-      }
-    });
     if (this.accountService.actual_account != null) {
       if (request.url.indexOf('robot') != -1) {
 
