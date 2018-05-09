@@ -17,6 +17,8 @@ import {ChangelogPage} from '../pages/global/changelog/changelog';
 import {Device} from '@ionic-native/device';
 import {HetznerRobotMenuService} from '../modules/hetzner-robot-data/hetzner-robot-menu.service';
 import {HetznerCloudMenuService} from '../modules/hetzner-cloud-data/hetzner-cloud-menu.service';
+import {Deeplinks} from "@ionic-native/deeplinks";
+import {HetznerStatusPage} from "../pages/global/hetzner-status/hetzner-status";
 
 /**
  * This is the main component from the Hetzer Cloud Mobile App
@@ -78,7 +80,8 @@ export class HetznerMobileApp {
     protected loadingCtrl: LoadingController,
     protected hetznerCloudMenu: HetznerCloudMenuService,
     protected hetznerRobotMenu: HetznerRobotMenuService,
-    protected modalCtrl: ModalController
+    protected modalCtrl: ModalController,
+    protected deeplinks: Deeplinks
   ) {
     this.available_menus.push(this.hetznerCloudMenu);
     this.available_menus.push(this.hetznerRobotMenu);
@@ -144,6 +147,7 @@ export class HetznerMobileApp {
       setTimeout(() => this.splashScreen.hide(), 500);
     });
   }
+
   /**
    * Load the specific hetzner cloud data
    */
@@ -159,6 +163,18 @@ export class HetznerMobileApp {
         }
       });
     //this.splashScreen.hide();
+  }
+
+  async loadDeeplinks() {
+    this.deeplinks.routeWithNavController(this.nav, {
+      '/about-us': AboutPage,
+      '/universal-links-test': AboutPage,
+      '/status/:statusId': HetznerStatusPage
+    }).subscribe((match) => {
+      console.log('Successfully routed', match);
+    }, (nomatch) => {
+      console.warn('Unmatched Route', nomatch);
+    });
   }
 
   /**

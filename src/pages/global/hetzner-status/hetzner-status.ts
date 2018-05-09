@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {NavController, NavParams, Platform} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {Content, NavController, NavParams, Platform} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import {HetznerStatusSettingPage} from '../hetzner-status-setting/hetzner-status-setting';
 import {StatusApiProvider} from '../../../modules/hetzner-cloud-api/status-api/status-api-provider.service';
@@ -17,6 +17,7 @@ import {ConfigService} from "../../../modules/hetzner-app/config/config.service"
   templateUrl: 'hetzner-status.html',
 })
 export class HetznerStatusPage {
+  @ViewChild(Content) content: Content;
   /**
    * Contains all messages from the hetzner status api
    */
@@ -52,7 +53,7 @@ export class HetznerStatusPage {
     protected browser: InAppBrowser,
     protected translate: TranslateService,
     protected network: NetworkProvider,
-    protected config: ConfigService
+    protected config: ConfigService,
   ) {
     this.loadMessages();
   }
@@ -77,6 +78,10 @@ export class HetznerStatusPage {
           this.loading = false;
           this.loading_done = true;
           setTimeout(() => (this.loading_done = false), 3000);
+          let status_id = this.navParams.get('statusId');
+          if (status_id != undefined) {
+            this.scrollTo('#status_' + status_id);
+          }
         },
         error => {
           if (error.error instanceof ErrorEvent) {
@@ -99,5 +104,10 @@ export class HetznerStatusPage {
    */
   public openPage(url: string) {
     this.browser.create(url, '_system').show();
+  }
+
+  scrollTo(element: string) {
+    let yOffset = document.getElementById(element).offsetTop;
+    this.content.scrollTo(0, yOffset, 4000)
   }
 }
