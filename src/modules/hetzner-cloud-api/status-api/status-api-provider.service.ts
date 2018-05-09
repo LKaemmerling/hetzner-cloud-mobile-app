@@ -1,5 +1,6 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
+import {HttpHeaders} from "@angular/common/http";
 
 /**
  * This is the provider that performs the api calls to the status api.
@@ -33,7 +34,9 @@ export class StatusApiProvider extends HetznerApiProvider {
    */
   _get(method: string) {
     return new Promise((resolve, reject = null) => {
-      this.http.get(this.apiUrl + '/' + method).subscribe(data => {
+      this.http.get(this.apiUrl + '/' + method, {
+        headers: this.getHeaders(),
+      }).subscribe(data => {
         resolve(data);
       }, err => {
         if (reject != null) {
@@ -41,5 +44,9 @@ export class StatusApiProvider extends HetznerApiProvider {
         }
       });
     });
+  }
+
+  protected getHeaders() {
+    return new HttpHeaders().set('App-Agent', "My Hetzner/" + this.configService.build + ' (' + this.configService.version + ')');
   }
 }

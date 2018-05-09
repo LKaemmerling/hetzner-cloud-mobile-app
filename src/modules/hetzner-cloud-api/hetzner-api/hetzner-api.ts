@@ -103,7 +103,7 @@ export abstract class HetznerApiProvider {
    * Build the needed HTTP Headers for the Hetzner API
    * @returns {HttpHeaders}
    */
-  private getHeaders() {
+  protected getHeaders() {
 
     if (this.projectService.actual_project == null) {
       return new HttpHeaders()

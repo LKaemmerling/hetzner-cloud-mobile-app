@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ConfigService} from "../../modules/hetzner-app/config/config.service";
 import {Server} from "../../modules/hetzner-cloud-data/servers/server";
-import {StatusApiProvider} from "../../modules/hetzner-cloud-api/status-api/status-api";
+import {StatusApiProvider} from "../../modules/hetzner-cloud-api/status-api/status-api-provider.service";
 
 /**
  * The Server Status Indicator shows a nice point with the server status. If it is green, the server is running

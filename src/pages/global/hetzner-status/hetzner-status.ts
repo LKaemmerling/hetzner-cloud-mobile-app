@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams, Platform} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import {HetznerStatusSettingPage} from '../hetzner-status-setting/hetzner-status-setting';
-import {StatusApiProvider} from '../../../modules/hetzner-cloud-api/status-api/status-api';
+import {StatusApiProvider} from '../../../modules/hetzner-cloud-api/status-api/status-api-provider.service';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {NetworkProvider} from '../../../modules/hetzner-app/network/network';
