@@ -77,13 +77,14 @@ export class HetznerStatusPage {
           this.messages = data;
           this.loading = false;
           this.loading_done = true;
+          setTimeout(() => {
+            let status_id = this.navParams.get('statusId');
+            if (status_id != undefined) {
+              //this.scrollTo('status_' + status_id);
+            }
+          }, 500);
           setTimeout(() => (this.loading_done = false), 3000);
-          let status_id = this.navParams.get('statusId');
-          console.log(status_id);
-          if (status_id != undefined) {
 
-            this.scrollTo('#status_' + status_id);
-          }
         },
         error => {
           if (error.error instanceof ErrorEvent) {
