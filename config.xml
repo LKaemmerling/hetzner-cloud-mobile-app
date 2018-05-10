@@ -3,8 +3,11 @@
     <name>My Hetzner</name>
     <description>A mobile app for all Hetzner services.</description>
     <author email="kontakt@lukas-kaemmerling.de" href="https://lk-development.de">LK-Development</author>
-    <content original-src="index.html" src="http://192.168.178.31:8100" />
+    <content src="index.html" />
     <access origin="*" />
+    <access origin="wss:///*" />
+    <access origin="https://api.hetzner.cloud" />
+    <access origin="https://robot-ws.your-server.de" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -68,6 +71,25 @@
         <icon height="58" src="resources/ios/icon/Icon-58.png" width="58" />
         <icon height="87" src="resources/ios/icon/Icon-87.png" width="87" />
         <icon height="1024" src="resources/ios/icon/Icon-1024.png" width="1024" />
+        <icon height="57" src="resources/ios/icon/icon.png" width="57" />
+        <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
+        <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />
+        <icon height="80" src="resources/ios/icon/icon-40@2x.png" width="80" />
+        <icon height="120" src="resources/ios/icon/icon-40@3x.png" width="120" />
+        <icon height="50" src="resources/ios/icon/icon-50.png" width="50" />
+        <icon height="100" src="resources/ios/icon/icon-50@2x.png" width="100" />
+        <icon height="60" src="resources/ios/icon/icon-60.png" width="60" />
+        <icon height="120" src="resources/ios/icon/icon-60@2x.png" width="120" />
+        <icon height="180" src="resources/ios/icon/icon-60@3x.png" width="180" />
+        <icon height="72" src="resources/ios/icon/icon-72.png" width="72" />
+        <icon height="144" src="resources/ios/icon/icon-72@2x.png" width="144" />
+        <icon height="76" src="resources/ios/icon/icon-76.png" width="76" />
+        <icon height="152" src="resources/ios/icon/icon-76@2x.png" width="152" />
+        <icon height="167" src="resources/ios/icon/icon-83.5@2x.png" width="167" />
+        <icon height="29" src="resources/ios/icon/icon-small.png" width="29" />
+        <icon height="58" src="resources/ios/icon/icon-small@2x.png" width="58" />
+        <icon height="87" src="resources/ios/icon/icon-small@3x.png" width="87" />
+        <icon height="1024" src="resources/ios/icon/icon-1024.png" width="1024" />
         <splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
         <splash height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
         <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
@@ -93,9 +115,6 @@
     </platform>
     <allow-navigation href="http://192.168.178.24:8100" />
     <allow-navigation href="*" />
-    <access origin="wss:///*" />
-    <access origin="https://api.hetzner.cloud" />
-    <access origin="https://robot-ws.your-server.de" />
     <allow-navigation href="http://192.168.178.87:8100" />
     <allow-navigation href="http://192.168.178.31:8100" />
     <plugin name="cordova-plugin-app-version" spec="~0.1.9" />
@@ -123,8 +142,10 @@
     <branch-config>
         <branch-key value="key_live_kfF6vchvcTLGv1odl3rP4laoyDnjDEPp" />
         <uri-scheme value="my-hetzner" />
+        <link-domain value="link.hetzner.app" />
         <link-domain value="my-hetzner.app.link" />
         <ios-team-release value="C327VNYB93" />
     </branch-config>
     <engine name="android" spec="^6.4.0" />
+    <engine name="ios" spec="4.5.4" />
 </widget>

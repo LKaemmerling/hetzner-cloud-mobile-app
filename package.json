@@ -137,6 +137,7 @@
     "branch-cordova-sdk": "^3.0.0",
     "chart.js": "^2.7.2",
     "cordova-android": "^6.4.0",
+    "cordova-ios": "4.5.4",
     "cordova-plugin-add-swift-support": "^1.7.1",
     "cordova-plugin-advanced-http": "^1.11.1",
     "cordova-plugin-app-version": "^0.1.9",
@@ -236,7 +237,8 @@
       "branch-cordova-sdk": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   },
   "processEnv": [
