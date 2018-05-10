@@ -235,6 +235,12 @@ export class HetznerMobileApp {
    */
   private loadOneSignal() {
     this.oneSignal.startInit(this.config.oneSignal.appId, this.config.oneSignal.googleProjectId);
+    this.oneSignal.handleNotificationOpened().subscribe((data) => {
+      let payload = data; // getting id and action in additionalData.
+      if (payload.notification.payload.additionalData.page != undefined) {
+        this.routeLink(payload.notification.payload.additionalData.page);
+      }
+    });
     this.oneSignal.endInit();
   }
 
