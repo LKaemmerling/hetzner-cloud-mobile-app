@@ -86,20 +86,9 @@ export class HetznerMobileApp {
     this.available_menus.push(this.hetznerCloudMenu);
     this.available_menus.push(this.hetznerRobotMenu);
     platform.resume.subscribe(() => {
-      this.loader = this.loadingCtrl.create();
-      this.loader.present();
       this.branchInit();
-      this.loader.dismissAll();
     });
     platform.ready().then(() => {
-      this.loader = this.loadingCtrl.create();
-      this.loader.present();
-      this.storage.get('current_menu').then(val => {
-        if (val != undefined) {
-          this.menu = val;
-        }
-        this.changeMenu();
-      });
       this.branchInit();
       this.network.init();
       this.config.init().then(() => {
@@ -125,7 +114,6 @@ export class HetznerMobileApp {
                     })
                     .then(result => {
                       this.loadHetznerSpecificData();
-                      this.loader.dismiss();
                     })
                     .catch(err => {
                       alert('Authentifizierung fehlgeschlagen. App wird beendet');
@@ -135,7 +123,6 @@ export class HetznerMobileApp {
                     });
                 } else {
                   this.loadHetznerSpecificData();
-                  this.loader.dismiss();
                 }
               });
             })
@@ -148,12 +135,10 @@ export class HetznerMobileApp {
                   }
                 } else {
                   this.loadHetznerSpecificData();
-                  this.loader.dismiss();
                 }
               });
             });
           this.loadHetznerSpecificData();
-          this.loader.dismiss();
         });
       });
       setTimeout(() => this.splashScreen.hide(), 500);
@@ -166,6 +151,12 @@ export class HetznerMobileApp {
   async loadHetznerSpecificData() {
     await this.hetzerCloudData.loadData().then(
       () => {
+        this.storage.get('current_menu').then(val => {
+          if (val != undefined) {
+            this.menu = val;
+          }
+          this.changeMenu();
+        });
         if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
           this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
             if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
@@ -212,6 +203,7 @@ export class HetznerMobileApp {
         break;
     }
     if (page != null) {
+      this.loader.dismissAll();
       this.nav.push(page, JSON.parse(params));
     }
   }
@@ -234,6 +226,10 @@ export class HetznerMobileApp {
    * Load all OneSignal configurations
    */
   private loadOneSignal() {
+    // only on devices
+    if (!this.platform.is("cordova")) {
+      return;
+    }
     this.oneSignal.startInit(this.config.oneSignal.appId, this.config.oneSignal.googleProjectId);
     this.oneSignal.handleNotificationOpened().subscribe((data) => {
       let payload = data; // getting id and action in additionalData.
@@ -285,6 +281,8 @@ export class HetznerMobileApp {
   }
 
   changeMenu() {
+    let loader = this.loadingCtrl.create();
+    loader.present();
     this.available_menus.forEach(val => {
       if (val.text == this.menu) {
         this.menu_entries = val.menu_entries;
@@ -292,5 +290,6 @@ export class HetznerMobileApp {
         val.init();
       }
     });
+    loader.dismiss();
   }
 }
