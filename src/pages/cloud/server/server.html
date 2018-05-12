@@ -26,6 +26,15 @@
         {{ server.datacenter.description}}
       </div>
     </ion-item>
+    <ion-item *ngIf="cloud_host_enabled == 1">
+      <div item-left="" class="inner-item">
+        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.CLOUD_HOST' | translate}}
+      </div>
+      <div item-right="">
+        <span *ngIf="cloud_host_loading == true"><i class="fas fa-spinner fa-spin"></i></span>
+        <span *ngIf="cloud_host_loading == false">#{{ cloud_host}}</span>
+      </div>
+    </ion-item>
     <ion-item *ngIf="server.image != null">
       <div item-left="">
         {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.IMAGE' | translate}}
@@ -87,7 +96,7 @@
         {{ 'PAGE.SERVERS.TYPE_DETAILS.MEMORY' | translate}}
       </div>
       <div item-right="" id="server_type_memory">
-        {{ server.server_type.memory * 1024  }} MB
+        {{ server.server_type.memory * 1024 }} MB
       </div>
     </ion-item>
     <ion-item>

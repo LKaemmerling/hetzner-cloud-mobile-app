@@ -22,6 +22,14 @@ export class StatusApiProvider extends HetznerApiProvider {
     return this._get('v2/messages')
   }
 
+  trace(ip: string) {
+    return this._get('traceing/' + ip);
+  }
+
+  getCloudHost(ip: string) {
+    return this._get('traceing/' + ip + '/host');
+  }
+
   hasIpIssues(ip: string) {
     return this._get('traceing/' + ip + '/issues');
   }

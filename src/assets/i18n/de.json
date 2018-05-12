@@ -300,6 +300,7 @@
           "INFORMATION": {
             "TITLE": "Informationen:",
             "LOCATION": "Standort:",
+            "CLOUD_HOST": "Cloud Host:",
             "STATUS": "Status:",
             "IMAGE": "Image:",
             "STORAGE_TYPE": {

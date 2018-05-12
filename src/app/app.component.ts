@@ -138,7 +138,7 @@ export class HetznerMobileApp {
                 }
               });
             });
-          this.loadHetznerSpecificData();
+          //this.loadHetznerSpecificData();
         });
       });
       setTimeout(() => this.splashScreen.hide(), 500);

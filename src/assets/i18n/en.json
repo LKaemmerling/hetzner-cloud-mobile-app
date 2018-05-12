@@ -300,6 +300,7 @@
           "INFORMATION": {
             "TITLE": "Information:",
             "LOCATION": "Location:",
+            "CLOUD_HOST": "Cloud-Host:",
             "STATUS": "Status:",
             "IMAGE": "Image:",
             "STORAGE_TYPE": {
@@ -594,16 +595,16 @@
       "ORDER_SERVER_MARKET": {
         "TITLE": "Server Market - Order",
         "PLEASE_WAIT_WHILE_LOADING": "Please wait while we load your offer from the server market.",
-        "ORDER_SUCCESS":"Your order was successfully. You should get an E-Mail in a couple of minutes.",
-        "CONFIRMATION":"Are you sure that you want to make this order?",
-        "ORDER":{
-          "TITLE":"Your Order",
-          "LOCATION":"Location:",
-          "MONTHLY_COSTS":"monthly costs"
+        "ORDER_SUCCESS": "Your order was successfully. You should get an E-Mail in a couple of minutes.",
+        "CONFIRMATION": "Are you sure that you want to make this order?",
+        "ORDER": {
+          "TITLE": "Your Order",
+          "LOCATION": "Location:",
+          "MONTHLY_COSTS": "monthly costs"
         },
-        "ACCESS":{
-          "TITLE":"Server-Access",
-          "DESCRIPTION":"Please choose how you want to access the new server.<br/>If you enter an SSH key here, an automatic password will be automatically sent by e-mail. <br/>"
+        "ACCESS": {
+          "TITLE": "Server-Access",
+          "DESCRIPTION": "Please choose how you want to access the new server.<br/>If you enter an SSH key here, an automatic password will be automatically sent by e-mail. <br/>"
         }
       },
       "SSH_KEYS": {
