@@ -1,6 +1,6 @@
 <!-- Generated template for the ServerStatusIndicatorComponent component -->
 <span>
-   <span *ngIf="hasIssue == -1 ||hasIssue == 0 ">
+   <span *ngIf="hasIssue == -1 || hasIssue == 0 ">
   <span *ngIf="['initializing','starting','stopping','deleting','migrating','rebuilding'].includes(server.status)"><i
     class="fas fa-spin fa-spinner fa-pulse"></i></span>
   <span *ngIf="!['initializing','starting','stopping','deleting','migrating','rebuilding'].includes(server.status)">
@@ -19,7 +19,7 @@
               </svg>
   </span>
    </span>
-  <span *ngIf="hasIssue != -1">
+  <span *ngIf="hasIssue != -1 && hasIssue != 0">
     <span *ngIf="hasIssue == -2"><i class="fas fa-spin fa-spinner"></i>
     </span>
     <span *ngIf="hasIssue == 1"><i class="fas fa-exclamation-triangle"
