@@ -203,7 +203,6 @@ export class HetznerMobileApp {
         break;
     }
     if (page != null) {
-      this.loader.dismissAll();
       this.nav.push(page, JSON.parse(params));
     }
   }

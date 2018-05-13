@@ -62,16 +62,15 @@ export class ServerPage {
     protected serverService: ServersService,
     protected translate: TranslateService,
     protected networkProvider: NetworkProvider,
-    protected serverApiProvider: ServerApiProvider,
-    protected statusApiProvider: StatusApiProvider
+    protected serverApiProvider: ServerApiProvider
   ) {
     this.server = navParams.get('server');
     this.cloud_host_enabled = 0;
     if (this.configService.getFeatureFlag('cloud_status', false)) {
       this.cloud_host_enabled = 1;
       this.cloud_host_loading = true;
-      this.statusApiProvider.getCloudHost(this.server.public_net.ipv4.ip).then((data) => {
-        this.cloud_host = data['cloud_id'];
+      this.serverService.get_cloud_host(this.server).then((cloud_host_id) => {
+        this.cloud_host = <string>cloud_host_id;
         this.cloud_host_loading = false;
       });
     }
