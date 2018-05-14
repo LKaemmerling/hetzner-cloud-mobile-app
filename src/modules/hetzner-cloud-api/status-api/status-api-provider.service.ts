@@ -11,7 +11,7 @@ export class StatusApiProvider extends HetznerApiProvider {
    * The url of the status api
    * @type {string}
    */
-  protected apiUrl: string = 'https://hetzner-status.lkdev.co/api';
+  protected apiUrl: string = 'https://backend.hetzner.app/api';
 
   /**
    * Get all Status from the LK-Network Hetzner Status API
