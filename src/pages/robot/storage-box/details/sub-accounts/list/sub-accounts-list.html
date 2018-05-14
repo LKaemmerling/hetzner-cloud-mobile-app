@@ -21,24 +21,28 @@
     <ion-list *ngIf="subAccounts != null">
 
       <button ion-item *ngFor="let subaccount of subAccounts; let i = index"
-              [id]="subaccount.subaccount.username" (click)="openActions(subaccount.subaccount)" style="margin-bottom:5px;">
-        <h2>{{ (subaccount.subaccount.comment != null && subaccount.subaccount.comment.length > 0) ? (subaccount.subaccount.comment+"("+subaccount.subaccount.username+")") : subaccount.subaccount.username
+              [id]="subaccount.subaccount.username" (click)="openActions(subaccount.subaccount)"
+              style="margin-bottom:5px;">
+        <h2>{{ (subaccount.subaccount.comment != null && subaccount.subaccount.comment.length > 0) ?
+          (subaccount.subaccount.comment+"("+subaccount.subaccount.username+")") : subaccount.subaccount.username
           }}
         </h2>
         <p>{{ subaccount.subaccount.server }} /{{ subaccount.subaccount.homedirectory }}</p>
         <table>
-          <thead>
-          <th>{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.WEBDAV' | translate}}</th>
-          <th>{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.SAMBA' | translate}}</th>
-          <th>{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.READONLY' | translate}}</th>
-          </thead>
           <tr>
+            <td>{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.WEBDAV' | translate}}</td>
             <td><i class="fas"
                    [ngClass]="{'fa-check':subaccount.subaccount.webdav,'fa-times':!subaccount.subaccount.webdav}"></i>
             </td>
+          </tr>
+          <tr>
+            <td>{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.SAMBA' | translate}}</td>
             <td><i class="fas"
                    [ngClass]="{'fa-check':subaccount.subaccount.samba,'fa-times':!subaccount.subaccount.samba}"></i>
             </td>
+          </tr>
+          <tr>
+            <td>{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.READONLY' | translate}}</td>
             <td><i class="fas"
                    [ngClass]="{'fa-check':subaccount.subaccount.readonly,'fa-times':!subaccount.subaccount.readonly}"></i>
             </td>

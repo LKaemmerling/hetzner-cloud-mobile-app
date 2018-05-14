@@ -86,63 +86,68 @@ export class HetznerMobileApp {
     this.available_menus.push(this.hetznerCloudMenu);
     this.available_menus.push(this.hetznerRobotMenu);
     platform.resume.subscribe(() => {
-      this.branchInit();
+      this.initApp();
     });
     platform.ready().then(() => {
-      this.branchInit();
-      this.network.init();
-      this.config.init().then(() => {
-        this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
-        // Okay, so the platform is ready and our plugins are available.
-        // Here you can do any higher level native things you might need.
-        storage.ready().then(() => {
-          statusBar.styleDefault();
-          this.loadOneSignal();
-          this.loadLocalization();
-          fingerPrint
-            .isAvailable()
-            .then(res => {
-              storage.get('auth').then(val => {
-                if (val != undefined && val == 'enabled') {
-                  fingerPrint
-                    .show({
-                      clientId: 'Hetzner-Cloud-Mobile',
-                      clientSecret: 'password', //Only necessary for Android
-                      disableBackup: false, //Only for Android(optional)
-                      localizedFallbackTitle: 'Pin benutzen', //Only for iOS
-                      localizedReason: 'Bitte authentifizieren Sie sich.', //Only for iOS
-                    })
-                    .then(result => {
-                      this.loadHetznerSpecificData();
-                    })
-                    .catch(err => {
-                      alert('Authentifizierung fehlgeschlagen. App wird beendet');
-                      if (platform.is('ios') == false) {
-                        platform.exitApp();
-                      }
-                    });
-                } else {
-                  this.loadHetznerSpecificData();
-                }
-              });
-            })
-            .catch(reason => {
-              storage.get('auth').then(val => {
-                if (val != undefined && val == 'enabled') {
-                  alert('Authentifizierung fehlgeschlagen. App wird beendet');
-                  if (platform.is('ios') == false) {
-                    platform.exitApp();
-                  }
-                } else {
-                  this.loadHetznerSpecificData();
-                }
-              });
-            });
-          //this.loadHetznerSpecificData();
-        });
-      });
+      this.initApp();
       setTimeout(() => this.splashScreen.hide(), 500);
     });
+  }
+
+  initApp() {
+    this.branchInit();
+    this.network.init();
+    this.config.init().then(() => {
+      this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      this.storage.ready().then(() => {
+        this.statusBar.styleDefault();
+        this.loadOneSignal();
+        this.loadLocalization();
+        this.fingerPrint
+          .isAvailable()
+          .then(res => {
+            this.storage.get('auth').then(val => {
+              if (val != undefined && val == 'enabled') {
+                this.fingerPrint
+                  .show({
+                    clientId: 'Hetzner-Cloud-Mobile',
+                    clientSecret: 'password', //Only necessary for Android
+                    disableBackup: false, //Only for Android(optional)
+                    localizedFallbackTitle: 'Pin benutzen', //Only for iOS
+                    localizedReason: 'Bitte authentifizieren Sie sich.', //Only for iOS
+                  })
+                  .then(result => {
+                    this.loadHetznerSpecificData();
+                  })
+                  .catch(err => {
+                    alert('Authentifizierung fehlgeschlagen. App wird beendet');
+                    if (this.platform.is('ios') == false) {
+                      this.platform.exitApp();
+                    }
+                  });
+              } else {
+                this.loadHetznerSpecificData();
+              }
+            });
+          })
+          .catch(reason => {
+            this.storage.get('auth').then(val => {
+              if (val != undefined && val == 'enabled') {
+                alert('Authentifizierung fehlgeschlagen. App wird beendet');
+                if (this.platform.is('ios') == false) {
+                  this.platform.exitApp();
+                }
+              } else {
+                this.loadHetznerSpecificData();
+              }
+            });
+          });
+        //this.loadHetznerSpecificData();
+      });
+    });
+
   }
 
   /**
