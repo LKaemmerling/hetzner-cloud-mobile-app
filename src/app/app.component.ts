@@ -163,11 +163,11 @@ export class HetznerMobileApp {
           this.changeMenu();
         });
         if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
-          this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
+          /*this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
             if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
               this.modalCtrl.create(ChangelogPage).present();
             }
-          });
+          });*/
         }
       });
     //this.splashScreen.hide();
