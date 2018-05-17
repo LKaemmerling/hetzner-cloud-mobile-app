@@ -8,6 +8,8 @@ import {Platform} from "ionic-angular";
  */
 @Injectable()
 export class ConfigService {
+
+  public device_id: string = '';
   /**
    * The current version String
    * @type {string}
@@ -55,8 +57,9 @@ export class ConfigService {
   public analytics = true;
   public feature_flags = {
     robot: true,
-    robot_orders_test:true,
-    cloud_status:false
+    robot_orders_test: true,
+    cloud_status: false,
+    tracking: true
   };
   /**
    *
@@ -138,5 +141,18 @@ export class ConfigService {
   setFeatureFlag(name: string, value: any) {
     this.feature_flags[name] = value;
     this.storage.set('feature_flags', this.feature_flags);
+  }
+
+  initTracking() {
+    if (this.getFeatureFlag('tracking', true)) {
+      this.storage.get('device_id').then((val) => {
+        if (val == undefined) {
+
+        }
+      });
+    }
+  }
+  performTracking(){
+    
   }
 }

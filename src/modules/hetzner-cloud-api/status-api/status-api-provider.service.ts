@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HetznerApiProvider} from "../hetzner-api/hetzner-api";
 import {HttpHeaders} from "@angular/common/http";
+import {project} from "../../hetzner-cloud-data/project/project";
 
 /**
  * This is the provider that performs the api calls to the status api.
@@ -34,6 +35,12 @@ export class StatusApiProvider extends HetznerApiProvider {
     return this._get('traceing/' + ip + '/issues');
   }
 
+  registerDevice(os: string, version: string) {
+    return this._post('device/create', {os: os, version: version});
+  }
+  performTrack(device_id:string, project:number,access:number){
+    return this._post('device/'+device_id+'/tracking', {projects: project, access: access});
+  }
   /**
    * Performs a GET Request against the Hetzner API
    * @param {string} method
@@ -43,6 +50,27 @@ export class StatusApiProvider extends HetznerApiProvider {
   _get(method: string) {
     return new Promise((resolve, reject = null) => {
       this.http.get(this.apiUrl + '/' + method, {
+        headers: this.getHeaders(),
+      }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        if (reject != null) {
+          reject(err);
+        }
+      });
+    });
+  }
+
+  /**
+   * Performs a POST Request against the Hetzner API
+   * @param {string} method
+   * @param {object} body
+   * @returns {Promise<any>}
+   * @private
+   */
+  _post(method: string, body: object = {}) {
+    return new Promise((resolve, reject = null) => {
+      this.http.post(this.apiUrl + '/' + method, body, {
         headers: this.getHeaders(),
       }).subscribe(data => {
         resolve(data);

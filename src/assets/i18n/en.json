@@ -93,6 +93,13 @@
           "TITLE": "Last update:",
           "TEXT": "<<latest_update>>"
         },
+        "PRIVACY": {
+          "TRACKING": {
+            "DESCRIPTION": "In order to further improve the app, we collect the following data: version of the operating system, version of the app, number of projects in the app's cloud module, number of accounts in the robot module of the app. This data is linked to a per device installation unique 'Device ID'. There is no conclusion to you as the owner of the accounts possible. Thus, no personal data is collected. The data is transmitted once a day when starting the app via TLS / SSL connection to our systems. You can prevent the collection of the data by switching the setting \"Allow data collection?\". If you send us the device ID by e-mail, we are happy to provide you with information about the complete data or to delete it.",
+            "TITLE": "Allow data collection?",
+            "DEVICE_ID": "Device ID"
+          }
+        },
         "FEATURES": {
           "CLOUD": {
             "STATUS": {

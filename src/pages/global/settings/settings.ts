@@ -22,6 +22,8 @@ export class SettingsPage {
    * @type {number}
    */
   public finger_print: number = -1;
+
+  public tracking: boolean = true;
   /**
    *
    * @type {boolean}
@@ -78,7 +80,7 @@ export class SettingsPage {
         this.compact_server_design = value;
       }
     });
-    this.analytics = this.config.analytics;
+    this.tracking = this.config.getFeatureFlag('tracking', true);
     this.cloud_status = this.config.getFeatureFlag('cloud_status', false);
     this.fingerprint
       .isAvailable()
@@ -185,5 +187,8 @@ export class SettingsPage {
 
   changeCloudStatus() {
     this.config.setFeatureFlag('cloud_status', this.cloud_status);
+  }
+  changeTracking(){
+    this.config.setFeatureFlag('tracking', this.tracking);
   }
 }

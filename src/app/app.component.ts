@@ -13,11 +13,11 @@ import {TranslateService} from '@ngx-translate/core';
 import {NetworkProvider} from '../modules/hetzner-app/network/network';
 import {HetznerCloudDataService} from '../modules/hetzner-cloud-data/hetzner-cloud-data.service';
 import {ConfigService} from '../modules/hetzner-app/config/config.service';
-import {ChangelogPage} from '../pages/global/changelog/changelog';
 import {Device} from '@ionic-native/device';
 import {HetznerRobotMenuService} from '../modules/hetzner-robot-data/hetzner-robot-menu.service';
 import {HetznerCloudMenuService} from '../modules/hetzner-cloud-data/hetzner-cloud-menu.service';
 import {HetznerStatusPage} from "../pages/global/hetzner-status/hetzner-status";
+import {TrackingService} from "../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the main component from the Hetzer Cloud Mobile App
@@ -81,7 +81,8 @@ export class HetznerMobileApp {
     protected loadingCtrl: LoadingController,
     protected hetznerCloudMenu: HetznerCloudMenuService,
     protected hetznerRobotMenu: HetznerRobotMenuService,
-    protected modalCtrl: ModalController
+    protected modalCtrl: ModalController,
+    protected trackingService: TrackingService
   ) {
     this.available_menus.push(this.hetznerCloudMenu);
     this.available_menus.push(this.hetznerRobotMenu);
@@ -154,22 +155,23 @@ export class HetznerMobileApp {
    * Load the specific hetzner cloud data
    */
   async loadHetznerSpecificData() {
-    await this.hetzerCloudData.loadData().then(
-      () => {
-        this.storage.get('current_menu').then(val => {
-          if (val != undefined) {
-            this.menu = val;
-          }
-          this.changeMenu();
-        });
-        if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
-          /*this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
-            if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
-              this.modalCtrl.create(ChangelogPage).present();
-            }
-          });*/
+
+    this.storage.get('current_menu').then(val => {
+      if (val != undefined) {
+        this.menu = val;
+      }
+      this.changeMenu();
+    });
+    this.trackingService.initTracking();
+    if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
+      /*this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
+        if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
+          this.modalCtrl.create(ChangelogPage).present();
         }
-      });
+      });*/
+
+    }
+
     //this.splashScreen.hide();
   }
 
