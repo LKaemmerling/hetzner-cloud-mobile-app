@@ -96,7 +96,6 @@ export class HetznerMobileApp {
   }
 
   initApp() {
-    this.branchInit();
     this.network.init();
     this.config.init().then(() => {
       this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
@@ -174,26 +173,6 @@ export class HetznerMobileApp {
 
     //this.splashScreen.hide();
   }
-
-  /**
-   *
-   */
-  public branchInit() {
-    // only on devices
-    if (!this.platform.is("cordova")) {
-      return;
-    }
-    let Branch = window["Branch"];
-    //Branch.disableTracking(true);
-    // for better Android matching
-    Branch.setCookieBasedMatching("my-hetzner.app.link");
-    Branch.initSession().then(data => {
-      if (data.page) {
-        console.log(data);
-        this.routeLink(data.page, (data.params) ? data.params : null);
-      }
-    });
-  };
 
   /**
    *
