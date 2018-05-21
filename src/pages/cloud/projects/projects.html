@@ -24,7 +24,7 @@
           <ion-col col-12 align-items-start>
             <h2>{{ _project.name }}
             </h2>
-            <ion-badge item-end>{{
+            <ion-badge item-end  *ngIf="_project.revoked == true">{{
               'PAGE.PROJECTS.STATUS.'+(_project.revoked ? 'REVOKED':'WORKING') | translate}}
             </ion-badge>
           </ion-col>

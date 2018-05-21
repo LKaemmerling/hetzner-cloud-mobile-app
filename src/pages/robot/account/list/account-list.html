@@ -22,7 +22,7 @@
           <ion-col col-12 align-items-start>
             <h2>{{ _account.name }}
             </h2>
-            <ion-badge item-end>{{
+            <ion-badge item-end *ngIf="_account.revoked == true">{{
               'PAGE.PROJECTS.STATUS.'+(_account.revoked ? 'REVOKED':'WORKING') | translate}}
             </ion-badge>
           </ion-col>
