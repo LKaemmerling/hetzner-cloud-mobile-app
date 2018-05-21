@@ -117,6 +117,7 @@
     "@ionic-native/app-rate": "4.6.0",
     "@ionic-native/app-version": "4.6.0",
     "@ionic-native/barcode-scanner": "4.6.0",
+    "@ionic-native/clipboard": "^4.7.0",
     "@ionic-native/core": "4.6.0",
     "@ionic-native/device": "^4.7.0",
     "@ionic-native/fingerprint-aio": "4.6.0",
@@ -136,6 +137,7 @@
     "better-npm-run": "^0.1.0",
     "chart.js": "^2.7.2",
     "cordova-android": "^6.4.0",
+    "cordova-clipboard": "^1.2.1",
     "cordova-ios": "4.5.4",
     "cordova-plugin-add-swift-support": "^1.7.1",
     "cordova-plugin-advanced-http": "^1.11.1",
@@ -231,7 +233,8 @@
       },
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ignore-lint-translation": {},
-      "cordova-plugin-advanced-http": {}
+      "cordova-plugin-advanced-http": {},
+      "cordova-clipboard": {}
     },
     "platforms": [
       "android",

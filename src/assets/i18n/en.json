@@ -21,7 +21,8 @@
     "OPEN_DETAILS": "Details",
     "CANCELLATION": "Termination",
     "BACK": "Back",
-    "SEARCH": "Search"
+    "SEARCH": "Search",
+    "COPY": "Copy"
   },
   "COMPONENT": {
     "PROTECTION": {
