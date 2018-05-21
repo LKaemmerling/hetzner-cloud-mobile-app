@@ -11,24 +11,30 @@
   <ion-row class="row">
     <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let _project of _projects; let i = index">
       <ion-card class="project"
-                [ngClass]="{'active-project' : project.actual_project != null && (_project.api_key == project.actual_project.api_key)}"
-                [id]="'project_'+i"  [attr.data-project]="_project.name" >
+                [ngClass]="{'active-project' : project.actual_project != null && (_project.api_key == project.actual_project.api_key),'revoked': _project.revoked}"
+                [id]="'project_'+i" [attr.data-project]="_project.name">
         <ion-row class="project_header" text-center="" (click)="openSubMenu('project_'+i+'_content')">
           <ion-col offset-9 col-3 style="max-height:20px;">
             <button ion-button="" clear="" color="light"
-                   class="project_menu" [attr.data-project-menupoint]="_project.name"  [attr.data-project-menu]="'menu_point_project_'+i">
+                    class="project_menu" [attr.data-project-menupoint]="_project.name"
+                    [attr.data-project-menu]="'menu_point_project_'+i">
               <i class="fas fa-ellipsis-h fa-2x"></i>
             </button>
           </ion-col>
           <ion-col col-12 align-items-start>
             <h2>{{ _project.name }}
             </h2>
+            <ion-badge item-end>{{
+              'PAGE.PROJECTS.STATUS.'+(_project.revoked ? 'REVOKED':'WORKING') | translate}}
+            </ion-badge>
           </ion-col>
         </ion-row>
-        <ion-card-content [id]="'project_'+i+'_content'" style="display:none;" [@animate]="visible['project_'+i+'_content']">
+        <ion-card-content [id]="'project_'+i+'_content'" style="display:none;"
+                          [@animate]="visible['project_'+i+'_content']">
           <ion-row class="row">
             <ion-col class="col" text-center="">
-              <button clear="" color="secondary" icon-start="" ion-button="" small="" (click)="selectProject(_project)" class="activate_project"
+              <button clear="" color="secondary" icon-start="" ion-button="" small="" (click)="selectProject(_project)"
+                      class="activate_project"
                       [disabled]="project.actual_project != null && (_project.api_key == project.actual_project.api_key && _project.name == project.actual_project.name)">
                 <i class="fas fa-fw fa-check"></i> {{ 'ACTIONS.ACTIVATE' | translate }}
               </button>
@@ -39,12 +45,14 @@
               </button>
             </ion-col>
             <ion-col class="col" text-center="">
-              <button clear="" color="warning" icon-start="" ion-button="" small="" (click)="openEditModal(_project)" [attr.data-project-menupoint-edit]="_project.name">
+              <button clear="" color="warning" icon-start="" ion-button="" small="" (click)="openEditModal(_project)"
+                      [attr.data-project-menupoint-edit]="_project.name">
                 <i class="fa fa-fw fa-pencil-alt"></i> {{ 'ACTIONS.EDIT' | translate }}
               </button>
             </ion-col>
             <ion-col class="col" text-center="">
-              <button clear="" color="danger" icon-start="" ion-button="" small="" (click)="delete(_project)" class="delete_project">
+              <button clear="" color="danger" icon-start="" ion-button="" small="" (click)="delete(_project)"
+                      class="delete_project">
                 <i class="fa fa-fw fa-trash"></i> {{ 'ACTIONS.DELETE' | translate }}
               </button>
             </ion-col>

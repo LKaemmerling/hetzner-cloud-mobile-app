@@ -7,7 +7,7 @@
     "MISSING_OR_WRONG_PROJECT": "Your chosen API key is no longer valid or you have not selected a project. Please select a project now.",
     "FEATURE_NEEDS_CONNECTION": "This feature requires an internet connection. Please connect to the internet.",
     "RESOURCE_LOCKED_FOR_DELETION": "The deletion was blocked for this resource.",
-    "COPY_PASSWORD_TO_CLIPBOARD":"Save password in clipboard?"
+    "COPY_PASSWORD_TO_CLIPBOARD": "Save password in clipboard?"
   },
   "ACTIONS": {
     "DELETE": "Delete",
@@ -179,6 +179,10 @@
       "TITLE": "My projects",
       "ACTIVE_FLAG": "<em>ACTIVE</em>",
       "NO_PROJECT": "Oh! Looks like you don't have any projects.",
+      "STATUS": {
+        "WORKING": "Working",
+        "REVOKED": "Revoked"
+      },
       "ACTIONS": {
         "TITLE": "Actions for project '{{projectName}}'"
       },

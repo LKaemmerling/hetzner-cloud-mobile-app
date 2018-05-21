@@ -15,6 +15,7 @@
               class="visible"
               [ngClass]="{'force-hidden':menu_entry.hidden}">
         <i [class]="'fas fa-fw '+menu_entry.icon"></i> {{ menu_entry.key | translate }}
+        <i *ngIf="menu_entry.has_important != undefined && menu_entry.has_important == true" item-right class="fas fa-exclamation-triangle"></i>
       </button>
       <ion-item
         style="position: fixed; bottom:0; text-align: center;font-size:12px;">

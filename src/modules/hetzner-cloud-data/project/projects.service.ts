@@ -37,21 +37,29 @@ export class ProjectsService {
         if (val !== undefined) {
           this.projects = val;
         }
-        this.storage.get('actual_project').then((val) => {
-          if (val !== undefined && val !== null) {
-            this.actual_project = val;
-            resolve();
-            /*this.network.quickTestApiKey(val.api_key).then(() => {
+        this.projects.forEach((project) => {
+          this.network.quickTestApiKey(project.api_key).then(() => {
+            project.revoked = false;
+          }, () => {
+            project.revoked = true;
+          });
+          this.storage.get('actual_project').then((val) => {
+            if (val !== undefined && val !== null) {
 
-            }, () => {
-              /** this.removeProject(val);
-               this.saveProjects(); **/
-            /*if (this.projects.length > 0) {
-              reject();
+              this.network.quickTestApiKey(val.api_key).then(() => {
+                val.revoked = false;
+                this.actual_project = val;
+                resolve();
+              }, () => {
+                val.revoked = true;
+                this.actual_project = val;
+                resolve();
+              });
+
             }
-          })*/
-          }
+          });
         });
+
       });
 
     });
