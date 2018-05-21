@@ -39,16 +39,17 @@ export class ProjectsService {
         }
         this.storage.get('actual_project').then((val) => {
           if (val !== undefined && val !== null) {
-            this.network.quickTestApiKey(val.api_key).then(() => {
-              this.actual_project = val;
-              resolve();
+            this.actual_project = val;
+            resolve();
+            /*this.network.quickTestApiKey(val.api_key).then(() => {
+
             }, () => {
               /** this.removeProject(val);
                this.saveProjects(); **/
-              if (this.projects.length > 0) {
-                reject();
-              }
-            })
+            /*if (this.projects.length > 0) {
+              reject();
+            }
+          })*/
           }
         });
       });
