@@ -116,9 +116,9 @@ export class HetznerRobotMenuService {
       var tmp = [];
       this.menu_entries.forEach((menu_entry) => {
         menu_entry.hidden = (menu_entry.protected) ? this.validate(menu_entry) : false;
-        if (menu_entry.special != null) {
-          if (menu_entry.special == 'accounts') {
-            menu_entry.has_important = this.accountService.actual_account.revoked;
+        if ((<any> menu_entry).special != null) {
+          if ((<any> menu_entry).special == 'accounts') {
+            (<any> menu_entry).has_important = this.accountService.actual_account.revoked;
           }
         }
         tmp.push(menu_entry);

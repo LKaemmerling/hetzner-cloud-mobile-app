@@ -78,6 +78,7 @@ export class AccountAddModal {
       username: this.username,
       password: this.password,
       can_order: this.can_order,
+      revoked: false
     };
     this.accountService.addAccount(new_account);
     this.accountService.saveAccounts();
