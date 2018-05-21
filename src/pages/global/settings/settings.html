@@ -33,15 +33,12 @@
       </ion-select>
     </div>
     <ion-item>
-      <ion-label text-wrap [tooltip]="'PAGE.SETTINGS.APP.PRIVACY.TRACKING.DESCRIPTION' | translate" arrow
-                 positionV="top"><i
+      <ion-label (click)="openPrivacyPage()"><i
         class="fas fa-info-circle"></i> {{ 'PAGE.SETTINGS.APP.PRIVACY.TRACKING.TITLE' | translate }}
       </ion-label>
       <ion-toggle [(ngModel)]="tracking" (ionChange)="changeTracking()"></ion-toggle>
     </ion-item>
     <ion-item *ngIf="tracking">
-      <ion-label>{{ 'PAGE.SETTINGS.APP.PRIVACY.TRACKING.DEVICE_ID' | translate }}</ion-label>
-
       <span item-right="">{{ config.device_id }}</span>
     </ion-item>
     <ion-list-header>

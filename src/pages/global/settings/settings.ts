@@ -7,6 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {OneSignal} from '@ionic-native/onesignal';
 import {ConfigService} from '../../../modules/hetzner-app/config/config.service';
 import {DeveloperPage} from '../developer/developer';
+import {PrivacyPage} from "./privacy/privays";
 
 /**
  * This is the settings page, that contain all possible settings of the app
@@ -188,7 +189,12 @@ export class SettingsPage {
   changeCloudStatus() {
     this.config.setFeatureFlag('cloud_status', this.cloud_status);
   }
-  changeTracking(){
+
+  changeTracking() {
     this.config.setFeatureFlag('tracking', this.tracking);
+  }
+
+  openPrivacyPage() {
+    this.navCtrl.push(PrivacyPage);
   }
 }

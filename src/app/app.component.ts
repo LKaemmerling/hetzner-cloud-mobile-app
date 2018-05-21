@@ -105,11 +105,11 @@ export class HetznerMobileApp {
         this.statusBar.styleDefault();
         this.loadOneSignal();
         this.loadLocalization();
-        this.fingerPrint
-          .isAvailable()
-          .then(res => {
-            this.storage.get('auth').then(val => {
-              if (val != undefined && val == 'enabled') {
+        this.storage.get('auth').then(val => {
+          if (val != undefined && val == 'enabled') {
+            this.fingerPrint
+              .isAvailable()
+              .then(res => {
                 this.fingerPrint
                   .show({
                     clientId: 'Hetzner-Cloud-Mobile',
@@ -127,24 +127,23 @@ export class HetznerMobileApp {
                       this.platform.exitApp();
                     }
                   });
-              } else {
-                this.loadHetznerSpecificData();
-              }
-            });
-          })
-          .catch(reason => {
-            this.storage.get('auth').then(val => {
-              if (val != undefined && val == 'enabled') {
-                alert('Authentifizierung fehlgeschlagen. App wird beendet');
-                if (this.platform.is('ios') == false) {
-                  this.platform.exitApp();
-                }
-              } else {
-                this.loadHetznerSpecificData();
-              }
-            });
-          });
-        //this.loadHetznerSpecificData();
+              })
+              .catch(reason => {
+                this.storage.get('auth').then(val => {
+                  if (val != undefined && val == 'enabled') {
+                    alert('Authentifizierung fehlgeschlagen. App wird beendet');
+                    if (this.platform.is('ios') == false) {
+                      this.platform.exitApp();
+                    }
+                  } else {
+                    this.loadHetznerSpecificData();
+                  }
+                });
+              });
+          } else {
+            this.loadHetznerSpecificData();
+          }
+        });
       });
     });
 
