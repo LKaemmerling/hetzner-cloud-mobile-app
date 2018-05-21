@@ -10,8 +10,7 @@
   <ion-row class="row">
     <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let _account of _accounts; let i = index">
       <ion-card class="project"
-                [ngClass]="{'active-project' : accountService.actual_account != null && (_account.username == accountService.actual_account.username)}"
-                [id]="'project_'+i" [attr.data-project]="_account.name">
+                [ngClass]="{'active-project' : accountService.actual_account != null && (_account.username == accountService.actual_account.username),'revoked': _account.revoked}">
         <ion-row class="project_header" text-center="" (click)="openSubMenu('account_'+i+'_content')">
           <ion-col offset-9 col-3 style="max-height:20px;">
             <button ion-button="" clear="" color="light"
@@ -23,6 +22,9 @@
           <ion-col col-12 align-items-start>
             <h2>{{ _account.name }}
             </h2>
+            <ion-badge item-end>{{
+              'PAGE.PROJECTS.STATUS.'+(_account.revoked ? 'REVOKED':'WORKING') | translate}}
+            </ion-badge>
           </ion-col>
         </ion-row>
         <ion-card-content [id]="'account_'+i+'_content'" style="display:none;"

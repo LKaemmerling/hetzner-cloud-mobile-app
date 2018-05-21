@@ -122,7 +122,6 @@ export class HetznerCloudMenuService {
             menu_entry.has_important = this.projects.actual_project.revoked;
           }
         }
-        console.log(menu_entry);
         tmp.push(menu_entry);
       })
       this.menu_entries = tmp;

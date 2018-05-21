@@ -28,6 +28,19 @@ export class ProjectsService {
     this.projects = [];
   }
 
+  private checkProjects() {
+    return new Promise((resolve) => {
+      this.projects.forEach((project) => {
+        this.network.quickTestApiKey(project.api_key).then(() => {
+          project.revoked = false;
+        }, () => {
+          project.revoked = true;
+        });
+        resolve();
+      });
+    })
+  }
+
   /**
    * Load all projects from the local storage
    */
@@ -37,12 +50,9 @@ export class ProjectsService {
         if (val !== undefined) {
           this.projects = val;
         }
-        this.projects.forEach((project) => {
-          this.network.quickTestApiKey(project.api_key).then(() => {
-            project.revoked = false;
-          }, () => {
-            project.revoked = true;
-          });
+
+        this.checkProjects().then(() => {
+
           this.storage.get('actual_project').then((val) => {
             if (val !== undefined && val !== null) {
 
@@ -59,7 +69,6 @@ export class ProjectsService {
             }
           });
         });
-
       });
 
     });
@@ -70,7 +79,10 @@ export class ProjectsService {
    * @param {project} project
    * @returns {() => Promise<void>}
    */
-  public selectProject(project: project) {
+  public selectProject(project
+                         :
+                         project
+  ) {
     return new Promise((resolve) => {
       this.actual_project = project;
       this.storage.set('actual_project', this.actual_project);
@@ -81,7 +93,9 @@ export class ProjectsService {
   /**
    * Save all projects to the storage
    */
-  public saveProjects() {
+  public
+
+  saveProjects() {
     this.storage.set('projects', this.projects);
   }
 
@@ -89,7 +103,10 @@ export class ProjectsService {
    * Add a new project to the storage
    * @param {project} project
    */
-  public addProject(project: project) {
+  public addProject(project
+                      :
+                      project
+  ) {
     if (this.projects == null) {
       this.projects = [];
     }
@@ -100,7 +117,10 @@ export class ProjectsService {
    * Remove a project from the storage
    * @param {project} project
    */
-  public removeProject(project: project) {
+  public removeProject(project
+                         :
+                         project
+  ) {
     var tmp = [];
     if (this.actual_project == null || (this.actual_project.api_key == project.api_key)) {
       this.actual_project = null;

@@ -20,42 +20,55 @@ export class HetznerRobotMenuService {
   public icon = 'hetzner-robot-icon';
 
   public text = 'Robot';
-
+  /**
+   *
+   * @type {({key: string; icon: string; page: HomePage; protected: boolean; hidden: boolean; special: null; has_important: boolean} | {key: string; icon: string; page: AccountListPage; protected: boolean; hidden: boolean; special: string; has_important: boolean} | {key: string; icon: string; page: ServerListPage; protected: boolean; hidden: boolean; special: null; has_important: boolean} | {key: string; icon: string; page: StorageBoxListPage; protected: boolean; hidden: boolean; special: null; has_important: boolean} | {key: string; icon: string; page: SshKeyListPage; protected: boolean; hidden: boolean; special: null; has_important: boolean} | {key: string; icon: string; page: ServerMarketListPage; protected: boolean; hidden: boolean; needs_order: boolean} | {key: string; icon: string; page: HetznerStatusPage; protected: boolean; hidden: boolean; special: null; has_important: boolean} | {key: string; icon: string; page: SettingsPage; protected: boolean; hidden: boolean; special: null; has_important: boolean})[]}
+   */
   public menu_entries = [
     {
       key: 'PAGE.HOME.TITLE',
       icon: 'fa-home',
       page: HomePage,
       protected: false,
-      hidden: false
+      hidden: false,
+      special: null,
+      has_important: false
     },
     {
       key: 'ROBOT.PAGE.ACCOUNTS.TITLE',
       icon: 'fa-user',
       page: AccountListPage,
       protected: false,
-      hidden: false
+      hidden: false,
+      special: 'accounts',
+      has_important: false
     },
     {
       key: 'ROBOT.PAGE.SERVERS.TITLE',
       icon: 'fa-server',
       page: ServerListPage,
       protected: true,
-      hidden: true
+      hidden: true,
+      special: null,
+      has_important: false
     },
     {
       key: 'ROBOT.PAGE.STORAGE_BOXES.TITLE',
       icon: 'fa-hdd',
       page: StorageBoxListPage,
       protected: true,
-      hidden: true
+      hidden: true,
+      special: null,
+      has_important: false
     },
     {
       key: 'ROBOT.PAGE.SSH_KEYS.TITLE',
       icon: 'fa-key',
       page: SshKeyListPage,
       protected: true,
-      hidden: true
+      hidden: true,
+      special: null,
+      has_important: false
     },
     /*{
       key: 'ROBOT.PAGE.SHOP.TITLE',
@@ -78,14 +91,18 @@ export class HetznerRobotMenuService {
       icon: 'fa-bell',
       page: HetznerStatusPage,
       protected: false,
-      hidden: false
+      hidden: false,
+      special: null,
+      has_important: false
     },
     {
       key: 'PAGE.SETTINGS.TITLE',
       icon: 'fa-cogs',
       page: SettingsPage,
       protected: false,
-      hidden: false
+      hidden: false,
+      special: null,
+      has_important: false
     }
   ]
 
@@ -99,6 +116,11 @@ export class HetznerRobotMenuService {
       var tmp = [];
       this.menu_entries.forEach((menu_entry) => {
         menu_entry.hidden = (menu_entry.protected) ? this.validate(menu_entry) : false;
+        if (menu_entry.special != null) {
+          if (menu_entry.special == 'accounts') {
+            menu_entry.has_important = this.accountService.actual_account.revoked;
+          }
+        }
         tmp.push(menu_entry);
       })
       this.menu_entries = tmp;

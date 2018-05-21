@@ -21,6 +21,8 @@ export interface Account {
   /**
    * @type {boolean}
    */
-  can_order:boolean;
+  can_order: boolean;
+
+  revoked: boolean;
 
 }
