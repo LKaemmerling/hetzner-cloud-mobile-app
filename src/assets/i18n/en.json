@@ -6,7 +6,8 @@
     "NO_CONNECTION": "Unfortunately, you currently have no internet. The view of the app will continue to work, but all features to interact with your systems will be disabled as long as you have no Internet.",
     "MISSING_OR_WRONG_PROJECT": "Your chosen API key is no longer valid or you have not selected a project. Please select a project now.",
     "FEATURE_NEEDS_CONNECTION": "This feature requires an internet connection. Please connect to the internet.",
-    "RESOURCE_LOCKED_FOR_DELETION": "The deletion was blocked for this resource."
+    "RESOURCE_LOCKED_FOR_DELETION": "The deletion was blocked for this resource.",
+    "COPY_PASSWORD_TO_CLIPBOARD":"Save password in clipboard?"
   },
   "ACTIONS": {
     "DELETE": "Delete",
