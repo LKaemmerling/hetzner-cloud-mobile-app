@@ -50,7 +50,7 @@ export class StorageBoxSubAccountEditModal {
       this.dismiss();
     }, (message) => {
       this.error = true;
-      alert(message);
+      alert(message.message);
       loader.dismiss();
     });
   }
