@@ -203,6 +203,6 @@ export class SettingsPage {
 
   copyDeviceId() {
     this.clipboard.copy(this.config.device_id);
-    this.toastController.create({message: 'OK'});
+    this.toastController.create({message: 'OK'}).present();
   }
 }

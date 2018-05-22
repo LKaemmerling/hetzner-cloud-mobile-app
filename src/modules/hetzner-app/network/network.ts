@@ -103,15 +103,14 @@ export class NetworkProvider {
   }
 
   public quickTestAccess(username: string, password: string) {
-    this.http.useBasicAuth(username, password);
-    let headers = {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "App-Version": this.config.version,
-      "Authorization": "basic " + btoa(username + ":" + password)
-
-    };
     return new Promise((resolve, reject = null) => {
+      this.http.useBasicAuth(username, password);
+      let headers = {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "App-Version": this.config.version,
+        "Authorization": "basic " + btoa(username + ":" + password)
 
+      };
       if (this.config.runs_on_device) {
         this.http.get(this.config.robot_api_url + '/server', null, headers,
         ).then(data => {

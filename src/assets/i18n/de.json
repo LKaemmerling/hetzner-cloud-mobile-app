@@ -599,7 +599,11 @@
       "SERVER_MARKET": {
         "TITLE": "Serverbörse",
         "PLEASE_WAIT_WHILE_LOADING": "Bitte waren Sie, während wir die aktuellen Angebote aus der Serverbörse laden.",
-        "NO_SERVERS": "Leider gibt es aktuell keine Angebote in der Serverbörse."
+        "NO_SERVERS": "Leider gibt es aktuell keine Angebote in der Serverbörse.",
+        "PRICING":{
+          "FIX_PRICE":"Festpreis",
+          "REDUCE":"Nächste Reduzierung: "
+        }
       },
       "ORDER_SERVER_MARKET": {
         "TITLE": "Serverbörse - Bestellung",

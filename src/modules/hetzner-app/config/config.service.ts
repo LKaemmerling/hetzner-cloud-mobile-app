@@ -57,7 +57,7 @@ export class ConfigService {
   public analytics = true;
   public feature_flags = {
     robot: true,
-    robot_orders_test: true,
+    robot_orders_test: false,
     cloud_status: false,
     tracking: true
   };
@@ -141,18 +141,5 @@ export class ConfigService {
   setFeatureFlag(name: string, value: any) {
     this.feature_flags[name] = value;
     this.storage.set('feature_flags', this.feature_flags);
-  }
-
-  initTracking() {
-    if (this.getFeatureFlag('tracking', true)) {
-      this.storage.get('device_id').then((val) => {
-        if (val == undefined) {
-
-        }
-      });
-    }
-  }
-  performTracking(){
-    
   }
 }

@@ -7,6 +7,7 @@ import {PriceReplacePipe} from "./pipes/price-replace/price-replace";
 import {FileSizePipe} from "./pipes/file-size/file-size";
 import {FormatMinutesPipe} from "./pipes/format-minutes/format-minutes";
 import {TrackingService} from "./tracking/tracking.service";
+import {MoneyFormatPipe} from "./pipes/money-format/money-format";
 
 /**
  * This module register all provider for the basic usage of the app.
@@ -16,7 +17,8 @@ import {TrackingService} from "./tracking/tracking.service";
     FileSizePipe,
     PriceReplacePipe,
     TruncatePipe,
-    FormatMinutesPipe
+    FormatMinutesPipe,
+    MoneyFormatPipe
   ],
   imports: [],
   providers: [Network, NetworkProvider, ConfigService, TrackingService],
@@ -24,7 +26,8 @@ import {TrackingService} from "./tracking/tracking.service";
     FileSizePipe,
     PriceReplacePipe,
     TruncatePipe,
-    FormatMinutesPipe
+    FormatMinutesPipe,
+    MoneyFormatPipe
   ]
 })
 

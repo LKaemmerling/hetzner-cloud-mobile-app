@@ -20,7 +20,6 @@ import {BarcodeScanner} from '@ionic-native/barcode-scanner';
 import {NgxQRCodeModule} from '@lkdevelopment/ngx-qrcode/dist';
 import {HetznerAppComponentsModule} from '../components/hetzner-app-components.module';
 import {Keyboard} from '@ionic-native/keyboard';
-import {AppRate} from '@ionic-native/app-rate';
 import {createTranslateLoader} from '../providers/translation/loader';
 import {NetworkProvider} from '../modules/hetzner-app/network/network';
 import {HetznerCloudDataModule} from '../modules/hetzner-cloud-data/hetzner-cloud-data.module';
@@ -129,7 +128,6 @@ export class IonicProErrorHandler implements ErrorHandler {
     FingerprintAIO,
     BarcodeScanner,
     Keyboard,
-    AppRate,
     Device,
     HTTP,
     Clipboard

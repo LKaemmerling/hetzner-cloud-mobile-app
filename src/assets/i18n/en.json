@@ -604,7 +604,11 @@
       "SERVER_MARKET": {
         "TITLE": "Server Market",
         "PLEASE_WAIT_WHILE_LOADING": "Please wait, while we load the offers from the server market.",
-        "NO_SERVERS": "Oh! Currently there are no offers on the server market."
+        "NO_SERVERS": "Oh! Currently there are no offers on the server market.",
+        "PRICING": {
+          "FIX_PRICE": "Fixprice",
+          "REDUCE": "Next Reduce:"
+        }
       },
       "ORDER_SERVER_MARKET": {
         "TITLE": "Server Market - Order",
