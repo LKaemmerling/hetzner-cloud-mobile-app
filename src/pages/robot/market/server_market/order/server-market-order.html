@@ -18,7 +18,8 @@
           <li *ngFor="let descripti of product.description">{{ descripti}}</li>
           <li>{{ 'ROBOT.PAGE.ORDER_SERVER_MARKET.ORDER.LOCATION' | translate}} {{ product.datacenter}}</li>
         </ul>
-        <span class="price">{{product.price_vat | number:'1.2-2'}} &euro;</span> {{ 'ROBOT.PAGE.ORDER_SERVER_MARKET.ORDER.MONTHLY_COSTS' | translate}}
+        <span class="price">{{product.price_vat | number:'1.2-2' |formatMoney}} &euro;</span> {{
+        'ROBOT.PAGE.ORDER_SERVER_MARKET.ORDER.MONTHLY_COSTS' | translate}}
       </ion-card-content>
     </ion-card>
     <ion-card *ngIf="ssh_keys.length > 0">
@@ -38,7 +39,8 @@
         </ion-item>
       </ion-card-content>
     </ion-card>
-    <p class="message_box info" *ngIf="config.getFeatureFlag('robot_orders_test',false) == true">STOP! Bestellungen werden <strong>NICHT</strong> versendet!</p>
+    <p class="message_box info" *ngIf="config.getFeatureFlag('robot_orders_test',false) == true">STOP! Bestellungen
+      werden <strong>NICHT</strong> versendet!</p>
     <button ion-button="" color="danger" class="order_button" (click)="doOrder()" [disabled]="(order_success == -1)"><i
       class="fas fa-spinner fa-spin" *ngIf="(order_success == -1)"></i> {{ 'ACTIONS.ORDER' | translate }}
     </button>
