@@ -48,8 +48,9 @@ export class StorageBoxSubAccountEditModal {
     this.storageBoxApi.editSubaccount(this.storage_box.id, this.sub_account.username, this.sub_account.homedirectory, this.sub_account.samba, this.sub_account.webdav, this.sub_account.readonly, this.sub_account.comment).then(() => {
       loader.dismiss();
       this.dismiss();
-    }, () => {
+    }, (message) => {
       this.error = true;
+      alert(message);
       loader.dismiss();
     });
   }
