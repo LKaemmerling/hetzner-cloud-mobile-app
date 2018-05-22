@@ -1,6 +1,5 @@
 {
   "name": "hetzner-cloud-app",
-  "app_id": "359b3ec5",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
@@ -10,5 +9,6 @@
       "path": "/robot",
       "proxyUrl": "https://robot-ws.your-server.de"
     }
-  ]
+  ],
+  "pro_id": "359b3ec5"
 }

@@ -199,7 +199,7 @@ export class HetznerMobileApp {
   async loadLocalization() {
     await this.translate.setDefaultLang('de');
     await this.translate.addLangs(this.config.available_languages);
-    await  this.translate.use(this.config.language);
+    await this.translate.use(this.config.language);
     await this.platform.setLang(this.config.language, true);
     await this.translate.get("ACTIONS.BACK").subscribe((val) => {
       this.ionicConfig.set('backButtonText', val);

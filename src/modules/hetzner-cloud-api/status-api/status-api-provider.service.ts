@@ -38,6 +38,9 @@ export class StatusApiProvider extends HetznerApiProvider {
   registerDevice(os: string, version: string) {
     return this._post('device/create', {os: os, version: version});
   }
+  updateDevice(device_id:string, os:string, version:string){
+    return this._put('device/'+device_id, {os: os, version: version});
+  }
   performTrack(device_id:string, project:number,access:number){
     return this._post('device/'+device_id+'/tracking', {projects: project, access: access});
   }

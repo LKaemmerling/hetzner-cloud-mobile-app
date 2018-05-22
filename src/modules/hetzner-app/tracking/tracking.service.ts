@@ -24,11 +24,13 @@ export class TrackingService {
    */
   constructor(protected storage: Storage, public config: ConfigService, protected device: Device, protected statusApiProvider: StatusApiProvider, protected projects: ProjectsService, protected access: AccountService) {
     this.os = this.device.platform ? this.device.platform : 'browser';
-    this.version = this.device.version? this.device.version : '0.0.0';
+    this.version = this.device.version ? this.device.version : '0.0.0';
   }
 
   initTracking() {
     if (this.config.getFeatureFlag('tracking', true)) {
+      this.os = this.device.platform;
+      this.version = this.device.version;
       this.storage.get('device_id').then((val) => {
         if (val == undefined) {
           this.statusApiProvider.registerDevice(this.os, this.version).then((data) => {
@@ -40,7 +42,9 @@ export class TrackingService {
         } else {
           this.device_id = val;
           this.config.device_id = val;
-          this.performTracking();
+          this.statusApiProvider.updateDevice(val, this.os, this.version).then(() => {
+            this.performTracking();
+          });
         }
       });
     }
@@ -48,9 +52,9 @@ export class TrackingService {
 
   performTracking() {
     this.storage.get('last_track').then((val) => {
-      if(val == undefined || (val < new Date(new Date().getTime() - 60 * 60 * 24 * 1000).getTime())){
+      if (val == undefined || (val < new Date(new Date().getTime() - 60 * 60 * 24 * 1000).getTime())) {
         this.statusApiProvider.performTrack(this.device_id, this.projects.projects.length, this.access.accounts.length);
-        this.storage.set('last_track',new Date().getTime());
+        this.storage.set('last_track', new Date().getTime());
       }
     });
 
