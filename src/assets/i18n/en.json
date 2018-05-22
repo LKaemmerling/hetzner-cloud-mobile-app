@@ -170,7 +170,8 @@
             "WEB_HOSTING_AND_MANAGED_SERVER": "Web hosting and Managed Server",
             "DOMAIN_REGISTRATION_ROBOT": "Domain Registration Robot",
             "V_SERVER": "vServer",
-            "CLOUD": "Cloud"
+            "CLOUD": "Cloud",
+            "MY_HETZNER": "My Hetzner-App"
           }
         }
       }
