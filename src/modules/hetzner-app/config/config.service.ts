@@ -81,6 +81,7 @@ export class ConfigService {
   public init() {
     return new Promise((resolve => {
       if (this.platform.is('ios') == false && this.platform.is('android') == false) {
+        // if(true == true){
         this.robot_api_url = 'http://localhost:8100/robot';
         this.runs_on_device = false;
       } else {

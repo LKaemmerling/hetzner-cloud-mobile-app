@@ -18,6 +18,7 @@ import {HetznerRobotMenuService} from '../modules/hetzner-robot-data/hetzner-rob
 import {HetznerCloudMenuService} from '../modules/hetzner-cloud-data/hetzner-cloud-menu.service';
 import {HetznerStatusPage} from "../pages/global/hetzner-status/hetzner-status";
 import {TrackingService} from "../modules/hetzner-app/tracking/tracking.service";
+import {ChangelogPage} from "../pages/global/changelog/changelog";
 
 /**
  * This is the main component from the Hetzer Cloud Mobile App
@@ -162,11 +163,11 @@ export class HetznerMobileApp {
     });
     this.trackingService.initTracking();
     if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
-      /*this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
+      this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
         if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
           this.modalCtrl.create(ChangelogPage).present();
         }
-      });*/
+      });
 
     }
 

@@ -47,19 +47,31 @@
       "TITLE": "Help"
     },
     "CHANGELOG": {
-      "TITLE": "Changes in 2.0.0",
+      "TITLE": "Changes in 2.1.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Hetzner Robot",
-          "TEXT": "The app now not only supports the Hetzner cloud! You can now use various functions from the Hetzner Robot via the app."
+          "TITLE": "Access Validation",
+          "TEXT": "The app checks now at each start whether the entered entrances are valid!"
         },
         "SLIDE2": {
-          "TITLE": "New Name | New Icon",
-          "TEXT": "You can found is now as \"My Hetzner\" with our new icon."
+          "TITLE": "Display of the cloud host and display in case of malfunction!",
+          "TEXT": "In the settings the function \"Cloud Host - Queries\" can now be activated!"
         },
         "SLIDE3": {
+          "TITLE": "Settings",
+          "TEXT": "We have revised our options for recruitment and now point to which data we collect or save!"
+        },
+        "SLIDE4": {
+          "TITLE": "Server Market",
+          "TEXT": "The Server Market is now available via the app"
+        },
+        "SLIDE5": {
+          "TITLE": "My Hetzner - Status",
+          "TEXT": "You can now subscribe to status updates for the My Hetzner app!"
+        },
+        "SLIDE6": {
           "TITLE": "Bugfixes",
-          "TEXT": "Of course we fixed some bugs too!"
+          "TEXT": "Also with this update we have fixed many bugs!"
         }
       }
     },

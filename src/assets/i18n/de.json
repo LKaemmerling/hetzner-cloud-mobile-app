@@ -47,19 +47,31 @@
       "TITLE": "Hilfe"
     },
     "CHANGELOG": {
-      "TITLE": "Neu in der Version 2.0.0",
+      "TITLE": "Neu in der Version 2.1.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Hetzner Robot",
-          "TEXT": "Die App unterstützt nun nicht mehr nur die Hetzner Cloud! Sie können nun diverse Funktionen aus dem Hetzner Robot über die App benutzen."
+          "TITLE": "Zugangs Validierung",
+          "TEXT": "Die App prüft nun bei jedem Start ob die eingegebenen Zugänge gültig sind!"
         },
         "SLIDE2": {
-          "TITLE": "Neuer Name | Neues Logo",
-          "TEXT": "Wir sind nun als 'Mein Hetzner' zu finden!"
+          "TITLE": "Anzeige des Cloud Hosts und Anzeige bei Störung!",
+          "TEXT": "In den Einstellungen kann nun die Funktion \"Cloud Host - Abfragen\" aktiviert werden!"
         },
         "SLIDE3": {
-          "TITLE": "Bugfixes",
-          "TEXT": "Es wurden auch kleinere Fehler behoben."
+          "TITLE": "Einstellungen",
+          "TEXT": "Wir haben unsere Optionen zur Einstellung überarbeitet und zeigen nun auf welche Daten wir erheben oder speichern!"
+        },
+        "SLIDE4": {
+          "TITLE": "Serverbörse",
+          "TEXT": "Die Serverbörse ist nun in der App verfügbar!"
+        },
+        "SLIDE5": {
+          "TITLE": "Mein Hetzner - Status",
+          "TEXT": "Sie können nun Status Updates zur Mein Hetzner App abonnieren!"
+        },
+        "SLIDE6": {
+          "TITLE": "Fehlerbehebungen",
+          "TEXT": "Auch mit diesem Update haben wir wieder viele Fehler behoben!"
         }
       }
     },
@@ -144,7 +156,7 @@
             "DOMAIN_REGISTRATION_ROBOT": "Domain Registration Robot",
             "V_SERVER": "vServer",
             "CLOUD": "Cloud",
-            "MY_HETZNER":"Mein Hetzner-App"
+            "MY_HETZNER": "Mein Hetzner-App"
           }
         }
       }
@@ -601,9 +613,9 @@
         "TITLE": "Serverbörse",
         "PLEASE_WAIT_WHILE_LOADING": "Bitte waren Sie, während wir die aktuellen Angebote aus der Serverbörse laden.",
         "NO_SERVERS": "Leider gibt es aktuell keine Angebote in der Serverbörse.",
-        "PRICING":{
-          "FIX_PRICE":"Festpreis",
-          "REDUCE":"Nächste Reduzierung: "
+        "PRICING": {
+          "FIX_PRICE": "Festpreis",
+          "REDUCE": "Reduzierung:"
         }
       },
       "ORDER_SERVER_MARKET": {

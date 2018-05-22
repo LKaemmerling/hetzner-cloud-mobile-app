@@ -25,7 +25,7 @@
             <p text-wrap="">{{ market_entry.product.description.join(' | ').replace(market_entry.product.cpu+' | ','') }}</p>
             <p text-wrap="">Datacenter: {{ market_entry.product.datacenter}} <br /> Traffic: {{ market_entry.product.traffic }} <br /> <strong>Setup: {{market_entry.product.price_setup_vat | number:'1.2-2' | formatMoney}} &euro;</strong></p>
           </div>
-          <div item-end="" text-right=""><span class="price">{{market_entry.product.price_vat | number:'1.2-2' | formatMoney}} &euro;</span><br />{{ market_entry.product.fixed_price ? ('ROBOT.PAGE.SERVER_MARKET.PRICING.FIX_PRICE' | translate):(('ROBOT.PAGE.SERVER_MARKET.PRICING.REDUCE' | translate)+(market_entry.product.next_reduce |  formatMinutes))}}</div>
+          <div item-end="" text-right=""><span class="price">{{market_entry.product.price_vat | number:'1.2-2' | formatMoney}} &euro;</span><br /> <span [innerHTML]="market_entry.product.fixed_price ? ('ROBOT.PAGE.SERVER_MARKET.PRICING.FIX_PRICE' | translate):(('ROBOT.PAGE.SERVER_MARKET.PRICING.REDUCE' | translate)+'<br />'+(market_entry.product.next_reduce |  formatMinutes))"></span></div>
         </ion-item>
 
         <p ion-item *ngIf="market_entries == null || market_entries.length == 0" text-wrap="" class="message_box info">
