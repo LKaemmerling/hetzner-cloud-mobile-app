@@ -96,7 +96,15 @@ export class HetznerStatusSettingPage {
   ) {
     this.storage.get('hetzner_status_settings').then(data => {
       if (data != undefined && data != null) {
-        this.categories = data;
+        let t = data;
+
+        t.forEach((value, key) => {
+          this.categories.forEach((v2, k2) => {
+            if (v2.key == value.key) {
+              v2.value = value.value;
+            }
+          });
+        });
       }
     });
     this.storage.get('hetzner_status_settings_sound').then(data => {
@@ -109,6 +117,34 @@ export class HetznerStatusSettingPage {
         this.vibrate = data;
       }
     });
+  }
+
+  /**
+   * Simple is object check.
+   * @param item
+   * @returns {boolean}
+   */
+  isObject(item) {
+    return (item && typeof item === 'object' && !Array.isArray(item));
+  }
+
+  /**
+   * Deep merge two objects.
+   * @param target
+   * @param source
+   */
+  mergeDeep(target, source) {
+    if (this.isObject(target) && this.isObject(source)) {
+      for (const key in source) {
+        if (this.isObject(source[key])) {
+          if (!target[key]) Object.assign(target, {[key]: {}});
+          this.mergeDeep(target[key], source[key]);
+        } else {
+          Object.assign(target, {[key]: source[key]});
+        }
+      }
+    }
+    return target;
   }
 
   /**
