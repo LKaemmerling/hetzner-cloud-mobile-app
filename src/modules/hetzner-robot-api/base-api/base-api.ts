@@ -1,9 +1,8 @@
-import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {ConfigService} from "../../hetzner-app/config/config.service";
 import {AccountService} from "../../hetzner-robot-data/accounts/account.service";
 import {HTTP} from "@ionic-native/http";
-import {Observable} from "rxjs/Observable";
 
 /**
  * This is the basic provider, that is the parent of all other api providers
@@ -98,7 +97,12 @@ export abstract class BaseApiProvider {
           resolve(Object.create(JSON.parse(data.data)));
         }).catch(err => {
           if (reject != null) {
-            reject(this.parseErrorMessage(err));
+            let _err = this.parseErrorMessage(err);
+            if (Object.keys(_err).length === 0) {
+              resolve();
+            } else {
+              reject();
+            }
           }
         });
       } else {
@@ -146,6 +150,7 @@ export abstract class BaseApiProvider {
       }
     });
   }
+
   /**
    * Build the needed HTTP Headers for the Hetzner API
    * @returns {HttpHeaders}

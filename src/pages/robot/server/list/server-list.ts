@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActionSheetController, ModalController, NavController} from 'ionic-angular';
+import {ActionSheetController, LoadingController, ModalController, NavController} from 'ionic-angular';
 import {TranslateService} from '@ngx-translate/core';
 import {Storage} from '@ionic/storage';
 import {state, style, transition, trigger, useAnimation} from '@angular/animations';
@@ -96,7 +96,8 @@ export class ServerListPage {
     protected storage: Storage,
     protected network: NetworkProvider,
     protected serverApi: ServerApiProvider,
-    protected modal: ModalController
+    protected modal: ModalController,
+    protected loadingCtrl: LoadingController,
   ) {
     this.servers = this._search = this.serversService.servers;
     storage.get('compact_server_design').then(val => {
@@ -148,7 +149,13 @@ export class ServerListPage {
   }
 
   openDetailsPage(server_ip: string) {
-    this.navCtrl.push(ServerDetailPage, {server_ip: server_ip});
+    this.navCtrl.push(ServerDetailPage, {server: server_ip});
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    this.serverApi.getServer(server_ip).then(val => {
+      this.navCtrl.push(ServerDetailPage, {server: val['server']});
+      loader.dismiss();
+    });
   }
 
   openEditModal(server) {

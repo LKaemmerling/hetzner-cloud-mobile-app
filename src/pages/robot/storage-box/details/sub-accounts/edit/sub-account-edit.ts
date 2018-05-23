@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {StorageBoxApiProvider} from "../../../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
-import {ErrorPage} from "../../../../../global/error/error";
 
 /**
  * This modal makes it possible to edit a ssh key
@@ -51,7 +50,11 @@ export class StorageBoxSubAccountEditModal {
       this.dismiss();
     }, (message) => {
       this.error = true;
-      this.navCtrl.push(ErrorPage, {error: message});
+      if (message.message != undefined && message.message.error != undefined) {
+        if (message.message.error.invalid[0] == 'homedirectory') {
+          this.error = true;
+        }
+      }
       loader.dismiss();
     });
   }
