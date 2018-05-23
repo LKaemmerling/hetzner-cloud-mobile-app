@@ -19,6 +19,7 @@ import {FingerprintAIO} from '@ionic-native/fingerprint-aio';
 import {HetznerAppComponentsModule} from '../../components/hetzner-app-components.module';
 import {TooltipsModule} from "ionic-tooltips";
 import {PrivacyPage} from "./settings/privacy/privays";
+import {ErrorPage} from "./error/error";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {PrivacyPage} from "./settings/privacy/privays";
     DeleteAllDataPage,
     HetznerStatusPage,
     HetznerStatusSettingPage,
-    PrivacyPage
+    PrivacyPage,
+    ErrorPage
   ],
   imports: [
     IonicPageModule,
@@ -50,7 +52,8 @@ import {PrivacyPage} from "./settings/privacy/privays";
     DeleteAllDataPage,
     HetznerStatusPage,
     HetznerStatusSettingPage,
-    PrivacyPage
+    PrivacyPage,
+    ErrorPage
   ],
   providers: [Device, InAppBrowser, OneSignal, FingerprintAIO],
 })

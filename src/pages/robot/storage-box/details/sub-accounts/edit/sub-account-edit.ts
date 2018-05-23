@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {StorageBoxApiProvider} from "../../../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
+import {ErrorPage} from "../../../../../global/error/error";
 
 /**
  * This modal makes it possible to edit a ssh key
@@ -50,7 +51,7 @@ export class StorageBoxSubAccountEditModal {
       this.dismiss();
     }, (message) => {
       this.error = true;
-      alert(message.message);
+      this.navCtrl.push(ErrorPage, {error: message});
       loader.dismiss();
     });
   }
