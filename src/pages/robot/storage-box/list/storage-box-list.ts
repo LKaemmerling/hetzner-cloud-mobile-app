@@ -11,6 +11,8 @@ import {StorageBoxService} from '../../../../modules/hetzner-robot-data/storage-
 import {StorageBoxEditModal} from "../edit/storage-box-edit";
 import {StorageBoxDetailPage} from "../details/storage-box-details";
 import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
+import {ConfigService} from "../../../../modules/hetzner-app/config/config.service";
+import {ErrorPage} from "../../../global/error/error";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -92,7 +94,8 @@ export class StorageBoxListPage {
     protected storage: Storage,
     protected network: NetworkProvider,
     protected navCtrl: NavController,
-    protected loadingCtrl: LoadingController
+    protected loadingCtrl: LoadingController,
+    protected config: ConfigService
   ) {
     this.storage_boxes = this._search = this.storageBoxService.storage_boxes;
   }
@@ -168,6 +171,11 @@ export class StorageBoxListPage {
     loader.present();
     this.storageBoxApi.getStorageBox(storage_box_id).then(val => {
       this.navCtrl.push(StorageBoxDetailPage, {storage_box: val['storagebox']});
+      loader.dismiss();
+    }, (error) => {
+      if (this.config.getRemoteFeatureFlag('RESPONSE_DEBUG', false)) {
+        this.navCtrl.push(ErrorPage, {error: error});
+      }
       loader.dismiss();
     });
 

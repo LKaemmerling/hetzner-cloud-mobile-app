@@ -64,12 +64,21 @@
       </div>
     </ion-item>
     <ion-list-header>
-      Feature Flags
+      Local Feature Flags
     </ion-list-header>
     <ion-item>
       <ion-label>Robot: Server Test Mode</ion-label>
-      <ion-toggle [checked]="feature_flags['robot_orders_test']" (ionChange)="toggleFlag('robot_orders_test')"></ion-toggle>
+      <ion-toggle [checked]="feature_flags['robot_orders_test']"
+                  (ionChange)="toggleFlag('robot_orders_test')"></ion-toggle>
     </ion-item>
+    <ion-list-header>
+      Remote Feature Flags
+    </ion-list-header>
+    <ion-item *ngFor="let flag of remote_feature_flags">
+      <ion-label>{{flag.description}}</ion-label>
+      <ion-toggle [checked]="flag.value" disabled="true"></ion-toggle>
+    </ion-item>
+
     <ion-list-header>
       Remove Developer Mode
     </ion-list-header>

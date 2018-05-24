@@ -61,6 +61,7 @@ export class ConfigService {
     cloud_status: false,
     tracking: true
   };
+  public remoteFeatureFlags = [];
   /**
    *
    * @type {boolean}
@@ -87,45 +88,41 @@ export class ConfigService {
       } else {
         this.runs_on_device = true;
       }
-      this.storage.get('developer_mode').then(val => {
+
+      this.storage.get('analytics').then(val => {
         if (val != undefined) {
-          this.developer_mode = val;
+          this.analytics = val;
         }
-        this.storage.get('analytics').then(val => {
-          if (val != undefined) {
-            this.analytics = val;
-          }
-          this.storage.get('feature_flags').then(feature_flags => {
-            this.feature_flags = Object.assign(this.feature_flags, feature_flags);
-            this.storage.get('lang').then(lang => {
-              if (lang != undefined && lang != null) {
-                this.language = lang;
-              } else {
-                if ((<any>window).Intl && typeof (<any>window).Intl === 'object') {
-                  let language = navigator.language.substring(0, 2).toLowerCase();
-                  if (this.available_languages.indexOf(language) != -1) {
-                    this.language = language;
-                  } else {
-                    this.language = 'en';
-                  }
+        this.storage.get('feature_flags').then(feature_flags => {
+          this.feature_flags = Object.assign(this.feature_flags, feature_flags);
+          this.storage.get('lang').then(lang => {
+            if (lang != undefined && lang != null) {
+              this.language = lang;
+            } else {
+              if ((<any>window).Intl && typeof (<any>window).Intl === 'object') {
+                let language = navigator.language.substring(0, 2).toLowerCase();
+                if (this.available_languages.indexOf(language) != -1) {
+                  this.language = language;
+                } else {
+                  this.language = 'en';
                 }
               }
-              resolve();
-            });
+            }
+            resolve();
           });
-          this.appVersion.getVersionNumber().then(
-            (_version) => {
-              this.version = _version;
-            }
-          );
-          this.appVersion.getVersionCode().then(
-            (_version) => {
-              this.build = _version;
-            }
-          );
         });
-        this.platform.setUserAgent("My Hetzner" + this.version + ' Build ' + this.build);
+        this.appVersion.getVersionNumber().then(
+          (_version) => {
+            this.version = _version;
+          }
+        );
+        this.appVersion.getVersionCode().then(
+          (_version) => {
+            this.build = _version;
+          }
+        );
       });
+      this.platform.setUserAgent("My Hetzner" + this.version + ' Build ' + this.build);
     }));
   }
 
@@ -142,5 +139,19 @@ export class ConfigService {
   setFeatureFlag(name: string, value: any) {
     this.feature_flags[name] = value;
     this.storage.set('feature_flags', this.feature_flags);
+  }
+
+  getRemoteFeatureFlag(key: string = null, _default: any = null) {
+    if (key == null) {
+      return this.remoteFeatureFlags;
+    }
+    if (this.remoteFeatureFlags[key] !== undefined) {
+      return this.remoteFeatureFlags[key].value;
+    }
+    return _default;
+  }
+
+  setRemoteFeatureFlag(data: any) {
+    this.remoteFeatureFlags[data.key] = data;
   }
 }

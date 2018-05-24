@@ -5,6 +5,7 @@ import {StatusApiProvider} from "../../hetzner-cloud-api/status-api/status-api-p
 import {Device} from "@ionic-native/device";
 import {ProjectsService} from "../../hetzner-cloud-data/project/projects.service";
 import {AccountService} from "../../hetzner-robot-data/accounts/account.service";
+import {Platform} from "ionic-angular";
 
 /**
  * This service contain all configuration for the app, like the api_url or other tings.
@@ -22,15 +23,18 @@ export class TrackingService {
    * @param {Storage} storage
    * @param {ConfigService} config
    */
-  constructor(protected storage: Storage, public config: ConfigService, protected device: Device, protected statusApiProvider: StatusApiProvider, protected projects: ProjectsService, protected access: AccountService) {
+  constructor(protected storage: Storage, public config: ConfigService, protected device: Device, protected statusApiProvider: StatusApiProvider, protected projects: ProjectsService, protected access: AccountService, protected platform: Platform) {
     this.os = this.device.platform ? this.device.platform : 'browser';
     this.version = this.device.version ? this.device.version : '0.0.0';
   }
 
   initTracking() {
     if (this.config.getFeatureFlag('tracking', true)) {
-      this.os = this.device.platform;
-      this.version = this.device.version;
+      if (this.platform.is("cordova")) {
+        this.os = this.device.platform;
+        this.version = this.device.version;
+      }
+
       this.storage.get('device_id').then((val) => {
         if (val == undefined) {
           this.statusApiProvider.registerDevice(this.os, this.version).then((data) => {
@@ -38,12 +42,14 @@ export class TrackingService {
             this.device_id = data['device_id'];
             this.config.device_id = data['device_id'];
             this.performTracking();
+            this.performRemoteFeatureFlagUpdate();
           });
         } else {
           this.device_id = val;
           this.config.device_id = val;
           this.statusApiProvider.updateDevice(val, this.os, this.version).then(() => {
             this.performTracking();
+            this.performRemoteFeatureFlagUpdate();
           });
         }
       });
@@ -57,6 +63,22 @@ export class TrackingService {
         this.storage.set('last_track', new Date().getTime());
       }
     });
+  }
 
+  performRemoteFeatureFlagUpdate() {
+    this.statusApiProvider.getRemoteFeatureFlags(this.device_id).then((resp) => {
+      resp['feature_flags'].forEach((value, key) => {
+        this.config.setRemoteFeatureFlag(value);
+      });
+      this.developerMode();
+    });
+  }
+
+  developerMode() {
+    if (this.config.getRemoteFeatureFlag('DEVELOPER_MODE', false)) {
+      this.config.developer_mode = true;
+    } else {
+      this.config.developer_mode = false;
+    }
   }
 }

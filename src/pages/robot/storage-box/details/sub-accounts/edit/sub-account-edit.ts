@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {StorageBoxApiProvider} from "../../../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
+import {ConfigService} from "../../../../../../modules/hetzner-app/config/config.service";
+import {ErrorPage} from "../../../../../global/error/error";
 
 /**
  * This modal makes it possible to edit a ssh key
@@ -33,6 +35,7 @@ export class StorageBoxSubAccountEditModal {
     protected navParams: NavParams,
     protected navCtrl: NavController,
     protected loadingCtrl: LoadingController,
+    protected config: ConfigService
   ) {
     this.storage_box = navParams.get('storage_box');
     this.sub_account = navParams.get('sub_account');
@@ -50,6 +53,9 @@ export class StorageBoxSubAccountEditModal {
       this.dismiss();
     }, (message) => {
       this.error = true;
+      if (this.config.getRemoteFeatureFlag('RESPONSE_DEBUG', false)) {
+        this.navCtrl.push(ErrorPage, {error: message});
+      }
       if (message.message != undefined && message.message.error != undefined) {
         if (message.message.error.invalid[0] == 'homedirectory') {
           this.error = true;
