@@ -52,7 +52,6 @@ export class StorageBoxSubAccountEditModal {
       loader.dismiss();
       this.dismiss();
     }, (message) => {
-      this.error = true;
       if (this.config.getRemoteFeatureFlag('RESPONSE_DEBUG', false)) {
         this.navCtrl.push(ErrorPage, {error: message});
       }
