@@ -88,7 +88,7 @@ export class HetznerMobileApp {
     this.available_menus.push(this.hetznerCloudMenu);
     this.available_menus.push(this.hetznerRobotMenu);
     platform.resume.subscribe(() => {
-      this.initApp();
+      this.initApp(false);
     });
     platform.ready().then(() => {
       this.initApp();
@@ -96,7 +96,7 @@ export class HetznerMobileApp {
     });
   }
 
-  initApp() {
+  initApp(_fingerprint = true) {
     this.network.init();
     this.config.init().then(() => {
       this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
@@ -106,46 +106,51 @@ export class HetznerMobileApp {
         this.statusBar.styleDefault();
         this.loadOneSignal();
         this.loadLocalization();
-        this.storage.get('auth').then(val => {
-          if (val != undefined && val == 'enabled') {
-            this.fingerPrint
-              .isAvailable()
-              .then(res => {
-                this.fingerPrint
-                  .show({
-                    clientId: 'Hetzner-Cloud-Mobile',
-                    clientSecret: 'password', //Only necessary for Android
-                    disableBackup: false, //Only for Android(optional)
-                    localizedFallbackTitle: 'Pin benutzen', //Only for iOS
-                    localizedReason: 'Bitte authentifizieren Sie sich.', //Only for iOS
-                  })
-                  .then(result => {
-                    this.loadHetznerSpecificData();
-                  })
-                  .catch(err => {
-                    alert('Authentifizierung fehlgeschlagen. App wird beendet');
-                    if (this.platform.is('ios') == false) {
-                      this.platform.exitApp();
+        if (_fingerprint == true) {
+          this.storage.get('auth').then(val => {
+            if (val != undefined && val == 'enabled') {
+              this.fingerPrint
+                .isAvailable()
+                .then(res => {
+                  this.fingerPrint
+                    .show({
+                      clientId: 'Hetzner-Cloud-Mobile',
+                      clientSecret: 'password', //Only necessary for Android
+                      disableBackup: false, //Only for Android(optional)
+                      localizedFallbackTitle: 'Pin benutzen', //Only for iOS
+                      localizedReason: 'Bitte authentifizieren Sie sich.', //Only for iOS
+                    })
+                    .then(result => {
+                      this.loadHetznerSpecificData();
+                    })
+                    .catch(err => {
+                      alert('Authentifizierung fehlgeschlagen. App wird beendet');
+                      if (this.platform.is('ios') == false) {
+                        this.platform.exitApp();
+                      }
+                    });
+                })
+                .catch(reason => {
+                  this.storage.get('auth').then(val => {
+                    if (val != undefined && val == 'enabled') {
+                      alert('Authentifizierung fehlgeschlagen. App wird beendet');
+                      if (this.platform.is('ios') == false) {
+                        this.platform.exitApp();
+                      }
+                    } else {
+                      this.loadHetznerSpecificData();
                     }
                   });
-              })
-              .catch(reason => {
-                this.storage.get('auth').then(val => {
-                  if (val != undefined && val == 'enabled') {
-                    alert('Authentifizierung fehlgeschlagen. App wird beendet');
-                    if (this.platform.is('ios') == false) {
-                      this.platform.exitApp();
-                    }
-                  } else {
-                    this.loadHetznerSpecificData();
-                  }
                 });
-              });
-          } else {
-            this.loadHetznerSpecificData();
-          }
-        });
+            } else {
+              this.loadHetznerSpecificData();
+            }
+          });
+        } else {
+          this.loadHetznerSpecificData();
+        }
       });
+
     });
 
   }

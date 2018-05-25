@@ -512,8 +512,8 @@
             "INFORMATION": "Für den Webservice muss ein eigener Benutzer angelegt werden, sie finden diese Option im Robot unter dem Menüpunkt 'Einstellungen'. Dort können Sie auch auswählen, ob über den Webservice Bestellungen möglich sein sollen.",
             "ERRORS": {
               "INVALID_KEY": "Leider ist der eingegebene API-Token ungültig.",
-              "REQUIRED_NAME": "Bitte geben Sie eine Projektbezeichnung ein.",
-              "NAME_ALREADY_USED": "Sie haben bereits ein Projekt mit dieser Bezeichnung!",
+              "REQUIRED_NAME": "Bitte geben Sie eine Zugangsbezeichnung ein.",
+              "NAME_ALREADY_USED": "Sie haben bereits einen Zugang mit dieser Bezeichnung!",
               "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
             }
           },

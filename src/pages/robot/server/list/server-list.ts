@@ -149,7 +149,6 @@ export class ServerListPage {
   }
 
   openDetailsPage(server_ip: string) {
-    this.navCtrl.push(ServerDetailPage, {server: server_ip});
     let loader = this.loadingCtrl.create();
     loader.present();
     this.serverApi.getServer(server_ip).then(val => {
