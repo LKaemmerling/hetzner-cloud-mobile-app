@@ -17,8 +17,10 @@ export class TrackingService {
 
   public os: string;
   public version: string;
+  public feature_track;
 
   /**
+   *
    * Constructor
    * @param {Storage} storage
    * @param {ConfigService} config
@@ -26,6 +28,7 @@ export class TrackingService {
   constructor(protected storage: Storage, public config: ConfigService, protected device: Device, protected statusApiProvider: StatusApiProvider, protected projects: ProjectsService, protected access: AccountService, protected platform: Platform) {
     this.os = this.device.platform ? this.device.platform : 'browser';
     this.version = this.device.version ? this.device.version : '0.0.0';
+
   }
 
   initTracking() {
@@ -34,7 +37,9 @@ export class TrackingService {
         this.os = this.device.platform;
         this.version = this.device.version;
       }
-
+      this.storage.get('feature_track').then(feature_track => {
+        this.feature_track = Object.assign(this.feature_track, feature_track);
+      });
       this.storage.get('device_id').then((val) => {
         if (val == undefined) {
           this.statusApiProvider.registerDevice(this.os, this.version).then((data) => {
@@ -43,6 +48,7 @@ export class TrackingService {
             this.config.device_id = data['device_id'];
             this.performTracking();
             this.performRemoteFeatureFlagUpdate();
+            this.statusApiProvider.trackFeatures(val,this.getFeatureTrack());
           });
         } else {
           this.device_id = val;
@@ -50,6 +56,7 @@ export class TrackingService {
           this.statusApiProvider.updateDevice(val, this.os, this.version).then(() => {
             this.performTracking();
             this.performRemoteFeatureFlagUpdate();
+            this.statusApiProvider.trackFeatures(val,this.getFeatureTrack());
           });
         }
       });
@@ -63,6 +70,28 @@ export class TrackingService {
         this.storage.set('last_track', new Date().getTime());
       }
     });
+  }
+
+  trackFeature(feature: string) {
+    let tmp = this.getFeatureTrack(feature, 0);
+    tmp++;
+    this.setFeatureTrack(feature, tmp);
+  }
+
+  getFeatureTrack(name: string = null, _default: any = null) {
+    if (name == null) {
+      return this.feature_track;
+    }
+    if (this.feature_track[name] !== undefined) {
+      return this.feature_track[name];
+    }
+    return _default;
+  }
+
+
+  setFeatureTrack(name: string, value: any) {
+    this.feature_track[name] = value;
+    this.storage.set('feature_track', this.feature_track);
   }
 
   performRemoteFeatureFlagUpdate() {

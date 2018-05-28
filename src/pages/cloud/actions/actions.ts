@@ -1,57 +1,60 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { ActionsApiProvider } from '../../../modules/hetzner-cloud-api/actions-api/actions-api';
-import { NetworkProvider } from '../../../modules/hetzner-app/network/network';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import {ActionsApiProvider} from '../../../modules/hetzner-cloud-api/actions-api/actions-api';
+import {NetworkProvider} from '../../../modules/hetzner-app/network/network';
+import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This page displays all actions from the selected project
  */
 @Component({
-    selector: 'page-actions',
-    templateUrl: 'actions.html',
+  selector: 'page-actions',
+  templateUrl: 'actions.html',
 })
 export class ActionsPage {
-    /**
-     * All actions
-     */
-    public actions: Array<any>;
-    /**
-     * Is there currently something loading?
-     * @type {boolean}
-     */
-    public loading: boolean = false;
-    /**
-     * Is the loading done?
-     * @type {boolean}
-     */
-    public loading_done: boolean = false;
+  /**
+   * All actions
+   */
+  public actions: Array<any>;
+  /**
+   * Is there currently something loading?
+   * @type {boolean}
+   */
+  public loading: boolean = false;
+  /**
+   * Is the loading done?
+   * @type {boolean}
+   */
+  public loading_done: boolean = false;
 
-    /**
-     * Constructor
-     * @param {NavController} navCtrl
-     * @param {NavParams} navParams
-     * @param {ActionsApiProvider} actionsApi
-     * @param {NetworkProvider} network
-     */
-    constructor(
-        protected navCtrl: NavController,
-        protected navParams: NavParams,
-        protected actionsApi: ActionsApiProvider,
-        protected network: NetworkProvider
-    ) {
-        this.loadActions();
-    }
+  /**
+   * Constructor
+   * @param {NavController} navCtrl
+   * @param {NavParams} navParams
+   * @param {ActionsApiProvider} actionsApi
+   * @param {NetworkProvider} network
+   */
+  constructor(
+    protected navCtrl: NavController,
+    protected navParams: NavParams,
+    protected actionsApi: ActionsApiProvider,
+    protected network: NetworkProvider,
+    protected tracking: TrackingService
+  ) {
+    this.loadActions();
+    tracking.trackFeature('cloud.actions.list');
+  }
 
-    /**
-     * Load the Actions from the API
-     */
-    loadActions() {
-        this.loading = true;
-        this.actionsApi.getActions().then(data => {
-            this.actions = data['actions'];
-            this.loading = false;
-            this.loading_done = true;
-            setTimeout(() => (this.loading_done = false), 3000);
-        });
-    }
+  /**
+   * Load the Actions from the API
+   */
+  loadActions() {
+    this.loading = true;
+    this.actionsApi.getActions().then(data => {
+      this.actions = data['actions'];
+      this.loading = false;
+      this.loading_done = true;
+      setTimeout(() => (this.loading_done = false), 3000);
+    });
+  }
 }
