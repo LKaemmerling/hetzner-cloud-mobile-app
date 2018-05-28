@@ -13,10 +13,12 @@ import {TranslateService} from '@ngx-translate/core';
 import {NetworkProvider} from '../modules/hetzner-app/network/network';
 import {HetznerCloudDataService} from '../modules/hetzner-cloud-data/hetzner-cloud-data.service';
 import {ConfigService} from '../modules/hetzner-app/config/config.service';
-import {ChangelogPage} from '../pages/global/changelog/changelog';
 import {Device} from '@ionic-native/device';
 import {HetznerRobotMenuService} from '../modules/hetzner-robot-data/hetzner-robot-menu.service';
 import {HetznerCloudMenuService} from '../modules/hetzner-cloud-data/hetzner-cloud-menu.service';
+import {HetznerStatusPage} from "../pages/global/hetzner-status/hetzner-status";
+import {TrackingService} from "../modules/hetzner-app/tracking/tracking.service";
+import {ChangelogPage} from "../pages/global/changelog/changelog";
 
 /**
  * This is the main component from the Hetzer Cloud Mobile App
@@ -39,6 +41,8 @@ export class HetznerMobileApp {
    * @type {string}
    */
   public lang: string = 'de';
+
+  protected loader;
 
   public available_menus = [];
 
@@ -78,33 +82,37 @@ export class HetznerMobileApp {
     protected loadingCtrl: LoadingController,
     protected hetznerCloudMenu: HetznerCloudMenuService,
     protected hetznerRobotMenu: HetznerRobotMenuService,
-    protected modalCtrl: ModalController
+    protected modalCtrl: ModalController,
+    protected trackingService: TrackingService
   ) {
     this.available_menus.push(this.hetznerCloudMenu);
     this.available_menus.push(this.hetznerRobotMenu);
-
+    platform.resume.subscribe(() => {
+      this.initApp(false);
+    });
     platform.ready().then(() => {
-      this.storage.get('current_menu').then(val => {
-        if (val != undefined) {
-          this.menu = val;
-        }
-        this.changeMenu();
-      });
-      this.network.init();
-      this.config.init().then(() => {
-        this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
-        // Okay, so the platform is ready and our plugins are available.
-        // Here you can do any higher level native things you might need.
-        storage.ready().then(() => {
-          statusBar.styleDefault();
-          this.loadOneSignal();
-          this.loadLocalization();
-          fingerPrint
-            .isAvailable()
-            .then(res => {
-              storage.get('auth').then(val => {
-                if (val != undefined && val == 'enabled') {
-                  fingerPrint
+      this.initApp();
+      setTimeout(() => this.splashScreen.hide(), 500);
+    });
+  }
+
+  initApp(_fingerprint = true) {
+    this.network.init();
+    this.config.init().then(() => {
+      this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      this.storage.ready().then(() => {
+        this.statusBar.styleDefault();
+        this.loadOneSignal();
+        this.loadLocalization();
+        if (_fingerprint == true) {
+          this.storage.get('auth').then(val => {
+            if (val != undefined && val == 'enabled') {
+              this.fingerPrint
+                .isAvailable()
+                .then(res => {
+                  this.fingerPrint
                     .show({
                       clientId: 'Hetzner-Cloud-Mobile',
                       clientSecret: 'password', //Only necessary for Android
@@ -117,59 +125,88 @@ export class HetznerMobileApp {
                     })
                     .catch(err => {
                       alert('Authentifizierung fehlgeschlagen. App wird beendet');
-                      if (platform.is('ios') == false) {
-                        platform.exitApp();
+                      if (this.platform.is('ios') == false) {
+                        this.platform.exitApp();
                       }
                     });
-                } else {
-                  this.loadHetznerSpecificData();
-                }
-              });
-            })
-            .catch(reason => {
-              storage.get('auth').then(val => {
-                if (val != undefined && val == 'enabled') {
-                  alert('Authentifizierung fehlgeschlagen. App wird beendet');
-                  if (platform.is('ios') == false) {
-                    platform.exitApp();
-                  }
-                } else {
-                  this.loadHetznerSpecificData();
-                }
-              });
-            });
+                })
+                .catch(reason => {
+                  this.storage.get('auth').then(val => {
+                    if (val != undefined && val == 'enabled') {
+                      alert('Authentifizierung fehlgeschlagen. App wird beendet');
+                      if (this.platform.is('ios') == false) {
+                        this.platform.exitApp();
+                      }
+                    } else {
+                      this.loadHetznerSpecificData();
+                    }
+                  });
+                });
+            } else {
+              this.loadHetznerSpecificData();
+            }
+          });
+        } else {
           this.loadHetznerSpecificData();
-        });
+        }
       });
+
     });
+
   }
 
   /**
    * Load the specific hetzner cloud data
    */
-  private loadHetznerSpecificData() {
-    this.hetzerCloudData.loadData().then(
-      () => {
-        if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
-          this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
-            if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
-              this.modalCtrl.create(ChangelogPage).present();
-            }
-          });
+  async loadHetznerSpecificData() {
+
+    this.storage.get('current_menu').then(val => {
+      if (val != undefined) {
+        this.menu = val;
+      }
+      this.changeMenu();
+    });
+    this.trackingService.initTracking();
+    if (this.platform.userAgent().indexOf('E2E-Test') == -1) {
+      this.storage.get('changelog_' + this.config.version.slice(0, -2)).then(val => {
+        if (val == undefined && (this.platform.is('ios') || this.platform.is('android'))) {
+          this.modalCtrl.create(ChangelogPage).present();
         }
-        this.splashScreen.hide();
       });
+
+    }
+
+    //this.splashScreen.hide();
+  }
+
+  /**
+   *
+   * @param {string} path
+   */
+  protected routeLink(path: string, params = null) {
+    let page: any = null;
+    switch (path) {
+      case "status":
+        page = HetznerStatusPage;
+        break;
+      case "about":
+        page = AboutPage;
+        break;
+    }
+    if (page != null) {
+      this.nav.push(page, JSON.parse(params));
+    }
   }
 
   /**
    * Load all needed for the localization
    */
-  private loadLocalization() {
-    this.translate.setDefaultLang('de');
-    this.translate.addLangs(this.config.available_languages);
-    this.translate.use(this.config.language);
-    this.platform.setLang(this.config.language, true);
-    this.translate.get("ACTIONS.BACK").subscribe((val) => {
+  async loadLocalization() {
+    await this.translate.setDefaultLang('de');
+    await this.translate.addLangs(this.config.available_languages);
+    await this.translate.use(this.config.language);
+    await this.platform.setLang(this.config.language, true);
+    await this.translate.get("ACTIONS.BACK").subscribe((val) => {
       this.ionicConfig.set('backButtonText', val);
     })
 
@@ -179,7 +216,17 @@ export class HetznerMobileApp {
    * Load all OneSignal configurations
    */
   private loadOneSignal() {
+    // only on devices
+    if (!this.platform.is("cordova")) {
+      return;
+    }
     this.oneSignal.startInit(this.config.oneSignal.appId, this.config.oneSignal.googleProjectId);
+    this.oneSignal.handleNotificationOpened().subscribe((data) => {
+      let payload = data; // getting id and action in additionalData.
+      if (payload.notification.payload.additionalData.page != undefined) {
+        this.routeLink(payload.notification.payload.additionalData.page);
+      }
+    });
     this.oneSignal.endInit();
   }
 

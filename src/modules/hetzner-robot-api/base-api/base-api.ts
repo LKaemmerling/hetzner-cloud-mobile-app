@@ -1,9 +1,8 @@
-import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {ConfigService} from "../../hetzner-app/config/config.service";
 import {AccountService} from "../../hetzner-robot-data/accounts/account.service";
 import {HTTP} from "@ionic-native/http";
-import {Observable} from "rxjs/Observable";
 
 /**
  * This is the basic provider, that is the parent of all other api providers
@@ -39,7 +38,7 @@ export abstract class BaseApiProvider {
         });
       } else {
         this.angularHttp.get(this.configService.robot_api_url + '/' + method, {
-          headers: this.getHeaders(),
+          headers: this.getHeaders(false),
         }).subscribe(data => {
           resolve(data);
         }, err => {
@@ -71,7 +70,7 @@ export abstract class BaseApiProvider {
         });
       } else {
         this.angularHttp.post(this.configService.robot_api_url + '/' + method, this.objToString(body), {
-          headers: this.getHeaders(),
+          headers: this.getHeaders(false),
         }).subscribe(data => {
           resolve(data);
         }, err => {
@@ -98,12 +97,17 @@ export abstract class BaseApiProvider {
           resolve(Object.create(JSON.parse(data.data)));
         }).catch(err => {
           if (reject != null) {
-            reject(this.parseErrorMessage(err));
+            let _err = this.parseErrorMessage(err);
+            if (Object.keys(_err).length === 0) {
+              resolve();
+            } else {
+              reject();
+            }
           }
         });
       } else {
         this.angularHttp.put(this.configService.robot_api_url + '/' + method, this.objToString(body), {
-          headers: this.getHeaders(),
+          headers: this.getHeaders(false),
         }).subscribe(data => {
           resolve(data);
         }, err => {
@@ -135,7 +139,7 @@ export abstract class BaseApiProvider {
         });
       } else {
         this.angularHttp.delete(this.configService.robot_api_url + '/' + method, {
-          headers: this.getHeaders(),
+          headers: this.getHeaders(false),
         }).subscribe(data => {
           resolve(data);
         }, err => {
@@ -151,17 +155,26 @@ export abstract class BaseApiProvider {
    * Build the needed HTTP Headers for the Hetzner API
    * @returns {HttpHeaders}
    */
-  private getHeaders() {
+  private getHeaders(native = true) {
 
-    if (this.accountService.actual_account == null) {
-      return {};
+    if (native == true) {
+      if (this.accountService.actual_account == null) {
+        return {};
+      }
+
+      this.http.useBasicAuth(this.accountService.actual_account.username, this.accountService.actual_account.password);
+      return {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "App-Version": this.configService.version
+      };
+    } else {
+      return {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "App-Version": this.configService.version,
+        "Authorization": "basic " + btoa(this.accountService.actual_account.username + ":" + this.accountService.actual_account.password)
+
+      }
     }
-
-    this.http.useBasicAuth(this.accountService.actual_account.username, this.accountService.actual_account.password);
-    return {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "App-Version": this.configService.version
-    };
   }
 
   protected parseErrorMessage(error) {
@@ -178,27 +191,5 @@ export abstract class BaseApiProvider {
       }
     }
     return str.substr(0, str.length - 1);
-  }
-}
-
-@Injectable()
-export class TokenInterceptor implements HttpInterceptor {
-
-  constructor(public accountService: AccountService) {
-  }
-
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    if (this.accountService.actual_account != null) {
-      if (request.url.indexOf('robot') != -1) {
-
-        request = request.clone({
-          setHeaders: {
-            Authorization: "basic " + btoa(this.accountService.actual_account.username + ":" + this.accountService.actual_account.password)
-          }
-        });
-      }
-    }
-    return next.handle(request);
   }
 }

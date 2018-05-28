@@ -4,6 +4,7 @@ import {fadeIn, fadeOut} from 'ng-animate';
 import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
 import {StorageBoxEditModal} from "../edit/storage-box-edit";
 import {StorageBoxSubAccountsListPage} from "./sub-accounts/list/sub-accounts-list";
+import {StorageBoxSnapshotsListPage} from "./snapshots/list/snapshots-list";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -38,18 +39,17 @@ export class StorageBoxDetailPage {
     protected modalCtrl: ModalController,
     protected navCtrl: NavController
   ) {
-  }
-
-  ngOnInit() {
-    this.loadStorageBox();
+    this.storagebox = this.NavParams.get('storage_box');
   }
 
   loadStorageBox() {
-    this.loader = this.loadingCtrl.create();
-    this.loader.present();
-    this.storageBoxApi.getStorageBox(this.NavParams.get('storage_box_id')).then(val => {
-      this.storagebox = val['storagebox'];
-      this.loader.dismiss();
+
+
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    this.storageBoxApi.getStorageBox(this.storagebox.id).then(val => {
+      this.navCtrl.push(StorageBoxDetailPage, {storage_box: val['storagebox']});
+      loader.dismiss();
     });
   }
 
@@ -66,5 +66,9 @@ export class StorageBoxDetailPage {
 
   openSubAccountsPage() {
     this.navCtrl.push(StorageBoxSubAccountsListPage, {storage_box: this.storagebox});
+  }
+
+  openSnapshotsPage() {
+    this.navCtrl.push(StorageBoxSnapshotsListPage, {storage_box: this.storagebox});
   }
 }

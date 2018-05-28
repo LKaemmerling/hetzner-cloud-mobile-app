@@ -28,6 +28,19 @@ export class AccountService {
     this.accounts = [];
   }
 
+  checkAccount() {
+    return new Promise((resolve) => {
+      this.accounts.forEach((account) => {
+        this.network.quickTestAccess(account.username, account.password).then(() => {
+          account.revoked = false;
+        }, () => {
+          account.revoked = true;
+        });
+        resolve();
+      });
+    })
+  }
+
   /**
    * Load all accounts from the local storage
    */
@@ -36,13 +49,26 @@ export class AccountService {
       this.storage.get('robot_accounts').then((val) => {
         if (val !== undefined) {
           this.accounts = val;
+          this.checkAccount().then(() => {
+            this.storage.get('robot_actual_account').then((val) => {
+              if (val !== undefined) {
+
+                this.network.quickTestAccess(val.username, val.password).then(() => {
+                  val.revoked = false;
+                  this.actual_account = val;
+                  resolve();
+
+                }, () => {
+                  val.revoked = true;
+                  this.actual_account = val;
+                  resolve();
+                });
+
+              }
+            });
+          });
         }
-        this.storage.get('robot_actual_account').then((val) => {
-          if (val !== undefined) {
-            this.actual_account = val;
-            resolve();
-          }
-        });
+
       });
 
     });

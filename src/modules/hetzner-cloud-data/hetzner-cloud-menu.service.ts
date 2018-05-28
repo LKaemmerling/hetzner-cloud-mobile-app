@@ -27,63 +27,81 @@ export class HetznerCloudMenuService {
       icon: 'fa-home',
       page: HomePage,
       protected: false,
-      hidden: false
+      hidden: false,
+      special: null,
+      has_important: false
     },
     {
       key: 'PAGE.PROJECTS.TITLE',
       icon: 'fa-lock',
       page: ProjectsPage,
       protected: false,
-      hidden: false
+      hidden: false,
+      special: 'projects',
+      has_important: false
     },
     {
       key: 'PAGE.SERVERS.TITLE',
       icon: 'fa-server',
       page: ServersPage,
       protected: true,
-      hidden: true
+      hidden: true,
+      special: null,
+      has_important: false
     },
     {
       key: 'PAGE.FLOATING_IPS.TITLE',
       icon: 'fa-cloud',
       page: FloatingIPsPage,
       protected: true,
-      hidden: true
+      hidden: true,
+      special: null,
+      has_important: false
     },
     {
       key: 'PAGE.IMAGES.TITLE',
       icon: 'fa-puzzle-piece',
       page: ImagesPage,
       protected: true,
-      hidden: true
+      hidden: true,
+      special: null,
+      has_important: false
     },
     {
       key: 'PAGE.SSH_KEYS.TITLE',
       icon: 'fa-key',
       page: SshkeysPage,
       protected: true,
-      hidden: true
+      hidden: true,
+      special: null,
+      has_important: false
     },
     {
       key: 'PAGE.ACTIONS.TITLE',
       icon: 'fa-cog',
       page: ActionsPage,
       protected: true,
-      hidden: true
+      hidden: true,
+      special: null,
+      has_important: false
     },
     {
       key: 'PAGE.STATUS.TITLE',
       icon: 'fa-bell',
       protected: false,
       page: HetznerStatusPage,
-      hidden: false
+      hidden: false,
+      special: null,
+      has_important: false
     },
     {
       key: 'PAGE.SETTINGS.TITLE',
       icon: 'fa-cogs',
       protected: false,
       page: SettingsPage,
-      hidden: false
+      hidden: false,
+      special: null,
+      has_important: false
     }
   ]
 
@@ -93,17 +111,24 @@ export class HetznerCloudMenuService {
     })
 
   }
-  public generateMenu(){
+
+  public generateMenu() {
     this.projects.loadProjects().then(() => {
       var tmp = [];
       this.menu_entries.forEach((menu_entry) => {
         menu_entry.hidden = (menu_entry.protected) ? this.validate(menu_entry) : false;
+        if (menu_entry.special != null) {
+          if (menu_entry.special == 'projects') {
+            menu_entry.has_important = this.projects.actual_project.revoked;
+          }
+        }
         tmp.push(menu_entry);
       })
       this.menu_entries = tmp;
     })
 
   }
+
   public validate(menu_entry) {
     if (menu_entry.protected == true) {
       console.log(this.projects.actual_project);

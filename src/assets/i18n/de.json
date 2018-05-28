@@ -6,7 +6,8 @@
     "NO_CONNECTION": "Leider haben Sie aktuell kein Internet. Die Ansicht der App funktioniert weiterhin, allerdings sind alle Funktionen zum Interagieren mit Ihren Systemen solange deaktiviert wie Sie kein Internet haben.",
     "MISSING_OR_WRONG_PROJECT": "Ihr gewählter API-Key ist nicht mehr gültig oder Sie haben kein Projekt ausgewählt. Bitte wählen Sie nun ein Projekt aus.",
     "FEATURE_NEEDS_CONNECTION": "Diese Funktion benötigt eine Internetverbindung. Bitte verbinden Sie sich mit dem Internet.",
-    "RESOURCE_LOCKED_FOR_DELETION": "Für diese Ressource wurde das Löschen gesperrt."
+    "RESOURCE_LOCKED_FOR_DELETION": "Für diese Ressource wurde das Löschen gesperrt.",
+    "COPY_PASSWORD_TO_CLIPBOARD": "Passwort in Zwischenablage speichern?"
   },
   "ACTIONS": {
     "DELETE": "Löschen",
@@ -21,7 +22,8 @@
     "OPEN_DETAILS": "Details",
     "CANCELLATION": "Stornierung",
     "BACK": "Zurück",
-    "SEARCH": "Suche"
+    "SEARCH": "Suche",
+    "COPY": "Kopieren"
   },
   "COMPONENT": {
     "PROTECTION": {
@@ -45,19 +47,31 @@
       "TITLE": "Hilfe"
     },
     "CHANGELOG": {
-      "TITLE": "Neu in der Version 2.0.0",
+      "TITLE": "Neu in der Version 2.1.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Hetzner Robot",
-          "TEXT": "Die App unterstützt nun nicht mehr nur die Hetzner Cloud! Sie können nun diverse Funktionen aus dem Hetzner Robot über die App benutzen."
+          "TITLE": "Zugangs Validierung",
+          "TEXT": "Die App prüft nun bei jedem Start ob die eingegebenen Zugänge gültig sind!"
         },
         "SLIDE2": {
-          "TITLE": "Neuer Name | Neues Logo",
-          "TEXT": "Wir sind nun als 'Mein Hetzner' zu finden!"
+          "TITLE": "Anzeige des Cloud Hosts und Anzeige bei Störung!",
+          "TEXT": "In den Einstellungen kann nun die Funktion \"Cloud Host - Abfragen\" aktiviert werden!"
         },
         "SLIDE3": {
-          "TITLE": "Bugfixes",
-          "TEXT": "Es wurden auch kleinere Fehler behoben."
+          "TITLE": "Einstellungen",
+          "TEXT": "Wir haben unsere Optionen zur Einstellung überarbeitet und zeigen nun auf welche Daten wir erheben oder speichern!"
+        },
+        "SLIDE4": {
+          "TITLE": "Serverbörse",
+          "TEXT": "Die Serverbörse ist nun in der App verfügbar!"
+        },
+        "SLIDE5": {
+          "TITLE": "Mein Hetzner - Status",
+          "TEXT": "Sie können nun Status Updates zur Mein Hetzner App abonnieren!"
+        },
+        "SLIDE6": {
+          "TITLE": "Fehlerbehebungen",
+          "TEXT": "Auch mit diesem Update haben wir wieder viele Fehler behoben!"
         }
       }
     },
@@ -92,6 +106,22 @@
         "LATEST_UPDATE": {
           "TITLE": "Letzte Aktualisierung:",
           "TEXT": "<<latest_update>>"
+        },
+        "PRIVACY": {
+          "TITLE": "Datenschutz",
+          "TRACKING": {
+            "DESCRIPTION": "Um die App weiter zu verbesseren sammeln wir die folgenden Daten:<br /><ul> <li>Version des Betriebssystems</li><li>Version der App</li> <li>Anzahl der Projekte im Cloud Modul der App</li><li>Anzahl der Accounts im Robot Modul der App</li></ul> Diese Daten werden mit einer pro App Installation eindeutigen 'Geräte ID' verknüpft. Es ist keinerlei Rückschluss auf Sie als Inhaber der Accounts möglich. Es werden somit keine personenbezogenen Daten erhoben. Die Daten werden einmal täglich beim Start der App per TLS / SSL Verbindung an unsere Systeme übertragen. Sie können die Sammlung der Daten durch das Umschalten der Einstellung \"Datensammlung erlauben?\" unterbinden. Wenn Sie uns die Gerät ID per E-Mail senden sind wir gerne bereit Ihnen Auskunft über die gesamelten Daten zu erteilen bzw. diese zu löschen.",
+            "TITLE": "Datensammlung erlauben?",
+            "DEVICE_ID": "Gerät ID"
+          }
+        },
+        "FEATURES": {
+          "CLOUD": {
+            "STATUS": {
+              "TITLE": "Aktuellen Serverstatus abfragen?",
+              "DESCRIPTION": "Um diesen Service bieten zu können, wird die IP Adresse des Servers an unseren Hetzner Status Service gesendet, dort wird ein Traceroute auf die IP gemacht. Dadurch wird der aktuelle Cloud Node ermittelt, welcher dann mit den bestehenden Hetzner Status Meldungen verglichen wird. Dieses Feature ist standardmäßig inaktiv."
+            }
+          }
         }
       },
       "SECURITY": {
@@ -125,7 +155,8 @@
             "WEB_HOSTING_AND_MANAGED_SERVER": "Webhosting und Managed Server",
             "DOMAIN_REGISTRATION_ROBOT": "Domain Registration Robot",
             "V_SERVER": "vServer",
-            "CLOUD": "Cloud"
+            "CLOUD": "Cloud",
+            "MY_HETZNER": "Mein Hetzner-App"
           }
         }
       }
@@ -161,6 +192,10 @@
       "TITLE": "Meine Projekte",
       "ACTIVE_FLAG": "<em>AKTIV</em>",
       "NO_PROJECT": "Oh! Es sieht so aus als wäre hier noch kein Projekt hinterlegt.",
+      "STATUS": {
+        "WORKING": "Gültig",
+        "REVOKED": "Ungültig"
+      },
       "ACTIONS": {
         "TITLE": "Aktionen für das Projekt '{{projectName}}'"
       },
@@ -292,6 +327,7 @@
           "INFORMATION": {
             "TITLE": "Informationen:",
             "LOCATION": "Standort:",
+            "CLOUD_HOST": "Cloud Host:",
             "STATUS": "Status:",
             "IMAGE": "Image:",
             "STORAGE_TYPE": {
@@ -476,8 +512,8 @@
             "INFORMATION": "Für den Webservice muss ein eigener Benutzer angelegt werden, sie finden diese Option im Robot unter dem Menüpunkt 'Einstellungen'. Dort können Sie auch auswählen, ob über den Webservice Bestellungen möglich sein sollen.",
             "ERRORS": {
               "INVALID_KEY": "Leider ist der eingegebene API-Token ungültig.",
-              "REQUIRED_NAME": "Bitte geben Sie eine Projektbezeichnung ein.",
-              "NAME_ALREADY_USED": "Sie haben bereits ein Projekt mit dieser Bezeichnung!",
+              "REQUIRED_NAME": "Bitte geben Sie eine Zugangsbezeichnung ein.",
+              "NAME_ALREADY_USED": "Sie haben bereits einen Zugang mit dieser Bezeichnung!",
               "SCAN_ERROR": "Leider gab es beim Scannen einen Fehler."
             }
           },
@@ -574,7 +610,29 @@
         "TITLE": "Bestellung"
       },
       "SERVER_MARKET": {
-        "TITLE": "Serverbörse"
+        "TITLE": "Serverbörse",
+        "PLEASE_WAIT_WHILE_LOADING": "Bitte waren Sie, während wir die aktuellen Angebote aus der Serverbörse laden.",
+        "NO_SERVERS": "Leider gibt es aktuell keine Angebote in der Serverbörse.",
+        "PRICING": {
+          "FIX_PRICE": "Festpreis",
+          "REDUCE": "Reduzierung:"
+        }
+      },
+      "ORDER_SERVER_MARKET": {
+        "TITLE": "Serverbörse - Bestellung",
+        "PLEASE_WAIT_WHILE_LOADING": "Bitte waren Sie, während wir das Angebot aus der Serverbörse laden.",
+        "NO_SERVERS": "Leider gibt es aktuell keine Angebote in der Serverbörse.",
+        "ORDER_SUCCESS": "Die Bestellung war erfolgreich. Der Server wird Ihnen in Kürze bereitgestellt.",
+        "CONFIRMATION": "Möchten Sie diese Serverbörse Bestellung wirklich durchführen?",
+        "ORDER": {
+          "TITLE": "Ihre Bestellung",
+          "LOCATION": "Standort:",
+          "MONTHLY_COSTS": "monatliche Kosten"
+        },
+        "ACCESS": {
+          "TITLE": "Server-Zugangsdaten",
+          "DESCRIPTION": "Bitte wählen Sie aus, wie Sie auf den neuen Server zugreifen möchten.<br/>Wenn Sie hier keinen SSH-Key auswählen wird Ihnen ein zufällig generiertes Passwort automatisch via E-Mail zugeschickt.<br/>"
+        }
       },
       "SSH_KEYS": {
         "TITLE": "SSH-Schlüssel",
@@ -594,7 +652,7 @@
       },
       "SUB_ACCOUNTS": {
         "LIST": {
-          "NO_SUB_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch keine Subaccount erstellt worden.",
+          "NO_SUB_ACCOUNTS": "Oh! Es sieht so aus als wäre hier noch kein Subaccount erstellt worden.",
           "ACTIONS": {
             "TITLE": "Subaccount \"{{subAccount}}\" bearbeiten",
             "RESET_PASSWORD": "Passwort zurücksetzen",
@@ -618,6 +676,23 @@
         },
         "EDIT": {
           "TITLE": "Subaccount bearbeiten"
+        }
+      },
+      "SNAPSHOTS": {
+        "LIST": {
+          "NO_SNAPSHOTS": "Oh! Es sieht so aus als wäre hier noch kein Snapshot erstellt worden.",
+          "ACTIONS": {
+            "TITLE": "Snapshot \"{{snapshot}}\" bearbeiten"
+          },
+          "MESSAGES": {
+            "DELETE": "Der Snapshot \"{{snapshot}}\" wurde erfolgreich gelöscht."
+          }
+        },
+        "EDIT": {
+          "TITLE": "Snapshot bearbeiten",
+          "FORM": {
+            "COMMENT": "Kommentar"
+          }
         }
       }
     }

@@ -6,7 +6,8 @@
     "NO_CONNECTION": "Unfortunately, you currently have no internet. The view of the app will continue to work, but all features to interact with your systems will be disabled as long as you have no Internet.",
     "MISSING_OR_WRONG_PROJECT": "Your chosen API key is no longer valid or you have not selected a project. Please select a project now.",
     "FEATURE_NEEDS_CONNECTION": "This feature requires an internet connection. Please connect to the internet.",
-    "RESOURCE_LOCKED_FOR_DELETION": "The deletion was blocked for this resource."
+    "RESOURCE_LOCKED_FOR_DELETION": "The deletion was blocked for this resource.",
+    "COPY_PASSWORD_TO_CLIPBOARD": "Save password in clipboard?"
   },
   "ACTIONS": {
     "DELETE": "Delete",
@@ -21,7 +22,8 @@
     "OPEN_DETAILS": "Details",
     "CANCELLATION": "Termination",
     "BACK": "Back",
-    "SEARCH": "Search"
+    "SEARCH": "Search",
+    "COPY": "Copy"
   },
   "COMPONENT": {
     "PROTECTION": {
@@ -45,19 +47,31 @@
       "TITLE": "Help"
     },
     "CHANGELOG": {
-      "TITLE": "Changes in 2.0.0",
+      "TITLE": "Changes in 2.1.0",
       "SLIDES": {
         "SLIDE1": {
-          "TITLE": "Hetzner Robot",
-          "TEXT": "The app now not only supports the Hetzner cloud! You can now use various functions from the Hetzner Robot via the app."
+          "TITLE": "Access Validation",
+          "TEXT": "The app checks now at each start whether the entered entrances are valid!"
         },
         "SLIDE2": {
-          "TITLE": "New Name | New Icon",
-          "TEXT": "You can found is now as \"My Hetzner\" with our new icon."
+          "TITLE": "Display of the cloud host and display in case of malfunction!",
+          "TEXT": "In the settings the function \"Cloud Host - Queries\" can now be activated!"
         },
         "SLIDE3": {
+          "TITLE": "Settings",
+          "TEXT": "We have revised our options for recruitment and now point to which data we collect or save!"
+        },
+        "SLIDE4": {
+          "TITLE": "Server Market",
+          "TEXT": "The Server Market is now available via the app"
+        },
+        "SLIDE5": {
+          "TITLE": "My Hetzner - Status",
+          "TEXT": "You can now subscribe to status updates for the My Hetzner app!"
+        },
+        "SLIDE6": {
           "TITLE": "Bugfixes",
-          "TEXT": "Of course we fixed some bugs too!"
+          "TEXT": "Also with this update we have fixed many bugs!"
         }
       }
     },
@@ -92,6 +106,22 @@
         "LATEST_UPDATE": {
           "TITLE": "Last update:",
           "TEXT": "<<latest_update>>"
+        },
+        "PRIVACY": {
+          "TITLE": "Privacy",
+          "TRACKING": {
+            "DESCRIPTION": "In order to further improve the app, we collect the following data: <ul><li>version of the operating system</li><li>version of the app</li><li>number of projects in the app's cloud module</li><li>number of accounts in the robot module of the app</li></ul> This data is linked to a per device installation unique 'Device ID'. There is no conclusion to you as the owner of the accounts possible. Thus, no personal data is collected. The data is transmitted once a day when starting the app via TLS / SSL connection to our systems. You can prevent the collection of the data by switching the setting \"Allow data collection?\". If you send us the device ID by e-mail, we are happy to provide you with information about the complete data or to delete it.",
+            "TITLE": "Allow data collection?",
+            "DEVICE_ID": "Device ID"
+          }
+        },
+        "FEATURES": {
+          "CLOUD": {
+            "STATUS": {
+              "TITLE": "Query current server status?",
+              "DESCRIPTION": "In order to provide this service, the IP address of the server is sent to our Hetzner Status Service, where a traceroute is made to the IP. This will determine the current cloud node, which will then be compared to the existing Hetzner status messages. This feature is by default inactive."
+            }
+          }
         }
       },
       "SECURITY": {
@@ -152,7 +182,8 @@
             "WEB_HOSTING_AND_MANAGED_SERVER": "Web hosting and Managed Server",
             "DOMAIN_REGISTRATION_ROBOT": "Domain Registration Robot",
             "V_SERVER": "vServer",
-            "CLOUD": "Cloud"
+            "CLOUD": "Cloud",
+            "MY_HETZNER": "My Hetzner-App"
           }
         }
       }
@@ -161,6 +192,10 @@
       "TITLE": "My projects",
       "ACTIVE_FLAG": "<em>ACTIVE</em>",
       "NO_PROJECT": "Oh! Looks like you don't have any projects.",
+      "STATUS": {
+        "WORKING": "Working",
+        "REVOKED": "Revoked"
+      },
       "ACTIONS": {
         "TITLE": "Actions for project '{{projectName}}'"
       },
@@ -292,6 +327,7 @@
           "INFORMATION": {
             "TITLE": "Information:",
             "LOCATION": "Location:",
+            "CLOUD_HOST": "Cloud-Host:",
             "STATUS": "Status:",
             "IMAGE": "Image:",
             "STORAGE_TYPE": {
@@ -579,7 +615,28 @@
         "TITLE": "Bestellung"
       },
       "SERVER_MARKET": {
-        "TITLE": "Serverbörse"
+        "TITLE": "Server Market",
+        "PLEASE_WAIT_WHILE_LOADING": "Please wait, while we load the offers from the server market.",
+        "NO_SERVERS": "Oh! Currently there are no offers on the server market.",
+        "PRICING": {
+          "FIX_PRICE": "Fixprice",
+          "REDUCE": "Next Reduce:"
+        }
+      },
+      "ORDER_SERVER_MARKET": {
+        "TITLE": "Server Market - Order",
+        "PLEASE_WAIT_WHILE_LOADING": "Please wait while we load your offer from the server market.",
+        "ORDER_SUCCESS": "Your order was successfully. You should get an E-Mail in a couple of minutes.",
+        "CONFIRMATION": "Are you sure that you want to make this order?",
+        "ORDER": {
+          "TITLE": "Your Order",
+          "LOCATION": "Location:",
+          "MONTHLY_COSTS": "monthly costs"
+        },
+        "ACCESS": {
+          "TITLE": "Server-Access",
+          "DESCRIPTION": "Please choose how you want to access the new server.<br/>If you enter an SSH key here, an automatic password will be automatically sent by e-mail. <br/>"
+        }
       },
       "SSH_KEYS": {
         "TITLE": "SSH keys",
@@ -623,6 +680,23 @@
         },
         "EDIT": {
           "TITLE": "Edit sub account"
+        }
+      },
+      "SNAPSHOTS": {
+        "LIST": {
+          "NO_SNAPSHOTS": "Oh!  Looks like you don't have any snapshots.",
+          "ACTIONS": {
+            "TITLE": "Edit snapshot \"{{snapshot}}\""
+          },
+          "MESSAGES": {
+            "DELETE": "Snapshot \"{{snapshot}}\" successfully deleted."
+          }
+        },
+        "EDIT": {
+          "TITLE": "Edit snapshot",
+          "FORM": {
+            "COMMENT": "Comment"
+          }
         }
       }
     }

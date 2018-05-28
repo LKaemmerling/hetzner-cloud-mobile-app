@@ -75,12 +75,8 @@ export class AccountListPage {
     protected network: NetworkProvider,
     protected serverApi: ServerApiProvider
   ) {
-    this.accountService.loadAccounts().then(() => {
-      this._accounts = accountService.accounts;
-      this.serverApi.getServers().then(val => {
-        console.log(val);
-      });
-    });
+    this._accounts = accountService.accounts;
+
   }
 
   /**

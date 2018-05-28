@@ -31,6 +31,7 @@ export class ServersService {
     return this.storage.get('robot_servers').then((val) => {
       if (val !== undefined) {
         this.servers = val;
+
       }
     });
   }

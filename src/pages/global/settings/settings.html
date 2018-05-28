@@ -32,6 +32,25 @@
         <ion-option value="en">English</ion-option>
       </ion-select>
     </div>
+    <ion-item>
+      <ion-label (click)="openPrivacyPage()"><i
+        class="fas fa-info-circle"></i> {{ 'PAGE.SETTINGS.APP.PRIVACY.TRACKING.TITLE' | translate }}
+      </ion-label>
+      <ion-toggle [(ngModel)]="tracking" (ionChange)="changeTracking()"></ion-toggle>
+    </ion-item>
+    <ion-item *ngIf="tracking">
+      <span item-right="">{{ config.device_id }} <i class="fas fa-copy" (click)="copyDeviceId()"></i></span>
+    </ion-item>
+    <ion-list-header>
+      Cloud Features
+    </ion-list-header>
+    <ion-item>
+      <ion-label text-wrap [tooltip]="'PAGE.SETTINGS.APP.FEATURES.CLOUD.STATUS.DESCRIPTION' | translate" arrow
+                 positionV="top"><i
+        class="fas fa-info-circle"></i> {{ 'PAGE.SETTINGS.APP.FEATURES.CLOUD.STATUS.TITLE' | translate }}
+      </ion-label>
+      <ion-toggle [(ngModel)]="cloud_status" (ionChange)="changeCloudStatus()"></ion-toggle>
+    </ion-item>
     <!--<ion-item>
       <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.ANALYTICS' | translate }}</ion-label>
       <ion-toggle [(ngModel)]="analytics" (ionChange)="changeAnalytics()"></ion-toggle>

@@ -12,5 +12,10 @@ export interface project {
    * @type {string}
    */
   api_key: string;
+  /**
+   * Is the API key revoked?
+   */
+  revoked: boolean;
+
 
 }

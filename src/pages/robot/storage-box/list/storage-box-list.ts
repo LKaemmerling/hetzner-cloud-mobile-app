@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActionSheetController, ModalController, NavController} from 'ionic-angular';
+import {ActionSheetController, LoadingController, ModalController, NavController} from 'ionic-angular';
 import {TranslateService} from '@ngx-translate/core';
 import {Storage} from '@ionic/storage';
 import {state, style, transition, trigger, useAnimation} from '@angular/animations';
@@ -10,6 +10,9 @@ import {ServersService} from '../../../../modules/hetzner-robot-data/servers/ser
 import {StorageBoxService} from '../../../../modules/hetzner-robot-data/storage-box/storage-box.service';
 import {StorageBoxEditModal} from "../edit/storage-box-edit";
 import {StorageBoxDetailPage} from "../details/storage-box-details";
+import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
+import {ConfigService} from "../../../../modules/hetzner-app/config/config.service";
+import {ErrorPage} from "../../../global/error/error";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -69,6 +72,7 @@ export class StorageBoxListPage {
    * @type {boolean}
    */
   public error: string = "";
+
   /**
    * Constructor
    * @param {ActionSheetController} actionSheetCtrl
@@ -85,10 +89,13 @@ export class StorageBoxListPage {
     protected modal: ModalController,
     protected hetznerRobotData: HetznerRobotDataService,
     protected storageBoxService: StorageBoxService,
+    protected storageBoxApi: StorageBoxApiProvider,
     protected translate: TranslateService,
     protected storage: Storage,
     protected network: NetworkProvider,
-    protected navCtrl: NavController
+    protected navCtrl: NavController,
+    protected loadingCtrl: LoadingController,
+    protected config: ConfigService
   ) {
     this.storage_boxes = this._search = this.storageBoxService.storage_boxes;
   }
@@ -160,7 +167,18 @@ export class StorageBoxListPage {
    * @param {number} storage_box_id
    */
   openDetailsPage(storage_box_id: number) {
-    this.navCtrl.push(StorageBoxDetailPage, {storage_box_id: storage_box_id});
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    this.storageBoxApi.getStorageBox(storage_box_id).then(val => {
+      this.navCtrl.push(StorageBoxDetailPage, {storage_box: val['storagebox']});
+      loader.dismiss();
+    }, (error) => {
+      if (this.config.getRemoteFeatureFlag('RESPONSE_DEBUG', false)) {
+        this.navCtrl.push(ErrorPage, {error: error});
+      }
+      loader.dismiss();
+    });
+
   }
 
   /**

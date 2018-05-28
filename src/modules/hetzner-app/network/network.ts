@@ -4,6 +4,7 @@ import {Network} from "@ionic-native/network";
 import {Observable} from "rxjs/Observable";
 import {TranslateService} from "@ngx-translate/core";
 import {ConfigService} from "../config/config.service";
+import {HTTP} from "@ionic-native/http";
 
 /**
  * This Provider contains all logic for the network available info like "app has connection"
@@ -33,7 +34,7 @@ export class NetworkProvider {
    * @param {TranslateService} translate
    * @param {ConfigService} config
    */
-  constructor(protected http: HttpClient, protected network: Network, protected translate: TranslateService, protected config: ConfigService) {
+  constructor(protected angularHttp: HttpClient, protected http: HTTP, protected network: Network, protected translate: TranslateService, protected config: ConfigService) {
   }
 
   /**
@@ -48,7 +49,7 @@ export class NetworkProvider {
    * Performs a basic get call against the hetzner api for checking the network connection
    */
   public checkIfConnectionIsAvailable() {
-    this.http.get(this.config.api_url).subscribe(data => {
+    this.angularHttp.get(this.config.api_url).subscribe(data => {
       this.has_connection = true;
     }, err => {
       if (err.error.error.code == "not_found") {
@@ -91,7 +92,7 @@ export class NetworkProvider {
    */
   public quickTestApiKey(api_key: string) {
     return new Promise((resolve, reject) => {
-      this.http.get(this.config.api_url + '/locations', {
+      this.angularHttp.get(this.config.api_url + '/locations', {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key)
       }).subscribe(data => {
         resolve();
@@ -100,4 +101,38 @@ export class NetworkProvider {
       });
     });
   }
+
+  public quickTestAccess(username: string, password: string) {
+    return new Promise((resolve, reject = null) => {
+      this.http.useBasicAuth(username, password);
+      let headers = {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "App-Version": this.config.version,
+        "Authorization": "basic " + btoa(username + ":" + password)
+
+      };
+      if (this.config.runs_on_device) {
+        this.http.get(this.config.robot_api_url + '/server', null, headers,
+        ).then(data => {
+          resolve();
+        }).catch(err => {
+          if (reject != null) {
+            reject();
+          }
+        });
+      } else {
+        this.angularHttp.get(this.config.robot_api_url + '/server', {
+          headers: headers,
+        }).subscribe(data => {
+          resolve(data);
+        }, err => {
+          if (reject != null) {
+            reject(err);
+          }
+        });
+      }
+    });
+  }
+
+
 }

@@ -14,17 +14,17 @@
   </p>
   <ion-list>
     <ion-item *ngFor="let category of categories">
-      <ion-label color="dark">{{ category.lang | translate }}</ion-label>
+      <ion-label style="color:black !important;">{{ category.lang | translate }}</ion-label>
       <ion-toggle color="secondary" [(ngModel)]="category.value" (ionChange)="save()"></ion-toggle>
     </ion-item>
 
   <ion-list-header>{{ 'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.TITLE' | translate}}</ion-list-header>
     <ion-item>
-      <ion-label>{{ 'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.SOUND' | translate}}</ion-label>
+      <ion-label style="color:black !important;">{{ 'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.SOUND' | translate}}</ion-label>
       <ion-toggle color="secondary" [(ngModel)]="sound" (ionChange)="save()"></ion-toggle>
     </ion-item>
     <ion-item>
-      <ion-label>{{ 'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.VIBRATE' | translate}}</ion-label>
+      <ion-label style="color:black !important;">{{ 'PAGE.STATUS.MODAL.SETTINGS.NOTIFICATION_SETTINGS.VIBRATE' | translate}}</ion-label>
       <ion-toggle color="secondary" [(ngModel)]="vibrate" (ionChange)="save()"></ion-toggle>
     </ion-item>
   </ion-list>

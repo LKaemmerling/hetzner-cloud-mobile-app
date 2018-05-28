@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <i class="fas fa-bars fa-2x"></i>
+    </button>
+    <ion-title id="server_detail_name" *ngIf="storagebox != null">{{ storagebox.name.length > 0 ? storagebox.name :
+      storagebox.product }} - Snapshots
+    </ion-title>
+    <ion-buttons end>
+      <loading-indicator (action)="loadSnapshots()" [loading]="loading"
+                         [loading_done]="loading_done"></loading-indicator>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <p class="message_box success" *ngIf="success.length > 0">
+      {{success}}
+    </p>
+    <ion-list *ngIf="snapshots != null">
+
+      <button ion-item *ngFor="let snapshot of snapshots; let i = index"
+              [id]="snapshot.snapshot.name" (click)="openActions(snapshot.snapshot)" style="margin-bottom:5px;">
+        <h2>{{ (snapshot.snapshot.comment != null && snapshot.snapshot.comment.length > 0) ? (snapshot.snapshot.comment+"("+snapshot.snapshot.name+")") : snapshot.snapshot.name
+          }}
+        </h2>
+        <p>{{ snapshot.snapshot.timestamp }} / {{ snapshot.snapshot.size * 1024 * 1024 |fileSize  }}</p>
+      </button>
+    </ion-list>
+    <p ion-item *ngIf="snapshots == null || snapshots.length == 0" class="message_box info" text-wrap=""
+       [innerHTML]="'ROBOT.PAGE.SNAPSHOTS.LIST.NO_SNAPSHOTS' | translate">
+    </p>
+
+  </ion-card>
+  <ion-fab bottom right>
+    <button ion-fab (click)="createNewSnapshot()"><i class="fas fa-plus"></i></button>
+  </ion-fab>
+</ion-content>

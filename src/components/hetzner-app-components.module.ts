@@ -14,6 +14,7 @@ import { SelectTypeComponent } from './server-creation/select-type/select-type';
 import { SelectSshKeyComponent } from './server-creation/select-ssh-keys/select-ssh-keys';
 import { TooltipsModule } from 'ionic-tooltips';
 import { ChangeProtectionComponent } from './change-protection/change-protection';
+import {HetznerAppModule} from "../modules/hetzner-app/hetzner-app.module";
 
 @NgModule({
     declarations: [
@@ -29,7 +30,7 @@ import { ChangeProtectionComponent } from './change-protection/change-protection
         SelectSshKeyComponent,
         ChangeProtectionComponent,
     ],
-    imports: [CommonModule, IonicModule, TranslateModule, TooltipsModule],
+    imports: [CommonModule, IonicModule, TranslateModule, TooltipsModule, HetznerAppModule],
     exports: [
         ServerStatusIndicatorComponent,
         LoadingIndicatorComponent,

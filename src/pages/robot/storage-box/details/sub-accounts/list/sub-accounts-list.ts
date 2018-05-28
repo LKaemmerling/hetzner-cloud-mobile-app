@@ -5,6 +5,7 @@ import {StorageBoxApiProvider} from "../../../../../../modules/hetzner-robot-api
 import {TranslateService} from "@ngx-translate/core";
 import {StorageBoxSubAccountAddModal} from "../add/sub-account-add";
 import {StorageBoxSubAccountEditModal} from "../edit/sub-account-edit";
+import {Clipboard} from "@ionic-native/clipboard";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -55,7 +56,8 @@ export class StorageBoxSubAccountsListPage {
     protected loadingCtrl: LoadingController,
     protected actionCtrl: ActionSheetController,
     protected translateService: TranslateService,
-    protected modalCtrl: ModalController
+    protected modalCtrl: ModalController,
+    protected clipboard: Clipboard
   ) {
     this.storagebox = this.NavParams.get('storage_box');
 
@@ -199,11 +201,18 @@ export class StorageBoxSubAccountsListPage {
         this.translateService.get('ROBOT.PAGE.SUB_ACCOUNTS.LIST.MESSAGES.RESET_PASSWORD', {
           subAccount: subaccount.comment.length > 0 ? (subaccount.comment + " (" + subaccount.username + ")") : subaccount.username,
           password: data['password']
-        },).subscribe(text => {
+        }).subscribe(text => {
           message = text;
         });
+
         this.success = message;
         loader.dismiss();
+        this.translateService.get('GLOBAL.COPY_PASSWORD_TO_CLIPBOARD').subscribe(text => {
+          if (confirm(text)) {
+            this.clipboard.copy(data['password']);
+          }
+        });
+
         setTimeout(() => (this.success = ''), 10000);
       }, (error) => {
         loader.dismiss();

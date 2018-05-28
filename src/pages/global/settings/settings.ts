@@ -7,6 +7,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {OneSignal} from '@ionic-native/onesignal';
 import {ConfigService} from '../../../modules/hetzner-app/config/config.service';
 import {DeveloperPage} from '../developer/developer';
+import {PrivacyPage} from "./privacy/privays";
+import {Clipboard} from "@ionic-native/clipboard";
 
 /**
  * This is the settings page, that contain all possible settings of the app
@@ -22,6 +24,8 @@ export class SettingsPage {
    * @type {number}
    */
   public finger_print: number = -1;
+
+  public tracking: boolean = true;
   /**
    *
    * @type {boolean}
@@ -43,6 +47,8 @@ export class SettingsPage {
    */
   public compact_server_design: boolean = false;
 
+  public cloud_status: boolean = false;
+
   /**
    * Constructor
    * @param {NavController} navCtrl
@@ -54,6 +60,7 @@ export class SettingsPage {
    * @param {TranslateService} translate
    * @param {ToastController} toastController
    * @param {OneSignal} oneSignal
+   * @param {Clipboard} clipboard
    */
   constructor(
     protected navCtrl: NavController,
@@ -64,7 +71,8 @@ export class SettingsPage {
     protected config: ConfigService,
     protected translate: TranslateService,
     protected toastController: ToastController,
-    protected oneSignal: OneSignal
+    protected oneSignal: OneSignal,
+    protected clipboard: Clipboard
   ) {
     storage.get('lang').then(value => {
       if (value != undefined) {
@@ -76,7 +84,8 @@ export class SettingsPage {
         this.compact_server_design = value;
       }
     });
-    this.analytics = this.config.analytics;
+    this.tracking = this.config.getFeatureFlag('tracking', true);
+    this.cloud_status = this.config.getFeatureFlag('cloud_status', false);
     this.fingerprint
       .isAvailable()
       .then(resp => {
@@ -178,5 +187,22 @@ export class SettingsPage {
 
   openDeveloperMode() {
     this.navCtrl.push(DeveloperPage);
+  }
+
+  changeCloudStatus() {
+    this.config.setFeatureFlag('cloud_status', this.cloud_status);
+  }
+
+  changeTracking() {
+    this.config.setFeatureFlag('tracking', this.tracking);
+  }
+
+  openPrivacyPage() {
+    this.navCtrl.push(PrivacyPage);
+  }
+
+  copyDeviceId() {
+    this.clipboard.copy(this.config.device_id);
+    this.toastController.create({message: 'OK'}).present();
   }
 }

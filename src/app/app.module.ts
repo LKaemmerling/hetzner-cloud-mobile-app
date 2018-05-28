@@ -10,7 +10,6 @@ import {Pro} from '@ionic/pro';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TooltipsModule} from 'ionic-tooltips';
 import {OneSignal} from '@ionic-native/onesignal';
-import {AppCenterAnalytics} from '@ionic-native/app-center-analytics';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {ChartsModule} from 'ng2-charts';
 import {AppVersion} from '@ionic-native/app-version';
@@ -21,7 +20,6 @@ import {BarcodeScanner} from '@ionic-native/barcode-scanner';
 import {NgxQRCodeModule} from '@lkdevelopment/ngx-qrcode/dist';
 import {HetznerAppComponentsModule} from '../components/hetzner-app-components.module';
 import {Keyboard} from '@ionic-native/keyboard';
-import {AppRate} from '@ionic-native/app-rate';
 import {createTranslateLoader} from '../providers/translation/loader';
 import {NetworkProvider} from '../modules/hetzner-app/network/network';
 import {HetznerCloudDataModule} from '../modules/hetzner-cloud-data/hetzner-cloud-data.module';
@@ -33,13 +31,14 @@ import {RobotAppPagesModule} from '../pages/robot/robot-app-pages.module';
 import {HetznerRobotDataModule} from '../modules/hetzner-robot-data/hetzner-robot-data.module';
 import {HetznerRobotApiModule} from '../modules/hetzner-robot-api/hetzner-robot-api.module';
 import {HTTP} from "@ionic-native/http";
+import {Clipboard} from "@ionic-native/clipboard";
 
 /**
  * Init the Ionic Pro Monitoring Service
  * @type {Pro}
  */
 const IonicPro = Pro.init('359b3ec5', {
-  appVersion: '2.0.0',
+  appVersion: '2.1.0',
 });
 
 /**
@@ -129,10 +128,9 @@ export class IonicProErrorHandler implements ErrorHandler {
     FingerprintAIO,
     BarcodeScanner,
     Keyboard,
-    AppRate,
     Device,
     HTTP,
-    AppCenterAnalytics
+    Clipboard
   ],
 })
 export class AppModule {

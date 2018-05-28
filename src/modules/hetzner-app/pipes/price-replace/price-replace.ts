@@ -2,7 +2,6 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {PricingService} from "../../../hetzner-cloud-data/pricings/pricing.service";
 import {isNumeric} from "rxjs/util/isNumeric";
 import {TranslateService} from "@ngx-translate/core";
-import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the PriceReplacePipe pipe.
@@ -44,7 +43,7 @@ export class PriceReplacePipe implements PipeTransform {
           this.translate.get('GLOBAL.DATE_TIME_FORMAT').subscribe(text => {
             format = text;
           });
-          price = dateFormat(price, format);
+          price = dateFormat(price, format.replace('MM', '__').replace('mm', 'MM').replace('__', 'mm'));
         }
         value = value.replace(val, price)
       });

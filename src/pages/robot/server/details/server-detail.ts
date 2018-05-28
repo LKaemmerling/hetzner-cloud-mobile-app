@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {LoadingController, ModalController, NavParams} from 'ionic-angular';
 import {fadeIn, fadeOut} from 'ng-animate';
 import {ServerApiProvider} from '../../../../modules/hetzner-robot-api/server-api/server-api';
-import {StorageBoxEditModal} from "../../storage-box/edit/storage-box-edit";
 import {ServerEditModal} from "../edit/server-edit";
 import {ServerActionsResetModal} from "../actions/reset/server-actions-reset";
 
@@ -29,7 +28,10 @@ export class ServerDetailPage {
 
   /**
    * Constructor
-   * @param NavParams
+   * @param {NavParams} NavParams
+   * @param {ServerApiProvider} serverApi
+   * @param {LoadingController} loadingCtrl
+   * @param {ModalController} modalCtrl
    */
   constructor(
     protected NavParams: NavParams,
@@ -37,16 +39,13 @@ export class ServerDetailPage {
     protected loadingCtrl: LoadingController,
     protected modalCtrl: ModalController
   ) {
-  }
-
-  ngOnInit() {
-    this.loadServer();
+    this.server = this.NavParams.get('server');
   }
 
   loadServer() {
     this.loader = this.loadingCtrl.create();
     this.loader.present();
-    this.serverApi.getServer(this.NavParams.get('server_ip')).then(val => {
+    this.serverApi.getServer(this.server.server_ip).then(val => {
       this.server = val['server'];
       this.loader.dismiss();
     });
@@ -63,7 +62,7 @@ export class ServerDetailPage {
     modal.present();
   }
 
-  openResetModal(){
+  openResetModal() {
     let modal = this.modalCtrl.create(ServerActionsResetModal, {server: this.server});
     modal.onDidDismiss(() => {
       this.loadServer();
