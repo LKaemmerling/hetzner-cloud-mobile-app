@@ -38,7 +38,10 @@ export class TrackingService {
         this.version = this.device.version;
       }
       this.storage.get('feature_track').then(feature_track => {
-        this.feature_track = Object.assign(this.feature_track, feature_track);
+        if (feature_track != undefined) {
+          this.feature_track = Object.assign(this.feature_track, feature_track);
+        }
+
       });
       this.storage.get('device_id').then((val) => {
         if (val == undefined) {
@@ -48,7 +51,7 @@ export class TrackingService {
             this.config.device_id = data['device_id'];
             this.performTracking();
             this.performRemoteFeatureFlagUpdate();
-            this.statusApiProvider.trackFeatures(val,this.getFeatureTrack());
+            this.statusApiProvider.trackFeatures(val, this.getFeatureTrack());
           });
         } else {
           this.device_id = val;
@@ -56,7 +59,7 @@ export class TrackingService {
           this.statusApiProvider.updateDevice(val, this.os, this.version).then(() => {
             this.performTracking();
             this.performRemoteFeatureFlagUpdate();
-            this.statusApiProvider.trackFeatures(val,this.getFeatureTrack());
+            this.statusApiProvider.trackFeatures(val, this.getFeatureTrack());
           });
         }
       });

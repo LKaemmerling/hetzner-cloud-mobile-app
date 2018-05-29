@@ -5,6 +5,7 @@ import {editSSHKeyModal} from './editSSHKey/editSSHKey';
 import {SshKeysService} from '../../../modules/hetzner-cloud-data/ssh-keys/ssh-keys.service';
 import {NetworkProvider} from '../../../modules/hetzner-app/network/network';
 import {TranslateService} from '@ngx-translate/core';
+import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This page lists all ssh keys
@@ -50,9 +51,11 @@ export class SshkeysPage {
     protected sshKeysService: SshKeysService,
     protected translate: TranslateService,
     protected sshKeyProvider: SshKeyApiProvider,
-    protected networkProvider: NetworkProvider
+    protected networkProvider: NetworkProvider,
+    protected tracking: TrackingService
   ) {
     this._ssh_keys = this.sshKeysService.ssh_keys;
+    this.tracking.trackFeature('cloud.ssh_keys.list');
   }
 
   /**

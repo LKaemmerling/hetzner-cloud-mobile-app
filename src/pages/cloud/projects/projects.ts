@@ -13,6 +13,7 @@ import {editProjectModal} from './editProject/editProject';
 import {HetznerCloudDataService} from '../../../modules/hetzner-cloud-data/hetzner-cloud-data.service';
 import {NetworkProvider} from '../../../modules/hetzner-app/network/network';
 import {HetznerCloudMenuService} from '../../../modules/hetzner-cloud-data/hetzner-cloud-menu.service';
+import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -72,10 +73,12 @@ export class ProjectsPage {
     protected storage: Storage,
     protected network: NetworkProvider,
     protected cloudMenuService: HetznerCloudMenuService,
-    protected loadingCtrl: LoadingController
+    protected loadingCtrl: LoadingController,
+    protected tracking: TrackingService
   ) {
 
     this._projects = project.projects;
+    this.tracking.trackFeature('cloud.projects.list');
 
   }
 

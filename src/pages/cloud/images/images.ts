@@ -11,6 +11,7 @@ import { ServerApiProvider } from '../../../modules/hetzner-cloud-api/server-api
 import { backupSettingsModal } from '../server/backupSettings/backupSettings';
 import { NetworkProvider } from '../../../modules/hetzner-app/network/network';
 import { addServerModal } from '../server/addServer/addServer';
+import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This page displays all available images
@@ -82,9 +83,11 @@ export class ImagesPage {
         protected serversService: ServersService,
         protected translate: TranslateService,
         protected imageApiProvider: ImageApiProvider,
-        protected serverApiProvider: ServerApiProvider
+        protected serverApiProvider: ServerApiProvider,
+        protected tracking:TrackingService
     ) {
         this.images = this.imagesService.getImagesByType('snapshot');
+      tracking.trackFeature('cloud.images.list');
     }
 
     /**

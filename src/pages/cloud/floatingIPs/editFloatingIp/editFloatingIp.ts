@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProjectsService } from '../../../../modules/hetzner-cloud-data/project/projects.service';
 import { LoadingController, NavController, NavParams, ViewController } from 'ionic-angular';
 import { FloatingIpApiProvider } from '../../../../modules/hetzner-cloud-api/floating-ip-api/floating-ip-api';
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This modal makes it possible to rename a floating ip
@@ -31,9 +32,11 @@ export class editFloatingIpModal {
         protected viewCtrl: ViewController,
         protected project: ProjectsService,
         protected floatingIpProvider: FloatingIpApiProvider,
-        protected navParams: NavParams
+        protected navParams: NavParams,
+        protected tracking:TrackingService
     ) {
         this.floatingIp = navParams.get('floating_ip');
+      tracking.trackFeature('cloud.floating_ips.edit');
     }
 
     /**

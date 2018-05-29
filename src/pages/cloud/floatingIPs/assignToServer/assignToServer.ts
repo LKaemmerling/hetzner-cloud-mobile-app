@@ -4,6 +4,7 @@ import { LoadingController, NavController, NavParams, ViewController } from 'ion
 import { FloatingIpApiProvider } from '../../../../modules/hetzner-cloud-api/floating-ip-api/floating-ip-api';
 import { Server } from '../../../../modules/hetzner-cloud-data/servers/server';
 import { ServersService } from '../../../../modules/hetzner-cloud-data/servers/servers.service';
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This modal makes it possible to assign a new server to this floating ip
@@ -40,10 +41,12 @@ export class assignToServerModal {
         protected project: ProjectsService,
         protected serversService: ServersService,
         protected floatingIpProvider: FloatingIpApiProvider,
-        protected navParams: NavParams
+        protected navParams: NavParams,
+        protected tracking:TrackingService
     ) {
         this.floatingIp = navParams.get('floating_ip');
         this.servers = this.serversService.servers;
+      tracking.trackFeature('cloud.floating_ips.assigntoserver');
     }
 
     /**

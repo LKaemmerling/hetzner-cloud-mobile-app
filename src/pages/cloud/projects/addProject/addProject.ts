@@ -7,6 +7,7 @@ import {Storage} from '@ionic/storage';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner';
 import {NetworkProvider} from '../../../../modules/hetzner-app/network/network';
 import {HetznerCloudMenuService} from '../../../../modules/hetzner-cloud-data/hetzner-cloud-menu.service';
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * Add Project modal
@@ -52,8 +53,10 @@ export class addProjectModal {
     protected translate: TranslateService,
     protected storage: Storage,
     protected barcodeScanner: BarcodeScanner,
-    protected cloudMenuService: HetznerCloudMenuService
+    protected cloudMenuService: HetznerCloudMenuService,
+    protected tracking:TrackingService
   ) {
+    tracking.trackFeature('cloud.projects.add');
   }
 
   /**
@@ -63,6 +66,7 @@ export class addProjectModal {
     this.barcodeScanner.scan().then(
       barcodeData => {
         try {
+          this.tracking.trackFeature('cloud.projects.scan');
           let payload = JSON.parse(barcodeData.text);
           this.project_name = payload['name'];
           this.api_key = payload['api_key'];
