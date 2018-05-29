@@ -71,6 +71,10 @@
       <ion-label text-wrap>{{ 'PAGE.SETTINGS.DESIGN.COMPACT_SERVERS' | translate }}</ion-label>
       <ion-toggle [(ngModel)]="compact_server_design" (ionChange)="changeServersDesign()"></ion-toggle>
     </ion-item>
+    <ion-item *ngIf="dark_design_allowed">
+      <ion-label text-wrap>{{ 'PAGE.SETTINGS.DESIGN.DARK_DESIGN' | translate }}</ion-label>
+      <ion-toggle [(ngModel)]="dark_design" (ionChange)="changeDarkDesignState()"></ion-toggle>
+    </ion-item>
   </ion-list>
   <button ion-button="" color="danger" (click)="openDeleteAllPage()">
     {{ 'PAGE.DELETE_ALL.TITLE' | translate }}

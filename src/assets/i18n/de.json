@@ -110,7 +110,7 @@
         "PRIVACY": {
           "TITLE": "Datenschutz",
           "TRACKING": {
-            "DESCRIPTION": "Um die App weiter zu verbesseren sammeln wir die folgenden Daten:<br /><ul> <li>Version des Betriebssystems</li><li>Version der App</li> <li>Anzahl der Projekte im Cloud Modul der App</li><li>Anzahl der Accounts im Robot Modul der App</li></ul> Diese Daten werden mit einer pro App Installation eindeutigen 'Geräte ID' verknüpft. Es ist keinerlei Rückschluss auf Sie als Inhaber der Accounts möglich. Es werden somit keine personenbezogenen Daten erhoben. Die Daten werden einmal täglich beim Start der App per TLS / SSL Verbindung an unsere Systeme übertragen. Sie können die Sammlung der Daten durch das Umschalten der Einstellung \"Datensammlung erlauben?\" unterbinden. Wenn Sie uns die Gerät ID per E-Mail senden sind wir gerne bereit Ihnen Auskunft über die gesamelten Daten zu erteilen bzw. diese zu löschen.",
+            "DESCRIPTION": "Um die App weiter zu verbesseren sammeln wir die folgenden Daten:<br /><ul> <li>Version des Betriebssystems</li><li>Version der App</li> <li>Anzahl der Projekte im Cloud Modul der App</li><li>Anzahl der Accounts im Robot Modul der App</li><li>Anzahl der Verwendung der einzelnen Funktionen</ul> Diese Daten werden mit einer pro App Installation eindeutigen 'Geräte ID' verknüpft. Es ist keinerlei Rückschluss auf Sie als Inhaber der Accounts möglich. Es werden somit keine personenbezogenen Daten erhoben. Die Daten werden einmal täglich beim Start der App per TLS / SSL Verbindung an unsere Systeme übertragen. Sie können die Sammlung der Daten durch das Umschalten der Einstellung \"Datensammlung erlauben?\" unterbinden. Wenn Sie uns die Gerät ID per E-Mail senden sind wir gerne bereit Ihnen Auskunft über die gesamelten Daten zu erteilen bzw. diese zu löschen.",
             "TITLE": "Datensammlung erlauben?",
             "DEVICE_ID": "Gerät ID"
           }
@@ -132,7 +132,8 @@
         }
       },
       "DESIGN": {
-        "COMPACT_SERVERS": "Kompaktes Server Design aktivieren?"
+        "COMPACT_SERVERS": "Kompaktes Server Design aktivieren?",
+        "DARK_DESIGN": "Dunkles Design aktivieren?"
       }
     },
     "STATUS": {

@@ -1,35 +1,37 @@
-<ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>{{ 'GLOBAL.NAME' | translate}}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="menu">
-    <ion-segment [(ngModel)]="menu" color="secondary" (ionChange)="changeMenu()" class="menu-segment">
-      <ion-segment-button *ngFor="let menu of available_menus;" [value]="menu.text" class="menu-segment-button">
-        <i [class]="menu.icon"></i> {{menu.text}}
-      </ion-segment-button>
-    </ion-segment>
-    <ion-list>
-      <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose=""
-              class="visible"
-              [ngClass]="{'force-hidden':menu_entry.hidden}">
-        <i [class]="'fas fa-fw '+menu_entry.icon"></i> {{ menu_entry.key | translate }}
-        <i *ngIf="menu_entry.has_important != undefined && menu_entry.has_important == true" item-right class="fas fa-exclamation-triangle"></i>
-      </button>
-      <ion-item
-        style="position: fixed; bottom:0; text-align: center;font-size:12px;">
-        <button ion-item (click)="supportMail()" menuClose="">
-          {{ 'PAGE.HELP.TITLE' | translate }}
+<div [class]="design">
+  <ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>{{ 'GLOBAL.NAME' | translate}}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="menu">
+      <ion-segment [(ngModel)]="menu" color="secondary" (ionChange)="changeMenu()" class="menu-segment">
+        <ion-segment-button *ngFor="let menu of available_menus;" [value]="menu.text" class="menu-segment-button">
+          <i [class]="menu.icon"></i> {{menu.text}}
+        </ion-segment-button>
+      </ion-segment>
+      <ion-list>
+        <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose=""
+                class="visible"
+                [ngClass]="{'force-hidden':menu_entry.hidden}">
+          <i [class]="'fas fa-fw '+menu_entry.icon"></i> {{ menu_entry.key | translate }}
+          <i *ngIf="menu_entry.has_important != undefined && menu_entry.has_important == true" item-right
+             class="fas fa-exclamation-triangle"></i>
         </button>
-        <button ion-item (click)="openAboutPage()" menuClose="">
-          {{ 'PAGE.ABOUT.TITLE' | translate }}
-        </button>
-      </ion-item>
+        <ion-item
+          style="position: fixed; bottom:0; text-align: center;font-size:12px;">
+          <button ion-item (click)="supportMail()" menuClose="">
+            {{ 'PAGE.HELP.TITLE' | translate }}
+          </button>
+          <button ion-item (click)="openAboutPage()" menuClose="">
+            {{ 'PAGE.ABOUT.TITLE' | translate }}
+          </button>
+        </ion-item>
 
-    </ion-list>
-  </ion-content>
-</ion-menu>
-<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
-
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+</div>
 

@@ -41,6 +41,7 @@ export class HetznerMobileApp {
    * @type {string}
    */
   public lang: string = 'de';
+  public design: string = 'light-design';
 
   protected loader;
 
@@ -99,6 +100,7 @@ export class HetznerMobileApp {
   initApp(_fingerprint = true) {
     this.network.init();
     this.config.init().then(() => {
+      this.design = this.config.getFeatureFlag('dark_design', false) ? 'dark-design' : 'light-design';
       this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

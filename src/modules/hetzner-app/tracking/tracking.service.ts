@@ -51,7 +51,6 @@ export class TrackingService {
             this.config.device_id = data['device_id'];
             this.performTracking();
             this.performRemoteFeatureFlagUpdate();
-            this.statusApiProvider.trackFeatures(val, this.getFeatureTrack());
           });
         } else {
           this.device_id = val;
@@ -59,7 +58,6 @@ export class TrackingService {
           this.statusApiProvider.updateDevice(val, this.os, this.version).then(() => {
             this.performTracking();
             this.performRemoteFeatureFlagUpdate();
-            this.statusApiProvider.trackFeatures(val, this.getFeatureTrack(null, {}));
           });
         }
       });
@@ -70,6 +68,7 @@ export class TrackingService {
     this.storage.get('last_track').then((val) => {
       if (val == undefined || (val < new Date(new Date().getTime() - 60 * 60 * 24 * 1000).getTime())) {
         this.statusApiProvider.performTrack(this.device_id, this.projects.projects.length, this.access.accounts.length);
+        this.statusApiProvider.trackFeatures(val, this.getFeatureTrack(null, {}));
         this.storage.set('last_track', new Date().getTime());
       }
     });

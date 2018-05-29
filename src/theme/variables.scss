@@ -35,20 +35,87 @@ $colors: (
   dark: #222,
   warning:#ffa700
 );
-.toolbar-background {
-  background-color: #E12C31 !important;
+.light-design {
+  .toolbar-background {
+    background-color: #E12C31 !important;
+  }
+
+  .toolbar-title, .bar-button-menutoggle {
+    color: #ffffff !important;
+  }
+
+  .content {
+    background-color: hsl(0, 0%, 96%) !important;
+  }
+
+  .menu, .segment, .segment-ios{
+    background: #ffffff !important;
+  }
+  .segment-button, .segment-ios, .segment-md {
+    color: darken(#cccccc, 90%) !important;
+    .hetzner-robot-icon {
+      -webkit-mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
+      mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
+      background-color: darken(#cccccc, 90%) !important;
+    }
+    .segment-activated, .segment-button.segment-activated {
+      color: #E12C31 !important;
+      .hetzner-robot-icon {
+        -webkit-mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
+        mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
+        background-color: #E12C31 !important;
+      }
+    }
+  }
+  @import "ionic.theme.default";
 }
 
-.toolbar-title, .bar-button-menutoggle {
-  color: #ffffff !important;
-}
+.dark-design {
+  .toolbar-background, .header {
+    background-color: darken(#E12C31, 20%) !important;
+  }
 
-.content {
-  background-color: hsl(0, 0%, 96%) !important;
-}
+  .toolbar-title, .bar-button-menutoggle {
+    color: #ffffff !important;
+  }
 
-.menu, .segment, .segment-ios .segment-button.segment-activated {
-  background: #ffffff !important;
+  .content {
+    background-color: lighten(#000000, 60%) !important;
+    color: darken(#cccccc, 90%) !important;
+  }
+  .item {
+    background-color: lighten(#000000, 60%) !important;
+  }
+  .list-header{
+    background-color: lighten(#000000, 40%) !important;
+  }
+  .label, p {
+    color: white !important; //   color: darken(#cccccc, 90%) !important;
+  }
+  .menu, .segment {
+    background-color: lighten(#000000, 60%) !important;
+
+    .segment-button, .segment-ios, .segment-md {
+      background-color: lighten(#000000, 60%) !important;
+      color: white !important;
+      .hetzner-robot-icon {
+        -webkit-mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
+        mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
+        background-color: #ffffff;
+      }
+      .segment-button.segment-activated {
+        background-color: lighten(#000000, 60%) !important;
+        color: darken(#E12C31, 20%) !important; //   color: darken(#cccccc, 90%) !important;
+        .hetzner-robot-icon {
+          -webkit-mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
+          mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
+          background-color: darken(#E12C31, 20%);
+        }
+      }
+    }
+  }
+
+  @import "ionic.theme.dark";
 }
 
 //$action-sheet-ios-button-text-color: #ffffff !important;
@@ -73,8 +140,6 @@ $toolbar-text-color: #ffffff !important;
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
 // default are overridden.
-
-@import "ionic.theme.default";
 
 // Ionicons
 // --------------------------------------------------

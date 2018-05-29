@@ -49,6 +49,8 @@ export class SettingsPage {
   public compact_server_design: boolean = false;
 
   public cloud_status: boolean = false;
+  public dark_design: boolean = false;
+  public dark_design_allowed: boolean = false;
 
   /**
    * Constructor
@@ -77,6 +79,8 @@ export class SettingsPage {
     protected _tracking: TrackingService
   ) {
     _tracking.trackFeature('global.settings');
+    this.dark_design_allowed = this.config.getRemoteFeatureFlag('DARK_THEME', false);
+    this.dark_design = this.config.getFeatureFlag('dark_design', false);
     storage.get('lang').then(value => {
       if (value != undefined) {
         this.language = value;
@@ -198,6 +202,11 @@ export class SettingsPage {
 
   changeTracking() {
     this.config.setFeatureFlag('tracking', this.tracking);
+  }
+
+  changeDarkDesignState() {
+    this.config.setFeatureFlag('dark_design', this.dark_design);
+    alert('Please restart the whole app.');
   }
 
   openPrivacyPage() {

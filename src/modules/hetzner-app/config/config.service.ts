@@ -59,7 +59,8 @@ export class ConfigService {
     robot: true,
     robot_orders_test: false,
     cloud_status: false,
-    tracking: true
+    tracking: true,
+    dark_design: false
   };
   public remoteFeatureFlags = [];
   /**
