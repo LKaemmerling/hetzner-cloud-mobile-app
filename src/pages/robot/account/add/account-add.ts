@@ -6,6 +6,7 @@ import {Storage} from '@ionic/storage';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner';
 import {NetworkProvider} from '../../../../modules/hetzner-app/network/network';
 import {AccountService} from '../../../../modules/hetzner-robot-data/accounts/account.service';
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * Add Project modal
@@ -56,8 +57,10 @@ export class AccountAddModal {
     protected network: NetworkProvider,
     protected translate: TranslateService,
     protected storage: Storage,
-    protected barcodeScanner: BarcodeScanner
+    protected barcodeScanner: BarcodeScanner,
+    protected tracking: TrackingService
   ) {
+    tracking.trackFeature('robot.account.add');
   }
 
   /**
@@ -94,6 +97,7 @@ export class AccountAddModal {
       barcodeData => {
         try {
           let payload = JSON.parse(barcodeData.text);
+          this.tracking.trackFeature('robot.account.scan');
           this.name = payload['name'];
           this.username = payload['username'];
           this.password = payload['password'];

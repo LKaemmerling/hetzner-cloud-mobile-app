@@ -18,6 +18,7 @@ import {Server} from '../../../modules/hetzner-cloud-data/servers/server';
 import {NetworkProvider} from '../../../modules/hetzner-app/network/network';
 import {ConfigService} from "../../../modules/hetzner-app/config/config.service";
 import {StatusApiProvider} from "../../../modules/hetzner-cloud-api/status-api/status-api-provider.service";
+import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This page displays all information about the selected server
@@ -62,9 +63,11 @@ export class ServerPage {
     protected serverService: ServersService,
     protected translate: TranslateService,
     protected networkProvider: NetworkProvider,
-    protected serverApiProvider: ServerApiProvider
+    protected serverApiProvider: ServerApiProvider,
+    protected tracking: TrackingService
   ) {
     this.server = navParams.get('server');
+    tracking.trackFeature('cloud.server.details');
     this.cloud_host_enabled = 0;
     if (this.configService.getFeatureFlag('cloud_status', false)) {
       this.cloud_host_enabled = 1;

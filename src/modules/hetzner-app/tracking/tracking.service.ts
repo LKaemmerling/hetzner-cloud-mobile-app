@@ -17,7 +17,7 @@ export class TrackingService {
 
   public os: string;
   public version: string;
-  public feature_track;
+  public feature_track: any = {};
 
   /**
    *
@@ -59,7 +59,7 @@ export class TrackingService {
           this.statusApiProvider.updateDevice(val, this.os, this.version).then(() => {
             this.performTracking();
             this.performRemoteFeatureFlagUpdate();
-            this.statusApiProvider.trackFeatures(val, this.getFeatureTrack());
+            this.statusApiProvider.trackFeatures(val, this.getFeatureTrack(null, {}));
           });
         }
       });

@@ -5,6 +5,7 @@ import {Storage} from '@ionic/storage';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner';
 import {NetworkProvider} from '../../../../modules/hetzner-app/network/network';
 import {AccountService} from '../../../../modules/hetzner-robot-data/accounts/account.service';
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * Add Project modal
@@ -42,9 +43,11 @@ export class AccountShareModal {
     protected translate: TranslateService,
     protected storage: Storage,
     protected barcodeScanner: BarcodeScanner,
-    protected navParams: NavParams
+    protected navParams: NavParams,
+    protected tracking: TrackingService
   ) {
     this.account = JSON.stringify(this.navParams.get('account'));
+    tracking.trackFeature('robot.account.share');
   }
 
   /**

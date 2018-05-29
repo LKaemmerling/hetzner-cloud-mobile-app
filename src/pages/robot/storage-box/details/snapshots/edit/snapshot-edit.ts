@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {StorageBoxApiProvider} from "../../../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
+import {TrackingService} from "../../../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This modal makes it possible to edit a ssh key
@@ -33,9 +34,11 @@ export class StorageBoxSnapshotEditModal {
     protected navParams: NavParams,
     protected navCtrl: NavController,
     protected loadingCtrl: LoadingController,
+    protected tracking: TrackingService
   ) {
     this.storage_box = navParams.get('storage_box');
     this.snapshot = navParams.get('snapshot');
+    tracking.trackFeature('robot.storage_box.snapshots.edit');
   }
 
   /**
@@ -45,7 +48,7 @@ export class StorageBoxSnapshotEditModal {
     this.error = false;
     let loader = this.loadingCtrl.create();
     loader.present();
-    this.storageBoxApi.commentSnapshot(this.storage_box.id, this.snapshot.name,this.snapshot.comment).then(() => {
+    this.storageBoxApi.commentSnapshot(this.storage_box.id, this.snapshot.name, this.snapshot.comment).then(() => {
       loader.dismiss();
       this.dismiss();
     }, () => {

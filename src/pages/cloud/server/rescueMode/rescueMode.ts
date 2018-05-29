@@ -5,6 +5,7 @@ import {ServerApiProvider} from '../../../../modules/hetzner-cloud-api/server-ap
 import {Server} from '../../../../modules/hetzner-cloud-data/servers/server';
 import {TranslateService} from "@ngx-translate/core";
 import {Clipboard} from "@ionic-native/clipboard";
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * With this component you can change the rescue mode settings
@@ -47,9 +48,11 @@ export class rescueModeModal {
     protected navCtrl: NavController,
     protected loadingCtrl: LoadingController,
     protected translateService: TranslateService,
-    protected clipboard: Clipboard
+    protected clipboard: Clipboard,
+    protected tracking:TrackingService
   ) {
     this.server = navParams.get('server');
+    tracking.trackFeature('cloud.server.rescueMode');
   }
 
   /**

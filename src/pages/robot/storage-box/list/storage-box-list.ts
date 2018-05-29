@@ -13,6 +13,7 @@ import {StorageBoxDetailPage} from "../details/storage-box-details";
 import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
 import {ConfigService} from "../../../../modules/hetzner-app/config/config.service";
 import {ErrorPage} from "../../../global/error/error";
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -95,9 +96,11 @@ export class StorageBoxListPage {
     protected network: NetworkProvider,
     protected navCtrl: NavController,
     protected loadingCtrl: LoadingController,
-    protected config: ConfigService
+    protected config: ConfigService,
+    protected tracking:TrackingService
   ) {
     this.storage_boxes = this._search = this.storageBoxService.storage_boxes;
+    tracking.trackFeature('robot.storage_box.list');
   }
 
   /**

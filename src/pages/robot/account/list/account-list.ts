@@ -13,6 +13,7 @@ import {AccountAddModal} from '../add/account-add';
 import {AccountEditModal} from '../edit/account-edit';
 import {AccountShareModal} from "../share/account-share";
 import {ServerApiProvider} from "../../../../modules/hetzner-robot-api/server-api/server-api";
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -73,10 +74,11 @@ export class AccountListPage {
     protected translate: TranslateService,
     protected storage: Storage,
     protected network: NetworkProvider,
-    protected serverApi: ServerApiProvider
+    protected serverApi: ServerApiProvider,
+    protected tracking:TrackingService
   ) {
     this._accounts = accountService.accounts;
-
+    tracking.trackFeature('robot.account.list');
   }
 
   /**

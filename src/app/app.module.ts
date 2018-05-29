@@ -1,4 +1,4 @@
-import {ErrorHandler, NgModule} from '@angular/core';
+import {ErrorHandler, Injectable, Injector, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {HetznerMobileApp} from './app.component';
@@ -6,6 +6,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {IonicStorageModule} from '@ionic/storage';
+import {Pro} from '@ionic/pro';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TooltipsModule} from 'ionic-tooltips';
 import {OneSignal} from '@ionic-native/onesignal';
@@ -20,6 +21,7 @@ import {NgxQRCodeModule} from '@lkdevelopment/ngx-qrcode/dist';
 import {HetznerAppComponentsModule} from '../components/hetzner-app-components.module';
 import {Keyboard} from '@ionic-native/keyboard';
 import {createTranslateLoader} from '../providers/translation/loader';
+import {NetworkProvider} from '../modules/hetzner-app/network/network';
 import {HetznerCloudDataModule} from '../modules/hetzner-cloud-data/hetzner-cloud-data.module';
 import {HetznerAppModule} from '../modules/hetzner-app/hetzner-app.module';
 import {GlobalAppPagesModule} from '../pages/global/global-app-pages.module';
@@ -30,20 +32,55 @@ import {HetznerRobotDataModule} from '../modules/hetzner-robot-data/hetzner-robo
 import {HetznerRobotApiModule} from '../modules/hetzner-robot-api/hetzner-robot-api.module';
 import {HTTP} from "@ionic-native/http";
 import {Clipboard} from "@ionic-native/clipboard";
-import * as Sentry from 'sentry-cordova';
-Sentry.init({ dsn: 'https://601cad5b9564447f8a21148d70ff495d@sentry.io/1214677' });
+/**
+ * Init the Ionic Pro Monitoring Service
+ * @type {Pro}
+ */
+const IonicPro = Pro.init('359b3ec5', {
+  appVersion: '2.2.0',
+});
+
 /**
  * This is the Ionic Pro Error Handler, that sends all errors to ionic pro
  */
-export class SentryIonicErrorHandler extends IonicErrorHandler {
-  handleError(error) {
-    super.handleError(error);
+@Injectable()
+export class IonicProErrorHandler implements ErrorHandler {
+  /**
+   * The ionic error handler
+   */
+  ionicErrorHandler: IonicErrorHandler;
+
+  /**
+   * Constructor
+   * @param {Injector} injector
+   * @param {NetworkProvider} network
+   */
+  constructor(protected injector: Injector, protected network: NetworkProvider) {
     try {
-      Sentry.captureException(error.originalError || error);
+      this.ionicErrorHandler = injector.get(IonicErrorHandler);
     } catch (e) {
-      console.error(e);
+      // Unable to get the IonicErrorHandler provider, ensure
+      // IonicErrorHandler has been added to the providers list below
     }
   }
+
+  /**
+   * How to handle the error
+   * @param err
+   */
+  handleError(err: any): void {
+    if (err.toString().indexOf('No account') == -1 && err.toString().indexOf('cordova') == -1) {
+      if (this.network.has_connection == true) {
+        IonicPro.monitoring.handleNewError(err);
+      }
+
+      // Remove this if you want to disable Ionic's auto exception handling
+      // in development mode.
+      this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+    }
+    console.log(err);
+  }
+
 }
 
 /**
@@ -83,7 +120,7 @@ export class SentryIonicErrorHandler extends IonicErrorHandler {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: SentryIonicErrorHandler},
+    {provide: ErrorHandler, useClass: IonicProErrorHandler},
     OneSignal,
     InAppBrowser,
     AppVersion,

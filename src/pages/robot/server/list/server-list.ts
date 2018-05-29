@@ -11,6 +11,7 @@ import {ServerApiProvider} from '../../../../modules/hetzner-robot-api/server-ap
 import {ServersService} from '../../../../modules/hetzner-robot-data/servers/servers.service';
 import {ServerDetailPage} from '../details/server-detail';
 import {ServerEditModal} from '../edit/server-edit';
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -98,8 +99,10 @@ export class ServerListPage {
     protected serverApi: ServerApiProvider,
     protected modal: ModalController,
     protected loadingCtrl: LoadingController,
+    protected tracking: TrackingService
   ) {
     this.servers = this._search = this.serversService.servers;
+    tracking.trackFeature('robot.server.details');
     storage.get('compact_server_design').then(val => {
       if (val != undefined) {
         this.compact_server_design = val;

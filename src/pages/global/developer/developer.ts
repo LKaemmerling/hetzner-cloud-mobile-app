@@ -4,6 +4,7 @@ import {ConfigService} from '../../../modules/hetzner-app/config/config.service'
 import {Storage} from '@ionic/storage';
 import {NavController} from 'ionic-angular';
 import {SettingsPage} from '../settings/settings';
+import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the developer mode page
@@ -25,12 +26,13 @@ export class DeveloperPage {
     protected device: Device,
     protected config: ConfigService,
     protected storage: Storage,
-    protected nav: NavController
+    protected nav: NavController,
+    protected tracking: TrackingService
   ) {
     this.feature_flags = this.config.getFeatureFlag();
     this.remote_feature_flags = Object.keys(this.config.getRemoteFeatureFlag()).map(key => this.config.getRemoteFeatureFlag()[key]);
 
-    console.log(this.remote_feature_flags);
+    tracking.trackFeature('global.developer');
   }
 
   toggleFlag(name: string) {

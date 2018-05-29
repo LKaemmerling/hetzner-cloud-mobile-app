@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoadingController, NavParams, ViewController } from 'ionic-angular';
 import { ServerApiProvider } from '../../../../../modules/hetzner-cloud-api/server-api/server-api';
 import { Server } from '../../../../../modules/hetzner-cloud-data/servers/server';
+import {TrackingService} from "../../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * With this modal you can change the ipv4 reverse dns settings of a server/ip
@@ -31,8 +32,10 @@ export class changeIPv4ReverseDNSModal {
         protected viewCtrl: ViewController,
         protected loadingCtrl: LoadingController,
         protected navParams: NavParams,
-        protected serverApiProvider: ServerApiProvider
+        protected serverApiProvider: ServerApiProvider,
+        protected tracking: TrackingService
     ) {
+        tracking.trackFeature('cloud.server.rdns.ipv4');
         this.server = navParams.get('server');
         this.param = { serverName: this.server.name, ip: this.server.public_net.ipv4.ip };
     }

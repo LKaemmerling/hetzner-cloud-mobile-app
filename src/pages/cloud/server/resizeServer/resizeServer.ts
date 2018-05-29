@@ -4,6 +4,7 @@ import { LoadingController, NavController, NavParams, ViewController } from 'ion
 import { ServerApiProvider } from '../../../../modules/hetzner-cloud-api/server-api/server-api';
 import { ServerTypeApiProvider } from '../../../../modules/hetzner-cloud-api/server-type-api/server-type-api';
 import { Server, ServerType } from '../../../../modules/hetzner-cloud-data/servers/server';
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * With this modal you can resize a server
@@ -53,8 +54,10 @@ export class resizeServerModal {
         protected navParams: NavParams,
         protected navCtrl: NavController,
         protected serverTypeApiProvider: ServerTypeApiProvider,
-        protected loadingCtrl: LoadingController
+        protected loadingCtrl: LoadingController,
+        protected tracking: TrackingService
     ) {
+      tracking.trackFeature('cloud.server.resize');
         this.server = navParams.get('server');
         this.server_type = this.server.server_type;
         console.log(this.server.server_type);

@@ -131,7 +131,6 @@ export class HetznerCloudMenuService {
 
   public validate(menu_entry) {
     if (menu_entry.protected == true) {
-      console.log(this.projects.actual_project);
       return this.projects.actual_project == null;
     } else {
       return menu_entry.hidden;

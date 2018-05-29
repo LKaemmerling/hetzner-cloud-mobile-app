@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {StorageBoxApiProvider} from "../../../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
+import {TrackingService} from "../../../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This modal makes it possible to edit a ssh key
@@ -37,8 +38,10 @@ export class StorageBoxSubAccountAddModal {
     protected navParams: NavParams,
     protected navCtrl: NavController,
     protected loadingCtrl: LoadingController,
+    protected tracking:TrackingService
   ) {
     this.storage_box = navParams.get('storage_box');
+    tracking.trackFeature('robot.storage_box.sub_accounts.add');
   }
 
   /**

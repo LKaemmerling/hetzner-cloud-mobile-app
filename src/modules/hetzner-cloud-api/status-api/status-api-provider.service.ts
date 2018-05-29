@@ -51,7 +51,7 @@ export class StatusApiProvider extends HetznerApiProvider {
   }
 
   trackFeatures(device_id: string, data) {
-    return this._post('device/' + device_id + '/feature_track', {feature_tracks: JSON.stringify(data)});
+    return this._post('device/' + device_id + '/feature_track', {feature_tracks: ""+JSON.stringify(data)});
   }
 
 

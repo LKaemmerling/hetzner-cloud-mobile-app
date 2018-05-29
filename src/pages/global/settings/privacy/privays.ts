@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from "ionic-angular";
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the settings page, that contain all possible settings of the app
@@ -23,7 +24,9 @@ export class PrivacyPage {
    * @param {OneSignal} oneSignal
    */
   constructor(
-    protected navCtrl: NavController
+    protected navCtrl: NavController,
+    protected tracking: TrackingService
   ) {
+    tracking.trackFeature('global.privacy');
   }
 }

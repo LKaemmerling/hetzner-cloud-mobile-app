@@ -4,6 +4,7 @@ import {fadeIn, fadeOut} from 'ng-animate';
 import {ServerApiProvider} from '../../../../modules/hetzner-robot-api/server-api/server-api';
 import {ServerEditModal} from "../edit/server-edit";
 import {ServerActionsResetModal} from "../actions/reset/server-actions-reset";
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -37,9 +38,11 @@ export class ServerDetailPage {
     protected NavParams: NavParams,
     protected serverApi: ServerApiProvider,
     protected loadingCtrl: LoadingController,
-    protected modalCtrl: ModalController
+    protected modalCtrl: ModalController,
+    protected tracking:TrackingService
   ) {
     this.server = this.NavParams.get('server');
+    tracking.trackFeature('robot.server.details');
   }
 
   loadServer() {

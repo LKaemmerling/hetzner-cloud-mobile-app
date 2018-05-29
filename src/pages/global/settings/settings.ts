@@ -9,6 +9,7 @@ import {ConfigService} from '../../../modules/hetzner-app/config/config.service'
 import {DeveloperPage} from '../developer/developer';
 import {PrivacyPage} from "./privacy/privays";
 import {Clipboard} from "@ionic-native/clipboard";
+import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the settings page, that contain all possible settings of the app
@@ -72,8 +73,10 @@ export class SettingsPage {
     protected translate: TranslateService,
     protected toastController: ToastController,
     protected oneSignal: OneSignal,
-    protected clipboard: Clipboard
+    protected clipboard: Clipboard,
+    protected _tracking: TrackingService
   ) {
+    _tracking.trackFeature('global.settings');
     storage.get('lang').then(value => {
       if (value != undefined) {
         this.language = value;

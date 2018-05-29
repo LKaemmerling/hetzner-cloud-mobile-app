@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {LoadingController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {ServerApiProvider} from '../../../../../modules/hetzner-robot-api/server-api/server-api';
+import {TrackingService} from "../../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This modal makes it possible to edit a ssh key
@@ -34,9 +35,11 @@ export class ServerActionsResetModal {
     protected serverApi: ServerApiProvider,
     protected navParams: NavParams,
     protected navCtrl: NavController,
-    protected loadingCtrl: LoadingController
+    protected loadingCtrl: LoadingController,
+    protected tracking: TrackingService
   ) {
     this.server = navParams.get('server');
+    tracking.trackFeature('robot.server.actions.tracking');
     this.serverApi.resetOptions(this.server.server_ip).then((resp) => {
       this.options = resp['reset'].type;
     });

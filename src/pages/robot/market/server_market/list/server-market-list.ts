@@ -5,6 +5,7 @@ import {SshKeysService} from "../../../../../modules/hetzner-robot-data/ssh-keys
 import {NetworkProvider} from "../../../../../modules/hetzner-app/network/network";
 import {MarketApiProvider} from "../../../../../modules/hetzner-robot-api/market-api/market-api";
 import {ServerMarketOrderPage} from "../order/server-market-order";
+import {TrackingService} from "../../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This page lists all ssh keys
@@ -23,7 +24,7 @@ export class ServerMarketListPage {
 
   public search: string = '';
 
-  public _search:any = [];
+  public _search: any = [];
   /**
    * Is the component in the loading process?
    * @type {boolean}
@@ -54,9 +55,10 @@ export class ServerMarketListPage {
     protected sshKeysService: SshKeysService,
     protected translate: TranslateService,
     protected networkProvider: NetworkProvider,
-    protected serverMarketApi: MarketApiProvider
+    protected serverMarketApi: MarketApiProvider,
+    protected tracking: TrackingService
   ) {
-
+    tracking.trackFeature('robot.server_market.list');
   }
 
   /**
@@ -65,7 +67,7 @@ export class ServerMarketListPage {
   loadServers() {
     this.loading = true;
     this.serverMarketApi.market(this.search).then((data) => {
-     this._search = this.market_entries = data;
+      this._search = this.market_entries = data;
       this.loading = false;
       this.loading_done = true;
       setTimeout(() => (this.loading_done = false), 3000);
@@ -93,6 +95,7 @@ export class ServerMarketListPage {
       });
     }
   }
+
   /**
    * Event fires when the view will be enterd
    */
@@ -102,6 +105,6 @@ export class ServerMarketListPage {
 
 
   public openOrder(market_entry) {
-    this.navCtrl.push(ServerMarketOrderPage,{'product_id':market_entry.id})
+    this.navCtrl.push(ServerMarketOrderPage, {'product_id': market_entry.id})
   }
 }

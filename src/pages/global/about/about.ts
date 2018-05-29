@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController, NavController } from 'ionic-angular';
 import { ChangelogPage } from '../changelog/changelog';
+import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the basic about page, that contains some information about the author of the app and the app
@@ -14,7 +15,9 @@ export class AboutPage {
      * Changelog
      * @param {NavController} nav
      */
-    constructor(protected modal: ModalController) {}
+    constructor(protected modal: ModalController, protected tracking:TrackingService) {
+      tracking.trackFeature('global.about');
+    }
 
     /**
      * Open the Changelog Page

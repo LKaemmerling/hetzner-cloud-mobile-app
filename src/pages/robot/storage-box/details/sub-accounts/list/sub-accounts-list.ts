@@ -6,6 +6,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {StorageBoxSubAccountAddModal} from "../add/sub-account-add";
 import {StorageBoxSubAccountEditModal} from "../edit/sub-account-edit";
 import {Clipboard} from "@ionic-native/clipboard";
+import {TrackingService} from "../../../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -57,10 +58,11 @@ export class StorageBoxSubAccountsListPage {
     protected actionCtrl: ActionSheetController,
     protected translateService: TranslateService,
     protected modalCtrl: ModalController,
-    protected clipboard: Clipboard
+    protected clipboard: Clipboard,
+    protected tracking: TrackingService
   ) {
     this.storagebox = this.NavParams.get('storage_box');
-
+    tracking.trackFeature('robot.storage_box.sub_accounts.list');
   }
 
   ngOnInit() {

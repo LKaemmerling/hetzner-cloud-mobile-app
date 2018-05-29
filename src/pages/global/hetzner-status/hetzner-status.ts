@@ -7,6 +7,7 @@ import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {NetworkProvider} from '../../../modules/hetzner-app/network/network';
 import {ConfigService} from "../../../modules/hetzner-app/config/config.service";
+import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the hetzner status page in the app
@@ -54,8 +55,11 @@ export class HetznerStatusPage {
     protected translate: TranslateService,
     protected network: NetworkProvider,
     protected config: ConfigService,
+    protected tracking:TrackingService
   ) {
     this.loadMessages();
+
+    tracking.trackFeature('global.status.list');
   }
 
   /**

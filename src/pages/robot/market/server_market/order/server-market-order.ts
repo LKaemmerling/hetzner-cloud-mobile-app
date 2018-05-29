@@ -5,6 +5,7 @@ import {SshKeysService} from "../../../../../modules/hetzner-robot-data/ssh-keys
 import {NetworkProvider} from "../../../../../modules/hetzner-app/network/network";
 import {MarketApiProvider} from "../../../../../modules/hetzner-robot-api/market-api/market-api";
 import {ConfigService} from "../../../../../modules/hetzner-app/config/config.service";
+import {TrackingService} from "../../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This page lists all ssh keys
@@ -48,9 +49,11 @@ export class ServerMarketOrderPage {
     protected translate: TranslateService,
     protected networkProvider: NetworkProvider,
     protected serverMarketApi: MarketApiProvider,
-    protected config:ConfigService
+    protected config: ConfigService,
+    protected tracking: TrackingService
   ) {
     this.ssh_keys = this.sshKeysService.ssh_keys;
+    tracking.trackFeature('robot.server_market.order');
     this.serverMarketApi.marketProduct(this.navParams.get('product_id')).then((val) => {
       this.product = val['product'];
       this.loading = true;
@@ -67,7 +70,7 @@ export class ServerMarketOrderPage {
     });
     if (confirm(_confirmation)) {
       this.order_success = -1;
-      this.serverMarketApi.orderMarket(this.product.id, this.selected_keys, '', '', '', '', this.config.getFeatureFlag('robot_orders_test',false)).then((data) => {
+      this.serverMarketApi.orderMarket(this.product.id, this.selected_keys, '', '', '', '', this.config.getFeatureFlag('robot_orders_test', false)).then((data) => {
         this.order_success = 1;
         this.loading = false;
       });

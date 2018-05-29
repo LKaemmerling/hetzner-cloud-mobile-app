@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams, Platform} from 'ionic-angular';
 import {OneSignal} from '@ionic-native/onesignal';
 import {Storage} from '@ionic/storage';
+import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the hetzner status setting page, where you can en/disable notifications for some types of notifications
@@ -92,8 +93,10 @@ export class HetznerStatusSettingPage {
     protected navParams: NavParams,
     protected oneSignal: OneSignal,
     protected storage: Storage,
-    protected platform: Platform
+    protected platform: Platform,
+    protected tracking: TrackingService
   ) {
+    tracking.trackFeature('global.status.settings');
     this.storage.get('hetzner_status_settings').then(data => {
       if (data != undefined && data != null) {
         let t = data;

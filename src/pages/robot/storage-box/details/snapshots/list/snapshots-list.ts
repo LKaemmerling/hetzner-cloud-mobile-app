@@ -4,6 +4,7 @@ import {fadeIn, fadeOut} from 'ng-animate';
 import {StorageBoxApiProvider} from "../../../../../../modules/hetzner-robot-api/storage-box-api/storage-box-api";
 import {TranslateService} from "@ngx-translate/core";
 import {StorageBoxSnapshotEditModal} from "../edit/snapshot-edit";
+import {TrackingService} from "../../../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -54,10 +55,11 @@ export class StorageBoxSnapshotsListPage {
     protected loadingCtrl: LoadingController,
     protected actionCtrl: ActionSheetController,
     protected translateService: TranslateService,
-    protected modalCtrl: ModalController
+    protected modalCtrl: ModalController,
+    protected tracking:TrackingService
   ) {
     this.storagebox = this.NavParams.get('storage_box');
-
+    tracking.trackFeature('robot.storage_box.snapshots.list');
   }
 
   ngOnInit() {

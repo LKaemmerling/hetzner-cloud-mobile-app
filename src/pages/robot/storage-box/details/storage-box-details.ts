@@ -5,6 +5,7 @@ import {StorageBoxApiProvider} from "../../../../modules/hetzner-robot-api/stora
 import {StorageBoxEditModal} from "../edit/storage-box-edit";
 import {StorageBoxSubAccountsListPage} from "./sub-accounts/list/sub-accounts-list";
 import {StorageBoxSnapshotsListPage} from "./snapshots/list/snapshots-list";
+import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
 
 /**
  * This is the project page, where you can create, activate, share and delete projects
@@ -37,9 +38,11 @@ export class StorageBoxDetailPage {
     protected storageBoxApi: StorageBoxApiProvider,
     protected loadingCtrl: LoadingController,
     protected modalCtrl: ModalController,
-    protected navCtrl: NavController
+    protected navCtrl: NavController,
+    protected tracking: TrackingService
   ) {
     this.storagebox = this.NavParams.get('storage_box');
+    tracking.trackFeature('robot.storage_box.details');
   }
 
   loadStorageBox() {
