@@ -119,6 +119,7 @@
     "@ionic-native/clipboard": "4.7.0",
     "@ionic-native/core": "4.7.0",
     "@ionic-native/device": "4.7.0",
+    "@ionic-native/file": "^4.7.0",
     "@ionic-native/fingerprint-aio": "4.7.0",
     "@ionic-native/http": "4.7.0",
     "@ionic-native/in-app-browser": "4.7.0",
@@ -234,7 +235,8 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ignore-lint-translation": {},
       "cordova-plugin-advanced-http": {},
-      "cordova-clipboard": {}
+      "cordova-clipboard": {},
+      "cordova-plugin-file": {}
     },
     "platforms": [
       "android",

@@ -32,6 +32,7 @@ import {HetznerRobotDataModule} from '../modules/hetzner-robot-data/hetzner-robo
 import {HetznerRobotApiModule} from '../modules/hetzner-robot-api/hetzner-robot-api.module';
 import {HTTP} from "@ionic-native/http";
 import {Clipboard} from "@ionic-native/clipboard";
+import {File} from "@ionic-native/file";
 /**
  * Init the Ionic Pro Monitoring Service
  * @type {Pro}
@@ -129,7 +130,8 @@ export class IonicProErrorHandler implements ErrorHandler {
     Keyboard,
     Device,
     HTTP,
-    Clipboard
+    Clipboard,
+    File
   ],
 })
 export class AppModule {
