@@ -14,7 +14,7 @@ select-datacenter {
     vertical-align: top;
     border-radius: 3px;
     width: 20%;
-    min-width:160px;
+    min-width: 160px;
     text-transform: capitalize;
   }
   .select-box--disabled {
@@ -72,7 +72,10 @@ select-datacenter {
     -ms-user-select: none;
     user-select: none;
     text-align: center;
-    padding-top: 10px;
+    font-size: 18px;
+    padding-top: 8px;
+    width: 80%;
+    float: right;
   }
   .select-box__option {
     -ms-flex: 1;
@@ -80,6 +83,10 @@ select-datacenter {
     padding: 10px 0;
     border-bottom: 1px solid #fff;
     text-transform: uppercase;
+  }
+  .select-box__icon {
+    margin: 0 auto;
+    width: 20%;
   }
 
 }

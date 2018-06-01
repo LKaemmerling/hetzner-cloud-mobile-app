@@ -3,10 +3,10 @@
      [ngClass]="{'select-box--selected':selectedParent == item.id,'select-box--disabled':item.server_types.available.length == 0}"
      class="select-box">
   <div class="select-box__top" (click)="selectItem(item)">
-    <span [ngClass]="item.icon" *ngIf="item.icon != null"></span>
-    <label>{{item.label}}</label>
+    <hc-icon [icon]="item.icon" [class]="'hc-icon-flag select-box__icon'" *ngIf="item.icon != null"></hc-icon>
+    <label>{{'GLOBAL.LOCATION.'+item.label.toUpperCase() | translate }}</label>
   </div>
-  <div class="select-box__bottom select-box__dropdown">
+  <div class="select-box__bottom select-box__dropdown" *ngIf="item.options.length > 1 ">
     <div *ngFor="let option of item.options" (click)="selectItem(item,option)"
          [ngClass]="{'child-selected':selectedChildren == option.id,'select-box--disabled':option.server_types.available.length == 0}"
          [attr.data-test-datacenter]="item.label+'_'+option.label">

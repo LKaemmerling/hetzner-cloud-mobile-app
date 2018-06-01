@@ -7,7 +7,12 @@
     "MISSING_OR_WRONG_PROJECT": "Ihr gewählter API-Key ist nicht mehr gültig oder Sie haben kein Projekt ausgewählt. Bitte wählen Sie nun ein Projekt aus.",
     "FEATURE_NEEDS_CONNECTION": "Diese Funktion benötigt eine Internetverbindung. Bitte verbinden Sie sich mit dem Internet.",
     "RESOURCE_LOCKED_FOR_DELETION": "Für diese Ressource wurde das Löschen gesperrt.",
-    "COPY_PASSWORD_TO_CLIPBOARD": "Passwort in Zwischenablage speichern?"
+    "COPY_PASSWORD_TO_CLIPBOARD": "Passwort in Zwischenablage speichern?",
+    "LOCATION": {
+      "NUREMBERG": "Nürnberg",
+      "FALKENSTEIN": "Falkenstein",
+      "HELSINKI": "Helsinki"
+    }
   },
   "ACTIONS": {
     "DELETE": "Löschen",
