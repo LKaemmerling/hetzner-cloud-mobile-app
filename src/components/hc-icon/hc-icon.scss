@@ -1,0 +1,94 @@
+
+hc-icon {
+  line-height: 0;
+
+  .hc-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+    vertical-align: middle;
+    pointer-events: none;
+  }
+
+  .hc-icon-logo-hetzner {
+    fill: #d50c2d;
+  }
+
+  .hc-icon-options {
+    width: 28px;
+    height: 6px;
+    fill: #b8bdcc;
+  }
+
+  .hc-icon-arrow-updown,
+  .hc-icon-arrow-up,
+  .hc-icon-arrow-down {
+    width: 10px;
+  }
+
+  .hc-icon-flag {
+    width: auto;
+    height: auto;
+    max-width: 58px;
+    max-height: 35px;
+  }
+
+  .hc-icon-os {
+    width: auto;
+    height: auto;
+    max-width: 49px;
+    max-height: 50px;
+  }
+
+  .hc-icon-server-vents {
+    width: auto;
+    height: auto;
+    max-width: 38px;
+    max-height: 35px;
+    fill: #dddfe6;
+  }
+
+  .hc-icon-terminal {
+    max-width: 18px;
+    max-height: 12px;
+  }
+
+  .hc-icon-check {
+    width: auto;
+    height: auto;
+    max-width: 16px;
+    max-height: 16px;
+    fill: #5cb85c;
+    stroke: #5cb85c;
+  }
+
+  .hc-icon-clear {
+    fill: #383838;
+    stroke: #383838;
+  }
+
+  .hc-icon-running {
+    fill: #b8bdcc;
+    stroke: #b8bdcc;
+    stroke-width: 1px;
+  }
+
+  .hc-icon-app-switcher {
+    width: 21px;
+    height: 22px;
+  }
+
+  .hc-icon-hetzner-robot,
+  .hc-icon-hetzner-website,
+  .hc-icon-hetzner-cloud {
+    width: 20px;
+    height: 20px;
+  }
+
+  .hc-icon-external-link {
+    margin-left: 5px;
+  }
+}

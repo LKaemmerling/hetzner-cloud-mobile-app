@@ -10,6 +10,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HetznerAppModule } from '../../../modules/hetzner-app/hetzner-app.module';
 import { HetznerCloudDataModule } from '../../../modules/hetzner-cloud-data/hetzner-cloud-data.module';
 import { NgxQRCodeModule } from '@lkdevelopment/ngx-qrcode/dist';
+import {HetznerAppComponentsModule} from "../../../components/hetzner-app-components.module";
 
 @NgModule({
     declarations: [ProjectsPage, shareProjectModal, editProjectModal, addProjectModal],
@@ -20,6 +21,7 @@ import { NgxQRCodeModule } from '@lkdevelopment/ngx-qrcode/dist';
         HetznerCloudDataModule,
         IonicStorageModule,
         NgxQRCodeModule,
+        HetznerAppComponentsModule
     ],
     entryComponents: [ProjectsPage, shareProjectModal, editProjectModal, addProjectModal],
     providers: [BarcodeScanner],

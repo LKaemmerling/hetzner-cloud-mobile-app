@@ -18,7 +18,7 @@ import {HetznerCloudDataService} from "./hetzner-cloud-data.service";
 @Injectable()
 export class HetznerCloudMenuService {
 
-  public icon = 'fas fa-cloud';
+  public icon = '#hetzner-cloud';
 
   public text = 'Cloud';
   public menu_entries = [
@@ -33,7 +33,7 @@ export class HetznerCloudMenuService {
     },
     {
       key: 'PAGE.PROJECTS.TITLE',
-      icon: 'fa-lock',
+      icon: '#project-owner-indicator',
       page: ProjectsPage,
       protected: false,
       hidden: false,
@@ -42,7 +42,7 @@ export class HetznerCloudMenuService {
     },
     {
       key: 'PAGE.SERVERS.TITLE',
-      icon: 'fa-server',
+      icon: '#server',
       page: ServersPage,
       protected: true,
       hidden: true,
@@ -51,7 +51,7 @@ export class HetznerCloudMenuService {
     },
     {
       key: 'PAGE.FLOATING_IPS.TITLE',
-      icon: 'fa-cloud',
+      icon: '#network',
       page: FloatingIPsPage,
       protected: true,
       hidden: true,
@@ -60,7 +60,7 @@ export class HetznerCloudMenuService {
     },
     {
       key: 'PAGE.IMAGES.TITLE',
-      icon: 'fa-puzzle-piece',
+      icon: '#disk',
       page: ImagesPage,
       protected: true,
       hidden: true,
@@ -69,7 +69,7 @@ export class HetznerCloudMenuService {
     },
     {
       key: 'PAGE.SSH_KEYS.TITLE',
-      icon: 'fa-key',
+      icon: '#key',
       page: SshkeysPage,
       protected: true,
       hidden: true,
@@ -78,7 +78,7 @@ export class HetznerCloudMenuService {
     },
     {
       key: 'PAGE.ACTIONS.TITLE',
-      icon: 'fa-cog',
+      icon: '#history',
       page: ActionsPage,
       protected: true,
       hidden: true,
@@ -87,7 +87,7 @@ export class HetznerCloudMenuService {
     },
     {
       key: 'PAGE.STATUS.TITLE',
-      icon: 'fa-bell',
+      icon: '#bell',
       protected: false,
       page: HetznerStatusPage,
       hidden: false,

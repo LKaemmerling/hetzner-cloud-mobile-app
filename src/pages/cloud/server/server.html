@@ -17,6 +17,8 @@
 
       <span item-left>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STATUS' | translate}}</span>
       <server-status-indicator [server]="server" item-right=""></server-status-indicator>
+      <hc-icon icon="#lock" *ngIf="server.protection.delete"
+               [tooltip]="'GLOBAL.RESOURCE_LOCKED_FOR_DELETION'|translate" positionV="bottom" item-right=""></hc-icon>
     </ion-item>
     <ion-item>
       <div item-left="" class="inner-item">

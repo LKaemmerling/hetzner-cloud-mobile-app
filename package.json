@@ -1,6 +1,6 @@
 {
   "name": "hetzner-cloud-app",
-  "version": "2.12.0",
+  "version": "2.2.0",
   "author": "Lukas Kämmerling",
   "homepage": "https://lk-development.de/",
   "license": "MIT",
@@ -166,6 +166,7 @@
     "ionicons": "3.0.0",
     "jimp": "^0.2.28",
     "ng-animate": "^0.3.1",
+    "ng-inline-svg": "^7.0.1",
     "ng2-charts": "^1.6.0",
     "onesignal-cordova-plugin": "^2.3.1",
     "parse-url": "^3.0.2",

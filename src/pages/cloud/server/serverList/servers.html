@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content *ngIf="compact_server_design">
-  <ion-searchbar (ionInput)="search($event)"  [placeholder]="'ACTIONS.SEARCH' | translate"></ion-searchbar>
+  <ion-searchbar (ionInput)="search($event)" [placeholder]="'ACTIONS.SEARCH' | translate"></ion-searchbar>
   <ion-card>
     <ion-list>
 
@@ -25,11 +25,13 @@
     </ion-list>
   </ion-card>
   <ion-fab bottom right>
-    <button ion-fab (click)="openCreateServerModal()"><i class="fas fa-plus"></i></button>
+    <button ion-fab (click)="openCreateServerModal()">
+      <hc-icon icon="#plus"></hc-icon>
+    </button>
   </ion-fab>
 </ion-content>
 <ion-content *ngIf="!compact_server_design">
-  <ion-searchbar (ionInput)="search($event)"  [placeholder]="'ACTIONS.SEARCH' | translate"></ion-searchbar>
+  <ion-searchbar (ionInput)="search($event)" [placeholder]="'ACTIONS.SEARCH' | translate"></ion-searchbar>
   <ion-row class="row">
     <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let server of _search; let i = index">
       <ion-card class="server" [id]="'server_'+i">
@@ -41,17 +43,22 @@
             </button>
           </ion-col>
           <ion-col col-12 align-items-start>
-            <h2>{{ server.name }}<server-status-indicator [server]="server"></server-status-indicator>
+            <h2>{{ server.name }}
+              <server-status-indicator [server]="server"></server-status-indicator>
             </h2>
           </ion-col>
         </ion-row>
         <ion-card-content>
-          <p text-wrap=""><i class="fas fa-lock" *ngIf="server.protection.delete"
-                             [tooltip]="'GLOBAL.RESOURCE_LOCKED_FOR_DELETION'|translate" positionV="bottom"></i> {{ server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{
+          <p text-wrap="">
+            <hc-icon icon="#lock" *ngIf="server.protection.delete"
+                     [tooltip]="'GLOBAL.RESOURCE_LOCKED_FOR_DELETION'|translate" positionV="bottom"></hc-icon>
+            {{
+            server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{
             server.datacenter.name
             }}
             /
-            {{ server.public_net.ipv4.ip }}</p>
+            {{ server.public_net.ipv4.ip }}
+          </p>
 
         </ion-card-content>
         <ion-card-content [id]="'server_'+i+'_content'" style="display:none;"
@@ -89,6 +96,8 @@
     </ion-col>
   </ion-row>
   <ion-fab bottom right>
-    <button ion-fab (click)="openCreateServerModal()"><i class="fas fa-plus"></i></button>
+    <button ion-fab (click)="openCreateServerModal()">
+      <hc-icon icon="#plus"></hc-icon>
+    </button>
   </ion-fab>
 </ion-content>

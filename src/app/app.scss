@@ -54,6 +54,19 @@ $flag-icon-square-path: '/assets/flags/1x1';
   }
 }
 
+.hcloud-icon {
+  height: 25px;
+  width: 25px;
+  float: left;
+}
+
+.main-nav__icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 1px;
+  margin-top: -2px;
+}
+
 .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default, .back-button, .bar-button-default-ios {
   color: #ffffff !important;
 }
@@ -83,7 +96,7 @@ $flag-icon-square-path: '/assets/flags/1x1';
       border-radius: 0px;
     }
     .hetzner-robot-icon {
-      margin-top:8px;
+      margin-top: 8px;
     }
 
   }

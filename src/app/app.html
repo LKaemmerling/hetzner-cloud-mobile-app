@@ -8,14 +8,16 @@
     <ion-content class="menu">
       <ion-segment [(ngModel)]="menu" color="secondary" (ionChange)="changeMenu()" class="menu-segment">
         <ion-segment-button *ngFor="let menu of available_menus;" [value]="menu.text" class="menu-segment-button">
-          <i [class]="menu.icon"></i> {{menu.text}}
+          <hc-icon [icon]="menu.icon" *ngIf="menu.icon.startsWith('fa') == false"></hc-icon> {{menu.text}}
         </ion-segment-button>
       </ion-segment>
       <ion-list>
         <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose=""
-                class="visible"
+                class="visible menu-button"
                 [ngClass]="{'force-hidden':menu_entry.hidden}">
-          <i [class]="'fas fa-fw '+menu_entry.icon"></i> {{ menu_entry.key | translate }}
+          <hc-icon [icon]="menu_entry.icon" [class]="'main-nav__icon'" *ngIf="menu_entry.icon.startsWith('fa') == false"></hc-icon>
+          <i [class]="'fas fa-fw '+menu_entry.icon" *ngIf="menu_entry.icon.startsWith('fa') == true"></i> {{
+          menu_entry.key | translate }}
           <i *ngIf="menu_entry.has_important != undefined && menu_entry.has_important == true" item-right
              class="fas fa-exclamation-triangle"></i>
         </button>
