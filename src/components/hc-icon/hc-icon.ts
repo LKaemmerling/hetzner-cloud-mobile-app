@@ -18,9 +18,9 @@ export class HcIconComponent {
   @Input() icon;
   @Input() class?: string;
 
-  constructor(svgService: SVGCacheService, protected platform: Platform, protected file:File) {
+  constructor(svgService: SVGCacheService, protected platform: Platform, protected file: File) {
     if (platform.is('ios')) {
-      svgService.setBaseUrl({baseUrl: file.applicationDirectory+'/www/assets/icon/hcloud.svg'});
+      svgService.setBaseUrl({baseUrl: 'file://' + file.applicationDirectory + 'www/assets/icon/hcloud.svg'});
     } else if (platform.is('android')) {
       svgService.setBaseUrl({baseUrl: '/android_asset/www/assets/icon/hcloud.svg'});
     } else {
