@@ -96,7 +96,9 @@ ion-fab {
   .toolbar-title, .bar-button-menutoggle {
     color: #ffffff !important;
   }
-
+  ion-note {
+    color: #000000;
+  }
   .content {
     background-color: hsl(0, 0%, 96%) !important;
   }
@@ -166,7 +168,7 @@ $dark_theme: lighten(#000000, 10%);
   .list-header {
     background-color: lighten($dark_theme, 10%) !important;
   }
-  .label, p {
+  .label, ion-note {
     color: white !important;
   }
   .menu-button .label {
