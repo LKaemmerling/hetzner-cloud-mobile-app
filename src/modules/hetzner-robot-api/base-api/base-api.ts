@@ -163,7 +163,7 @@ export abstract class BaseApiProvider {
       }
 
       this.http.useBasicAuth(this.accountService.actual_account.username, this.accountService.actual_account.password);
-      this.http.setRequestTimeout(10.0);
+      this.http.setRequestTimeout(120.0);
       return {
         "Content-Type": "application/x-www-form-urlencoded",
         "App-Version": this.configService.version
