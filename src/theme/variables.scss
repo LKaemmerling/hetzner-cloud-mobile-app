@@ -215,7 +215,7 @@ $dark_theme: lighten(#000000, 10%);
     color: white !important;
   }
 
-  .project-expanded, .server-expanded, .storage-box-expanded {
+  .project-expanded, .server-expanded, .account-expanded, .storage-box-expanded {
     background-color: lighten($dark_theme, 10%);
     border-bottom: 0px !important;
   }
@@ -235,29 +235,29 @@ $dark_theme: lighten(#000000, 10%);
         color: #000000;
       }
     }
-    [color~="primary"]{
+    [color~="primary"] {
       background-color: darken(#BDE5F8, 50%) !important;
-      color:white;
+      color: white;
     }
-    [color~="secondary"]{
+    [color~="secondary"] {
       background-color: darken(#32db64, 20%) !important;
-      color:darken(#32db64, 80%) !important;
+      color: darken(#32db64, 80%) !important;
     }
-    [color~="danger"]{
+    [color~="danger"] {
       background-color: darken(#f53d3d, 20%) !important;
-      color:darken(#f53d3d, 80%) !important;
+      color: darken(#f53d3d, 80%) !important;
     }
-    [color~="light"]{
+    [color~="light"] {
       background-color: darken(#f4f4f4, 30%) !important;
-      color:darken(#f4f4f4, 80%) !important;
+      color: darken(#f4f4f4, 80%) !important;
     }
-    [color~="dark"]{
+    [color~="dark"] {
       background-color: darken(#222, 50%) !important;
-      color:darken(#222, 60%) !important;
+      color: darken(#222, 60%) !important;
     }
-    [color~="warning"]{
+    [color~="warning"] {
       background-color: darken(#ffa700, 50%) !important;
-      color:darken(#ffa700, 60%) !important;
+      color: darken(#ffa700, 60%) !important;
     }
   }
 

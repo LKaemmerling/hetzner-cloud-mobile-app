@@ -28,7 +28,7 @@
           </ion-col>
         </ion-row>
         <ion-card-content [id]="'account_'+i+'_content'" style="display:none;"
-                          [@animate]="visible['account_'+i+'_content']">
+                          [@animate]="visible['account_'+i+'_content']" class="account-expanded">
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="secondary" icon-start="" ion-button="" small="" (click)="selectAccount(_account)"
