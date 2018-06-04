@@ -18,59 +18,58 @@
       {{ 'ROBOT.PAGE.SERVER_DETAILS.INFORMATION.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.SERVER_DETAILS.INFORMATION.PRODUCT' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         {{ server.product}} ({{server.traffic}})
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.SERVER_DETAILS.INFORMATION.LOCATION' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         {{ server.dc}}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-list-header>
       {{ 'ROBOT.PAGE.SERVER_DETAILS.NETWORK.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.SERVER_DETAILS.NETWORK.IP' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         {{ server.server_ip}}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.SERVER_DETAILS.NETWORK.TRAFFIC' | translate}}
-      </div>
-      <div item-right="">
-        {{ server.traffic }} {{ server.flatrate ? 'Flat':'Pay' }}
-      </div>
+      </ion-note>
+      <ion-note item-end="">
+        {{ server.traffic }} {{ server.flatrate ? 'Flatrate':'Pay' }}
+      </ion-note>
     </ion-item>
     <ion-list-header>
       {{ 'ROBOT.PAGE.SERVER_DETAILS.PAYMENT.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.SERVER_DETAILS.PAYMENT.UNTIL' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         {{ server.paid_until | date:('GLOBAL.DATE_FORMAT' | translate) }}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item *ngIf="server.cancelled">
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.SERVER_DETAILS.PAYMENT.CANCELLED' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         Cancelled
-      </div>
-
+      </ion-note>
     </ion-item>
   </ion-list>
   <ion-fab right bottom>

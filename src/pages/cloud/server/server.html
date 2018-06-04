@@ -9,114 +9,93 @@
 
 <ion-content>
 
-  <ion-list style="margin-bottom: 60px;">
+  <ion-list style="margin-bottom: 60px;" class="server-details">
     <ion-list-header>
       {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
-
-      <span item-left>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STATUS' | translate}}</span>
-      <server-status-indicator [server]="server" item-right=""></server-status-indicator>
-      <hc-icon icon="#lock" *ngIf="server.protection.delete"
-               [tooltip]="'GLOBAL.RESOURCE_LOCKED_FOR_DELETION'|translate" positionV="bottom" item-right=""></hc-icon>
+      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STATUS' | translate}}</ion-note>
+      <ion-note item-end>
+        <server-status-indicator [server]="server" item-right=""></server-status-indicator>
+        <hc-icon icon="#lock" *ngIf="server.protection.delete"
+                 [tooltip]="'GLOBAL.RESOURCE_LOCKED_FOR_DELETION'|translate" positionV="bottom" item-right=""></hc-icon>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="" class="inner-item">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}
-      </div>
-      <div item-right="">
+      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}</ion-note>
+      <ion-note item-end>
         {{ server.datacenter.description}}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item *ngIf="cloud_host_enabled == 1">
-      <div item-left="" class="inner-item">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.CLOUD_HOST' | translate}}
-      </div>
-      <div item-right="">
+      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.CLOUD_HOST' | translate}}</ion-note>
+      <ion-note item-end>
         <span *ngIf="cloud_host_loading == true"><i class="fas fa-spinner fa-spin"></i></span>
         <span *ngIf="cloud_host_loading == false">#{{ cloud_host}}</span>
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item *ngIf="server.image != null">
-      <div item-left="">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.IMAGE' | translate}}
-      </div>
-      <div item-right="">
+      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.IMAGE' | translate}}</ion-note>
+      <ion-note item-end>
         {{ server.image.description}}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-list-header>
       {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
-      <div item-left="">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv4' | translate}}
-      </div>
-      <div item-right="">
+      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv4' | translate}}</ion-note>
+      <ion-note item-end>
         <span tooltip="{{ server.public_net.ipv4.dns_ptr}}" positionV="top" arrow>{{ server.public_net.ipv4.ip}}</span>
         <i class="fas fa-pencil-alt" (click)="changeIPv4ReverseDNSModal()"></i>
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv6' | translate}}
-      </div>
-      <div item-right="">
+      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv6' | translate}}</ion-note>
+      <ion-note item-end>
         {{ server.public_net.ipv6.ip}}
         <i class="fas fa-pencil-alt" (click)="changeIPv6ReverseDNSModal()"></i>
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item *ngIf="server.outgoing_traffic != null">
-      <div item-left="">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.OUTGOING' | translate}}
-      </div>
-      <div item-right="">
+      <ion-note item-start> {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.OUTGOING' | translate}}</ion-note>
+      <ion-note item-end>
         {{ server.outgoing_traffic | fileSize}}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item *ngIf="server.ingoing_traffic != null">
-      <div item-left="">
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.INGOING' | translate}}
-      </div>
-      <div item-right="">
+      <ion-note item-start> {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.INGOING' | translate}}</ion-note>
+      <ion-note item-end>
         {{ server.ingoing_traffic | fileSize}}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-list-header>
       {{ 'PAGE.SERVERS.TYPE_DETAILS.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
-      <div item-left="">
-        {{ 'PAGE.SERVERS.TYPE_DETAILS.CORES' | translate}}
-      </div>
-      <div item-right="">
+      <ion-note item-start>{{ 'PAGE.SERVERS.TYPE_DETAILS.CORES' | translate}}</ion-note>
+      <ion-note item-end>
         {{ server.server_type.cores}}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="">
-        {{ 'PAGE.SERVERS.TYPE_DETAILS.MEMORY' | translate}}
-      </div>
-      <div item-right="" id="server_type_memory">
+      <ion-note item-start>{{ 'PAGE.SERVERS.TYPE_DETAILS.MEMORY' | translate}}</ion-note>
+      <ion-note item-end id="server_type_memory">
         {{ server.server_type.memory * 1024 }} MB
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="">
-        {{ 'PAGE.SERVERS.TYPE_DETAILS.DISK' | translate}}
-      </div>
-      <div item-right="">
+      <ion-note item-start>{{ 'PAGE.SERVERS.TYPE_DETAILS.DISK' | translate}}</ion-note>
+      <ion-note item-end>
         {{ server.server_type.disk}} GB
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="">
-        {{ 'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE' | translate}}
-      </div>
-      <div item-right="">
+      <ion-note item-start>{{ 'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE' | translate}}</ion-note>
+      <ion-note item-end>
         {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STORAGE_TYPE.'+server.server_type.storage_type.toUpperCase() |
         translate}}
-      </div>
+      </ion-note>
     </ion-item>
   </ion-list>
   <ion-fab right bottom>

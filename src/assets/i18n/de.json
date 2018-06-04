@@ -46,7 +46,12 @@
     },
     "ABOUT": {
       "TITLE": "Über diese App",
-      "TEXT": "Diese App wurde von Lukas Kämmerling entwickelt und steht in keinem Zusammenhang mit der Hetzner Online GmbH. Es werden die von der Hetzner Online GmbH bereitgestellten Schnittstellen verwendet. Auf Ihrem Gerät werden nur die Daten der Accounts bzw. Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese lokal gelöscht. Die lokale Löschung impliziert nicht das Kündigen der Services.<strong>Ihre Zugangsdaten verlassen in keinem Fall ihr Gerät, abgesehen von dem Abruf an der entsprechenden Hetzner API.</strong>"
+      "TEXT": "Diese App steht in keinem Zusammenhang zur Hetzner Online GmbH. Sie wird von Kunden der Hetzner Online GmbH entwickelt. Es werden die von der Hetzner Online GmbH bereitgestellten Schnittstellen verwendet. Auf Ihrem Gerät werden nur die Daten der Accounts bzw. Projekte gespeichert, die Sie selber anlegen. Durch das Löschen über die entsprechende Maske werden diese lokal gelöscht. Die lokale Löschung impliziert nicht das Kündigen der Services.<strong>Ihre Zugangsdaten verlassen in keinem Fall Ihr Gerät, abgesehen von dem Abruf an der entsprechenden Hetzner API.</strong>",
+      "POWERED_WITH": "Erstellt mit:",
+      "IMAGES": {
+        "TITLE": "Bildnachweis",
+        "TEXT": "Wir verwenden diverse Bilder oder Icons in dieser App, hier finden Sie die entsprechenden Quellen."
+      }
     },
     "HELP": {
       "TITLE": "Hilfe"

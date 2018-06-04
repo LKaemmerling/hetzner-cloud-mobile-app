@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, Inject, ViewChild} from '@angular/core';
 import {Config, LoadingController, ModalController, Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -19,6 +19,7 @@ import {HetznerCloudMenuService} from '../modules/hetzner-cloud-data/hetzner-clo
 import {HetznerStatusPage} from "../pages/global/hetzner-status/hetzner-status";
 import {TrackingService} from "../modules/hetzner-app/tracking/tracking.service";
 import {ChangelogPage} from "../pages/global/changelog/changelog";
+import {DOCUMENT} from "@angular/common";
 
 /**
  * This is the main component from the Hetzer Cloud Mobile App
@@ -41,14 +42,25 @@ export class HetznerMobileApp {
    * @type {string}
    */
   public lang: string = 'de';
+  /**
+   * The Default Design
+   * @type {string}
+   */
   public design: string = 'light-design';
 
-  protected loader;
-
+  /**
+   * All Available Menus
+   * @type {any[]}
+   */
   public available_menus = [];
-
+  /**
+   * The Default Menu
+   * @type {string}
+   */
   protected menu = 'Cloud';
-
+  /**
+   * All Menu Entries
+   */
   protected menu_entries;
 
   /**
@@ -65,6 +77,13 @@ export class HetznerMobileApp {
    * @param {ProjectsService} projects
    * @param {ConfigService} config
    * @param {Device} device
+   * @param {Config} ionicConfig
+   * @param {LoadingController} loadingCtrl
+   * @param {HetznerCloudMenuService} hetznerCloudMenu
+   * @param {HetznerRobotMenuService} hetznerRobotMenu
+   * @param {ModalController} modalCtrl
+   * @param {TrackingService} trackingService
+   * @param {Document} document
    */
   constructor(
     protected platform: Platform,
@@ -84,7 +103,8 @@ export class HetznerMobileApp {
     protected hetznerCloudMenu: HetznerCloudMenuService,
     protected hetznerRobotMenu: HetznerRobotMenuService,
     protected modalCtrl: ModalController,
-    protected trackingService: TrackingService
+    protected trackingService: TrackingService,
+    @Inject(DOCUMENT) protected document: Document
   ) {
     this.available_menus.push(this.hetznerCloudMenu);
     this.available_menus.push(this.hetznerRobotMenu);
@@ -100,7 +120,7 @@ export class HetznerMobileApp {
   initApp(_fingerprint = true) {
     this.network.init();
     this.config.init().then(() => {
-      this.design = this.config.getFeatureFlag('dark_design', false) ? 'dark-design' : 'light-design';
+      this.document.body.classList.add(this.config.getFeatureFlag('dark_design', false) ? 'dark-design' : 'light-design');
       this.network.onConnectListener.subscribe(() => this.loadHetznerSpecificData());
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

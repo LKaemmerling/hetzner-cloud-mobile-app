@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card *ngIf="_ssh_keys != null || _ssh_keys.length > 0">
     <ion-list>
       <ion-item *ngFor="let _ssh_key of _ssh_keys" (click)="openActionSheets(_ssh_key.key)" class="ssh_key"
                 [attr.data-test]="_ssh_key.key.name">
@@ -20,13 +20,13 @@
           <p>{{ _ssh_key.key.fingerprint }} | {{ _ssh_key.key.type}} ({{_ssh_key.key.size}})</p>
         </div>
       </ion-item>
-
-      <p ion-item *ngIf="_ssh_keys == null || _ssh_keys.length == 0" text-wrap="" class="message_box info">
-        {{ 'ROBOT.PAGE.SSH_KEYS.NO_SSH_KEYS' | translate}}
-      </p>
     </ion-list>
   </ion-card>
-  <ion-card class="message_box info" style="">
+
+  <p *ngIf="_ssh_keys == null || _ssh_keys.length == 0" text-wrap="" class="message_box info">
+    {{ 'ROBOT.PAGE.SSH_KEYS.NO_SSH_KEYS' | translate}}
+  </p>
+  <p class="message_box info" style="">
     {{ 'ROBOT.PAGE.SSH_KEYS.ADD_SSH_KEYS' | translate}}
-  </ion-card>
+  </p>
 </ion-content>

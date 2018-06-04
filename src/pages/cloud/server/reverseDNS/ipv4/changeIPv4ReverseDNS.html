@@ -13,7 +13,7 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label translate="" [translateParams]="{ip:server.public_net.ipv4.ip}">{{
+      <ion-label translate="" [translateParams]="{ip:server.public_net.ipv4.ip}" stacked="">{{
         'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv4.FORM.IP' | translate:param }}
       </ion-label>
       <ion-input type="text" value="" [(ngModel)]="server.public_net.ipv4.dns_ptr"></ion-input>

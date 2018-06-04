@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {DeleteAllDataPage} from '../delete-all-data/delete-all-data';
 import {FingerprintAIO} from '@ionic-native/fingerprint-aio';
@@ -10,6 +10,8 @@ import {DeveloperPage} from '../developer/developer';
 import {PrivacyPage} from "./privacy/privays";
 import {Clipboard} from "@ionic-native/clipboard";
 import {TrackingService} from "../../../modules/hetzner-app/tracking/tracking.service";
+import {DOCUMENT} from "@angular/common";
+import {SplashScreen} from "@ionic-native/splash-screen";
 
 /**
  * This is the settings page, that contain all possible settings of the app
@@ -76,7 +78,9 @@ export class SettingsPage {
     protected toastController: ToastController,
     protected oneSignal: OneSignal,
     protected clipboard: Clipboard,
-    protected _tracking: TrackingService
+    protected _tracking: TrackingService,
+    @Inject(DOCUMENT) protected document: Document,
+    protected splashscreen: SplashScreen
   ) {
     _tracking.trackFeature('global.settings');
     this.dark_design_allowed = this.config.getRemoteFeatureFlag('DARK_THEME', false);
@@ -205,8 +209,11 @@ export class SettingsPage {
   }
 
   changeDarkDesignState() {
+    this.splashscreen.show();
     this.config.setFeatureFlag('dark_design', this.dark_design);
-    alert('Please restart the whole app.');
+    this.document.body.classList.remove(this.config.getFeatureFlag('dark_design', false) ? 'light-design' : 'dark-design');
+    this.document.body.classList.add(this.config.getFeatureFlag('dark_design', false) ? 'dark-design' : 'light-design');
+    this.splashscreen.hide();
   }
 
   openPrivacyPage() {

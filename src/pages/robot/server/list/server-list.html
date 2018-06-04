@@ -48,13 +48,13 @@
           </ion-col>
         </ion-row>
         <ion-card-content>
-          <p text-wrap="">{{server.server.server_ip}} / {{
+          <p text-wrap="" class="server-expanded">{{server.server.server_ip}} / {{
             server.server.dc
             }}{{ server.server.server_name.length > 0 ? ' / '+server.server.product : '' }}</p>
 
         </ion-card-content>
         <ion-card-content [id]="'server_'+i+'_content'" style="display:none;"
-                          [@animate]="visible['server_'+i+'_content']">
+                          [@animate]="visible['server_'+i+'_content']" class="server-expanded">
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="primary" icon-start="" ion-button="" small=""
@@ -80,10 +80,9 @@
     </ion-col>
     <ion-col col-12>
       <ion-card *ngIf="_search == null || _search.length == 0" id="no_servers">
-        <ion-card-content>
+
           <p class="message_box info" text-wrap=""
              [innerHTML]="'ROBOT.PAGE.SERVERS.NO_SERVERS' | translate"></p>
-        </ion-card-content>
       </ion-card>
     </ion-col>
   </ion-row>

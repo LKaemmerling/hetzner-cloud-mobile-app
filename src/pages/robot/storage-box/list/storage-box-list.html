@@ -29,12 +29,12 @@
           </ion-col>
         </ion-row>
         <ion-card-content>
-          <p text-wrap="">{{ storagebox.storagebox.name.length > 0 ? '#'+storagebox.storagebox.id: '' }}
+          <p text-wrap="" class="storage-box-expanded">{{ storagebox.storagebox.name.length > 0 ? '#'+storagebox.storagebox.id: '' }}
             {{storagebox.storagebox.product}}</p>
 
         </ion-card-content>
         <ion-card-content [id]="'storagebox_'+i+'_content'" style="display:none;"
-                          [@animate]="visible['storagebox_'+i+'_content']">
+                          [@animate]="visible['storagebox_'+i+'_content']" class="storage-box-expanded">
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="primary" icon-start="" ion-button="" small=""

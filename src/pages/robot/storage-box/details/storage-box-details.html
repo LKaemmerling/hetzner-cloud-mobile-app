@@ -3,7 +3,9 @@
     <button ion-button menuToggle>
       <i class="fas fa-bars fa-2x"></i>
     </button>
-    <ion-title id="server_detail_name" *ngIf="storagebox != null">{{ storagebox.name.length > 0 ? storagebox.name : storagebox.product }}</ion-title>
+    <ion-title id="server_detail_name" *ngIf="storagebox != null">{{ storagebox.name.length > 0 ? storagebox.name :
+      storagebox.product }}
+    </ion-title>
     <ion-buttons end>
       <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
     </ion-buttons>
@@ -17,66 +19,66 @@
       {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.INFORMATION.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.INFORMATION.PRODUCT' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         {{ storagebox.product}}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.INFORMATION.STORAGE_USAGE' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         {{ storagebox.disk_usage * 1024 * 1024 | fileSize }}/{{ storagebox.disk_quota * 1024 * 1024 | fileSize }}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-list-header>
       {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.SERVER' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         {{ storagebox.server}}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.WEBDAV' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         <i class="fas" [ngClass]="{'fa-check':storagebox.webdav,'fa-times':!storagebox.webdav}"></i>
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.SAMBA' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         <i class="fas" [ngClass]="{'fa-check':storagebox.samba,'fa-times':!storagebox.samba}"></i>
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.NETWORK.ZFS' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         <i class="fas" [ngClass]="{'fa-check':storagebox.zfs,'fa-times':!storagebox.zfs}"></i>
-      </div>
+      </ion-note>
     </ion-item>
     <ion-list-header>
       {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.PAYMENT.TITLE' | translate}}
     </ion-list-header>
     <ion-item>
-      <div item-left="" class="inner-item">
+      <ion-note item-start="">
         {{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.PAYMENT.UNTIL' | translate}}
-      </div>
-      <div item-right="">
+      </ion-note>
+      <ion-note item-end="">
         {{ storagebox.paid_until | date:('GLOBAL.DATE_FORMAT' | translate) }}
-      </div>
+      </ion-note>
     </ion-item>
     <ion-item *ngIf="storagebox.cancelled">
       <div item-left="" class="inner-item">
@@ -94,11 +96,12 @@
     </button>
     <ion-fab-list side="top">
       <button ion-fab color="primary" (click)="openSnapshotsPage()">
-        <div class="label" color="light">{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.ACTIONS.SNAPSHOTS' | translate}}</div>
+        <div class="label" color="primary">{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.ACTIONS.SNAPSHOTS' | translate}}</div>
         <i class="fas fa-hdd"></i>
       </button>
       <button ion-fab color="primary" (click)="openSubAccountsPage()" id="sub_accounts">
-        <div class="label" color="secondary">{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.ACTIONS.SUB_ACCOUNTS' | translate}}</div>
+        <div class="label" color="primary">{{ 'ROBOT.PAGE.STORAGE_BOX_DETAILS.ACTIONS.SUB_ACCOUNTS' | translate}}
+        </div>
         <i class="fas fa-user"></i>
       </button>
       <button ion-fab (click)="openEditModal()" color="secondary" id="rename_storage_box">

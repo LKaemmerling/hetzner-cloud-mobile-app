@@ -30,7 +30,7 @@
           </ion-col>
         </ion-row>
         <ion-card-content [id]="'project_'+i+'_content'" style="display:none;"
-                          [@animate]="visible['project_'+i+'_content']">
+                          [@animate]="visible['project_'+i+'_content']" class="project-expanded">
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="secondary" icon-start="" ion-button="" small="" (click)="selectProject(_project)"

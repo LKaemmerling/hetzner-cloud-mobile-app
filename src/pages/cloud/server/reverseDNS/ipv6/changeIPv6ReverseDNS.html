@@ -16,11 +16,11 @@
 
   <ion-list *ngFor="let ipv6 of server.public_net.ipv6.dns_ptr">
     <ion-item>
-      <ion-label>{{ 'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.FORM.IP' | translate}}</ion-label>
+      <ion-label stacked="">{{ 'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.FORM.IP' | translate}}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="ipv6.ip"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>{{ 'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.FORM.REVERSE_DNS' | translate}}</ion-label>
+      <ion-label stacked="">{{ 'PAGE.SERVERS.MODAL.REVERSE_DNS.IPv6.FORM.REVERSE_DNS' | translate}}</ion-label>
       <ion-input type="text" value="" [(ngModel)]="ipv6.dns_ptr"></ion-input>
     </ion-item>
   </ion-list>

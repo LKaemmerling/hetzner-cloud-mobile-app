@@ -1,39 +1,40 @@
-<div [class]="design">
-  <ion-menu [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>{{ 'GLOBAL.NAME' | translate}}</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="menu">
-      <ion-segment [(ngModel)]="menu" color="secondary" (ionChange)="changeMenu()" class="menu-segment">
-        <ion-segment-button *ngFor="let menu of available_menus;" [value]="menu.text" class="menu-segment-button">
-          <hc-icon [icon]="menu.icon" *ngIf="menu.icon.startsWith('fa') == false"></hc-icon> {{menu.text}}
-        </ion-segment-button>
-      </ion-segment>
-      <ion-list>
-        <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose=""
-                class="visible menu-button"
-                [ngClass]="{'force-hidden':menu_entry.hidden}">
-          <hc-icon [icon]="menu_entry.icon" [class]="'main-nav__icon'" *ngIf="menu_entry.icon.startsWith('fa') == false"></hc-icon>
-          <i [class]="'fas fa-fw '+menu_entry.icon" *ngIf="menu_entry.icon.startsWith('fa') == true"></i> {{
-          menu_entry.key | translate }}
-          <i *ngIf="menu_entry.has_important != undefined && menu_entry.has_important == true" item-right
-             class="fas fa-exclamation-triangle"></i>
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{ 'GLOBAL.NAME' | translate}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="menu">
+    <ion-segment [(ngModel)]="menu" color="secondary" (ionChange)="changeMenu()" class="menu-segment">
+      <ion-segment-button *ngFor="let menu of available_menus;" [value]="menu.text" class="menu-segment-button">
+        <hc-icon [icon]="menu.icon" *ngIf="menu.icon.startsWith('fa') == false"></hc-icon>
+        {{menu.text}}
+      </ion-segment-button>
+    </ion-segment>
+    <ion-list>
+      <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose=""
+              class="visible menu-button"
+              [ngClass]="{'force-hidden':menu_entry.hidden}">
+        <hc-icon [icon]="menu_entry.icon" [class]="'main-nav__icon'"
+                 *ngIf="menu_entry.icon.startsWith('fa') == false"></hc-icon>
+        <i [class]="'fas fa-fw '+menu_entry.icon" *ngIf="menu_entry.icon.startsWith('fa') == true"></i> {{
+        menu_entry.key | translate }}
+        <i *ngIf="menu_entry.has_important != undefined && menu_entry.has_important == true" item-right
+           class="fas fa-exclamation-triangle"></i>
+      </button>
+      <ion-item
+        style="position: fixed; bottom:0; text-align: center;font-size:12px;">
+        <button ion-item (click)="supportMail()" menuClose="" class="visible menu-button">
+          {{ 'PAGE.HELP.TITLE' | translate }}
         </button>
-        <ion-item
-          style="position: fixed; bottom:0; text-align: center;font-size:12px;">
-          <button ion-item (click)="supportMail()" menuClose="">
-            {{ 'PAGE.HELP.TITLE' | translate }}
-          </button>
-          <button ion-item (click)="openAboutPage()" menuClose="">
-            {{ 'PAGE.ABOUT.TITLE' | translate }}
-          </button>
-        </ion-item>
+        <button ion-item (click)="openAboutPage()" menuClose="" class="visible menu-button">
+          {{ 'PAGE.ABOUT.TITLE' | translate }}
+        </button>
+      </ion-item>
 
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
-</div>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+
 

@@ -14,24 +14,34 @@
     <ion-list-header>
       {{ 'PAGE.SETTINGS.APP.TITLE' | translate }}
     </ion-list-header>
-    <div ion-item="" (click)="setUpDeveloperMode()">
-      <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.VERSION' | translate }}</ion-label>
-      <span item-right>{{ config.version }}</span>
-    </div>
-    <div ion-item="" *ngIf="config.developer_mode">
-      <ion-label text-wrap color="danger" (click)="openDeveloperMode()">Developer Area</ion-label>
-    </div>
-    <div ion-item="">
-      <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.LATEST_UPDATE.TITLE' | translate }}</ion-label>
-      <span item-right="">{{'PAGE.SETTINGS.APP.LATEST_UPDATE.TEXT' | translate |replacePrice }}</span>
-    </div>
-    <div ion-item="">
+    <ion-item (click)="setUpDeveloperMode()">
+      <ion-note item-start="">
+        <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.VERSION' | translate }}</ion-label>
+      </ion-note>
+      <ion-note item-end="">
+        {{ config.version }}
+      </ion-note>
+    </ion-item>
+    <ion-item *ngIf="config.developer_mode">
+      <ion-label text-wrap color="danger" class="message_box error" (click)="openDeveloperMode()">Developer Area
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note item-start="">
+        <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.LATEST_UPDATE.TITLE' | translate }}</ion-label>
+      </ion-note>
+      <ion-note item-end="">
+        {{'PAGE.SETTINGS.APP.LATEST_UPDATE.TEXT' | translate |replacePrice }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
       <ion-label text-wrap>{{ 'PAGE.SETTINGS.APP.LANGUAGE' | translate }}</ion-label>
       <ion-select [(ngModel)]="language" (ionChange)="changeLanguage()" id="language">
         <ion-option value="de">Deutsch</ion-option>
         <ion-option value="en">English</ion-option>
       </ion-select>
-    </div>
+    </ion-item>
     <ion-item>
       <ion-label (click)="openPrivacyPage()"><i
         class="fas fa-info-circle"></i> {{ 'PAGE.SETTINGS.APP.PRIVACY.TRACKING.TITLE' | translate }}
@@ -39,7 +49,7 @@
       <ion-toggle [(ngModel)]="tracking" (ionChange)="changeTracking()"></ion-toggle>
     </ion-item>
     <ion-item *ngIf="tracking">
-      <span item-right="">{{ config.device_id }} <i class="fas fa-copy" (click)="copyDeviceId()"></i></span>
+      <ion-note>{{ config.device_id }} <i class="fas fa-copy" (click)="copyDeviceId()"></i></ion-note>
     </ion-item>
     <ion-list-header>
       Cloud Features

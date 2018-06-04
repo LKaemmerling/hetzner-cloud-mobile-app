@@ -35,7 +35,60 @@ $colors: (
   dark: #222,
   warning:#ffa700
 );
+.card p {
+  margin: 0 !important;
+}
+
+.list-header {
+  font-size: 14px;
+}
+
+ion-fab {
+  button {
+    box-shadow: 0 4px 10px #6b6b6b;
+  }
+
+  ion-fab-list button[ion-fab] {
+    text-align: center;
+    overflow: visible;
+
+    div.label {
+      position: absolute;
+      right: 48px;
+      background: rgba(248, 248, 248, 1);
+      height: 24px;
+      line-height: 16px;
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+      color: #000000;
+    }
+  }
+
+  .button-inner {
+    overflow: visible;
+  }
+}
+
 .light-design {
+  ion-fab {
+    button {
+      box-shadow: 0 4px 10px #6b6b6b;
+    }
+
+    ion-fab-list button[ion-fab] {
+      div.label {
+        position: absolute;
+        background: rgba(248, 248, 248, 1);
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+        color: #000000;
+      }
+    }
+  }
+
   .toolbar-background {
     background-color: #E12C31 !important;
   }
@@ -48,7 +101,7 @@ $colors: (
     background-color: hsl(0, 0%, 96%) !important;
   }
 
-  .menu, .segment, .segment-ios{
+  .menu, .segment, .segment-ios {
     background: #ffffff !important;
   }
   .segment-button, .segment-ios, .segment-md {
@@ -67,10 +120,34 @@ $colors: (
       }
     }
   }
+  .message_box {
+    margin: 10px auto;
+    padding: 12px;
+
+    &.info {
+      color: #00529B;
+      background-color: #BDE5F8;
+    }
+    &.success {
+      color: #4F8A10;
+      background-color: #DFF2BF;
+    }
+    &.warning {
+      color: #9F6000;
+      background-color: #FEEFB3;
+    }
+    &.error {
+      color: #D8000C;
+      background-color: #FFD2D2;
+    }
+  }
+
   @import "ionic.theme.default";
 }
 
+$dark_theme: lighten(#000000, 10%);
 .dark-design {
+
   .toolbar-background, .header {
     background-color: darken(#E12C31, 20%) !important;
   }
@@ -80,23 +157,26 @@ $colors: (
   }
 
   .content {
-    background-color: lighten(#000000, 60%) !important;
+    background-color: $dark_theme;
     color: darken(#cccccc, 90%) !important;
   }
   .item {
-    background-color: lighten(#000000, 60%) !important;
+    background-color: $dark_theme;
   }
-  .list-header{
-    background-color: lighten(#000000, 40%) !important;
+  .list-header {
+    background-color: lighten($dark_theme, 10%) !important;
   }
   .label, p {
-    color: white !important; //   color: darken(#cccccc, 90%) !important;
+    color: white !important;
+  }
+  .menu-button .label {
+    color: white !important;
   }
   .menu, .segment {
-    background-color: lighten(#000000, 60%) !important;
+    background-color: $dark_theme !important;
 
     .segment-button, .segment-ios, .segment-md {
-      background-color: lighten(#000000, 60%) !important;
+      background-color: $dark_theme !important;
       color: white !important;
       .hetzner-robot-icon {
         -webkit-mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
@@ -104,7 +184,7 @@ $colors: (
         background-color: #ffffff;
       }
       .segment-button.segment-activated {
-        background-color: lighten(#000000, 60%) !important;
+        background-color: $dark_theme !important;
         color: darken(#E12C31, 20%) !important; //   color: darken(#cccccc, 90%) !important;
         .hetzner-robot-icon {
           -webkit-mask-image: url(https://www.hetzner.com/assets/Uploads/icon-circle-domain-registration-robot.svg);
@@ -112,6 +192,72 @@ $colors: (
           background-color: darken(#E12C31, 20%);
         }
       }
+    }
+  }
+  .message_box {
+    margin: 10px auto;
+    padding: 12px;
+
+    &.info {
+      background-color: darken(#BDE5F8, 50%);
+    }
+    &.success {
+      background-color: darken(#DFF2BF, 50%);
+    }
+    &.warning {
+      background-color: darken(#FEEFB3, 50%);
+    }
+    &.error {
+      background-color: darken(#FFD2D2, 50%);
+    }
+  }
+  .select, .text-input {
+    color: white !important;
+  }
+
+  .project-expanded, .server-expanded, .storage-box-expanded {
+    background-color: lighten($dark_theme, 10%);
+    border-bottom: 0px !important;
+  }
+  .server .card-content {
+    border: 0px;
+  }
+  ion-fab {
+    button {
+      box-shadow: none;
+    }
+
+    ion-fab-list button[ion-fab] {
+      div.label {
+        position: absolute;
+        background: lighten($dark_theme, 20%);
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+        color: #000000;
+      }
+    }
+    [color~="primary"]{
+      background-color: darken(#BDE5F8, 50%) !important;
+      color:white;
+    }
+    [color~="secondary"]{
+      background-color: darken(#32db64, 20%) !important;
+      color:darken(#32db64, 80%) !important;
+    }
+    [color~="danger"]{
+      background-color: darken(#f53d3d, 20%) !important;
+      color:darken(#f53d3d, 80%) !important;
+    }
+    [color~="light"]{
+      background-color: darken(#f4f4f4, 30%) !important;
+      color:darken(#f4f4f4, 80%) !important;
+    }
+    [color~="dark"]{
+      background-color: darken(#222, 50%) !important;
+      color:darken(#222, 60%) !important;
+    }
+    [color~="warning"]{
+      background-color: darken(#ffa700, 50%) !important;
+      color:darken(#ffa700, 60%) !important;
     }
   }
 
