@@ -168,7 +168,7 @@ $dark_theme: lighten(#000000, 10%);
   .list-header {
     background-color: lighten($dark_theme, 10%) !important;
   }
-  .label, ion-note {
+  .label, ion-note, .text {
     color: white !important;
   }
   .menu-button .label {

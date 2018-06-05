@@ -10,33 +10,31 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-content>
-      <p [innerHtml]="'PAGE.ABOUT.TEXT' | translate "></p>
-      <hr/>
-      <div text-center="" style="margin-top:10px;">
-        <h2><strong>Team:</strong></h2>
-        <h3><strong>Development</strong></h3>
-        Lukas Kämmerling
-        <h3><strong>Translation & Testing</strong></h3>
-        Jan Brodda
-      </div>
-      <div text-center="" style="margin-top:21px;">
-        {{ 'PAGE.ABOUT.POWERED_WITH' | translate }} <a
-        href="https://ionicframework.com">
-        <ion-icon name="ionic"></ion-icon>
-      </a> & <i class="fas fa-heart" style="color: #ff0000;"></i>
-      </div>
-      <hr/>
-      <div text-center="" style="margin-top:10px;">
-        <h2><strong>{{ 'PAGE.ABOUT.IMAGES.TITLE' | translate }}</strong></h2>
-        <p>{{ 'PAGE.ABOUT.IMAGES.TEXT' | translate }}</p>
-        <h3><strong>Icons:</strong></h3>
-        <a href="https://fontawesome.io">Fontawesome 5</a>
-        <h3><strong>Hetzner Cloud Icons</strong></h3>
-        <a href="https://hetzner.com">Hetzner Online GmbH</a>
-      </div>
-    </ion-card-content>
-  </ion-card>
+  <div class="text">
+    <p [innerHtml]="'PAGE.ABOUT.TEXT' | translate "></p>
+    <hr/>
+    <div text-center="" style="margin-top:10px;">
+      <h2><strong>Team:</strong></h2>
+      <h3><strong>Development</strong></h3>
+      Lukas Kämmerling
+      <h3><strong>Translation & Testing</strong></h3>
+      Jan Brodda
+    </div>
+    <div text-center="" style="margin-top:21px;">
+      {{ 'PAGE.ABOUT.POWERED_WITH' | translate }} <a
+      href="https://ionicframework.com">
+      <ion-icon name="ionic"></ion-icon>
+    </a> & <i class="fas fa-heart" style="color: #ff0000;"></i>
+    </div>
+    <hr/>
+    <div text-center="" style="margin-top:10px;">
+      <h2><strong>{{ 'PAGE.ABOUT.IMAGES.TITLE' | translate }}</strong></h2>
+      <p>{{ 'PAGE.ABOUT.IMAGES.TEXT' | translate }}</p>
+      <h3><strong>Icons:</strong></h3>
+      <a href="https://fontawesome.io">Fontawesome 5</a>
+      <h3><strong>Hetzner Cloud Icons</strong></h3>
+      <a href="https://hetzner.com">Hetzner Online GmbH</a>
+    </div>
+  </div>
 
 </ion-content>
