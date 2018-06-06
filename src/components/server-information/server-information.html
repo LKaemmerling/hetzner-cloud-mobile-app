@@ -2,7 +2,7 @@
 <ion-toolbar class="server-information-toolbar">
   <ion-row>
     <ion-col col-2 *ngIf="hidden.type == undefined || hidden.type == false">
-      <div id="server_type_description">{{server.server_type.description}}</div>
+      <div id="server_type_description">{{server.server_type.name}}</div>
       <div id="server_id">#{{server.id}}</div>
     </ion-col>
     <ion-col>
