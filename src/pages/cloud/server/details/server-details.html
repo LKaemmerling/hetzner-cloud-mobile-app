@@ -1,6 +1,8 @@
 <ion-header>
   <ion-navbar>
-    <ion-title id="server_detail_name"><server-status-indicator [server]="server"></server-status-indicator> {{server.name}} v2</ion-title>
+    <ion-title id="server_detail_name">
+      {{server.name}}
+    </ion-title>
     <ion-buttons end>
       <loading-indicator (action)="refresh()" [loading]="loading" [loading_done]="loading_done"></loading-indicator>
     </ion-buttons>
@@ -8,96 +10,110 @@
 </ion-header>
 
 <ion-content>
-<server-information [server]="server"></server-information>
-  <ion-list style="margin-bottom: 60px;" class="server-details">
-    <ion-list-header>
-      {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.TITLE' | translate}}
-    </ion-list-header>
-    <ion-item>
-      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STATUS' | translate}}</ion-note>
-      <ion-note item-end>
-        <server-status-indicator [server]="server" item-right=""></server-status-indicator>
-        <hc-icon icon="#lock" *ngIf="server.protection.delete"
-                 [tooltip]="'GLOBAL.RESOURCE_LOCKED_FOR_DELETION'|translate" positionV="bottom" item-right=""></hc-icon>
-      </ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' | translate}}</ion-note>
-      <ion-note item-end>
-        {{ server.datacenter.description}}
-      </ion-note>
-    </ion-item>
-    <ion-item *ngIf="cloud_host_enabled == 1">
-      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.CLOUD_HOST' | translate}}</ion-note>
-      <ion-note item-end>
-        <span *ngIf="cloud_host_loading == true"><i class="fas fa-spinner fa-spin"></i></span>
-        <span *ngIf="cloud_host_loading == false">#{{ cloud_host}}</span>
-      </ion-note>
-    </ion-item>
-    <ion-item *ngIf="server.image != null">
-      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.IMAGE' | translate}}</ion-note>
-      <ion-note item-end>
-        {{ server.image.description}}
-      </ion-note>
-    </ion-item>
-    <ion-list-header>
-      {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TITLE' | translate}}
-    </ion-list-header>
-    <ion-item>
-      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv4' | translate}}</ion-note>
-      <ion-note item-end>
-        <span tooltip="{{ server.public_net.ipv4.dns_ptr}}" positionV="top" arrow>{{ server.public_net.ipv4.ip}}</span>
-        <i class="fas fa-pencil-alt" (click)="changeIPv4ReverseDNSModal()"></i>
-      </ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv6' | translate}}</ion-note>
-      <ion-note item-end>
-        {{ server.public_net.ipv6.ip}}
-        <i class="fas fa-pencil-alt" (click)="changeIPv6ReverseDNSModal()"></i>
-      </ion-note>
-    </ion-item>
-    <ion-item *ngIf="server.outgoing_traffic != null">
-      <ion-note item-start> {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.OUTGOING' | translate}}</ion-note>
-      <ion-note item-end>
-        {{ server.outgoing_traffic | fileSize}}
-      </ion-note>
-    </ion-item>
-    <ion-item *ngIf="server.ingoing_traffic != null">
-      <ion-note item-start> {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.INGOING' | translate}}</ion-note>
-      <ion-note item-end>
-        {{ server.ingoing_traffic | fileSize}}
-      </ion-note>
-    </ion-item>
-    <ion-list-header>
-      {{ 'PAGE.SERVERS.TYPE_DETAILS.TITLE' | translate}}
-    </ion-list-header>
-    <ion-item>
-      <ion-note item-start>{{ 'PAGE.SERVERS.TYPE_DETAILS.CORES' | translate}}</ion-note>
-      <ion-note item-end>
-        {{ server.server_type.cores}}
-      </ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-note item-start>{{ 'PAGE.SERVERS.TYPE_DETAILS.MEMORY' | translate}}</ion-note>
-      <ion-note item-end id="server_type_memory">
-        {{ server.server_type.memory * 1024 }} MB
-      </ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-note item-start>{{ 'PAGE.SERVERS.TYPE_DETAILS.DISK' | translate}}</ion-note>
-      <ion-note item-end>
-        {{ server.server_type.disk}} GB
-      </ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-note item-start>{{ 'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE' | translate}}</ion-note>
-      <ion-note item-end>
-        {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STORAGE_TYPE.'+server.server_type.storage_type.toUpperCase() |
-        translate}}
-      </ion-note>
-    </ion-item>
-  </ion-list>
+  <server-information [server]="server" [hidden]="{}"></server-information>
+  <ion-row>
+    <ion-col col-lg-12 col-xl-4>
+      <ion-card>
+        <ion-card-header class="server-details__headline">{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.TITLE' |
+          translate}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STATUS' | translate}}</ion-note>
+              <ion-note item-end>
+                <server-status-indicator [server]="server" item-right=""></server-status-indicator>
+                <hc-icon icon="#lock" *ngIf="server.protection.delete"
+                         [tooltip]="'GLOBAL.RESOURCE_LOCKED_FOR_DELETION'|translate" positionV="bottom"
+                         item-right=""></hc-icon>
+              </ion-note>
+            </ion-item>
+            <ion-item *ngIf="cloud_host_enabled == 1">
+              <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.CLOUD_HOST' | translate}}</ion-note>
+              <ion-note item-end>
+                <span *ngIf="cloud_host_loading == true"><i class="fas fa-spinner fa-spin"></i></span>
+                <span *ngIf="cloud_host_loading == false">#{{ cloud_host}}</span>
+              </ion-note>
+            </ion-item>
+            <ion-item *ngIf="server.image != null">
+              <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.IMAGE' | translate}}</ion-note>
+              <ion-note item-end>
+                {{ server.image.description}}
+              </ion-note>
+            </ion-item>
+            <ion-item>
+              <ion-note item-start>{{ 'PAGE.SERVERS.TYPE_DETAILS.STORAGE_TYPE' | translate}}</ion-note>
+              <ion-note item-end>
+                {{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.STORAGE_TYPE.'+server.server_type.storage_type.toUpperCase()
+                |
+                translate}}
+              </ion-note>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-lg-12 col-xl-4>
+      <ion-card>
+        <ion-card-header class="server-details__headline">{{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TITLE' |
+          translate}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv4' | translate}}</ion-note>
+              <ion-note item-end>
+                <span tooltip="{{ server.public_net.ipv4.dns_ptr}}" positionV="top"
+                      arrow>{{ server.public_net.ipv4.ip}}</span>
+                <i class="fas fa-pencil-alt" (click)="changeIPv4ReverseDNSModal()"></i>
+              </ion-note>
+            </ion-item>
+            <ion-item>
+              <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.IPv6' | translate}}</ion-note>
+              <ion-note item-end>
+                {{ server.public_net.ipv6.ip}}
+                <i class="fas fa-pencil-alt" (click)="changeIPv6ReverseDNSModal()"></i>
+              </ion-note>
+            </ion-item>
+            <ion-item *ngIf="server.outgoing_traffic != null">
+              <ion-note item-start> {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.OUTGOING' | translate}}</ion-note>
+              <ion-note item-end>
+                {{ server.outgoing_traffic | fileSize}}
+              </ion-note>
+            </ion-item>
+            <ion-item *ngIf="server.ingoing_traffic != null">
+              <ion-note item-start> {{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TRAFFIC.INGOING' | translate}}</ion-note>
+              <ion-note item-end>
+                {{ server.ingoing_traffic | fileSize}}
+              </ion-note>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-lg-12 col-xl-4>
+      <ion-card>
+        <ion-card-header class="server-details__headline">{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' |
+          translate}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col col-7>
+              <ion-note>
+                <strong>{{ 'PAGE.SERVERS.MODAL.DETAILS.LOCATION.CITY' | translate}}</strong> {{'GLOBAL.LOCATION.'+server.datacenter.location.city.toUpperCase() | translate }}<br/>
+                <strong>{{ 'PAGE.SERVERS.MODAL.DETAILS.LOCATION.DATACENTER' | translate}}</strong> {{ server.datacenter.name }}<br/>
+                <strong>{{ 'PAGE.SERVERS.MODAL.DETAILS.LOCATION.COUNTRY' | translate}}</strong> {{ server.datacenter.location.country }}
+              </ion-note>
+            </ion-col>
+            <ion-col>
+              <hc-icon [icon]="'#map-'+server.datacenter.location.country+'-'+server.datacenter.location.city"
+                       class="map"></hc-icon>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
   <ion-fab right bottom>
     <button ion-fab color="primary" id="server_actions">
       <i class="fas fa-angle-up"></i>

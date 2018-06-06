@@ -3,6 +3,7 @@ page-server-details {
   .server-information-toolbar {
     #server_type_description {
       font-size: 18px;
+      font-weight: bold;
       text-align: center;
       width: 100%;
       margin-top:5px;
@@ -21,7 +22,8 @@ page-server-details {
     .detail_information {
       margin-left: 25px;
       .number {
-        font-size: 24px;
+        font-size: 18px;
+        font-weight: bold;
       }
       .type {
         text-transform: uppercase;
@@ -37,6 +39,21 @@ page-server-details {
     }
     .toolbar-title {
       color: #000000 !important;
+    }
+
+    hc-icon .hc-icon {
+      fill: #d50c2d;
+    }
+  }
+}
+
+.dark-design {
+  .server-information-toolbar {
+    .toolbar-background {
+      background-color: $dark_theme_sub_menu_color !important;
+    }
+    .toolbar-title, #server_type_description, #server_id,.number,.type {
+      color: #ffffff !important;
     }
 
     hc-icon .hc-icon {

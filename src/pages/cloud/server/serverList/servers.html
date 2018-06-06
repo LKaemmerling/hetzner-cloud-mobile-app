@@ -33,7 +33,7 @@
 <ion-content *ngIf="!compact_server_design">
   <ion-searchbar (ionInput)="search($event)" [placeholder]="'ACTIONS.SEARCH' | translate"></ion-searchbar>
   <ion-row class="row">
-    <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let server of _search; let i = index">
+    <ion-col col-12 col-sm-4 col-md-4 col-lg-5 col-xl-4 *ngFor="let server of _search; let i = index">
       <ion-card class="server" [id]="'server_'+i">
         <ion-row class="server_header" text-center="" (click)="openSubMenu('server_'+i+'_content')">
           <ion-col offset-9 col-3 style="max-height:20px;">
@@ -49,20 +49,14 @@
           </ion-col>
         </ion-row>
         <ion-card-content>
-          <p text-wrap=""   class="server-expanded">
-            <hc-icon icon="#lock" *ngIf="server.protection.delete"
-                     [tooltip]="'GLOBAL.RESOURCE_LOCKED_FOR_DELETION'|translate" positionV="bottom"></hc-icon>
-            {{
-            server.server_type.memory * 1024}} MB / {{ server.server_type.disk }} GB / {{
-            server.datacenter.name
-            }}
-            /
-            {{ server.public_net.ipv4.ip }}
+          <p text-wrap="" class="server-expanded">
+            <server-information [server]="server"
+                                [hidden]="{type:true,information_description:true}"></server-information>
           </p>
 
         </ion-card-content>
         <ion-card-content [id]="'server_'+i+'_content'" style="display:none;"
-                          [@animate]="visible['server_'+i+'_content']"  class="server-expanded">
+                          [@animate]="visible['server_'+i+'_content']" class="server-expanded">
           <ion-row class="row">
             <ion-col class="col" text-center="">
               <button clear="" color="primary" icon-start="" ion-button="" small="" (click)="openDetailsPage(server)"

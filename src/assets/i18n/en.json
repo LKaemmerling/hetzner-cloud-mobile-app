@@ -340,6 +340,11 @@
               "NETWORK": "Network Ceph Cluster"
             }
           },
+          "LOCATION": {
+            "CITY": "City",
+            "DATACENTER": "Datacenter",
+            "COUNTRY": "Country"
+          },
           "NETWORK": {
             "TITLE": "Network:",
             "IPv4": "IPv4:",
@@ -501,6 +506,16 @@
             }
           }
         }
+      }
+    }
+  },
+  "CLOUD": {
+    "COMPONENTS": {
+      "SERVER_INFORMATION": {
+        "RAM": "RAM",
+        "DISK": "DISK",
+        "CPU": "CPU",
+        "PRICE": "Price"
       }
     }
   },

@@ -148,13 +148,14 @@ ion-fab {
 }
 
 $dark_theme: lighten(#000000, 10%);
+$dark_theme_sub_menu_color: lighten($dark_theme, 10%);
 .dark-design {
 
   .toolbar-background, .header {
     background-color: darken(#E12C31, 20%) !important;
   }
 
-  .toolbar-title, .bar-button-menutoggle {
+  .toolbar-title, .bar-button-menutoggle,.card-header,h3 {
     color: #ffffff !important;
   }
 
@@ -166,7 +167,7 @@ $dark_theme: lighten(#000000, 10%);
     background-color: $dark_theme;
   }
   .list-header {
-    background-color: lighten($dark_theme, 10%) !important;
+    background-color: $dark_theme_sub_menu_color !important;
   }
   .label, ion-note, .text {
     color: white !important;
@@ -218,7 +219,7 @@ $dark_theme: lighten(#000000, 10%);
   }
 
   .project-expanded, .server-expanded, .account-expanded, .storage-box-expanded {
-    background-color: lighten($dark_theme, 10%);
+    background-color: $dark_theme_sub_menu_color;
     border-bottom: 0px !important;
   }
   .server .card-content {
@@ -262,7 +263,9 @@ $dark_theme: lighten(#000000, 10%);
       color: darken(#ffa700, 60%) !important;
     }
   }
-
+  .card{
+    background-color: $dark_theme !important;
+  }
   @import "ionic.theme.dark";
 }
 

@@ -14,5 +14,5 @@ import {Server} from "../../modules/hetzner-cloud-data/servers/server";
 export class ServerInformationComponent {
 
   @Input() server: Server;
-
+  @Input() hidden?: object = {};
 }
