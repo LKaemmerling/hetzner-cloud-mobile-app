@@ -513,8 +513,8 @@
   "CLOUD": {
     "COMPONENTS": {
       "SERVER_INFORMATION": {
-        "RAM": "RAM",
-        "DISK": "DISK",
+        "RAM": "Arbeitsspeicher",
+        "DISK": "Festplatte",
         "CPU": "CPU",
         "PRICE": "Preis"
       }
