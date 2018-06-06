@@ -1,0 +1,46 @@
+
+page-server-details {
+  .server-information-toolbar {
+    #server_type_description {
+      font-size: 18px;
+      text-align: center;
+      width: 100%;
+      margin-top:5px;
+    }
+    #server_id {
+      font-size: 12px;
+      text-align: center;
+    }
+    hc-icon .hc-icon {
+      position: absolute !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 22px;
+      height: 22px;
+    }
+    .detail_information {
+      margin-left: 25px;
+      .number {
+        font-size: 24px;
+      }
+      .type {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.light-design {
+  .server-information-toolbar {
+    .toolbar-background {
+      background-color: #FFFFFF !important;
+    }
+    .toolbar-title {
+      color: #000000 !important;
+    }
+
+    hc-icon .hc-icon {
+      fill: #d50c2d;
+    }
+  }
+}

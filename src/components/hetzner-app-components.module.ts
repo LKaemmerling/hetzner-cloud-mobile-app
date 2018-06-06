@@ -17,6 +17,7 @@ import {ChangeProtectionComponent} from './change-protection/change-protection';
 import {HetznerAppModule} from "../modules/hetzner-app/hetzner-app.module";
 import {HcIconComponent} from "./hc-icon/hc-icon";
 import {InlineSVGModule} from "ng-inline-svg";
+import {ServerInformationComponent} from "./server-information/server-information";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {InlineSVGModule} from "ng-inline-svg";
     SelectTypeComponent,
     SelectSshKeyComponent,
     ChangeProtectionComponent,
-    HcIconComponent
+    HcIconComponent,
+    ServerInformationComponent
   ],
   imports: [CommonModule, IonicModule, TranslateModule, TooltipsModule, HetznerAppModule, InlineSVGModule],
   exports: [
@@ -46,7 +48,8 @@ import {InlineSVGModule} from "ng-inline-svg";
     SelectTypeComponent,
     SelectSshKeyComponent,
     ChangeProtectionComponent,
-    HcIconComponent
+    HcIconComponent,
+    ServerInformationComponent
   ],
 })
 export class HetznerAppComponentsModule {

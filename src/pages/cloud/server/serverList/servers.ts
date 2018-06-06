@@ -13,6 +13,8 @@ import {fadeIn, fadeOut} from 'ng-animate';
 import {Server} from '../../../../modules/hetzner-cloud-data/servers/server';
 import {NetworkProvider} from '../../../../modules/hetzner-app/network/network';
 import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
+import {ConfigService} from "../../../../modules/hetzner-app/config/config.service";
+import {ServerDetailsPage} from "../details/server-details";
 
 /**
  * This page displays all available servers
@@ -96,6 +98,7 @@ export class ServersPage {
     protected networkProvider: NetworkProvider,
     protected serverApiProvider: ServerApiProvider,
     protected tracking: TrackingService,
+    protected config: ConfigService
   ) {
     this.servers = this._search = this.serversService.servers;
     tracking.trackFeature('cloud.server.list');
@@ -230,6 +233,10 @@ export class ServersPage {
    * @param {Server} server
    */
   public openDetailsPage(server: Server) {
-    this.navCtrl.push(ServerPage, {server: server});
+    if (this.config.getRemoteFeatureFlag('CLOUD_SERVER_DESIGN_v2', false) === true) {
+      this.navCtrl.push(ServerDetailsPage, {server: server});
+    } else {
+      this.navCtrl.push(ServerPage, {server: server});
+    }
   }
 }

@@ -1,0 +1,44 @@
+<!-- Generated template for the ServerInformationComponent component -->
+<ion-toolbar class="server-information-toolbar">
+  <ion-row>
+    <ion-col col-2>
+      <div id="server_type_description">{{server.server_type.description}}</div>
+      <div id="server_id">#{{server.id}}</div>
+    </ion-col>
+    <ion-col>
+      <ion-row>
+        <ion-col>
+          <hc-icon icon="#cpu"></hc-icon>
+          <div class="detail_information">
+            <div class="number">{{ server.server_type.cores }}</div>
+            <div class="type">CPU</div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <hc-icon icon="#ram"></hc-icon>
+          <div class="detail_information">
+            <div class="number">{{ server.server_type.memory }} GB</div>
+            <div class="type">RAM</div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <hc-icon icon="#nvmedisk"></hc-icon>
+          <div class="detail_information">
+            <div class="number">{{ server.server_type.disk }} GB</div>
+            <div class="type">DISK</div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <hc-icon icon="#euro"></hc-icon>
+          <div class="detail_information">
+            <div
+              class="number">{{ server.server_type.prices[0].price_monthly.gross }}
+            </div>
+            <div class="type">PREIS</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+</ion-toolbar>
