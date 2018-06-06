@@ -6,7 +6,7 @@ page-server-details {
       font-weight: bold;
       text-align: center;
       width: 100%;
-      margin-top:5px;
+      margin-top: 5px;
     }
     #server_id {
       font-size: 12px;
@@ -21,6 +21,7 @@ page-server-details {
     }
     .detail_information {
       margin-left: 25px;
+      width: 100%;
       .number {
         font-size: 18px;
         font-weight: bold;
@@ -52,7 +53,7 @@ page-server-details {
     .toolbar-background {
       background-color: $dark_theme_sub_menu_color !important;
     }
-    .toolbar-title, #server_type_description, #server_id,.number,.type {
+    .toolbar-title, #server_type_description, #server_id, .number, .type {
       color: #ffffff !important;
     }
 

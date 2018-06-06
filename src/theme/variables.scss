@@ -149,10 +149,11 @@ ion-fab {
 
 $dark_theme: lighten(#000000, 10%);
 $dark_theme_sub_menu_color: lighten($dark_theme, 10%);
+$dark_theme_red_main_color: darken(#E12C31, 20%);
 .dark-design {
 
   .toolbar-background, .header {
-    background-color: darken(#E12C31, 20%) !important;
+    background-color: $dark_theme_red_main_color !important;
   }
 
   .toolbar-title, .bar-button-menutoggle,.card-header,h3 {
