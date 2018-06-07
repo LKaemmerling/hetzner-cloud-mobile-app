@@ -56,10 +56,10 @@
           <div class="server-type__name">{{ item.name }}</div>
           <div class="server-type__price-monthly">
                 <span class="server-type__price-monthly-value">
-                    {{item.prices[0].price_monthly.gross | number:'1.2-2'}}&nbsp;€</span>/mo
+                    {{item.prices[0].price_monthly.gross | number:'1.2-2' |formatMoney}}&nbsp;€</span>/mo
           </div>
           <div class="server-type__price-hourly">
-            {{item.prices[0].price_hourly.gross | number:'1.2-7'}}&nbsp;€/h
+            {{item.prices[0].price_hourly.gross | number:'1.2-7' |formatMoney}}&nbsp;€/h
           </div>
         </div>
         <div class="select-box__bottom server-type__specs"

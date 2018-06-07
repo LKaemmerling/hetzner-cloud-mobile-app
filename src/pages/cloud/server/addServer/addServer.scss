@@ -1,3 +1,10 @@
-modal-addServer {
-
+.dark-design {
+  page-addServer {
+    .segment .segment-button {
+      background-color: $dark_theme_sub_menu_color !important;
+    }
+    .input {
+      background-color: $dark_theme_sub_menu_color !important;
+    }
+  }
 }

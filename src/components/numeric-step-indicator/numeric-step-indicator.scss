@@ -12,7 +12,7 @@ numeric-step-indicator {
     top: 3px;
     left: 0;
     width: 30px;
-    border: 2px solid #383838;
+    border: 2px solid;
     border-radius: 50%;
     line-height: 26px;
     text-align: center;
@@ -22,5 +22,22 @@ numeric-step-indicator {
   div .step__headline {
     margin-top: 0;
     font-weight: 400;
+  }
+}
+.light-design{
+  .step__number{
+    border-color:#383838;
+  }
+  .step__headline{
+
+  }
+}
+.dark-design{
+  .step__number{
+    border-color:$dark_theme_red_main_color;
+    color: $dark_theme_red_main_color;
+  }
+  .step__headline{
+    color: $dark_theme_red_main_color;
   }
 }

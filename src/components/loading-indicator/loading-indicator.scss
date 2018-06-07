@@ -37,11 +37,3 @@ loading-indicator {
     height: 1em;
   }
 }
-
-.dark-design{
-  loading-indicator {
-    .fa-sync, .fa-exclamation {
-      color: $dark_theme_red_main_color;
-    }
-  }
-}

@@ -143,7 +143,13 @@ ion-fab {
       background-color: #FFD2D2;
     }
   }
-
+  .select-box {
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+  }
+  .select-box__option {
+    border-bottom: 1px solid #fff;
+  }
   @import "ionic.theme.default";
 }
 
@@ -156,7 +162,7 @@ $dark_theme_red_main_color: darken(#E12C31, 20%);
     background-color: $dark_theme_red_main_color !important;
   }
 
-  .toolbar-title, .bar-button-menutoggle,.card-header,h3 {
+  .toolbar-title, .bar-button-menutoggle, .card-header, h3, h2, .item-cover {
     color: #ffffff !important;
   }
 
@@ -204,18 +210,22 @@ $dark_theme_red_main_color: darken(#E12C31, 20%);
 
     &.info {
       background-color: darken(#BDE5F8, 50%);
+      color: #ffffff;
     }
     &.success {
       background-color: darken(#DFF2BF, 50%);
+      color: #ffffff;
     }
     &.warning {
       background-color: darken(#FEEFB3, 50%);
+      color: #ffffff;
     }
     &.error {
       background-color: darken(#FFD2D2, 50%);
+      color: #ffffff;
     }
   }
-  .select, .text-input {
+  .select, .text-input,.datetime {
     color: white !important;
   }
 
@@ -264,8 +274,15 @@ $dark_theme_red_main_color: darken(#E12C31, 20%);
       color: darken(#ffa700, 60%) !important;
     }
   }
-  .card{
+  .card {
     background-color: $dark_theme !important;
+  }
+  .select-box {
+    background-color: $dark_theme_sub_menu_color;
+    color: #ffffff !important;
+  }
+  .select-box__option, .select-box__top {
+    border-bottom: 0px solid lighten($dark_theme_sub_menu_color, 10%);
   }
   @import "ionic.theme.dark";
 }
