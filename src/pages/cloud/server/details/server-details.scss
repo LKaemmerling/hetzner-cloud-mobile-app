@@ -18,5 +18,11 @@ page-server-details {
       }
     }
   }
+  .server-details__headline {
+    loading-indicator {
+      float: right;
+      margin-top:-10px;
+    }
+  }
 
 }

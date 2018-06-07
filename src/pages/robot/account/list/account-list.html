@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content>
   <ion-row class="row">
-    <ion-col col-12 col-sm-3 col-md-3 col-lg-4 col-xl-2 *ngFor="let _account of _accounts; let i = index">
+    <ion-col col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 *ngFor="let _account of _accounts; let i = index">
       <ion-card class="project"
                 [ngClass]="{'active-project' : accountService.actual_account != null && (_account.username == accountService.actual_account.username),'revoked': _account.revoked}">
         <ion-row class="project_header" text-center="" (click)="openSubMenu('account_'+i+'_content')">

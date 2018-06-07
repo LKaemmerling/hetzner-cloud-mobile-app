@@ -233,10 +233,6 @@ export class ServersPage {
    * @param {Server} server
    */
   public openDetailsPage(server: Server) {
-    if (this.config.getRemoteFeatureFlag('CLOUD_SERVER_DESIGN_v2', false) === true) {
-      this.navCtrl.push(ServerDetailsPage, {server: server});
-    } else {
-      this.navCtrl.push(ServerPage, {server: server});
-    }
+    this.navCtrl.push(ServerDetailsPage, {server: server});
   }
 }

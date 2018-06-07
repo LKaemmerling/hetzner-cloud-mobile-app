@@ -12,7 +12,6 @@ import {consoleModal} from './console/console';
 import {ServersPage} from './serverList/servers';
 import {addServerModal} from './addServer/addServer';
 import {ServerMetricsPage} from './server-metrics/server-metrics';
-import {ServerPage} from './server';
 import {resizeServerModal} from './resizeServer/resizeServer';
 import {editServerModal} from './editServer/editServer';
 import {powerSettingsModal} from './powerSettings/powerSettings';
@@ -25,7 +24,6 @@ import {ServerDetailsPage} from "./details/server-details";
 @NgModule({
   declarations: [
     ServersPage,
-    ServerPage,
     addServerModal,
     editServerModal,
     powerSettingsModal,
@@ -51,7 +49,6 @@ import {ServerDetailsPage} from "./details/server-details";
   ],
   entryComponents: [
     ServersPage,
-    ServerPage,
     addServerModal,
     editServerModal,
     powerSettingsModal,

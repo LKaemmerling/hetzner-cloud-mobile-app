@@ -280,4 +280,15 @@ export class ServerApiProvider extends HetznerApiProvider {
   changeProtection(serverId: number, _delete: boolean, _rebuild: boolean) {
     return this._post('servers/' + serverId + '/actions/change_protection', {delete: _delete, rebuild: _rebuild})
   }
+
+  /**
+   * Returns all actions from a given server
+   * @see https://docs.hetzner.cloud/#resources-server-actions-get
+   * @param {number} serverId
+   * @returns {Promise<any>}
+   */
+  actions(serverId:number){
+    return this._get('servers/' + serverId + '/actions?sort=id:desc');
+  }
+
 }

@@ -38,6 +38,9 @@ export class ServerDetailsPage {
   public cloud_host: string = '';
 
   public cloud_host_loading: boolean = false;
+  public actions: any;
+  public actions_loading: boolean = false;
+  public actions_loading_done: boolean = false;
 
   /**
    * Constructor
@@ -67,6 +70,7 @@ export class ServerDetailsPage {
     protected tracking: TrackingService
   ) {
     this.server = navParams.get('server');
+    this.getActions();
     tracking.trackFeature('cloud.server.details');
     this.cloud_host_enabled = 0;
     if (this.configService.getFeatureFlag('cloud_status', false)) {
@@ -85,7 +89,19 @@ export class ServerDetailsPage {
   public refresh() {
     this.serverApiProvider.getServer(this.server.id).then(data => {
       this.server = data['server'];
+      this.getActions();
     });
+
+  }
+
+  public getActions() {
+    this.actions_loading = true;
+    this.serverApiProvider.actions(this.server.id).then(data => {
+      this.actions = data['actions'];
+      this.actions_loading = false;
+      this.actions_loading_done = true;
+      setTimeout(() => (this.actions_loading_done = false), 5000);
+    })
   }
 
   /**

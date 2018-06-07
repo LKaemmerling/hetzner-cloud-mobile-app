@@ -1,6 +1,27 @@
+.toolbar {
+  loading-indicator {
+    .fa-sync, .fa-exclamation {
+      color: #ffffff;
+    }
+    .fa-check {
+      color: #8cdd92;
+    }
+    .fa-times {
+      color: #488aff;
+    }
+    .fa-play {
+      color: #ff0000;
+    }
+
+    .button-ios {
+      height: 1em;
+    }
+  }
+}
+
 loading-indicator {
   .fa-sync, .fa-exclamation {
-    color: #ffffff;
+    color: #ff0000;
   }
   .fa-check {
     color: #8cdd92;
@@ -15,5 +36,12 @@ loading-indicator {
   .button-ios {
     height: 1em;
   }
+}
 
+.dark-design{
+  loading-indicator {
+    .fa-sync, .fa-exclamation {
+      color: $dark_theme_red_main_color;
+    }
+  }
 }

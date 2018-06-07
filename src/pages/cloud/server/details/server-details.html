@@ -12,7 +12,7 @@
 <ion-content>
   <server-information [server]="server" [hidden]="{}"></server-information>
   <ion-row>
-    <ion-col col-lg-12 col-xl-4>
+    <ion-col col-12 col-md-4 col-lg-4 col-xl-6>
       <ion-card>
         <ion-card-header class="server-details__headline">{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.TITLE' |
           translate}}
@@ -53,7 +53,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col col-lg-12 col-xl-4>
+    <ion-col col-12 col-md-4 col-lg-4 col-xl-6>
       <ion-card>
         <ion-card-header class="server-details__headline">{{ 'PAGE.SERVERS.MODAL.DETAILS.NETWORK.TITLE' |
           translate}}
@@ -91,7 +91,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col col-lg-12 col-xl-4>
+    <ion-col col-12 col-md-4 col-lg-4 col-xl-6>
       <ion-card>
         <ion-card-header class="server-details__headline">{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.LOCATION' |
           translate}}
@@ -100,9 +100,12 @@
           <ion-row>
             <ion-col col-7>
               <ion-note>
-                <strong>{{ 'PAGE.SERVERS.MODAL.DETAILS.LOCATION.CITY' | translate}}</strong> {{'GLOBAL.LOCATION.'+server.datacenter.location.city.toUpperCase() | translate }}<br/>
-                <strong>{{ 'PAGE.SERVERS.MODAL.DETAILS.LOCATION.DATACENTER' | translate}}</strong> {{ server.datacenter.name }}<br/>
-                <strong>{{ 'PAGE.SERVERS.MODAL.DETAILS.LOCATION.COUNTRY' | translate}}</strong> {{ server.datacenter.location.country }}
+                <strong>{{ 'PAGE.SERVERS.MODAL.DETAILS.LOCATION.CITY' | translate}}</strong>
+                {{'GLOBAL.LOCATION.'+server.datacenter.location.city.toUpperCase() | translate }}<br/>
+                <strong>{{ 'PAGE.SERVERS.MODAL.DETAILS.LOCATION.DATACENTER' | translate}}</strong> {{
+                server.datacenter.name }}<br/>
+                <strong>{{ 'PAGE.SERVERS.MODAL.DETAILS.LOCATION.COUNTRY' | translate}}</strong> {{
+                server.datacenter.location.country }}
               </ion-note>
             </ion-col>
             <ion-col>
@@ -110,6 +113,33 @@
                        class="map"></hc-icon>
             </ion-col>
           </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12 col-md-12 col-xl-6>
+      <ion-card>
+        <ion-card-header class="server-details__headline">
+          {{ 'PAGE.SERVERS.MODAL.DETAILS.ACTIONS_BOX.TITLE' |
+          translate}}
+        <loading-indicator [loading]="actions_loading" [loading_done]="actions_loading" (action)="getActions()"></loading-indicator>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngFor="let action of actions">
+            <ion-item>
+              <h3
+                [translate]="'PAGE.SERVERS.MODAL.DETAILS.ACTIONS_BOX.ACTIONS.'+(action.status.toUpperCase()+'.'+action.command.toUpperCase().replace('_SERVER',''))"
+                [translateParams]="{subject:action.resources[0].id}"></h3>
+              <ion-note>{{ 'PAGE.ACTIONS.STATUS' |translate }}
+                <span *ngIf="action.status == 'running'" ion-text="" color="primary"><i
+                  class="fas fa-spin fa-spinner fa-pulse"></i> {{ action.progress}}%</span>
+                <span *ngIf="action.status == 'success'" ion-text="" color="secondary"><i
+                  class="fas fa-check"></i></span>
+                <span *ngIf="action.status == 'error'" ion-text="" color="danger"><i class="fas fa-times"></i></span>
+              </ion-note>
+              <ion-note item-end><strong>{{ action.started|date: ('GLOBAL.DATE_TIME_FORMAT' | translate) }}</strong>
+              </ion-note>
+            </ion-item>
+          </ion-list>
         </ion-card-content>
       </ion-card>
     </ion-col>

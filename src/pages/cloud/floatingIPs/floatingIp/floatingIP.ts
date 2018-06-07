@@ -5,7 +5,6 @@ import {ProjectsService} from '../../../../modules/hetzner-cloud-data/project/pr
 import {FloatingIpApiProvider} from '../../../../modules/hetzner-cloud-api/floating-ip-api/floating-ip-api';
 import {editFloatingIpModal} from '../editFloatingIp/editFloatingIp';
 import {ServerApiProvider} from '../../../../modules/hetzner-cloud-api/server-api/server-api';
-import {ServerPage} from '../../server/server';
 import {FloatingIPsPage} from '../floatingIPs';
 import {changeIPv4ReverseDNSModal} from '../../server/reverseDNS/ipv4/changeIPv4ReverseDNSModal';
 import {assignToServerModal} from '../assignToServer/assignToServer';
@@ -13,6 +12,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {NetworkProvider} from '../../../../modules/hetzner-app/network/network';
 import {Server} from '../../../../modules/hetzner-cloud-data/servers/server';
 import {TrackingService} from "../../../../modules/hetzner-app/tracking/tracking.service";
+import {ServerDetailsPage} from "../../server/details/server-details";
 
 /**
  * This page displays all informations about a given floating ip
@@ -82,7 +82,7 @@ export class FloatingIPPage {
    * @param {Server} server
    */
   openServer(server: Server) {
-    this.navCtrl.push(ServerPage, {server: server});
+    this.navCtrl.push(ServerDetailsPage, {server: server});
   }
 
   /**

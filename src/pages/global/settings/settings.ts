@@ -49,10 +49,16 @@ export class SettingsPage {
    * @type {boolean}
    */
   public compact_server_design: boolean = false;
-
+  /**
+   * Is it allowed to get the cloud status?
+   * @type {boolean}
+   */
   public cloud_status: boolean = false;
+  /**
+   * Is dark design enabled?
+   * @type {boolean}
+   */
   public dark_design: boolean = false;
-  public dark_design_allowed: boolean = false;
 
   /**
    * Constructor
@@ -83,7 +89,6 @@ export class SettingsPage {
     protected splashscreen: SplashScreen
   ) {
     _tracking.trackFeature('global.settings');
-    this.dark_design_allowed = this.config.getRemoteFeatureFlag('DARK_THEME', false);
     this.dark_design = this.config.getFeatureFlag('dark_design', false);
     storage.get('lang').then(value => {
       if (value != undefined) {
