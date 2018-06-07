@@ -194,7 +194,7 @@ export class SettingsPage {
       this.toastController
         .create({
           message: 'Only ' + (steps - this.developer_mode_clicks) + ' more',
-          duration: 2000,
+          duration: 200,
         })
         .present();
       return;
@@ -218,7 +218,7 @@ export class SettingsPage {
     this.config.setFeatureFlag('dark_design', this.dark_design);
     this.document.body.classList.remove(this.config.getFeatureFlag('dark_design', false) ? 'light-design' : 'dark-design');
     this.document.body.classList.add(this.config.getFeatureFlag('dark_design', false) ? 'dark-design' : 'light-design');
-    this.splashscreen.hide();
+    setTimeout(() => this.splashscreen.hide(),2000);
   }
 
   openPrivacyPage() {

@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {LoadingController, ModalController, NavController} from 'ionic-angular';
 import {ProjectsService} from '../../../../modules/hetzner-cloud-data/project/projects.service';
-import {ServerPage} from '../server';
 import {addServerModal} from '../addServer/addServer';
 import {ServerApiProvider} from '../../../../modules/hetzner-cloud-api/server-api/server-api';
 import {ServersService} from '../../../../modules/hetzner-cloud-data/servers/servers.service';
