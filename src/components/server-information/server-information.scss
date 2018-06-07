@@ -14,13 +14,17 @@ page-server-details {
       text-align: center;
     }
     hc-icon .hc-icon {
-      margin: 5px auto -5px auto;
-      transform: translateY(-50%) !important;
+      //margin: 5px auto -5px auto;
+      //transform: translateY(-50%) !important;
       width: 22px;
       height: 22px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
     .detail_information {
-      margin: 0 auto;
+      text-align: center;
+      //margin: 0 auto;
       .number {
         font-size: 18px;
         font-weight: bold;
