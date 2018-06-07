@@ -24,11 +24,18 @@
           <ion-col col-12 align-items-start>
             <h2>{{ _project.name }}
             </h2>
-            <ion-badge item-end  *ngIf="_project.revoked == true">{{
+            <ion-badge item-end *ngIf="_project.revoked == true">{{
               'PAGE.PROJECTS.STATUS.'+(_project.revoked ? 'REVOKED':'WORKING') | translate}}
             </ion-badge>
           </ion-col>
         </ion-row>
+        <ion-card-content *ngIf="_project.meta != undefined">
+          <p text-wrap="" class="project-expanded project_detail" text-center="">
+            <span class="project__detail-count">{{ _project.meta.servers_count }}</span><span
+            class="project__detail-label">Servers</span>
+          </p>
+
+        </ion-card-content>
         <ion-card-content [id]="'project_'+i+'_content'" style="display:none;"
                           [@animate]="visible['project_'+i+'_content']" class="project-expanded">
           <ion-row class="row">

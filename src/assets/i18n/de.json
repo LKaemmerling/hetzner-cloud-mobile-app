@@ -347,9 +347,9 @@
             }
           },
           "LOCATION": {
-            "CITY": "Stadt",
-            "DATACENTER": "Rechenzentrum",
-            "COUNTRY": "Land"
+            "CITY": "Stadt:",
+            "DATACENTER": "Rechenzentrum:",
+            "COUNTRY": "Land:"
           },
           "ACTIONS_BOX": {
             "TITLE": "SERVER AKTIVITÄTEN",

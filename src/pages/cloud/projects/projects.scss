@@ -14,4 +14,30 @@ page-projects {
     color: #fff;
     background-color: #32db64 !important;
   }
+  .project_detail {
+    padding:10px;
+    .project__detail-count {
+      font-weight: bolder;
+      font-size: 16px;
+    }
+    .project__detail-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-left: 8px;
+
+      font-family: "Montserrat", "Roboto", sans-serif;
+    }
+  }
+}
+
+.light-design {
+  .project__detail-label {
+    color: #8b91a7;
+  }
+}
+
+.dark-design {
+  .project__detail-label, .project__detail-count {
+    color: #ffffff;
+  }
 }

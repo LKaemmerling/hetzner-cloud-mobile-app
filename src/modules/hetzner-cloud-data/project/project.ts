@@ -16,6 +16,6 @@ export interface project {
    * Is the API key revoked?
    */
   revoked: boolean;
-
+  meta: any;
 
 }

@@ -92,10 +92,10 @@ export class NetworkProvider {
    */
   public quickTestApiKey(api_key: string) {
     return new Promise((resolve, reject) => {
-      this.angularHttp.get(this.config.api_url + '/locations', {
+      this.angularHttp.get(this.config.api_url + '/servers', {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key)
       }).subscribe(data => {
-        resolve();
+        resolve({servers_count:data['servers'].length});
       }, err => {
         reject();
       });

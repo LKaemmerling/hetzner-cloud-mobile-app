@@ -36,7 +36,6 @@ export class addProjectModal {
    * @type {string}
    */
   public error: string = null;
-
   /**
    * Constructor
    * @param {ProjectsService} project
@@ -99,7 +98,7 @@ export class addProjectModal {
 
     this.network.quickTestApiKey(this.api_key).then(
       () => {
-        this.new_project = {name: null, api_key: null, revoked: false};
+        this.new_project = {name: null, api_key: null, revoked: false, meta:{}};
         this.new_project.name = this.project_name;
         this.new_project.api_key = this.api_key;
         this.project.addProject(this.new_project);

@@ -31,8 +31,13 @@ export class ProjectsService {
   private checkProjects() {
     return new Promise((resolve) => {
       this.projects.forEach((project) => {
-        this.network.quickTestApiKey(project.api_key).then(() => {
+        this.network.quickTestApiKey(project.api_key).then((result) => {
           project.revoked = false;
+          if (project.meta == undefined) {
+            project.meta = {servers_count: result['servers_count']};
+          }
+          project.meta.servers_count = result['servers_count'];
+          console.log(project.meta)
         }, () => {
           project.revoked = true;
         });
@@ -56,8 +61,12 @@ export class ProjectsService {
           this.storage.get('actual_project').then((val) => {
             if (val !== undefined && val !== null) {
 
-              this.network.quickTestApiKey(val.api_key).then(() => {
+              this.network.quickTestApiKey(val.api_key).then((result) => {
                 val.revoked = false;
+                if (val.meta == undefined) {
+                  val.meta = {servers_count: result['servers_count']};
+                }
+                val.meta.servers_count = result['servers_count'];
                 this.actual_project = val;
                 resolve();
               }, () => {

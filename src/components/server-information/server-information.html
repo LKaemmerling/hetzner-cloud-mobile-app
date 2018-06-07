@@ -2,30 +2,33 @@
 <ion-toolbar class="server-information-toolbar">
   <ion-row>
     <ion-col col-2 *ngIf="hidden.type == undefined || hidden.type == false">
-      <div id="server_type_description">{{server.server_type.name.replace('-CEPH','')}}</div>
-      <div id="server_id">#{{server.id}}</div>
+      <div class="server_type_description">{{server.server_type.name.toUpperCase().replace('-CEPH','')}}</div>
+      <div class="server_id">#{{server.id}}</div>
     </ion-col>
     <ion-col>
       <ion-row>
-        <ion-col [tooltip]="'CLOUD.COMPONENTS.SERVER_INFORMATION.CPU'|translate" positionV="bottom">
+        <ion-col [tooltip]="'CLOUD.COMPONENTS.SERVER_INFORMATION.CPU'|translate" positionV="bottom"
+                 *ngIf="hidden.cpu == undefined || hidden.cpu == false">
           <hc-icon icon="#cpu"></hc-icon>
           <div class="detail_information">
             <div class="number">{{ server.server_type.cores }}</div>
           </div>
         </ion-col>
-        <ion-col [tooltip]="'CLOUD.COMPONENTS.SERVER_INFORMATION.RAM'|translate" positionV="bottom">
+        <ion-col [tooltip]="'CLOUD.COMPONENTS.SERVER_INFORMATION.RAM'|translate" positionV="bottom"
+                 *ngIf="hidden.ram == undefined || hidden.ram == false">
           <hc-icon icon="#ram"></hc-icon>
           <div class="detail_information">
             <div class="number">{{ server.server_type.memory }} GB</div>
           </div>
         </ion-col>
-        <ion-col [tooltip]="'CLOUD.COMPONENTS.SERVER_INFORMATION.DISK'|translate" positionV="bottom">
+        <ion-col [tooltip]="'CLOUD.COMPONENTS.SERVER_INFORMATION.DISK'|translate" positionV="bottom"
+                 *ngIf="hidden.disk == undefined || hidden.disk == false">
           <hc-icon icon="#nvmedisk"></hc-icon>
           <div class="detail_information">
             <div class="number">{{ server.server_type.disk }} GB</div>
           </div>
         </ion-col>
-        <ion-col [tooltip]="'CLOUD.COMPONENTS.SERVER_INFORMATION.PRICE'|translate" positionV="bottom">
+        <ion-col [tooltip]="'CLOUD.COMPONENTS.SERVER_INFORMATION.PRICE'|translate" positionV="bottom"  *ngIf="hidden.price == undefined || hidden.price == false">
           <hc-icon icon="#euro"></hc-icon>
           <div class="detail_information">
             <div

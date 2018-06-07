@@ -1,17 +1,29 @@
+server-information {
+
+  .server_type_description {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+  .server_id {
+    font-size: 8px !important;
+    text-align: center;
+  }
+}
 
 page-server-details {
   .server-information-toolbar {
-    #server_type_description {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    .server_type_description {
       font-size: 18px;
-      font-weight: bold;
-      text-align: center;
       width: 100%;
       margin-top: 5px;
-      text-transform: uppercase;
     }
-    #server_id {
-      font-size: 8px;
-      text-align: center;
+    .server_id {
+      font-size: 8px !important;
     }
     hc-icon .hc-icon {
       //margin: 5px auto -5px auto;
@@ -56,7 +68,7 @@ page-server-details {
     .toolbar-background {
       background-color: $dark_theme_sub_menu_color !important;
     }
-    .toolbar-title, #server_type_description, #server_id, .number, .type {
+    .toolbar-title,.server_type_description, .server_id, .number, .type {
       color: #ffffff !important;
     }
 
