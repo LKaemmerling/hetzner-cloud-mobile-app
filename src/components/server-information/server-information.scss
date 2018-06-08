@@ -1,5 +1,4 @@
 server-information {
-
   .server_type_description {
     font-size: 18px;
     font-weight: bold;
@@ -68,7 +67,7 @@ page-server-details {
     .toolbar-background {
       background-color: $dark_theme_sub_menu_color !important;
     }
-    .toolbar-title,.server_type_description, .server_id, .number, .type {
+    .toolbar-title, .server_type_description, .server_id, .number, .type {
       color: #ffffff !important;
     }
 
