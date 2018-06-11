@@ -114,6 +114,7 @@
     "@angular/http": "5.2.9",
     "@angular/platform-browser": "5.2.9",
     "@angular/platform-browser-dynamic": "5.2.9",
+    "@hetznercloud/protractor-test-helper": "^1.0.0",
     "@ionic-native/app-version": "4.7.0",
     "@ionic-native/barcode-scanner": "4.7.0",
     "@ionic-native/clipboard": "4.7.0",
