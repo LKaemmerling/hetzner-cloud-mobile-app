@@ -5,6 +5,8 @@ import {Observable} from "rxjs/Observable";
 import {TranslateService} from "@ngx-translate/core";
 import {ConfigService} from "../config/config.service";
 import {HTTP} from "@ionic-native/http";
+import {Storage} from "@ionic/storage";
+import {Md5} from "ts-md5";
 
 /**
  * This Provider contains all logic for the network available info like "app has connection"
@@ -34,7 +36,7 @@ export class NetworkProvider {
    * @param {TranslateService} translate
    * @param {ConfigService} config
    */
-  constructor(protected angularHttp: HttpClient, protected http: HTTP, protected network: Network, protected translate: TranslateService, protected config: ConfigService) {
+  constructor(protected angularHttp: HttpClient, protected http: HTTP, protected network: Network, protected translate: TranslateService, protected config: ConfigService, protected storage: Storage) {
   }
 
   /**
@@ -92,17 +94,67 @@ export class NetworkProvider {
    */
   public quickTestApiKey(api_key: string) {
     return new Promise((resolve, reject) => {
-      this.angularHttp.get(this.config.api_url + '/servers', {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key)
-      }).subscribe(data => {
-        resolve({servers_count:data['servers'].length});
-      }, err => {
-        reject();
+      this.storage.get('cloud_result_' + Md5.hashStr(api_key).toString()).then((data) => {
+        if (data == undefined) {
+          this.makeQuickTestApiKey(api_key).then((count) => {
+            this.storage.set('cloud_result_' + Md5.hashStr(api_key).toString(), {count: count, time: Date.now().toString()});
+            resolve({servers_count: count})
+          }).catch(reject);
+        } else {
+          if (data.time < new Date(new Date().setDate(new Date().getDate() - 1))) {
+            this.makeQuickTestApiKey(api_key).then((count) => {
+              this.storage.set('cloud_result_' + Md5.hashStr(api_key).toString(), {
+                count: count,
+                time: Date.now().toString()
+              });
+              resolve({servers_count: count})
+            }).catch(reject);
+          } else {
+            resolve({servers_count: data.count});
+          }
+        }
       });
     });
   }
 
+  private makeQuickTestApiKey(api_key: string) {
+    return new Promise((resolve, reject) => {
+      this.angularHttp.get(this.config.api_url + '/servers', {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key)
+      }).subscribe(data => {
+        resolve(data['servers'].length);
+      }, err => {
+        reject();
+      });
+    });
+
+  }
+
   public quickTestAccess(username: string, password: string) {
+    return new Promise((resolve, reject) => {
+      this.storage.get('robot_result_' + Md5.hashStr(username).toString()).then((data) => {
+        if (data == undefined) {
+          this.makeQuickTestAccess(username,password).then(() => {
+            this.storage.set('robot_result_' + Md5.hashStr(username).toString(), {time: Date.now().toString()});
+            resolve()
+          }).catch(reject);
+        } else {
+          if (data.time < new Date(new Date().setDate(new Date().getDate() - 1))) {
+            this.makeQuickTestAccess(username,password).then(() => {
+              this.storage.set('robot_result_' + Md5.hashStr(username).toString(), {
+                time: Date.now().toString()
+              });
+              resolve()
+            }).catch(reject);
+          } else {
+            resolve();
+          }
+        }
+      });
+    });
+  }
+
+  private makeQuickTestAccess(username:string,password:string){
     return new Promise((resolve, reject = null) => {
       this.http.useBasicAuth(username, password);
       let headers = {
