@@ -28,13 +28,6 @@
                          item-right=""></hc-icon>
               </ion-note>
             </ion-item>
-            <ion-item *ngIf="cloud_host_enabled == 1">
-              <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.CLOUD_HOST' | translate}}</ion-note>
-              <ion-note item-end>
-                <span *ngIf="cloud_host_loading == true"><i class="fas fa-spinner fa-spin"></i></span>
-                <span *ngIf="cloud_host_loading == false">#{{ cloud_host}}</span>
-              </ion-note>
-            </ion-item>
             <ion-item *ngIf="server.image != null">
               <ion-note item-start>{{ 'PAGE.SERVERS.MODAL.DETAILS.INFORMATION.IMAGE' | translate}}</ion-note>
               <ion-note item-end>

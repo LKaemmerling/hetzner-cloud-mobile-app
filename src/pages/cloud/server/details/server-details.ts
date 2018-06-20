@@ -32,12 +32,7 @@ export class ServerDetailsPage {
    * The server that is visible in this page
    */
   public server: Server;
-
-  public cloud_host_enabled: number = -1;
-
-  public cloud_host: string = '';
-
-  public cloud_host_loading: boolean = false;
+  
   public actions: any;
   public actions_loading: boolean = false;
   public actions_loading_done: boolean = false;
@@ -72,15 +67,6 @@ export class ServerDetailsPage {
     this.server = navParams.get('server');
     this.getActions();
     tracking.trackFeature('cloud.server.details');
-    this.cloud_host_enabled = 0;
-    if (this.configService.getFeatureFlag('cloud_status', false)) {
-      this.cloud_host_enabled = 1;
-      this.cloud_host_loading = true;
-      this.serverService.get_cloud_host(this.server).then((cloud_host_id) => {
-        this.cloud_host = <string>cloud_host_id;
-        this.cloud_host_loading = false;
-      });
-    }
   }
 
   /**
