@@ -4,17 +4,17 @@
       <ion-title>{{ 'GLOBAL.NAME' | translate}}</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="menu">
+  <ion-content class="menu" data-test="menu">
     <ion-segment [(ngModel)]="menu" color="secondary" (ionChange)="changeMenu()" class="menu-segment">
       <ion-segment-button *ngFor="let menu of available_menus;" [value]="menu.text" class="menu-segment-button">
-        <hc-icon [icon]="menu.icon" *ngIf="menu.icon.startsWith('fa') == false"></hc-icon>
+        <hc-icon [icon]="menu.icon" *ngIf="menu.icon.startsWith('fa') == false" [attr.data-test]="'module_'+menu.key"></hc-icon>
         {{menu.text}}
       </ion-segment-button>
     </ion-segment>
     <ion-list>
       <button ion-item="" *ngFor="let menu_entry of menu_entries;" (click)="openPage(menu_entry)" menuClose=""
               class="visible menu-button"
-              [ngClass]="{'force-hidden':menu_entry.hidden}">
+              [ngClass]="{'force-hidden':menu_entry.hidden}" [attr.data-test]="'menu_'+menu_entry.key">
         <hc-icon [icon]="menu_entry.icon" [class]="'main-nav__icon'"
                  *ngIf="menu_entry.icon.startsWith('fa') == false"></hc-icon>
         <i [class]="'fas fa-fw '+menu_entry.icon" *ngIf="menu_entry.icon.startsWith('fa') == true"></i> {{
@@ -24,10 +24,10 @@
       </button>
       <ion-item
         style="position: fixed; bottom:0; text-align: center;font-size:12px;">
-        <button ion-item (click)="supportMail()" menuClose="" class="visible menu-button">
+        <button ion-item (click)="supportMail()" menuClose="" class="visible menu-button" [attr.data-test]="'menu_PAGE.HELP.TITLE'">
           {{ 'PAGE.HELP.TITLE' | translate }}
         </button>
-        <button ion-item (click)="openAboutPage()" menuClose="" class="visible menu-button">
+        <button ion-item (click)="openAboutPage()" menuClose="" class="visible menu-button" [attr.data-test]="'menu_PAGE.ABOUT.TITLE'">
           {{ 'PAGE.ABOUT.TITLE' | translate }}
         </button>
       </ion-item>

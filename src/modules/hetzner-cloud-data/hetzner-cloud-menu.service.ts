@@ -18,6 +18,7 @@ import {HetznerCloudDataService} from "./hetzner-cloud-data.service";
 @Injectable()
 export class HetznerCloudMenuService {
 
+  public key = 'cloud';
   public icon = '#hetzner-cloud';
 
   public text = 'Cloud';

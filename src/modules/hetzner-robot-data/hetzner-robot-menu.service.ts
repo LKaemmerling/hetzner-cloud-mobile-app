@@ -17,6 +17,7 @@ import {ServerMarketListPage} from "../../pages/robot/market/server_market/list/
 @Injectable()
 export class HetznerRobotMenuService {
 
+  public key = 'robot';
   public icon = '#hetzner-robot';
 
   public text = 'Robot';

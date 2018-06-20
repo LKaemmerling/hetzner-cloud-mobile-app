@@ -32,7 +32,7 @@ export class ServerDetailsPage {
    * The server that is visible in this page
    */
   public server: Server;
-  
+
   public actions: any;
   public actions_loading: boolean = false;
   public actions_loading_done: boolean = false;
@@ -49,7 +49,7 @@ export class ServerDetailsPage {
    * @param {TranslateService} translate
    * @param {NetworkProvider} networkProvider
    * @param {ServerApiProvider} serverApiProvider
-   * @param {StatusApiProvider} statusApiProvider
+   * @param {TrackingService} tracking
    */
   constructor(
     protected loadingCtrl: LoadingController,
@@ -80,6 +80,9 @@ export class ServerDetailsPage {
 
   }
 
+  /**
+   * Get all actions to the server
+   */
   public getActions() {
     this.actions_loading = true;
     this.serverApiProvider.actions(this.server.id).then(data => {
