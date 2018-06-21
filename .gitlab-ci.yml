@@ -28,7 +28,7 @@ cache:
 build:web:
   stage: build
   script:
-    - npm run build
+    - npm --max-old-space-size=4096 run build
   artifacts:
     paths:
       - www/
@@ -43,7 +43,7 @@ test:e2e:de:
 
   script:
     - echo "Start Test for e2e Local 'DE'"
-    - TEST_API_KEY=$TEST_API_KEY SCREENSHOTS=false LANG=de node test-config/protractor.server.js
+    - TEST_API_KEY=$TEST_API_KEY SCREENSHOTS=false LANG=de node --max-old-space-size=4096 test-config/protractor.server.js
   dependencies:
     - build:web
 
@@ -52,7 +52,7 @@ test:e2e:en:
 
   script:
     - echo "Start Test for e2e Local 'EN'"
-    - TEST_API_KEY=$TEST_API_KEY SCREENSHOTS=false LANG=en node test-config/protractor.server.js
+    - TEST_API_KEY=$TEST_API_KEY SCREENSHOTS=false LANG=en node --max-old-space-size=4096 test-config/protractor.server.js
   dependencies:
     - build:web
 
