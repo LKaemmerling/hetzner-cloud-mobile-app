@@ -84,7 +84,7 @@ export class HetznerRobotMenuService {
       icon: 'fa-shopping-cart',
       page: ServerMarketListPage,
       protected: true,
-      hidden: false,
+      hidden: true,
       needs_order: true,
     },
     {

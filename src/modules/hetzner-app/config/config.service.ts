@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Storage} from "@ionic/storage";
 import {AppVersion} from "@ionic-native/app-version";
 import {Platform} from "ionic-angular";
+import {Pro} from "@ionic/pro";
 
 /**
  * This service contain all configuration for the app, like the api_url or other tings.
@@ -14,7 +15,7 @@ export class ConfigService {
    * The current version String
    * @type {string}
    */
-  public version = '2.1.0';
+  public version = '2.2.0';
   public build = '0000001';
   /**
    * The currently used language
@@ -43,7 +44,9 @@ export class ConfigService {
   public oneSignal = {
     appId: 'e8714cee-7480-45da-bad0-19ba3c3e89c4',
     googleProjectId: '1069973161280'
-  }
+  };
+  public deployChannel = "";
+  public branch = 'Production';
   /**
    * This contains the message about the developer mode.
    * @type {boolean}
@@ -68,6 +71,7 @@ export class ConfigService {
    * @type {boolean}
    */
   public runs_on_device = false;
+  public downloadProgress = 0;
 
   /**
    * Constructor
@@ -75,6 +79,66 @@ export class ConfigService {
    * @param {AppVersion} appVersion
    */
   constructor(protected storage: Storage, public appVersion: AppVersion, protected platform: Platform) {
+    this.checkChannel();
+  }
+
+
+  async checkChannel() {
+    try {
+      const res = await Pro.deploy.info();
+      this.deployChannel = res.channel;
+      this.branch = this.deployChannel;
+    } catch (err) {
+      // We encountered an error.
+      // Here's how we would log it to Ionic Pro Monitoring while also catching:
+
+      // Pro.monitoring.exception(err);
+    }
+  }
+
+  async toggleBeta() {
+    const config = {
+      appId: '359b3ec5',
+      channel: this.branch
+    }
+
+    try {
+      await Pro.deploy.init(config);
+      await this.checkChannel();
+      await this.performAutomaticUpdate(); // Alternatively, to customize how this works, use performManualUpdate()
+    } catch (err) {
+      // We encountered an error.
+      // Here's how we would log it to Ionic Pro Monitoring while also catching:
+
+      // Pro.monitoring.exception(err);
+    }
+
+  }
+
+  async performAutomaticUpdate() {
+
+    /*
+      This code performs an entire Check, Download, Extract, Redirect flow for
+      you so you don't have to program the entire flow yourself. This should
+      work for a majority of use cases.
+    */
+
+    try {
+      const resp = await Pro.deploy.checkAndApply(true, progress => {
+        this.downloadProgress = progress;
+      });
+
+      if (resp.update) {
+        // We found an update, and are in process of redirecting you since you put true!
+      } else {
+        // No update available
+      }
+    } catch (err) {
+      // We encountered an error.
+      // Here's how we would log it to Ionic Pro Monitoring while also catching:
+
+      // Pro.monitoring.exception(err);
+    }
   }
 
   /**

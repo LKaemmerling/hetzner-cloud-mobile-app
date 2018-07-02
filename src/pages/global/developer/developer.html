@@ -85,5 +85,24 @@
     <ion-item>
       <button ion-button="" color="danger" (click)="removeDeveloperMode()">Remove Developer Mode</button>
     </ion-item>
+
+    <ion-list-header *ngIf="configService.getRemoteFeatureFlag('SWITCH_BETWEEN_BRANCHES',false)">
+      Change Branch
+    </ion-list-header>
+    <ion-item *ngIf="configService.getRemoteFeatureFlag('SWITCH_BETWEEN_BRANCHES',false) && downloadProgress > 0">
+      Progress: {{ downloadProgress }}
+    </ion-item>
+    <ion-item *ngIf="configService.getRemoteFeatureFlag('SWITCH_BETWEEN_BRANCHES',false)">
+      <ion-select [(ngModel)]="branch">
+        <ion-option value="Production">Production</ion-option>
+        <ion-option value="beta">Beta</ion-option>
+        <ion-option value="Master">Unstable</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button ion-button="" (click)="toggleBeta()"
+              *ngIf="configService.getRemoteFeatureFlag('SWITCH_BETWEEN_BRANCHES',false)">Change Branch
+      </button>
+    </ion-item>
   </ion-list>
 </ion-content>
